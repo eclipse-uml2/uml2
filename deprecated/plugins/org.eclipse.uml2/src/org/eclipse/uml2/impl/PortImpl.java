@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PortImpl.java,v 1.7 2004/06/18 04:34:31 khussey Exp $
+ * $Id: PortImpl.java,v 1.7.2.1 2004/08/16 17:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -34,10 +34,7 @@ import org.eclipse.uml2.Association;
 import org.eclipse.uml2.BehavioredClassifier;
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.DataType;
-import org.eclipse.uml2.Dependency;
-import org.eclipse.uml2.Implementation;
 import org.eclipse.uml2.Interface;
-import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.Port;
 import org.eclipse.uml2.Property;
 import org.eclipse.uml2.ProtocolStateMachine;
@@ -46,7 +43,6 @@ import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
-import org.eclipse.uml2.Usage;
 import org.eclipse.uml2.ValueSpecification;
 import org.eclipse.uml2.VisibilityKind;
 
@@ -209,54 +205,16 @@ public class PortImpl extends PropertyImpl implements Port {
 			Set required = new HashSet();
 
 			if (Classifier.class.isInstance(getType())) {
+				Classifier classifier = (Classifier) getType();
 
-				for (Iterator clientDependencies = getType()
-					.getClientDependencies().iterator(); clientDependencies
-					.hasNext();) {
-					
-					Dependency clientDependency = (Dependency) clientDependencies
-						.next();
+				if (!Interface.class.isInstance(classifier)) {
+					required.addAll(classifier.getUsedInterfaces());
 
-					if (Usage.class.isInstance(clientDependency)) {
+					for (Iterator allParents = classifier.allParents()
+						.iterator(); allParents.hasNext();) {
 
-						for (Iterator suppliers = clientDependency
-							.getSuppliers().iterator(); suppliers.hasNext();) {
-							
-							NamedElement supplier = (NamedElement) suppliers
-								.next();
-
-							if (Interface.class.isInstance(supplier)) {
-								required.add(supplier);
-							}
-						}
-					}
-				}
-
-				for (Iterator allParents = ((Classifier) getType())
-					.allParents().iterator(); allParents.hasNext();) {
-					
-					Classifier allParent = (Classifier) allParents.next();
-
-					for (Iterator clientDependencies = allParent
-						.getClientDependencies().iterator(); clientDependencies
-						.hasNext();) {
-						
-						Dependency clientDependency = (Dependency) clientDependencies
-							.next();
-
-						if (Usage.class.isInstance(clientDependency)) {
-
-							for (Iterator suppliers = clientDependency
-								.getSuppliers().iterator(); suppliers.hasNext();) {
-								
-								NamedElement supplier = (NamedElement) suppliers
-									.next();
-
-								if (Interface.class.isInstance(supplier)) {
-									required.add(supplier);
-								}
-							}
-						}
+						required.addAll(((Classifier) allParents.next())
+							.getUsedInterfaces());
 					}
 				}
 			}
@@ -332,17 +290,8 @@ public class PortImpl extends PropertyImpl implements Port {
 			if (Interface.class.isInstance(getType())) {
 				provided.add(getType());
 			} else if (BehavioredClassifier.class.isInstance(getType())) {
-
-				for (Iterator implementations = ((BehavioredClassifier) getType())
-					.getImplementations().iterator(); implementations.hasNext();) {
-
-					Implementation implementation = (Implementation) implementations
-						.next();
-
-					if (null != implementation.getContract()) {
-						provided.add(implementation.getContract());
-					}
-				}
+				provided.addAll(((BehavioredClassifier) getType())
+					.getImplementedInterfaces());
 			}
 
 			provideds = new EcoreEList.UnmodifiableEList(this,

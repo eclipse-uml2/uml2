@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.17 2004/06/18 17:44:12 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.17.2.1 2004/08/16 17:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -34,9 +34,7 @@ import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.CollaborationOccurrence;
 import org.eclipse.uml2.Component;
 import org.eclipse.uml2.Dependency;
-import org.eclipse.uml2.Implementation;
 import org.eclipse.uml2.Interface;
-import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.PackageableElement;
 import org.eclipse.uml2.Port;
 import org.eclipse.uml2.Realization;
@@ -44,7 +42,6 @@ import org.eclipse.uml2.StringExpression;
 import org.eclipse.uml2.TemplateParameter;
 import org.eclipse.uml2.TemplateSignature;
 import org.eclipse.uml2.UML2Package;
-import org.eclipse.uml2.Usage;
 import org.eclipse.uml2.VisibilityKind;
 import org.eclipse.uml2.internal.util.SubsetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.internal.util.SupersetEObjectWithInverseResolvingEList;
@@ -165,25 +162,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 		if (null == requireds) {
 			Set required = new HashSet();
 
-			for (Iterator clientDependencies = getClientDependencies()
-				.iterator(); clientDependencies.hasNext();) {
-
-				Dependency clientDependency = (Dependency) clientDependencies
-					.next();
-
-				if (Usage.class.isInstance(clientDependency)) {
-
-					for (Iterator suppliers = clientDependency.getSuppliers()
-						.iterator(); suppliers.hasNext();) {
-
-						NamedElement supplier = (NamedElement) suppliers.next();
-
-						if (Interface.class.isInstance(supplier)) {
-							required.add(supplier);
-						}
-					}
-				}
-			}
+			required.addAll(getUsedInterfaces());
 
 			for (Iterator realizations = getRealizations().iterator(); realizations
 				.hasNext();) {
@@ -191,28 +170,8 @@ public class ComponentImpl extends ClassImpl implements Component {
 				Realization realization = (Realization) realizations.next();
 
 				if (null != realization.getRealizingClassifier()) {
-
-					for (Iterator clientDependencies = realization
-						.getRealizingClassifier().getClientDependencies()
-						.iterator(); clientDependencies.hasNext();) {
-
-						Dependency clientDependency = (Dependency) clientDependencies
-							.next();
-
-						if (Usage.class.isInstance(clientDependency)) {
-
-							for (Iterator suppliers = clientDependency
-								.getSuppliers().iterator(); suppliers.hasNext();) {
-
-								NamedElement supplier = (NamedElement) suppliers
-									.next();
-
-								if (Interface.class.isInstance(supplier)) {
-									required.add(supplier);
-								}
-							}
-						}
-					}
+					required.addAll(realization.getRealizingClassifier()
+						.getUsedInterfaces());
 				}
 			}
 
@@ -236,7 +195,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-     */
+	 */
 	public Interface getRequired(String unqualifiedName) {
     	for (Iterator i = getRequireds().iterator(); i.hasNext(); ) {
     		Interface namedRequired = (Interface) i.next();
@@ -261,16 +220,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 		if (null == provideds) {
 			Set provided = new HashSet();
 
-			for (Iterator implementations = getImplementations().iterator(); implementations
-				.hasNext();) {
-
-				Implementation implementation = (Implementation) implementations
-					.next();
-
-				if (null != implementation.getContract()) {
-					provided.add(implementation.getContract());
-				}
-			}
+			provided.addAll(getImplementedInterfaces());
 
 			for (Iterator realizations = getRealizations().iterator(); realizations
 				.hasNext();) {
@@ -283,17 +233,9 @@ public class ComponentImpl extends ClassImpl implements Component {
 				} else if (BehavioredClassifier.class
 					.isInstance(realizingClassifier)) {
 
-					for (Iterator implementations = ((BehavioredClassifier) realizingClassifier)
-						.getImplementations().iterator(); implementations
-						.hasNext();) {
-
-						Implementation implementation = (Implementation) implementations
-							.next();
-
-						if (null != implementation.getContract()) {
-							provided.add(implementation.getContract());
-						}
-					}
+					provided
+						.addAll(((BehavioredClassifier) realizingClassifier)
+							.getImplementedInterfaces());
 				}
 			}
 

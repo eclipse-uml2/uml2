@@ -8,10 +8,11 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.19 2004/06/18 17:44:12 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.19.2.1 2004/08/16 17:55:12 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
+import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -1868,6 +1869,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	}
 
 	// <!-- begin-custom-operations -->
+
 	 /*
 	  * (non-Javadoc)
 	  * 
@@ -1898,6 +1900,36 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		return ClassifierOperations.createGeneralization(this,
 				generalClassifier);
 	}
+
+	private static Method GET_USED_INTERFACES_METHOD = null;
+
+	static {
+		try {
+			GET_USED_INTERFACES_METHOD = ClassifierImpl.class.getMethod(
+				"getUsedInterfaces", null); //$NON-NLS-1$
+		} catch (Exception e) {
+			// ignore
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.Classifier#getUsedInterfaces()
+	 */
+	public Set getUsedInterfaces() {
+		Set useInterfaces = (Set) getCacheAdapter().get(this,
+			GET_USED_INTERFACES_METHOD);
+
+		if (null == useInterfaces) {
+			useInterfaces = ClassifierOperations.getUsedInterfaces(this);
+			getCacheAdapter().put(this, GET_USED_INTERFACES_METHOD,
+				useInterfaces);
+		}
+
+		return useInterfaces;
+	}
+	
 	// <!-- end-custom-operations -->
 
 } //ClassifierImpl
