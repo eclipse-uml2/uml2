@@ -108,20 +108,18 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9vsGx686Edih9-GG5afQ0g"/>
     </ownedEnd>
   </ownedMember>
-  <ownedMember xmi:type="uml:Stereotype" xmi:id="_9vyNYK86Edih9-GG5afQ0g" name="Create">
+  <ownedMember xmi:type="uml:Stereotype" xmi:id="_9v4UBK86Edih9-GG5afQ0g" name="Create">
     <ownedAttribute xmi:id="_9v4UA686Edih9-GG5afQ0g" name="base$BehavioralFeature" association="_9v4UAK86Edih9-GG5afQ0g">
       <type xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9I8Kq86EdiEh75YJ_3n8g"/>
     </ownedAttribute>
-  </ownedMember>
-  <ownedMember xmi:type="uml:Extension" xmi:id="_9v4UAK86Edih9-GG5afQ0g" name="BehavioralFeature_Create" memberEnd="_9v4UAa86Edih9-GG5afQ0g _9v4UA686Edih9-GG5afQ0g">
-    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_9v4UAa86Edih9-GG5afQ0g" name="extension$Create" type="_9vyNYK86Edih9-GG5afQ0g" association="_9v4UAK86Edih9-GG5afQ0g" aggregation="composite">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9v4UAq86Edih9-GG5afQ0g"/>
-    </ownedEnd>
-  </ownedMember>
-  <ownedMember xmi:type="uml:Stereotype" xmi:id="_9v4UBK86Edih9-GG5afQ0g" name="Create">
     <ownedAttribute xmi:id="_9v-ao686Edih9-GG5afQ0g" name="base$Usage" association="_9v-aoK86Edih9-GG5afQ0g">
       <type xmi:type="uml:Class" href="pathmap://UML2_METAMODELS/UML2.metamodel.uml2#_m9nda686EdiEh75YJ_3n8g"/>
     </ownedAttribute>
+  </ownedMember>
+  <ownedMember xmi:type="uml:Extension" xmi:id="_9v4UAK86Edih9-GG5afQ0g" name="BehavioralFeature_Create" memberEnd="_9v4UAa86Edih9-GG5afQ0g _9v4UA686Edih9-GG5afQ0g">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_9v4UAa86Edih9-GG5afQ0g" name="extension$Create" type="_9v4UBK86Edih9-GG5afQ0g" association="_9v4UAK86Edih9-GG5afQ0g" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9v4UAq86Edih9-GG5afQ0g"/>
+    </ownedEnd>
   </ownedMember>
   <ownedMember xmi:type="uml:Extension" xmi:id="_9v-aoK86Edih9-GG5afQ0g" name="Usage_Create" memberEnd="_9v-aoa86Edih9-GG5afQ0g _9v-ao686Edih9-GG5afQ0g">
     <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_9v-aoa86Edih9-GG5afQ0g" name="extension$Create" type="_9v4UBK86Edih9-GG5afQ0g" association="_9v-aoK86Edih9-GG5afQ0g" aggregation="composite">
