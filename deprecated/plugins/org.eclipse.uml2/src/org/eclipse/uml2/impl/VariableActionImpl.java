@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: VariableActionImpl.java,v 1.4 2004/06/18 04:34:32 khussey Exp $
+ * $Id: VariableActionImpl.java,v 1.4.2.1 2004/08/24 01:03:43 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -490,7 +490,7 @@ public abstract class VariableActionImpl extends ActionImpl implements VariableA
 			case UML2Package.VARIABLE_ACTION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.VARIABLE_ACTION__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.VARIABLE_ACTION__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.VARIABLE_ACTION__INCOMING:

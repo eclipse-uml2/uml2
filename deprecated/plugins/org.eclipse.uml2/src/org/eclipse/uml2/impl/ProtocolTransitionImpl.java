@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.7 2004/06/18 04:34:32 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.7.2.1 2004/08/24 01:03:45 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -608,7 +608,7 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 			case UML2Package.PROTOCOL_TRANSITION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.PROTOCOL_TRANSITION__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.PROTOCOL_TRANSITION__KIND:
 				return kind != KIND_EDEFAULT;
 			case UML2Package.PROTOCOL_TRANSITION__CONTAINER:

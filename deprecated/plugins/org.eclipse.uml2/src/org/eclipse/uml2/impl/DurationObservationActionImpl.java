@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DurationObservationActionImpl.java,v 1.6 2004/06/18 17:44:12 khussey Exp $
+ * $Id: DurationObservationActionImpl.java,v 1.6.2.1 2004/08/24 01:03:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -553,7 +553,7 @@ public class DurationObservationActionImpl extends WriteStructuralFeatureActionI
 			case UML2Package.DURATION_OBSERVATION_ACTION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.DURATION_OBSERVATION_ACTION__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.DURATION_OBSERVATION_ACTION__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.DURATION_OBSERVATION_ACTION__INCOMING:

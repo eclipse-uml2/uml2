@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: FinalNodeImpl.java,v 1.3 2004/06/18 04:34:32 khussey Exp $
+ * $Id: FinalNodeImpl.java,v 1.3.2.1 2004/08/24 01:03:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -376,7 +376,7 @@ public abstract class FinalNodeImpl extends ControlNodeImpl implements FinalNode
 			case UML2Package.FINAL_NODE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.FINAL_NODE__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.FINAL_NODE__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.FINAL_NODE__INCOMING:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.17.2.2 2004/08/18 19:05:59 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.17.2.3 2004/08/24 01:03:43 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -82,14 +82,14 @@ public class ComponentImpl extends ClassImpl implements Component {
 	protected static final boolean IS_INDIRECTLY_INSTANTIATED_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIndirectlyInstantiated() <em>Is Indirectly Instantiated</em>}' attribute.
+	 * The flag for the '{@link #isIndirectlyInstantiated() <em>Is Indirectly Instantiated</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isIndirectlyInstantiated()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isIndirectlyInstantiated = IS_INDIRECTLY_INSTANTIATED_EDEFAULT;
+	protected static final int IS_INDIRECTLY_INSTANTIATED_EFLAG = ELAST_EOBJECT_FLAG << 4;
 
 	/**
 	 * The cached value of the '{@link #getRealizations() <em>Realization</em>}' containment reference list.
@@ -118,6 +118,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 */
 	protected ComponentImpl() {
 		super();
+		eFlags &= ~IS_INDIRECTLY_INSTANTIATED_EFLAG;
 	}
 
 	/**
@@ -135,7 +136,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 * @generated
 	 */
 	public boolean isIndirectlyInstantiated() {
-		return isIndirectlyInstantiated;
+		return 0 != (eFlags & IS_INDIRECTLY_INSTANTIATED_EFLAG);
 	}
 
 	/**
@@ -144,10 +145,15 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 * @generated
 	 */
 	public void setIsIndirectlyInstantiated(boolean newIsIndirectlyInstantiated) {
-		boolean oldIsIndirectlyInstantiated = isIndirectlyInstantiated;
-		isIndirectlyInstantiated = newIsIndirectlyInstantiated;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.COMPONENT__IS_INDIRECTLY_INSTANTIATED, oldIsIndirectlyInstantiated, isIndirectlyInstantiated));
+		boolean oldIsIndirectlyInstantiated = 0 != (eFlags & IS_INDIRECTLY_INSTANTIATED_EFLAG);
+		if (newIsIndirectlyInstantiated) {
+			eFlags |= IS_INDIRECTLY_INSTANTIATED_EFLAG;
+		} else {
+			eFlags &= ~IS_INDIRECTLY_INSTANTIATED_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.COMPONENT__IS_INDIRECTLY_INSTANTIATED, oldIsIndirectlyInstantiated, newIsIndirectlyInstantiated));
+		}
 	}
 
 	/**
@@ -999,7 +1005,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 			case UML2Package.COMPONENT__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.COMPONENT__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.COMPONENT__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.COMPONENT__IS_ABSTRACT:
@@ -1055,11 +1061,11 @@ public class ComponentImpl extends ClassImpl implements Component {
 			case UML2Package.COMPONENT__NESTED_CLASSIFIER:
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UML2Package.COMPONENT__IS_ACTIVE:
-				return isActive != IS_ACTIVE_EDEFAULT;
+				return isActive() != IS_ACTIVE_EDEFAULT;
 			case UML2Package.COMPONENT__OWNED_RECEPTION:
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UML2Package.COMPONENT__IS_INDIRECTLY_INSTANTIATED:
-				return isIndirectlyInstantiated != IS_INDIRECTLY_INSTANTIATED_EDEFAULT;
+				return isIndirectlyInstantiated() != IS_INDIRECTLY_INSTANTIATED_EDEFAULT;
 			case UML2Package.COMPONENT__REQUIRED:
 				return !getRequireds().isEmpty();
 			case UML2Package.COMPONENT__PROVIDED:
@@ -1070,21 +1076,6 @@ public class ComponentImpl extends ClassImpl implements Component {
 				return ownedMember != null && !ownedMember.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isIndirectlyInstantiated: "); //$NON-NLS-1$
-		result.append(isIndirectlyInstantiated);
-		result.append(')');
-		return result.toString();
 	}
 
 } //ComponentImpl

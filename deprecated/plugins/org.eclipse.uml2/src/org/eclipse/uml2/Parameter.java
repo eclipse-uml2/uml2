@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Parameter.java,v 1.5 2004/06/06 01:35:03 khussey Exp $
+ * $Id: Parameter.java,v 1.5.2.1 2004/08/24 01:03:45 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -112,7 +112,7 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	 * @return the value of the '<em>Is Exception</em>' attribute.
 	 * @see #setIsException(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getParameter_IsException()
-	 * @model default="false" dataType="org.eclipse.uml2.Boolean"
+	 * @model default="false" dataType="org.eclipse.uml2.Boolean" volatile="true"
 	 * @generated
 	 */
 	boolean isException();
@@ -139,7 +139,7 @@ public interface Parameter extends ConnectableElement, TypedElement, Multiplicit
 	 * @return the value of the '<em>Is Stream</em>' attribute.
 	 * @see #setIsStream(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getParameter_IsStream()
-	 * @model default="false" dataType="org.eclipse.uml2.Boolean"
+	 * @model default="false" dataType="org.eclipse.uml2.Boolean" volatile="true"
 	 * @generated
 	 */
 	boolean isStream();

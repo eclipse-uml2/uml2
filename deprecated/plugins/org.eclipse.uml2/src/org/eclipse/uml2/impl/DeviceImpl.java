@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DeviceImpl.java,v 1.16 2004/06/18 17:44:12 khussey Exp $
+ * $Id: DeviceImpl.java,v 1.16.2.1 2004/08/24 01:03:43 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -660,7 +660,7 @@ public class DeviceImpl extends NodeImpl implements Device {
 			case UML2Package.DEVICE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.DEVICE__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.DEVICE__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.DEVICE__IS_ABSTRACT:
@@ -716,7 +716,7 @@ public class DeviceImpl extends NodeImpl implements Device {
 			case UML2Package.DEVICE__NESTED_CLASSIFIER:
 				return false;
 			case UML2Package.DEVICE__IS_ACTIVE:
-				return isActive != IS_ACTIVE_EDEFAULT;
+				return isActive() != IS_ACTIVE_EDEFAULT;
 			case UML2Package.DEVICE__OWNED_RECEPTION:
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UML2Package.DEVICE__DEPLOYMENT:

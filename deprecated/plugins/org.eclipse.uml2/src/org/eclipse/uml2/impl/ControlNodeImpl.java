@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ControlNodeImpl.java,v 1.3 2004/06/18 04:34:31 khussey Exp $
+ * $Id: ControlNodeImpl.java,v 1.3.2.1 2004/08/24 01:03:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -376,7 +376,7 @@ public abstract class ControlNodeImpl extends ActivityNodeImpl implements Contro
 			case UML2Package.CONTROL_NODE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.CONTROL_NODE__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.CONTROL_NODE__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.CONTROL_NODE__INCOMING:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.16 2004/06/18 17:44:12 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.16.2.1 2004/08/24 01:03:45 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1284,7 +1284,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 			case UML2Package.INTERACTION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.INTERACTION__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.INTERACTION__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.INTERACTION__IS_ABSTRACT:
@@ -1340,11 +1340,11 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 			case UML2Package.INTERACTION__NESTED_CLASSIFIER:
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UML2Package.INTERACTION__IS_ACTIVE:
-				return isActive != IS_ACTIVE_EDEFAULT;
+				return isActive() != IS_ACTIVE_EDEFAULT;
 			case UML2Package.INTERACTION__OWNED_RECEPTION:
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UML2Package.INTERACTION__IS_REENTRANT:
-				return isReentrant != IS_REENTRANT_EDEFAULT;
+				return isReentrant() != IS_REENTRANT_EDEFAULT;
 			case UML2Package.INTERACTION__CONTEXT:
 				return getContext() != null;
 			case UML2Package.INTERACTION__REDEFINED_BEHAVIOR:

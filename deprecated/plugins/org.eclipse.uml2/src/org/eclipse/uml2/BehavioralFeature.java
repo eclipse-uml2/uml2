@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehavioralFeature.java,v 1.5 2004/06/06 01:35:02 khussey Exp $
+ * $Id: BehavioralFeature.java,v 1.5.2.1 2004/08/24 01:03:45 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -64,7 +64,7 @@ public interface BehavioralFeature extends Namespace, Feature{
 	 * @return the value of the '<em>Is Abstract</em>' attribute.
 	 * @see #setIsAbstract(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getBehavioralFeature_IsAbstract()
-	 * @model dataType="org.eclipse.uml2.Boolean"
+	 * @model dataType="org.eclipse.uml2.Boolean" volatile="true"
 	 * @generated
 	 */
 	boolean isAbstract();

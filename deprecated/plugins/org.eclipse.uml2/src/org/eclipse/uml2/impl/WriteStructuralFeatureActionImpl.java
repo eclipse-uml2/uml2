@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: WriteStructuralFeatureActionImpl.java,v 1.6 2004/06/18 04:34:31 khussey Exp $
+ * $Id: WriteStructuralFeatureActionImpl.java,v 1.6.2.1 2004/08/24 01:03:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -556,7 +556,7 @@ public abstract class WriteStructuralFeatureActionImpl extends StructuralFeature
 			case UML2Package.WRITE_STRUCTURAL_FEATURE_ACTION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.WRITE_STRUCTURAL_FEATURE_ACTION__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.WRITE_STRUCTURAL_FEATURE_ACTION__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.WRITE_STRUCTURAL_FEATURE_ACTION__INCOMING:

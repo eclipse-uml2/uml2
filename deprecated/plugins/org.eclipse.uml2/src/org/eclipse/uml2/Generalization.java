@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Generalization.java,v 1.5 2004/06/06 01:35:03 khussey Exp $
+ * $Id: Generalization.java,v 1.5.2.1 2004/08/24 01:03:45 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -59,7 +59,7 @@ public interface Generalization extends DirectedRelationship{
 	 * @return the value of the '<em>Is Substitutable</em>' attribute.
 	 * @see #setIsSubstitutable(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getGeneralization_IsSubstitutable()
-	 * @model dataType="org.eclipse.uml2.Boolean"
+	 * @model dataType="org.eclipse.uml2.Boolean" volatile="true"
 	 * @generated
 	 */
 	boolean isSubstitutable();

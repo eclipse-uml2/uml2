@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: SendObjectActionImpl.java,v 1.7 2004/06/18 17:44:12 khussey Exp $
+ * $Id: SendObjectActionImpl.java,v 1.7.2.1 2004/08/24 01:03:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -645,7 +645,7 @@ public class SendObjectActionImpl extends InvocationActionImpl implements SendOb
 			case UML2Package.SEND_OBJECT_ACTION__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.SEND_OBJECT_ACTION__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.SEND_OBJECT_ACTION__OUTGOING:
 				return outgoing != null && !outgoing.isEmpty();
 			case UML2Package.SEND_OBJECT_ACTION__INCOMING:

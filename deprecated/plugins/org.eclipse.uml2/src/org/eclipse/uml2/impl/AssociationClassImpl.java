@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AssociationClassImpl.java,v 1.19.2.1 2004/08/10 15:18:01 khussey Exp $
+ * $Id: AssociationClassImpl.java,v 1.19.2.2 2004/08/24 01:03:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -80,14 +80,14 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	protected static final boolean IS_DERIVED_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isDerived() <em>Is Derived</em>}' attribute.
+	 * The flag for the '{@link #isDerived() <em>Is Derived</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isDerived()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isDerived = IS_DERIVED_EDEFAULT;
+	protected static final int IS_DERIVED_EFLAG = ELAST_EOBJECT_FLAG << 4;
 
 	/**
 	 * The cached value of the '{@link #getOwnedEnds() <em>Owned End</em>}' containment reference list.
@@ -116,6 +116,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	 */
 	protected AssociationClassImpl() {
 		super();
+		eFlags &= ~IS_DERIVED_EFLAG;
 	}
 
 	/**
@@ -159,7 +160,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	 * @generated
 	 */
 	public boolean isDerived() {
-		return isDerived;
+		return 0 != (eFlags & IS_DERIVED_EFLAG);
 	}
 
 	/**
@@ -168,10 +169,15 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	 * @generated
 	 */
 	public void setIsDerived(boolean newIsDerived) {
-		boolean oldIsDerived = isDerived;
-		isDerived = newIsDerived;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ASSOCIATION_CLASS__IS_DERIVED, oldIsDerived, isDerived));
+		boolean oldIsDerived = 0 != (eFlags & IS_DERIVED_EFLAG);
+		if (newIsDerived) {
+			eFlags |= IS_DERIVED_EFLAG;
+		} else {
+			eFlags &= ~IS_DERIVED_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.ASSOCIATION_CLASS__IS_DERIVED, oldIsDerived, newIsDerived));
+		}
 	}
 
 	/**
@@ -962,7 +968,7 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 			case UML2Package.ASSOCIATION_CLASS__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.ASSOCIATION_CLASS__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__IS_ABSTRACT:
@@ -1018,13 +1024,13 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 			case UML2Package.ASSOCIATION_CLASS__NESTED_CLASSIFIER:
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__IS_ACTIVE:
-				return isActive != IS_ACTIVE_EDEFAULT;
+				return isActive() != IS_ACTIVE_EDEFAULT;
 			case UML2Package.ASSOCIATION_CLASS__OWNED_RECEPTION:
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__RELATED_ELEMENT:
 				return !getRelatedElements().isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__IS_DERIVED:
-				return isDerived != IS_DERIVED_EDEFAULT;
+				return isDerived() != IS_DERIVED_EDEFAULT;
 			case UML2Package.ASSOCIATION_CLASS__OWNED_END:
 				return ownedEnd != null && !ownedEnd.isEmpty();
 			case UML2Package.ASSOCIATION_CLASS__END_TYPE:
@@ -1081,21 +1087,6 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isDerived: "); //$NON-NLS-1$
-		result.append(isDerived);
-		result.append(')');
-		return result.toString();
 	}
 
 } //AssociationClassImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.13.2.1 2004/08/16 17:55:12 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.13.2.2 2004/08/24 01:03:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -881,11 +881,11 @@ public abstract class BehavioredClassifierImpl extends ClassifierImpl implements
 			case UML2Package.BEHAVIORED_CLASSIFIER__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.BEHAVIORED_CLASSIFIER__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.BEHAVIORED_CLASSIFIER__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.BEHAVIORED_CLASSIFIER__IS_ABSTRACT:
-				return isAbstract != IS_ABSTRACT_EDEFAULT;
+				return isAbstract() != IS_ABSTRACT_EDEFAULT;
 			case UML2Package.BEHAVIORED_CLASSIFIER__INHERITED_MEMBER:
 				return !getInheritedMembers().isEmpty();
 			case UML2Package.BEHAVIORED_CLASSIFIER__GENERAL:

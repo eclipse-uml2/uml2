@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StereotypeImpl.java,v 1.23 2004/06/18 17:44:12 khussey Exp $
+ * $Id: StereotypeImpl.java,v 1.23.2.1 2004/08/24 01:03:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -640,7 +640,7 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 			case UML2Package.STEREOTYPE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.STEREOTYPE__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.STEREOTYPE__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.STEREOTYPE__IS_ABSTRACT:
@@ -696,7 +696,7 @@ public class StereotypeImpl extends ClassImpl implements Stereotype {
 			case UML2Package.STEREOTYPE__NESTED_CLASSIFIER:
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UML2Package.STEREOTYPE__IS_ACTIVE:
-				return isActive != IS_ACTIVE_EDEFAULT;
+				return isActive() != IS_ACTIVE_EDEFAULT;
 			case UML2Package.STEREOTYPE__OWNED_RECEPTION:
 				return ownedReception != null && !ownedReception.isEmpty();
 		}

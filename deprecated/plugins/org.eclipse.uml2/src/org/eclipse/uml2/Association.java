@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: Association.java,v 1.5 2004/06/06 01:35:02 khussey Exp $
+ * $Id: Association.java,v 1.5.2.1 2004/08/24 01:03:45 khussey Exp $
  */
 package org.eclipse.uml2;
 
@@ -62,7 +62,7 @@ public interface Association extends Classifier, Relationship{
 	 * @return the value of the '<em>Is Derived</em>' attribute.
 	 * @see #setIsDerived(boolean)
 	 * @see org.eclipse.uml2.UML2Package#getAssociation_IsDerived()
-	 * @model default="false" dataType="org.eclipse.uml2.Boolean"
+	 * @model default="false" dataType="org.eclipse.uml2.Boolean" volatile="true"
 	 * @generated
 	 */
 	boolean isDerived();

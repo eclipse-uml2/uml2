@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.16 2004/06/18 17:44:12 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.16.2.1 2004/08/24 01:03:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1029,7 +1029,7 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 			case UML2Package.STATE_MACHINE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.STATE_MACHINE__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.STATE_MACHINE__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.STATE_MACHINE__IS_ABSTRACT:
@@ -1085,11 +1085,11 @@ public class StateMachineImpl extends BehaviorImpl implements StateMachine {
 			case UML2Package.STATE_MACHINE__NESTED_CLASSIFIER:
 				return nestedClassifier != null && !nestedClassifier.isEmpty();
 			case UML2Package.STATE_MACHINE__IS_ACTIVE:
-				return isActive != IS_ACTIVE_EDEFAULT;
+				return isActive() != IS_ACTIVE_EDEFAULT;
 			case UML2Package.STATE_MACHINE__OWNED_RECEPTION:
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UML2Package.STATE_MACHINE__IS_REENTRANT:
-				return isReentrant != IS_REENTRANT_EDEFAULT;
+				return isReentrant() != IS_REENTRANT_EDEFAULT;
 			case UML2Package.STATE_MACHINE__CONTEXT:
 				return getContext() != null;
 			case UML2Package.STATE_MACHINE__REDEFINED_BEHAVIOR:

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.17 2004/06/18 17:44:12 khussey Exp $
+ * $Id: NodeImpl.java,v 1.17.2.1 2004/08/24 01:03:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -896,7 +896,7 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.NODE__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.NODE__FEATURE:
 				return !getFeatures().isEmpty();
 			case UML2Package.NODE__IS_ABSTRACT:
@@ -952,7 +952,7 @@ public class NodeImpl extends ClassImpl implements Node {
 			case UML2Package.NODE__NESTED_CLASSIFIER:
 				return false;
 			case UML2Package.NODE__IS_ACTIVE:
-				return isActive != IS_ACTIVE_EDEFAULT;
+				return isActive() != IS_ACTIVE_EDEFAULT;
 			case UML2Package.NODE__OWNED_RECEPTION:
 				return ownedReception != null && !ownedReception.isEmpty();
 			case UML2Package.NODE__DEPLOYMENT:

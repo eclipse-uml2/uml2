@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PortImpl.java,v 1.7.2.1 2004/08/16 17:55:12 khussey Exp $
+ * $Id: PortImpl.java,v 1.7.2.2 2004/08/24 01:03:44 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -83,14 +83,14 @@ public class PortImpl extends PropertyImpl implements Port {
 	protected static final boolean IS_BEHAVIOR_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isBehavior() <em>Is Behavior</em>}' attribute.
+	 * The flag for the '{@link #isBehavior() <em>Is Behavior</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isBehavior()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isBehavior = IS_BEHAVIOR_EDEFAULT;
+	protected static final int IS_BEHAVIOR_EFLAG = ELAST_EOBJECT_FLAG << 9;
 
 	/**
 	 * The default value of the '{@link #isService() <em>Is Service</em>}' attribute.
@@ -103,14 +103,14 @@ public class PortImpl extends PropertyImpl implements Port {
 	protected static final boolean IS_SERVICE_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #isService() <em>Is Service</em>}' attribute.
+	 * The flag for the '{@link #isService() <em>Is Service</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isService()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isService = IS_SERVICE_EDEFAULT;
+	protected static final int IS_SERVICE_EFLAG = ELAST_EOBJECT_FLAG << 10;
 
 	/**
 	 * The cached value of the '{@link #getRedefinedPorts() <em>Redefined Port</em>}' reference list.
@@ -139,6 +139,8 @@ public class PortImpl extends PropertyImpl implements Port {
 	 */
 	protected PortImpl() {
 		super();
+		eFlags &= ~IS_BEHAVIOR_EFLAG;
+		eFlags |= IS_SERVICE_EFLAG;
 	}
 
 	/**
@@ -156,7 +158,7 @@ public class PortImpl extends PropertyImpl implements Port {
 	 * @generated
 	 */
 	public boolean isBehavior() {
-		return isBehavior;
+		return 0 != (eFlags & IS_BEHAVIOR_EFLAG);
 	}
 
 	/**
@@ -165,10 +167,15 @@ public class PortImpl extends PropertyImpl implements Port {
 	 * @generated
 	 */
 	public void setIsBehavior(boolean newIsBehavior) {
-		boolean oldIsBehavior = isBehavior;
-		isBehavior = newIsBehavior;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PORT__IS_BEHAVIOR, oldIsBehavior, isBehavior));
+		boolean oldIsBehavior = 0 != (eFlags & IS_BEHAVIOR_EFLAG);
+		if (newIsBehavior) {
+			eFlags |= IS_BEHAVIOR_EFLAG;
+		} else {
+			eFlags &= ~IS_BEHAVIOR_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PORT__IS_BEHAVIOR, oldIsBehavior, newIsBehavior));
+		}
 	}
 
 	/**
@@ -177,7 +184,7 @@ public class PortImpl extends PropertyImpl implements Port {
 	 * @generated
 	 */
 	public boolean isService() {
-		return isService;
+		return 0 != (eFlags & IS_SERVICE_EFLAG);
 	}
 
 	/**
@@ -186,10 +193,15 @@ public class PortImpl extends PropertyImpl implements Port {
 	 * @generated
 	 */
 	public void setIsService(boolean newIsService) {
-		boolean oldIsService = isService;
-		isService = newIsService;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PORT__IS_SERVICE, oldIsService, isService));
+		boolean oldIsService = 0 != (eFlags & IS_SERVICE_EFLAG);
+		if (newIsService) {
+			eFlags |= IS_SERVICE_EFLAG;
+		} else {
+			eFlags &= ~IS_SERVICE_EFLAG;
+		}
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PORT__IS_SERVICE, oldIsService, newIsService));
+		}
 	}
 
 	/**
@@ -900,17 +912,17 @@ public class PortImpl extends PropertyImpl implements Port {
 			case UML2Package.PORT__REDEFINITION_CONTEXT:
 				return !getRedefinitionContexts().isEmpty();
 			case UML2Package.PORT__IS_LEAF:
-				return isLeaf != IS_LEAF_EDEFAULT;
+				return isLeaf() != IS_LEAF_EDEFAULT;
 			case UML2Package.PORT__FEATURING_CLASSIFIER:
 				return !getFeaturingClassifiers().isEmpty();
 			case UML2Package.PORT__IS_STATIC:
-				return isStatic != IS_STATIC_EDEFAULT;
+				return isStatic() != IS_STATIC_EDEFAULT;
 			case UML2Package.PORT__TYPE:
 				return type != null;
 			case UML2Package.PORT__IS_ORDERED:
-				return isOrdered != IS_ORDERED_EDEFAULT;
+				return isOrdered() != IS_ORDERED_EDEFAULT;
 			case UML2Package.PORT__IS_UNIQUE:
-				return isUnique != IS_UNIQUE_EDEFAULT;
+				return isUnique() != IS_UNIQUE_EDEFAULT;
 			case UML2Package.PORT__LOWER:
 				return getLower() != LOWER_EDEFAULT;
 			case UML2Package.PORT__UPPER:
@@ -936,13 +948,13 @@ public class PortImpl extends PropertyImpl implements Port {
 			case UML2Package.PORT__IS_COMPOSITE:
 				return isComposite() != IS_COMPOSITE_EDEFAULT;
 			case UML2Package.PORT__IS_DERIVED:
-				return isDerived != IS_DERIVED_EDEFAULT;
+				return isDerived() != IS_DERIVED_EDEFAULT;
 			case UML2Package.PORT__CLASS_:
 				return basicGetClass_() != null;
 			case UML2Package.PORT__OPPOSITE:
 				return basicGetOpposite() != null;
 			case UML2Package.PORT__IS_DERIVED_UNION:
-				return isDerivedUnion != IS_DERIVED_UNION_EDEFAULT;
+				return isDerivedUnion() != IS_DERIVED_UNION_EDEFAULT;
 			case UML2Package.PORT__OWNING_ASSOCIATION:
 				return getOwningAssociation() != null;
 			case UML2Package.PORT__REDEFINED_PROPERTY:
@@ -962,9 +974,9 @@ public class PortImpl extends PropertyImpl implements Port {
 			case UML2Package.PORT__ASSOCIATION_END:
 				return getAssociationEnd() != null;
 			case UML2Package.PORT__IS_BEHAVIOR:
-				return isBehavior != IS_BEHAVIOR_EDEFAULT;
+				return isBehavior() != IS_BEHAVIOR_EDEFAULT;
 			case UML2Package.PORT__IS_SERVICE:
-				return isService != IS_SERVICE_EDEFAULT;
+				return isService() != IS_SERVICE_EDEFAULT;
 			case UML2Package.PORT__REQUIRED:
 				return !getRequireds().isEmpty();
 			case UML2Package.PORT__REDEFINED_PORT:
@@ -975,23 +987,6 @@ public class PortImpl extends PropertyImpl implements Port {
 				return protocol != null;
 		}
 		return eDynamicIsSet(eFeature);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isBehavior: "); //$NON-NLS-1$
-		result.append(isBehavior);
-		result.append(", isService: "); //$NON-NLS-1$
-		result.append(isService);
-		result.append(')');
-		return result.toString();
 	}
 
 } //PortImpl
