@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AssociationClassImpl.java,v 1.19 2004/06/18 17:44:12 khussey Exp $
+ * $Id: AssociationClassImpl.java,v 1.19.2.1 2004/08/10 15:18:01 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -130,14 +130,21 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList getRelatedElements() {
 		EList relatedElement = (EList) getCacheAdapter().get(this, UML2Package.eINSTANCE.getRelationship_RelatedElement());
 
 		if (null == relatedElement) {
 			Set union = new LinkedHashSet();
-			union.addAll(getEndTypes());
+
+			for (Iterator endTypes = getEndTypes().iterator(); endTypes.hasNext();) {
+				Type endType = (Type) endTypes.next();
+				
+				if (null != endType) {
+					union.add(endType);
+				}
+			}
 
 			relatedElement = new EcoreEList.UnmodifiableEList(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), union.size(), union.toArray());
 			getCacheAdapter().put(this, UML2Package.eINSTANCE.getRelationship_RelatedElement(), relatedElement);
@@ -242,13 +249,13 @@ public class AssociationClassImpl extends ClassImpl implements AssociationClass 
     /**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
      */
     public Type getEndType(String unqualifiedName) {
     	for (Iterator i = getEndTypes().iterator(); i.hasNext(); ) {
     		Type namedEndType = (Type) i.next();
     		
-    		if (unqualifiedName.equals(namedEndType.getName())) {
+    		if (null != namedEndType && unqualifiedName.equals(namedEndType.getName())) {
     			return namedEndType;
     		}
     	}
