@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.13 2004/06/18 04:34:31 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.13.2.1 2005/02/09 16:23:27 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -690,7 +690,7 @@ public abstract class NamespaceImpl extends NamedElementImpl implements Namespac
 	 *      org.eclipse.uml2.PackageableElement)
 	 */
 	public void importElement(VisibilityKind visibility, PackageableElement element) {
-		NamespaceOperations.importElement(this, this.visibility, element);
+		NamespaceOperations.importElement(this, visibility, element);
 	}
 
 	/* (non-Javadoc)

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.15.2.4 2004/08/25 00:28:35 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.15.2.5 2005/02/09 16:23:46 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1353,7 +1353,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 *      org.eclipse.uml2.PackageableElement)
 	 */
 	public void importElement(VisibilityKind visibility, PackageableElement element) {
-		NamespaceOperations.importElement(this, this.visibility, element);
+		NamespaceOperations.importElement(this, visibility, element);
 	}
 
 	/* (non-Javadoc)
