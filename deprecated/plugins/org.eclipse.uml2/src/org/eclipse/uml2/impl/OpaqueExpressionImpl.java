@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OpaqueExpressionImpl.java,v 1.5 2004/06/18 04:34:31 khussey Exp $
+ * $Id: OpaqueExpressionImpl.java,v 1.5.2.1 2004/10/19 19:12:22 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -540,6 +540,13 @@ public class OpaqueExpressionImpl extends ValueSpecificationImpl implements Opaq
 		result.append(language);
 		result.append(')');
 		return result.toString();
+	}
+
+	/**
+	 * @see org.eclipse.uml2.ValueSpecification#stringValue()
+	 */
+	public String stringValue() {
+		return getBody();
 	}
 
 } //OpaqueExpressionImpl

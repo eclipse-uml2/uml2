@@ -12,14 +12,14 @@
  * Contributors: 
  *   IBM - Initial API and implementation
  *
- * $Id: plugin.xml,v 1.10.2.1 2004/07/14 14:50:01 khussey Exp $
+ * $Id: plugin.xml,v 1.10.2.2 2004/10/19 19:12:22 khussey Exp $
  */
 -->
 
 <plugin
    id="org.eclipse.uml2"
    name="%pluginName"
-   version="1.0.1"
+   version="1.0.2"
    provider-name="%providerName"
    class="org.eclipse.uml2.UML2Plugin$Implementation">
 
