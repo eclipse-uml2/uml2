@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.8.2.6 2004/09/15 15:43:01 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.8.2.7 2004/09/15 16:46:31 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -617,7 +617,8 @@ public final class ProfileOperations
 			TreeIterator eAllContents = new AbstractTreeIterator(package_, true) {
 
 				public Iterator getChildren(Object parent) {
-					return ((EObject) parent).eContents().iterator();
+					return new ArrayList(((EObject) parent).eContents())
+						.iterator();
 				}
 			};
 
