@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.8.2.8 2004/09/15 17:02:49 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.8.2.9 2004/10/19 21:25:45 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -59,6 +59,7 @@ import org.eclipse.uml2.Generalization;
 import org.eclipse.uml2.InstanceValue;
 import org.eclipse.uml2.Interface;
 import org.eclipse.uml2.Model;
+import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.Namespace;
 import org.eclipse.uml2.PackageImport;
 import org.eclipse.uml2.PrimitiveType;
@@ -120,6 +121,41 @@ public final class ProfileOperations
 
 	/**
 	 * Retrieves a name suitable for an Ecore representation of the specified
+	 * named element.
+	 * 
+	 * @param namedElement
+	 *            The named element for which to retrieve an Ecore name.
+	 * @param qualified
+	 *            Whether the qualified name should be used.
+	 * @return The Ecore name.
+	 */
+	protected static String getENamedElementName(NamedElement namedElement,
+			boolean qualified) {
+
+		if (qualified) {
+			String qualifiedName = namedElement.getQualifiedName();
+
+			if (!isEmpty(qualifiedName)) {
+				StringBuffer eNamedElementName = new StringBuffer();
+				String[] names = qualifiedName.split(namedElement.separator());
+
+				for (int i = 0, length = names.length; i < length; i++) {
+					appendValidIdentifier(eNamedElementName, names[i]);
+
+					if (i + 1 < length) {
+						eNamedElementName.append("__"); //$NON-NLS-1$
+					}
+				}
+
+				return eNamedElementName.toString();
+			}
+		}
+
+		return getValidIdentifier(namedElement.getName());
+	}
+
+	/**
+	 * Retrieves a name suitable for an Ecore representation of the specified
 	 * profile.
 	 * 
 	 * @param profile
@@ -127,10 +163,7 @@ public final class ProfileOperations
 	 * @return The Ecore package name.
 	 */
 	public static String getEPackageName(Profile profile) {
-		return getValidIdentifier(isEmpty(profile.getQualifiedName())
-			? profile.getName()
-			: profile.getQualifiedName().replace(':', '_')) + '_'
-			+ getVersion(profile);
+		return getENamedElementName(profile, true) + '_' + getVersion(profile);
 	}
 
 	/**
@@ -142,9 +175,7 @@ public final class ProfileOperations
 	 * @return The Ecore classifier name.
 	 */
 	public static String getEClassifierName(Classifier classifier) {
-		return getValidIdentifier(isEmpty(classifier.getQualifiedName())
-			? classifier.getName()
-			: classifier.getQualifiedName().replace(':', '_'));
+		return getENamedElementName(classifier, true);
 	}
 
 	/**
@@ -473,7 +504,8 @@ public final class ProfileOperations
 					StereotypeOperations.ANNOTATION_SOURCE__ENUMERATION_LITERAL,
 					eEnumLiteral).getReferences().add(enumerationLiteral);
 
-				eEnumLiteral.setName(enumerationLiteral.getName());
+				eEnumLiteral.setName(getValidIdentifier(enumerationLiteral
+					.getName()));
 				eEnumLiteral.setValue(index);
 
 				eEnum.getELiterals().add(eEnumLiteral);
@@ -501,7 +533,7 @@ public final class ProfileOperations
 		if (null == eAttribute) {
 			eAttribute = EcoreFactory.eINSTANCE.createEAttribute();
 
-			eAttribute.setName(property.getName());
+			eAttribute.setName(getValidIdentifier(property.getName()));
 			eAttribute.setChangeable(!property.isReadOnly());
 			eAttribute.setUpperBound(property.getUpper());
 			eAttribute.setLowerBound(property.getLower());
@@ -553,7 +585,7 @@ public final class ProfileOperations
 		if (null == eReference) {
 			eReference = EcoreFactory.eINSTANCE.createEReference();
 
-			eReference.setName(property.getName());
+			eReference.setName(getValidIdentifier(property.getName()));
 			eReference.setChangeable(true);
 			eReference.setContainment(true);
 			eReference.setUpperBound(property.getUpper());

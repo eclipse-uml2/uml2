@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Operations.java,v 1.8.2.1 2004/09/15 14:04:50 khussey Exp $
+ * $Id: UML2Operations.java,v 1.8.2.2 2004/10/19 21:25:45 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -375,6 +375,45 @@ class UML2Operations {
 	}
 
 	/**
+	 * Appends a valid (Java) identifier based on the specified name to the
+	 * specified buffer.
+	 * 
+	 * @param validIdentifier
+	 *            The buffer to which to append the valid identifier.
+	 * @param name
+	 *            The name from which to obtain the valid identifier.
+	 * 
+	 * @return The buffer.
+	 */
+	protected static StringBuffer appendValidIdentifier(
+			StringBuffer validIdentifier, String name) {
+
+		if (!isEmpty(name)) {
+			char char_0 = name.charAt(0);
+
+			if (Character.isJavaIdentifierStart(char_0)) {
+				validIdentifier.append(char_0);
+			} else {
+				validIdentifier.append('_');
+
+				if (Character.isJavaIdentifierPart(char_0)) {
+					validIdentifier.append(char_0);
+				}
+			}
+
+			for (int i = 1; i < name.length(); ++i) {
+				char char_i = name.charAt(i);
+
+				if (Character.isJavaIdentifierPart(char_i)) {
+					validIdentifier.append(char_i);
+				}
+			}
+		}
+
+		return validIdentifier;
+	}
+
+	/**
 	 * Obtains a valid (Java) identifier based on the specified name.
 	 * 
 	 * @param name
@@ -382,33 +421,7 @@ class UML2Operations {
 	 * @return A valid (Java) identifier or the empty string.
 	 */
 	protected static String getValidIdentifier(String name) {
-
-		if (isEmpty(name)) {
-			return EMPTY_STRING;
-		}
-
-		StringBuffer validIdentifier = new StringBuffer();
-		char char_0 = name.charAt(0);
-
-		if (Character.isJavaIdentifierStart(char_0)) {
-			validIdentifier.append(char_0);
-		} else {
-			validIdentifier.append('_');
-
-			if (Character.isJavaIdentifierPart(char_0)) {
-				validIdentifier.append(char_0);
-			}
-		}
-
-		for (int i = 1; i < name.length(); ++i) {
-			char char_i = name.charAt(i);
-
-			if (Character.isJavaIdentifierPart(char_i)) {
-				validIdentifier.append(char_i);
-			}
-		}
-
-		return validIdentifier.toString();
+		return appendValidIdentifier(new StringBuffer(), name).toString();
 	}
 
 	/**
