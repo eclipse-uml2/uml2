@@ -8,16 +8,21 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.8.2.3 2004/08/23 22:32:43 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.8.2.4 2004/09/14 15:19:03 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
 
+import java.lang.ref.Reference;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.ResourceLocator;
 
@@ -301,4 +306,67 @@ public class ElementItemProvider
 
 		return segment.toString();
 	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.common.notify.Adapter#setTarget(org.eclipse.emf.common.notify.Notifier)
+	 */
+	public void setTarget(Notifier target) {
+
+		if (target != this.target) {
+
+			if (null != this.target) {
+
+				if (null == targets) {
+					targets = new ArrayList();
+				} else {
+
+					// clean up stale references
+					for (Iterator i = targets.iterator(); i.hasNext();) {
+						Reference reference = (Reference) i.next();
+
+						if (null == reference.get()) {
+							i.remove();
+						}
+					}
+				}
+
+				targets.add(new WeakReference(this.target));
+			}
+
+			this.target = target;
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.edit.provider.IDisposable#dispose()
+	 */
+	public void dispose() {
+
+		if (null != target) {
+			target.eAdapters().remove(this);
+			target = null;
+		}
+
+		if (null != targets) {
+
+			for (Iterator i = targets.iterator(); i.hasNext();) {
+				Notifier otherTarget = (Notifier) ((Reference) i.next()).get();
+
+				if (null != otherTarget) {
+					otherTarget.eAdapters().remove(this);
+				}
+			}
+
+			targets = null;
+		}
+
+		if (null != wrappers) {
+			wrappers.dispose();
+		}
+	}
+
 }
