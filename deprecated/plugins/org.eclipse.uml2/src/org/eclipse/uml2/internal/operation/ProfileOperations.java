@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.8.2.5 2004/09/15 14:04:50 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.8.2.6 2004/09/15 15:43:01 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -964,15 +964,18 @@ public final class ProfileOperations
 			Element element) {
 		Set stereotypeApplications = new HashSet();
 
+		List ePackages = getEAnnotation(ANNOTATION_SOURCE__E_PACKAGES, profile)
+			.getContents();
+
 		for (Iterator appliedStereotypes = getEAnnotation(
 			StereotypeOperations.ANNOTATION_SOURCE__APPLIED_STEREOTYPES,
 			element).getContents().iterator(); appliedStereotypes.hasNext();) {
 
 			EObject stereotypeApplication = (EObject) appliedStereotypes.next();
-			Stereotype stereotype = StereotypeOperations
-				.getStereotype(stereotypeApplication);
 
-			if (null != stereotype && profile == stereotype.getProfile()) {
+			if (ePackages
+				.contains(stereotypeApplication.eClass().getEPackage())) {
+
 				stereotypeApplications.add(stereotypeApplication);
 			}
 		}
