@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredActivityNodeImplTest.java,v 1.3.2.1 2004/07/16 19:43:27 khussey Exp $
+ * $Id: StructuredActivityNodeImplTest.java,v 1.3.2.2 2004/08/24 00:56:40 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -34,6 +34,7 @@ import org.eclipse.uml2.impl.StructuredActivityNodeImpl;
  *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#getPackageImports() <em>Package Import</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#getSuperGroup() <em>Super Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#getActivityGroup_activity() <em>Activity Group activity</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#isMustIsolate() <em>Must Isolate</em>}</li>
  * </ul>
  * </p>
  * <p>
@@ -203,6 +204,28 @@ public class StructuredActivityNodeImplTest extends ActionImplTest {
 	 */
 	public void testGetSuperGroup() {
 		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#isMustIsolate() <em>Must Isolate</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.StructuredActivityNodeImpl#isMustIsolate()
+	 * @generated
+	 */
+	public void testIsMustIsolate() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.StructuredActivityNodeImpl#setMustIsolate() <em>Must Isolate</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.StructuredActivityNodeImpl#setMustIsolate()
+	 * @generated
+	 */
+	public void testSetMustIsolate() {
+		// TODO: implement this feature setter test method
 	}
 
 	/**

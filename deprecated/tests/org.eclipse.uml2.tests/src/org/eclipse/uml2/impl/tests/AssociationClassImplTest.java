@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AssociationClassImplTest.java,v 1.2.2.1 2004/08/10 16:06:49 khussey Exp $
+ * $Id: AssociationClassImplTest.java,v 1.2.2.2 2004/08/24 00:56:40 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -31,6 +31,7 @@ import org.eclipse.uml2.impl.AssociationClassImpl;
  * The following features are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.impl.AssociationClassImpl#getRelatedElements() <em>Related Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.impl.AssociationClassImpl#isDerived() <em>Is Derived</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.AssociationClassImpl#getOwnedEnds() <em>Owned End</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.AssociationClassImpl#getEndTypes() <em>End Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.impl.AssociationClassImpl#getMemberEnds() <em>Member End</em>}</li>
@@ -133,6 +134,28 @@ public class AssociationClassImplTest extends ClassImplTest {
 		getFixture().getMemberEnds().add(memberEnd);
 		
 		assertFalse(getFixture().getRelatedElements().contains(memberEnd.getType()));		
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.AssociationClassImpl#isDerived() <em>Is Derived</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.AssociationClassImpl#isDerived()
+	 * @generated
+	 */
+	public void testIsDerived() {
+		// TODO: implement this feature getter test method
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.impl.AssociationClassImpl#setIsDerived() <em>Is Derived</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.impl.AssociationClassImpl#setIsDerived()
+	 * @generated
+	 */
+	public void testSetIsDerived() {
+		// TODO: implement this feature setter test method
 	}
 
 	/**
