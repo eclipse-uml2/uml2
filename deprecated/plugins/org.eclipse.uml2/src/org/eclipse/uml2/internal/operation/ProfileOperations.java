@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.8.2.1 2004/07/14 15:24:30 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.8.2.2 2004/07/14 20:09:00 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -161,7 +161,7 @@ public final class ProfileOperations
 
 			EPackage ePackage = (EPackage) ePackages.next();
 
-			if (version.equals(ePackage.getName().substring(
+			if (safeEquals(version, ePackage.getName().substring(
 				ePackage.getName().lastIndexOf('_') + 1))) {
 
 				return ePackage;
