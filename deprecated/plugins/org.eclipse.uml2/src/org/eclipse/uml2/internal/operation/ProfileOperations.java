@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.8.2.3 2004/07/16 19:44:11 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.8.2.4 2004/08/11 21:31:18 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -59,6 +59,7 @@ import org.eclipse.uml2.Generalization;
 import org.eclipse.uml2.InstanceValue;
 import org.eclipse.uml2.Interface;
 import org.eclipse.uml2.Model;
+import org.eclipse.uml2.Namespace;
 import org.eclipse.uml2.PackageImport;
 import org.eclipse.uml2.PrimitiveType;
 import org.eclipse.uml2.Profile;
@@ -865,9 +866,11 @@ public final class ProfileOperations
 			}
 		}
 
-		if (null != package_.getNestingPackage()) {
-			allAppliedProfiles.addAll(getAllAppliedProfiles(package_
-				.getNestingPackage()));
+		Namespace namespace = package_.getNamespace();
+
+		if (null != namespace) {
+			allAppliedProfiles.addAll(getAllAppliedProfiles(namespace
+				.getNearestPackage()));
 		}
 
 		return allAppliedProfiles;
@@ -917,8 +920,10 @@ public final class ProfileOperations
 				ANNOTATION_DETAILS_KEY__VERSION);
 		}
 
-		if (null != package_.getNestingPackage()) {
-			return getAppliedVersion(profile, package_.getNestingPackage());
+		Namespace namespace = package_.getNamespace();
+
+		if (null != namespace) {
+			return getAppliedVersion(profile, namespace.getNearestPackage());
 		}
 
 		return null;
