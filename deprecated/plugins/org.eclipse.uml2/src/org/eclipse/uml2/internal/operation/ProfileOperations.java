@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.8.2.2 2004/07/14 20:09:00 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.8.2.3 2004/07/16 19:44:11 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -47,6 +47,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.resource.impl.URIConverterImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.uml2.Classifier;
 import org.eclipse.uml2.DataType;
 import org.eclipse.uml2.Element;
@@ -251,7 +252,7 @@ public final class ProfileOperations
 
 		ePackage.setName(getEPackageName(profile));
 		ePackage.setNsPrefix(ePackage.getName());
-		ePackage.setNsURI("http:///" + ePackage.getNsPrefix() + "." //$NON-NLS-1$ //$NON-NLS-2$
+		ePackage.setNsURI("http:///" + EcoreUtil.generateUUID() + "." //$NON-NLS-1$ //$NON-NLS-2$
 			+ UML2Resource.PROFILE_FILE_EXTENSION);
 
 		for (Iterator ownedStereotypes = profile.getOwnedStereotypes()
