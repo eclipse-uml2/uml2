@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.16.2.1 2004/08/24 01:03:45 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.16.2.2 2004/09/14 13:54:47 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1239,7 +1239,7 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.INTERACTION__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -1381,6 +1381,14 @@ public class InteractionImpl extends BehaviorImpl implements Interaction {
 				return formalGate != null && !formalGate.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.INTERACTION__EXTENSION:
+				return false;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 	/**

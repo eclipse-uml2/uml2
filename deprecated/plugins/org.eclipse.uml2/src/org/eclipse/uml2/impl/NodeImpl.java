@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.17.2.1 2004/08/24 01:03:44 khussey Exp $
+ * $Id: NodeImpl.java,v 1.17.2.2 2004/09/14 13:54:47 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -851,7 +851,7 @@ public class NodeImpl extends ClassImpl implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.NODE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -963,6 +963,14 @@ public class NodeImpl extends ClassImpl implements Node {
 				return nestedNode != null && !nestedNode.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.NODE__EXTENSION:
+				return false;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 	/**

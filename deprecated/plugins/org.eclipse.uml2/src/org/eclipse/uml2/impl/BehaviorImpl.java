@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.18.2.2 2004/08/25 00:28:36 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.18.2.3 2004/09/14 13:54:48 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1252,7 +1252,7 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.BEHAVIOR__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -1378,6 +1378,14 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 				return ownedParameterSet != null && !ownedParameterSet.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.BEHAVIOR__EXTENSION:
+				return false;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 } //BehaviorImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DeviceImpl.java,v 1.16.2.1 2004/08/24 01:03:43 khussey Exp $
+ * $Id: DeviceImpl.java,v 1.16.2.2 2004/09/14 13:54:47 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -615,7 +615,7 @@ public class DeviceImpl extends NodeImpl implements Device {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.DEVICE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -727,6 +727,14 @@ public class DeviceImpl extends NodeImpl implements Device {
 				return nestedNode != null && !nestedNode.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.DEVICE__EXTENSION:
+				return false;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 } //DeviceImpl

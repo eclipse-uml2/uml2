@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.21.2.2 2004/08/25 00:28:36 khussey Exp $
+ * $Id: ClassImpl.java,v 1.21.2.3 2004/09/14 13:54:47 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1283,7 +1283,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.CLASS__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -1389,6 +1389,14 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 				return ownedReception != null && !ownedReception.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.CLASS__EXTENSION:
+				return false;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 	/**

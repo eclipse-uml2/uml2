@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.17.2.4 2004/08/25 00:28:36 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.17.2.5 2004/09/14 13:54:47 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -960,7 +960,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.COMPONENT__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -1076,6 +1076,14 @@ public class ComponentImpl extends ClassImpl implements Component {
 				return ownedMember != null && !ownedMember.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.COMPONENT__EXTENSION:
+				return false;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 } //ComponentImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.17.2.2 2004/08/25 00:28:35 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.17.2.3 2004/09/14 13:54:47 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1254,7 +1254,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.ACTIVITY__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -1398,6 +1398,14 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 				return isReadOnly() != IS_READ_ONLY_EDEFAULT;
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.ACTIVITY__EXTENSION:
+				return false;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 	/**

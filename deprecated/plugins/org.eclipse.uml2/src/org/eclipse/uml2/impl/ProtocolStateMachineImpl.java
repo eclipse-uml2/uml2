@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProtocolStateMachineImpl.java,v 1.16.2.1 2004/08/24 01:03:45 khussey Exp $
+ * $Id: ProtocolStateMachineImpl.java,v 1.16.2.2 2004/09/14 13:54:47 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -814,7 +814,7 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
+	public boolean eIsSetGen(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.PROTOCOL_STATE_MACHINE__EANNOTATIONS:
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -950,6 +950,14 @@ public class ProtocolStateMachineImpl extends StateMachineImpl implements Protoc
 				return conformance != null && !conformance.isEmpty();
 		}
 		return eDynamicIsSet(eFeature);
+	}
+
+	public boolean eIsSet(EStructuralFeature eFeature) {
+		switch (eDerivedStructuralFeatureID(eFeature)) {
+			case UML2Package.PROTOCOL_STATE_MACHINE__EXTENSION:
+				return false;
+		}
+		return eIsSetGen(eFeature);
 	}
 
 } //ProtocolStateMachineImpl
