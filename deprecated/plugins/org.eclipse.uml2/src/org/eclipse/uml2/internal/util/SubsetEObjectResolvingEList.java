@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: SubsetEObjectResolvingEList.java,v 1.3 2004/06/23 20:34:41 khussey Exp $
+ * $Id: SubsetEObjectResolvingEList.java,v 1.3.2.1 2004/09/01 18:17:31 khussey Exp $
  */
 package org.eclipse.uml2.internal.util;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 /**
@@ -91,6 +92,16 @@ public class SubsetEObjectResolvingEList
 	 */
 	protected boolean hasProxies() {
 		return true;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.common.util.BasicEList#resolve(int,
+	 *      java.lang.Object)
+	 */
+	protected Object resolve(int index, Object object) {
+		return resolve(index, (EObject) object);
 	}
 
 }
