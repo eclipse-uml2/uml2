@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.8 2004/05/28 05:13:45 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.8.2.1 2004/07/14 15:24:30 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -67,7 +67,7 @@ import org.eclipse.uml2.Stereotype;
 import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
 import org.eclipse.uml2.VisibilityKind;
-import org.eclipse.uml2.internal.util.UML2URIConverterImpl;
+import org.eclipse.uml2.util.UML2Resource;
 
 /**
  * A static utility class that provides operations related to profiles.
@@ -251,8 +251,8 @@ public final class ProfileOperations
 
 		ePackage.setName(getEPackageName(profile));
 		ePackage.setNsPrefix(ePackage.getName());
-		ePackage
-			.setNsURI("http:///" + ePackage.getNsPrefix() + ".profile.uml2"); //$NON-NLS-1$ //$NON-NLS-2$
+		ePackage.setNsURI("http:///" + ePackage.getNsPrefix() + "." //$NON-NLS-1$ //$NON-NLS-2$
+			+ UML2Resource.PROFILE_FILE_EXTENSION);
 
 		for (Iterator ownedStereotypes = profile.getOwnedStereotypes()
 			.iterator(); ownedStereotypes.hasNext();) {
@@ -1185,9 +1185,9 @@ public final class ProfileOperations
 
 			if (null != resource) {
 				ResourceSet resourceSet = resource.getResourceSet();
-				URIConverter uriConverter = new UML2URIConverterImpl(
-					null == resourceSet
-						? DEFAULT_URI_CONVERTER : resourceSet.getURIConverter());
+				URIConverter uriConverter = null == resourceSet
+					? DEFAULT_URI_CONVERTER
+					: resourceSet.getURIConverter();
 
 				for (Iterator resourceBundleURIs = getResourceBundleURIs(
 					resource.getURI(), locale).iterator(); resourceBundleURIs

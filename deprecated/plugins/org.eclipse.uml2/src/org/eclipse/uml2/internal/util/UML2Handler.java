@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Handler.java,v 1.6 2004/06/17 15:04:29 khussey Exp $
+ * $Id: UML2Handler.java,v 1.6.2.1 2004/07/14 15:24:42 khussey Exp $
  */
 package org.eclipse.uml2.internal.util;
 
@@ -18,7 +18,6 @@ import java.util.Map;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLResource;
@@ -43,15 +42,6 @@ public class UML2Handler
 	 */
 	public UML2Handler(XMLResource xmiResource, XMLHelper helper, Map options) {
 		super(xmiResource, helper, options);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.ecore.xmi.impl.XMLHandler#getURIConverter()
-	 */
-	protected URIConverter getURIConverter() {
-		return new UML2URIConverterImpl(super.getURIConverter());
 	}
 
 	/*
