@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.8.2.10 2004/10/20 16:13:27 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.8.2.11 2004/10/20 16:16:02 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -125,30 +125,24 @@ public final class ProfileOperations
 	 * 
 	 * @param namedElement
 	 *            The named element for which to retrieve an Ecore name.
-	 * @param qualified
-	 *            Whether the qualified name should be used.
-	 * @return The Ecore name.
+	 * @return The Ecore named element name.
 	 */
-	protected static String getENamedElementName(NamedElement namedElement,
-			boolean qualified) {
+	protected static String getENamedElementName(NamedElement namedElement) {
+		String qualifiedName = namedElement.getQualifiedName();
 
-		if (qualified) {
-			String qualifiedName = namedElement.getQualifiedName();
+		if (!isEmpty(qualifiedName)) {
+			StringBuffer eNamedElementName = new StringBuffer();
+			String[] names = qualifiedName.split(namedElement.separator());
 
-			if (!isEmpty(qualifiedName)) {
-				StringBuffer eNamedElementName = new StringBuffer();
-				String[] names = qualifiedName.split(namedElement.separator());
+			for (int i = 0, length = names.length; i < length; i++) {
+				appendValidIdentifier(eNamedElementName, names[i]);
 
-				for (int i = 0, length = names.length; i < length; i++) {
-					appendValidIdentifier(eNamedElementName, names[i]);
-
-					if (i + 1 < length) {
-						eNamedElementName.append("__"); //$NON-NLS-1$
-					}
+				if (i + 1 < length) {
+					eNamedElementName.append("__"); //$NON-NLS-1$
 				}
-
-				return eNamedElementName.toString();
 			}
+
+			return eNamedElementName.toString();
 		}
 
 		return getValidIdentifier(namedElement.getName());
@@ -163,7 +157,7 @@ public final class ProfileOperations
 	 * @return The Ecore package name.
 	 */
 	public static String getEPackageName(Profile profile) {
-		return getENamedElementName(profile, true) + '_' + getVersion(profile);
+		return getENamedElementName(profile) + '_' + getVersion(profile);
 	}
 
 	/**
@@ -175,7 +169,7 @@ public final class ProfileOperations
 	 * @return The Ecore classifier name.
 	 */
 	public static String getEClassifierName(Classifier classifier) {
-		return getENamedElementName(classifier, true);
+		return getENamedElementName(classifier);
 	}
 
 	/**
