@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2ItemProviderAdapterFactory.java,v 1.3.2.2 2004/08/19 14:42:15 khussey Exp $
+ * $Id: UML2ItemProviderAdapterFactory.java,v 1.3.2.3 2004/10/21 18:04:23 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -21,7 +21,9 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.provider.Disposable;
 import org.eclipse.emf.edit.provider.IChangeNotifier;
+import org.eclipse.emf.edit.provider.IDisposable;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -36,10 +38,11 @@ import org.eclipse.uml2.util.UML2AdapterFactory;
  * The adapters also support Eclipse property sheets.
  * Note that most of the adapters are shared among multiple instances.
  * <!-- begin-user-doc -->
+ * @extends IDisposable
  * <!-- end-user-doc -->
  * @generated
  */
-public class UML2ItemProviderAdapterFactory extends UML2AdapterFactory implements ComposeableAdapterFactory, IChangeNotifier {
+public class UML2ItemProviderAdapterFactory extends UML2AdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4112,6 +4115,31 @@ public class UML2ItemProviderAdapterFactory extends UML2AdapterFactory implement
 		if (parentAdapterFactory != null) {
 			parentAdapterFactory.fireNotifyChanged(notification);
 		}
+	}
+
+	protected final Disposable disposable = new Disposable();
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.common.notify.impl.AdapterFactoryImpl#associate(org.eclipse.emf.common.notify.Adapter,
+	 *      org.eclipse.emf.common.notify.Notifier)
+	 */
+	protected void associate(Adapter adapter, Notifier target) {
+		super.associate(adapter, target);
+
+		if (null != adapter) {
+			disposable.add(adapter);
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.edit.provider.IDisposable#dispose()
+	 */
+	public void dispose() {
+		disposable.dispose();
 	}
 
 }
