@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.8 2004/06/19 01:42:38 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.8.2.1 2004/08/19 14:17:59 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -18,10 +18,12 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.provider.EModelElementItemProvider;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -32,6 +34,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.Element;
+import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
 
@@ -40,6 +43,7 @@ import org.eclipse.uml2.edit.internal.provider.UML2ItemPropertyDescriptor;
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.Element} object.
  * <!-- begin-user-doc -->
+ * @extends 
  * <!-- end-user-doc -->
  * @generated
  */
@@ -50,7 +54,8 @@ public class ElementItemProvider
 		IStructuredItemContentProvider,
 		ITreeItemContentProvider,
 		IItemLabelProvider,
-		IItemPropertySource {
+		IItemPropertySource,
+		IItemQualifiedTextProvider {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -237,4 +242,62 @@ public class ElementItemProvider
 			: super.getCreateChildImage(owner, feature, child, selection);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.uml2.edit.util.IItemQualifiedLabelProvider#getQualifiedText(java.lang.Object)
+	 */
+	public String getQualifiedText(Object object) {
+		StringBuffer text = new StringBuffer();
+
+		for (EObject eObject = (EObject) object; null != eObject; eObject = eObject
+			.eContainer()) {
+
+			text.insert(0, getQualifiedTextSegment(eObject));
+
+			if (null != eObject.eContainer()) {
+				text.insert(0, NamedElement.SEPARATOR);
+			}
+		}
+
+		return text.toString();
+	}
+
+	private String getQualifiedTextSegment(EObject eObject) {
+
+		if (NamedElement.class.isInstance(eObject)) {
+			String name = ((NamedElement) eObject).getName();
+
+			if (null != name && 0 != name.length()) {
+				return name;
+			}
+		}
+
+		StringBuffer segment = new StringBuffer();
+		segment.append('{');
+
+		EStructuralFeature eContainingFeature = eObject.eContainingFeature();
+
+		if (null != eContainingFeature) {
+			segment.append(getFeatureText(eContainingFeature));
+
+			if (eContainingFeature.isMany()) {
+				segment.append(' ');
+
+				EList eList = (EList) eObject.eContainer().eGet(
+					eContainingFeature, false);
+
+				segment.append('[');
+				segment.append(eList.indexOf(eObject));
+				segment.append(']');
+			}
+
+			segment.append(' ');
+		}
+
+		segment.append(getTypeText(eObject));
+		segment.append('}');
+
+		return segment.toString();
+	}
 }

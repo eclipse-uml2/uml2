@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2PropertyDescriptor.java,v 1.1.2.1 2004/08/06 13:36:07 khussey Exp $
+ * $Id: UML2PropertyDescriptor.java,v 1.1.2.2 2004/08/19 14:17:54 khussey Exp $
  */
 package org.eclipse.uml2.editor.internal.presentation;
 
@@ -37,7 +37,8 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.uml2.NamedElement;
+import org.eclipse.uml2.edit.internal.provider.UML2ItemPropertyDescriptor;
+import org.eclipse.uml2.provider.IItemQualifiedTextProvider;
 
 /**
  *  
@@ -68,26 +69,12 @@ public class UML2PropertyDescriptor
 		final ILabelProvider labelProvider = new LabelProvider() {
 
 			public String getText(Object object) {
+				IItemQualifiedTextProvider itemQualifiedTextProvider = ((UML2ItemPropertyDescriptor) itemPropertyDescriptor)
+					.getQualifiedTextProvider(object);
 
-				if (NamedElement.class.isInstance(object)) {
-					String qualifiedName = ((NamedElement) object)
-						.getQualifiedName();
-
-					if (null != qualifiedName && 0 != qualifiedName.length()) {
-						return qualifiedName;
-					}
-				}
-
-				if (EObject.class.isInstance(object)) {
-					EObject eObject = (EObject) object;
-
-					if (null != eObject.eResource()) {
-						return getLabelProvider().getText(eObject) + " {" //$NON-NLS-1$
-							+ eObject.eResource().getURIFragment(eObject) + '}';
-					}
-				}
-
-				return getLabelProvider().getText(object);
+				return null != itemQualifiedTextProvider
+					? itemQualifiedTextProvider.getQualifiedText(object)
+					: getLabelProvider().getText(object);
 			}
 
 			public Image getImage(Object object) {
