@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RedefinableElementImpl.java,v 1.8.2.1 2004/08/24 01:03:43 khussey Exp $
+ * $Id: RedefinableElementImpl.java,v 1.8.2.2 2004/08/25 00:28:36 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -76,7 +76,7 @@ public abstract class RedefinableElementImpl extends NamedElementImpl implements
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_LEAF_EFLAG = ELAST_EOBJECT_FLAG << 1;
+	protected static final int IS_LEAF_EFLAG = Integer.MIN_VALUE >>> 0;
 
 	/**
 	 * <!-- begin-user-doc -->

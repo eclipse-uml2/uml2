@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.14.2.1 2004/08/24 01:03:43 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.14.2.2 2004/08/25 00:28:36 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -171,7 +171,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_DERIVED_EFLAG = ELAST_EOBJECT_FLAG << 7;
+	protected static final int IS_DERIVED_EFLAG = Integer.MIN_VALUE >>> 6;
 
 	/**
 	 * The default value of the '{@link #isDerivedUnion() <em>Is Derived Union</em>}' attribute.
@@ -191,7 +191,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_DERIVED_UNION_EFLAG = ELAST_EOBJECT_FLAG << 8;
+	protected static final int IS_DERIVED_UNION_EFLAG = Integer.MIN_VALUE >>> 7;
 
 	/**
 	 * The cached value of the '{@link #getRedefinedProperties() <em>Redefined Property</em>}' reference list.

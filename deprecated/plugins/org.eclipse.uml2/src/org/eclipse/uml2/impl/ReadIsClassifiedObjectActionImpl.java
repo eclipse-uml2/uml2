@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ReadIsClassifiedObjectActionImpl.java,v 1.6.2.1 2004/08/24 01:03:45 khussey Exp $
+ * $Id: ReadIsClassifiedObjectActionImpl.java,v 1.6.2.2 2004/08/25 00:28:36 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -78,7 +78,7 @@ public class ReadIsClassifiedObjectActionImpl extends ActionImpl implements Read
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_DIRECT_EFLAG = ELAST_EOBJECT_FLAG << 2;
+	protected static final int IS_DIRECT_EFLAG = Integer.MIN_VALUE >>> 1;
 
 	/**
 	 * The cached value of the '{@link #getClassifier() <em>Classifier</em>}' reference.

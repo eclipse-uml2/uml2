@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: GeneralizationSetImpl.java,v 1.6.2.1 2004/08/24 01:03:44 khussey Exp $
+ * $Id: GeneralizationSetImpl.java,v 1.6.2.2 2004/08/25 00:28:36 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -74,7 +74,7 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_COVERING_EFLAG = ELAST_EOBJECT_FLAG << 1;
+	protected static final int IS_COVERING_EFLAG = Integer.MIN_VALUE >>> 0;
 
 	/**
 	 * The default value of the '{@link #isDisjoint() <em>Is Disjoint</em>}' attribute.
@@ -94,7 +94,7 @@ public class GeneralizationSetImpl extends PackageableElementImpl implements Gen
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_DISJOINT_EFLAG = ELAST_EOBJECT_FLAG << 2;
+	protected static final int IS_DISJOINT_EFLAG = Integer.MIN_VALUE >>> 1;
 
 	/**
 	 * The cached value of the '{@link #getPowertype() <em>Powertype</em>}' reference.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LoopNodeImpl.java,v 1.7.2.1 2004/08/24 01:03:45 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.7.2.2 2004/08/25 00:28:36 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -86,7 +86,7 @@ public class LoopNodeImpl extends StructuredActivityNodeImpl implements LoopNode
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_TESTED_FIRST_EFLAG = ELAST_EOBJECT_FLAG << 3;
+	protected static final int IS_TESTED_FIRST_EFLAG = Integer.MIN_VALUE >>> 2;
 
 	/**
 	 * The cached value of the '{@link #getBodyParts() <em>Body Part</em>}' reference list.

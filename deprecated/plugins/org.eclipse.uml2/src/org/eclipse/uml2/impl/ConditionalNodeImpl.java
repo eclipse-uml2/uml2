@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ConditionalNodeImpl.java,v 1.7.2.1 2004/08/24 01:03:44 khussey Exp $
+ * $Id: ConditionalNodeImpl.java,v 1.7.2.2 2004/08/25 00:28:35 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -79,7 +79,7 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_DETERMINATE_EFLAG = ELAST_EOBJECT_FLAG << 3;
+	protected static final int IS_DETERMINATE_EFLAG = Integer.MIN_VALUE >>> 2;
 
 	/**
 	 * The default value of the '{@link #isAssured() <em>Is Assured</em>}' attribute.
@@ -99,7 +99,7 @@ public class ConditionalNodeImpl extends StructuredActivityNodeImpl implements C
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_ASSURED_EFLAG = ELAST_EOBJECT_FLAG << 4;
+	protected static final int IS_ASSURED_EFLAG = Integer.MIN_VALUE >>> 3;
 
 	/**
 	 * The cached value of the '{@link #getClauses() <em>Clause</em>}' containment reference list.

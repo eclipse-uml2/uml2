@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.19.2.2 2004/08/24 01:03:44 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.19.2.3 2004/08/25 00:28:35 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -152,7 +152,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_LEAF_EFLAG = ELAST_EOBJECT_FLAG << 1;
+	protected static final int IS_LEAF_EFLAG = Integer.MIN_VALUE >>> 0;
 
 	/**
 	 * The default value of the '{@link #isAbstract() <em>Is Abstract</em>}' attribute.
@@ -172,7 +172,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_ABSTRACT_EFLAG = ELAST_EOBJECT_FLAG << 2;
+	protected static final int IS_ABSTRACT_EFLAG = Integer.MIN_VALUE >>> 1;
 
 	/**
 	 * The cached value of the '{@link #getGeneralizations() <em>Generalization</em>}' containment reference list.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ContinuationImpl.java,v 1.4.2.1 2004/08/24 01:03:44 khussey Exp $
+ * $Id: ContinuationImpl.java,v 1.4.2.2 2004/08/25 00:28:36 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -68,7 +68,7 @@ public class ContinuationImpl extends InteractionFragmentImpl implements Continu
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int SETTING_EFLAG = ELAST_EOBJECT_FLAG << 1;
+	protected static final int SETTING_EFLAG = Integer.MIN_VALUE >>> 0;
 
 	/**
 	 * <!-- begin-user-doc -->

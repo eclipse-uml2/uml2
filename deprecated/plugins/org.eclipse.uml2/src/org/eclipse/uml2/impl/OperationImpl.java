@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.14.2.1 2004/08/24 01:03:44 khussey Exp $
+ * $Id: OperationImpl.java,v 1.14.2.2 2004/08/25 00:28:36 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -192,7 +192,7 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_QUERY_EFLAG = ELAST_EOBJECT_FLAG << 6;
+	protected static final int IS_QUERY_EFLAG = Integer.MIN_VALUE >>> 5;
 
 	/**
 	 * The cached value of the '{@link #getPreconditions() <em>Precondition</em>}' reference list.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityPartitionImpl.java,v 1.6.2.1 2004/08/24 01:03:44 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.6.2.2 2004/08/25 00:28:36 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -87,7 +87,7 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_DIMENSION_EFLAG = ELAST_EOBJECT_FLAG << 1;
+	protected static final int IS_DIMENSION_EFLAG = Integer.MIN_VALUE >>> 0;
 
 	/**
 	 * The default value of the '{@link #isExternal() <em>Is External</em>}' attribute.
@@ -107,7 +107,7 @@ public class ActivityPartitionImpl extends NamedElementImpl implements ActivityP
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_EXTERNAL_EFLAG = ELAST_EOBJECT_FLAG << 2;
+	protected static final int IS_EXTERNAL_EFLAG = Integer.MIN_VALUE >>> 1;
 
 	/**
 	 * The cached value of the '{@link #getContainedEdges() <em>Contained Edge</em>}' reference list.

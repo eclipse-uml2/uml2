@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuralFeatureImpl.java,v 1.9.2.1 2004/08/24 01:03:44 khussey Exp $
+ * $Id: StructuralFeatureImpl.java,v 1.9.2.2 2004/08/25 00:28:35 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -94,7 +94,7 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_ORDERED_EFLAG = ELAST_EOBJECT_FLAG << 3;
+	protected static final int IS_ORDERED_EFLAG = Integer.MIN_VALUE >>> 2;
 
 	/**
 	 * The default value of the '{@link #isUnique() <em>Is Unique</em>}' attribute.
@@ -114,7 +114,7 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_UNIQUE_EFLAG = ELAST_EOBJECT_FLAG << 4;
+	protected static final int IS_UNIQUE_EFLAG = Integer.MIN_VALUE >>> 3;
 
 	/**
 	 * The default value of the '{@link #getLower() <em>Lower</em>}' attribute.
@@ -174,7 +174,7 @@ public abstract class StructuralFeatureImpl extends FeatureImpl implements Struc
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_READ_ONLY_EFLAG = ELAST_EOBJECT_FLAG << 5;
+	protected static final int IS_READ_ONLY_EFLAG = Integer.MIN_VALUE >>> 4;
 
 	/**
 	 * <!-- begin-user-doc -->

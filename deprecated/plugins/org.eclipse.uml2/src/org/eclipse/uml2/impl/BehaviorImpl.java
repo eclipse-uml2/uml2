@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.18.2.1 2004/08/24 01:03:44 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.18.2.2 2004/08/25 00:28:36 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -96,7 +96,7 @@ public abstract class BehaviorImpl extends ClassImpl implements Behavior {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_REENTRANT_EFLAG = ELAST_EOBJECT_FLAG << 4;
+	protected static final int IS_REENTRANT_EFLAG = Integer.MIN_VALUE >>> 3;
 
 	/**
 	 * The cached value of the '{@link #getRedefinedBehaviors() <em>Redefined Behavior</em>}' reference list.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.15.2.3 2004/08/24 01:03:43 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.15.2.4 2004/08/25 00:28:35 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -160,7 +160,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int MUST_ISOLATE_EFLAG = ELAST_EOBJECT_FLAG << 2;
+	protected static final int MUST_ISOLATE_EFLAG = Integer.MIN_VALUE >>> 1;
 
 	/**
 	 * <!-- begin-user-doc -->

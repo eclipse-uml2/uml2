@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: FeatureImpl.java,v 1.6.2.1 2004/08/24 01:03:45 khussey Exp $
+ * $Id: FeatureImpl.java,v 1.6.2.2 2004/08/25 00:28:36 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -73,7 +73,7 @@ public abstract class FeatureImpl extends RedefinableElementImpl implements Feat
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_STATIC_EFLAG = ELAST_EOBJECT_FLAG << 2;
+	protected static final int IS_STATIC_EFLAG = Integer.MIN_VALUE >>> 1;
 
 	/**
 	 * <!-- begin-user-doc -->

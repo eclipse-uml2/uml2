@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: TimeExpressionImpl.java,v 1.4.2.1 2004/08/24 01:03:44 khussey Exp $
+ * $Id: TimeExpressionImpl.java,v 1.4.2.2 2004/08/25 00:28:36 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -70,7 +70,7 @@ public class TimeExpressionImpl extends ValueSpecificationImpl implements TimeEx
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int FIRST_TIME_EFLAG = ELAST_EOBJECT_FLAG << 1;
+	protected static final int FIRST_TIME_EFLAG = Integer.MIN_VALUE >>> 0;
 
 	/**
 	 * The cached value of the '{@link #getEvent() <em>Event</em>}' reference.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.17.2.3 2004/08/24 01:03:43 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.17.2.4 2004/08/25 00:28:36 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -89,7 +89,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_INDIRECTLY_INSTANTIATED_EFLAG = ELAST_EOBJECT_FLAG << 4;
+	protected static final int IS_INDIRECTLY_INSTANTIATED_EFLAG = Integer.MIN_VALUE >>> 3;
 
 	/**
 	 * The cached value of the '{@link #getRealizations() <em>Realization</em>}' containment reference list.

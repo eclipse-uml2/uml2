@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: LinkEndCreationDataImpl.java,v 1.4.2.1 2004/08/24 01:03:43 khussey Exp $
+ * $Id: LinkEndCreationDataImpl.java,v 1.4.2.2 2004/08/25 00:28:35 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -70,7 +70,7 @@ public class LinkEndCreationDataImpl extends LinkEndDataImpl implements LinkEndC
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_REPLACE_ALL_EFLAG = ELAST_EOBJECT_FLAG << 1;
+	protected static final int IS_REPLACE_ALL_EFLAG = Integer.MIN_VALUE >>> 0;
 
 	/**
 	 * The cached value of the '{@link #getInsertAt() <em>Insert At</em>}' reference.

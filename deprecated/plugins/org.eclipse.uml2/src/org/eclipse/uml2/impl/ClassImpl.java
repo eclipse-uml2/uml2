@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.21.2.1 2004/08/24 01:03:45 khussey Exp $
+ * $Id: ClassImpl.java,v 1.21.2.2 2004/08/25 00:28:36 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -140,7 +140,7 @@ public class ClassImpl extends BehavioredClassifierImpl implements org.eclipse.u
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_ACTIVE_EFLAG = ELAST_EOBJECT_FLAG << 3;
+	protected static final int IS_ACTIVE_EFLAG = Integer.MIN_VALUE >>> 2;
 
 	/**
 	 * The cached value of the '{@link #getOwnedReceptions() <em>Owned Reception</em>}' containment reference list.

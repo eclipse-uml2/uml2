@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.8.2.1 2004/08/24 01:03:44 khussey Exp $
+ * $Id: RegionImpl.java,v 1.8.2.2 2004/08/25 00:28:35 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -92,7 +92,7 @@ public class RegionImpl extends NamespaceImpl implements Region {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_LEAF_EFLAG = ELAST_EOBJECT_FLAG << 1;
+	protected static final int IS_LEAF_EFLAG = Integer.MIN_VALUE >>> 0;
 
 	/**
 	 * The cached value of the '{@link #getSubvertices() <em>Subvertex</em>}' containment reference list.

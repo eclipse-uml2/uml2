@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AssociationImpl.java,v 1.14.2.2 2004/08/24 01:03:45 khussey Exp $
+ * $Id: AssociationImpl.java,v 1.14.2.3 2004/08/25 00:28:36 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -85,7 +85,7 @@ public class AssociationImpl extends ClassifierImpl implements Association {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_DERIVED_EFLAG = ELAST_EOBJECT_FLAG << 3;
+	protected static final int IS_DERIVED_EFLAG = Integer.MIN_VALUE >>> 2;
 
 	/**
 	 * The cached value of the '{@link #getOwnedEnds() <em>Owned End</em>}' containment reference list.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.9.2.1 2004/08/24 01:03:43 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.9.2.2 2004/08/25 00:28:36 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -96,7 +96,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_LEAF_EFLAG = ELAST_EOBJECT_FLAG << 1;
+	protected static final int IS_LEAF_EFLAG = Integer.MIN_VALUE >>> 0;
 
 	/**
 	 * The default value of the '{@link #isStatic() <em>Is Static</em>}' attribute.
@@ -116,7 +116,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_STATIC_EFLAG = ELAST_EOBJECT_FLAG << 2;
+	protected static final int IS_STATIC_EFLAG = Integer.MIN_VALUE >>> 1;
 
 	/**
 	 * The cached value of the '{@link #getFormalParameters() <em>Formal Parameter</em>}' containment reference list.
@@ -166,7 +166,7 @@ public abstract class BehavioralFeatureImpl extends NamespaceImpl implements Beh
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_ABSTRACT_EFLAG = ELAST_EOBJECT_FLAG << 3;
+	protected static final int IS_ABSTRACT_EFLAG = Integer.MIN_VALUE >>> 2;
 
 	/**
 	 * The cached value of the '{@link #getMethods() <em>Method</em>}' reference list.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: DestroyObjectActionImpl.java,v 1.7.2.1 2004/08/24 01:03:44 khussey Exp $
+ * $Id: DestroyObjectActionImpl.java,v 1.7.2.2 2004/08/25 00:28:36 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -75,7 +75,7 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_DESTROY_LINKS_EFLAG = ELAST_EOBJECT_FLAG << 2;
+	protected static final int IS_DESTROY_LINKS_EFLAG = Integer.MIN_VALUE >>> 1;
 
 	/**
 	 * The default value of the '{@link #isDestroyOwnedObjects() <em>Is Destroy Owned Objects</em>}' attribute.
@@ -95,7 +95,7 @@ public class DestroyObjectActionImpl extends ActionImpl implements DestroyObject
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_DESTROY_OWNED_OBJECTS_EFLAG = ELAST_EOBJECT_FLAG << 3;
+	protected static final int IS_DESTROY_OWNED_OBJECTS_EFLAG = Integer.MIN_VALUE >>> 2;
 
 	/**
 	 * The cached value of the '{@link #getTarget() <em>Target</em>}' containment reference.

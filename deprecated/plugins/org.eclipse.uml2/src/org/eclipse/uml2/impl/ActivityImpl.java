@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.17.2.1 2004/08/24 01:03:43 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.17.2.2 2004/08/25 00:28:35 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -173,7 +173,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_SINGLE_EXECUTION_EFLAG = ELAST_EOBJECT_FLAG << 5;
+	protected static final int IS_SINGLE_EXECUTION_EFLAG = Integer.MIN_VALUE >>> 4;
 
 	/**
 	 * The default value of the '{@link #isReadOnly() <em>Is Read Only</em>}' attribute.
@@ -193,7 +193,7 @@ public class ActivityImpl extends BehaviorImpl implements Activity {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_READ_ONLY_EFLAG = ELAST_EOBJECT_FLAG << 6;
+	protected static final int IS_READ_ONLY_EFLAG = Integer.MIN_VALUE >>> 5;
 
 	/**
 	 * <!-- begin-user-doc -->

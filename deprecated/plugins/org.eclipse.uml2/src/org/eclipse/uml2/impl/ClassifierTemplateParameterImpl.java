@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierTemplateParameterImpl.java,v 1.4.2.1 2004/08/24 01:03:45 khussey Exp $
+ * $Id: ClassifierTemplateParameterImpl.java,v 1.4.2.2 2004/08/25 00:28:36 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -65,7 +65,7 @@ public class ClassifierTemplateParameterImpl extends TemplateParameterImpl imple
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int ALLOW_SUBSTITUTABLE_EFLAG = ELAST_EOBJECT_FLAG << 1;
+	protected static final int ALLOW_SUBSTITUTABLE_EFLAG = Integer.MIN_VALUE >>> 0;
 
 	/**
 	 * <!-- begin-user-doc -->

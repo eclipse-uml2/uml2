@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.8.2.1 2004/08/24 01:03:43 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.8.2.2 2004/08/25 00:28:35 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -77,7 +77,7 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_ORDERED_EFLAG = ELAST_EOBJECT_FLAG << 1;
+	protected static final int IS_ORDERED_EFLAG = Integer.MIN_VALUE >>> 0;
 
 	/**
 	 * The default value of the '{@link #isUnique() <em>Is Unique</em>}' attribute.
@@ -97,7 +97,7 @@ public abstract class MultiplicityElementImpl extends ElementImpl implements Mul
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_UNIQUE_EFLAG = ELAST_EOBJECT_FLAG << 2;
+	protected static final int IS_UNIQUE_EFLAG = Integer.MIN_VALUE >>> 1;
 
 	/**
 	 * The default value of the '{@link #getLower() <em>Lower</em>}' attribute.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PortImpl.java,v 1.7.2.2 2004/08/24 01:03:44 khussey Exp $
+ * $Id: PortImpl.java,v 1.7.2.3 2004/08/25 00:28:36 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -90,7 +90,7 @@ public class PortImpl extends PropertyImpl implements Port {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_BEHAVIOR_EFLAG = ELAST_EOBJECT_FLAG << 9;
+	protected static final int IS_BEHAVIOR_EFLAG = Integer.MIN_VALUE >>> 8;
 
 	/**
 	 * The default value of the '{@link #isService() <em>Is Service</em>}' attribute.
@@ -110,7 +110,7 @@ public class PortImpl extends PropertyImpl implements Port {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_SERVICE_EFLAG = ELAST_EOBJECT_FLAG << 10;
+	protected static final int IS_SERVICE_EFLAG = Integer.MIN_VALUE >>> 9;
 
 	/**
 	 * The cached value of the '{@link #getRedefinedPorts() <em>Redefined Port</em>}' reference list.
