@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: AssociationClassImplTest.java,v 1.2 2004/05/20 03:03:32 khussey Exp $
+ * $Id: AssociationClassImplTest.java,v 1.2.2.1 2004/08/10 16:06:49 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -124,9 +124,15 @@ public class AssociationClassImplTest extends ClassImplTest {
 			memberEnd.setType((Type) UML2Factory.eINSTANCE.create((EClass) eAllSubClasses.next()));
 
 			getFixture().getMemberEnds().add(memberEnd);
+			
+			assertTrue(getFixture().getRelatedElements().contains(memberEnd.getType()));
 		}
 
-		assertTrue(getFixture().getRelatedElements().containsAll(getFixture().getEndTypes()));
+		Property memberEnd = UML2Factory.eINSTANCE.createProperty();
+
+		getFixture().getMemberEnds().add(memberEnd);
+		
+		assertFalse(getFixture().getRelatedElements().contains(memberEnd.getType()));		
 	}
 
 	/**
