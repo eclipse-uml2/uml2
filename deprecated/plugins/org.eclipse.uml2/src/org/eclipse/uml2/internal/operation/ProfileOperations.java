@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.8.2.4 2004/08/11 21:31:18 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.8.2.5 2004/09/15 14:04:50 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -128,8 +128,9 @@ public final class ProfileOperations
 	 */
 	public static String getEPackageName(Profile profile) {
 		return getValidIdentifier(isEmpty(profile.getQualifiedName())
-			? profile.getName() : profile.getQualifiedName().replace(':', '_'))
-			+ '_' + getVersion(profile);
+			? profile.getName()
+			: profile.getQualifiedName().replace(':', '_')) + '_'
+			+ getVersion(profile);
 	}
 
 	/**
@@ -142,8 +143,8 @@ public final class ProfileOperations
 	 */
 	public static String getEClassifierName(Classifier classifier) {
 		return getValidIdentifier(isEmpty(classifier.getQualifiedName())
-			? classifier.getName() : classifier.getQualifiedName().replace(':',
-				'_'));
+			? classifier.getName()
+			: classifier.getQualifiedName().replace(':', '_'));
 	}
 
 	/**
@@ -625,9 +626,11 @@ public final class ProfileOperations
 
 				if (Element.class.isInstance(eObject)) {
 					Element element = (Element) eObject;
-					List appliedStereotypes = getEAnnotation(
+					EAnnotation appliedStereotypesEAnnotation = getEAnnotation(
 						StereotypeOperations.ANNOTATION_SOURCE__APPLIED_STEREOTYPES,
-						element).getContents();
+						element);
+					List appliedStereotypes = appliedStereotypesEAnnotation
+						.getContents();
 
 					for (Iterator stereotypeApplications = getStereotypeApplications(
 						profile, element).iterator(); stereotypeApplications
@@ -636,19 +639,30 @@ public final class ProfileOperations
 						EObject oldStereotypeApplication = (EObject) stereotypeApplications
 							.next();
 
-						EClass eClass = StereotypeOperations.getEClass(
-							StereotypeOperations
-								.getStereotype(oldStereotypeApplication),
-							profile.getVersion());
-						EObject newStereotypeApplication = eClass.getEPackage()
-							.getEFactoryInstance().create(eClass);
+						Stereotype stereotype = StereotypeOperations
+							.getStereotype(oldStereotypeApplication);
 
-						copyValues(oldStereotypeApplication,
-							newStereotypeApplication);
+						if (null == stereotype) {
+							appliedStereotypes.remove(oldStereotypeApplication);
+						} else {
+							EClass eClass = StereotypeOperations.getEClass(
+								stereotype, profile.getVersion());
+							EObject newStereotypeApplication = eClass
+								.getEPackage().getEFactoryInstance().create(
+									eClass);
 
-						appliedStereotypes.set(appliedStereotypes
-							.indexOf(oldStereotypeApplication),
-							newStereotypeApplication);
+							copyValues(oldStereotypeApplication,
+								newStereotypeApplication);
+
+							appliedStereotypes.set(appliedStereotypes
+								.indexOf(oldStereotypeApplication),
+								newStereotypeApplication);
+						}
+					}
+
+					if (appliedStereotypes.isEmpty()) {
+						element.getEAnnotations().remove(
+							appliedStereotypesEAnnotation);
 					}
 				}
 			}
@@ -736,7 +750,8 @@ public final class ProfileOperations
 			EObject targetValue = targetEClass.getEPackage()
 				.getEFactoryInstance().create(targetEClass);
 			copyValues((EObject) (sourceEStructuralFeature.isMany()
-				? ((EList) sourceValue).get(0) : sourceValue), targetValue);
+				? ((EList) sourceValue).get(0)
+				: sourceValue), targetValue);
 			targetEObject.eSet(targetEStructuralFeature, targetValue);
 		}
 	}
@@ -777,7 +792,8 @@ public final class ProfileOperations
 				.createFromString(targetEDataType, sourceEFactory
 					.convertToString(sourceEDataType, sourceEStructuralFeature
 						.isMany()
-						? ((EList) sourceValue).get(0) : sourceValue)));
+						? ((EList) sourceValue).get(0)
+						: sourceValue)));
 		}
 	}
 
@@ -808,8 +824,8 @@ public final class ProfileOperations
 			targetEObject.eSet(targetEStructuralFeature, targetEEnum
 				.getEEnumLiteral(
 					((EEnumLiteral) (sourceEStructuralFeature.isMany()
-						? ((EList) sourceValue).get(0) : sourceValue))
-						.getName()).getInstance());
+						? ((EList) sourceValue).get(0)
+						: sourceValue)).getName()).getInstance());
 		}
 	}
 
@@ -830,11 +846,9 @@ public final class ProfileOperations
 
 		String version = getVersion(profile);
 		getOrCreateEAnnotation(ANNOTATION_SOURCE__ATTRIBUTES, profile)
-			.getDetails().put(
-				ANNOTATION_DETAILS_KEY__VERSION,
-				null == version
-					? String.valueOf(0) : String.valueOf(new Integer(Integer
-						.parseInt(version) + 1)));
+			.getDetails().put(ANNOTATION_DETAILS_KEY__VERSION, null == version
+				? String.valueOf(0)
+				: String.valueOf(new Integer(Integer.parseInt(version) + 1)));
 
 		getOrCreateEAnnotation(ANNOTATION_SOURCE__E_PACKAGES, profile)
 			.getContents().add(0, createEPackage(profile));
@@ -955,9 +969,10 @@ public final class ProfileOperations
 			element).getContents().iterator(); appliedStereotypes.hasNext();) {
 
 			EObject stereotypeApplication = (EObject) appliedStereotypes.next();
+			Stereotype stereotype = StereotypeOperations
+				.getStereotype(stereotypeApplication);
 
-			if (profile == StereotypeOperations.getStereotype(
-				stereotypeApplication).getProfile()) {
+			if (null != stereotype && profile == stereotype.getProfile()) {
 				stereotypeApplications.add(stereotypeApplication);
 			}
 		}
@@ -1000,7 +1015,8 @@ public final class ProfileOperations
 	 */
 	public static boolean isDefined(Profile profile) {
 		return null == profile
-			? false : getEAnnotation(ANNOTATION_SOURCE__E_PACKAGES, profile)
+			? false
+			: getEAnnotation(ANNOTATION_SOURCE__E_PACKAGES, profile)
 				.getContents().size() > 0;
 	}
 
