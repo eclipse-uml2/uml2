@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.14.2.3 2004/09/07 20:00:13 khussey Exp $
+ * $Id: OperationImpl.java,v 1.14.2.4 2005/02/09 16:25:15 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1725,6 +1725,12 @@ public class OperationImpl extends BehavioralFeatureImpl implements Operation {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case UML2Package.OPERATION__FORMAL_PARAMETER:
 				return false;
+			case UML2Package.OPERATION__TYPE:
+				return null != returnResult
+					&& 1 == returnResult.size()
+					&& ((Parameter) returnResult.get(0))
+							.eIsSet(UML2Package.eINSTANCE
+									.getTypedElement_Type());
 		}
 		return eIsSetGen(eFeature);
 	}
