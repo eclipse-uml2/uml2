@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.19 2004/06/18 17:44:12 khussey Exp $
+ * $Id: PackageImpl.java,v 1.19.2.1 2004/09/07 20:00:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -277,7 +277,7 @@ public class PackageImpl extends NamespaceImpl implements org.eclipse.uml2.Packa
 		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PACKAGE__OWNING_PARAMETER, newOwningParameter, newOwningParameter));
 		}
-		if (null != newOwningParameter || oldOwningParameter == basicGetTemplateParameter()) {
+		if (null != newOwningParameter || oldOwningParameter == templateParameter) {
 			setTemplateParameter(newOwningParameter);
 		}
 	}

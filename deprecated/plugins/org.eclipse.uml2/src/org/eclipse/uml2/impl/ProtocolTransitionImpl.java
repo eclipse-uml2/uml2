@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.7.2.1 2004/08/24 01:03:45 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.7.2.2 2004/09/07 20:00:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -231,7 +231,7 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROTOCOL_TRANSITION__PRE_CONDITION, oldPreCondition, preCondition));
 		}
 
-		if (null != newPreCondition || oldPreCondition == getGuard()) {
+		if (null != newPreCondition || oldPreCondition == guard) {
 			setGuard(newPreCondition);
 		}
 	}
@@ -270,7 +270,7 @@ public class ProtocolTransitionImpl extends TransitionImpl implements ProtocolTr
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UML2Package.PROTOCOL_TRANSITION__GUARD, oldGuard, newGuard);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		if (null != getPreCondition() && newGuard != getPreCondition()) {
+		if (null != preCondition && newGuard != preCondition) {
 			setPreCondition(null);
 		}
 		return msgs;

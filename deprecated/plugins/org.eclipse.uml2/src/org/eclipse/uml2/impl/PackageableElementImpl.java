@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PackageableElementImpl.java,v 1.7 2004/06/18 17:44:12 khussey Exp $
+ * $Id: PackageableElementImpl.java,v 1.7.2.1 2004/09/07 20:00:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -209,7 +209,7 @@ public abstract class PackageableElementImpl extends NamedElementImpl implements
 		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PACKAGEABLE_ELEMENT__OWNING_PARAMETER, newOwningParameter, newOwningParameter));
 		}
-		if (null != newOwningParameter || oldOwningParameter == basicGetTemplateParameter()) {
+		if (null != newOwningParameter || oldOwningParameter == templateParameter) {
 			setTemplateParameter(newOwningParameter);
 		}
 	}

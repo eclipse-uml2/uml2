@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.19.2.3 2004/08/25 00:28:35 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.19.2.4 2004/09/07 20:00:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -380,7 +380,7 @@ public abstract class ClassifierImpl extends NamespaceImpl implements Classifier
 		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.CLASSIFIER__OWNING_PARAMETER, newOwningParameter, newOwningParameter));
 		}
-		if (null != newOwningParameter || oldOwningParameter == basicGetTemplateParameter()) {
+		if (null != newOwningParameter || oldOwningParameter == templateParameter) {
 			setTemplateParameter(newOwningParameter);
 		}
 	}

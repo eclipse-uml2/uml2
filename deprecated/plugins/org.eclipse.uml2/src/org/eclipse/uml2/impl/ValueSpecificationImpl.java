@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ValueSpecificationImpl.java,v 1.5 2004/06/18 04:34:32 khussey Exp $
+ * $Id: ValueSpecificationImpl.java,v 1.5.2.1 2004/09/07 20:00:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -189,7 +189,7 @@ public abstract class ValueSpecificationImpl extends TypedElementImpl implements
 		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.VALUE_SPECIFICATION__OWNING_PARAMETER, newOwningParameter, newOwningParameter));
 		}
-		if (null != newOwningParameter || oldOwningParameter == basicGetTemplateParameter()) {
+		if (null != newOwningParameter || oldOwningParameter == templateParameter) {
 			setTemplateParameter(newOwningParameter);
 		}
 	}

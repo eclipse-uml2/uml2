@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.14.2.2 2004/08/25 00:28:36 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.14.2.3 2004/09/07 20:00:13 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -389,7 +389,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__OWNING_PARAMETER, newOwningParameter, newOwningParameter));
 		}
-		if (null != newOwningParameter || oldOwningParameter == basicGetTemplateParameter()) {
+		if (null != newOwningParameter || oldOwningParameter == templateParameter) {
 			setTemplateParameter(newOwningParameter);
 		}
 	}
@@ -680,7 +680,7 @@ public class PropertyImpl extends StructuralFeatureImpl implements Property {
 		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, UML2Package.PROPERTY__OWNING_ASSOCIATION, newOwningAssociation, newOwningAssociation));
 		}
-		if (null != newOwningAssociation || oldOwningAssociation == basicGetAssociation()) {
+		if (null != newOwningAssociation || oldOwningAssociation == association) {
 			setAssociation(newOwningAssociation);
 		}
 	}
