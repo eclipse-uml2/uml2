@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2PropertyDescriptor.java,v 1.1 2004/05/21 20:20:11 khussey Exp $
+ * $Id: UML2PropertyDescriptor.java,v 1.1.2.1 2004/08/06 13:36:07 khussey Exp $
  */
 package org.eclipse.uml2.editor.internal.presentation;
 
@@ -27,7 +27,6 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog;
@@ -109,7 +108,7 @@ public class UML2PropertyDescriptor
 			});
 
 			result = new ExtendedComboBoxCellEditor(composite, choiceOfValues,
-					labelProvider, true);
+				labelProvider, true);
 		} else if (genericFeature instanceof EStructuralFeature) {
 			final EStructuralFeature feature = (EStructuralFeature) genericFeature;
 			final EClassifier eType = feature.getEType();
@@ -146,15 +145,15 @@ public class UML2PropertyDescriptor
 							protected Object openDialogBox(
 									Control cellEditorWindow) {
 								FeatureEditorDialog dialog = new FeatureEditorDialog(
-										cellEditorWindow.getShell(),
-										labelProvider,
-										(EObject) object,
-										feature.getEType(),
-										(List) ((IItemPropertySource) itemPropertyDescriptor
-											.getPropertyValue(object))
-											.getEditableValue(object),
-										getDisplayName(), new ArrayList(
-												choiceOfValues));
+									cellEditorWindow.getShell(),
+									labelProvider,
+									(EObject) object,
+									feature.getEType(),
+									(List) ((IItemPropertySource) itemPropertyDescriptor
+										.getPropertyValue(object))
+										.getEditableValue(object),
+									getDisplayName(), new ArrayList(
+										choiceOfValues));
 								dialog.open();
 								return dialog.getResult();
 							}
@@ -164,7 +163,7 @@ public class UML2PropertyDescriptor
 
 				if (result == null) {
 					result = new ExtendedComboBoxCellEditor(composite,
-							new ArrayList(choiceOfValues), labelProvider, true);
+						new ArrayList(choiceOfValues), labelProvider, true);
 				}
 			} else if (eType instanceof EDataType) {
 				EDataType eDataType = (EDataType) eType;
@@ -178,26 +177,24 @@ public class UML2PropertyDescriptor
 							protected Object openDialogBox(
 									Control cellEditorWindow) {
 								FeatureEditorDialog dialog = new FeatureEditorDialog(
-										cellEditorWindow.getShell(),
-										labelProvider,
-										(EObject) object,
-										feature.getEType(),
-										(List) ((IItemPropertySource) itemPropertyDescriptor
-											.getPropertyValue(object))
-											.getEditableValue(object),
-										getDisplayName(), null);
+									cellEditorWindow.getShell(),
+									labelProvider,
+									(EObject) object,
+									feature.getEType(),
+									(List) ((IItemPropertySource) itemPropertyDescriptor
+										.getPropertyValue(object))
+										.getEditableValue(object),
+									getDisplayName(), null);
 								dialog.open();
 								return dialog.getResult();
 							}
 						};
-					} else if (eDataType == EcorePackage.eINSTANCE
-						.getEBoolean()
-						|| eDataType == EcorePackage.eINSTANCE
-							.getEBooleanObject()) {
+					} else if (Boolean.class == eDataType.getInstanceClass()
+						|| Boolean.TYPE == eDataType.getInstanceClass()) {
 
 						result = new ExtendedComboBoxCellEditor(composite,
-								Arrays.asList(new Object[] {new Boolean(false),
-									new Boolean(true)}), labelProvider, true);
+							Arrays.asList(new Object[]{Boolean.FALSE,
+								Boolean.TRUE}), labelProvider, true);
 					} else {
 						result = new EDataTypeCellEditor(eDataType, composite);
 					}
