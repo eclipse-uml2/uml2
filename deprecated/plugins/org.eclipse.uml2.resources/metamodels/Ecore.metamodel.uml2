@@ -4,20 +4,20 @@
     <contents xmi:type="Complete_0:Complete__Metamodel" xmi:id="_jr6J4K88EdizLvaujP1w9Q"/>
   </eAnnotations>
   <packageImport xmi:id="_m8eNoa86EdiEh75YJ_3n8g">
-    <importedPackage href="pathmap://UML2_LIBRARIES/EcorePrimitiveTypes.library.uml2#_L8agoK86EdieaYgxtVWN8Q"/>
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML2_LIBRARIES/EcorePrimitiveTypes.library.uml2#_L8agoK86EdieaYgxtVWN8Q"/>
   </packageImport>
   <packageImport xmi:type="uml:ProfileApplication" xmi:id="_jngyEK88EdizLvaujP1w9Q">
     <eAnnotations xmi:id="_jnzF8K88EdizLvaujP1w9Q" source="attributes">
       <details xmi:id="_jn5MkK88EdizLvaujP1w9Q" key="version" value="0"/>
     </eAnnotations>
-    <importedPackage href="pathmap://UML2_PROFILES/Complete.profile.uml2#_M7pTkK87Edih9-GG5afQ0g"/>
+    <importedPackage xmi:type="uml:Profile" href="pathmap://UML2_PROFILES/Complete.profile.uml2#_M7pTkK87Edih9-GG5afQ0g"/>
     <importedProfile href="pathmap://UML2_PROFILES/Complete.profile.uml2#_M7pTkK87Edih9-GG5afQ0g"/>
   </packageImport>
   <packageImport xmi:type="uml:ProfileApplication" xmi:id="_jsk4QK88EdizLvaujP1w9Q">
     <eAnnotations xmi:id="_js9SwK88EdizLvaujP1w9Q" source="attributes">
       <details xmi:id="_js9Swa88EdizLvaujP1w9Q" key="version" value="0"/>
     </eAnnotations>
-    <importedPackage href="pathmap://UML2_PROFILES/Basic.profile.uml2#_6mFRgK86Edih9-GG5afQ0g"/>
+    <importedPackage xmi:type="uml:Profile" href="pathmap://UML2_PROFILES/Basic.profile.uml2#_6mFRgK86Edih9-GG5afQ0g"/>
     <importedProfile href="pathmap://UML2_PROFILES/Basic.profile.uml2#_6mFRgK86Edih9-GG5afQ0g"/>
   </packageImport>
   <ownedMember xmi:type="uml:Class" xmi:id="_m8eNoq86EdiEh75YJ_3n8g" name="EAttribute">

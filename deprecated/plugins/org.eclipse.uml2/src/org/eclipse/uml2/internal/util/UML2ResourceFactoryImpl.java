@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2ResourceFactoryImpl.java,v 1.1.2.1 2004/07/14 16:02:16 khussey Exp $
+ * $Id: UML2ResourceFactoryImpl.java,v 1.1.2.2 2004/09/07 19:47:12 khussey Exp $
  */
 package org.eclipse.uml2.internal.util;
 
@@ -64,6 +64,8 @@ public class UML2ResourceFactoryImpl extends ResourceFactoryImpl implements UML2
 		resource.getDefaultSaveOptions().put(
 			XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
 		resource.getDefaultSaveOptions().put(XMIResource.OPTION_USE_XMI_TYPE,
+			Boolean.TRUE);
+		resource.getDefaultSaveOptions().put(XMIResource.OPTION_SAVE_TYPE_INFORMATION,
 			Boolean.TRUE);
 
 		return resource;

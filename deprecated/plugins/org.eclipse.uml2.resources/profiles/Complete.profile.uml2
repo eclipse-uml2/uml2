@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Profile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xmi:id="_M7pTkK87Edih9-GG5afQ0g" name="Complete" metaclassReference="_O1-5UK87Edih9-GG5afQ0g">
+<uml:Profile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xmi:id="_M7pTkK87Edih9-GG5afQ0g" name="Complete" metaclassReference="_O1-5UK87Edih9-GG5afQ0g">
   <eAnnotations xmi:id="_QHWakK87Edih9-GG5afQ0g" source="attributes">
     <details xmi:id="_QHchMK87Edih9-GG5afQ0g" key="version" value="0"/>
   </eAnnotations>

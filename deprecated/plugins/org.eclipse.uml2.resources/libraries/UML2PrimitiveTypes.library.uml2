@@ -7,7 +7,7 @@
     <eAnnotations xmi:id="_hLjtAK88EdizLvaujP1w9Q" source="attributes">
       <details xmi:id="_hLjtAa88EdizLvaujP1w9Q" key="version" value="0"/>
     </eAnnotations>
-    <importedPackage href="pathmap://UML2_PROFILES/Basic.profile.uml2#_6mFRgK86Edih9-GG5afQ0g"/>
+    <importedPackage xmi:type="uml:Profile" href="pathmap://UML2_PROFILES/Basic.profile.uml2#_6mFRgK86Edih9-GG5afQ0g"/>
     <importedProfile href="pathmap://UML2_PROFILES/Basic.profile.uml2#_6mFRgK86Edih9-GG5afQ0g"/>
   </packageImport>
   <ownedMember xmi:type="uml:PrimitiveType" xmi:id="_IXfBUK86EdieaYgxtVWN8Q" name="Boolean"/>
