@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # The current direcotry
 currentPath=$PWD
 
