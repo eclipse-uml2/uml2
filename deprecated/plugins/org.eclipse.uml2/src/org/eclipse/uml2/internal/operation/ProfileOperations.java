@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.8.2.9 2004/10/19 21:25:45 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.8.2.10 2004/10/20 16:13:27 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -616,7 +616,9 @@ public final class ProfileOperations
 	 */
 	public static void apply(Profile profile, org.eclipse.uml2.Package package_) {
 
-		if (null == profile || !isDefined(profile)) {
+		if (null == profile
+			|| null == getEPackage(profile, profile.getVersion())) {
+
 			throw new IllegalArgumentException(String.valueOf(profile));
 		}
 
@@ -624,15 +626,39 @@ public final class ProfileOperations
 			throw new IllegalArgumentException(String.valueOf(package_));
 		}
 
-		String appliedVersion = getAppliedVersion(profile, package_);
-
-		if (profile.getVersion().equals(appliedVersion)) {
-			throw new IllegalArgumentException(String.valueOf(profile));
-		}
-
 		ProfileApplication profileApplication = null;
 
-		if (null == appliedVersion) {
+		for (Iterator allProfileApplications = getAllProfileApplications(
+			package_).iterator(); allProfileApplications.hasNext();) {
+
+			profileApplication = (ProfileApplication) allProfileApplications
+				.next();
+
+			Profile importedProfile = profileApplication.getImportedProfile();
+
+			if (profile == importedProfile) {
+
+				if (profile.getVersion().equals(getVersion(profileApplication))) {
+					throw new IllegalArgumentException(String.valueOf(profile));
+				}
+
+				break;
+			} else {
+				EPackage importedEPackage = getEPackage(importedProfile,
+					getVersion(profileApplication));
+
+				if (null != importedEPackage
+					&& getEPackage(profile, profile.getVersion()).getNsURI()
+						.equals(importedEPackage.getNsURI())) {
+
+					throw new IllegalArgumentException(String.valueOf(profile));
+				}
+
+				profileApplication = null;
+			}
+		}
+
+		if (null == profileApplication) {
 			profileApplication = (ProfileApplication) package_
 				.createPackageImport(UML2Package.eINSTANCE
 					.getProfileApplication());
@@ -640,9 +666,8 @@ public final class ProfileOperations
 
 			package_.getAppliedProfiles().add(profileApplication);
 		} else {
-			profileApplication = getProfileApplication(profile, package_);
 
-			if (null == profileApplication) {
+			if (package_ != profileApplication.getImportingNamespace()) {
 				throw new IllegalArgumentException(String.valueOf(package_));
 			}
 
@@ -894,6 +919,29 @@ public final class ProfileOperations
 	}
 
 	/**
+	 * Retrieves the set of all profile applications on the specified package,
+	 * including profiles applications on its nesting package(s).
+	 * 
+	 * @param package_
+	 *            The package for which to retrieve the profile applications.
+	 * @return The profile applications on the package.
+	 */
+	protected static Set getAllProfileApplications(
+			org.eclipse.uml2.Package package_) {
+		Set allProfileApplications = new HashSet();
+
+		while (null != package_) {
+			allProfileApplications.addAll(package_.getAppliedProfiles());
+
+			package_ = null == package_.getNamespace()
+				? null
+				: package_.getNamespace().getNearestPackage();
+		}
+
+		return allProfileApplications;
+	}
+
+	/**
 	 * Retrieves the set of all profiles that are applied to the specified
 	 * package, including profiles applied to its nesting package(s).
 	 * 
@@ -968,9 +1016,7 @@ public final class ProfileOperations
 			package_);
 
 		if (null != profileApplication) {
-			return (String) getEAnnotation(ANNOTATION_SOURCE__ATTRIBUTES,
-				profileApplication).getDetails().get(
-				ANNOTATION_DETAILS_KEY__VERSION);
+			return getVersion(profileApplication);
 		}
 
 		Namespace namespace = package_.getNamespace();
@@ -980,6 +1026,12 @@ public final class ProfileOperations
 		}
 
 		return null;
+	}
+
+	protected static String getVersion(ProfileApplication profileApplication) {
+		return (String) getEAnnotation(ANNOTATION_SOURCE__ATTRIBUTES,
+			profileApplication).getDetails().get(
+			ANNOTATION_DETAILS_KEY__VERSION);
 	}
 
 	protected static ProfileApplication getProfileApplication(Profile profile,
