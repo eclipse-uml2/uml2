@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.8.2.1 2004/08/19 14:17:59 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.8.2.2 2004/08/19 14:42:15 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -274,6 +274,7 @@ public class ElementItemProvider
 		}
 
 		StringBuffer segment = new StringBuffer();
+
 		segment.append('{');
 
 		EStructuralFeature eContainingFeature = eObject.eContainingFeature();

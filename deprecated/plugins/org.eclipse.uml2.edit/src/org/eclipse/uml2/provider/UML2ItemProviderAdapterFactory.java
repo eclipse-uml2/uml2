@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2ItemProviderAdapterFactory.java,v 1.3.2.1 2004/08/19 14:17:58 khussey Exp $
+ * $Id: UML2ItemProviderAdapterFactory.java,v 1.3.2.2 2004/08/19 14:42:15 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -83,6 +83,7 @@ public class UML2ItemProviderAdapterFactory extends UML2AdapterFactory implement
 		supportedTypes.add(IItemPropertySource.class);
 		supportedTypes.add(IEditingDomainItemProvider.class);
 		supportedTypes.add(IItemLabelProvider.class);
+
 		supportedTypes.add(IItemQualifiedTextProvider.class);
 	}
 

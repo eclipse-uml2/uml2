@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: NamedElementItemProvider.java,v 1.7.2.1 2004/08/19 14:17:59 khussey Exp $
+ * $Id: NamedElementItemProvider.java,v 1.7.2.2 2004/08/19 14:42:15 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -269,6 +269,7 @@ public class NamedElementItemProvider
 	 */
 	public String getQualifiedText(Object object) {
 		String label = ((NamedElement) object).getQualifiedName();
+
 		return null == label || 0 == label.length()
 			? super.getQualifiedText(object)
 			: label;

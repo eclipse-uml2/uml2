@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2PropertyDescriptor.java,v 1.1.2.2 2004/08/19 14:17:54 khussey Exp $
+ * $Id: UML2PropertyDescriptor.java,v 1.1.2.3 2004/08/19 14:42:09 khussey Exp $
  */
 package org.eclipse.uml2.editor.internal.presentation;
 
@@ -41,7 +41,7 @@ import org.eclipse.uml2.edit.internal.provider.UML2ItemPropertyDescriptor;
 import org.eclipse.uml2.provider.IItemQualifiedTextProvider;
 
 /**
- *  
+ * 
  */
 public class UML2PropertyDescriptor
 	extends PropertyDescriptor {
@@ -99,6 +99,7 @@ public class UML2PropertyDescriptor
 		} else if (genericFeature instanceof EStructuralFeature) {
 			final EStructuralFeature feature = (EStructuralFeature) genericFeature;
 			final EClassifier eType = feature.getEType();
+
 			Collection choices = itemPropertyDescriptor
 				.getChoiceOfValues(object);
 

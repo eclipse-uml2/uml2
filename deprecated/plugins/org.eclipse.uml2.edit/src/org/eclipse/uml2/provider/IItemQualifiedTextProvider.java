@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: IItemQualifiedTextProvider.java,v 1.1.2.1 2004/08/19 14:17:58 khussey Exp $
+ * $Id: IItemQualifiedTextProvider.java,v 1.1.2.2 2004/08/19 14:42:15 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -18,7 +18,7 @@ package org.eclipse.uml2.provider;
 public interface IItemQualifiedTextProvider {
 
 	/**
-	 * Fetches qualified text for this object instance.
+	 * Fetches qualified text for the specified object instance.
 	 * 
 	 * @param object
 	 *            The object instance for which to fetch qualified text.

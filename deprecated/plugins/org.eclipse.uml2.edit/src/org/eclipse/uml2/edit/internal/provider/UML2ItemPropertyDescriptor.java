@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2ItemPropertyDescriptor.java,v 1.4.2.1 2004/08/19 14:17:58 khussey Exp $
+ * $Id: UML2ItemPropertyDescriptor.java,v 1.4.2.2 2004/08/19 14:42:13 khussey Exp $
  */
 package org.eclipse.uml2.edit.internal.provider;
 
@@ -36,7 +36,7 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.uml2.provider.IItemQualifiedTextProvider;
 
 /**
- *  
+ * 
  */
 public class UML2ItemPropertyDescriptor
 	extends ItemPropertyDescriptor {
