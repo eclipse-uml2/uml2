@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementItemProviderTest.java,v 1.1.2.1 2004/09/14 19:31:14 khussey Exp $
+ * $Id: ElementItemProviderTest.java,v 1.1.2.2 2004/09/14 23:42:16 khussey Exp $
  */
 package org.eclipse.uml2.provider.tests;
 
@@ -23,6 +23,7 @@ import junit.framework.TestCase;
 
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.CommandStack;
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -226,8 +227,9 @@ public abstract class ElementItemProviderTest
 		Reference reference = new PhantomReference(getModelObject(),
 			referenceQueue);
 
-		adapterFactory
-			.adapt(getModelObject(), IEditingDomainItemProvider.class);
+		Adapter adapter = adapterFactory.adapt(getModelObject(),
+			IEditingDomainItemProvider.class);
+		adapter.setTarget(null);
 
 		getModelObject().eAdapters().clear();
 		setModelObject(null);
@@ -256,10 +258,11 @@ public abstract class ElementItemProviderTest
 		Reference reference = new PhantomReference(getModelObject(),
 			referenceQueue);
 
-		IDisposable disposable = (IDisposable) adapterFactory.adapt(
-			getModelObject(), IEditingDomainItemProvider.class);
+		Adapter adapter = adapterFactory.adapt(getModelObject(),
+			IEditingDomainItemProvider.class);
+		adapter.setTarget(null);
 
-		disposable.dispose();
+		((IDisposable) adapter).dispose();
 		setModelObject(null);
 
 		System.gc();
