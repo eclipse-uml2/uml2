@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2PackageImpl.java,v 1.16 2004/06/18 04:34:31 khussey Exp $
+ * $Id: UML2PackageImpl.java,v 1.16.2.1 2004/07/20 19:16:21 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -1831,10 +1831,10 @@ public class UML2PackageImpl extends EPackageImpl implements UML2Package {
 	 * @generated
 	 */
 	public static UML2Package init() {
-		if (isInited) return (UML2Package)EPackage.Registry.INSTANCE.get(UML2Package.eNS_URI);
+		if (isInited) return (UML2Package)EPackage.Registry.INSTANCE.getEPackage(UML2Package.eNS_URI);
 
 		// Obtain or create and register package
-		UML2PackageImpl theUML2Package = (UML2PackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof UML2PackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new UML2PackageImpl());
+		UML2PackageImpl theUML2Package = (UML2PackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof UML2PackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new UML2PackageImpl());
 
 		isInited = true;
 
