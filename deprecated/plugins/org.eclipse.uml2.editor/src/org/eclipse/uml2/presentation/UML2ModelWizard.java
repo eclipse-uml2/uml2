@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2ModelWizard.java,v 1.5.2.1 2004/07/16 21:05:25 khussey Exp $
+ * $Id: UML2ModelWizard.java,v 1.5.2.2 2004/07/20 19:14:09 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.MissingResourceException;
 import java.util.StringTokenizer;
 
 import java.util.Collections;
@@ -429,7 +430,7 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 				if (eClassifier instanceof EClass) {
 					EClass eClass = (EClass)eClassifier;
 					if (!eClass.isAbstract()) {
-						objectNames.add(eClass.getName());
+						objectNames.add(getLabel(eClass));
 					}
 				}
 			}
@@ -504,8 +505,8 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 				initialObjectField.setLayoutData(data);
 			}
 
-			initialObjectField.add(UML2EditPlugin.INSTANCE.getString("_UI_" + umL2Package.getModel().getName() + "_type")); //$NON-NLS-1$ //$NON-NLS-2$
-			initialObjectField.add(UML2EditPlugin.INSTANCE.getString("_UI_" + umL2Package.getProfile().getName() + "_type")); //$NON-NLS-1$ //$NON-NLS-2$
+			initialObjectField.add(getLabel(umL2Package.getModel()));
+			initialObjectField.add(getLabel(umL2Package.getProfile()));
 
 			initialObjectField.addSelectionListener
 				(new SelectionAdapter() {
@@ -572,10 +573,22 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 		 * @generated
 		 */
 		public String getInitialObjectName() {
-			return
-				initialObjectName == null ?
-					initialObjectField.getText() :
-					initialObjectName;
+			if (initialObjectName != null) {
+				return initialObjectName;
+			}
+			else {
+				String label = initialObjectField.getText();
+				for (Iterator classifier = umL2Package.getEClassifiers().iterator(); classifier.hasNext(); ) {
+					EClassifier eClassifier = (EClassifier)classifier.next();
+					if (eClassifier instanceof EClass) {
+						EClass eClass = (EClass)eClassifier;
+						if (!eClass.isAbstract() && getLabel(eClass).equals(label)) {
+							return eClass.getName();
+						}
+					}
+				}
+				return label;
+			}
 		}
 
 		/**
@@ -588,6 +601,21 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 				encoding == null ?
 					encodingField.getText() :
 					encoding;
+		}
+		/**
+		 * Returns the label of the specified element.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		protected String getLabel(EClass eClass) {
+			String name = eClass.getName();
+			try {
+				return UML2EditPlugin.INSTANCE.getString("_UI_" + name + "_type");
+			}
+			catch(MissingResourceException mre) {
+			}
+			return name;
 		}
 	}
 
