@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredActivityNodeImplTest.java,v 1.3 2004/05/20 03:03:32 khussey Exp $
+ * $Id: StructuredActivityNodeImplTest.java,v 1.3.2.1 2004/07/16 19:43:27 khussey Exp $
  */
 package org.eclipse.uml2.impl.tests;
 
@@ -373,12 +373,10 @@ public class StructuredActivityNodeImplTest extends ActionImplTest {
 	public void testSetActivity__Activity() {
 		testSetActivity__ActivityGen();
 
-		try {
-			getFixture().setActivity(UML2Factory.eINSTANCE.createActivity());
-			fail();
-		} catch (UnsupportedOperationException uoe) {
-			// pass
-		}
+		Activity activity = UML2Factory.eINSTANCE.createActivity();
+		getFixture().setActivity(activity);
+
+		assertNotSame(activity, getFixture().getActivity());
 	}
 
 	/**
@@ -421,12 +419,10 @@ public class StructuredActivityNodeImplTest extends ActionImplTest {
 	public void testSetActivityGroup_activity__Activity() {
 		testSetActivityGroup_activity__ActivityGen();
 
-		try {
-			getFixture().setActivityGroup_activity(UML2Factory.eINSTANCE.createActivity());
-			fail();
-		} catch (UnsupportedOperationException uoe) {
-			// pass
-		}
+		Activity activity = UML2Factory.eINSTANCE.createActivity();
+		getFixture().setActivityGroup_activity(activity);
+
+		assertNotSame(activity, getFixture().getActivityGroup_activity());
 	}
 
 	/**
