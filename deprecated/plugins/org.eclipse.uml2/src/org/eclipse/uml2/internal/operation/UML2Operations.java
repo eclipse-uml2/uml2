@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2Operations.java,v 1.8.2.2 2004/10/19 21:25:45 khussey Exp $
+ * $Id: UML2Operations.java,v 1.8.2.3 2004/10/20 16:06:08 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -272,11 +272,16 @@ class UML2Operations {
 
 	protected static EAnnotation getEAnnotation(String source,
 			EModelElement eModelElement) {
-		EAnnotation eAnnotation = eModelElement.getEAnnotation(source);
 
-		return null == eAnnotation
-			? EcoreFactory.eINSTANCE.createEAnnotation()
-			: eAnnotation;
+		if (null != eModelElement) {
+			EAnnotation eAnnotation = eModelElement.getEAnnotation(source);
+
+			if (null != eAnnotation) {
+				return eAnnotation;
+			}
+		}
+
+		return EcoreFactory.eINSTANCE.createEAnnotation();
 	}
 
 	protected static boolean safeEquals(Object thisObject, Object thatObject) {
