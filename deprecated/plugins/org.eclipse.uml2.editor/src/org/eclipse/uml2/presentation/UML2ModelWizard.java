@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: UML2ModelWizard.java,v 1.5 2004/06/18 04:24:45 khussey Exp $
+ * $Id: UML2ModelWizard.java,v 1.5.2.1 2004/07/16 21:05:25 khussey Exp $
  */
 package org.eclipse.uml2.presentation;
 
@@ -86,6 +86,7 @@ import org.eclipse.ui.part.ISetSelectionTarget;
 
 import org.eclipse.uml2.UML2Factory;
 import org.eclipse.uml2.UML2Package;
+import org.eclipse.uml2.provider.UML2EditPlugin;
 
 
 
@@ -503,8 +504,8 @@ public class UML2ModelWizard extends Wizard implements INewWizard {
 				initialObjectField.setLayoutData(data);
 			}
 
-			initialObjectField.add(umL2Package.getModel().getName());
-			initialObjectField.add(umL2Package.getProfile().getName());
+			initialObjectField.add(UML2EditPlugin.INSTANCE.getString("_UI_" + umL2Package.getModel().getName() + "_type")); //$NON-NLS-1$ //$NON-NLS-2$
+			initialObjectField.add(UML2EditPlugin.INSTANCE.getString("_UI_" + umL2Package.getProfile().getName() + "_type")); //$NON-NLS-1$ //$NON-NLS-2$
 
 			initialObjectField.addSelectionListener
 				(new SelectionAdapter() {
