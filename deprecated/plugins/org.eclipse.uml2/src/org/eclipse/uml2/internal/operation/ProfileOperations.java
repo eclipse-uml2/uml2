@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.8.2.7 2004/09/15 16:46:31 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.8.2.8 2004/09/15 17:02:49 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -617,10 +617,11 @@ public final class ProfileOperations
 			TreeIterator eAllContents = new AbstractTreeIterator(package_, true) {
 
 				public Iterator getChildren(Object parent) {
-					return new ArrayList(((EObject) parent).eContents())
-						.iterator();
+					return ((EObject) parent).eContents().iterator();
 				}
 			};
+
+			List eAnnotationsToRemove = new ArrayList();
 
 			while (eAllContents.hasNext()) {
 				EObject eObject = (EObject) eAllContents.next();
@@ -662,10 +663,15 @@ public final class ProfileOperations
 					}
 
 					if (appliedStereotypes.isEmpty()) {
-						element.getEAnnotations().remove(
-							appliedStereotypesEAnnotation);
+						eAnnotationsToRemove.add(appliedStereotypesEAnnotation);
 					}
 				}
+			}
+
+			for (Iterator eAnnotations = eAnnotationsToRemove.iterator(); eAnnotations
+				.hasNext();) {
+
+				((EAnnotation) eAnnotations.next()).setEModelElement(null);
 			}
 		}
 
