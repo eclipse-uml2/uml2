@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.8.2.2 2004/08/19 14:42:15 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.8.2.3 2004/08/23 22:32:43 khussey Exp $
  */
 package org.eclipse.uml2.provider;
 
@@ -43,7 +43,7 @@ import org.eclipse.uml2.edit.internal.provider.UML2ItemPropertyDescriptor;
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.Element} object.
  * <!-- begin-user-doc -->
- * @extends 
+ * @extends IItemQualifiedTextProvider
  * <!-- end-user-doc -->
  * @generated
  */
