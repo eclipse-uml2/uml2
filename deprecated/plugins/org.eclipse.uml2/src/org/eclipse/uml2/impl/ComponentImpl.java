@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.17.2.1 2004/08/16 17:55:12 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.17.2.2 2004/08/18 19:05:59 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -195,7 +195,7 @@ public class ComponentImpl extends ClassImpl implements Component {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-	 */
+     */
 	public Interface getRequired(String unqualifiedName) {
     	for (Iterator i = getRequireds().iterator(); i.hasNext(); ) {
     		Interface namedRequired = (Interface) i.next();
