@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CacheAdapter.java,v 1.6.2.3 2004/07/16 03:22:12 khussey Exp $
+ * $Id: CacheAdapter.java,v 1.6.2.4 2004/09/14 15:18:43 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -43,8 +43,7 @@ public class CacheAdapter
 			EList eAdapters = notifier.eAdapters();
 
 			if (!eAdapters.contains(this)) {
-				eAdapters.add(this);
-				return true;
+				return eAdapters.add(this);
 			}
 		}
 
@@ -78,16 +77,28 @@ public class CacheAdapter
 							adapt((Notifier) newValues.next());
 						}
 						break;
+					case Notification.SET :
+						adapt((Notifier) msg.getNewValue());
+						break;
 				}
 			}
 
 			clear(((EObject) notifier).eResource());
 		} else if (Resource.class.isInstance(notifier)) {
 
-			if (Resource.RESOURCE__IS_LOADED == msg.getFeatureID(getClass())) {
+			if (Resource.RESOURCE__CONTENTS == msg.getFeatureID(Resource.class)) {
 				clear();
 			}
 		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.emf.common.notify.Adapter#setTarget(org.eclipse.emf.common.notify.Notifier)
+	 */
+	public void setTarget(Notifier newTarget) {
+		// do nothing
 	}
 
 	public void clear() {
