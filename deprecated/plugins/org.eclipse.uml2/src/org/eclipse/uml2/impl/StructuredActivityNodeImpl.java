@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.15.2.1 2004/07/16 19:42:51 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.15.2.2 2004/07/21 15:52:37 khussey Exp $
  */
 package org.eclipse.uml2.impl;
 
@@ -676,6 +676,7 @@ public class StructuredActivityNodeImpl extends ActionImpl implements Structured
 	}
 
 	public void setActivity(Activity newActivity) {
+		// do nothing
 	}
 
 	/**
