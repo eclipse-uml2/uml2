@@ -12,7 +12,7 @@
  * Contributors: 
  *   IBM - Initial API and implementation
  *
- * $Id: feature.xml,v 1.4.2.1 2004/07/14 14:52:07 khussey Exp $
+ * $Id: feature.xml,v 1.4.2.2 2004/07/14 16:58:14 khussey Exp $
  */
 -->
 
@@ -51,7 +51,7 @@
       id="org.eclipse.uml2.examples"
       download-size="0"
       install-size="0"
-      version="1.0.0"/>
+      version="1.0.1"/>
 
    <plugin
       id="org.eclipse.uml2.examples.ui"
