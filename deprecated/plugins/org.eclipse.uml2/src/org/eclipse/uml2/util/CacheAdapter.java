@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: CacheAdapter.java,v 1.6.2.1 2004/07/14 20:09:00 khussey Exp $
+ * $Id: CacheAdapter.java,v 1.6.2.2 2004/07/16 02:16:41 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -47,7 +47,7 @@ public class CacheAdapter
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
 
@@ -82,15 +82,17 @@ public class CacheAdapter
 			}
 
 			clear(((EObject) notifier).eResource());
+			clear(null);
 		} else if (Resource.class.isInstance(notifier)) {
-			clear((Resource) notifier);
-		}
 
-		clear();
+			if (Resource.RESOURCE__IS_LOADED == msg.getFeatureID(null)) {
+				clear();
+			}
+		}
 	}
 
 	public void clear() {
-		clear(null);
+		values.clear();
 	}
 
 	public void clear(Resource resource) {
