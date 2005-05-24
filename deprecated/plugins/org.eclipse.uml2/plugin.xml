@@ -3,7 +3,7 @@
 
 <!--
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Common Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,14 +12,14 @@
  * Contributors: 
  *   IBM - Initial API and implementation
  *
- * $Id: plugin.xml,v 1.10.2.2 2004/10/19 19:12:22 khussey Exp $
+ * $Id: plugin.xml,v 1.10.2.3 2005/05/24 21:30:44 khussey Exp $
  */
 -->
 
 <plugin
    id="org.eclipse.uml2"
    name="%pluginName"
-   version="1.0.2"
+   version="1.0.3"
    provider-name="%providerName"
    class="org.eclipse.uml2.UML2Plugin$Implementation">
 

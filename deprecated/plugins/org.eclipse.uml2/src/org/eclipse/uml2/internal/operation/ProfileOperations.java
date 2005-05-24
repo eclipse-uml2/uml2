@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Common Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.8.2.13 2004/11/12 16:35:13 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.8.2.14 2005/05/24 21:30:44 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -69,6 +69,7 @@ import org.eclipse.uml2.Property;
 import org.eclipse.uml2.Stereotype;
 import org.eclipse.uml2.Type;
 import org.eclipse.uml2.UML2Package;
+import org.eclipse.uml2.UML2Plugin;
 import org.eclipse.uml2.VisibilityKind;
 import org.eclipse.uml2.util.UML2Resource;
 import org.eclipse.uml2.util.UML2Switch;
@@ -531,8 +532,7 @@ public final class ProfileOperations
 					StereotypeOperations.ANNOTATION_SOURCE__ENUMERATION_LITERAL,
 					eEnumLiteral).getReferences().add(enumerationLiteral);
 
-				eEnumLiteral.setName(getValidIdentifier(enumerationLiteral
-					.getName()));
+				eEnumLiteral.setName(enumerationLiteral.getName());
 				eEnumLiteral.setValue(index);
 
 				eEnum.getELiterals().add(eEnumLiteral);
@@ -805,7 +805,7 @@ public final class ProfileOperations
 							break;
 					}
 				} catch (Exception e) {
-					System.err.println(e);
+					UML2Plugin.INSTANCE.log(e);
 				}
 			}
 		}
@@ -903,21 +903,29 @@ public final class ProfileOperations
 				EList sourceEList = (EList) sourceValue;
 
 				for (int i = 0; i < sourceEList.size(); i++) {
-					targetEList.add(i, targetEEnum.getEEnumLiteral(
-						((EEnumLiteral) sourceEList.get(i)).getName())
-						.getInstance());
+					targetEList.add(i, getTargetEEnumLiteral(targetEEnum,
+						(EEnumLiteral) sourceEList.get(i)).getInstance());
 				}
 			} else {
-				targetEList.add(targetEEnum.getEEnumLiteral(
-					((EEnumLiteral) sourceValue).getName()).getInstance());
+				targetEList.add(getTargetEEnumLiteral(targetEEnum,
+					(EEnumLiteral) sourceValue).getInstance());
 			}
 		} else {
-			targetEObject.eSet(targetEStructuralFeature, targetEEnum
-				.getEEnumLiteral(
-					((EEnumLiteral) (sourceEStructuralFeature.isMany()
-						? ((EList) sourceValue).get(0)
-						: sourceValue)).getName()).getInstance());
+			targetEObject.eSet(targetEStructuralFeature, getTargetEEnumLiteral(
+				targetEEnum, (EEnumLiteral) (sourceEStructuralFeature.isMany()
+					? ((EList) sourceValue).get(0)
+					: sourceValue)).getInstance());
 		}
+	}
+
+	protected static EEnumLiteral getTargetEEnumLiteral(EEnum targetEEnum,
+			EEnumLiteral sourceEEnumLiteral) {
+		EEnumLiteral targetEEnumLiteral = targetEEnum
+			.getEEnumLiteral(sourceEEnumLiteral.getName());
+		return null == targetEEnumLiteral
+			? targetEEnum.getEEnumLiteral(StereotypeOperations
+				.getEnumerationLiteral(sourceEEnumLiteral).getName())
+			: targetEEnumLiteral;
 	}
 
 	/**

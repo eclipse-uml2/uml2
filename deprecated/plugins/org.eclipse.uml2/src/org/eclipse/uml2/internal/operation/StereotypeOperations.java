@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Common Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.10.2.2 2004/10/19 21:25:45 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.10.2.3 2005/05/24 21:30:44 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -891,9 +891,8 @@ public final class StereotypeOperations
 					&& EnumerationLiteral.class.isInstance(value)) {
 
 					value = ((EEnum) eStructuralFeature.getEType())
-						.getEEnumLiteral(
-							getValidIdentifier(((EnumerationLiteral) value)
-								.getName())).getInstance();
+						.getEEnumLiteral(((EnumerationLiteral) value).getName())
+						.getInstance();
 				}
 
 				if (null == value) {
