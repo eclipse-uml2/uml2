@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Common Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileOperationsTest.java,v 1.1 2004/04/29 14:56:55 khussey Exp $
+ * $Id: ProfileOperationsTest.java,v 1.1.2.1 2005/05/25 17:21:21 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation.tests;
 
@@ -51,7 +51,7 @@ import org.eclipse.uml2.internal.operation.StereotypeOperations;
  * A test case for the '<em><b>Profile Operations</b></em>' utility.
  */
 public class ProfileOperationsTest
-	extends UML2OperationsTest {
+		extends UML2OperationsTest {
 
 	public static void main(String[] args) {
 		TestRunner.run(ProfileOperationsTest.class);
@@ -77,7 +77,7 @@ public class ProfileOperationsTest
 	 * @see junit.framework.TestCase#setUp()
 	 */
 	protected void setUp()
-		throws Exception {
+			throws Exception {
 
 		super.setUp();
 
@@ -101,15 +101,17 @@ public class ProfileOperationsTest
 
 		ExtensionEnd extensionEnd = (ExtensionEnd) extension
 			.createOwnedEnd(UML2Package.eINSTANCE.getExtensionEnd());
-		extensionEnd.setName(StereotypeOperations.STEREOTYPE_EXTENSION_ROLE_PREFIX
-			+ stereotype.getName());
+		extensionEnd
+			.setName(StereotypeOperations.STEREOTYPE_EXTENSION_ROLE_PREFIX
+				+ stereotype.getName());
 		extensionEnd.setType(stereotype);
 
 		Property stereotypeEnd = stereotype
 			.createOwnedAttribute(UML2Package.eINSTANCE.getProperty());
 		stereotypeEnd.setAssociation(extension);
-		stereotypeEnd.setName(StereotypeOperations.METACLASS_EXTENSION_ROLE_PREFIX
-			+ UML2Package.eINSTANCE.getClass_().getName());
+		stereotypeEnd
+			.setName(StereotypeOperations.METACLASS_EXTENSION_ROLE_PREFIX
+				+ UML2Package.eINSTANCE.getClass_().getName());
 		stereotypeEnd.setType(metamodel.getOwnedType(UML2Package.eINSTANCE
 			.getClass_().getName()));
 
@@ -196,11 +198,11 @@ public class ProfileOperationsTest
 
 		EnumerationLiteral enumerationLiteral0 = enumeration
 			.createOwnedLiteral(UML2Package.eINSTANCE.getEnumerationLiteral());
-		enumerationLiteral0.setName(getName() + String.valueOf(0));
+		enumerationLiteral0.setName(getName() + ' ' + String.valueOf(0));
 
 		EnumerationLiteral enumerationLiteral1 = enumeration
 			.createOwnedLiteral(UML2Package.eINSTANCE.getEnumerationLiteral());
-		enumerationLiteral1.setName(getName() + String.valueOf(1));
+		enumerationLiteral1.setName(getName() + ' ' + String.valueOf(1));
 
 		Property enumerationProperty = stereotype
 			.createOwnedAttribute(UML2Package.eINSTANCE.getProperty());
@@ -402,13 +404,14 @@ public class ProfileOperationsTest
 			.getEStructuralFeature("enumeration"); //$NON-NLS-1$
 		stereotypeEObject.eSet(enumerationEStructuralFeature,
 			((EEnum) enumerationEStructuralFeature.getEType()).getEEnumLiteral(
-				getName() + String.valueOf(0)).getInstance());
+				getName() + ' ' + String.valueOf(0)).getInstance());
 
 		EStructuralFeature enumerationsEStructuralFeature = eClass
 			.getEStructuralFeature("enumerations"); //$NON-NLS-1$
 		((List) stereotypeEObject.eGet(enumerationsEStructuralFeature))
 			.add(((EEnum) enumerationsEStructuralFeature.getEType())
-				.getEEnumLiteral(getName() + String.valueOf(1)).getInstance());
+				.getEEnumLiteral(getName() + ' ' + String.valueOf(1))
+				.getInstance());
 
 		EStructuralFeature timestampEStructuralFeature = eClass
 			.getEStructuralFeature("timestamp"); //$NON-NLS-1$
@@ -483,14 +486,16 @@ public class ProfileOperationsTest
 
 		enumerationEStructuralFeature = eClass
 			.getEStructuralFeature("enumeration"); //$NON-NLS-1$
-		assertEquals(((EEnum) enumerationEStructuralFeature.getEType())
-			.getEEnumLiteral(getName() + String.valueOf(0)).getInstance(),
+		assertEquals(
+			((EEnum) enumerationEStructuralFeature.getEType()).getEEnumLiteral(
+				getName() + ' ' + String.valueOf(0)).getInstance(),
 			stereotypeEObject.eGet(enumerationEStructuralFeature));
 
 		enumerationsEStructuralFeature = eClass
 			.getEStructuralFeature("enumerations"); //$NON-NLS-1$
-		assertEquals(((EEnum) enumerationEStructuralFeature.getEType())
-			.getEEnumLiteral(getName() + String.valueOf(1)).getInstance(),
+		assertEquals(
+			((EEnum) enumerationEStructuralFeature.getEType()).getEEnumLiteral(
+				getName() + ' ' + String.valueOf(1)).getInstance(),
 			((List) stereotypeEObject.eGet(enumerationsEStructuralFeature))
 				.get(0));
 

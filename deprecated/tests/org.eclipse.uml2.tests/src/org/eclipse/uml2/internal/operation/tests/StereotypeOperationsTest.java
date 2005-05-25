@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2004 IBM Corporation and others.
+ * Copyright (c) 2003, 2005 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Common Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: StereotypeOperationsTest.java,v 1.1 2004/04/29 14:56:55 khussey Exp $
+ * $Id: StereotypeOperationsTest.java,v 1.1.2.1 2005/05/25 17:21:21 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation.tests;
 
@@ -50,7 +50,7 @@ import org.eclipse.uml2.internal.operation.StereotypeOperations;
  * A test case for the '<em><b>Stereotype Operations</b></em>' utility.
  */
 public class StereotypeOperationsTest
-	extends UML2OperationsTest {
+		extends UML2OperationsTest {
 
 	/**
 	 * The enumeration for this Stereotype Operations test case.
@@ -95,7 +95,7 @@ public class StereotypeOperationsTest
 	 * @see junit.framework.TestCase#setUp()
 	 */
 	protected void setUp()
-		throws Exception {
+			throws Exception {
 
 		Profile profile = UML2Factory.eINSTANCE.createProfile();
 		profile.setName(getName());
@@ -117,15 +117,17 @@ public class StereotypeOperationsTest
 
 		ExtensionEnd extensionEnd = (ExtensionEnd) extension
 			.createOwnedEnd(UML2Package.eINSTANCE.getExtensionEnd());
-		extensionEnd.setName(StereotypeOperations.STEREOTYPE_EXTENSION_ROLE_PREFIX
-			+ getElement().getName());
+		extensionEnd
+			.setName(StereotypeOperations.STEREOTYPE_EXTENSION_ROLE_PREFIX
+				+ getElement().getName());
 		extensionEnd.setType(getElement());
 
 		Property stereotypeEnd = getElement().createOwnedAttribute(
 			UML2Package.eINSTANCE.getProperty());
 		stereotypeEnd.setAssociation(extension);
-		stereotypeEnd.setName(StereotypeOperations.METACLASS_EXTENSION_ROLE_PREFIX
-			+ UML2Package.eINSTANCE.getClass_().getName());
+		stereotypeEnd
+			.setName(StereotypeOperations.METACLASS_EXTENSION_ROLE_PREFIX
+				+ UML2Package.eINSTANCE.getClass_().getName());
 		stereotypeEnd.setType(metamodel.getOwnedType(UML2Package.eINSTANCE
 			.getClass_().getName()));
 
@@ -212,11 +214,11 @@ public class StereotypeOperationsTest
 
 		EnumerationLiteral enumerationLiteral0 = getEnumeration()
 			.createOwnedLiteral(UML2Package.eINSTANCE.getEnumerationLiteral());
-		enumerationLiteral0.setName(getName() + String.valueOf(0));
+		enumerationLiteral0.setName(getName() + ' ' + String.valueOf(0));
 
 		EnumerationLiteral enumerationLiteral1 = getEnumeration()
 			.createOwnedLiteral(UML2Package.eINSTANCE.getEnumerationLiteral());
-		enumerationLiteral1.setName(getName() + String.valueOf(1));
+		enumerationLiteral1.setName(getName() + ' ' + String.valueOf(1));
 
 		Property enumerationProperty = getElement().createOwnedAttribute(
 			UML2Package.eINSTANCE.getProperty());
@@ -345,7 +347,8 @@ public class StereotypeOperationsTest
 			if (Extension.class.isInstance(ownedAttribute.getAssociation())) {
 				((ExtensionEnd) ownedAttribute.getAssociation().getOwnedEnds()
 					.get(0)).setLowerBound(required
-					? 1 : 0);
+					? 1
+					: 0);
 			}
 		}
 	}
@@ -1733,7 +1736,7 @@ public class StereotypeOperationsTest
 
 		stereotypeEObject.eSet(enumerationEStructuralFeature,
 			((EEnum) enumerationEStructuralFeature.getEType()).getEEnumLiteral(
-				getName() + String.valueOf(0)).getInstance());
+				getName() + ' ' + String.valueOf(0)).getInstance());
 
 		try {
 			value = StereotypeOperations.getValue(getElement(), class_,
@@ -1871,7 +1874,8 @@ public class StereotypeOperationsTest
 
 		((List) stereotypeEObject.eGet(enumerationsEStructuralFeature))
 			.add(((EEnum) enumerationsEStructuralFeature.getEType())
-				.getEEnumLiteral(getName() + String.valueOf(0)).getInstance());
+				.getEEnumLiteral(getName() + ' ' + String.valueOf(0))
+				.getInstance());
 
 		try {
 			value = StereotypeOperations.getValue(getElement(), class_,
