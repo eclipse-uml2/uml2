@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - Initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.8.2.14 2005/05/24 21:30:44 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.8.2.15 2005/06/02 14:03:57 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -78,7 +78,7 @@ import org.eclipse.uml2.util.UML2Switch;
  * A static utility class that provides operations related to profiles.
  */
 public final class ProfileOperations
-	extends UML2Operations {
+		extends UML2Operations {
 
 	/**
 	 * The source for the attributes annotation on profiles.
@@ -328,8 +328,8 @@ public final class ProfileOperations
 	 * @return The (new) Ecore class.
 	 */
 	public static EClass createEClass(EPackage ePackage, Stereotype stereotype) {
-		EClass eClass = (EClass) ePackage
-			.getEClassifier(getEClassifierName(stereotype));
+		String name = getEClassifierName(stereotype);
+		EClass eClass = (EClass) ePackage.getEClassifier(name);
 
 		if (null == eClass) {
 			eClass = EcoreFactory.eINSTANCE.createEClass();
@@ -338,7 +338,7 @@ public final class ProfileOperations
 				StereotypeOperations.ANNOTATION_SOURCE__STEREOTYPE, eClass)
 				.getReferences().add(stereotype);
 
-			eClass.setName(getEClassifierName(stereotype));
+			eClass.setName(name);
 			eClass.setAbstract(stereotype.isAbstract());
 
 			ePackage.getEClassifiers().add(eClass);
@@ -388,13 +388,13 @@ public final class ProfileOperations
 	 */
 	public static EClass createEClass(EPackage ePackage,
 			org.eclipse.uml2.Class class_) {
-		EClass eClass = (EClass) ePackage
-			.getEClassifier(getEClassifierName(class_));
+		String name = getEClassifierName(class_);
+		EClass eClass = (EClass) ePackage.getEClassifier(name);
 
 		if (null == eClass) {
 			eClass = EcoreFactory.eINSTANCE.createEClass();
 
-			eClass.setName(getEClassifierName(class_));
+			eClass.setName(name);
 			eClass.setAbstract(class_.isAbstract());
 
 			ePackage.getEClassifiers().add(eClass);
@@ -456,13 +456,13 @@ public final class ProfileOperations
 	 * @return The (new) Ecore class.
 	 */
 	public static EClass createEClass(EPackage ePackage, Interface interface_) {
-		EClass eClass = (EClass) ePackage
-			.getEClassifier(getEClassifierName(interface_));
+		String name = getEClassifierName(interface_);
+		EClass eClass = (EClass) ePackage.getEClassifier(name);
 
 		if (null == eClass) {
 			eClass = EcoreFactory.eINSTANCE.createEClass();
 
-			eClass.setName(getEClassifierName(interface_));
+			eClass.setName(name);
 			eClass.setAbstract(true);
 			eClass.setInterface(true);
 
@@ -511,13 +511,13 @@ public final class ProfileOperations
 	 * @return The (new) Ecore enum.
 	 */
 	public static EEnum createEEnum(EPackage ePackage, Enumeration enumeration) {
-		EEnum eEnum = (EEnum) ePackage
-			.getEClassifier(getEClassifierName(enumeration));
+		String name = getEClassifierName(enumeration);
+		EEnum eEnum = (EEnum) ePackage.getEClassifier(name);
 
 		if (null == eEnum) {
 			eEnum = EcoreFactory.eINSTANCE.createEEnum();
 
-			eEnum.setName(getEClassifierName(enumeration));
+			eEnum.setName(name);
 
 			ePackage.getEClassifiers().add(eEnum);
 
@@ -554,13 +554,13 @@ public final class ProfileOperations
 	 * @return The (new) Ecore attribute.
 	 */
 	public static EAttribute createEAttribute(EClass eClass, Property property) {
-		EAttribute eAttribute = (EAttribute) eClass
-			.getEStructuralFeature(property.getName());
+		String name = getValidIdentifier(property.getName());
+		EAttribute eAttribute = (EAttribute) eClass.getEStructuralFeature(name);
 
 		if (null == eAttribute) {
 			eAttribute = EcoreFactory.eINSTANCE.createEAttribute();
 
-			eAttribute.setName(getValidIdentifier(property.getName()));
+			eAttribute.setName(name);
 			eAttribute.setChangeable(!property.isReadOnly());
 			eAttribute.setUpperBound(property.getUpper());
 			eAttribute.setLowerBound(property.getLower());
@@ -606,13 +606,13 @@ public final class ProfileOperations
 	 * @return The (new) Ecore reference.
 	 */
 	public static EReference createEReference(EClass eClass, Property property) {
-		EReference eReference = (EReference) eClass
-			.getEStructuralFeature(property.getName());
+		String name = getValidIdentifier(property.getName());
+		EReference eReference = (EReference) eClass.getEStructuralFeature(name);
 
 		if (null == eReference) {
 			eReference = EcoreFactory.eINSTANCE.createEReference();
 
-			eReference.setName(getValidIdentifier(property.getName()));
+			eReference.setName(name);
 			eReference.setChangeable(true);
 			eReference.setContainment(true);
 			eReference.setUpperBound(property.getUpper());
