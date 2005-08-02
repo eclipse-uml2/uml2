@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.27 2005/06/15 17:18:21 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.27.2.1 2005/08/02 16:20:35 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -50,6 +50,7 @@ import org.eclipse.uml2.Generalization;
 import org.eclipse.uml2.Implementation;
 import org.eclipse.uml2.InstanceValue;
 import org.eclipse.uml2.Interface;
+import org.eclipse.uml2.LiteralNull;
 import org.eclipse.uml2.Model;
 import org.eclipse.uml2.NamedElement;
 import org.eclipse.uml2.PackageImport;
@@ -107,7 +108,9 @@ public final class ProfileOperations
 					public Object caseEAttribute(EAttribute eAttribute) {
 
 						if (EcorePackage.eINSTANCE.getEString() == eAttribute
-							.getEAttributeType()) {
+							.getEAttributeType()
+							&& !(property.getDefaultValue() instanceof LiteralNull)) {
+
 							eAttribute.setDefaultValueLiteral(property
 								.getDefault());
 						}

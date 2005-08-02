@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.26 2005/06/15 17:18:21 khussey Exp $
+ * $Id: UML2Util.java,v 1.26.2.1 2005/08/02 16:20:35 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -73,6 +73,7 @@ import org.eclipse.uml2.Generalization;
 import org.eclipse.uml2.Implementation;
 import org.eclipse.uml2.Interface;
 import org.eclipse.uml2.LiteralInteger;
+import org.eclipse.uml2.LiteralNull;
 import org.eclipse.uml2.LiteralUnlimitedNatural;
 import org.eclipse.uml2.Model;
 import org.eclipse.uml2.MultiplicityElement;
@@ -1801,17 +1802,19 @@ public class UML2Util {
 						.createEAttribute());
 					elementToEModelElementMap.put(property, eAttribute);
 
-					String default_ = property.getDefault();
+					if (!(property.getDefaultValue() instanceof LiteralNull)) {
+						String default_ = property.getDefault();
 
-					if (!isEmpty(default_)) {
-						EDataType eDataType = (EDataType) getEType(property);
+						if (!isEmpty(default_)) {
+							EDataType eDataType = (EDataType) getEType(property);
 
-						try {
-							eDataType.getEPackage().getEFactoryInstance()
-								.createFromString(eDataType, default_);
-							eAttribute.setDefaultValueLiteral(default_);
-						} catch (Exception e) {
-							// ignore
+							try {
+								eDataType.getEPackage().getEFactoryInstance()
+									.createFromString(eDataType, default_);
+								eAttribute.setDefaultValueLiteral(default_);
+							} catch (Exception e) {
+								// ignore
+							}
 						}
 					}
 				} else {
