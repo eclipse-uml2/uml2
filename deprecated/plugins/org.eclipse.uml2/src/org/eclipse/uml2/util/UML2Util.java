@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.26.2.1 2005/08/02 16:20:35 khussey Exp $
+ * $Id: UML2Util.java,v 1.26.2.2 2005/08/17 15:17:46 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -73,7 +73,6 @@ import org.eclipse.uml2.Generalization;
 import org.eclipse.uml2.Implementation;
 import org.eclipse.uml2.Interface;
 import org.eclipse.uml2.LiteralInteger;
-import org.eclipse.uml2.LiteralNull;
 import org.eclipse.uml2.LiteralUnlimitedNatural;
 import org.eclipse.uml2.Model;
 import org.eclipse.uml2.MultiplicityElement;
@@ -1796,25 +1795,25 @@ public class UML2Util {
 				return super.caseProperty(property);
 			} else {
 				EStructuralFeature eStructuralFeature = null;
+				EClassifier eType = getEType(property);
 
-				if (DataType.class.isInstance(property.getType())) {
+				if (eType instanceof EDataType) {
 					EAttribute eAttribute = (EAttribute) (eStructuralFeature = EcoreFactory.eINSTANCE
 						.createEAttribute());
 					elementToEModelElementMap.put(property, eAttribute);
 
-					if (!(property.getDefaultValue() instanceof LiteralNull)) {
-						String default_ = property.getDefault();
+					ValueSpecification defaultValue = property
+						.getDefaultValue();
 
-						if (!isEmpty(default_)) {
-							EDataType eDataType = (EDataType) getEType(property);
+					if (null != defaultValue && !defaultValue.isNull()) {
+						String default_ = defaultValue.stringValue();
 
-							try {
-								eDataType.getEPackage().getEFactoryInstance()
-									.createFromString(eDataType, default_);
-								eAttribute.setDefaultValueLiteral(default_);
-							} catch (Exception e) {
-								// ignore
-							}
+						try {
+							eType.getEPackage().getEFactoryInstance()
+								.createFromString((EDataType) eType, default_);
+							eAttribute.setDefaultValueLiteral(default_);
+						} catch (Exception e) {
+							// ignore
 						}
 					}
 				} else {
@@ -1824,6 +1823,8 @@ public class UML2Util {
 
 					eReference.setContainment(property.isComposite());
 				}
+
+				eStructuralFeature.setEType(eType);
 
 				EClass eClass = (EClass) doSwitch(namespace);
 				eClass.getEStructuralFeatures().add(eStructuralFeature);
@@ -1872,7 +1873,6 @@ public class UML2Util {
 				}
 
 				eStructuralFeature.setUnique(property.isUnique());
-				eStructuralFeature.setEType(getEType(property));
 
 				defaultCase(property);
 
