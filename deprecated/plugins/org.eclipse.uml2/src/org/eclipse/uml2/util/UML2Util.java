@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.26.2.2 2005/08/17 15:17:46 khussey Exp $
+ * $Id: UML2Util.java,v 1.26.2.3 2005/08/22 20:53:18 khussey Exp $
  */
 package org.eclipse.uml2.util;
 
@@ -5090,7 +5090,7 @@ public class UML2Util {
 	protected static EClassifier getCommonEType(EClassifier eType,
 			final EClassifier otherEType) {
 
-		if (eType.equals(otherEType)) {
+		if (null == eType || eType.equals(otherEType)) {
 			return eType;
 		} else {
 			return (EClassifier) new EcoreSwitch() {
@@ -5278,7 +5278,9 @@ public class UML2Util {
 			StringBuffer qualifiedText, EObject eObject,
 			QualifiedTextProvider qualifiedTextProvider) {
 
-		EObject eContainer = eObject.eContainer();
+		EObject eContainer = null == eObject
+			? null
+			: eObject.eContainer();
 
 		if (null != eContainer) {
 			appendQualifiedText(qualifiedText, eContainer,
@@ -5301,6 +5303,8 @@ public class UML2Util {
 
 		if (!isEmpty(text)) {
 			return qualifiedText.append(text);
+		} else if (null == eObject) {
+			return qualifiedText.append(String.valueOf(eObject));
 		}
 
 		qualifiedText.append('{');
