@@ -11,7 +11,7 @@
  Contributors: 
    IBM - initial API and implementation
 
- $Id: feature.xml,v 1.9.2.2 2005/08/30 14:45:56 khussey Exp $
+ $Id: feature.xml,v 1.9.2.3 2005/08/30 14:54:49 khussey Exp $
 -->
 
 <feature
@@ -47,6 +47,6 @@
 
    <includes
       id="org.eclipse.uml2.doc"
-      version="1.1.0"/> 
+      version="1.1.1"/> 
 
 </feature>
