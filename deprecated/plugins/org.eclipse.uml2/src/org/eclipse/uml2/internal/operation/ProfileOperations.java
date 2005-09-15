@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.27.2.3 2005/08/26 21:09:53 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.27.2.4 2005/09/15 14:28:35 khussey Exp $
  */
 package org.eclipse.uml2.internal.operation;
 
@@ -86,6 +86,13 @@ public final class ProfileOperations
 				StereotypeOperations.ANNOTATION_SOURCE__ENUMERATION_LITERAL)
 				.getReferences().add(enumerationLiteral);
 			return eEnumLiteral;
+		}
+
+		public Object caseGeneralization(Generalization generalization) {
+			return generalization.getSpecific() instanceof Stereotype
+				&& !(generalization.getGeneral() instanceof Stereotype)
+				? null
+				: super.caseGeneralization(generalization);
 		}
 
 		public Object caseProfile(Profile profile) {
