@@ -11,7 +11,7 @@
  Contributors: 
    IBM - initial API and implementation
 
- $Id: feature.xml,v 1.18.2.3 2005/08/30 14:46:04 khussey Exp $
+ $Id: feature.xml,v 1.18.2.4 2005/09/22 13:33:07 khussey Exp $
 -->
 
 <feature
@@ -53,63 +53,63 @@
       id="org.eclipse.uml2"
       download-size="0"
       install-size="0"
-      version="1.1.1"
-      unpack="false"/>
+      unpack="false"
+      version="1.1.1"/>
 
    <plugin
       id="org.eclipse.uml2.codegen.ecore"
       download-size="0"
       install-size="0"
-      version="1.1.1"
-      unpack="false"/>
+      unpack="false"
+      version="1.1.1"/>
 
    <plugin
       id="org.eclipse.uml2.codegen.ecore.ui"
       download-size="0"
       install-size="0"
-      version="1.1.1"
-      unpack="false"/>
+      unpack="false"
+      version="1.1.1"/>
 
    <plugin
       id="org.eclipse.uml2.common"
       download-size="0"
       install-size="0"
-      version="1.1.1"
-      unpack="false"/>
+      unpack="false"
+      version="1.1.1"/>
 
    <plugin
       id="org.eclipse.uml2.common.edit"
       download-size="0"
       install-size="0"
-      version="1.1.1"
-      unpack="false"/>
+      unpack="false"
+      version="1.1.1"/>
 
    <plugin
       id="org.eclipse.uml2.ecore.importer"
       download-size="0"
       install-size="0"
-      version="1.1.1"
-      unpack="false"/>
+      unpack="false"
+      version="1.1.1"/>
 
    <plugin
       id="org.eclipse.uml2.edit"
       download-size="0"
       install-size="0"
-      version="1.1.1"
-      unpack="false"/>
+      unpack="false"
+      version="1.1.1"/>
 
    <plugin
       id="org.eclipse.uml2.editor"
       download-size="0"
       install-size="0"
-      version="1.1.1"
-      unpack="false"/>
+      unpack="false"
+      version="1.1.1"/>
 
    <plugin
       id="org.eclipse.uml2.resources"
       download-size="0"
       install-size="0"
-      version="1.1.0"
-      unpack="false"/>
+      unpack="false"
+      version="1.1.0"/>
 
 </feature>
