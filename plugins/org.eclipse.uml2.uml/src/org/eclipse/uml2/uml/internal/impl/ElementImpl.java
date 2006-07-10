@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.31 2006/05/24 20:54:28 khussey Exp $
+ * $Id: ElementImpl.java,v 1.31.2.1 2006/07/10 13:49:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -332,17 +332,6 @@ public abstract class ElementImpl
 	 * @generated
 	 */
 	public EList getRelationships(EClass eClass) {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			EList result = (EList) cache.get(this, UMLPackage.Literals.ELEMENT
-				.getEOperations().get(29));
-			if (result == null) {
-				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
-					.get(29), result = ElementOperations.getRelationships(this,
-					eClass));
-			}
-			return result;
-		}
 		return ElementOperations.getRelationships(this, eClass);
 	}
 
@@ -372,17 +361,6 @@ public abstract class ElementImpl
 	 * @generated
 	 */
 	public EList getSourceDirectedRelationships(EClass eClass) {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			EList result = (EList) cache.get(this, UMLPackage.Literals.ELEMENT
-				.getEOperations().get(31));
-			if (result == null) {
-				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
-					.get(31), result = ElementOperations
-					.getSourceDirectedRelationships(this, eClass));
-			}
-			return result;
-		}
 		return ElementOperations.getSourceDirectedRelationships(this, eClass);
 	}
 
@@ -412,17 +390,6 @@ public abstract class ElementImpl
 	 * @generated
 	 */
 	public EList getTargetDirectedRelationships(EClass eClass) {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			EList result = (EList) cache.get(this, UMLPackage.Literals.ELEMENT
-				.getEOperations().get(33));
-			if (result == null) {
-				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
-					.get(33), result = ElementOperations
-					.getTargetDirectedRelationships(this, eClass));
-			}
-			return result;
-		}
 		return ElementOperations.getTargetDirectedRelationships(this, eClass);
 	}
 
