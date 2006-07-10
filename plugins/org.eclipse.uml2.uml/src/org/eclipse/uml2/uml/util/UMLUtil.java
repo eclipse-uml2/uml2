@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.35 2006/06/15 14:04:20 khussey Exp $
+ * $Id: UMLUtil.java,v 1.35.2.1 2006/07/10 15:17:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -57,6 +57,7 @@ import org.eclipse.emf.ecore.util.EcoreSwitch;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.AggregationKind;
@@ -4460,7 +4461,90 @@ public class UMLUtil
 				String name = eType.getName();
 
 				if (!isEmpty(name) && eType instanceof EDataType) {
-					type = getEcorePrimitiveType(eModelElement, name);
+					EPackage ePackage = eType.getEPackage();
+
+					if (ePackage != null) {
+						String nsURI = ePackage.getNsURI();
+
+						if (XMLTypePackage.eNS_URI.equals(nsURI)) {
+							String instanceClassName = eType
+								.getInstanceClassName();
+
+							if ("java.math.BigDecimal".equals(instanceClassName)) { //$NON-NLS-1$
+								type = getEcorePrimitiveType(eModelElement,
+									EcorePackage.Literals.EBIG_DECIMAL
+										.getName());
+							} else if ("java.math.BigInteger".equals(instanceClassName)) { //$NON-NLS-1$
+								type = getEcorePrimitiveType(eModelElement,
+									EcorePackage.Literals.EBIG_INTEGER
+										.getName());
+							} else if ("boolean".equals(instanceClassName)) { //$NON-NLS-1$
+								type = getEcorePrimitiveType(eModelElement,
+									EcorePackage.Literals.EBOOLEAN.getName());
+							} else if ("java.lang.Boolean".equals(instanceClassName)) { //$NON-NLS-1$
+								type = getEcorePrimitiveType(eModelElement,
+									EcorePackage.Literals.EBOOLEAN_OBJECT
+										.getName());
+							} else if ("byte".equals(instanceClassName)) { //$NON-NLS-1$
+								type = getEcorePrimitiveType(eModelElement,
+									EcorePackage.Literals.EBYTE.getName());
+							} else if ("byte[]".equals(instanceClassName)) { //$NON-NLS-1$
+								type = getEcorePrimitiveType(eModelElement,
+									EcorePackage.Literals.EBYTE_ARRAY.getName());
+							} else if ("java.lang.Byte".equals(instanceClassName)) { //$NON-NLS-1$
+								type = getEcorePrimitiveType(eModelElement,
+									EcorePackage.Literals.EBYTE_OBJECT
+										.getName());
+							} else if ("double".equals(instanceClassName)) { //$NON-NLS-1$
+								type = getEcorePrimitiveType(eModelElement,
+									EcorePackage.Literals.EDOUBLE.getName());
+							} else if ("java.lang.Double".equals(instanceClassName)) { //$NON-NLS-1$
+								type = getEcorePrimitiveType(eModelElement,
+									EcorePackage.Literals.EDOUBLE_OBJECT
+										.getName());
+							} else if ("java.util.List".equals(instanceClassName)) { //$NON-NLS-1$
+								type = getEcorePrimitiveType(eModelElement,
+									EcorePackage.Literals.EE_LIST.getName());
+							} else if ("float".equals(instanceClassName)) { //$NON-NLS-1$
+								type = getEcorePrimitiveType(eModelElement,
+									EcorePackage.Literals.EFLOAT.getName());
+							} else if ("java.lang.Float".equals(instanceClassName)) { //$NON-NLS-1$
+								type = getEcorePrimitiveType(eModelElement,
+									EcorePackage.Literals.EFLOAT_OBJECT
+										.getName());
+							} else if ("int".equals(instanceClassName)) { //$NON-NLS-1$
+								type = getEcorePrimitiveType(eModelElement,
+									EcorePackage.Literals.EINT.getName());
+							} else if ("java.lang.Integer".equals(instanceClassName)) { //$NON-NLS-1$
+								type = getEcorePrimitiveType(eModelElement,
+									EcorePackage.Literals.EINTEGER_OBJECT
+										.getName());
+							} else if ("java.lang.Object".equals(instanceClassName)) { //$NON-NLS-1$
+								type = getEcorePrimitiveType(eModelElement,
+									EcorePackage.Literals.EJAVA_OBJECT
+										.getName());
+							} else if ("long".equals(instanceClassName)) { //$NON-NLS-1$
+								type = getEcorePrimitiveType(eModelElement,
+									EcorePackage.Literals.ELONG.getName());
+							} else if ("java.lang.Long".equals(instanceClassName)) { //$NON-NLS-1$
+								type = getEcorePrimitiveType(eModelElement,
+									EcorePackage.Literals.ELONG_OBJECT
+										.getName());
+							} else if ("short".equals(instanceClassName)) { //$NON-NLS-1$
+								type = getEcorePrimitiveType(eModelElement,
+									EcorePackage.Literals.ESHORT.getName());
+							} else if ("java.lang.Short".equals(instanceClassName)) { //$NON-NLS-1$
+								type = getEcorePrimitiveType(eModelElement,
+									EcorePackage.Literals.ESHORT_OBJECT
+										.getName());
+							} else if ("java.lang.String".equals(instanceClassName)) { //$NON-NLS-1$
+								type = getEcorePrimitiveType(eModelElement,
+									EcorePackage.Literals.ESTRING.getName());
+							}
+						} else if (EcorePackage.eNS_URI.equals(nsURI)) {
+							type = getEcorePrimitiveType(eModelElement, name);
+						}
+					}
 				}
 
 				if (type == null) {
