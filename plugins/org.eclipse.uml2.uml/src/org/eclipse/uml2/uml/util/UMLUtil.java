@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.35.2.1 2006/07/10 15:17:38 khussey Exp $
+ * $Id: UMLUtil.java,v 1.35.2.2 2006/07/27 17:02:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -17,8 +17,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
@@ -264,7 +264,57 @@ public class UMLUtil
 
 		protected Collection mergedPackages = null;
 
-		protected final Map resultingToMergedEObjectMap = new HashMap();
+		protected final Map resultingToMergedEObjectMap = new LinkedHashMap();
+
+		private final Map copierMap = new LinkedHashMap();
+
+		public void clear() {
+			copierMap.clear();
+		}
+
+		public boolean containsKey(Object key) {
+			return copierMap.containsKey(key);
+		}
+
+		public boolean containsValue(Object value) {
+			return copierMap.containsValue(value);
+		}
+
+		public Set entrySet() {
+			return copierMap.entrySet();
+		}
+
+		public Object get(Object key) {
+			return copierMap.get(key);
+		}
+
+		public boolean isEmpty() {
+			return copierMap.isEmpty();
+		}
+
+		public Set keySet() {
+			return copierMap.keySet();
+		}
+
+		public Object put(Object key, Object value) {
+			return copierMap.put(key, value);
+		}
+
+		public void putAll(Map t) {
+			copierMap.putAll(t);
+		}
+
+		public Object remove(Object key) {
+			return copierMap.remove(key);
+		}
+
+		public int size() {
+			return copierMap.size();
+		}
+
+		public Collection values() {
+			return copierMap.values();
+		}
 
 		protected List getMatchCandidates(EObject eObject) {
 			Element baseElement = getBaseElement(eObject);
@@ -1307,7 +1357,7 @@ public class UMLUtil
 
 		protected void processEmptyUnions(Map options,
 				DiagnosticChain diagnostics, Map context) {
-			Map unionToSubsettingPropertyMap = new HashMap();
+			Map unionToSubsettingPropertyMap = new LinkedHashMap();
 
 			for (Iterator resultingEObjects = resultingToMergedEObjectMap
 				.keySet().iterator(); resultingEObjects.hasNext();) {
@@ -1321,7 +1371,7 @@ public class UMLUtil
 						&& !unionToSubsettingPropertyMap.containsKey(property)) {
 
 						unionToSubsettingPropertyMap.put(property,
-							new HashSet());
+							new UniqueEList.FastCompare());
 					}
 
 					for (Iterator subsettedProperties = property
@@ -1332,13 +1382,13 @@ public class UMLUtil
 							.next();
 
 						if (subsettedProperty.isDerivedUnion()) {
-							Set subsettingProperties = (Set) unionToSubsettingPropertyMap
+							List subsettingProperties = (List) unionToSubsettingPropertyMap
 								.get(subsettedProperty);
 
 							if (subsettingProperties == null) {
 								unionToSubsettingPropertyMap.put(
 									subsettedProperty,
-									subsettingProperties = new HashSet());
+									subsettingProperties = new UniqueEList.FastCompare());
 							}
 
 							subsettingProperties.add(property);
@@ -1352,7 +1402,7 @@ public class UMLUtil
 
 				Map.Entry entry = (Map.Entry) entries.next();
 
-				if (((Set) entry.getValue()).isEmpty()) {
+				if (((List) entry.getValue()).isEmpty()) {
 					Property unionProperty = (Property) entry.getKey();
 
 					if (OPTION__PROCESS.equals(options
@@ -1826,7 +1876,7 @@ public class UMLUtil
 
 		public static final int ANNOTATION_DETAILS = DIAGNOSTIC_CODE_OFFSET + 12;
 
-		protected final Map elementToEModelElementMap = new HashMap();
+		protected final Map elementToEModelElementMap = new LinkedHashMap();
 
 		protected Collection packages = null;
 
@@ -4422,7 +4472,7 @@ public class UMLUtil
 
 		public static final int ANNOTATION_DETAILS = DIAGNOSTIC_CODE_OFFSET + 5;
 
-		protected final Map eModelElementToElementMap = new HashMap();
+		protected final Map eModelElementToElementMap = new LinkedHashMap();
 
 		protected Collection ePackages = null;
 
