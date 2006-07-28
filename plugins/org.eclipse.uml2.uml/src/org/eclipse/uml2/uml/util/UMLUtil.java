@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.35.2.2 2006/07/27 17:02:47 khussey Exp $
+ * $Id: UMLUtil.java,v 1.35.2.3 2006/07/28 21:36:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -599,11 +599,14 @@ public class UMLUtil
 
 						if (copyReferencedEObject == null) {
 
-							if (!isBidirectional
-								&& !targetList.contains(referencedEObject)) {
+							if (!isBidirectional) {
 
-								targetList
-									.addUnique(index++, referencedEObject);
+								if (!targetList.contains(referencedEObject)) {
+									targetList.addUnique(index,
+										referencedEObject);
+								}
+
+								index++;
 							}
 						} else {
 
@@ -612,19 +615,20 @@ public class UMLUtil
 									.indexOf(copyReferencedEObject);
 
 								if (position == -1) {
-									targetList.addUnique(index++,
+									targetList.addUnique(index,
 										copyReferencedEObject);
 								} else if (index != position) {
-									targetList.move(index < targetList.size()
-										? index++
-										: --index, copyReferencedEObject);
+									targetList.move(index,
+										copyReferencedEObject);
 								}
 							} else if (!targetList
 								.contains(copyReferencedEObject)) {
 
-								targetList.addUnique(index++,
+								targetList.addUnique(index,
 									copyReferencedEObject);
 							}
+
+							index++;
 						}
 					}
 				} else {
@@ -1386,9 +1390,10 @@ public class UMLUtil
 								.get(subsettedProperty);
 
 							if (subsettingProperties == null) {
-								unionToSubsettingPropertyMap.put(
-									subsettedProperty,
-									subsettingProperties = new UniqueEList.FastCompare());
+								unionToSubsettingPropertyMap
+									.put(
+										subsettedProperty,
+										subsettingProperties = new UniqueEList.FastCompare());
 							}
 
 							subsettingProperties.add(property);
