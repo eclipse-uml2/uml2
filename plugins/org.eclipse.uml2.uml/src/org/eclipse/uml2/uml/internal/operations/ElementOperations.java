@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.44 2006/06/21 13:33:12 khussey Exp $
+ * $Id: ElementOperations.java,v 1.44.2.1 2006/08/02 15:24:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -556,7 +556,7 @@ public class ElementOperations
 						: eObject.eGet(eStructuralFeature);
 				}
 
-				if (eType instanceof EEnum) {
+				if (eType instanceof EEnum && value instanceof EEnumLiteral) {
 					EAnnotation eAnnotation = eType
 						.getEAnnotation(UMLPackage.eNS_URI);
 
