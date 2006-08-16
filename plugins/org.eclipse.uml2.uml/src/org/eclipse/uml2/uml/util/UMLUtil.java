@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.35.2.3 2006/07/28 21:36:49 khussey Exp $
+ * $Id: UMLUtil.java,v 1.35.2.4 2006/08/16 18:22:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -5982,70 +5982,55 @@ public class UMLUtil
 
 	protected static NamedElement getNamedElement(ENamedElement definition) {
 
-		return (NamedElement) new EcoreSwitch() {
+		if (definition instanceof EClassifier) {
+			EAnnotation eAnnotation = definition
+				.getEAnnotation(UMLPackage.eNS_URI);
 
-			public Object caseEClassifier(EClassifier eClassifier) {
-				EAnnotation eAnnotation = eClassifier
-					.getEAnnotation(UMLPackage.eNS_URI);
+			if (eAnnotation != null) {
+				EList references = eAnnotation.getReferences();
 
-				if (eAnnotation != null) {
-					EList references = eAnnotation.getReferences();
+				if (!references.isEmpty()) {
+					Object reference = references.get(0);
 
-					if (!references.isEmpty()) {
-						Object reference = references.get(0);
-
-						if (reference instanceof Classifier) {
-							return reference;
-						}
+					if (reference instanceof Classifier) {
+						return (NamedElement) reference;
 					}
 				}
-
-				return null;
 			}
 
-			public Object caseEEnumLiteral(EEnumLiteral eEnumLiteral) {
-				Enumeration enumeration = (Enumeration) doSwitch(eEnumLiteral
-					.getEEnum());
-				return enumeration == null
-					? null
-					: enumeration.getOwnedLiteral(eEnumLiteral.getName());
-			}
+			return null;
+		} else if (definition instanceof EStructuralFeature) {
+			org.eclipse.uml2.uml.Class class_ = (org.eclipse.uml2.uml.Class) getNamedElement(((EStructuralFeature) definition)
+				.getEContainingClass());
 
-			public Object caseEStructuralFeature(
-					EStructuralFeature eStructuralFeature) {
-				org.eclipse.uml2.uml.Class class_ = (org.eclipse.uml2.uml.Class) doSwitch(eStructuralFeature
-					.getEContainingClass());
+			if (class_ != null) {
+				String name = definition.getName();
 
-				if (class_ != null) {
-					String name = eStructuralFeature.getName();
+				for (Iterator ownedAttributes = class_.getOwnedAttributes()
+					.iterator(); ownedAttributes.hasNext();) {
 
-					for (Iterator ownedAttributes = class_.getOwnedAttributes()
-						.iterator(); ownedAttributes.hasNext();) {
+					Property ownedAttribute = (Property) ownedAttributes.next();
 
-						Property ownedAttribute = (Property) ownedAttributes
-							.next();
+					if (safeEquals(getValidJavaIdentifier(ownedAttribute
+						.getName()), name)) {
 
-						if (safeEquals(getValidJavaIdentifier(ownedAttribute
-							.getName()), name)) {
-
-							return ownedAttribute;
-						}
+						return ownedAttribute;
 					}
 				}
-
-				return null;
 			}
 
-			public Object caseEPackage(EPackage ePackage) {
-				return getProfile(ePackage);
-			}
-
-			public Object doSwitch(EObject eObject) {
-				return eObject == null
-					? null
-					: super.doSwitch(eObject);
-			}
-		}.doSwitch(definition);
+			return null;
+		} else if (definition instanceof EEnumLiteral) {
+			Enumeration enumeration = (Enumeration) getNamedElement(((EEnumLiteral) definition)
+				.getEEnum());
+			return enumeration == null
+				? null
+				: enumeration.getOwnedLiteral(definition.getName());
+		} else if (definition instanceof EPackage) {
+			return getProfile((EPackage) definition);
+		} else {
+			return null;
+		}
 	}
 
 	protected static Stereotype getStereotype(EClass definition) {
@@ -6095,21 +6080,25 @@ public class UMLUtil
 	public static void setBaseElement(EObject stereotypeApplication,
 			Element element) {
 
-		if (getStereotype(stereotypeApplication) != null) {
+		if (stereotypeApplication != null) {
+			EClass eClass = stereotypeApplication.eClass();
 
-			for (Iterator eAllStructuralFeatures = stereotypeApplication
-				.eClass().getEAllStructuralFeatures().iterator(); eAllStructuralFeatures
-				.hasNext();) {
+			if (getStereotype(eClass) != null) {
 
-				EStructuralFeature eStructuralFeature = (EStructuralFeature) eAllStructuralFeatures
-					.next();
+				for (Iterator eAllStructuralFeatures = eClass
+					.getEAllStructuralFeatures().iterator(); eAllStructuralFeatures
+					.hasNext();) {
 
-				if (eStructuralFeature.getName().startsWith(
-					Extension.METACLASS_ROLE_PREFIX)
-					&& (element == null || eStructuralFeature.getEType()
-						.isInstance(element))) {
+					EStructuralFeature eStructuralFeature = (EStructuralFeature) eAllStructuralFeatures
+						.next();
 
-					stereotypeApplication.eSet(eStructuralFeature, element);
+					if (eStructuralFeature.getName().startsWith(
+						Extension.METACLASS_ROLE_PREFIX)
+						&& (element == null || eStructuralFeature.getEType()
+							.isInstance(element))) {
+
+						stereotypeApplication.eSet(eStructuralFeature, element);
+					}
 				}
 			}
 		}
