@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.44.2.1 2006/08/02 15:24:20 khussey Exp $
+ * $Id: ElementOperations.java,v 1.44.2.2 2006/08/16 18:15:08 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -1058,13 +1058,21 @@ public class ElementOperations
 			Association association = attribute.getAssociation();
 
 			if (association instanceof Extension) {
-				Type type = attribute.getType();
+				String name = attribute.getName();
 
-				if (type instanceof org.eclipse.uml2.uml.Class) {
-					EClassifier eClassifier = getEClassifier((org.eclipse.uml2.uml.Class) type);
+				if (!isEmpty(name)
+					&& name.startsWith(Extension.METACLASS_ROLE_PREFIX)) {
 
-					if (eClassifier != null && eClassifier.isInstance(element)) {
-						return (Extension) association;
+					Type type = attribute.getType();
+
+					if (type instanceof org.eclipse.uml2.uml.Class) {
+						EClassifier eClassifier = getEClassifier((org.eclipse.uml2.uml.Class) type);
+
+						if (eClassifier != null
+							&& eClassifier.isInstance(element)) {
+
+							return (Extension) association;
+						}
 					}
 				}
 			}
