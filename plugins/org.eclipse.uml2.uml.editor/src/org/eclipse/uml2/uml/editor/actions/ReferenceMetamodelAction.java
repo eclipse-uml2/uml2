@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReferenceMetamodelAction.java,v 1.3 2006/05/17 21:06:14 khussey Exp $
+ * $Id: ReferenceMetamodelAction.java,v 1.3.2.1 2006/08/16 17:40:07 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
@@ -45,7 +45,7 @@ public class ReferenceMetamodelAction
 			Collection collection) {
 
 		if (collection.size() == 1
-			&& collection.toArray()[0] instanceof Profile) {
+			&& collection.iterator().next() instanceof Profile) {
 
 			return IdentityCommand.INSTANCE;
 		}
@@ -56,7 +56,7 @@ public class ReferenceMetamodelAction
 	public void run(IAction action) {
 
 		if (command != UnexecutableCommand.INSTANCE) {
-			final Profile profile = (Profile) collection.toArray()[0];
+			final Profile profile = (Profile) collection.iterator().next();
 			EList referencedMetamodels = profile.getReferencedMetamodels();
 
 			List choiceOfValues = new ArrayList();
