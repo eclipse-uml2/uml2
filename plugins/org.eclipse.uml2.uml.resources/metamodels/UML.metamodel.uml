@@ -1319,7 +1319,7 @@
         </specification>
       </ownedRule>
       <generalization xmi:id="OpaqueExpression-_generalization.0" general="ValueSpecification"/>
-      <ownedAttribute xmi:id="OpaqueExpression-body" name="body" type="String" isOrdered="true" aggregation="composite">
+      <ownedAttribute xmi:id="OpaqueExpression-body" name="body" type="String" isOrdered="true" isUnique="false" aggregation="composite">
         <ownedComment xmi:id="OpaqueExpression-body-_ownedComment.0" annotatedElement="OpaqueExpression-body">
           <body>The text of the expression, possibly in multiple languages.</body>
         </ownedComment>
@@ -1428,7 +1428,7 @@
         <body>An behavior with implementation-specific semantics.</body>
       </ownedComment>
       <generalization xmi:id="OpaqueBehavior-_generalization.0" general="Behavior"/>
-      <ownedAttribute xmi:id="OpaqueBehavior-body" name="body" type="String" isOrdered="true" aggregation="composite">
+      <ownedAttribute xmi:id="OpaqueBehavior-body" name="body" type="String" isOrdered="true" isUnique="false" aggregation="composite">
         <ownedComment xmi:id="OpaqueBehavior-body-_ownedComment.0" annotatedElement="OpaqueBehavior-body">
           <body>Specifies the behavior in one or more languages.</body>
         </ownedComment>
@@ -1534,7 +1534,7 @@
         <body>An action with implementation-specific semantics.</body>
       </ownedComment>
       <generalization xmi:id="OpaqueAction-_generalization.0" general="Action"/>
-      <ownedAttribute xmi:id="OpaqueAction-body" name="body" type="String" isOrdered="true" aggregation="composite">
+      <ownedAttribute xmi:id="OpaqueAction-body" name="body" type="String" isOrdered="true" isUnique="false" aggregation="composite">
         <ownedComment xmi:id="OpaqueAction-body-_ownedComment.0" annotatedElement="OpaqueAction-body">
           <body>Specifies the action in one or more languages.</body>
         </ownedComment>
