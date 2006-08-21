@@ -657,7 +657,7 @@
     </ownedOperation>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_ChRfcGveEdq4DLWZOhbdEA" name="OpaqueExpression">
-    <ownedAttribute xmi:id="_EOZfkC4xEduBJv9HKGdiyg" name="body" visibility="protected" type="_aAyVgGvsEdqG6fBIPwe-mw" isUnique="false">
+    <ownedAttribute xmi:id="_EOZfkC4xEduBJv9HKGdiyg" name="body" type="_aAyVgGvsEdqG6fBIPwe-mw" isUnique="false">
       <eAnnotations xmi:id="_YgZaEC7qEdutFcse1QllAQ" source="appliedStereotypes">
         <contents xmi:type="Ecore_0:Ecore__EAttribute" xmi:id="_YgZaES7qEdutFcse1QllAQ" isUnsettable="true" xmlFeatureKind="Element"/>
       </eAnnotations>
@@ -1861,7 +1861,7 @@
     </ownedOperation>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_OUnikC7qEdutFcse1QllAQ" name="OpaqueAction">
-    <ownedAttribute xmi:id="_c_GaAC7qEdutFcse1QllAQ" name="body" visibility="protected" type="_aAyVgGvsEdqG6fBIPwe-mw" isUnique="false">
+    <ownedAttribute xmi:id="_c_GaAC7qEdutFcse1QllAQ" name="body" type="_aAyVgGvsEdqG6fBIPwe-mw" isUnique="false">
       <eAnnotations xmi:id="_hxBQ4C7qEdutFcse1QllAQ" source="appliedStereotypes">
         <contents xmi:type="Ecore_0:Ecore__EAttribute" xmi:id="_hxBQ4S7qEdutFcse1QllAQ" isUnsettable="true" xmlFeatureKind="Element"/>
       </eAnnotations>
@@ -1870,7 +1870,7 @@
     </ownedAttribute>
   </ownedMember>
   <ownedMember xmi:type="uml:Class" xmi:id="_ldWYsC7qEdutFcse1QllAQ" name="OpaqueBehavior">
-    <ownedAttribute xmi:id="_ldWYsS7qEdutFcse1QllAQ" name="body" visibility="protected" type="_aAyVgGvsEdqG6fBIPwe-mw" isUnique="false">
+    <ownedAttribute xmi:id="_ldWYsS7qEdutFcse1QllAQ" name="body" type="_aAyVgGvsEdqG6fBIPwe-mw" isUnique="false">
       <eAnnotations xmi:id="_ldWYsi7qEdutFcse1QllAQ" source="appliedStereotypes">
         <contents xmi:type="Ecore_0:Ecore__EAttribute" xmi:id="_ldWYsy7qEdutFcse1QllAQ" isUnsettable="true" xmlFeatureKind="Element"/>
       </eAnnotations>
