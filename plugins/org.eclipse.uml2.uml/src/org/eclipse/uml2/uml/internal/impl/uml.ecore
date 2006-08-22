@@ -2614,6 +2614,14 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LiteralString" eSuperTypes="#//LiteralSpecification">
     <eAnnotations source="duplicates">
+      <contents xsi:type="ecore:EOperation" name="integerValue" ordered="false" lowerBound="1"
+          eType="#//Integer">
+        <eAnnotations source="redefines" references="#//ValueSpecification/integerValue"/>
+      </contents>
+      <contents xsi:type="ecore:EOperation" name="unlimitedValue" ordered="false"
+          lowerBound="1" eType="#//UnlimitedNatural">
+        <eAnnotations source="redefines" references="#//ValueSpecification/unlimitedValue"/>
+      </contents>
       <contents xsi:type="ecore:EOperation" name="isComputable" ordered="false" lowerBound="1"
           eType="#//Boolean">
         <eAnnotations source="redefines" references="#//ValueSpecification/isComputable"/>

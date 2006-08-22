@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndOperations.java,v 1.11 2006/03/09 21:30:34 khussey Exp $
+ * $Id: ExtensionEndOperations.java,v 1.11.2.1 2006/08/22 19:41:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -19,7 +19,6 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.uml2.uml.ExtensionEnd;
-import org.eclipse.uml2.uml.LiteralInteger;
 import org.eclipse.uml2.uml.ValueSpecification;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
@@ -132,9 +131,16 @@ public class ExtensionEndOperations
 	public static int lowerBound(ExtensionEnd extensionEnd) {
 		ValueSpecification lowerValue = extensionEnd.getLowerValue();
 
-		return lowerValue instanceof LiteralInteger
-			? lowerValue.integerValue()
-			: 0;
+		if (lowerValue != null) {
+
+			try {
+				return lowerValue.integerValue();
+			} catch (UnsupportedOperationException uoe) {
+				// do nothing
+			}
+		}
+
+		return 0;
 	}
 
 	/**

@@ -121,6 +121,12 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="LiteralString-value-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="LiteralString-value-_lowerValue"/>
       </ownedAttribute>
+      <ownedOperation xmi:id="LiteralString-integerValue" name="integerValue" visibility="protected" isQuery="true">
+        <ownedParameter xmi:id="LiteralString-integerValue-_ownedParameter.0" type="Integer" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="LiteralString-unlimitedValue" name="unlimitedValue" visibility="protected" isQuery="true">
+        <ownedParameter xmi:id="LiteralString-unlimitedValue-_ownedParameter.0" type="UnlimitedNatural" direction="return"/>
+      </ownedOperation>
       <ownedOperation xmi:id="LiteralString-isComputable" name="isComputable" isQuery="true" redefinedOperation="ValueSpecification-isComputable" bodyCondition="LiteralString-isComputable-spec">
         <ownedComment xmi:id="LiteralString-isComputable-_ownedComment.0" annotatedElement="LiteralString-isComputable">
           <body>The query isComputable() is redefined to be true.</body>
