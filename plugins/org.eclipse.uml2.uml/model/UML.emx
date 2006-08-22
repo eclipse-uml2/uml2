@@ -1878,6 +1878,14 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ldWYtS7qEdutFcse1QllAQ"/>
     </ownedAttribute>
   </ownedMember>
+  <ownedMember xmi:type="uml:Class" xmi:id="_5jXJsTEkEdu9VoNTbEBQkQ" name="LiteralString">
+    <ownedOperation xmi:id="_-SmgADEkEdu9VoNTbEBQkQ" name="integerValue" visibility="protected" type="_XqvEIGvsEdqG6fBIPwe-mw" isQuery="true">
+      <returnResult xmi:id="_-SmgATEkEdu9VoNTbEBQkQ" type="_XqvEIGvsEdqG6fBIPwe-mw" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_FbLFMDElEdu9VoNTbEBQkQ" name="unlimitedValue" visibility="protected" type="_dRZxsGvsEdqG6fBIPwe-mw" isQuery="true">
+      <returnResult xmi:id="_FbLFMTElEdu9VoNTbEBQkQ" type="_dRZxsGvsEdqG6fBIPwe-mw" direction="return"/>
+    </ownedOperation>
+  </ownedMember>
   <packageMerge xmi:id="_H2HkkGvbEdq4DLWZOhbdEA">
     <mergedPackage xmi:type="uml:Model" href="L3.emx#_EBtHcBmMEdqvcs97umGEYQ?L3"/>
   </packageMerge>
