@@ -8,9 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: XMI2UMLResourceFactoryImpl.java,v 1.2 2006/04/26 16:58:39 khussey Exp $
+ * $Id: XMI2UMLResourceFactoryImpl.java,v 1.2.2.1 2006/08/22 15:43:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
+
+import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
@@ -40,9 +42,15 @@ public class XMI2UMLResourceFactoryImpl
 		ExtendedMetaData extendedMetaData = new XMI2UMLExtendedMetaData(
 			EPackage.Registry.INSTANCE);
 
-		resource.getDefaultLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
+		resource.getDefaultLoadOptions().put(
+			XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
 
-		resource.getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
+		Map defaultSaveOptions = resource.getDefaultSaveOptions();
+
+		defaultSaveOptions.put(XMLResource.OPTION_EXTENDED_META_DATA,
+			extendedMetaData);
+		defaultSaveOptions.put(XMLResource.OPTION_SAVE_TYPE_INFORMATION,
+			Boolean.TRUE);
 
 		return resource;
 	}
