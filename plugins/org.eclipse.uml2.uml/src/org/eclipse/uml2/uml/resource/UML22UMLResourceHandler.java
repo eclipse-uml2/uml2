@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.26.2.1 2006/07/10 18:28:25 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.26.2.2 2006/08/24 18:08:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -517,7 +517,7 @@ public class UML22UMLResourceHandler
 									.getEObject((String) value);
 
 								if (eObject instanceof NamedElement) {
-									events.add((NamedElement) eObject);
+									events.add(eObject);
 									firstEvents.add(isFirstEvent);
 								}
 							}
