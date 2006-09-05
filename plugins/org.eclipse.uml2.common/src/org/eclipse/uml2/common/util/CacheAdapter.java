@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CacheAdapter.java,v 1.12 2006/06/06 22:22:28 khussey Exp $
+ * $Id: CacheAdapter.java,v 1.12.2.1 2006/09/05 20:04:00 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
@@ -221,6 +222,10 @@ public class CacheAdapter
 
 	protected boolean resolve() {
 		return false;
+	}
+
+	protected boolean isIncluded(EReference eReference) {
+		return super.isIncluded(eReference) && eReference.isChangeable();
 	}
 
 }
