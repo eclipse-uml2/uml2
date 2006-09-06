@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.44.2.2 2006/08/16 18:15:08 khussey Exp $
+ * $Id: ElementOperations.java,v 1.44.2.3 2006/09/06 20:56:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -129,7 +129,7 @@ public class ElementOperations
 			DiagnosticChain diagnostics, Map context) {
 		boolean result = true;
 
-		if (element.allOwnedElements().contains(element)) {
+		if (EcoreUtil.isAncestor(element, element.getOwner())) {
 			result = false;
 
 			if (diagnostics != null) {
