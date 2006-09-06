@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.31.2.1 2006/07/10 13:49:44 khussey Exp $
+ * $Id: ElementImpl.java,v 1.31.2.2 2006/09/06 20:58:45 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -748,9 +748,10 @@ public abstract class ElementImpl
 		return basicGetOwner() != null;
 	}
 
-	protected void eBasicSetContainer(InternalEObject newContainer,
-			int newContainerFeatureID) {
-		super.eBasicSetContainer(newContainer, newContainerFeatureID);
+	public NotificationChain eBasicSetContainer(InternalEObject newContainer,
+			int newContainerFeatureID, NotificationChain msgs) {
+		msgs = super.eBasicSetContainer(newContainer, newContainerFeatureID,
+			msgs);
 
 		if (newContainer != null) {
 			Resource.Internal eInternalResource = eInternalResource();
@@ -761,6 +762,8 @@ public abstract class ElementImpl
 				ElementOperations.applyAllRequiredStereotypes(this, false);
 			}
 		}
+
+		return msgs;
 	}
 
 	public EList eAdapters() {
