@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.35.2.4 2006/08/16 18:22:25 khussey Exp $
+ * $Id: UMLUtil.java,v 1.35.2.5 2006/09/08 17:09:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -4401,7 +4401,11 @@ public class UMLUtil
 				org.eclipse.uml2.uml.Class class_ = (org.eclipse.uml2.uml.Class) type;
 
 				if (class_.isMetaclass()) {
-					return getEClassifier(class_);
+					EClassifier eType = getEClassifier(class_);
+
+					if (eType != null) {
+						return eType;
+					}
 				}
 			}
 
