@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.31.2.2 2006/09/06 20:58:45 khussey Exp $
+ * $Id: ElementImpl.java,v 1.31.2.3 2006/09/13 14:31:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -766,14 +766,18 @@ public abstract class ElementImpl
 		return msgs;
 	}
 
+	private static final int ADAPTING = 1 << 7;
+
 	public EList eAdapters() {
 		EList eAdapters = super.eAdapters();
 
-		if (eAdapters.isEmpty()) {
+		if ((eFlags & ADAPTING) == 0 && eAdapters.isEmpty()) {
 			CacheAdapter cacheAdapter = getCacheAdapter();
 
 			if (cacheAdapter != null) {
-				eAdapters.add(cacheAdapter);
+				eFlags |= ADAPTING;
+				cacheAdapter.adapt(this);
+				eFlags &= ~ADAPTING;
 			}
 		}
 
