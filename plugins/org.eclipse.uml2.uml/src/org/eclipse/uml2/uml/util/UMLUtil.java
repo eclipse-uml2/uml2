@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.35.2.5 2006/09/08 17:09:10 khussey Exp $
+ * $Id: UMLUtil.java,v 1.35.2.6 2006/09/14 01:33:08 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -2112,8 +2112,13 @@ public class UMLUtil
 
 				setName(eEnumLiteral, enumerationLiteral);
 
-				eEnumLiteral.setValue(enumeration.getOwnedLiterals().indexOf(
-					enumerationLiteral));
+				try {
+					eEnumLiteral.setValue(enumerationLiteral.getSpecification()
+						.integerValue());
+				} catch (Exception e) {
+					eEnumLiteral.setValue(enumeration.getOwnedLiterals()
+						.indexOf(enumerationLiteral));
+				}
 
 				defaultCase(enumerationLiteral);
 
@@ -4721,6 +4726,9 @@ public class UMLUtil
 			enumeration.getOwnedLiterals().add(enumerationLiteral);
 
 			enumerationLiteral.setName(eEnumLiteral.getName());
+			((LiteralInteger) enumerationLiteral.createSpecification(null,
+				null, UMLPackage.Literals.LITERAL_INTEGER))
+				.setValue(eEnumLiteral.getValue());
 
 			defaultCase(eEnumLiteral);
 
