@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.35.2.6 2006/09/14 01:33:08 khussey Exp $
+ * $Id: UMLUtil.java,v 1.35.2.7 2006/09/14 11:50:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -4721,14 +4721,18 @@ public class UMLUtil
 				.createEnumerationLiteral();
 			eModelElementToElementMap.put(eEnumLiteral, enumerationLiteral);
 
-			Enumeration enumeration = (Enumeration) doSwitch(eEnumLiteral
-				.getEEnum());
+			EEnum eEnum = eEnumLiteral.getEEnum();
+			Enumeration enumeration = (Enumeration) doSwitch(eEnum);
 			enumeration.getOwnedLiterals().add(enumerationLiteral);
 
 			enumerationLiteral.setName(eEnumLiteral.getName());
-			((LiteralInteger) enumerationLiteral.createSpecification(null,
-				null, UMLPackage.Literals.LITERAL_INTEGER))
-				.setValue(eEnumLiteral.getValue());
+
+			int value = eEnumLiteral.getValue();
+
+			if (value != eEnum.getELiterals().indexOf(eEnumLiteral)) {
+				((LiteralInteger) enumerationLiteral.createSpecification(null,
+					null, UMLPackage.Literals.LITERAL_INTEGER)).setValue(value);
+			}
 
 			defaultCase(eEnumLiteral);
 
