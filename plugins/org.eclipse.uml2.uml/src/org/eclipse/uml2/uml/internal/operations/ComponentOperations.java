@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentOperations.java,v 1.10.2.1 2006/08/16 17:19:40 khussey Exp $
+ * $Id: ComponentOperations.java,v 1.10.2.2 2006/09/19 17:59:40 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -228,6 +228,13 @@ public class ComponentOperations
 			if (realizingClassifier != null) {
 				requireds.addAll(usedInterfaces(component, realizingClassifier,
 					false));
+
+				for (Iterator allParents = realizingClassifier.allParents()
+					.iterator(); allParents.hasNext();) {
+
+					requireds.addAll(usedInterfaces(component,
+						(Classifier) allParents.next(), false));
+				}
 			}
 		}
 
@@ -274,6 +281,13 @@ public class ComponentOperations
 			if (realizingClassifier != null) {
 				provideds.addAll(realizedInterfaces(component,
 					realizingClassifier, false));
+
+				for (Iterator allParents = realizingClassifier.allParents()
+					.iterator(); allParents.hasNext();) {
+
+					provideds.addAll(realizedInterfaces(component,
+						(Classifier) allParents.next(), false));
+				}
 			}
 		}
 
@@ -287,6 +301,46 @@ public class ComponentOperations
 		return new UnionEObjectEList((InternalEObject) component,
 			UMLPackage.Literals.COMPONENT__PROVIDED, provideds.size(),
 			provideds.toArray());
+	}
+
+	protected static EList getAllProvideds(Component component,
+			EList allProvideds) {
+		allProvideds.addAll(component.getProvideds());
+
+		for (Iterator allParents = component.allParents().iterator(); allParents
+			.hasNext();) {
+
+			Object parent = allParents.next();
+
+			if (parent instanceof Component) {
+				allProvideds.addAll(((Component) parent).getProvideds());
+			} else {
+				allProvideds.addAll(realizedInterfaces(component,
+					(Classifier) parent));
+			}
+		}
+
+		return allProvideds;
+	}
+
+	protected static EList getAllRequireds(Component component,
+			EList allRequireds) {
+		allRequireds.addAll(component.getRequireds());
+
+		for (Iterator allParents = component.allParents().iterator(); allParents
+			.hasNext();) {
+
+			Object parent = allParents.next();
+
+			if (parent instanceof Component) {
+				allRequireds.addAll(((Component) parent).getRequireds());
+			} else {
+				allRequireds.addAll(usedInterfaces(component,
+					(Classifier) parent));
+			}
+		}
+
+		return allRequireds;
 	}
 
 } // ComponentOperations
