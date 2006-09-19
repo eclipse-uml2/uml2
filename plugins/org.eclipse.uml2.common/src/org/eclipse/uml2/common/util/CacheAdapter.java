@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CacheAdapter.java,v 1.12.2.2 2006/09/13 14:32:14 khussey Exp $
+ * $Id: CacheAdapter.java,v 1.12.2.3 2006/09/19 14:53:32 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -38,9 +38,88 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 public class CacheAdapter
 		extends ECrossReferenceAdapter {
 
-	public static final CacheAdapter INSTANCE = new CacheAdapter();
+	protected class InverseCrossReferencer
+			extends ECrossReferenceAdapter.InverseCrossReferencer {
 
-	private final Map values = Collections.synchronizedMap(new HashMap());
+		private URI normalizeURI(URI uri, Resource resourceContext) {
+			String fragment = uri.fragment();
+
+			if (fragment != null) {
+				int length = fragment.length();
+
+				if (length > 0 && fragment.charAt(0) != '/'
+					&& fragment.charAt(length - 1) == '?') {
+
+					int index = fragment.lastIndexOf('?', length - 2);
+
+					if (index > 0) {
+						uri = uri.trimFragment().appendFragment(
+							fragment.substring(0, index));
+					}
+				}
+			}
+
+			if (uriConverter != null) {
+				return uriConverter.normalize(uri);
+			} else if (resourceContext != null) {
+				ResourceSet resourceSetContext = resourceContext
+					.getResourceSet();
+
+				if (resourceSetContext != null) {
+					return resourceSetContext.getURIConverter().normalize(uri);
+				}
+			}
+
+			return uri;
+		}
+
+		protected URI normalizeURI(URI uri, EObject objectContext) {
+			return normalizeURI(uri, objectContext.eResource());
+		}
+
+		protected void addProxy(EObject proxy, EObject context) {
+
+			if (proxy.eIsProxy()) {
+
+				if (proxyMap == null) {
+					proxyMap = createHashMap();
+				}
+
+				Resource resource = context.eResource();
+
+				if (resource != null) {
+					addAdapter(resource);
+				}
+
+				URI uri = normalizeURI(((InternalEObject) proxy).eProxyURI(),
+					resource);
+				List proxies = (List) proxyMap.get(uri);
+
+				if (proxies == null) {
+					proxyMap.put(uri, proxies = new BasicEList.FastCompare());
+				}
+
+				proxies.add(proxy);
+			}
+		}
+	}
+
+	public static final CacheAdapter INSTANCE = createCacheAdapter();
+
+	private static CacheAdapter createCacheAdapter() {
+
+		try {
+			return (CacheAdapter) Class
+				.forName(
+					System
+						.getProperty("org.eclipse.uml2.common.util.CacheAdapter.INSTANCE")) //$NON-NLS-1$
+				.newInstance();
+		} catch (Exception e) {
+			return new CacheAdapter();
+		}
+	}
+
+	private final Map values = Collections.synchronizedMap(createHashMap());
 
 	protected boolean adapting = false;
 
@@ -136,73 +215,12 @@ public class CacheAdapter
 		};
 	}
 
-	protected InverseCrossReferencer createInverseCrossReferencer() {
-		return new InverseCrossReferencer() {
+	protected Map createHashMap() {
+		return new HashMap();
+	}
 
-			protected URI normalizeURI(URI uri, Resource resourceContext) {
-				String fragment = uri.fragment();
-
-				if (fragment != null) {
-					int length = fragment.length();
-
-					if (length > 0 && fragment.charAt(0) != '/'
-						&& fragment.charAt(length - 1) == '?') {
-
-						int index = fragment.lastIndexOf('?', length - 2);
-
-						if (index > 0) {
-							uri = uri.trimFragment().appendFragment(
-								fragment.substring(0, index));
-						}
-					}
-				}
-
-				if (uriConverter != null) {
-					return uriConverter.normalize(uri);
-				} else if (resourceContext != null) {
-					ResourceSet resourceSetContext = resourceContext
-						.getResourceSet();
-
-					if (resourceSetContext != null) {
-						return resourceSetContext.getURIConverter().normalize(
-							uri);
-					}
-				}
-
-				return uri;
-			}
-
-			protected URI normalizeURI(URI uri, EObject objectContext) {
-				return normalizeURI(uri, objectContext.eResource());
-			}
-
-			protected void addProxy(EObject proxy, EObject context) {
-
-				if (proxy.eIsProxy()) {
-
-					if (proxyMap == null) {
-						proxyMap = new HashMap();
-					}
-
-					Resource resource = context.eResource();
-
-					if (resource != null) {
-						addAdapter(resource);
-					}
-
-					URI uri = normalizeURI(((InternalEObject) proxy)
-						.eProxyURI(), resource);
-					List proxies = (List) proxyMap.get(uri);
-
-					if (proxies == null) {
-						proxyMap.put(uri,
-							proxies = new BasicEList.FastCompare());
-					}
-
-					proxies.add(proxy);
-				}
-			}
-		};
+	protected ECrossReferenceAdapter.InverseCrossReferencer createInverseCrossReferencer() {
+		return new InverseCrossReferencer();
 	}
 
 	protected boolean addAdapter(EList adapters) {
@@ -386,7 +404,7 @@ public class CacheAdapter
 		Map resourceMap = (Map) values.get(resource);
 
 		if (resourceMap == null) {
-			resourceMap = new HashMap();
+			resourceMap = createHashMap();
 
 			values.put(resource, resourceMap);
 		}
@@ -394,7 +412,7 @@ public class CacheAdapter
 		Map eObjectMap = (Map) resourceMap.get(eObject);
 
 		if (eObjectMap == null) {
-			eObjectMap = new HashMap();
+			eObjectMap = createHashMap();
 
 			resourceMap.put(eObject, eObjectMap);
 		}
