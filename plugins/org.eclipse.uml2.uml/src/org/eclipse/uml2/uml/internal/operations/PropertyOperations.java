@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.33 2006/06/13 17:25:48 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.33.2.1 2006/09/21 03:26:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -595,10 +595,10 @@ public class PropertyOperations
 	 */
 	public static Property getOpposite(Property property) {
 
-		if (property.getOwningAssociation() == null) {
+		if (property.isNavigable()) {
 			Property otherEnd = getOtherEnd(property);
 
-			if (otherEnd != null && otherEnd.getOwningAssociation() == null) {
+			if (otherEnd != null && otherEnd.isNavigable()) {
 				return otherEnd;
 			}
 		}
