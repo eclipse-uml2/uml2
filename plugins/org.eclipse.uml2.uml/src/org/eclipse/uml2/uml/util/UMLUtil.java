@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.35.2.7 2006/09/14 11:50:16 khussey Exp $
+ * $Id: UMLUtil.java,v 1.35.2.8 2006/09/21 03:55:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -1962,9 +1962,7 @@ public class UMLUtil
 		public Object caseClass(org.eclipse.uml2.uml.Class class_) {
 			org.eclipse.uml2.uml.Package package_ = class_.getNearestPackage();
 
-			if (package_ == null) {
-				return super.caseClass(class_);
-			} else {
+			if (package_ != null) {
 				EClass eClass = EcoreFactory.eINSTANCE.createEClass();
 				elementToEModelElementMap.put(class_, eClass);
 
@@ -1979,6 +1977,8 @@ public class UMLUtil
 
 				return eClass;
 			}
+
+			return super.caseClass(class_);
 		}
 
 		public Object caseComment(Comment comment) {
@@ -2079,9 +2079,7 @@ public class UMLUtil
 			org.eclipse.uml2.uml.Package package_ = enumeration
 				.getNearestPackage();
 
-			if (package_ == null) {
-				return super.caseEnumeration(enumeration);
-			} else {
+			if (package_ != null) {
 				EEnum eEnum = EcoreFactory.eINSTANCE.createEEnum();
 				elementToEModelElementMap.put(enumeration, eEnum);
 
@@ -2094,15 +2092,15 @@ public class UMLUtil
 
 				return eEnum;
 			}
+
+			return super.caseEnumeration(enumeration);
 		}
 
 		public Object caseEnumerationLiteral(
 				EnumerationLiteral enumerationLiteral) {
 			Enumeration enumeration = enumerationLiteral.getEnumeration();
 
-			if (enumeration == null) {
-				return super.caseEnumerationLiteral(enumerationLiteral);
-			} else {
+			if (enumeration != null) {
 				EEnumLiteral eEnumLiteral = EcoreFactory.eINSTANCE
 					.createEEnumLiteral();
 				elementToEModelElementMap.put(enumerationLiteral, eEnumLiteral);
@@ -2124,6 +2122,8 @@ public class UMLUtil
 
 				return eEnumLiteral;
 			}
+
+			return super.caseEnumerationLiteral(enumerationLiteral);
 		}
 
 		public Object caseGeneralization(Generalization generalization) {
@@ -2184,9 +2184,7 @@ public class UMLUtil
 			org.eclipse.uml2.uml.Package package_ = interface_
 				.getNearestPackage();
 
-			if (package_ == null) {
-				return super.caseInterface(interface_);
-			} else {
+			if (package_ != null) {
 				EClass eClass = EcoreFactory.eINSTANCE.createEClass();
 				elementToEModelElementMap.put(interface_, eClass);
 
@@ -2202,6 +2200,8 @@ public class UMLUtil
 
 				return eClass;
 			}
+
+			return super.caseInterface(interface_);
 		}
 
 		public Object caseMultiplicityElement(
@@ -2236,11 +2236,9 @@ public class UMLUtil
 		public Object caseOperation(Operation operation) {
 			Namespace namespace = operation.getNamespace();
 
-			if (!(namespace instanceof org.eclipse.uml2.uml.Class)
-				&& !(namespace instanceof Interface)) {
+			if (namespace instanceof org.eclipse.uml2.uml.Class
+				|| namespace instanceof Interface) {
 
-				return super.caseOperation(operation);
-			} else {
 				EOperation eOperation = EcoreFactory.eINSTANCE
 					.createEOperation();
 				elementToEModelElementMap.put(operation, eOperation);
@@ -2256,7 +2254,11 @@ public class UMLUtil
 					.getRaisedExceptions().iterator(); raisedExceptions
 					.hasNext();) {
 
-					eExceptions.add(getEType((Type) raisedExceptions.next()));
+					EClassifier eType = getEType((Type) raisedExceptions.next());
+
+					if (eType != null) {
+						eExceptions.add(eType);
+					}
 				}
 
 				eOperation.setEType(getEType(operation.getType()));
@@ -2280,6 +2282,8 @@ public class UMLUtil
 
 				return eOperation;
 			}
+
+			return super.caseOperation(operation);
 		}
 
 		public Object casePackage(org.eclipse.uml2.uml.Package package_) {
@@ -2319,11 +2323,9 @@ public class UMLUtil
 		public Object caseParameter(Parameter parameter) {
 			Operation operation = parameter.getOperation();
 
-			if (operation == null
-				|| parameter.getDirection() == ParameterDirectionKind.RETURN_LITERAL) {
+			if (operation != null
+				&& parameter.getDirection() != ParameterDirectionKind.RETURN_LITERAL) {
 
-				return super.caseParameter(parameter);
-			} else {
 				EParameter eParameter = EcoreFactory.eINSTANCE
 					.createEParameter();
 				elementToEModelElementMap.put(parameter, eParameter);
@@ -2340,15 +2342,15 @@ public class UMLUtil
 
 				return eParameter;
 			}
+
+			return super.caseParameter(parameter);
 		}
 
 		public Object casePrimitiveType(PrimitiveType primitiveType) {
 			org.eclipse.uml2.uml.Package package_ = primitiveType
 				.getNearestPackage();
 
-			if (package_ == null) {
-				return super.casePrimitiveType(primitiveType);
-			} else {
+			if (package_ != null) {
 				EDataType eDataType = EcoreFactory.eINSTANCE.createEDataType();
 				elementToEModelElementMap.put(primitiveType, eDataType);
 
@@ -2363,16 +2365,16 @@ public class UMLUtil
 
 				return eDataType;
 			}
+
+			return super.casePrimitiveType(primitiveType);
 		}
 
 		public Object caseProperty(Property property) {
 			Namespace namespace = property.getNamespace();
 
-			if (!(namespace instanceof org.eclipse.uml2.uml.Class)
-				&& !(namespace instanceof Interface)) {
+			if (namespace instanceof org.eclipse.uml2.uml.Class
+				|| namespace instanceof Interface) {
 
-				return super.caseProperty(property);
-			} else {
 				EStructuralFeature eStructuralFeature = null;
 
 				if (property.getType() instanceof DataType) {
@@ -2407,16 +2409,20 @@ public class UMLUtil
 				if (opposite != null) {
 					EReference eOpposite = (EReference) doSwitch(opposite);
 
-					if (property.isDerived() && !eOpposite.isDerived()) {
-						eOpposite.setDerived(true);
+					if (eOpposite != null) {
 
-						if (DEBUG) {
-							System.out.println("Made opposite " //$NON-NLS-1$
-								+ getQualifiedText(eOpposite) + " derived"); //$NON-NLS-1$
+						if (property.isDerived() && !eOpposite.isDerived()) {
+							eOpposite.setDerived(true);
+
+							if (DEBUG) {
+								System.out.println("Made opposite " //$NON-NLS-1$
+									+ getQualifiedText(eOpposite) + " derived"); //$NON-NLS-1$
+							}
 						}
-					}
 
-					((EReference) eStructuralFeature).setEOpposite(eOpposite);
+						((EReference) eStructuralFeature)
+							.setEOpposite(eOpposite);
+					}
 				}
 
 				caseTypedElement(property);
@@ -2426,6 +2432,8 @@ public class UMLUtil
 
 				return eStructuralFeature;
 			}
+
+			return super.caseProperty(property);
 		}
 
 		public Object caseTypedElement(TypedElement typedElement) {
@@ -2437,9 +2445,9 @@ public class UMLUtil
 				eTypedElement.setEType(getEType(typedElement));
 
 				return eTypedElement;
-			} else {
-				return super.caseTypedElement(typedElement);
 			}
+
+			return super.caseTypedElement(typedElement);
 		}
 
 		public Object defaultCase(EObject eObject) {
@@ -2454,11 +2462,12 @@ public class UMLUtil
 		}
 
 		public Object doSwitch(EObject eObject) {
-			Object eModelElement = elementToEModelElementMap.get(eObject);
 
-			return eModelElement == null
-				? super.doSwitch(eObject)
-				: eModelElement;
+			if (!elementToEModelElementMap.containsKey(eObject)) {
+				super.doSwitch(eObject);
+			}
+
+			return elementToEModelElementMap.get(eObject);
 		}
 
 		protected void processEcoreTaggedValue(EModelElement eModelElement,
@@ -4624,119 +4633,146 @@ public class UMLUtil
 		}
 
 		public Object caseEAttribute(EAttribute eAttribute) {
-			Property property = UMLFactory.eINSTANCE.createProperty();
-			eModelElementToElementMap.put(eAttribute, property);
+			EClass eContainingClass = eAttribute.getEContainingClass();
 
-			Classifier classifier = (Classifier) doSwitch(eAttribute
-				.getEContainingClass());
-			getOwnedAttributes(classifier).add(property);
+			if (eContainingClass != null) {
+				Property property = UMLFactory.eINSTANCE.createProperty();
+				eModelElementToElementMap.put(eAttribute, property);
 
-			property.setName(eAttribute.getName());
-			property.setIsReadOnly(!eAttribute.isChangeable());
-			property.setIsDerived(eAttribute.isDerived());
-			property.setVisibility(VisibilityKind.PUBLIC_LITERAL);
+				Classifier classifier = (Classifier) doSwitch(eContainingClass);
+				getOwnedAttributes(classifier).add(property);
 
-			caseETypedElement(eAttribute);
+				property.setName(eAttribute.getName());
+				property.setIsReadOnly(!eAttribute.isChangeable());
+				property.setIsDerived(eAttribute.isDerived());
+				property.setVisibility(VisibilityKind.PUBLIC_LITERAL);
 
-			defaultCase(eAttribute);
+				caseETypedElement(eAttribute);
 
-			return property;
+				defaultCase(eAttribute);
+
+				return property;
+			}
+
+			return super.caseEAttribute(eAttribute);
 		}
 
 		public Object caseEClass(EClass eClass) {
-			Classifier classifier = eClass.isInterface()
-				? (Classifier) UMLFactory.eINSTANCE.createInterface()
-				: (Classifier) UMLFactory.eINSTANCE.createClass();
-			eModelElementToElementMap.put(eClass, classifier);
+			EPackage ePackage = eClass.getEPackage();
 
-			org.eclipse.uml2.uml.Package package_ = (org.eclipse.uml2.uml.Package) doSwitch(eClass
-				.getEPackage());
-			package_.getOwnedTypes().add(classifier);
+			if (ePackage != null) {
+				Classifier classifier = eClass.isInterface()
+					? (Classifier) UMLFactory.eINSTANCE.createInterface()
+					: (Classifier) UMLFactory.eINSTANCE.createClass();
+				eModelElementToElementMap.put(eClass, classifier);
 
-			classifier.setName(eClass.getName());
+				org.eclipse.uml2.uml.Package package_ = (org.eclipse.uml2.uml.Package) doSwitch(ePackage);
+				package_.getOwnedTypes().add(classifier);
 
-			if (!eClass.isInterface()) {
-				((org.eclipse.uml2.uml.Class) classifier).setIsAbstract(eClass
-					.isAbstract());
-			}
+				classifier.setName(eClass.getName());
 
-			for (Iterator eSuperTypes = eClass.getESuperTypes().iterator(); eSuperTypes
-				.hasNext();) {
+				if (!eClass.isInterface()) {
+					((org.eclipse.uml2.uml.Class) classifier)
+						.setIsAbstract(eClass.isAbstract());
+				}
 
-				EClass eSuperType = (EClass) eSuperTypes.next();
+				for (Iterator eSuperTypes = eClass.getESuperTypes().iterator(); eSuperTypes
+					.hasNext();) {
 
-				if (eSuperType.isInterface()) {
-					((BehavioredClassifier) classifier)
-						.createInterfaceRealization(null,
-							(Interface) doSwitch(eSuperType));
-				} else {
-					Classifier generalClassifier = (Classifier) doSwitch(eSuperType);
+					EClass eSuperType = (EClass) eSuperTypes.next();
 
-					if (generalClassifier != null
-						&& !classifier.allParents().contains(generalClassifier)) {
+					if (eSuperType.isInterface()) {
+						((BehavioredClassifier) classifier)
+							.createInterfaceRealization(null,
+								(Interface) doSwitch(eSuperType));
+					} else {
+						Classifier generalClassifier = (Classifier) doSwitch(eSuperType);
 
-						classifier.createGeneralization(generalClassifier);
+						if (!classifier.allParents()
+							.contains(generalClassifier)) {
+
+							classifier.createGeneralization(generalClassifier);
+						}
 					}
 				}
+
+				defaultCase(eClass);
+
+				return classifier;
 			}
 
-			defaultCase(eClass);
-
-			return classifier;
+			return super.caseEClass(eClass);
 		}
 
 		public Object caseEDataType(EDataType eDataType) {
-			PrimitiveType primitiveType = UMLFactory.eINSTANCE
-				.createPrimitiveType();
-			eModelElementToElementMap.put(eDataType, primitiveType);
+			EPackage ePackage = eDataType.getEPackage();
 
-			org.eclipse.uml2.uml.Package package_ = (org.eclipse.uml2.uml.Package) doSwitch(eDataType
-				.getEPackage());
-			package_.getOwnedTypes().add(primitiveType);
+			if (ePackage != null) {
+				PrimitiveType primitiveType = UMLFactory.eINSTANCE
+					.createPrimitiveType();
+				eModelElementToElementMap.put(eDataType, primitiveType);
 
-			primitiveType.setName(eDataType.getName());
+				org.eclipse.uml2.uml.Package package_ = (org.eclipse.uml2.uml.Package) doSwitch(ePackage);
+				package_.getOwnedTypes().add(primitiveType);
 
-			defaultCase(eDataType);
+				primitiveType.setName(eDataType.getName());
 
-			return primitiveType;
+				defaultCase(eDataType);
+
+				return primitiveType;
+			}
+
+			return super.caseEDataType(eDataType);
 		}
 
 		public Object caseEEnum(EEnum eEnum) {
-			Enumeration enumeration = UMLFactory.eINSTANCE.createEnumeration();
-			eModelElementToElementMap.put(eEnum, enumeration);
+			EPackage ePackage = eEnum.getEPackage();
 
-			org.eclipse.uml2.uml.Package package_ = (org.eclipse.uml2.uml.Package) doSwitch(eEnum
-				.getEPackage());
-			package_.getOwnedTypes().add(enumeration);
+			if (ePackage != null) {
+				Enumeration enumeration = UMLFactory.eINSTANCE
+					.createEnumeration();
+				eModelElementToElementMap.put(eEnum, enumeration);
 
-			enumeration.setName(eEnum.getName());
+				org.eclipse.uml2.uml.Package package_ = (org.eclipse.uml2.uml.Package) doSwitch(ePackage);
+				package_.getOwnedTypes().add(enumeration);
 
-			defaultCase(eEnum);
+				enumeration.setName(eEnum.getName());
 
-			return enumeration;
+				defaultCase(eEnum);
+
+				return enumeration;
+			}
+
+			return super.caseEEnum(eEnum);
 		}
 
 		public Object caseEEnumLiteral(EEnumLiteral eEnumLiteral) {
-			EnumerationLiteral enumerationLiteral = UMLFactory.eINSTANCE
-				.createEnumerationLiteral();
-			eModelElementToElementMap.put(eEnumLiteral, enumerationLiteral);
-
 			EEnum eEnum = eEnumLiteral.getEEnum();
-			Enumeration enumeration = (Enumeration) doSwitch(eEnum);
-			enumeration.getOwnedLiterals().add(enumerationLiteral);
 
-			enumerationLiteral.setName(eEnumLiteral.getName());
+			if (eEnum != null) {
+				EnumerationLiteral enumerationLiteral = UMLFactory.eINSTANCE
+					.createEnumerationLiteral();
+				eModelElementToElementMap.put(eEnumLiteral, enumerationLiteral);
 
-			int value = eEnumLiteral.getValue();
+				Enumeration enumeration = (Enumeration) doSwitch(eEnum);
+				enumeration.getOwnedLiterals().add(enumerationLiteral);
 
-			if (value != eEnum.getELiterals().indexOf(eEnumLiteral)) {
-				((LiteralInteger) enumerationLiteral.createSpecification(null,
-					null, UMLPackage.Literals.LITERAL_INTEGER)).setValue(value);
+				enumerationLiteral.setName(eEnumLiteral.getName());
+
+				int value = eEnumLiteral.getValue();
+
+				if (value != eEnum.getELiterals().indexOf(eEnumLiteral)) {
+					((LiteralInteger) enumerationLiteral.createSpecification(
+						null, null, UMLPackage.Literals.LITERAL_INTEGER))
+						.setValue(value);
+				}
+
+				defaultCase(eEnumLiteral);
+
+				return enumerationLiteral;
 			}
 
-			defaultCase(eEnumLiteral);
-
-			return enumerationLiteral;
+			return super.caseEEnumLiteral(eEnumLiteral);
 		}
 
 		public Object caseEModelElement(EModelElement eModelElement) {
@@ -4744,52 +4780,62 @@ public class UMLUtil
 		}
 
 		public Object caseEOperation(EOperation eOperation) {
-			Operation operation = UMLFactory.eINSTANCE.createOperation();
-			eModelElementToElementMap.put(eOperation, operation);
+			EClass eContainingClass = eOperation.getEContainingClass();
 
-			Classifier classifier = (Classifier) doSwitch(eOperation
-				.getEContainingClass());
-			getOwnedOperations(classifier).add(operation);
+			if (eContainingClass != null) {
+				Operation operation = UMLFactory.eINSTANCE.createOperation();
+				eModelElementToElementMap.put(eOperation, operation);
 
-			operation.setName(eOperation.getName());
+				Classifier classifier = (Classifier) doSwitch(eContainingClass);
+				getOwnedOperations(classifier).add(operation);
 
-			EClassifier eType = eOperation.getEType();
+				operation.setName(eOperation.getName());
 
-			if (eType != null) {
-				operation.createReturnResult(null, getType(eOperation, eType));
+				EClassifier eType = eOperation.getEType();
+
+				if (eType != null) {
+					operation.createReturnResult(null, getType(eOperation,
+						eType));
+				}
+
+				EList raisedExceptions = operation.getRaisedExceptions();
+
+				for (Iterator eExceptions = eOperation.getEExceptions()
+					.iterator(); eExceptions.hasNext();) {
+
+					Type type = getType(eOperation, (EClassifier) eExceptions
+						.next());
+
+					if (type != null) {
+						raisedExceptions.add(type);
+					}
+				}
+
+				operation.setVisibility(VisibilityKind.PUBLIC_LITERAL);
+
+				int upperBound = eOperation.getUpperBound();
+
+				if (upperBound != ETypedElement.UNSPECIFIED_MULTIPLICITY
+					&& upperBound != operation.getUpper()) {
+
+					operation.setUpper(upperBound);
+				}
+
+				int lowerBound = eOperation.getLowerBound();
+
+				if (lowerBound != operation.getLower()) {
+					operation.setLower(lowerBound);
+				}
+
+				operation.setIsOrdered(eOperation.isOrdered());
+				operation.setIsUnique(eOperation.isUnique());
+
+				defaultCase(eOperation);
+
+				return operation;
 			}
 
-			EList raisedExceptions = operation.getRaisedExceptions();
-
-			for (Iterator eExceptions = eOperation.getEExceptions().iterator(); eExceptions
-				.hasNext();) {
-
-				raisedExceptions.add(getType(eOperation,
-					(EClassifier) eExceptions.next()));
-			}
-
-			operation.setVisibility(VisibilityKind.PUBLIC_LITERAL);
-
-			int upperBound = eOperation.getUpperBound();
-
-			if (upperBound != ETypedElement.UNSPECIFIED_MULTIPLICITY
-				&& upperBound != operation.getUpper()) {
-
-				operation.setUpper(upperBound);
-			}
-
-			int lowerBound = eOperation.getLowerBound();
-
-			if (lowerBound != operation.getLower()) {
-				operation.setLower(lowerBound);
-			}
-
-			operation.setIsOrdered(eOperation.isOrdered());
-			operation.setIsUnique(eOperation.isUnique());
-
-			defaultCase(eOperation);
-
-			return operation;
+			return super.caseEOperation(eOperation);
 		}
 
 		public Object caseEPackage(EPackage ePackage) {
@@ -4815,87 +4861,98 @@ public class UMLUtil
 		}
 
 		public Object caseEParameter(EParameter eParameter) {
-			Parameter parameter = UMLFactory.eINSTANCE.createParameter();
-			eModelElementToElementMap.put(eParameter, parameter);
+			EOperation eOperation = eParameter.getEOperation();
 
-			Operation operation = (Operation) doSwitch(eParameter
-				.getEOperation());
-			operation.getOwnedParameters().add(parameter);
+			if (eOperation != null) {
+				Parameter parameter = UMLFactory.eINSTANCE.createParameter();
+				eModelElementToElementMap.put(eParameter, parameter);
 
-			parameter.setName(eParameter.getName());
+				Operation operation = (Operation) doSwitch(eOperation);
+				operation.getOwnedParameters().add(parameter);
 
-			caseETypedElement(eParameter);
+				parameter.setName(eParameter.getName());
 
-			defaultCase(eParameter);
+				caseETypedElement(eParameter);
 
-			return parameter;
+				defaultCase(eParameter);
+
+				return parameter;
+			}
+
+			return super.caseEParameter(eParameter);
 		}
 
 		public Object caseEReference(EReference eReference) {
-			Property property = UMLFactory.eINSTANCE.createProperty();
-			eModelElementToElementMap.put(eReference, property);
-
 			EClass eContainingClass = eReference.getEContainingClass();
-			Classifier classifier = (Classifier) doSwitch(eContainingClass);
-			getOwnedAttributes(classifier).add(property);
 
-			property.setName(eReference.getName());
-			property.setAggregation(eReference.isContainment()
-				? AggregationKind.COMPOSITE_LITERAL
-				: AggregationKind.NONE_LITERAL);
-			property.setIsDerived(eReference.isDerived());
-			property.setIsReadOnly(!eReference.isChangeable());
+			if (eContainingClass != null) {
+				Property property = UMLFactory.eINSTANCE.createProperty();
+				eModelElementToElementMap.put(eReference, property);
 
-			caseETypedElement(eReference);
+				Classifier classifier = (Classifier) doSwitch(eContainingClass);
+				getOwnedAttributes(classifier).add(property);
 
-			EReference eOpposite = eReference.getEOpposite();
+				property.setName(eReference.getName());
+				property.setAggregation(eReference.isContainment()
+					? AggregationKind.COMPOSITE_LITERAL
+					: AggregationKind.NONE_LITERAL);
+				property.setIsDerived(eReference.isDerived());
+				property.setIsReadOnly(!eReference.isChangeable());
 
-			if (eOpposite == null) {
-				Association association = (Association) ((org.eclipse.uml2.uml.Package) doSwitch(eContainingClass
-					.getEPackage())).createOwnedType(null,
-					UMLPackage.Literals.ASSOCIATION);
+				caseETypedElement(eReference);
 
-				property.setAssociation(association);
+				EReference eOpposite = eReference.getEOpposite();
 
-				association.createOwnedEnd(null, classifier);
-			} else {
-				Property opposite = (Property) doSwitch(eOpposite);
-				Association association = opposite.getAssociation();
+				if (eOpposite == null) {
+					Association association = (Association) ((org.eclipse.uml2.uml.Package) doSwitch(eContainingClass
+						.getEPackage())).createOwnedType(null,
+						UMLPackage.Literals.ASSOCIATION);
 
-				if (association == null) {
-
-					if (eReference.isContainer()) {
-						opposite
-							.setAssociation(association = (Association) ((org.eclipse.uml2.uml.Package) doSwitch(eOpposite
-								.getEContainingClass().getEPackage()))
-								.createOwnedType(null,
-									UMLPackage.Literals.ASSOCIATION));
-
-						property.setAssociation(association);
-					} else {
-						property
-							.setAssociation(association = (Association) ((org.eclipse.uml2.uml.Package) doSwitch(eContainingClass
-								.getEPackage())).createOwnedType(null,
-								UMLPackage.Literals.ASSOCIATION));
-
-						opposite.setAssociation(association);
-					}
-				} else {
 					property.setAssociation(association);
+
+					association.createOwnedEnd(null, classifier);
+				} else {
+					Property opposite = (Property) doSwitch(eOpposite);
+
+					if (opposite != null) {
+						Association association = opposite.getAssociation();
+
+						if (association == null) {
+
+							if (eReference.isContainer()) {
+								opposite
+									.setAssociation(association = (Association) ((org.eclipse.uml2.uml.Package) doSwitch(eOpposite
+										.getEContainingClass().getEPackage()))
+										.createOwnedType(null,
+											UMLPackage.Literals.ASSOCIATION));
+
+								property.setAssociation(association);
+							} else {
+								property
+									.setAssociation(association = (Association) ((org.eclipse.uml2.uml.Package) doSwitch(eContainingClass
+										.getEPackage())).createOwnedType(null,
+										UMLPackage.Literals.ASSOCIATION));
+
+								opposite.setAssociation(association);
+							}
+						} else {
+							property.setAssociation(association);
+						}
+					}
 				}
+
+				defaultCase(eReference);
+
+				return property;
 			}
 
-			defaultCase(eReference);
-
-			return property;
+			return super.caseEReference(eReference);
 		}
 
 		public Object caseETypedElement(ETypedElement eTypedElement) {
 			Object element = eModelElementToElementMap.get(eTypedElement);
 
-			if (element == null) {
-				return super.caseETypedElement(eTypedElement);
-			} else {
+			if (element != null) {
 
 				if (element instanceof TypedElement) {
 					((TypedElement) element).setType(getType(eTypedElement));
@@ -4924,6 +4981,8 @@ public class UMLUtil
 
 				return element;
 			}
+
+			return super.caseETypedElement(eTypedElement);
 		}
 
 		public Object defaultCase(EObject eObject) {
