@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.35.2.8 2006/09/21 03:55:11 khussey Exp $
+ * $Id: UMLUtil.java,v 1.35.2.9 2006/09/21 11:50:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -4997,11 +4997,12 @@ public class UMLUtil
 		}
 
 		public Object doSwitch(EObject eObject) {
-			Object element = eModelElementToElementMap.get(eObject);
 
-			return element == null
-				? super.doSwitch(eObject)
-				: element;
+			if (!eModelElementToElementMap.containsKey(eObject)) {
+				super.doSwitch(eObject);
+			}
+
+			return eModelElementToElementMap.get(eObject);
 		}
 
 		protected Profile getEcoreProfile(EModelElement eModelElement) {
