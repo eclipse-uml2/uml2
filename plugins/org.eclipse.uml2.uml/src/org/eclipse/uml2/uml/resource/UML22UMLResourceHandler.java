@@ -8,16 +8,18 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.26.2.2 2006/08/24 18:08:47 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.26.2.3 2006/09/27 21:01:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
@@ -394,11 +396,14 @@ public class UML22UMLResourceHandler
 					EList ownedParameters = behavioralFeature
 						.getOwnedParameters();
 
-					for (Iterator values = getValues(extension.getMixed(),
-						"returnResult", true).iterator(); values //$NON-NLS-1$
-						.hasNext();) {
+					List returnResult = Arrays.asList(getValues(
+						extension.getMixed(), "returnResult", true).toArray()); //$NON-NLS-1$
 
-						Object value = values.next();
+					for (ListIterator values = returnResult
+						.listIterator(returnResult.size()); values
+						.hasPrevious();) {
+
+						Object value = values.previous();
 
 						if (value instanceof Parameter) {
 							ownedParameters.add(0, value);
@@ -1159,6 +1164,16 @@ public class UML22UMLResourceHandler
 				}
 
 				return super.caseOpaqueExpression(opaqueExpression);
+			}
+
+			public Object caseOperation(Operation operation) {
+				Parameter returnResult = operation.getReturnResult();
+
+				if (returnResult != null) {
+					returnResult.destroy();
+				}
+
+				return super.caseOperation(operation);
 			}
 
 			public Object casePackageableElement(
