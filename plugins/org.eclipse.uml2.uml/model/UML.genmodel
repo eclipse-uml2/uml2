@@ -240,8 +240,8 @@
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Element/mustBeOwned"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Package">
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Package/ownedType">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="true" propertySortChoices="true"
+          ecoreFeature="ecore:EReference UML.ecore#//Package/ownedType">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
@@ -252,8 +252,8 @@
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Package/packagedElement">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Package/nestedPackage">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="true" propertySortChoices="true"
+          ecoreFeature="ecore:EReference UML.ecore#//Package/nestedPackage">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
@@ -554,8 +554,8 @@
           createChild="false" ecoreFeature="ecore:EReference UML.ecore#//Association/endType">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Association/navigableOwnedEnd"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="true" propertySortChoices="true"
+          ecoreFeature="ecore:EReference UML.ecore#//Association/navigableOwnedEnd"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Association/specialized_end_number">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Association/specialized_end_number/diagnostics"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Association/specialized_end_number/context"/>
@@ -606,8 +606,8 @@
           createChild="false" ecoreFeature="ecore:EReference UML.ecore#//Classifier/attribute">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Classifier/representation"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="true" propertySortChoices="true"
+          ecoreFeature="ecore:EReference UML.ecore#//Classifier/representation"/>
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Classifier/collaborationUse">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
@@ -1240,18 +1240,18 @@
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//Operation/isUnique.1"/>
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//Operation/lower"/>
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//Operation/upper"/>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Operation/precondition"/>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Operation/postcondition"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="true" propertySortChoices="true"
+          ecoreFeature="ecore:EReference UML.ecore#//Operation/precondition"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="true" propertySortChoices="true"
+          ecoreFeature="ecore:EReference UML.ecore#//Operation/postcondition"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Operation/redefinedOperation"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Operation/datatype">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Operation/bodyCondition"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="true" propertySortChoices="true"
+          ecoreFeature="ecore:EReference UML.ecore#//Operation/bodyCondition"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Operation/type"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Operation/at_most_one_return">
@@ -1390,8 +1390,8 @@
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//BehavioredClassifier/ownedBehavior">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//BehavioredClassifier/classifierBehavior"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="true" propertySortChoices="true"
+          ecoreFeature="ecore:EReference UML.ecore#//BehavioredClassifier/classifierBehavior"/>
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//BehavioredClassifier/interfaceRealization">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
@@ -1604,8 +1604,8 @@
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Transition/target"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Transition/redefinedTransition"/>
-      <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
-          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Transition/guard">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="true" propertySortChoices="true"
+          ecoreFeature="ecore:EReference UML.ecore#//Transition/guard">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
@@ -1849,8 +1849,8 @@
       </genFeatures>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML.ecore#//EncapsulatedClassifier">
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//EncapsulatedClassifier/ownedPort"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="true" propertySortChoices="true"
+          ecoreFeature="ecore:EReference UML.ecore#//EncapsulatedClassifier/ownedPort"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML.ecore#//StructuredClassifier">
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
@@ -1997,12 +1997,12 @@
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//Image/format"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Profile">
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Profile/ownedStereotype"/>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Profile/metaclassReference"/>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Profile/metamodelReference"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="true" propertySortChoices="true"
+          ecoreFeature="ecore:EReference UML.ecore#//Profile/ownedStereotype"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="true" propertySortChoices="true"
+          ecoreFeature="ecore:EReference UML.ecore#//Profile/metaclassReference"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="true" propertySortChoices="true"
+          ecoreFeature="ecore:EReference UML.ecore#//Profile/metamodelReference"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Profile/metaclass_reference_not_specialized">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Profile/metaclass_reference_not_specialized/diagnostics"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Profile/metaclass_reference_not_specialized/context"/>
@@ -2480,8 +2480,8 @@
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Activity/edge">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Activity/partition"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="true" propertySortChoices="true"
+          ecoreFeature="ecore:EReference UML.ecore#//Activity/partition"/>
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//Activity/isSingleExecution"/>
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Activity/group">
@@ -4338,8 +4338,8 @@
       </genOperations>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//ProtocolTransition">
-      <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
-          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//ProtocolTransition/postCondition">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="true" propertySortChoices="true"
+          ecoreFeature="ecore:EReference UML.ecore#//ProtocolTransition/postCondition">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
       <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
