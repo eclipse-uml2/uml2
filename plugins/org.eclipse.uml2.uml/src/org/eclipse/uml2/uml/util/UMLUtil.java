@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.35.2.9 2006/09/21 11:50:29 khussey Exp $
+ * $Id: UMLUtil.java,v 1.35.2.10 2006/09/27 19:00:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -2110,13 +2110,21 @@ public class UMLUtil
 
 				setName(eEnumLiteral, enumerationLiteral);
 
-				try {
-					eEnumLiteral.setValue(enumerationLiteral.getSpecification()
-						.integerValue());
-				} catch (Exception e) {
-					eEnumLiteral.setValue(enumeration.getOwnedLiterals()
-						.indexOf(enumerationLiteral));
+				int value = enumeration.getOwnedLiterals().indexOf(
+					enumerationLiteral);
+				ValueSpecification specification = enumerationLiteral
+					.getSpecification();
+
+				if (specification != null) {
+
+					try {
+						value = specification.integerValue();
+					} catch (Exception e) {
+						// ignore
+					}
 				}
+
+				eEnumLiteral.setValue(value);
 
 				defaultCase(enumerationLiteral);
 
@@ -4378,22 +4386,25 @@ public class UMLUtil
 					: getQualifiedName(nestingPackage, "."); //$NON-NLS-1$
 
 				String version = String.valueOf(0);
+				EPackage definition = profile.getDefinition();
 
-				try {
-					EPackage definition = profile.getDefinition();
-					String nsURI = definition.getNsURI();
-					int lastIndex = nsURI.lastIndexOf('/');
+				if (definition != null) {
 
-					if (lastIndex > 7) { // 2.0 format
-						version = String.valueOf(Integer.parseInt(nsURI
-							.substring(lastIndex + 1)) + 1);
-					} else { // 1.x format
-						String nsPrefix = definition.getNsPrefix();
-						version = String.valueOf(Integer.parseInt(nsPrefix
-							.substring(nsPrefix.lastIndexOf('_') + 1)) + 1);
+					try {
+						String nsURI = definition.getNsURI();
+						int lastIndex = nsURI.lastIndexOf('/');
+
+						if (lastIndex > 7) { // 2.0 format
+							version = String.valueOf(Integer.parseInt(nsURI
+								.substring(lastIndex + 1)) + 1);
+						} else { // 1.x format
+							String nsPrefix = definition.getNsPrefix();
+							version = String.valueOf(Integer.parseInt(nsPrefix
+								.substring(nsPrefix.lastIndexOf('_') + 1)) + 1);
+						}
+					} catch (Exception e) {
+						// ignore
 					}
-				} catch (Exception e) {
-					// ignore
 				}
 
 				StringBuffer nsURI = new StringBuffer("http://"); //$NON-NLS-1$

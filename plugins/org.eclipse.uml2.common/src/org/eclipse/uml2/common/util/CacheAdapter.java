@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CacheAdapter.java,v 1.12.2.3 2006/09/19 14:53:32 khussey Exp $
+ * $Id: CacheAdapter.java,v 1.12.2.4 2006/09/27 19:00:17 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -107,16 +107,19 @@ public class CacheAdapter
 	public static final CacheAdapter INSTANCE = createCacheAdapter();
 
 	private static CacheAdapter createCacheAdapter() {
+		String property = System
+			.getProperty("org.eclipse.uml2.common.util.CacheAdapter.INSTANCE"); //$NON-NLS-1$
 
-		try {
-			return (CacheAdapter) Class
-				.forName(
-					System
-						.getProperty("org.eclipse.uml2.common.util.CacheAdapter.INSTANCE")) //$NON-NLS-1$
-				.newInstance();
-		} catch (Exception e) {
-			return new CacheAdapter();
+		if (!UML2Util.isEmpty(property)) {
+
+			try {
+				return (CacheAdapter) Class.forName(property).newInstance();
+			} catch (Exception e) {
+				// ignore
+			}
 		}
+
+		return new CacheAdapter();
 	}
 
 	private final Map values = Collections.synchronizedMap(createHashMap());
