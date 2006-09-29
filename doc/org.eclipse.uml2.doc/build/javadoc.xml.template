@@ -22,18 +22,19 @@
 
 	<target name="javadoc" depends="extractPlatformJavadoc,extractEMFJavadoc">
 
-		<echo message="Get JDK1.4-compatible Doclet from R2_2_maintenance and use with javadoc"/>
-		<cvs cvsRoot=":pserver:anonymous@dev.eclipse.org:/cvsroot/tools" 
-			package="org.eclipse.emf.releng.build/org.eclipse.emf.build" 
-			tag="R2_2_maintenance"
-			reallyquiet="yes"/>
-		<delete quiet="true">
-			<fileset dir="org.eclipse.emf.releng.build/org.eclipse.emf.build" excludes="emf.build_jdk14.jar"/>
-			<fileset dir="org.eclipse.emf.releng.build" includes="*"/>
-		</delete>
+	<echo message="Get Doclet and compile it with JDK1.4 for use with javadoc"/>
+	<cvs cvsRoot=":pserver:anonymous@dev.eclipse.org:/cvsroot/tools" 
+		package="org.eclipse.emf.releng.build/org.eclipse.emf.build" 
+		tag="R2_2_maintenance" 
+		reallyquiet="yes"/>
+	<delete dir="org.eclipse.emf.releng.build/org.eclipse.emf.build/src/CVS"/>
+	<move todir="."><fileset dir="org.eclipse.emf.releng.build/org.eclipse.emf.build/src"/></move>
+	
+		<!-- requires JDK1.4 for compilation -->
+		<javac srcdir="org/eclipse/emf/build/doclet" classpath=".:${javaHome1.4}/lib/tools.jar" failonerror="true"/>
 		<javadoc 
 			destdir="${destDir}" 
-			classpath="${classpath}:${basedir}/org.eclipse.emf.releng.build/org.eclipse.emf.build/emf.build_jdk14.jar"
+			classpath="${classpath}"
 			overview="${overview}"
 
 			windowtitle="Unified Modeling Language 2.1 Javadoc"
