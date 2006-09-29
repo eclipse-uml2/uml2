@@ -29,10 +29,11 @@
 			reallyquiet="yes"/>
 		<delete quiet="true">
 			<fileset dir="org.eclipse.emf.releng.build/org.eclipse.emf.build" excludes="emf.build_jdk14.jar"/>
+			<fileset dir="org.eclipse.emf.releng.build" includes="*"/>
 		</delete>
 		<javadoc 
 			destdir="${destDir}" 
-			classpath="${classpath}:${eclipseDir}/../org.eclipse.emf.releng.build/org.eclipse.emf.build/emf.build_jdk14.jar"
+			classpath="${classpath}:org.eclipse.emf.releng.build/org.eclipse.emf.build/emf.build_jdk14.jar"
 			overview="${overview}"
 
 			windowtitle="Unified Modeling Language 2.1 Javadoc"
