@@ -29,7 +29,6 @@
 			reallyquiet="yes"/>
 		<delete quiet="true">
 			<fileset dir="org.eclipse.emf.releng.build/org.eclipse.emf.build" excludes="emf.build_jdk14.jar"/>
-			<fileset dir="org.eclipse.emf.releng.build" includes="*"/>
 		</delete>
 		<javadoc 
 			destdir="${destDir}" 
