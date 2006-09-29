@@ -33,7 +33,7 @@
 		</delete>
 		<javadoc 
 			destdir="${destDir}" 
-			classpath="${classpath}:../build/org.eclipse.emf.releng.build/org.eclipse.emf.build/emf.build_jdk14.jar"
+			classpath="${classpath}:org.eclipse.emf.releng.build/org.eclipse.emf.build/emf.build_jdk14.jar"
 			overview="${overview}"
 
 			windowtitle="Unified Modeling Language 2.1 Javadoc"
