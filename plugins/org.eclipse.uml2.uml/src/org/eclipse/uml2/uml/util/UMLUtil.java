@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.35.2.10 2006/09/27 19:00:14 khussey Exp $
+ * $Id: UMLUtil.java,v 1.35.2.11 2006/10/05 02:34:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -4366,9 +4366,14 @@ public class UMLUtil
 			extends UML2EcoreConverter {
 
 		public Object casePackage(org.eclipse.uml2.uml.Package package_) {
-			return packages.contains(package_)
-				? super.casePackage(package_)
-				: doSwitch((Profile) packages.iterator().next());
+
+			if (packages.contains(package_)) {
+				return super.casePackage(package_);
+			} else {
+				Object ePackage = doSwitch((Profile) packages.iterator().next());
+				elementToEModelElementMap.put(package_, ePackage);
+				return ePackage;
+			}
 		}
 
 		public Object caseProfile(Profile profile) {
