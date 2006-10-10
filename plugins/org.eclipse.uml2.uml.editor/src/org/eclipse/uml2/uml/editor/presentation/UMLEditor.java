@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.24.2.1 2006/08/24 18:08:46 khussey Exp $
+ * $Id: UMLEditor.java,v 1.24.2.2 2006/10/10 17:44:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -911,6 +911,7 @@ public class UMLEditor
 
 		createModelGen();
 
+		boolean saveNeeded = false;
 		Map resourceToURIMap = new HashMap();
 		EList resources = resourceSet.getResources();
 
@@ -939,6 +940,8 @@ public class UMLEditor
 
 						setInputWithNotify(editorInput);
 						setPartName(editorInput.getName());
+
+						saveNeeded = true;
 					}
 				}
 
@@ -953,6 +956,14 @@ public class UMLEditor
 
 			Map.Entry entry = (Map.Entry) entries.next();
 			((Resource) entry.getKey()).setURI((URI) entry.getValue());
+		}
+		
+		if (saveNeeded) {
+			IProgressMonitor progressMonitor = getActionBars()
+				.getStatusLineManager() != null
+				? getActionBars().getStatusLineManager().getProgressMonitor()
+				: new NullProgressMonitor();
+			doSave(progressMonitor);
 		}
 	}
 
