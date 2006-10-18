@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DerivedEObjectEList.java,v 1.8.2.1 2006/08/14 20:29:45 khussey Exp $
+ * $Id: DerivedEObjectEList.java,v 1.8.2.2 2006/10/18 18:43:54 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -33,6 +33,9 @@ import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+/**
+ * @since 1.2
+ */
 public class DerivedEObjectEList
 		extends AbstractSequentialList
 		implements EStructuralFeature.Setting, InternalEList.Unsettable {
