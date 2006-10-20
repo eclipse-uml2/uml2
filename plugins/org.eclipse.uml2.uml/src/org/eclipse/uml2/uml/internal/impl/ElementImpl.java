@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.31.2.4 2006/10/20 21:06:49 khussey Exp $
+ * $Id: ElementImpl.java,v 1.31.2.5 2006/10/20 21:47:40 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -757,20 +757,12 @@ public abstract class ElementImpl
 			Resource.Internal eInternalResource = eInternalResource();
 
 			if (eInternalResource == null || !eInternalResource.isLoading()) {
-				unapplyAllNonApplicableStereotypes();
-				applyAllRequiredStereotypes();
+				ElementOperations.unapplyAllNonApplicableStereotypes(this, false);
+				ElementOperations.applyAllRequiredStereotypes(this, false);
 			}
 		}
 
 		return msgs;
-	}
-
-	protected void unapplyAllNonApplicableStereotypes() {
-		ElementOperations.unapplyAllNonApplicableStereotypes(this, false);
-	}
-
-	protected void applyAllRequiredStereotypes() {
-		ElementOperations.applyAllRequiredStereotypes(this, false);
 	}
 
 	private static final int ADAPTING = 1 << 7;

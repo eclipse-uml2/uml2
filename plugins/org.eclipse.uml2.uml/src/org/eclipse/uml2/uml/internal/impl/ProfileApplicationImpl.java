@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationImpl.java,v 1.17.2.1 2006/10/20 21:06:49 khussey Exp $
+ * $Id: ProfileApplicationImpl.java,v 1.17.2.2 2006/10/20 21:47:40 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -585,10 +585,6 @@ public class ProfileApplicationImpl
 	public boolean isSetOwner() {
 		return super.isSetOwner()
 			|| eIsSet(UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE);
-	}
-
-	protected void applyAllRequiredStereotypes() {
-		// do nothing
 	}
 
 } //ProfileApplicationImpl
