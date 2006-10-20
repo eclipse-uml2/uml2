@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.44.2.5 2006/10/20 20:38:09 khussey Exp $
+ * $Id: ElementOperations.java,v 1.44.2.6 2006/10/20 21:06:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -1230,53 +1230,47 @@ public class ElementOperations
 
 				ProfileApplication profileApplication = (ProfileApplication) allProfileApplications
 					.next();
+				Profile appliedProfile = profileApplication.getAppliedProfile();
 
-				if (profileApplication != element) {
-					Profile appliedProfile = profileApplication
-						.getAppliedProfile();
+				if (appliedProfile != null) {
 
-					if (appliedProfile != null) {
+					for (Iterator ownedExtensions = appliedProfile
+						.getOwnedExtensions(true).iterator(); ownedExtensions
+						.hasNext();) {
 
-						for (Iterator ownedExtensions = appliedProfile
-							.getOwnedExtensions(true).iterator(); ownedExtensions
-							.hasNext();) {
+						Extension ownedExtension = (Extension) ownedExtensions
+							.next();
+						org.eclipse.uml2.uml.Class metaclass = ownedExtension
+							.getMetaclass();
 
-							Extension ownedExtension = (Extension) ownedExtensions
-								.next();
-							org.eclipse.uml2.uml.Class metaclass = ownedExtension
-								.getMetaclass();
+						if (metaclass != null) {
+							EClassifier eClassifier = getEClassifier(metaclass);
 
-							if (metaclass != null) {
-								EClassifier eClassifier = getEClassifier(metaclass);
+							if (eClassifier != null) {
+								Stereotype stereotype = ownedExtension
+									.getStereotype();
 
-								if (eClassifier != null) {
-									Stereotype stereotype = ownedExtension
-										.getStereotype();
+								if (stereotype != null) {
+									ENamedElement appliedDefinition = profileApplication
+										.getAppliedDefinition(stereotype);
 
-									if (stereotype != null) {
-										ENamedElement appliedDefinition = profileApplication
-											.getAppliedDefinition(stereotype);
+									if (appliedDefinition instanceof EClass
+										&& !((EClass) appliedDefinition)
+											.isAbstract()) {
 
-										if (appliedDefinition instanceof EClass
-											&& !((EClass) appliedDefinition)
-												.isAbstract()) {
+										Map stereotypes = (Map) definitions
+											.get(eClassifier);
 
-											Map stereotypes = (Map) definitions
-												.get(eClassifier);
+										if (stereotypes == null) {
+											definitions.put(eClassifier,
+												stereotypes = new HashMap());
+										}
 
-											if (stereotypes == null) {
-												definitions
-													.put(
-														eClassifier,
-														stereotypes = new HashMap());
-											}
+										if (!stereotypes
+											.containsKey(stereotype)) {
 
-											if (!stereotypes
-												.containsKey(stereotype)) {
-
-												stereotypes.put(stereotype,
-													appliedDefinition);
-											}
+											stereotypes.put(stereotype,
+												appliedDefinition);
 										}
 									}
 								}
