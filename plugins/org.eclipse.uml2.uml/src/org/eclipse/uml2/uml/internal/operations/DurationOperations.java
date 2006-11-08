@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationOperations.java,v 1.2 2006/01/05 22:43:26 khussey Exp $
+ * $Id: DurationOperations.java,v 1.2.2.1 2006/11/08 15:29:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -48,7 +48,7 @@ public class DurationOperations
 	 */
 	public static String stringValue(Duration duration) {
 		ValueSpecification expr = duration.getExpr();
-		return expr == null
+		return expr == null || expr instanceof Duration
 			? ValueSpecificationOperations.stringValue(duration)
 			: expr.stringValue();
 	}
