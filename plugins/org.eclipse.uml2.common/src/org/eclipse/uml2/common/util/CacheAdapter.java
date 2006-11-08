@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CacheAdapter.java,v 1.12.2.4 2006/09/27 19:00:17 khussey Exp $
+ * $Id: CacheAdapter.java,v 1.12.2.5 2006/11/08 16:05:27 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -293,7 +293,10 @@ public class CacheAdapter
 	protected void unsetTarget(EObject target) {
 		super.unsetTarget(target);
 
-		clear(target.eResource());
+		// clear at resource scope iff not unloading
+		if (uriConverter == null) {
+			clear(target.eResource());
+		}
 	}
 
 	protected void unsetTarget(Resource target) {
@@ -308,7 +311,10 @@ public class CacheAdapter
 		Object notifier = msg.getNotifier();
 
 		if (notifier instanceof EObject) {
-			clear(((EObject) notifier).eResource());
+			// clear at resource scope iff not touch
+			if (!msg.isTouch()) {
+				clear(((EObject) notifier).eResource());
+			}
 		} else if (notifier instanceof Resource) {
 
 			switch (msg.getFeatureID(Resource.class)) {
@@ -322,6 +328,7 @@ public class CacheAdapter
 							ResourceSet resourceSet = resource.getResourceSet();
 
 							if (resourceSet != null) {
+								// cache URI converter during unload
 								uriConverter = resourceSet.getURIConverter();
 							}
 						}
