@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.31 2006/05/24 20:54:27 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.31.2.1 2006/11/17 15:27:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
@@ -695,6 +696,31 @@ public class ParameterImpl
 		return eInternalContainer instanceof Operation
 			? (Operation) eInternalContainer
 			: null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void setOperation(Operation newOperation) {
+		if (newOperation != eInternalContainer()) {
+			if (EcoreUtil.isAncestor(this, newOperation))
+				throw new IllegalArgumentException(
+					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newOperation != null)
+				msgs = ((InternalEList) newOperation.getOwnedParameters())
+					.basicAdd(this, msgs);
+			msgs = eBasicSetContainer((InternalEObject) newOperation,
+				UMLPackage.PARAMETER__OPERATION, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				UMLPackage.PARAMETER__OPERATION, newOperation, newOperation));
 	}
 
 	/**
@@ -1429,6 +1455,16 @@ public class ParameterImpl
 				return;
 		}
 		eDynamicSet(featureID, newValue);
+	}
+
+	public void eDynamicSet(int featureID, Object newValue) {
+
+		if (featureID == UMLPackage.PARAMETER__OPERATION) {
+			setOperation((Operation) newValue);
+			return;
+		}
+
+		super.eDynamicSet(featureID, newValue);
 	}
 
 	/**

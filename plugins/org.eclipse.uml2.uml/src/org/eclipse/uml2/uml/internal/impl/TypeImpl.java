@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeImpl.java,v 1.17 2006/05/24 20:54:27 khussey Exp $
+ * $Id: TypeImpl.java,v 1.17.2.1 2006/11/17 15:27:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -113,8 +113,7 @@ public abstract class TypeImpl
 	 * @generated NOT
 	 */
 	public void setPackage(org.eclipse.uml2.uml.Package newPackage) {
-		if (newPackage != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.TYPE__PACKAGE && newPackage != null)) {
+		if (newPackage != eInternalContainer()) {
 			if (EcoreUtil.isAncestor(this, newPackage))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
