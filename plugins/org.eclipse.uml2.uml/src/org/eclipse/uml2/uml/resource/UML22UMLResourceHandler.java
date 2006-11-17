@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.26.2.4 2006/10/18 18:48:21 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.26.2.5 2006/11/17 19:33:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -116,6 +116,7 @@ import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.ValuePin;
 import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.VisibilityKind;
+import org.eclipse.uml2.uml.internal.operations.ElementOperations;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 import org.eclipse.uml2.uml.util.UMLUtil;
 
@@ -340,6 +341,8 @@ public class UML22UMLResourceHandler
 		final Map executionEvents = new HashMap();
 		final Map sendEvents = new HashMap();
 		final Map receiveEvents = new HashMap();
+
+		final List packagesRequiringStereotypes = new ArrayList();
 
 		UMLSwitch umlSwitch = new UMLSwitch() {
 
@@ -1245,11 +1248,12 @@ public class UML22UMLResourceHandler
 						Profile appliedProfile = profileApplication
 							.getAppliedProfile();
 
-						if (profileName == null) {
-							profileName = appliedProfile.getName();
-						}
-
 						if (appliedProfile != null) {
+
+							if (profileName == null) {
+								profileName = appliedProfile.getName();
+							}
+
 							EAnnotation eAnnotation = appliedProfile
 								.getEAnnotation(UMLPackage.eNS_URI);
 
@@ -1272,6 +1276,17 @@ public class UML22UMLResourceHandler
 										break;
 									}
 								}
+							}
+
+							org.eclipse.uml2.uml.Package applyingPackage = profileApplication
+								.getApplyingPackage();
+
+							if (applyingPackage != null
+								&& !appliedProfile.getOwnedExtensions(true)
+									.isEmpty()) {
+
+								packagesRequiringStereotypes
+									.add(applyingPackage);
 							}
 						}
 					}
@@ -1762,6 +1777,12 @@ public class UML22UMLResourceHandler
 
 		for (Iterator atr = annotationsToRemove.iterator(); atr.hasNext();) {
 			((EAnnotation) atr.next()).setEModelElement(null);
+		}
+
+		for (Iterator prs = packagesRequiringStereotypes.iterator(); prs
+			.hasNext();) {
+
+			ElementOperations.applyAllRequiredStereotypes((Element) prs.next());
 		}
 	}
 }
