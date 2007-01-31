@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.35.2.13 2006/10/20 15:59:18 khussey Exp $
+ * $Id: UMLUtil.java,v 1.35.2.14 2007/01/31 18:45:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -4858,6 +4858,17 @@ public class UMLUtil
 			}
 
 			return super.getEType(type);
+		}
+
+		protected void processEcoreTaggedValues(EPackage ePackage,
+				Element element, Map options,
+				DiagnosticChain diagnostics,
+				Map context) {
+
+			if (packages.contains(element)) {
+				super.processEcoreTaggedValues(ePackage, element, options,
+					diagnostics, context);
+			}
 		}
 
 		protected void setName(final ENamedElement eNamedElement,
