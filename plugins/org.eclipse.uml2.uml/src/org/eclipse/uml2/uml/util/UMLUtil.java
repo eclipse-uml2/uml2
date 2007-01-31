@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.35.2.15 2007/01/31 20:26:32 khussey Exp $
+ * $Id: UMLUtil.java,v 1.35.2.16 2007/01/31 21:27:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -5218,7 +5218,9 @@ public class UMLUtil
 
 					EClass eSuperType = (EClass) eSuperTypes.next();
 
-					if (eSuperType.isInterface()) {
+					if (eSuperType.isInterface()
+						&& classifier instanceof BehavioredClassifier) {
+
 						((BehavioredClassifier) classifier)
 							.createInterfaceRealization(null,
 								(Interface) doSwitch(eSuperType));
