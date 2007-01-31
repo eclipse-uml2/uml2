@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.33.2.1 2006/09/21 03:26:52 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.33.2.2 2007/01/31 21:56:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -25,6 +24,7 @@ import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
@@ -596,10 +596,26 @@ public class PropertyOperations
 	public static Property getOpposite(Property property) {
 
 		if (property.isNavigable()) {
-			Property otherEnd = getOtherEnd(property);
+			Association association = property.getAssociation();
 
-			if (otherEnd != null && otherEnd.isNavigable()) {
-				return otherEnd;
+			if (association != null) {
+				EList memberEnds = association.getMemberEnds();
+
+				if (memberEnds.size() == 2) {
+					int index = memberEnds.indexOf(property);
+
+					if (index != -1) {
+						Property otherEnd = (Property) ((InternalEList) memberEnds)
+							.basicGet(Math.abs(index - 1));
+
+						if (!association.getOwnedEnds().contains(otherEnd)
+							|| association.getNavigableOwnedEnds().contains(
+								otherEnd)) {
+
+							return otherEnd;
+						}
+					}
+				}
 			}
 		}
 
@@ -825,7 +841,7 @@ public class PropertyOperations
 		Association association = property.getAssociation();
 
 		if (association != null) {
-			List memberEnds = association.getMemberEnds();
+			EList memberEnds = association.getMemberEnds();
 
 			if (memberEnds.size() == 2) {
 				int index = memberEnds.indexOf(property);
