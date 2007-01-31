@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.35.2.14 2007/01/31 18:45:15 khussey Exp $
+ * $Id: UMLUtil.java,v 1.35.2.15 2007/01/31 20:26:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -4773,6 +4773,15 @@ public class UMLUtil
 		/*
 		 * (non-Javadoc)
 		 * 
+		 * @see org.eclipse.uml2.uml.util.UMLUtil.UML2EcoreConverter#caseComment(org.eclipse.uml2.uml.Comment)
+		 */
+		public Object caseComment(Comment comment) {
+			return null;
+		}
+
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see org.eclipse.uml2.uml.util.UMLUtil.UML2EcoreConverter#casePackage(org.eclipse.uml2.uml.Package)
 		 */
 		public Object casePackage(org.eclipse.uml2.uml.Package package_) {
@@ -4843,6 +4852,11 @@ public class UMLUtil
 			return ePackage;
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.uml.util.UMLUtil.UML2EcoreConverter#getEType(org.eclipse.uml2.uml.Type)
+		 */
 		protected EClassifier getEType(Type type) {
 
 			if (type instanceof org.eclipse.uml2.uml.Class) {
@@ -4860,9 +4874,15 @@ public class UMLUtil
 			return super.getEType(type);
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.uml.util.UMLUtil.UML2EcoreConverter#processEcoreTaggedValues(org.eclipse.emf.ecore.EPackage,
+		 *      org.eclipse.uml2.uml.Element, java.util.Map,
+		 *      org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+		 */
 		protected void processEcoreTaggedValues(EPackage ePackage,
-				Element element, Map options,
-				DiagnosticChain diagnostics,
+				Element element, Map options, DiagnosticChain diagnostics,
 				Map context) {
 
 			if (packages.contains(element)) {
@@ -4871,6 +4891,12 @@ public class UMLUtil
 			}
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see org.eclipse.uml2.uml.util.UMLUtil.UML2EcoreConverter#setName(org.eclipse.emf.ecore.ENamedElement,
+		 *      org.eclipse.uml2.uml.NamedElement)
+		 */
 		protected void setName(final ENamedElement eNamedElement,
 				NamedElement namedElement) {
 
