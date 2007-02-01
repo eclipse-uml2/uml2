@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.27.2.2 2007/01/17 18:24:20 khussey Exp $
+ * $Id: PackageOperations.java,v 1.27.2.3 2007/02/01 18:42:22 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -123,7 +123,7 @@ public class PackageOperations
 		protected void copyAttribute(EAttribute eAttribute, EObject eObject,
 				EObject copyEObject) {
 
-			if (eObject.eIsSet(eAttribute)) {
+			if (!eAttribute.isUnsettable() || eObject.eIsSet(eAttribute)) {
 
 				try {
 					if (eAttribute.getEType().eClass().getClassifierID() == EcorePackage.EENUM) {
