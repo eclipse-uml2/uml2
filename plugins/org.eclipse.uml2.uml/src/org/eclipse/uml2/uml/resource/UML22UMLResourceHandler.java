@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.26.2.6 2007/02/14 04:28:50 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.26.2.7 2007/02/14 06:21:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -1231,6 +1231,18 @@ public class UML22UMLResourceHandler
 				return super.casePackageableElement(packageableElement);
 			}
 
+			public Object caseParameterableElement(
+					ParameterableElement parameterableElement) {
+				AnyType extension = getExtension(resource, parameterableElement);
+
+				if (extension != null) {
+					getValue(extension.getAnyAttribute(),
+						"templateParameter", true); //$NON-NLS-1$
+				}
+
+				return super.caseParameterableElement(parameterableElement);
+			}
+
 			public Object caseProfileApplication(
 					ProfileApplication profileApplication) {
 				caseElement(profileApplication);
@@ -1332,6 +1344,7 @@ public class UML22UMLResourceHandler
 			public Object caseProfile(Profile profile) {
 				caseNamespace(profile);
 				casePackageableElement(profile);
+				caseParameterableElement(profile);
 				caseElement(profile);
 
 				defaultCase(profile);
@@ -1368,7 +1381,7 @@ public class UML22UMLResourceHandler
 									if (reference instanceof Stereotype) {
 										Stereotype stereotype = (Stereotype) reference;
 
-										for (Iterator ownedAttributes = stereotype
+										ownedAttributesLoop : for (Iterator ownedAttributes = stereotype
 											.getOwnedAttributes().iterator(); ownedAttributes
 											.hasNext();) {
 
@@ -1388,6 +1401,25 @@ public class UML22UMLResourceHandler
 													org.eclipse.uml2.uml.Class class_ = (org.eclipse.uml2.uml.Class) type;
 
 													if (class_.isMetaclass()) {
+
+														for (Iterator parents = stereotype
+															.parents()
+															.iterator(); parents
+															.hasNext();) {
+
+															Object parent = parents
+																.next();
+
+															if (parent instanceof Stereotype
+																&& ((Stereotype) parent)
+																	.getAllExtendedMetaclasses()
+																	.contains(
+																		class_)) {
+
+																continue ownedAttributesLoop;
+															}
+														}
+
 														EReference eReference = EcoreFactory.eINSTANCE
 															.createEReference();
 														eReference
@@ -1554,41 +1586,38 @@ public class UML22UMLResourceHandler
 
 						templateParameter
 							.setOwnedParameteredElement(parameterableElement);
-						templateParameter
-							.setParameteredElement(parameterableElement);
-					} else {
-						value = getValue(extension.getAnyAttribute(),
-							"parameteredElement", true); //$NON-NLS-1$
+					}
 
-						if (value instanceof String) {
-							EObject eObject = resource
-								.getEObject((String) value);
+					value = getValue(extension.getAnyAttribute(),
+						"parameteredElement", true); //$NON-NLS-1$
 
-							if (eObject instanceof ParameterableElement) {
-								ParameterableElement parameterableElement = (ParameterableElement) eObject;
+					if (value instanceof String) {
+						EObject eObject = resource.getEObject((String) value);
 
-								doSwitch(parameterableElement);
+						if (eObject instanceof ParameterableElement) {
+							ParameterableElement parameterableElement = (ParameterableElement) eObject;
 
-								if (parameterableElement instanceof Classifier) {
-									templateParameter = (TemplateParameter) reincarnate(
-										templateParameter,
-										UMLPackage.Literals.CLASSIFIER_TEMPLATE_PARAMETER,
-										resource);
-								} else if (parameterableElement instanceof ConnectableElement) {
-									templateParameter = (TemplateParameter) reincarnate(
-										templateParameter,
-										UMLPackage.Literals.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER,
-										resource);
-								} else if (parameterableElement instanceof Operation) {
-									templateParameter = (TemplateParameter) reincarnate(
-										templateParameter,
-										UMLPackage.Literals.OPERATION_TEMPLATE_PARAMETER,
-										resource);
-								}
+							doSwitch(parameterableElement);
 
-								templateParameter
-									.setParameteredElement(parameterableElement);
+							if (parameterableElement instanceof Classifier) {
+								templateParameter = (TemplateParameter) reincarnate(
+									templateParameter,
+									UMLPackage.Literals.CLASSIFIER_TEMPLATE_PARAMETER,
+									resource);
+							} else if (parameterableElement instanceof ConnectableElement) {
+								templateParameter = (TemplateParameter) reincarnate(
+									templateParameter,
+									UMLPackage.Literals.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER,
+									resource);
+							} else if (parameterableElement instanceof Operation) {
+								templateParameter = (TemplateParameter) reincarnate(
+									templateParameter,
+									UMLPackage.Literals.OPERATION_TEMPLATE_PARAMETER,
+									resource);
 							}
+
+							templateParameter
+								.setParameteredElement(parameterableElement);
 						}
 					}
 				}
