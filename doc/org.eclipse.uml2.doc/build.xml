@@ -7,7 +7,7 @@
 	<property name="plugin" value="org.eclipse.uml2"/>
 	<property name="docPlugin" value="org.eclipse.uml2.doc"/>
 
-	<property name="filesToInclude" value="META-INF/**,about.html,about.ini,about.mappings,about.properties,eclipse.gif,eclipse.png,eclipse24.gif,eclipse32.gif,eclipse48.gif,eclipse32.png,eclipse48.png,eclipse_lg.gif,plugin.xml,plugin.properties,toc.xml,topics_*.xml,index/**,images/**,tutorials/**,references/**"/>
+	<property name="filesToInclude" value="META-INF/**,about.*,doc.zip,eclipse*.gif,eclipse*.png,plugin.*,toc.xml,topics_*.xml,index/**"/>
 
 	<!-- Compiler settings. -->
 	<property name="javacFailOnError" value="false"/>
@@ -67,8 +67,12 @@
 			<arg value="${eclipse.home}/../eclipse"/>
 		</exec>
 
-		<!-- We don't have anything to index at this stage. -->
-		<!-- <antcall target="build.index"/> -->
+		<antcall target="build.index"/>
+		
+		<zip destfile="${build.result.folder}/doc.zip">
+			<zipfileset dir="references" prefix="references"/>
+		</zip>
+		
 	</target>
 
 	<target name="build.index" depends="init" description="Builds search index for the plug-in" if="eclipse.running">
