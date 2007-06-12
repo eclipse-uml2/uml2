@@ -67,12 +67,13 @@
 			<arg value="${eclipse.home}/../eclipse"/>
 		</exec>
 
-		<antcall target="build.index"/>
-		
+		<!-- We don't have anything to index at this stage. -->
+		<!-- <antcall target="build.index"/> -->
+
 		<zip destfile="${build.result.folder}/doc.zip">
 			<zipfileset dir="references" prefix="references"/>
 		</zip>
-		
+
 	</target>
 
 	<target name="build.index" depends="init" description="Builds search index for the plug-in" if="eclipse.running">
