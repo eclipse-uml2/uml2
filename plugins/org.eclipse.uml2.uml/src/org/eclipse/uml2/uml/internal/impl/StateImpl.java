@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.28 2006/05/24 20:54:28 khussey Exp $
+ * $Id: StateImpl.java,v 1.28.2.1 2007/06/12 15:38:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -33,7 +33,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+//import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -475,14 +475,17 @@ public class StateImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList getOutgoings() {
+
 		if (outgoings == null) {
-			outgoings = new EObjectWithInverseResolvingEList(Transition.class,
-				this, UMLPackage.STATE__OUTGOING, UMLPackage.TRANSITION__SOURCE);
+			outgoings = new VertexImpl.OutgoingEList(Transition.class, this,
+				UMLPackage.STATE__OUTGOING, UMLPackage.TRANSITION__SOURCE);
 		}
-		return outgoings;
+
+		return VertexImpl.getOutgoings(this,
+			(VertexImpl.OutgoingEList) outgoings);
 	}
 
 	/**
@@ -516,14 +519,17 @@ public class StateImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList getIncomings() {
+
 		if (incomings == null) {
-			incomings = new EObjectWithInverseResolvingEList(Transition.class,
-				this, UMLPackage.STATE__INCOMING, UMLPackage.TRANSITION__TARGET);
+			incomings = new VertexImpl.IncomingEList(Transition.class, this,
+				UMLPackage.STATE__INCOMING, UMLPackage.TRANSITION__TARGET);
 		}
-		return incomings;
+
+		return VertexImpl.getIncomings(this,
+			(VertexImpl.IncomingEList) incomings);
 	}
 
 	/**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.16 2006/05/24 20:54:28 khussey Exp $
+ * $Id: VertexImpl.java,v 1.16.2.1 2007/06/12 15:38:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -20,6 +20,8 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -28,6 +30,7 @@ import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.StateMachine;
@@ -109,18 +112,53 @@ public abstract class VertexImpl
 			: namespace;
 	}
 
+	protected static class OutgoingEList
+			extends EObjectWithInverseResolvingEList {
+
+		public OutgoingEList(Class dataClass, InternalEObject owner,
+				int featureID, int inverseFeatureID) {
+			super(dataClass, owner, featureID, inverseFeatureID);
+		}
+
+		public void doAddUnique(Object object) {
+			super.doAddUnique(object);
+		}
+	}
+
+	protected static OutgoingEList getOutgoings(Vertex vertex,
+			OutgoingEList outgoings) {
+
+		for (Iterator nnir = UML2Util.getNonNavigableInverseReferences(vertex)
+			.iterator(); nnir.hasNext();) {
+
+			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nnir
+				.next();
+
+			if (setting.getEStructuralFeature() == UMLPackage.Literals.TRANSITION__SOURCE) {
+				EObject eObject = setting.getEObject();
+
+				if (!outgoings.contains(eObject)) {
+					outgoings.doAddUnique(eObject);
+				}
+			}
+		}
+
+		return outgoings;
+	}
+		
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList getOutgoings() {
+
 		if (outgoings == null) {
-			outgoings = new EObjectWithInverseResolvingEList(Transition.class,
-				this, UMLPackage.VERTEX__OUTGOING,
-				UMLPackage.TRANSITION__SOURCE);
+			outgoings = new OutgoingEList(Transition.class, this,
+				UMLPackage.VERTEX__OUTGOING, UMLPackage.TRANSITION__SOURCE);
 		}
-		return outgoings;
+
+		return getOutgoings(this, (OutgoingEList) outgoings);
 	}
 
 	/**
@@ -151,18 +189,52 @@ public abstract class VertexImpl
 		return null;
 	}
 
+	protected static class IncomingEList
+			extends EObjectWithInverseResolvingEList {
+
+		public IncomingEList(Class dataClass,
+				InternalEObject owner, int featureID, int inverseFeatureID) {
+			super(dataClass, owner, featureID, inverseFeatureID);
+		}
+
+		public void doAddUnique(Object object) {
+			super.doAddUnique(object);
+		}
+	}
+
+	protected static IncomingEList getIncomings(Vertex vertex, IncomingEList incomings) {
+
+		for (Iterator nnir = UML2Util.getNonNavigableInverseReferences(vertex)
+			.iterator(); nnir.hasNext();) {
+
+			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nnir
+				.next();
+
+			if (setting.getEStructuralFeature() == UMLPackage.Literals.TRANSITION__TARGET) {
+				EObject eObject = setting.getEObject();
+
+				if (!incomings.contains(eObject)) {
+					incomings.doAddUnique(eObject);
+				}
+			}
+		}
+
+		return incomings;
+	}
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList getIncomings() {
+
 		if (incomings == null) {
-			incomings = new EObjectWithInverseResolvingEList(Transition.class,
-				this, UMLPackage.VERTEX__INCOMING,
-				UMLPackage.TRANSITION__TARGET);
+			incomings = new IncomingEList(Transition.class, this,
+				UMLPackage.VERTEX__INCOMING, UMLPackage.TRANSITION__TARGET);
 		}
-		return incomings;
+
+		return getIncomings(this, (IncomingEList) incomings);
 	}
 
 	/**

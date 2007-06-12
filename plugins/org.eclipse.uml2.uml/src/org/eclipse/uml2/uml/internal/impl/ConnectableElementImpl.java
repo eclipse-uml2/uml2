@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,17 +8,21 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementImpl.java,v 1.15 2006/05/24 20:54:27 khussey Exp $
+ * $Id: ConnectableElementImpl.java,v 1.15.2.1 2007/06/12 15:38:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
+import java.util.Iterator;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -29,6 +33,7 @@ import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.ConnectableElementTemplateParameter;
 import org.eclipse.uml2.uml.ConnectorEnd;
@@ -299,18 +304,54 @@ public abstract class ConnectableElementImpl
 
 	}
 
+	protected static class EndEList
+			extends EObjectWithInverseResolvingEList {
+
+		public EndEList(Class dataClass, InternalEObject owner, int featureID,
+				int inverseFeatureID) {
+			super(dataClass, owner, featureID, inverseFeatureID);
+		}
+
+		public void doAddUnique(Object object) {
+			super.doAddUnique(object);
+		}
+	}
+
+	protected static EndEList getEnds(ConnectableElement connectableElement,
+			EndEList ends) {
+
+		for (Iterator nnir = UML2Util.getNonNavigableInverseReferences(
+			connectableElement).iterator(); nnir.hasNext();) {
+
+			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nnir
+				.next();
+
+			if (setting.getEStructuralFeature() == UMLPackage.Literals.CONNECTOR_END__ROLE) {
+				EObject eObject = setting.getEObject();
+
+				if (!ends.contains(eObject)) {
+					ends.doAddUnique(eObject);
+				}
+			}
+		}
+
+		return ends;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList getEnds() {
+
 		if (ends == null) {
-			ends = new EObjectWithInverseResolvingEList(ConnectorEnd.class,
-				this, UMLPackage.CONNECTABLE_ELEMENT__END,
+			ends = new EndEList(ConnectorEnd.class, this,
+				UMLPackage.CONNECTABLE_ELEMENT__END,
 				UMLPackage.CONNECTOR_END__ROLE);
 		}
-		return ends;
+
+		return getEnds(this, (EndEList) ends);
 	}
 
 	/**

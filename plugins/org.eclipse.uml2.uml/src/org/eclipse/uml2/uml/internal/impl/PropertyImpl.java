@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.35.2.1 2006/11/17 15:27:16 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.35.2.2 2007/06/12 15:38:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+//import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -516,14 +516,17 @@ public class PropertyImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList getEnds() {
+
 		if (ends == null) {
-			ends = new EObjectWithInverseResolvingEList(ConnectorEnd.class,
+			ends = new ConnectableElementImpl.EndEList(ConnectorEnd.class,
 				this, UMLPackage.PROPERTY__END, UMLPackage.CONNECTOR_END__ROLE);
 		}
-		return ends;
+
+		return ConnectableElementImpl.getEnds(this,
+			(ConnectableElementImpl.EndEList) ends);
 	}
 
 	/**
