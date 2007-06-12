@@ -39,12 +39,12 @@ eclipseDir=`cd $1; echo $PWD`; if [ $debug -gt 0 ]; then echo "[antJd] eclipseDi
 destDir=$currentPath/../references/javadoc; mkdir -p $destDir; destDir=`cd $destDir; echo $PWD`; # resolve relative path
 if [ $debug -gt 0 ]; then echo "[antJd] destDir: "$destDir; fi
 
-hasToken=`grep -c "@plugin@" $antScript".template"`;
+#hasToken=`grep -c "@plugin@" $antScript".template"`;
 
 # Finds plugins in the Workspace:
 pluginDirs=`find $pluginPath -name "${pluginName}*" -maxdepth 1 -type d -printf '%T@ %p\n' | sort -n | cut -f2 -d' '`; 
 
-if [ $hasToken -gt 0  ]; then
+#if [ $hasToken -gt 0  ]; then
 	for pluginDir in $pluginDirs; do
 		srcDir=$pluginDir/src; 
 		echo "[antJd] Process "$srcDir;
@@ -66,10 +66,10 @@ if [ $hasToken -gt 0  ]; then
 			mv $antScript.template.tmp $antScript.template;
 		fi
 	done
-else 
-	echo "[antJd] ERROR! "$currentPath"/javadoc.xml.template does not contain token @plugin@!";
-	exit 1;
-fi
+#else 
+#	echo "[antJd] ERROR! "$currentPath"/javadoc.xml.template does not contain token @plugin@!";
+#	exit 1;
+#fi
 
 # Finds plugins in the Workspace:
 pluginDirs=`find $pluginPath -name "${pluginName}*" -maxdepth 1 -type d -printf '%T@ %p\n' | sort -n | cut -f2 -d' '`; 
