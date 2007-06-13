@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.31.2.7 2007/01/31 17:20:43 khussey Exp $
+ * $Id: ElementImpl.java,v 1.31.2.8 2007/06/13 18:28:39 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -16,6 +16,7 @@ import java.util.Collection;
 import java.util.Map;
 
 //import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.CommonPlugin;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -748,12 +749,31 @@ public abstract class ElementImpl
 		return basicGetOwner() != null;
 	}
 
+	private static final Class CHANGE_DESCRIPTION_CLASS;
+
+	static {
+		Class changeDescriptionClass = null;
+
+		try {
+			changeDescriptionClass = CommonPlugin.loadClass(
+				"org.eclipse.emf.ecore.change", //$NON-NLS-1$
+				"org.eclipse.emf.ecore.change.ChangeDescription"); //$NON-NLS-1$
+		} catch (Throwable throwable) {
+			// ignore
+		}
+
+		CHANGE_DESCRIPTION_CLASS = changeDescriptionClass;
+	}
+
 	public NotificationChain eBasicSetContainer(InternalEObject newContainer,
 			int newContainerFeatureID, NotificationChain msgs) {
 		msgs = super.eBasicSetContainer(newContainer, newContainerFeatureID,
 			msgs);
 
-		if (newContainer != null) {
+		if (newContainer != null
+			&& (CHANGE_DESCRIPTION_CLASS == null || !(CHANGE_DESCRIPTION_CLASS
+				.isInstance(newContainer)))) {
+
 			Resource.Internal eInternalResource = eInternalResource();
 
 			if (eInternalResource == null || !eInternalResource.isLoading()) {
