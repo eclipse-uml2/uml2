@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.28.2.1 2007/06/12 15:38:24 khussey Exp $
+ * $Id: StateImpl.java,v 1.28.2.2 2007/07/04 19:41:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1993,7 +1993,7 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(int featureID) {
+	public boolean eIsSetGen(int featureID) {
 		switch (featureID) {
 			case UMLPackage.STATE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -2073,6 +2073,18 @@ public class StateImpl
 				return regions != null && !regions.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
+	}
+
+	public boolean eIsSet(int featureID) {
+
+		switch (featureID) {
+			case UMLPackage.STATE__OUTGOING :
+				return !getOutgoings().isEmpty();
+			case UMLPackage.STATE__INCOMING :
+				return !getIncomings().isEmpty();
+		}
+
+		return eIsSetGen(featureID);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.35.2.2 2007/06/12 15:38:24 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.35.2.3 2007/07/04 19:41:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -2526,7 +2526,7 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(int featureID) {
+	public boolean eIsSetGen(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PROPERTY__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -2625,6 +2625,16 @@ public class PropertyImpl
 				return basicGetAssociationEnd() != null;
 		}
 		return eDynamicIsSet(featureID);
+	}
+
+	public boolean eIsSet(int featureID) {
+
+		switch (featureID) {
+			case UMLPackage.PROPERTY__END :
+				return !getEnds().isEmpty();
+		}
+
+		return eIsSetGen(featureID);
 	}
 
 	/**

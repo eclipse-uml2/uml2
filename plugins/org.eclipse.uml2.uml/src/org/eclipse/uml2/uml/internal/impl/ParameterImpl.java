@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.31.2.1 2006/11/17 15:27:16 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.31.2.2 2007/07/04 19:41:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1552,7 +1552,7 @@ public class ParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(int featureID) {
+	public boolean eIsSetGen(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PARAMETER__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -1615,6 +1615,16 @@ public class ParameterImpl
 				return isSetEffect();
 		}
 		return eDynamicIsSet(featureID);
+	}
+
+	public boolean eIsSet(int featureID) {
+
+		switch (featureID) {
+			case UMLPackage.PARAMETER__END :
+				return !getEnds().isEmpty();
+		}
+
+		return eIsSetGen(featureID);
 	}
 
 	/**

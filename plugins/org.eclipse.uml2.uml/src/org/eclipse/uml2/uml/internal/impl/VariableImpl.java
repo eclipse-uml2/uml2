@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableImpl.java,v 1.27 2006/05/24 20:54:28 khussey Exp $
+ * $Id: VariableImpl.java,v 1.27.2.1 2007/07/04 19:41:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1081,7 +1081,7 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(int featureID) {
+	public boolean eIsSetGen(int featureID) {
 		switch (featureID) {
 			case UMLPackage.VARIABLE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -1132,6 +1132,16 @@ public class VariableImpl
 				return basicGetActivityScope() != null;
 		}
 		return eDynamicIsSet(featureID);
+	}
+
+	public boolean eIsSet(int featureID) {
+
+		switch (featureID) {
+			case UMLPackage.VARIABLE__END :
+				return !getEnds().isEmpty();
+		}
+
+		return eIsSetGen(featureID);
 	}
 
 	/**

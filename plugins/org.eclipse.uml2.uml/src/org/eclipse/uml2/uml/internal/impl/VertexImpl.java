@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.16.2.1 2007/06/12 15:38:24 khussey Exp $
+ * $Id: VertexImpl.java,v 1.16.2.2 2007/07/04 19:41:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -540,7 +540,7 @@ public abstract class VertexImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(int featureID) {
+	public boolean eIsSetGen(int featureID) {
 		switch (featureID) {
 			case UMLPackage.VERTEX__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
@@ -573,6 +573,18 @@ public abstract class VertexImpl
 				return basicGetContainer() != null;
 		}
 		return eDynamicIsSet(featureID);
+	}
+
+	public boolean eIsSet(int featureID) {
+
+		switch (featureID) {
+			case UMLPackage.VERTEX__OUTGOING :
+				return !getOutgoings().isEmpty();
+			case UMLPackage.VERTEX__INCOMING :
+				return !getIncomings().isEmpty();
+		}
+
+		return eIsSetGen(featureID);
 	}
 
 	/**
