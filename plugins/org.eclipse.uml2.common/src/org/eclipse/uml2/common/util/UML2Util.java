@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.23.2.3 2007/06/12 15:38:27 khussey Exp $
+ * $Id: UML2Util.java,v 1.23.2.4 2007/07/04 13:14:19 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -25,6 +25,7 @@ import java.util.Map;
 import java.util.MissingResourceException;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
+import java.util.WeakHashMap;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.AbstractTreeIterator;
@@ -246,7 +247,7 @@ public class UML2Util {
 	 * A cache of resource bundles.
 	 */
 	protected static final Map RESOURCE_BUNDLES = Collections
-		.synchronizedMap(new HashMap());
+		.synchronizedMap(new WeakHashMap());
 
 	/**
 	 * The empty string.
