@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLHandler.java,v 1.1 2005/12/07 14:17:51 khussey Exp $
+ * $Id: UMLHandler.java,v 1.1.2.1 2007/07/12 17:52:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -28,7 +28,6 @@ import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.SAXXMIHandler;
 import org.eclipse.emf.ecore.xml.type.AnyType;
-
 
 public class UMLHandler
 		extends SAXXMIHandler {
@@ -101,6 +100,32 @@ public class UMLHandler
 
 		return super.validateCreateObjectFromFactory(factory, typeName,
 			newObject, feature);
+	}
+
+	// see https://bugs.eclipse.org/bugs/show_bug.cgi?id=196040
+	protected void handleObjectAttribs(EObject eObject) {
+
+		if (attribs != null) {
+			InternalEObject internalEObject = (InternalEObject) eObject;
+
+			for (int i = 0, size = attribs.getLength(); i < size; i++) {
+				String name = attribs.getQName(i);
+
+				if (name.equals(ID_ATTRIB)) {
+					xmlResource.setID(internalEObject, attribs.getValue(i));
+				} else if (name.equals(hrefAttribute)
+					&& (!recordUnknownFeature
+						|| types.peek() != UNKNOWN_FEATURE_TYPE || internalEObject
+						.eClass() != anyType)) {
+
+					handleProxy(internalEObject, attribs.getValue(i));
+				} else if (!name.startsWith(XMLResource.XML_NS)
+					&& !notFeatures.contains(name)) {
+
+					setAttribValue(eObject, name, attribs.getValue(i));
+				}
+			}
+		}
 	}
 
 }
