@@ -1833,7 +1833,7 @@ public class Class
   protected final String TEXT_1815 = " == null)" + NL + "\t\t{" + NL + "\t\t\t";
   protected final String TEXT_1816 = ".Helper helper = EOCL_ENV.createOCLHelper();" + NL + "\t\t\thelper.setOperationContext(";
   protected final String TEXT_1817 = ", ";
-  protected final String TEXT_1818 = ".getEOperations().get(";
+  protected final String TEXT_1818 = ".getEAllOperations().get(";
   protected final String TEXT_1819 = "));" + NL + "\t\t\ttry" + NL + "\t\t\t{" + NL + "\t\t\t\t";
   protected final String TEXT_1820 = " = helper.createQuery(";
   protected final String TEXT_1821 = "__EOCL_EXP);" + NL + "\t\t\t}" + NL + "\t\t\tcatch (";
@@ -7167,6 +7167,16 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     stringBuffer.append(TEXT_1813);
     }
     } else if (UML2GenModelUtil.hasOCLBody(genOperation)) { String oclQry = UML2GenModelUtil.getUpperName(genOperation.getName()) + (genOperation.getGenParameters().size() == 0 ? "" : "__" + UML2GenModelUtil.getUpperName(genOperation.getParameterTypes("_", false))) + "__EOCL_QRY";
+		GenOperation redefinedGenOperation = genOperation;
+		while (UML2GenModelUtil.isDuplicate(redefinedGenOperation)) {
+			java.util.List<GenOperation> redefinedGenOperations = UML2GenModelUtil.getRedefinedGenOperations(redefinedGenOperation);
+			if (redefinedGenOperations.size() > 0) {
+				redefinedGenOperation = redefinedGenOperations.get(0);
+			} else {
+			break;
+			}
+		}
+		int index = genOperation.getGenClass().getAllGenOperations().indexOf(redefinedGenOperation);
     stringBuffer.append(TEXT_1814);
     stringBuffer.append(oclQry);
     stringBuffer.append(TEXT_1815);
@@ -7176,7 +7186,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     stringBuffer.append(TEXT_1817);
     stringBuffer.append(genOperation.getGenClass().getQualifiedClassifierAccessor());
     stringBuffer.append(TEXT_1818);
-    stringBuffer.append(genOperation.getGenClass().getGenOperations().indexOf(genOperation));
+    stringBuffer.append(index);
     stringBuffer.append(TEXT_1819);
     stringBuffer.append(oclQry);
     stringBuffer.append(TEXT_1820);
