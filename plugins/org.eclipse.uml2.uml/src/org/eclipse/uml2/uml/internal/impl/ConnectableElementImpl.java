@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementImpl.java,v 1.15.2.2 2007/07/04 19:41:56 khussey Exp $
+ * $Id: ConnectableElementImpl.java,v 1.15.2.3 2008/02/25 17:50:58 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -320,17 +320,20 @@ public abstract class ConnectableElementImpl
 	protected static EndEList getEnds(ConnectableElement connectableElement,
 			EndEList ends) {
 
-		for (Iterator nnir = UML2Util.getNonNavigableInverseReferences(
-			connectableElement).iterator(); nnir.hasNext();) {
-
-			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nnir
-				.next();
-
-			if (setting.getEStructuralFeature() == UMLPackage.Literals.CONNECTOR_END__ROLE) {
-				EObject eObject = setting.getEObject();
-
-				if (!ends.contains(eObject)) {
-					ends.doAddUnique(eObject);
+		if(!connectableElement.eIsProxy()){
+			
+			for (Iterator nnir = UML2Util.getNonNavigableInverseReferences(
+				connectableElement).iterator(); nnir.hasNext();) {
+	
+				EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nnir
+					.next();
+	
+				if (setting.getEStructuralFeature() == UMLPackage.Literals.CONNECTOR_END__ROLE) {
+					EObject eObject = setting.getEObject();
+	
+					if (!ends.contains(eObject)) {
+						ends.doAddUnique(eObject);
+					}
 				}
 			}
 		}

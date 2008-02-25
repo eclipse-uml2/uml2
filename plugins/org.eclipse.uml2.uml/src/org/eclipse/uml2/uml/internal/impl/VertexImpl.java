@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.16.2.2 2007/07/04 19:41:56 khussey Exp $
+ * $Id: VertexImpl.java,v 1.16.2.3 2008/02/25 17:50:58 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -128,17 +128,20 @@ public abstract class VertexImpl
 	protected static OutgoingEList getOutgoings(Vertex vertex,
 			OutgoingEList outgoings) {
 
-		for (Iterator nnir = UML2Util.getNonNavigableInverseReferences(vertex)
-			.iterator(); nnir.hasNext();) {
-
-			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nnir
-				.next();
-
-			if (setting.getEStructuralFeature() == UMLPackage.Literals.TRANSITION__SOURCE) {
-				EObject eObject = setting.getEObject();
-
-				if (!outgoings.contains(eObject)) {
-					outgoings.doAddUnique(eObject);
+		if(!vertex.eIsProxy()){
+			
+			for (Iterator nnir = UML2Util.getNonNavigableInverseReferences(vertex)
+				.iterator(); nnir.hasNext();) {
+	
+				EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nnir
+					.next();
+	
+				if (setting.getEStructuralFeature() == UMLPackage.Literals.TRANSITION__SOURCE) {
+					EObject eObject = setting.getEObject();
+	
+					if (!outgoings.contains(eObject)) {
+						outgoings.doAddUnique(eObject);
+					}
 				}
 			}
 		}
@@ -204,17 +207,20 @@ public abstract class VertexImpl
 
 	protected static IncomingEList getIncomings(Vertex vertex, IncomingEList incomings) {
 
-		for (Iterator nnir = UML2Util.getNonNavigableInverseReferences(vertex)
-			.iterator(); nnir.hasNext();) {
-
-			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nnir
-				.next();
-
-			if (setting.getEStructuralFeature() == UMLPackage.Literals.TRANSITION__TARGET) {
-				EObject eObject = setting.getEObject();
-
-				if (!incomings.contains(eObject)) {
-					incomings.doAddUnique(eObject);
+		if(!vertex.eIsProxy()){
+			
+			for (Iterator nnir = UML2Util.getNonNavigableInverseReferences(vertex)
+				.iterator(); nnir.hasNext();) {
+	
+				EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nnir
+					.next();
+	
+				if (setting.getEStructuralFeature() == UMLPackage.Literals.TRANSITION__TARGET) {
+					EObject eObject = setting.getEObject();
+	
+					if (!incomings.contains(eObject)) {
+						incomings.doAddUnique(eObject);
+					}
 				}
 			}
 		}
