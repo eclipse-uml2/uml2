@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396
  *
- * $Id: UMLUtil.java,v 1.75 2008/04/29 19:40:41 jbruck Exp $
+ * $Id: UMLUtil.java,v 1.75.2.1 2008/08/19 18:48:33 jbruck Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -3103,8 +3103,18 @@ public class UMLUtil
 					String default_ = property.getDefault();
 
 					if (default_ != null) {
+
+						if (type instanceof PrimitiveType
+							&& safeEquals(
+								"UMLPrimitiveTypes::UnlimitedNatural", type.getQualifiedName())) {//$NON-NLS-1$
+
+							default_ = UMLFactory.eINSTANCE
+								.createFromString(
+									UMLPackage.Literals.UNLIMITED_NATURAL,
+									default_).toString();
+						}
 						eAttribute.setDefaultValueLiteral(default_);
-					}
+					}	
 				}
 
 				EClass eClass = (EClass) doSwitch(namespace);
