@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 204200
  *   Kenn Hussey - 286329, 320318
  *
- * $Id: UMLValidator.java,v 1.28.2.1 2010/08/19 18:11:16 khussey Exp $
+ * $Id: UMLValidator.java,v 1.28.2.2 2010/08/19 18:54:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.ecore.util.EObjectValidator;
 
