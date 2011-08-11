@@ -8,9 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 204200
- *   Kenn Hussey - 286329, 320318, 323000, 323181
+ *   Kenn Hussey - 286329, 320318, 323000, 323181, 354453
  *
- * $Id: UMLValidator.java,v 1.31 2011/05/23 17:47:05 khussey Exp $
+ * $Id: UMLValidator.java,v 1.31.2.1 2011/08/11 04:57:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -4545,7 +4545,9 @@ public class UMLValidator
 			|| eReference == UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE
 			|| eReference == UMLPackage.Literals.ACTIVITY_GROUP__SUBGROUP
 			|| eReference == UMLPackage.Literals.ACTIVITY_GROUP__SUPER_GROUP
+			|| eReference == UMLPackage.Literals.CLASS__EXTENSION
 			|| eReference == UMLPackage.Literals.CLASSIFIER__FEATURE
+			|| eReference == UMLPackage.Literals.EXTENSION__METACLASS
 			|| eReference == UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER
 			|| eReference == UMLPackage.Literals.ELEMENT__OWNER
 			|| eReference == UMLPackage.Literals.ELEMENT__OWNED_ELEMENT
