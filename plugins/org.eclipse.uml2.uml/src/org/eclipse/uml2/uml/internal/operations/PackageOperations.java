@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,9 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 271470
- *   Kenn Hussey - 323181
+ *   Kenn Hussey - 323181, 348433
  *
- * $Id: PackageOperations.java,v 1.41 2010/09/28 21:02:15 khussey Exp $
+ * $Id: PackageOperations.java,v 1.41.2.1 2011/08/11 04:54:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -122,14 +122,14 @@ public class PackageOperations
 
 		@Override
 		protected EClass getTarget(EClass eClass) {
-			return (EClass) profile.getDefinition(getNamedElement(eClass));
+			return (EClass) profile.getDefinition(getNamedElement(eClass, profile));
 		}
 
 		@Override
 		protected EStructuralFeature getTarget(
 				EStructuralFeature eStructuralFeature) {
 			return (EStructuralFeature) profile
-				.getDefinition(getNamedElement(eStructuralFeature));
+				.getDefinition(getNamedElement(eStructuralFeature, profile));
 		}
 
 		@Override
