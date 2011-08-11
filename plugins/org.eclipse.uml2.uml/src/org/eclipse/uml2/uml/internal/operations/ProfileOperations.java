@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey - 323181
+ *   Kenn Hussey - 323181, 354452
  *
- * $Id: ProfileOperations.java,v 1.37 2010/09/28 21:02:15 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.37.2.1 2011/08/11 04:52:39 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -410,7 +410,7 @@ public class ProfileOperations
 			PackageableElement importedElement = metaclassReference
 				.getImportedElement();
 
-			if (importedElement != null) {
+			if (importedElement instanceof org.eclipse.uml2.uml.Class) {
 				referencedMetaclasses
 					.add((org.eclipse.uml2.uml.Class) importedElement);
 			}
@@ -437,7 +437,7 @@ public class ProfileOperations
 			org.eclipse.uml2.uml.Package importedPackage = metamodelReference
 				.getImportedPackage();
 
-			if (importedPackage != null) {
+			if (importedPackage instanceof Model) {
 				referencedMetamodels.add((Model) importedPackage);
 			}
 		}
