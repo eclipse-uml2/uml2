@@ -2374,7 +2374,7 @@ public class Class
   protected final String TEXT_2355 = NL + "\t\t\t\treturn isSet";
   protected final String TEXT_2356 = "();";
   protected final String TEXT_2357 = NL + "\t\t\t\treturn ";
-  protected final String TEXT_2358 = "_ESETTING_DELEGATE.dynamicIsSet(this, null, 0);";
+  protected final String TEXT_2358 = "__ESETTING_DELEGATE.dynamicIsSet(this, null, 0);";
   protected final String TEXT_2359 = NL + "\t\t\t\treturn !((";
   protected final String TEXT_2360 = ".Internal.Wrapper)";
   protected final String TEXT_2361 = "()).featureMap().isEmpty();";
