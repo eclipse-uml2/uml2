@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
- *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343
+ *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 273949
  *   Yann Tanguy (CEA) - 350402, 382637
  *
  */
@@ -7191,6 +7191,53 @@ public class UMLUtil
 		}
 
 		protected void processEcoreTaggedValue(Element element,
+				Stereotype stereotype, String propertyName, Object value,
+				Map<String, String> options, DiagnosticChain diagnostics,
+				Map<Object, Object> context) {
+
+			if (value == null) {
+				return;
+			}
+
+			if (OPTION__PROCESS
+				.equals(options.get(OPTION__ECORE_TAGGED_VALUES))) {
+
+				if (diagnostics != null) {
+					diagnostics
+						.add(new BasicDiagnostic(
+							Diagnostic.INFO,
+							UMLValidator.DIAGNOSTIC_SOURCE,
+							ECORE_TAGGED_VALUE,
+							UMLPlugin.INSTANCE
+								.getString(
+									"_UI_Ecore2UMLConverter_ProcessEcoreTaggedValue_diagnostic", //$NON-NLS-1$
+									getMessageSubstitutions(
+										context,
+										element,
+										getTagDefinition(stereotype,
+											propertyName), value)),
+							new Object[]{element}));
+				}
+
+				setTaggedValue(element, stereotype, propertyName, value);
+			} else if (OPTION__REPORT.equals(options
+				.get(OPTION__ECORE_TAGGED_VALUES)) && diagnostics != null) {
+
+				diagnostics
+					.add(new BasicDiagnostic(
+						Diagnostic.WARNING,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						ECORE_TAGGED_VALUE,
+						UMLPlugin.INSTANCE
+							.getString(
+								"_UI_Ecore2UMLConverter_ReportEcoreTaggedValue_diagnostic", //$NON-NLS-1$
+								getMessageSubstitutions(context, element,
+									getTagDefinition(stereotype, propertyName),
+									value)), new Object[]{element}));
+			}
+		}
+
+		protected void processEcoreTaggedValue(Element element,
 				Stereotype stereotype, String propertyName,
 				EModelElement eModelElement,
 				EStructuralFeature eStructuralFeature,
@@ -7278,8 +7325,8 @@ public class UMLUtil
 							.getName((EStructuralFeature) eModelElement);
 					}
 
-					if (safeEquals(value, ((ENamedElement) eModelElement)
-						.getName())) {
+					if (safeEquals(value,
+						((ENamedElement) eModelElement).getName())) {
 
 						return;
 					}
@@ -7366,8 +7413,8 @@ public class UMLUtil
 								stringBuffer.append(escapeString(
 									entry.getKey(), " =")); //$NON-NLS-1$
 								stringBuffer.append("=\'"); //$NON-NLS-1$
-								stringBuffer.append(escapeString(entry
-									.getValue(), "")); //$NON-NLS-1$
+								stringBuffer.append(escapeString(
+									entry.getValue(), "")); //$NON-NLS-1$
 								stringBuffer.append('\'');
 							}
 
@@ -7393,45 +7440,8 @@ public class UMLUtil
 				}
 			}
 
-			if (value == null) {
-				return;
-			}
-
-			if (OPTION__PROCESS
-				.equals(options.get(OPTION__ECORE_TAGGED_VALUES))) {
-
-				if (diagnostics != null) {
-					diagnostics
-						.add(new BasicDiagnostic(
-							Diagnostic.INFO,
-							UMLValidator.DIAGNOSTIC_SOURCE,
-							ECORE_TAGGED_VALUE,
-							UMLPlugin.INSTANCE
-								.getString(
-									"_UI_Ecore2UMLConverter_ProcessEcoreTaggedValue_diagnostic", //$NON-NLS-1$
-									getMessageSubstitutions(context, element,
-										getTagDefinition(stereotype,
-											propertyName), value)),
-							new Object[]{element}));
-				}
-
-				setTaggedValue(element, stereotype, propertyName, value);
-			} else if (OPTION__REPORT.equals(options
-				.get(OPTION__ECORE_TAGGED_VALUES))
-				&& diagnostics != null) {
-
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.WARNING,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						ECORE_TAGGED_VALUE,
-						UMLPlugin.INSTANCE
-							.getString(
-								"_UI_Ecore2UMLConverter_ReportEcoreTaggedValue_diagnostic", //$NON-NLS-1$
-								getMessageSubstitutions(context, element,
-									getTagDefinition(stereotype, propertyName),
-									value)), new Object[]{element}));
-			}
+			processEcoreTaggedValue(element, stereotype, propertyName, value,
+				options, diagnostics, context);
 		}
 
 		protected void processEcoreTaggedValues(Element element,
