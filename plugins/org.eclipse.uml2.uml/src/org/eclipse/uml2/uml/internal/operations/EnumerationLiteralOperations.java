@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   CEA - initial API and implementation
- *   Kenn Hussey (CEA) - 375553
+ *   Kenn Hussey (CEA) - 375553, 397140
  *
  */
 package org.eclipse.uml2.uml.internal.operations;
@@ -17,7 +17,7 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
-import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -99,7 +99,13 @@ public class EnumerationLiteralOperations
 	 */
 	public static EList<Classifier> getClassifiers(
 			EnumerationLiteral enumerationLiteral) {
-		EList<Classifier> classifiers = ECollections.emptyEList();
+		EList<Classifier> classifiers = new UniqueEList.FastCompare<Classifier>();
+
+		Classifier classifier = enumerationLiteral.getClassifier();
+
+		if (classifier != null) {
+			classifiers.add(classifier);
+		}
 
 		return new UnionEObjectEList<Classifier>(
 			(InternalEObject) enumerationLiteral,
