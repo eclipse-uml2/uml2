@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   Christian W. Damus (CEA) - initial API and implementation
- *   Manuel Bork <bork@yatta.de> (Yatta Solutions GmbH) - 421756
+ *   Manuel Bork <bork@yatta.de> (Yatta Solutions GmbH) - 421756, 422000
  */
 package org.eclipse.uml2.uml.bug.tests;
 
@@ -38,6 +38,7 @@ public class UMLBugTests
 		result.addTest(Bug392833Test.suite());
 		result.addTest(Bug403365Test.suite());
 		result.addTest(Bug421756Test.suite());
+		result.addTest(Bug422000Test.suite());
 
 		return result;
 	}
