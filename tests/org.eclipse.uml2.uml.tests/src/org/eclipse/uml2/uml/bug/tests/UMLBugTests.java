@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 CEA and others.
+ * Copyright (c) 2013, 2014 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   Christian W. Damus (CEA) - initial API and implementation
  *   Manuel Bork <bork@yatta.de> (Yatta Solutions GmbH) - 421756, 422000
+ *   Kenn Hussey (CEA) - 424895
  */
 package org.eclipse.uml2.uml.bug.tests;
 
@@ -39,6 +40,7 @@ public class UMLBugTests
 		result.addTest(Bug403365Test.suite());
 		result.addTest(Bug421756Test.suite());
 		result.addTest(Bug422000Test.suite());
+		result.addTest(Bug424895Test.suite());
 
 		return result;
 	}
