@@ -4111,7 +4111,7 @@ public class Class
     if (!genModel.isReflectiveDelegation() && genFeature.isBasicSet()) {
     stringBuffer.append(TEXT_261);
     if (isJDK50) { //Class/basicSetGenFeature.annotations.insert.javajetinc
-    if (genClass.getExtendedGenFeatures().contains(genFeature) || (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next())))) {
+    if (!genClass.getExtendedGenFeatures().contains(genFeature) && (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next())))) {
     stringBuffer.append(TEXT_262);
     }
     }
@@ -4137,7 +4137,7 @@ public class Class
     if (genFeature.isSet() && !(!genModel.isReflectiveDelegation() && genFeature.isBasicSet())) {
     stringBuffer.append(TEXT_272);
     if (isJDK50) { //Class/setGenFeature.annotations.insert.javajetinc
-    if (genClass.getExtendedGenFeatures().contains(genFeature) || (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next())))) {
+    if (!genClass.getExtendedGenFeatures().contains(genFeature) && (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next())))) {
     stringBuffer.append(TEXT_273);
     }
     }
@@ -5267,7 +5267,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     if (isImplementation && !genModel.isReflectiveDelegation() && genFeature.isBasicSet()) {
     stringBuffer.append(TEXT_757);
     if (isJDK50) { //Class/basicSetGenFeature.annotations.insert.javajetinc
-    if (genClass.getExtendedGenFeatures().contains(genFeature) || (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next())))) {
+    if (!genClass.getExtendedGenFeatures().contains(genFeature) && (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next())))) {
     stringBuffer.append(TEXT_758);
     }
     }
@@ -5777,7 +5777,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     } else {
     stringBuffer.append(TEXT_990);
     if (isJDK50) { //Class/setGenFeature.annotations.insert.javajetinc
-    if (genClass.getExtendedGenFeatures().contains(genFeature) || (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next())))) {
+    if (!genClass.getExtendedGenFeatures().contains(genFeature) && (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next())))) {
     stringBuffer.append(TEXT_991);
     }
     }
@@ -6609,7 +6609,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     } else {
     stringBuffer.append(TEXT_1350);
     if (isJDK50) { //Class/unsetGenFeature.annotations.insert.javajetinc
-    if (genClass.getExtendedGenFeatures().contains(genFeature) || (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next())))) {
+    if (!genClass.getExtendedGenFeatures().contains(genFeature) && (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next())))) {
     stringBuffer.append(TEXT_1351);
     }
     }
@@ -10315,7 +10315,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     if (genFeature.isBasicSet()) {
     stringBuffer.append(TEXT_2917);
     if (isJDK50) { //basicSetGenFeature.annotations.insert.javajetinc
-    if (genClass.getExtendedGenFeatures().contains(genFeature) || (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next())))) {
+    if (!genClass.getExtendedGenFeatures().contains(genFeature) && (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next())))) {
     stringBuffer.append(TEXT_2918);
     }
     }
@@ -10379,7 +10379,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     if (genFeature.isSet()) {
     stringBuffer.append(TEXT_2946);
     if (isJDK50) { //setGenFeature.annotations.insert.javajetinc
-    if (genClass.getExtendedGenFeatures().contains(genFeature) || (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next())))) {
+    if (!genClass.getExtendedGenFeatures().contains(genFeature) && (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next())))) {
     stringBuffer.append(TEXT_2947);
     }
     }
