@@ -173,7 +173,7 @@ public class OperationsClass
  *   Kenn Hussey (Embarcadero Technologies) - 206636, 224693
  *	 Lutz Wrage - 242726
  *   Kenn Hussey - 344908, 284810, 345083
- *   Kenn Hussey (CEA) - 451350
+ *   Kenn Hussey (CEA) - 451350, 480509
  *
  * </copyright>
  */
@@ -359,7 +359,7 @@ public class OperationsClass
     stringBuffer.append(genOperation.getName());
     stringBuffer.append(TEXT_74);
     stringBuffer.append(genClass.getImportedInterfaceName());
-    stringBuffer.append(genClass.getTypeParameters().trim());
+    stringBuffer.append(genClass.getInterfaceTypeArguments().trim());
     stringBuffer.append(TEXT_75);
     stringBuffer.append(genClass.safeName(genClass.getUncapName()));
     if (!genOperation.getGenParameters().isEmpty()) {
