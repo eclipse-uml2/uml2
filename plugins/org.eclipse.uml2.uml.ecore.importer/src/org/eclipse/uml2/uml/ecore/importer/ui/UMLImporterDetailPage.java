@@ -8,8 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 213218
- *   Kenn Hussey (CEA) - 322715
- *   Christian W. Damus (CEA) - 409396, 403374, 420338, 405065, 482214
+ *   Kenn Hussey (CEA) - 322715, 482214
+ *   Christian W. Damus (CEA) - 409396, 403374, 420338, 405065
  *
  */
 package org.eclipse.uml2.uml.ecore.importer.ui;
