@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
- *   Kenn Hussey (CEA) - 327039, 414970, 370089, 459723
+ *   Kenn Hussey (CEA) - 327039, 414970, 370089, 459723, 464702
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -81,18 +81,15 @@ public class StateMachineItemProvider
 	 * @generated
 	 */
 	protected void addRegionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_StateMachine_region_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_StateMachine_region_feature", "_UI_StateMachine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE_MACHINE__REGION, true, false, true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_StateMachine_region_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_StateMachine_region_feature", "_UI_StateMachine_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			UMLPackage.Literals.STATE_MACHINE__REGION, true, false, true, null,
+			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -102,16 +99,16 @@ public class StateMachineItemProvider
 	 * @generated
 	 */
 	protected void addSubmachineStatePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_StateMachine_submachineState_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_StateMachine_submachineState_feature", "_UI_StateMachine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE_MACHINE__SUBMACHINE_STATE, true,
-				false, true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_StateMachine_submachineState_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_StateMachine_submachineState_feature", //$NON-NLS-1$
+				"_UI_StateMachine_type"), //$NON-NLS-1$
+			UMLPackage.Literals.STATE_MACHINE__SUBMACHINE_STATE, true, false,
+			true, null, null, null));
 	}
 
 	/**
@@ -121,18 +118,18 @@ public class StateMachineItemProvider
 	 * @generated
 	 */
 	protected void addConnectionPointPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_StateMachine_connectionPoint_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_StateMachine_connectionPoint_feature", "_UI_StateMachine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE_MACHINE__CONNECTION_POINT, true,
-				false, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_StateMachine_connectionPoint_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_StateMachine_connectionPoint_feature", //$NON-NLS-1$
+				"_UI_StateMachine_type"), //$NON-NLS-1$
+			UMLPackage.Literals.STATE_MACHINE__CONNECTION_POINT, true, false,
+			true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -142,16 +139,16 @@ public class StateMachineItemProvider
 	 * @generated
 	 */
 	protected void addExtendedStateMachinePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_StateMachine_extendedStateMachine_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_StateMachine_extendedStateMachine_feature", "_UI_StateMachine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.STATE_MACHINE__EXTENDED_STATE_MACHINE,
-				true, false, true, null, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_StateMachine_extendedStateMachine_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_StateMachine_extendedStateMachine_feature", //$NON-NLS-1$
+				"_UI_StateMachine_type"), //$NON-NLS-1$
+			UMLPackage.Literals.STATE_MACHINE__EXTENDED_STATE_MACHINE, true,
+			false, true, null, null, null));
 	}
 
 	/**
@@ -219,7 +216,8 @@ public class StateMachineItemProvider
 	public String getText(Object object) {
 		return appendLabel(
 			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_StateMachine_type"), object).toString(); //$NON-NLS-1$
+				"_UI_StateMachine_type"), //$NON-NLS-1$
+			object).toString();
 	}
 
 	/**
@@ -259,9 +257,9 @@ public class StateMachineItemProvider
 			UMLPackage.Literals.STATE_MACHINE__CONNECTION_POINT,
 			UMLFactory.eINSTANCE.createPseudostate()));
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE_MACHINE__REGION,
-			UMLFactory.eINSTANCE.createRegion()));
+		newChildDescriptors
+			.add(createChildParameter(UMLPackage.Literals.STATE_MACHINE__REGION,
+				UMLFactory.eINSTANCE.createRegion()));
 	}
 
 	/**
@@ -271,8 +269,8 @@ public class StateMachineItemProvider
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection<?> selection) {
+	public String getCreateChildText(Object owner, Object feature, Object child,
+			Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 
@@ -306,15 +304,13 @@ public class StateMachineItemProvider
 	protected Command createAddCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection<?> collection, int index) {
 		if (feature == UMLPackage.Literals.BEHAVIOR__REDEFINED_BEHAVIOR) {
-			return new SubsetAddCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER},
+			return new SubsetAddCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER},
 				collection, index);
 		}
-		return super
-			.createAddCommand(domain, owner, feature, collection, index);
+		return super.createAddCommand(domain, owner, feature, collection,
+			index);
 	}
 
 	/**
@@ -325,13 +321,12 @@ public class StateMachineItemProvider
 	 */
 	@Override
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Object value, Collection<?> collection) {
+			EStructuralFeature feature, Object value,
+			Collection<?> collection) {
 		if (feature == UMLPackage.Literals.BEHAVIOR__REDEFINED_BEHAVIOR) {
-			return new SubsetSupersetReplaceCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER},
+			return new SubsetSupersetReplaceCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER},
 				null, value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value,
@@ -348,11 +343,9 @@ public class StateMachineItemProvider
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value) {
 		if (feature == UMLPackage.Literals.BEHAVIOR__REDEFINED_BEHAVIOR) {
-			return new SubsetSupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER},
+			return new SubsetSupersetSetCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER},
 				null, value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
