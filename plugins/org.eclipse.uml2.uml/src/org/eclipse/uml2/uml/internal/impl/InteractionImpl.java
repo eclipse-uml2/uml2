@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756, 464702
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -774,15 +774,6 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.INTERACTION__OWNED_RULE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.INTERACTION__ELEMENT_IMPORT :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.INTERACTION__PACKAGE_IMPORT :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.INTERACTION__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -876,14 +867,14 @@ public class InteractionImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.INTERACTION__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules())
+			case UMLPackage.INTERACTION__OWNED_ELEMENT_IMPORT :
+				return ((InternalEList<?>) getOwnedElementImports())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.INTERACTION__ELEMENT_IMPORT :
-				return ((InternalEList<?>) getElementImports())
+			case UMLPackage.INTERACTION__OWNED_PACKAGE_IMPORT :
+				return ((InternalEList<?>) getOwnedPackageImports())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.INTERACTION__PACKAGE_IMPORT :
-				return ((InternalEList<?>) getPackageImports())
+			case UMLPackage.INTERACTION__OWNED_CONSTRAINT :
+				return ((InternalEList<?>) getOwnedConstraints())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERACTION__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
@@ -940,6 +931,12 @@ public class InteractionImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERACTION__OWNED_PARAMETER_SET :
 				return ((InternalEList<?>) getOwnedParameterSets())
+					.basicRemove(otherEnd, msgs);
+			case UMLPackage.INTERACTION__POSTCONDITION :
+				return ((InternalEList<?>) getPostconditions())
+					.basicRemove(otherEnd, msgs);
+			case UMLPackage.INTERACTION__PRECONDITION :
+				return ((InternalEList<?>) getPreconditions())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERACTION__COVERED :
 				return ((InternalEList<?>) getCovereds()).basicRemove(otherEnd,
@@ -1036,6 +1033,12 @@ public class InteractionImpl
 				return getPackageImports();
 			case UMLPackage.INTERACTION__OWNED_MEMBER :
 				return getOwnedMembers();
+			case UMLPackage.INTERACTION__OWNED_ELEMENT_IMPORT :
+				return getOwnedElementImports();
+			case UMLPackage.INTERACTION__OWNED_PACKAGE_IMPORT :
+				return getOwnedPackageImports();
+			case UMLPackage.INTERACTION__OWNED_CONSTRAINT :
+				return getOwnedConstraints();
 			case UMLPackage.INTERACTION__IMPORTED_MEMBER :
 				return getImportedMembers();
 			case UMLPackage.INTERACTION__MEMBER :
@@ -1212,6 +1215,21 @@ public class InteractionImpl
 				getPackageImports().clear();
 				getPackageImports()
 					.addAll((Collection<? extends PackageImport>) newValue);
+				return;
+			case UMLPackage.INTERACTION__OWNED_ELEMENT_IMPORT :
+				getOwnedElementImports().clear();
+				getOwnedElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
+				return;
+			case UMLPackage.INTERACTION__OWNED_PACKAGE_IMPORT :
+				getOwnedPackageImports().clear();
+				getOwnedPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
+				return;
+			case UMLPackage.INTERACTION__OWNED_CONSTRAINT :
+				getOwnedConstraints().clear();
+				getOwnedConstraints()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.INTERACTION__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -1431,6 +1449,15 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__PACKAGE_IMPORT :
 				getPackageImports().clear();
 				return;
+			case UMLPackage.INTERACTION__OWNED_ELEMENT_IMPORT :
+				getOwnedElementImports().clear();
+				return;
+			case UMLPackage.INTERACTION__OWNED_PACKAGE_IMPORT :
+				getOwnedPackageImports().clear();
+				return;
+			case UMLPackage.INTERACTION__OWNED_CONSTRAINT :
+				getOwnedConstraints().clear();
+				return;
 			case UMLPackage.INTERACTION__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
@@ -1595,13 +1622,21 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.INTERACTION__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
+				return !getOwnedRules().isEmpty();
 			case UMLPackage.INTERACTION__ELEMENT_IMPORT :
-				return elementImports != null && !elementImports.isEmpty();
+				return !getElementImports().isEmpty();
 			case UMLPackage.INTERACTION__PACKAGE_IMPORT :
-				return packageImports != null && !packageImports.isEmpty();
+				return !getPackageImports().isEmpty();
 			case UMLPackage.INTERACTION__OWNED_MEMBER :
 				return isSetOwnedMembers();
+			case UMLPackage.INTERACTION__OWNED_ELEMENT_IMPORT :
+				return ownedElementImports != null
+					&& !ownedElementImports.isEmpty();
+			case UMLPackage.INTERACTION__OWNED_PACKAGE_IMPORT :
+				return ownedPackageImports != null
+					&& !ownedPackageImports.isEmpty();
+			case UMLPackage.INTERACTION__OWNED_CONSTRAINT :
+				return ownedConstraints != null && !ownedConstraints.isEmpty();
 			case UMLPackage.INTERACTION__IMPORTED_MEMBER :
 				return !getImportedMembers().isEmpty();
 			case UMLPackage.INTERACTION__MEMBER :

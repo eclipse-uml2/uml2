@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756, 464702
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -628,14 +628,14 @@ public class ArtifactImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ARTIFACT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.ARTIFACT__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules())
+			case UMLPackage.ARTIFACT__OWNED_ELEMENT_IMPORT :
+				return ((InternalEList<?>) getOwnedElementImports())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.ARTIFACT__ELEMENT_IMPORT :
-				return ((InternalEList<?>) getElementImports())
+			case UMLPackage.ARTIFACT__OWNED_PACKAGE_IMPORT :
+				return ((InternalEList<?>) getOwnedPackageImports())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.ARTIFACT__PACKAGE_IMPORT :
-				return ((InternalEList<?>) getPackageImports())
+			case UMLPackage.ARTIFACT__OWNED_CONSTRAINT :
+				return ((InternalEList<?>) getOwnedConstraints())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ARTIFACT__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
@@ -722,6 +722,12 @@ public class ArtifactImpl
 				return getPackageImports();
 			case UMLPackage.ARTIFACT__OWNED_MEMBER :
 				return getOwnedMembers();
+			case UMLPackage.ARTIFACT__OWNED_ELEMENT_IMPORT :
+				return getOwnedElementImports();
+			case UMLPackage.ARTIFACT__OWNED_PACKAGE_IMPORT :
+				return getOwnedPackageImports();
+			case UMLPackage.ARTIFACT__OWNED_CONSTRAINT :
+				return getOwnedConstraints();
 			case UMLPackage.ARTIFACT__IMPORTED_MEMBER :
 				return getImportedMembers();
 			case UMLPackage.ARTIFACT__MEMBER :
@@ -836,6 +842,21 @@ public class ArtifactImpl
 				getPackageImports().clear();
 				getPackageImports()
 					.addAll((Collection<? extends PackageImport>) newValue);
+				return;
+			case UMLPackage.ARTIFACT__OWNED_ELEMENT_IMPORT :
+				getOwnedElementImports().clear();
+				getOwnedElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
+				return;
+			case UMLPackage.ARTIFACT__OWNED_PACKAGE_IMPORT :
+				getOwnedPackageImports().clear();
+				getOwnedPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
+				return;
+			case UMLPackage.ARTIFACT__OWNED_CONSTRAINT :
+				getOwnedConstraints().clear();
+				getOwnedConstraints()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.ARTIFACT__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -964,6 +985,15 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT__PACKAGE_IMPORT :
 				getPackageImports().clear();
 				return;
+			case UMLPackage.ARTIFACT__OWNED_ELEMENT_IMPORT :
+				getOwnedElementImports().clear();
+				return;
+			case UMLPackage.ARTIFACT__OWNED_PACKAGE_IMPORT :
+				getOwnedPackageImports().clear();
+				return;
+			case UMLPackage.ARTIFACT__OWNED_CONSTRAINT :
+				getOwnedConstraints().clear();
+				return;
 			case UMLPackage.ARTIFACT__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
@@ -1065,13 +1095,21 @@ public class ArtifactImpl
 			case UMLPackage.ARTIFACT__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.ARTIFACT__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
+				return !getOwnedRules().isEmpty();
 			case UMLPackage.ARTIFACT__ELEMENT_IMPORT :
-				return elementImports != null && !elementImports.isEmpty();
+				return !getElementImports().isEmpty();
 			case UMLPackage.ARTIFACT__PACKAGE_IMPORT :
-				return packageImports != null && !packageImports.isEmpty();
+				return !getPackageImports().isEmpty();
 			case UMLPackage.ARTIFACT__OWNED_MEMBER :
 				return isSetOwnedMembers();
+			case UMLPackage.ARTIFACT__OWNED_ELEMENT_IMPORT :
+				return ownedElementImports != null
+					&& !ownedElementImports.isEmpty();
+			case UMLPackage.ARTIFACT__OWNED_PACKAGE_IMPORT :
+				return ownedPackageImports != null
+					&& !ownedPackageImports.isEmpty();
+			case UMLPackage.ARTIFACT__OWNED_CONSTRAINT :
+				return ownedConstraints != null && !ownedConstraints.isEmpty();
 			case UMLPackage.ARTIFACT__IMPORTED_MEMBER :
 				return !getImportedMembers().isEmpty();
 			case UMLPackage.ARTIFACT__MEMBER :

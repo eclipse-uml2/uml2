@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 397139, 397141, 418466, 451350, 485756
+ *   Kenn Hussey (CEA) - 327039, 351774, 397139, 397141, 418466, 451350, 485756, 464702
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -876,14 +876,14 @@ public class LoopNodeImpl
 			case UMLPackage.LOOP_NODE__LOCAL_PRECONDITION :
 				return ((InternalEList<?>) getLocalPreconditions())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.LOOP_NODE__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules())
+			case UMLPackage.LOOP_NODE__OWNED_ELEMENT_IMPORT :
+				return ((InternalEList<?>) getOwnedElementImports())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.LOOP_NODE__ELEMENT_IMPORT :
-				return ((InternalEList<?>) getElementImports())
+			case UMLPackage.LOOP_NODE__OWNED_PACKAGE_IMPORT :
+				return ((InternalEList<?>) getOwnedPackageImports())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.LOOP_NODE__PACKAGE_IMPORT :
-				return ((InternalEList<?>) getPackageImports())
+			case UMLPackage.LOOP_NODE__OWNED_CONSTRAINT :
+				return ((InternalEList<?>) getOwnedConstraints())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.LOOP_NODE__EDGE :
 				return ((InternalEList<?>) getEdges()).basicRemove(otherEnd,
@@ -997,6 +997,12 @@ public class LoopNodeImpl
 				return getPackageImports();
 			case UMLPackage.LOOP_NODE__OWNED_MEMBER :
 				return getOwnedMembers();
+			case UMLPackage.LOOP_NODE__OWNED_ELEMENT_IMPORT :
+				return getOwnedElementImports();
+			case UMLPackage.LOOP_NODE__OWNED_PACKAGE_IMPORT :
+				return getOwnedPackageImports();
+			case UMLPackage.LOOP_NODE__OWNED_CONSTRAINT :
+				return getOwnedConstraints();
 			case UMLPackage.LOOP_NODE__IMPORTED_MEMBER :
 				return getImportedMembers();
 			case UMLPackage.LOOP_NODE__MEMBER :
@@ -1146,6 +1152,21 @@ public class LoopNodeImpl
 				getPackageImports()
 					.addAll((Collection<? extends PackageImport>) newValue);
 				return;
+			case UMLPackage.LOOP_NODE__OWNED_ELEMENT_IMPORT :
+				getOwnedElementImports().clear();
+				getOwnedElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
+				return;
+			case UMLPackage.LOOP_NODE__OWNED_PACKAGE_IMPORT :
+				getOwnedPackageImports().clear();
+				getOwnedPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
+				return;
+			case UMLPackage.LOOP_NODE__OWNED_CONSTRAINT :
+				getOwnedConstraints().clear();
+				getOwnedConstraints()
+					.addAll((Collection<? extends Constraint>) newValue);
+				return;
 			case UMLPackage.LOOP_NODE__IN_ACTIVITY :
 				setInActivity((Activity) newValue);
 				return;
@@ -1289,6 +1310,15 @@ public class LoopNodeImpl
 			case UMLPackage.LOOP_NODE__PACKAGE_IMPORT :
 				getPackageImports().clear();
 				return;
+			case UMLPackage.LOOP_NODE__OWNED_ELEMENT_IMPORT :
+				getOwnedElementImports().clear();
+				return;
+			case UMLPackage.LOOP_NODE__OWNED_PACKAGE_IMPORT :
+				getOwnedPackageImports().clear();
+				return;
+			case UMLPackage.LOOP_NODE__OWNED_CONSTRAINT :
+				getOwnedConstraints().clear();
+				return;
 			case UMLPackage.LOOP_NODE__IN_ACTIVITY :
 				setInActivity((Activity) null);
 				return;
@@ -1412,13 +1442,21 @@ public class LoopNodeImpl
 			case UMLPackage.LOOP_NODE__OUTPUT :
 				return isSetOutputs();
 			case UMLPackage.LOOP_NODE__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
+				return !getOwnedRules().isEmpty();
 			case UMLPackage.LOOP_NODE__ELEMENT_IMPORT :
-				return elementImports != null && !elementImports.isEmpty();
+				return !getElementImports().isEmpty();
 			case UMLPackage.LOOP_NODE__PACKAGE_IMPORT :
-				return packageImports != null && !packageImports.isEmpty();
+				return !getPackageImports().isEmpty();
 			case UMLPackage.LOOP_NODE__OWNED_MEMBER :
 				return isSetOwnedMembers();
+			case UMLPackage.LOOP_NODE__OWNED_ELEMENT_IMPORT :
+				return ownedElementImports != null
+					&& !ownedElementImports.isEmpty();
+			case UMLPackage.LOOP_NODE__OWNED_PACKAGE_IMPORT :
+				return ownedPackageImports != null
+					&& !ownedPackageImports.isEmpty();
+			case UMLPackage.LOOP_NODE__OWNED_CONSTRAINT :
+				return ownedConstraints != null && !ownedConstraints.isEmpty();
 			case UMLPackage.LOOP_NODE__IMPORTED_MEMBER :
 				return !getImportedMembers().isEmpty();
 			case UMLPackage.LOOP_NODE__MEMBER :

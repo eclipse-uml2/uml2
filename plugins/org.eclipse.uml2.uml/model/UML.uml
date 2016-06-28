@@ -106,6 +106,9 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_NJpgAAx4EeaNV8Kj5MGNBw" value="*"/>
       </ownedEnd>
     </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_1v8DUDpFEeat4ecWdmxEVw" name="A_elementImport_importingNamespace" memberEnd="_bny9IDpCEeat4ecWdmxEVw _a82QwDpEEeat4ecWdmxEVw"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="__SDSwDpFEeat4ecWdmxEVw" name="A_packageImport_importingNamespace" memberEnd="_tPz8sDpCEeat4ecWdmxEVw _R9phIDpEEeat4ecWdmxEVw"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_oUDUsDo_Eeat4ecWdmxEVw" name="A_ownedRule_context" memberEnd="_U_vn4Do-Eeat4ecWdmxEVw _Z6UPADo_Eeat4ecWdmxEVw"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_6WKakLLQEeCsYvaJqFFivQ" name="Action" isAbstract="true">
       <ownedOperation xmi:id="_CroQsLLREeCsYvaJqFFivQ" name="context" visibility="protected">
         <ownedParameter xmi:id="_EGwx8LLREeCsYvaJqFFivQ" name="result" type="_6UV2QGwJEdq7X4sGURiZYA" direction="return">
@@ -594,6 +597,11 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CzVzgLLXEeCsYvaJqFFivQ"/>
         </ownedParameter>
       </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_ROarUDo-Eeat4ecWdmxEVw" name="Constraint">
+      <ownedAttribute xmi:id="_Z6UPADo_Eeat4ecWdmxEVw" name="context" type="_ZiwkoGwLEdq7X4sGURiZYA" association="_oUDUsDo_Eeat4ecWdmxEVw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dYGkgDo_Eeat4ecWdmxEVw"/>
+      </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="__1ap4HLzEdqziYxiZo0YtA" name="DataType">
       <ownedOperation xmi:id="_WJZCQHL0EdqziYxiZo0YtA" name="createOwnedAttribute">
@@ -1133,6 +1141,7 @@
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_fO7PkbG0EeCDe8CO90iVKQ"/>
       </ownedAttribute>
+      <ownedAttribute xmi:id="_a82QwDpEEeat4ecWdmxEVw" name="importingNamespace" type="_ZiwkoGwLEdq7X4sGURiZYA" association="_1v8DUDpFEeat4ecWdmxEVw"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_HiSd0LL2EeCBifIhhuFqZA" name="EncapsulatedClassifier" isAbstract="true">
       <ownedOperation xmi:id="_O9x_ALL2EeCBifIhhuFqZA" name="ownedPort" visibility="protected">
@@ -1479,6 +1488,30 @@
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_ZiwkoGwLEdq7X4sGURiZYA" name="Namespace" isAbstract="true">
+      <ownedAttribute xmi:id="_bny9IDpCEeat4ecWdmxEVw" name="elementImport" visibility="protected" type="_RPl78GwIEdq7X4sGURiZYA" isDerived="true" association="_1v8DUDpFEeat4ecWdmxEVw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_77MzEDpCEeat4ecWdmxEVw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8qFSUDpCEeat4ecWdmxEVw" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_r2k44DpCEeat4ecWdmxEVw" name="ownedElementImport" visibility="protected" type="_RPl78GwIEdq7X4sGURiZYA" aggregation="composite" subsettedProperty="_bny9IDpCEeat4ecWdmxEVw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9h_KsDpCEeat4ecWdmxEVw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-SQxEDpCEeat4ecWdmxEVw" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_tPz8sDpCEeat4ecWdmxEVw" name="packageImport" visibility="protected" type="_SnNPIGwIEdq7X4sGURiZYA" isDerived="true" association="__SDSwDpFEeat4ecWdmxEVw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9CrtoDpEEeat4ecWdmxEVw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_97-tIDpEEeat4ecWdmxEVw" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_odkVsDpCEeat4ecWdmxEVw" name="ownedPackageImport" visibility="protected" type="_SnNPIGwIEdq7X4sGURiZYA" aggregation="composite" subsettedProperty="_tPz8sDpCEeat4ecWdmxEVw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_OU8foDpFEeat4ecWdmxEVw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PLcp0DpFEeat4ecWdmxEVw" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_U_vn4Do-Eeat4ecWdmxEVw" name="ownedRule" visibility="protected" type="_ROarUDo-Eeat4ecWdmxEVw" isDerived="true" association="_oUDUsDo_Eeat4ecWdmxEVw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mOTloDo-Eeat4ecWdmxEVw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qEhpQDo-Eeat4ecWdmxEVw" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_7fn8QDpAEeat4ecWdmxEVw" name="ownedConstraint" visibility="protected" type="_ROarUDo-Eeat4ecWdmxEVw" aggregation="composite" subsettedProperty="_U_vn4Do-Eeat4ecWdmxEVw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9PglgDpAEeat4ecWdmxEVw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-Mw38DpAEeat4ecWdmxEVw" value="*"/>
+      </ownedAttribute>
       <ownedOperation xmi:id="_vI18QGwLEdq7X4sGURiZYA" name="createElementImport">
         <ownedComment xmi:id="_sdLToOwlEdqYHf-imTcTdw" annotatedElement="_vI18QGwLEdq7X4sGURiZYA">
           <body>Creates an import of the specified element into this namespace with the specified visibility.</body>
@@ -2004,7 +2037,9 @@
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_SnNPIGwIEdq7X4sGURiZYA" name="PackageImport"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_SnNPIGwIEdq7X4sGURiZYA" name="PackageImport">
+      <ownedAttribute xmi:id="_R9phIDpEEeat4ecWdmxEVw" name="importingNamespace" type="_ZiwkoGwLEdq7X4sGURiZYA" association="__SDSwDpFEeat4ecWdmxEVw"/>
+    </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_jKxnwGwLEdq7X4sGURiZYA" name="PackageableElement" isAbstract="true">
       <ownedAttribute xmi:id="_nxsncH2aEeSVK_cyXH-KWw" name="visibility" type="_AyM_oGwMEdq7X4sGURiZYA">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nxsncX2aEeSVK_cyXH-KWw"/>
@@ -2919,4 +2954,16 @@
   <Ecore:EOperation xmi:id="_GwdPoIPaEeOyLuI0bir0Bg" base_Operation="_kGtosGXCEdqEJs8umHJc9g" visibility="None"/>
   <Ecore:EOperation xmi:id="_6p4ogIRfEeOrzvVsV3Q4sA" base_Operation="_uR4xEIRfEeOrzvVsV3Q4sA" operationName="getClientDependencies" visibility="None"/>
   <Ecore:EAttribute xmi:id="_nyeDgH2aEeSVK_cyXH-KWw" isUnsettable="true" base_Property="_nxsncH2aEeSVK_cyXH-KWw"/>
+  <Ecore:EReference xmi:id="_BcAGADo_Eeat4ecWdmxEVw" xmlFeatureKind="Attribute" base_Property="_U_vn4Do-Eeat4ecWdmxEVw">
+    <annotation>http://www.eclipse.org/emf/CDO persistent='true' filter='ownedConstraint'</annotation>
+  </Ecore:EReference>
+  <Ecore:EReference xmi:id="_PSj7QDpBEeat4ecWdmxEVw" xmlName="ownedRule" xmlFeatureKind="Element" base_Property="_7fn8QDpAEeat4ecWdmxEVw"/>
+  <Ecore:EReference xmi:id="_uP6SUDpDEeat4ecWdmxEVw" xmlFeatureKind="Attribute" base_Property="_bny9IDpCEeat4ecWdmxEVw">
+    <annotation>http://www.eclipse.org/emf/CDO persistent='true' filter='ownedElementImport'</annotation>
+  </Ecore:EReference>
+  <Ecore:EReference xmi:id="_8cCZ0DpDEeat4ecWdmxEVw" xmlName="elementImport" xmlFeatureKind="Element" base_Property="_r2k44DpCEeat4ecWdmxEVw"/>
+  <Ecore:EReference xmi:id="_GctYEDpFEeat4ecWdmxEVw" xmlFeatureKind="Attribute" base_Property="_tPz8sDpCEeat4ecWdmxEVw">
+    <annotation>http://www.eclipse.org/emf/CDO persistent='true' filter='ownedPackageImport'</annotation>
+  </Ecore:EReference>
+  <Ecore:EReference xmi:id="_VJgjsDpFEeat4ecWdmxEVw" xmlName="packageImport" xmlFeatureKind="Element" base_Property="_odkVsDpCEeat4ecWdmxEVw"/>
 </xmi:XMI>

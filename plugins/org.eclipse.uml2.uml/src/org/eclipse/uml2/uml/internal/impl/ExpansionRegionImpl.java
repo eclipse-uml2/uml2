@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756, 464702
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -304,15 +304,6 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__HANDLER :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getHandlers())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.EXPANSION_REGION__OWNED_RULE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.EXPANSION_REGION__ELEMENT_IMPORT :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.EXPANSION_REGION__PACKAGE_IMPORT :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__EDGE :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEdges())
 					.basicAdd(otherEnd, msgs);
@@ -372,14 +363,14 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__LOCAL_PRECONDITION :
 				return ((InternalEList<?>) getLocalPreconditions())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.EXPANSION_REGION__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules())
+			case UMLPackage.EXPANSION_REGION__OWNED_ELEMENT_IMPORT :
+				return ((InternalEList<?>) getOwnedElementImports())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.EXPANSION_REGION__ELEMENT_IMPORT :
-				return ((InternalEList<?>) getElementImports())
+			case UMLPackage.EXPANSION_REGION__OWNED_PACKAGE_IMPORT :
+				return ((InternalEList<?>) getOwnedPackageImports())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.EXPANSION_REGION__PACKAGE_IMPORT :
-				return ((InternalEList<?>) getPackageImports())
+			case UMLPackage.EXPANSION_REGION__OWNED_CONSTRAINT :
+				return ((InternalEList<?>) getOwnedConstraints())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__EDGE :
 				return ((InternalEList<?>) getEdges()).basicRemove(otherEnd,
@@ -490,6 +481,12 @@ public class ExpansionRegionImpl
 				return getPackageImports();
 			case UMLPackage.EXPANSION_REGION__OWNED_MEMBER :
 				return getOwnedMembers();
+			case UMLPackage.EXPANSION_REGION__OWNED_ELEMENT_IMPORT :
+				return getOwnedElementImports();
+			case UMLPackage.EXPANSION_REGION__OWNED_PACKAGE_IMPORT :
+				return getOwnedPackageImports();
+			case UMLPackage.EXPANSION_REGION__OWNED_CONSTRAINT :
+				return getOwnedConstraints();
 			case UMLPackage.EXPANSION_REGION__IMPORTED_MEMBER :
 				return getImportedMembers();
 			case UMLPackage.EXPANSION_REGION__MEMBER :
@@ -625,6 +622,21 @@ public class ExpansionRegionImpl
 				getPackageImports()
 					.addAll((Collection<? extends PackageImport>) newValue);
 				return;
+			case UMLPackage.EXPANSION_REGION__OWNED_ELEMENT_IMPORT :
+				getOwnedElementImports().clear();
+				getOwnedElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
+				return;
+			case UMLPackage.EXPANSION_REGION__OWNED_PACKAGE_IMPORT :
+				getOwnedPackageImports().clear();
+				getOwnedPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
+				return;
+			case UMLPackage.EXPANSION_REGION__OWNED_CONSTRAINT :
+				getOwnedConstraints().clear();
+				getOwnedConstraints()
+					.addAll((Collection<? extends Constraint>) newValue);
+				return;
 			case UMLPackage.EXPANSION_REGION__IN_ACTIVITY :
 				setInActivity((Activity) newValue);
 				return;
@@ -741,6 +753,15 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__PACKAGE_IMPORT :
 				getPackageImports().clear();
 				return;
+			case UMLPackage.EXPANSION_REGION__OWNED_ELEMENT_IMPORT :
+				getOwnedElementImports().clear();
+				return;
+			case UMLPackage.EXPANSION_REGION__OWNED_PACKAGE_IMPORT :
+				getOwnedPackageImports().clear();
+				return;
+			case UMLPackage.EXPANSION_REGION__OWNED_CONSTRAINT :
+				getOwnedConstraints().clear();
+				return;
 			case UMLPackage.EXPANSION_REGION__IN_ACTIVITY :
 				setInActivity((Activity) null);
 				return;
@@ -846,13 +867,21 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__OUTPUT :
 				return isSetOutputs();
 			case UMLPackage.EXPANSION_REGION__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
+				return !getOwnedRules().isEmpty();
 			case UMLPackage.EXPANSION_REGION__ELEMENT_IMPORT :
-				return elementImports != null && !elementImports.isEmpty();
+				return !getElementImports().isEmpty();
 			case UMLPackage.EXPANSION_REGION__PACKAGE_IMPORT :
-				return packageImports != null && !packageImports.isEmpty();
+				return !getPackageImports().isEmpty();
 			case UMLPackage.EXPANSION_REGION__OWNED_MEMBER :
 				return isSetOwnedMembers();
+			case UMLPackage.EXPANSION_REGION__OWNED_ELEMENT_IMPORT :
+				return ownedElementImports != null
+					&& !ownedElementImports.isEmpty();
+			case UMLPackage.EXPANSION_REGION__OWNED_PACKAGE_IMPORT :
+				return ownedPackageImports != null
+					&& !ownedPackageImports.isEmpty();
+			case UMLPackage.EXPANSION_REGION__OWNED_CONSTRAINT :
+				return ownedConstraints != null && !ownedConstraints.isEmpty();
 			case UMLPackage.EXPANSION_REGION__IMPORTED_MEMBER :
 				return !getImportedMembers().isEmpty();
 			case UMLPackage.EXPANSION_REGION__MEMBER :

@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756, 464702
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -49,7 +49,7 @@ public interface Profile
 		extends org.eclipse.uml2.uml.Package {
 
 	/**
-	 * Returns the value of the '<em><b>Metaclass Reference</b></em>' reference list.
+	 * Returns the value of the '<em><b>Metaclass Reference</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ElementImport}.
 	 * <p>
 	 * This feature subsets the following features:
@@ -63,15 +63,15 @@ public interface Profile
 	 * References a metaclass that may be extended.
 	 * <p>From package UML::Packages.</p>
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Metaclass Reference</em>' reference list.
+	 * @return the value of the '<em>Metaclass Reference</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProfile_MetaclassReference()
-	 * @model ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<ElementImport> getMetaclassReferences();
 
 	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.ElementImport}, with the specified '<em><b>Imported Element</b></em>', and appends it to the '<em><b>Metaclass Reference</b></em>' reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.ElementImport}, with the specified '<em><b>Imported Element</b></em>', and appends it to the '<em><b>Metaclass Reference</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param importedElement The '<em><b>Imported Element</b></em>' for the new {@link org.eclipse.uml2.uml.ElementImport}, or <code>null</code>.
@@ -82,7 +82,7 @@ public interface Profile
 	ElementImport createMetaclassReference(PackageableElement importedElement);
 
 	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.ElementImport} with the specified '<em><b>Imported Element</b></em>' from the '<em><b>Metaclass Reference</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ElementImport} with the specified '<em><b>Imported Element</b></em>' from the '<em><b>Metaclass Reference</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param importedElement The '<em><b>Imported Element</b></em>' of the {@link org.eclipse.uml2.uml.ElementImport} to retrieve, or <code>null</code>.
@@ -93,7 +93,7 @@ public interface Profile
 	ElementImport getMetaclassReference(PackageableElement importedElement);
 
 	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.ElementImport} with the specified '<em><b>Imported Element</b></em>' from the '<em><b>Metaclass Reference</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ElementImport} with the specified '<em><b>Imported Element</b></em>' from the '<em><b>Metaclass Reference</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param importedElement The '<em><b>Imported Element</b></em>' of the {@link org.eclipse.uml2.uml.ElementImport} to retrieve, or <code>null</code>.
@@ -106,7 +106,7 @@ public interface Profile
 			boolean createOnDemand);
 
 	/**
-	 * Returns the value of the '<em><b>Metamodel Reference</b></em>' reference list.
+	 * Returns the value of the '<em><b>Metamodel Reference</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.PackageImport}.
 	 * <p>
 	 * This feature subsets the following features:
@@ -120,15 +120,15 @@ public interface Profile
 	 * References a package containing (directly or indirectly) metaclasses that may be extended.
 	 * <p>From package UML::Packages.</p>
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Metamodel Reference</em>' reference list.
+	 * @return the value of the '<em>Metamodel Reference</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProfile_MetamodelReference()
-	 * @model ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<PackageImport> getMetamodelReferences();
 
 	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.PackageImport}, with the specified '<em><b>Imported Package</b></em>', and appends it to the '<em><b>Metamodel Reference</b></em>' reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.PackageImport}, with the specified '<em><b>Imported Package</b></em>', and appends it to the '<em><b>Metamodel Reference</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param importedPackage The '<em><b>Imported Package</b></em>' for the new {@link org.eclipse.uml2.uml.PackageImport}, or <code>null</code>.
@@ -140,7 +140,7 @@ public interface Profile
 			org.eclipse.uml2.uml.Package importedPackage);
 
 	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.PackageImport} with the specified '<em><b>Imported Package</b></em>' from the '<em><b>Metamodel Reference</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.PackageImport} with the specified '<em><b>Imported Package</b></em>' from the '<em><b>Metamodel Reference</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param importedPackage The '<em><b>Imported Package</b></em>' of the {@link org.eclipse.uml2.uml.PackageImport} to retrieve, or <code>null</code>.
@@ -152,7 +152,7 @@ public interface Profile
 			org.eclipse.uml2.uml.Package importedPackage);
 
 	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.PackageImport} with the specified '<em><b>Imported Package</b></em>' from the '<em><b>Metamodel Reference</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.PackageImport} with the specified '<em><b>Imported Package</b></em>' from the '<em><b>Metamodel Reference</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param importedPackage The '<em><b>Imported Package</b></em>' of the {@link org.eclipse.uml2.uml.PackageImport} to retrieve, or <code>null</code>.

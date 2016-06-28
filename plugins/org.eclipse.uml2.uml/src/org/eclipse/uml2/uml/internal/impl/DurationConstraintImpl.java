@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 397324, 212765, 418466, 451350, 485756
+ *   Kenn Hussey (CEA) - 327039, 351774, 397324, 212765, 418466, 451350, 485756, 464702
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -284,8 +284,6 @@ public class DurationConstraintImpl
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.DURATION_CONSTRAINT__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
-			case UMLPackage.DURATION_CONSTRAINT__CONTEXT :
-				return basicSetContext(null, msgs);
 			case UMLPackage.DURATION_CONSTRAINT__SPECIFICATION :
 				return basicSetSpecification(null, msgs);
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756, 464702
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -270,43 +270,52 @@ public class ConstraintImpl
 	 * @generated
 	 */
 	public Namespace getContext() {
-		if (eContainerFeatureID() != UMLPackage.CONSTRAINT__CONTEXT)
-			return null;
-		return (Namespace) eContainer();
+		Namespace context = basicGetContext();
+		return context != null && context.eIsProxy()
+			? (Namespace) eResolveProxy((InternalEObject) context)
+			: context;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Namespace basicGetContext() {
-		if (eContainerFeatureID() != UMLPackage.CONSTRAINT__CONTEXT)
-			return null;
-		return (Namespace) eInternalContainer();
+		InternalEObject eInternalContainer = eInternalContainer();
+		return eInternalContainer instanceof Namespace
+			? (Namespace) eInternalContainer
+			: null;
+	}
+
+	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
+		InternalEObject eInternalContainer = eInternalContainer();
+		if (eInternalContainer instanceof Namespace) {
+			return ((InternalEList<Constraint>) ((Namespace) eInternalContainer)
+				.getOwnedRules()).basicRemove(this, msgs);
+		}
+		return super.eBasicRemoveFromContainer(msgs);
+	}
+
+	@Override
+	public NotificationChain eBasicSetContainer(InternalEObject newContainer,
+			int newContainerFeatureID, NotificationChain msgs) {
+		InternalEObject eInternalContainer = eInternalContainer();
+		if (eInternalContainer instanceof Namespace) {
+			msgs = ((InternalEList<Constraint>) ((Namespace) eInternalContainer)
+				.getOwnedRules()).basicRemove(this, msgs);
+		}
+		return super.eBasicSetContainer(newContainer, newContainerFeatureID,
+			msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetContext(Namespace newContext,
-			NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newContext,
-			UMLPackage.CONSTRAINT__CONTEXT, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void setContext(Namespace newContext) {
-		if (newContext != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.CONSTRAINT__CONTEXT
-				&& newContext != null)) {
+		if (newContext != eInternalContainer()) {
 			if (EcoreUtil.isAncestor(this, newContext))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -314,9 +323,12 @@ public class ConstraintImpl
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newContext != null)
-				msgs = ((InternalEObject) newContext).eInverseAdd(this,
-					UMLPackage.NAMESPACE__OWNED_RULE, Namespace.class, msgs);
-			msgs = basicSetContext(newContext, msgs);
+				msgs = ((InternalEList<Constraint>) newContext
+					.getOwnedConstraints()).basicAdd(this, msgs);
+			msgs = eBasicSetContainer((InternalEObject) newContext,
+				InternalEObject.EOPPOSITE_FEATURE_BASE
+					- UMLPackage.NAMESPACE__OWNED_CONSTRAINT,
+				msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -362,40 +374,6 @@ public class ConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case UMLPackage.CONSTRAINT__EANNOTATIONS :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetOwningTemplateParameter(
-					(TemplateParameter) otherEnd, msgs);
-			case UMLPackage.CONSTRAINT__TEMPLATE_PARAMETER :
-				if (templateParameter != null)
-					msgs = ((InternalEObject) templateParameter).eInverseRemove(
-						this,
-						UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-						TemplateParameter.class, msgs);
-				return basicSetTemplateParameter((TemplateParameter) otherEnd,
-					msgs);
-			case UMLPackage.CONSTRAINT__CONTEXT :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetContext((Namespace) otherEnd, msgs);
-		}
-		return eDynamicInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
@@ -412,32 +390,10 @@ public class ConstraintImpl
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.CONSTRAINT__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
-			case UMLPackage.CONSTRAINT__CONTEXT :
-				return basicSetContext(null, msgs);
 			case UMLPackage.CONSTRAINT__SPECIFICATION :
 				return basicSetSpecification(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(
-			NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-			case UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
-				return eInternalContainer().eInverseRemove(this,
-					UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-					TemplateParameter.class, msgs);
-			case UMLPackage.CONSTRAINT__CONTEXT :
-				return eInternalContainer().eInverseRemove(this,
-					UMLPackage.NAMESPACE__OWNED_RULE, Namespace.class, msgs);
-		}
-		return eDynamicBasicRemoveFromContainer(msgs);
 	}
 
 	/**

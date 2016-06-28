@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756, 464702
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -359,43 +359,52 @@ public class ElementImportImpl
 	 * @generated
 	 */
 	public Namespace getImportingNamespace() {
-		if (eContainerFeatureID() != UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE)
-			return null;
-		return (Namespace) eContainer();
+		Namespace importingNamespace = basicGetImportingNamespace();
+		return importingNamespace != null && importingNamespace.eIsProxy()
+			? (Namespace) eResolveProxy((InternalEObject) importingNamespace)
+			: importingNamespace;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Namespace basicGetImportingNamespace() {
-		if (eContainerFeatureID() != UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE)
-			return null;
-		return (Namespace) eInternalContainer();
+		InternalEObject eInternalContainer = eInternalContainer();
+		return eInternalContainer instanceof Namespace
+			? (Namespace) eInternalContainer
+			: null;
+	}
+
+	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
+		InternalEObject eInternalContainer = eInternalContainer();
+		if (eInternalContainer instanceof Namespace) {
+			return ((InternalEList<ElementImport>) ((Namespace) eInternalContainer)
+				.getOwnedElementImports()).basicRemove(this, msgs);
+		}
+		return super.eBasicRemoveFromContainer(msgs);
+	}
+
+	@Override
+	public NotificationChain eBasicSetContainer(InternalEObject newContainer,
+			int newContainerFeatureID, NotificationChain msgs) {
+		InternalEObject eInternalContainer = eInternalContainer();
+		if (eInternalContainer instanceof Namespace) {
+			msgs = ((InternalEList<ElementImport>) ((Namespace) eInternalContainer)
+				.getOwnedElementImports()).basicRemove(this, msgs);
+		}
+		return super.eBasicSetContainer(newContainer, newContainerFeatureID,
+			msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetImportingNamespace(
-			Namespace newImportingNamespace, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newImportingNamespace,
-			UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void setImportingNamespace(Namespace newImportingNamespace) {
-		if (newImportingNamespace != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE
-				&& newImportingNamespace != null)) {
+		if (newImportingNamespace != eInternalContainer()) {
 			if (EcoreUtil.isAncestor(this, newImportingNamespace))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -403,10 +412,12 @@ public class ElementImportImpl
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newImportingNamespace != null)
-				msgs = ((InternalEObject) newImportingNamespace).eInverseAdd(
-					this, UMLPackage.NAMESPACE__ELEMENT_IMPORT, Namespace.class,
-					msgs);
-			msgs = basicSetImportingNamespace(newImportingNamespace, msgs);
+				msgs = ((InternalEList<ElementImport>) newImportingNamespace
+					.getOwnedElementImports()).basicAdd(this, msgs);
+			msgs = eBasicSetContainer((InternalEObject) newImportingNamespace,
+				InternalEObject.EOPPOSITE_FEATURE_BASE
+					- UMLPackage.NAMESPACE__OWNED_ELEMENT_IMPORT,
+				msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -444,65 +455,6 @@ public class ElementImportImpl
 	 */
 	public String getName() {
 		return ElementImportOperations.getName(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case UMLPackage.ELEMENT_IMPORT__EANNOTATIONS :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetImportingNamespace((Namespace) otherEnd, msgs);
-		}
-		return eDynamicInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case UMLPackage.ELEMENT_IMPORT__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations())
-					.basicRemove(otherEnd, msgs);
-			case UMLPackage.ELEMENT_IMPORT__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments())
-					.basicRemove(otherEnd, msgs);
-			case UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE :
-				return basicSetImportingNamespace(null, msgs);
-		}
-		return eDynamicInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(
-			NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-			case UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE :
-				return eInternalContainer().eInverseRemove(this,
-					UMLPackage.NAMESPACE__ELEMENT_IMPORT, Namespace.class,
-					msgs);
-		}
-		return eDynamicBasicRemoveFromContainer(msgs);
 	}
 
 	/**

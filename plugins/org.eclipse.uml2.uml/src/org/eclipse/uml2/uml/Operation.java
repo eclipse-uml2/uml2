@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 433204, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 433204, 451350, 464702
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -184,7 +184,7 @@ public interface Operation
 	void setClass_(org.eclipse.uml2.uml.Class value);
 
 	/**
-	 * Returns the value of the '<em><b>Precondition</b></em>' reference list.
+	 * Returns the value of the '<em><b>Precondition</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Constraint}.
 	 * <p>
 	 * This feature subsets the following features:
@@ -198,15 +198,15 @@ public interface Operation
 	 * An optional set of Constraints on the state of the system when the Operation is invoked.
 	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Precondition</em>' reference list.
+	 * @return the value of the '<em>Precondition</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_Precondition()
-	 * @model ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<Constraint> getPreconditions();
 
 	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Precondition</b></em>' reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Precondition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.
@@ -218,7 +218,7 @@ public interface Operation
 	Constraint createPrecondition(String name, EClass eClass);
 
 	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Precondition</b></em>' reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Precondition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.
@@ -229,7 +229,7 @@ public interface Operation
 	Constraint createPrecondition(String name);
 
 	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Precondition</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Precondition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Constraint} to retrieve, or <code>null</code>.
@@ -240,7 +240,7 @@ public interface Operation
 	Constraint getPrecondition(String name);
 
 	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Precondition</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Precondition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Constraint} to retrieve, or <code>null</code>.
@@ -255,7 +255,7 @@ public interface Operation
 			boolean createOnDemand);
 
 	/**
-	 * Returns the value of the '<em><b>Postcondition</b></em>' reference list.
+	 * Returns the value of the '<em><b>Postcondition</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Constraint}.
 	 * <p>
 	 * This feature subsets the following features:
@@ -269,15 +269,15 @@ public interface Operation
 	 * An optional set of Constraints specifying the state of the system when the Operation is completed.
 	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Postcondition</em>' reference list.
+	 * @return the value of the '<em>Postcondition</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_Postcondition()
-	 * @model ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<Constraint> getPostconditions();
 
 	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Postcondition</b></em>' reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Postcondition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.
@@ -289,7 +289,7 @@ public interface Operation
 	Constraint createPostcondition(String name, EClass eClass);
 
 	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Postcondition</b></em>' reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Postcondition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.
@@ -300,7 +300,7 @@ public interface Operation
 	Constraint createPostcondition(String name);
 
 	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Postcondition</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Postcondition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Constraint} to retrieve, or <code>null</code>.
@@ -311,7 +311,7 @@ public interface Operation
 	Constraint getPostcondition(String name);
 
 	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Postcondition</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Postcondition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Constraint} to retrieve, or <code>null</code>.
@@ -414,7 +414,7 @@ public interface Operation
 	void setDatatype(DataType value);
 
 	/**
-	 * Returns the value of the '<em><b>Body Condition</b></em>' reference.
+	 * Returns the value of the '<em><b>Body Condition</b></em>' containment reference.
 	 * <p>
 	 * This feature subsets the following features:
 	 * </p>
@@ -427,26 +427,26 @@ public interface Operation
 	 * An optional Constraint on the result values of an invocation of this Operation.
 	 * <p>From package UML::Classification.</p>
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Body Condition</em>' reference.
+	 * @return the value of the '<em>Body Condition</em>' containment reference.
 	 * @see #setBodyCondition(Constraint)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_BodyCondition()
-	 * @model ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	Constraint getBodyCondition();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.Operation#getBodyCondition <em>Body Condition</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.Operation#getBodyCondition <em>Body Condition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Body Condition</em>' reference.
+	 * @param value the new value of the '<em>Body Condition</em>' containment reference.
 	 * @see #getBodyCondition()
 	 * @generated
 	 */
 	void setBodyCondition(Constraint value);
 
 	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and sets the '<em><b>Body Condition</b></em>' reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and sets the '<em><b>Body Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.
@@ -458,7 +458,7 @@ public interface Operation
 	Constraint createBodyCondition(String name, EClass eClass);
 
 	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.Constraint},with the specified '<em><b>Name</b></em>', and sets the '<em><b>Body Condition</b></em>' reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.Constraint},with the specified '<em><b>Name</b></em>', and sets the '<em><b>Body Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.

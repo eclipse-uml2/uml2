@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 464702
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -191,7 +191,7 @@ public interface Transition
 	void setRedefinedTransition(Transition value);
 
 	/**
-	 * Returns the value of the '<em><b>Guard</b></em>' reference.
+	 * Returns the value of the '<em><b>Guard</b></em>' containment reference.
 	 * <p>
 	 * This feature subsets the following features:
 	 * </p>
@@ -204,26 +204,26 @@ public interface Transition
 	 * A guard is a Constraint that provides a fine-grained control over the firing of the Transition. The guard is evaluated when an Event occurrence is dispatched by the StateMachine. If the guard is true at that time, the Transition may be enabled, otherwise, it is disabled. Guards should be pure expressions without side effects. Guard expressions with side effects are ill formed.
 	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Guard</em>' reference.
+	 * @return the value of the '<em>Guard</em>' containment reference.
 	 * @see #setGuard(Constraint)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTransition_Guard()
-	 * @model ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	Constraint getGuard();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.Transition#getGuard <em>Guard</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.Transition#getGuard <em>Guard</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Guard</em>' reference.
+	 * @param value the new value of the '<em>Guard</em>' containment reference.
 	 * @see #getGuard()
 	 * @generated
 	 */
 	void setGuard(Constraint value);
 
 	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and sets the '<em><b>Guard</b></em>' reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and sets the '<em><b>Guard</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.
@@ -235,7 +235,7 @@ public interface Transition
 	Constraint createGuard(String name, EClass eClass);
 
 	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.Constraint},with the specified '<em><b>Name</b></em>', and sets the '<em><b>Guard</b></em>' reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.Constraint},with the specified '<em><b>Name</b></em>', and sets the '<em><b>Guard</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.

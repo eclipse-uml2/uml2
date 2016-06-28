@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756, 464702
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -212,6 +212,12 @@ public class OpaqueBehaviorImpl
 				return getPackageImports();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_MEMBER :
 				return getOwnedMembers();
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_ELEMENT_IMPORT :
+				return getOwnedElementImports();
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_PACKAGE_IMPORT :
+				return getOwnedPackageImports();
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_CONSTRAINT :
+				return getOwnedConstraints();
 			case UMLPackage.OPAQUE_BEHAVIOR__IMPORTED_MEMBER :
 				return getImportedMembers();
 			case UMLPackage.OPAQUE_BEHAVIOR__MEMBER :
@@ -370,6 +376,21 @@ public class OpaqueBehaviorImpl
 				getPackageImports().clear();
 				getPackageImports()
 					.addAll((Collection<? extends PackageImport>) newValue);
+				return;
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_ELEMENT_IMPORT :
+				getOwnedElementImports().clear();
+				getOwnedElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
+				return;
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_PACKAGE_IMPORT :
+				getOwnedPackageImports().clear();
+				getOwnedPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
+				return;
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_CONSTRAINT :
+				getOwnedConstraints().clear();
+				getOwnedConstraints()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -560,6 +581,15 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__PACKAGE_IMPORT :
 				getPackageImports().clear();
 				return;
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_ELEMENT_IMPORT :
+				getOwnedElementImports().clear();
+				return;
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_PACKAGE_IMPORT :
+				getOwnedPackageImports().clear();
+				return;
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_CONSTRAINT :
+				getOwnedConstraints().clear();
+				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
@@ -703,13 +733,21 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
+				return !getOwnedRules().isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__ELEMENT_IMPORT :
-				return elementImports != null && !elementImports.isEmpty();
+				return !getElementImports().isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__PACKAGE_IMPORT :
-				return packageImports != null && !packageImports.isEmpty();
+				return !getPackageImports().isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_MEMBER :
 				return isSetOwnedMembers();
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_ELEMENT_IMPORT :
+				return ownedElementImports != null
+					&& !ownedElementImports.isEmpty();
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_PACKAGE_IMPORT :
+				return ownedPackageImports != null
+					&& !ownedPackageImports.isEmpty();
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_CONSTRAINT :
+				return ownedConstraints != null && !ownedConstraints.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__IMPORTED_MEMBER :
 				return !getImportedMembers().isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__MEMBER :

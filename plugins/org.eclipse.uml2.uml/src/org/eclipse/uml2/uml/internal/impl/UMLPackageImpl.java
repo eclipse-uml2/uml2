@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 247980
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 366083, 382637, 297216, 418466, 485756
+ *   Kenn Hussey (CEA) - 327039, 351774, 366083, 382637, 297216, 418466, 485756, 464702
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -3162,7 +3162,7 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EReference getNamespace_Member() {
-		return (EReference) getNamespace().getEStructuralFeatures().get(5);
+		return (EReference) getNamespace().getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -3171,7 +3171,7 @@ public class UMLPackageImpl
 	 * @generated
 	 */
 	public EReference getNamespace_ImportedMember() {
-		return (EReference) getNamespace().getEStructuralFeatures().get(4);
+		return (EReference) getNamespace().getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -3181,6 +3181,33 @@ public class UMLPackageImpl
 	 */
 	public EReference getNamespace_OwnedMember() {
 		return (EReference) getNamespace().getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getNamespace_OwnedElementImport() {
+		return (EReference) getNamespace().getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getNamespace_OwnedPackageImport() {
+		return (EReference) getNamespace().getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getNamespace_OwnedConstraint() {
+		return (EReference) getNamespace().getEStructuralFeatures().get(6);
 	}
 
 	/**

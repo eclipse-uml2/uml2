@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 464702
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -160,7 +160,7 @@ public interface ElementImport
 	void setImportedElement(PackageableElement value);
 
 	/**
-	 * Returns the value of the '<em><b>Importing Namespace</b></em>' container reference.
+	 * Returns the value of the '<em><b>Importing Namespace</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Namespace#getElementImports <em>Element Import</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
@@ -175,20 +175,20 @@ public interface ElementImport
 	 * Specifies the Namespace that imports a PackageableElement from another Namespace.
 	 * <p>From package UML::CommonStructure.</p>
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Importing Namespace</em>' container reference.
+	 * @return the value of the '<em>Importing Namespace</em>' reference.
 	 * @see #setImportingNamespace(Namespace)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getElementImport_ImportingNamespace()
 	 * @see org.eclipse.uml2.uml.Namespace#getElementImports
-	 * @model opposite="elementImport" required="true" transient="false" ordered="false"
+	 * @model opposite="elementImport" required="true" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	Namespace getImportingNamespace();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.ElementImport#getImportingNamespace <em>Importing Namespace</em>}' container reference.
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.ElementImport#getImportingNamespace <em>Importing Namespace</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Importing Namespace</em>' container reference.
+	 * @param value the new value of the '<em>Importing Namespace</em>' reference.
 	 * @see #getImportingNamespace()
 	 * @generated
 	 */

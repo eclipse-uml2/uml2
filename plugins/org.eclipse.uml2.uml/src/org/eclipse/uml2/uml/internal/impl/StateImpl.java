@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756, 464702
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -43,7 +43,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
-import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Comment;
@@ -89,7 +89,6 @@ import org.eclipse.uml2.uml.internal.operations.VertexOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getOutgoings <em>Outgoing</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getOwnedElements <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getOwnedRules <em>Owned Rule</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getConnections <em>Connection</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getConnectionPoints <em>Connection Point</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getDeferrableTriggers <em>Deferrable Trigger</em>}</li>
@@ -243,7 +242,7 @@ public class StateImpl
 	protected State redefinedState;
 
 	/**
-	 * The cached value of the '{@link #getStateInvariant() <em>State Invariant</em>}' reference.
+	 * The cached value of the '{@link #getStateInvariant() <em>State Invariant</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getStateInvariant()
@@ -892,6 +891,19 @@ public class StateImpl
 			InternalEObject oldStateInvariant = (InternalEObject) stateInvariant;
 			stateInvariant = (Constraint) eResolveProxy(oldStateInvariant);
 			if (stateInvariant != oldStateInvariant) {
+				InternalEObject newStateInvariant = (InternalEObject) stateInvariant;
+				NotificationChain msgs = oldStateInvariant.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.STATE__STATE_INVARIANT,
+					null, null);
+				if (newStateInvariant.eInternalContainer() == null) {
+					msgs = newStateInvariant
+						.eInverseAdd(this,
+							EOPPOSITE_FEATURE_BASE
+								- UMLPackage.STATE__STATE_INVARIANT,
+							null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.STATE__STATE_INVARIANT, oldStateInvariant,
@@ -915,22 +927,45 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setStateInvariant(Constraint newStateInvariant) {
+	public NotificationChain basicSetStateInvariant(
+			Constraint newStateInvariant, NotificationChain msgs) {
 		Constraint oldStateInvariant = stateInvariant;
 		stateInvariant = newStateInvariant;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.STATE__STATE_INVARIANT, oldStateInvariant,
-				stateInvariant));
-		Resource.Internal eInternalResource = eInternalResource();
-		if (eInternalResource == null || !eInternalResource.isLoading()) {
-			if (newStateInvariant != null) {
-				EList<Constraint> ownedRules = getOwnedRules();
-				if (!ownedRules.contains(newStateInvariant)) {
-					ownedRules.add(newStateInvariant);
-				}
-			}
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this,
+				Notification.SET, UMLPackage.STATE__STATE_INVARIANT,
+				oldStateInvariant, newStateInvariant);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStateInvariant(Constraint newStateInvariant) {
+		if (newStateInvariant != stateInvariant) {
+			NotificationChain msgs = null;
+			if (stateInvariant != null)
+				msgs = ((InternalEObject) stateInvariant).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.STATE__STATE_INVARIANT,
+					null, msgs);
+			if (newStateInvariant != null)
+				msgs = ((InternalEObject) newStateInvariant).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.STATE__STATE_INVARIANT,
+					null, msgs);
+			msgs = basicSetStateInvariant(newStateInvariant, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				UMLPackage.STATE__STATE_INVARIANT, newStateInvariant,
+				newStateInvariant));
 	}
 
 	/**
@@ -1508,15 +1543,6 @@ public class StateImpl
 			case UMLPackage.STATE__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.STATE__OWNED_RULE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.STATE__ELEMENT_IMPORT :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.STATE__PACKAGE_IMPORT :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STATE__CONTAINER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -1557,14 +1583,14 @@ public class StateImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STATE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.STATE__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules())
+			case UMLPackage.STATE__OWNED_ELEMENT_IMPORT :
+				return ((InternalEList<?>) getOwnedElementImports())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.STATE__ELEMENT_IMPORT :
-				return ((InternalEList<?>) getElementImports())
+			case UMLPackage.STATE__OWNED_PACKAGE_IMPORT :
+				return ((InternalEList<?>) getOwnedPackageImports())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.STATE__PACKAGE_IMPORT :
-				return ((InternalEList<?>) getPackageImports())
+			case UMLPackage.STATE__OWNED_CONSTRAINT :
+				return ((InternalEList<?>) getOwnedConstraints())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STATE__CONTAINER :
 				return basicSetContainer(null, msgs);
@@ -1583,6 +1609,8 @@ public class StateImpl
 				return basicSetEntry(null, msgs);
 			case UMLPackage.STATE__EXIT :
 				return basicSetExit(null, msgs);
+			case UMLPackage.STATE__STATE_INVARIANT :
+				return basicSetStateInvariant(null, msgs);
 			case UMLPackage.STATE__SUBMACHINE :
 				return basicSetSubmachine(null, msgs);
 			case UMLPackage.STATE__REGION :
@@ -1650,6 +1678,12 @@ public class StateImpl
 				return getPackageImports();
 			case UMLPackage.STATE__OWNED_MEMBER :
 				return getOwnedMembers();
+			case UMLPackage.STATE__OWNED_ELEMENT_IMPORT :
+				return getOwnedElementImports();
+			case UMLPackage.STATE__OWNED_PACKAGE_IMPORT :
+				return getOwnedPackageImports();
+			case UMLPackage.STATE__OWNED_CONSTRAINT :
+				return getOwnedConstraints();
 			case UMLPackage.STATE__IMPORTED_MEMBER :
 				return getImportedMembers();
 			case UMLPackage.STATE__MEMBER :
@@ -1755,6 +1789,21 @@ public class StateImpl
 				getPackageImports()
 					.addAll((Collection<? extends PackageImport>) newValue);
 				return;
+			case UMLPackage.STATE__OWNED_ELEMENT_IMPORT :
+				getOwnedElementImports().clear();
+				getOwnedElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
+				return;
+			case UMLPackage.STATE__OWNED_PACKAGE_IMPORT :
+				getOwnedPackageImports().clear();
+				getOwnedPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
+				return;
+			case UMLPackage.STATE__OWNED_CONSTRAINT :
+				getOwnedConstraints().clear();
+				getOwnedConstraints()
+					.addAll((Collection<? extends Constraint>) newValue);
+				return;
 			case UMLPackage.STATE__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
 				return;
@@ -1834,6 +1883,15 @@ public class StateImpl
 			case UMLPackage.STATE__PACKAGE_IMPORT :
 				getPackageImports().clear();
 				return;
+			case UMLPackage.STATE__OWNED_ELEMENT_IMPORT :
+				getOwnedElementImports().clear();
+				return;
+			case UMLPackage.STATE__OWNED_PACKAGE_IMPORT :
+				getOwnedPackageImports().clear();
+				return;
+			case UMLPackage.STATE__OWNED_CONSTRAINT :
+				getOwnedConstraints().clear();
+				return;
 			case UMLPackage.STATE__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
@@ -1905,13 +1963,21 @@ public class StateImpl
 			case UMLPackage.STATE__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.STATE__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
+				return !getOwnedRules().isEmpty();
 			case UMLPackage.STATE__ELEMENT_IMPORT :
-				return elementImports != null && !elementImports.isEmpty();
+				return !getElementImports().isEmpty();
 			case UMLPackage.STATE__PACKAGE_IMPORT :
-				return packageImports != null && !packageImports.isEmpty();
+				return !getPackageImports().isEmpty();
 			case UMLPackage.STATE__OWNED_MEMBER :
 				return isSetOwnedMembers();
+			case UMLPackage.STATE__OWNED_ELEMENT_IMPORT :
+				return ownedElementImports != null
+					&& !ownedElementImports.isEmpty();
+			case UMLPackage.STATE__OWNED_PACKAGE_IMPORT :
+				return ownedPackageImports != null
+					&& !ownedPackageImports.isEmpty();
+			case UMLPackage.STATE__OWNED_CONSTRAINT :
+				return ownedConstraints != null && !ownedConstraints.isEmpty();
 			case UMLPackage.STATE__IMPORTED_MEMBER :
 				return !getImportedMembers().isEmpty();
 			case UMLPackage.STATE__MEMBER :
@@ -2431,14 +2497,14 @@ public class StateImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public EList<Constraint> getOwnedRules() {
 		if (ownedRules == null) {
-			ownedRules = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<Constraint>(
+			ownedRules = new SubsetSupersetEObjectResolvingEList<Constraint>(
 				Constraint.class, this, UMLPackage.STATE__OWNED_RULE, null,
-				OWNED_RULE_ESUBSETS, UMLPackage.CONSTRAINT__CONTEXT);
+				OWNED_RULE_ESUBSETS);
 		}
 		return ownedRules;
 	}
@@ -2448,11 +2514,11 @@ public class StateImpl
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getOwnedRules()
-	 * @generated
+	 * @generated NOT
 	 * @ordered
 	 */
 	protected static final int[] OWNED_RULE_ESUBSETS = new int[]{
-		UMLPackage.STATE__STATE_INVARIANT};
+		UMLPackage.STATE__OWNED_CONSTRAINT, UMLPackage.STATE__STATE_INVARIANT};
 
 	/**
 	 * <!-- begin-user-doc -->

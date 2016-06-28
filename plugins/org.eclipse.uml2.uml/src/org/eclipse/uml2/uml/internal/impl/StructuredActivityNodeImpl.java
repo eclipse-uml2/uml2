@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 465214, 485756, 491587
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 465214, 485756, 491587, 464702
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -40,7 +40,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 import org.eclipse.uml2.uml.Action;
 import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityEdge;
@@ -86,6 +86,9 @@ import org.eclipse.uml2.uml.internal.operations.StructuredActivityNodeOperations
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuredActivityNodeImpl#getOwnedRules <em>Owned Rule</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuredActivityNodeImpl#getElementImports <em>Element Import</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuredActivityNodeImpl#getPackageImports <em>Package Import</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuredActivityNodeImpl#getOwnedElementImports <em>Owned Element Import</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuredActivityNodeImpl#getOwnedPackageImports <em>Owned Package Import</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuredActivityNodeImpl#getOwnedConstraints <em>Owned Constraint</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuredActivityNodeImpl#getImportedMembers <em>Imported Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuredActivityNodeImpl#getContainedEdges <em>Contained Edge</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuredActivityNodeImpl#getContainedNodes <em>Contained Node</em>}</li>
@@ -110,34 +113,64 @@ public class StructuredActivityNodeImpl
 		implements StructuredActivityNode {
 
 	/**
-	 * The cached value of the '{@link #getOwnedRules() <em>Owned Rule</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedRules()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Constraint> ownedRules;
-
-	/**
-	 * The cached value of the '{@link #getElementImports() <em>Element Import</em>}' containment reference list.
+	 * The cached value of the '{@link #getElementImports() <em>Element Import</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getElementImports()
-	 * @generated
+	 * @generated NOT
 	 * @ordered
 	 */
 	protected EList<ElementImport> elementImports;
 
 	/**
-	 * The cached value of the '{@link #getPackageImports() <em>Package Import</em>}' containment reference list.
+	 * The cached value of the '{@link #getOwnedElementImports() <em>Owned Element Import</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPackageImports()
+	 * @see #getOwnedElementImports()
 	 * @generated
 	 * @ordered
 	 */
+	protected EList<ElementImport> ownedElementImports;
+
+	/**
+	 * The cached value of the '{@link #getPackageImports() <em>Package Import</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPackageImports()
+	 * @generated NOT
+	 * @ordered
+	 */
 	protected EList<PackageImport> packageImports;
+
+	/**
+	 * The cached value of the '{@link #getOwnedPackageImports() <em>Owned Package Import</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedPackageImports()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<PackageImport> ownedPackageImports;
+
+	/**
+	 * The cached value of the '{@link #getOwnedRules() <em>Owned Rule</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedRules()
+	 * @generated NOT
+	 * @ordered
+	 */
+	protected EList<Constraint> ownedRules;
+
+	/**
+	 * The cached value of the '{@link #getOwnedConstraints() <em>Owned Constraint</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedConstraints()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Constraint> ownedConstraints;
 
 	/**
 	 * The cached value of the '{@link #getEdges() <em>Edge</em>}' containment reference list.
@@ -312,14 +345,13 @@ public class StructuredActivityNodeImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<ElementImport> getElementImports() {
 		if (elementImports == null) {
-			elementImports = new EObjectContainmentWithInverseEList.Resolving<ElementImport>(
-				ElementImport.class, this,
-				UMLPackage.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT,
-				UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE);
+			elementImports = new SubsetSupersetEObjectResolvingEList<ElementImport>(
+				ElementImport.class, this, UMLPackage.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT,
+				null, ELEMENT_IMPORT_ESUBSETS);
 		}
 		return elementImports;
 	}
@@ -327,16 +359,11 @@ public class StructuredActivityNodeImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ElementImport createElementImport(
 			PackageableElement importedElement) {
-		ElementImport newElementImport = (ElementImport) create(
-			UMLPackage.Literals.ELEMENT_IMPORT);
-		getElementImports().add(newElementImport);
-		if (importedElement != null)
-			newElementImport.setImportedElement(importedElement);
-		return newElementImport;
+		return createOwnedElementImport(importedElement);
 	}
 
 	/**
@@ -345,13 +372,19 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public ElementImport getElementImport(PackageableElement importedElement) {
-		return getElementImport(importedElement, false);
+		elementImportLoop : for (ElementImport elementImport : getElementImports()) {
+			if (importedElement != null
+				&& !importedElement.equals(elementImport.getImportedElement()))
+				continue elementImportLoop;
+			return elementImport;
+		}
+		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ElementImport getElementImport(PackageableElement importedElement,
 			boolean createOnDemand) {
@@ -369,14 +402,13 @@ public class StructuredActivityNodeImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<PackageImport> getPackageImports() {
 		if (packageImports == null) {
-			packageImports = new EObjectContainmentWithInverseEList.Resolving<PackageImport>(
-				PackageImport.class, this,
-				UMLPackage.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT,
-				UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE);
+			packageImports = new SubsetSupersetEObjectResolvingEList<PackageImport>(
+				PackageImport.class, this, UMLPackage.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT,
+				null, PACKAGE_IMPORT_ESUBSETS);
 		}
 		return packageImports;
 	}
@@ -384,16 +416,11 @@ public class StructuredActivityNodeImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public PackageImport createPackageImport(
 			org.eclipse.uml2.uml.Package importedPackage) {
-		PackageImport newPackageImport = (PackageImport) create(
-			UMLPackage.Literals.PACKAGE_IMPORT);
-		getPackageImports().add(newPackageImport);
-		if (importedPackage != null)
-			newPackageImport.setImportedPackage(importedPackage);
-		return newPackageImport;
+		return createOwnedPackageImport(importedPackage);
 	}
 
 	/**
@@ -403,13 +430,19 @@ public class StructuredActivityNodeImpl
 	 */
 	public PackageImport getPackageImport(
 			org.eclipse.uml2.uml.Package importedPackage) {
-		return getPackageImport(importedPackage, false);
+		packageImportLoop : for (PackageImport packageImport : getPackageImports()) {
+			if (importedPackage != null
+				&& !importedPackage.equals(packageImport.getImportedPackage()))
+				continue packageImportLoop;
+			return packageImport;
+		}
+		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public PackageImport getPackageImport(
 			org.eclipse.uml2.uml.Package importedPackage,
@@ -430,12 +463,192 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<ElementImport> getOwnedElementImports() {
+		if (ownedElementImports == null) {
+			ownedElementImports = new EObjectContainmentEList.Resolving<ElementImport>(
+				ElementImport.class, this,
+				UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT_IMPORT);
+		}
+		return ownedElementImports;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ElementImport createOwnedElementImport(
+			PackageableElement importedElement) {
+		ElementImport newOwnedElementImport = (ElementImport) create(
+			UMLPackage.Literals.ELEMENT_IMPORT);
+		getOwnedElementImports().add(newOwnedElementImport);
+		if (importedElement != null)
+			newOwnedElementImport.setImportedElement(importedElement);
+		return newOwnedElementImport;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ElementImport getOwnedElementImport(
+			PackageableElement importedElement) {
+		return getOwnedElementImport(importedElement, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ElementImport getOwnedElementImport(
+			PackageableElement importedElement, boolean createOnDemand) {
+		ownedElementImportLoop : for (ElementImport ownedElementImport : getOwnedElementImports()) {
+			if (importedElement != null && !importedElement
+				.equals(ownedElementImport.getImportedElement()))
+				continue ownedElementImportLoop;
+			return ownedElementImport;
+		}
+		return createOnDemand
+			? createOwnedElementImport(importedElement)
+			: null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<PackageImport> getOwnedPackageImports() {
+		if (ownedPackageImports == null) {
+			ownedPackageImports = new EObjectContainmentEList.Resolving<PackageImport>(
+				PackageImport.class, this,
+				UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_PACKAGE_IMPORT);
+		}
+		return ownedPackageImports;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PackageImport createOwnedPackageImport(
+			org.eclipse.uml2.uml.Package importedPackage) {
+		PackageImport newOwnedPackageImport = (PackageImport) create(
+			UMLPackage.Literals.PACKAGE_IMPORT);
+		getOwnedPackageImports().add(newOwnedPackageImport);
+		if (importedPackage != null)
+			newOwnedPackageImport.setImportedPackage(importedPackage);
+		return newOwnedPackageImport;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PackageImport getOwnedPackageImport(
+			org.eclipse.uml2.uml.Package importedPackage) {
+		return getOwnedPackageImport(importedPackage, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PackageImport getOwnedPackageImport(
+			org.eclipse.uml2.uml.Package importedPackage,
+			boolean createOnDemand) {
+		ownedPackageImportLoop : for (PackageImport ownedPackageImport : getOwnedPackageImports()) {
+			if (importedPackage != null && !importedPackage
+				.equals(ownedPackageImport.getImportedPackage()))
+				continue ownedPackageImportLoop;
+			return ownedPackageImport;
+		}
+		return createOnDemand
+			? createOwnedPackageImport(importedPackage)
+			: null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Constraint> getOwnedConstraints() {
+		if (ownedConstraints == null) {
+			ownedConstraints = new EObjectContainmentEList.Resolving<Constraint>(
+				Constraint.class, this,
+				UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_CONSTRAINT);
+		}
+		return ownedConstraints;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint createOwnedConstraint(String name, EClass eClass) {
+		Constraint newOwnedConstraint = (Constraint) create(eClass);
+		getOwnedConstraints().add(newOwnedConstraint);
+		if (name != null)
+			newOwnedConstraint.setName(name);
+		return newOwnedConstraint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint createOwnedConstraint(String name) {
+		return createOwnedConstraint(name, UMLPackage.Literals.CONSTRAINT);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint getOwnedConstraint(String name) {
+		return getOwnedConstraint(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint getOwnedConstraint(String name, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand) {
+		ownedConstraintLoop : for (Constraint ownedConstraint : getOwnedConstraints()) {
+			if (eClass != null && !eClass.isInstance(ownedConstraint))
+				continue ownedConstraintLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedConstraint.getName())
+				: name.equals(ownedConstraint.getName())))
+				continue ownedConstraintLoop;
+			return ownedConstraint;
+		}
+		return createOnDemand && eClass != null
+			? createOwnedConstraint(name, eClass)
+			: null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
 	public EList<Constraint> getOwnedRules() {
 		if (ownedRules == null) {
-			ownedRules = new EObjectContainmentWithInverseEList.Resolving<Constraint>(
-				Constraint.class, this,
-				UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_RULE,
-				UMLPackage.CONSTRAINT__CONTEXT);
+			ownedRules = new SubsetSupersetEObjectResolvingEList<Constraint>(
+				Constraint.class, this, UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_RULE, null,
+				OWNED_RULE_ESUBSETS);
 		}
 		return ownedRules;
 	}
@@ -443,23 +656,19 @@ public class StructuredActivityNodeImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Constraint createOwnedRule(String name, EClass eClass) {
-		Constraint newOwnedRule = (Constraint) create(eClass);
-		getOwnedRules().add(newOwnedRule);
-		if (name != null)
-			newOwnedRule.setName(name);
-		return newOwnedRule;
+		return createOwnedConstraint(name, eClass);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Constraint createOwnedRule(String name) {
-		return createOwnedRule(name, UMLPackage.Literals.CONSTRAINT);
+		return createOwnedConstraint(name);
 	}
 
 	/**
@@ -468,13 +677,32 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public Constraint getOwnedRule(String name) {
-		return getOwnedRule(name, false, null, false);
+		return getOwnedRule(name, false, null);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
+	 */
+	public Constraint getOwnedRule(String name, boolean ignoreCase,
+			EClass eClass) {
+		ownedRuleLoop : for (Constraint ownedRule : getOwnedRules()) {
+			if (eClass != null && !eClass.isInstance(ownedRule))
+				continue ownedRuleLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedRule.getName())
+				: name.equals(ownedRule.getName())))
+				continue ownedRuleLoop;
+			return ownedRule;
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
 	 */
 	public Constraint getOwnedRule(String name, boolean ignoreCase,
 			EClass eClass, boolean createOnDemand) {
@@ -1367,15 +1595,6 @@ public class StructuredActivityNodeImpl
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__HANDLER :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getHandlers())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_RULE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEdges())
 					.basicAdd(otherEnd, msgs);
@@ -1429,14 +1648,14 @@ public class StructuredActivityNodeImpl
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__LOCAL_PRECONDITION :
 				return ((InternalEList<?>) getLocalPreconditions())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules())
+			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT_IMPORT :
+				return ((InternalEList<?>) getOwnedElementImports())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT :
-				return ((InternalEList<?>) getElementImports())
+			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_PACKAGE_IMPORT :
+				return ((InternalEList<?>) getOwnedPackageImports())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT :
-				return ((InternalEList<?>) getPackageImports())
+			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_CONSTRAINT :
+				return ((InternalEList<?>) getOwnedConstraints())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE :
 				return ((InternalEList<?>) getEdges()).basicRemove(otherEnd,
@@ -1541,6 +1760,12 @@ public class StructuredActivityNodeImpl
 				return getPackageImports();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_MEMBER :
 				return getOwnedMembers();
+			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT_IMPORT :
+				return getOwnedElementImports();
+			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_PACKAGE_IMPORT :
+				return getOwnedPackageImports();
+			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_CONSTRAINT :
+				return getOwnedConstraints();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IMPORTED_MEMBER :
 				return getImportedMembers();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__MEMBER :
@@ -1670,6 +1895,21 @@ public class StructuredActivityNodeImpl
 				getPackageImports()
 					.addAll((Collection<? extends PackageImport>) newValue);
 				return;
+			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT_IMPORT :
+				getOwnedElementImports().clear();
+				getOwnedElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
+				return;
+			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_PACKAGE_IMPORT :
+				getOwnedPackageImports().clear();
+				getOwnedPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
+				return;
+			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_CONSTRAINT :
+				getOwnedConstraints().clear();
+				getOwnedConstraints()
+					.addAll((Collection<? extends Constraint>) newValue);
+				return;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_ACTIVITY :
 				setInActivity((Activity) newValue);
 				return;
@@ -1773,6 +2013,15 @@ public class StructuredActivityNodeImpl
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT :
 				getPackageImports().clear();
 				return;
+			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT_IMPORT :
+				getOwnedElementImports().clear();
+				return;
+			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_PACKAGE_IMPORT :
+				getOwnedPackageImports().clear();
+				return;
+			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_CONSTRAINT :
+				getOwnedConstraints().clear();
+				return;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_ACTIVITY :
 				setInActivity((Activity) null);
 				return;
@@ -1869,13 +2118,21 @@ public class StructuredActivityNodeImpl
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OUTPUT :
 				return isSetOutputs();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
+				return !getOwnedRules().isEmpty();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT :
-				return elementImports != null && !elementImports.isEmpty();
+				return !getElementImports().isEmpty();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT :
-				return packageImports != null && !packageImports.isEmpty();
+				return !getPackageImports().isEmpty();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_MEMBER :
 				return isSetOwnedMembers();
+			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT_IMPORT :
+				return ownedElementImports != null
+					&& !ownedElementImports.isEmpty();
+			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_PACKAGE_IMPORT :
+				return ownedPackageImports != null
+					&& !ownedPackageImports.isEmpty();
+			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_CONSTRAINT :
+				return ownedConstraints != null && !ownedConstraints.isEmpty();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IMPORTED_MEMBER :
 				return !getImportedMembers().isEmpty();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__MEMBER :
@@ -1927,6 +2184,12 @@ public class StructuredActivityNodeImpl
 					return UMLPackage.NAMESPACE__PACKAGE_IMPORT;
 				case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_MEMBER :
 					return UMLPackage.NAMESPACE__OWNED_MEMBER;
+				case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT_IMPORT :
+					return UMLPackage.NAMESPACE__OWNED_ELEMENT_IMPORT;
+				case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_PACKAGE_IMPORT :
+					return UMLPackage.NAMESPACE__OWNED_PACKAGE_IMPORT;
+				case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_CONSTRAINT :
+					return UMLPackage.NAMESPACE__OWNED_CONSTRAINT;
 				case UMLPackage.STRUCTURED_ACTIVITY_NODE__IMPORTED_MEMBER :
 					return UMLPackage.NAMESPACE__IMPORTED_MEMBER;
 				case UMLPackage.STRUCTURED_ACTIVITY_NODE__MEMBER :
@@ -1972,6 +2235,12 @@ public class StructuredActivityNodeImpl
 					return UMLPackage.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT;
 				case UMLPackage.NAMESPACE__OWNED_MEMBER :
 					return UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_MEMBER;
+				case UMLPackage.NAMESPACE__OWNED_ELEMENT_IMPORT :
+					return UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT_IMPORT;
+				case UMLPackage.NAMESPACE__OWNED_PACKAGE_IMPORT :
+					return UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_PACKAGE_IMPORT;
+				case UMLPackage.NAMESPACE__OWNED_CONSTRAINT :
+					return UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_CONSTRAINT;
 				case UMLPackage.NAMESPACE__IMPORTED_MEMBER :
 					return UMLPackage.STRUCTURED_ACTIVITY_NODE__IMPORTED_MEMBER;
 				case UMLPackage.NAMESPACE__MEMBER :
@@ -2375,6 +2644,39 @@ public class StructuredActivityNodeImpl
 	protected static final int[] MEMBER_ESUBSETS = new int[]{
 		UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_MEMBER,
 		UMLPackage.STRUCTURED_ACTIVITY_NODE__IMPORTED_MEMBER};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedRules() <em>Owned Rule</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedRules()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_RULE_ESUBSETS = new int[]{
+		UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_CONSTRAINT};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getElementImports() <em>Element Import</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getElementImports()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] ELEMENT_IMPORT_ESUBSETS = new int[]{
+		UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT_IMPORT};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getPackageImports() <em>Package Import</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPackageImports()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] PACKAGE_IMPORT_ESUBSETS = new int[]{
+		UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_PACKAGE_IMPORT};
 
 	/**
 	 * <!-- begin-user-doc -->

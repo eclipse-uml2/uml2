@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756, 464702
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -110,7 +110,7 @@ public interface Constraint
 			EClass eClass);
 
 	/**
-	 * Returns the value of the '<em><b>Context</b></em>' container reference.
+	 * Returns the value of the '<em><b>Context</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Namespace#getOwnedRules <em>Owned Rule</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
@@ -124,20 +124,20 @@ public interface Constraint
 	 * Specifies the Namespace that owns the Constraint.
 	 * <p>From package UML::CommonStructure.</p>
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Context</em>' container reference.
+	 * @return the value of the '<em>Context</em>' reference.
 	 * @see #setContext(Namespace)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConstraint_Context()
 	 * @see org.eclipse.uml2.uml.Namespace#getOwnedRules
-	 * @model opposite="ownedRule" transient="false" ordered="false"
+	 * @model opposite="ownedRule" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	Namespace getContext();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.Constraint#getContext <em>Context</em>}' container reference.
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.Constraint#getContext <em>Context</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Context</em>' container reference.
+	 * @param value the new value of the '<em>Context</em>' reference.
 	 * @see #getContext()
 	 * @generated
 	 */

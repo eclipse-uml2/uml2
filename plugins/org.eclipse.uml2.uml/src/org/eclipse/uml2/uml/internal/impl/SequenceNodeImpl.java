@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 351774, 212765, 418466, 451350, 485756
+ *   Kenn Hussey (CEA) - 327039, 351774, 212765, 418466, 451350, 485756, 464702
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -189,15 +189,6 @@ public class SequenceNodeImpl
 			case UMLPackage.SEQUENCE_NODE__HANDLER :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getHandlers())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.SEQUENCE_NODE__OWNED_RULE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.SEQUENCE_NODE__ELEMENT_IMPORT :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.SEQUENCE_NODE__PACKAGE_IMPORT :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.SEQUENCE_NODE__EDGE :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEdges())
 					.basicAdd(otherEnd, msgs);
@@ -251,14 +242,14 @@ public class SequenceNodeImpl
 			case UMLPackage.SEQUENCE_NODE__LOCAL_PRECONDITION :
 				return ((InternalEList<?>) getLocalPreconditions())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.SEQUENCE_NODE__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules())
+			case UMLPackage.SEQUENCE_NODE__OWNED_ELEMENT_IMPORT :
+				return ((InternalEList<?>) getOwnedElementImports())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.SEQUENCE_NODE__ELEMENT_IMPORT :
-				return ((InternalEList<?>) getElementImports())
+			case UMLPackage.SEQUENCE_NODE__OWNED_PACKAGE_IMPORT :
+				return ((InternalEList<?>) getOwnedPackageImports())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.SEQUENCE_NODE__PACKAGE_IMPORT :
-				return ((InternalEList<?>) getPackageImports())
+			case UMLPackage.SEQUENCE_NODE__OWNED_CONSTRAINT :
+				return ((InternalEList<?>) getOwnedConstraints())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.SEQUENCE_NODE__EDGE :
 				return ((InternalEList<?>) getEdges()).basicRemove(otherEnd,
@@ -366,6 +357,12 @@ public class SequenceNodeImpl
 				return getPackageImports();
 			case UMLPackage.SEQUENCE_NODE__OWNED_MEMBER :
 				return getOwnedMembers();
+			case UMLPackage.SEQUENCE_NODE__OWNED_ELEMENT_IMPORT :
+				return getOwnedElementImports();
+			case UMLPackage.SEQUENCE_NODE__OWNED_PACKAGE_IMPORT :
+				return getOwnedPackageImports();
+			case UMLPackage.SEQUENCE_NODE__OWNED_CONSTRAINT :
+				return getOwnedConstraints();
 			case UMLPackage.SEQUENCE_NODE__IMPORTED_MEMBER :
 				return getImportedMembers();
 			case UMLPackage.SEQUENCE_NODE__MEMBER :
@@ -497,6 +494,21 @@ public class SequenceNodeImpl
 				getPackageImports()
 					.addAll((Collection<? extends PackageImport>) newValue);
 				return;
+			case UMLPackage.SEQUENCE_NODE__OWNED_ELEMENT_IMPORT :
+				getOwnedElementImports().clear();
+				getOwnedElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
+				return;
+			case UMLPackage.SEQUENCE_NODE__OWNED_PACKAGE_IMPORT :
+				getOwnedPackageImports().clear();
+				getOwnedPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
+				return;
+			case UMLPackage.SEQUENCE_NODE__OWNED_CONSTRAINT :
+				getOwnedConstraints().clear();
+				getOwnedConstraints()
+					.addAll((Collection<? extends Constraint>) newValue);
+				return;
 			case UMLPackage.SEQUENCE_NODE__IN_ACTIVITY :
 				setInActivity((Activity) newValue);
 				return;
@@ -605,6 +617,15 @@ public class SequenceNodeImpl
 			case UMLPackage.SEQUENCE_NODE__PACKAGE_IMPORT :
 				getPackageImports().clear();
 				return;
+			case UMLPackage.SEQUENCE_NODE__OWNED_ELEMENT_IMPORT :
+				getOwnedElementImports().clear();
+				return;
+			case UMLPackage.SEQUENCE_NODE__OWNED_PACKAGE_IMPORT :
+				getOwnedPackageImports().clear();
+				return;
+			case UMLPackage.SEQUENCE_NODE__OWNED_CONSTRAINT :
+				getOwnedConstraints().clear();
+				return;
 			case UMLPackage.SEQUENCE_NODE__IN_ACTIVITY :
 				setInActivity((Activity) null);
 				return;
@@ -704,13 +725,21 @@ public class SequenceNodeImpl
 			case UMLPackage.SEQUENCE_NODE__OUTPUT :
 				return isSetOutputs();
 			case UMLPackage.SEQUENCE_NODE__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
+				return !getOwnedRules().isEmpty();
 			case UMLPackage.SEQUENCE_NODE__ELEMENT_IMPORT :
-				return elementImports != null && !elementImports.isEmpty();
+				return !getElementImports().isEmpty();
 			case UMLPackage.SEQUENCE_NODE__PACKAGE_IMPORT :
-				return packageImports != null && !packageImports.isEmpty();
+				return !getPackageImports().isEmpty();
 			case UMLPackage.SEQUENCE_NODE__OWNED_MEMBER :
 				return isSetOwnedMembers();
+			case UMLPackage.SEQUENCE_NODE__OWNED_ELEMENT_IMPORT :
+				return ownedElementImports != null
+					&& !ownedElementImports.isEmpty();
+			case UMLPackage.SEQUENCE_NODE__OWNED_PACKAGE_IMPORT :
+				return ownedPackageImports != null
+					&& !ownedPackageImports.isEmpty();
+			case UMLPackage.SEQUENCE_NODE__OWNED_CONSTRAINT :
+				return ownedConstraints != null && !ownedConstraints.isEmpty();
 			case UMLPackage.SEQUENCE_NODE__IMPORTED_MEMBER :
 				return !getImportedMembers().isEmpty();
 			case UMLPackage.SEQUENCE_NODE__MEMBER :

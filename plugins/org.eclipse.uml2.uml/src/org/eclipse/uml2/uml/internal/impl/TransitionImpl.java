@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756, 464702
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -41,8 +41,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-
-import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Classifier;
@@ -82,7 +81,6 @@ import org.eclipse.uml2.uml.internal.operations.TransitionOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#isLeaf <em>Is Leaf</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getNamespace <em>Namespace</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getOwnedRules <em>Owned Rule</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getEffect <em>Effect</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getGuard <em>Guard</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getKind <em>Kind</em>}</li>
@@ -130,7 +128,7 @@ public class TransitionImpl
 	protected Behavior effect;
 
 	/**
-	 * The cached value of the '{@link #getGuard() <em>Guard</em>}' reference.
+	 * The cached value of the '{@link #getGuard() <em>Guard</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getGuard()
@@ -307,14 +305,14 @@ public class TransitionImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public EList<Constraint> getOwnedRules() {
 		if (ownedRules == null) {
-			ownedRules = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<Constraint>(
+			ownedRules = new SubsetSupersetEObjectResolvingEList<Constraint>(
 				Constraint.class, this, UMLPackage.TRANSITION__OWNED_RULE, null,
-				OWNED_RULE_ESUBSETS, UMLPackage.CONSTRAINT__CONTEXT);
+				OWNED_RULE_ESUBSETS);
 		}
 		return ownedRules;
 	}
@@ -611,6 +609,17 @@ public class TransitionImpl
 			InternalEObject oldGuard = (InternalEObject) guard;
 			guard = (Constraint) eResolveProxy(oldGuard);
 			if (guard != oldGuard) {
+				InternalEObject newGuard = (InternalEObject) guard;
+				NotificationChain msgs = oldGuard.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.TRANSITION__GUARD, null,
+					null);
+				if (newGuard.eInternalContainer() == null) {
+					msgs = newGuard.eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - UMLPackage.TRANSITION__GUARD,
+						null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.TRANSITION__GUARD, oldGuard, guard));
@@ -633,21 +642,44 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setGuard(Constraint newGuard) {
+	public NotificationChain basicSetGuard(Constraint newGuard,
+			NotificationChain msgs) {
 		Constraint oldGuard = guard;
 		guard = newGuard;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.TRANSITION__GUARD, oldGuard, guard));
-		Resource.Internal eInternalResource = eInternalResource();
-		if (eInternalResource == null || !eInternalResource.isLoading()) {
-			if (newGuard != null) {
-				EList<Constraint> ownedRules = getOwnedRules();
-				if (!ownedRules.contains(newGuard)) {
-					ownedRules.add(newGuard);
-				}
-			}
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this,
+				Notification.SET, UMLPackage.TRANSITION__GUARD, oldGuard,
+				newGuard);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setGuard(Constraint newGuard) {
+		if (newGuard != guard) {
+			NotificationChain msgs = null;
+			if (guard != null)
+				msgs = ((InternalEObject) guard).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.TRANSITION__GUARD, null,
+					msgs);
+			if (newGuard != null)
+				msgs = ((InternalEObject) newGuard).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.TRANSITION__GUARD, null,
+					msgs);
+			msgs = basicSetGuard(newGuard, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				UMLPackage.TRANSITION__GUARD, newGuard, newGuard));
 	}
 
 	/**
@@ -1045,15 +1077,6 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.TRANSITION__OWNED_RULE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.TRANSITION__ELEMENT_IMPORT :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.TRANSITION__PACKAGE_IMPORT :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.TRANSITION__CONTAINER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -1079,17 +1102,19 @@ public class TransitionImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.TRANSITION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.TRANSITION__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules())
+			case UMLPackage.TRANSITION__OWNED_ELEMENT_IMPORT :
+				return ((InternalEList<?>) getOwnedElementImports())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.TRANSITION__ELEMENT_IMPORT :
-				return ((InternalEList<?>) getElementImports())
+			case UMLPackage.TRANSITION__OWNED_PACKAGE_IMPORT :
+				return ((InternalEList<?>) getOwnedPackageImports())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.TRANSITION__PACKAGE_IMPORT :
-				return ((InternalEList<?>) getPackageImports())
+			case UMLPackage.TRANSITION__OWNED_CONSTRAINT :
+				return ((InternalEList<?>) getOwnedConstraints())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.TRANSITION__EFFECT :
 				return basicSetEffect(null, msgs);
+			case UMLPackage.TRANSITION__GUARD :
+				return basicSetGuard(null, msgs);
 			case UMLPackage.TRANSITION__TRIGGER :
 				return ((InternalEList<?>) getTriggers()).basicRemove(otherEnd,
 					msgs);
@@ -1157,6 +1182,12 @@ public class TransitionImpl
 				return getPackageImports();
 			case UMLPackage.TRANSITION__OWNED_MEMBER :
 				return getOwnedMembers();
+			case UMLPackage.TRANSITION__OWNED_ELEMENT_IMPORT :
+				return getOwnedElementImports();
+			case UMLPackage.TRANSITION__OWNED_PACKAGE_IMPORT :
+				return getOwnedPackageImports();
+			case UMLPackage.TRANSITION__OWNED_CONSTRAINT :
+				return getOwnedConstraints();
 			case UMLPackage.TRANSITION__IMPORTED_MEMBER :
 				return getImportedMembers();
 			case UMLPackage.TRANSITION__MEMBER :
@@ -1242,6 +1273,21 @@ public class TransitionImpl
 				getPackageImports()
 					.addAll((Collection<? extends PackageImport>) newValue);
 				return;
+			case UMLPackage.TRANSITION__OWNED_ELEMENT_IMPORT :
+				getOwnedElementImports().clear();
+				getOwnedElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
+				return;
+			case UMLPackage.TRANSITION__OWNED_PACKAGE_IMPORT :
+				getOwnedPackageImports().clear();
+				getOwnedPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
+				return;
+			case UMLPackage.TRANSITION__OWNED_CONSTRAINT :
+				getOwnedConstraints().clear();
+				getOwnedConstraints()
+					.addAll((Collection<? extends Constraint>) newValue);
+				return;
 			case UMLPackage.TRANSITION__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
 				return;
@@ -1306,6 +1352,15 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__PACKAGE_IMPORT :
 				getPackageImports().clear();
 				return;
+			case UMLPackage.TRANSITION__OWNED_ELEMENT_IMPORT :
+				getOwnedElementImports().clear();
+				return;
+			case UMLPackage.TRANSITION__OWNED_PACKAGE_IMPORT :
+				getOwnedPackageImports().clear();
+				return;
+			case UMLPackage.TRANSITION__OWNED_CONSTRAINT :
+				getOwnedConstraints().clear();
+				return;
 			case UMLPackage.TRANSITION__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
@@ -1368,13 +1423,21 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.TRANSITION__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
+				return !getOwnedRules().isEmpty();
 			case UMLPackage.TRANSITION__ELEMENT_IMPORT :
-				return elementImports != null && !elementImports.isEmpty();
+				return !getElementImports().isEmpty();
 			case UMLPackage.TRANSITION__PACKAGE_IMPORT :
-				return packageImports != null && !packageImports.isEmpty();
+				return !getPackageImports().isEmpty();
 			case UMLPackage.TRANSITION__OWNED_MEMBER :
 				return isSetOwnedMembers();
+			case UMLPackage.TRANSITION__OWNED_ELEMENT_IMPORT :
+				return ownedElementImports != null
+					&& !ownedElementImports.isEmpty();
+			case UMLPackage.TRANSITION__OWNED_PACKAGE_IMPORT :
+				return ownedPackageImports != null
+					&& !ownedPackageImports.isEmpty();
+			case UMLPackage.TRANSITION__OWNED_CONSTRAINT :
+				return ownedConstraints != null && !ownedConstraints.isEmpty();
 			case UMLPackage.TRANSITION__IMPORTED_MEMBER :
 				return !getImportedMembers().isEmpty();
 			case UMLPackage.TRANSITION__MEMBER :
@@ -1809,11 +1872,11 @@ public class TransitionImpl
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getOwnedRules()
-	 * @generated
+	 * @generated NOT
 	 * @ordered
 	 */
 	protected static final int[] OWNED_RULE_ESUBSETS = new int[]{
-		UMLPackage.TRANSITION__GUARD};
+		UMLPackage.TRANSITION__OWNED_CONSTRAINT, UMLPackage.TRANSITION__GUARD};
 
 	/**
 	 * <!-- begin-user-doc -->

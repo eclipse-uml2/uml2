@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
- *   Kenn Hussey (CEA) - 327039, 212765, 418466, 451350, 485756
+ *   Kenn Hussey (CEA) - 327039, 212765, 418466, 451350, 485756, 464702
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -293,8 +293,6 @@ public class TimeConstraintImpl
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.TIME_CONSTRAINT__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
-			case UMLPackage.TIME_CONSTRAINT__CONTEXT :
-				return basicSetContext(null, msgs);
 			case UMLPackage.TIME_CONSTRAINT__SPECIFICATION :
 				return basicSetSpecification(null, msgs);
 		}

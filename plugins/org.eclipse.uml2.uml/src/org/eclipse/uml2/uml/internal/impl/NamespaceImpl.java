@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756, 464702
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -29,12 +29,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.resource.Resource;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.Element;
@@ -64,6 +64,9 @@ import org.eclipse.uml2.uml.internal.operations.NamespaceOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamespaceImpl#getOwnedRules <em>Owned Rule</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamespaceImpl#getElementImports <em>Element Import</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamespaceImpl#getPackageImports <em>Package Import</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamespaceImpl#getOwnedElementImports <em>Owned Element Import</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamespaceImpl#getOwnedPackageImports <em>Owned Package Import</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamespaceImpl#getOwnedConstraints <em>Owned Constraint</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamespaceImpl#getImportedMembers <em>Imported Member</em>}</li>
  * </ul>
  *
@@ -74,34 +77,64 @@ public abstract class NamespaceImpl
 		implements Namespace {
 
 	/**
-	 * The cached value of the '{@link #getOwnedRules() <em>Owned Rule</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedRules()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Constraint> ownedRules;
-
-	/**
-	 * The cached value of the '{@link #getElementImports() <em>Element Import</em>}' containment reference list.
+	 * The cached value of the '{@link #getElementImports() <em>Element Import</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getElementImports()
-	 * @generated
+	 * @generated NOT
 	 * @ordered
 	 */
 	protected EList<ElementImport> elementImports;
 
 	/**
-	 * The cached value of the '{@link #getPackageImports() <em>Package Import</em>}' containment reference list.
+	 * The cached value of the '{@link #getOwnedElementImports() <em>Owned Element Import</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPackageImports()
+	 * @see #getOwnedElementImports()
 	 * @generated
 	 * @ordered
 	 */
+	protected EList<ElementImport> ownedElementImports;
+
+	/**
+	 * The cached value of the '{@link #getPackageImports() <em>Package Import</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPackageImports()
+	 * @generated NOT
+	 * @ordered
+	 */
 	protected EList<PackageImport> packageImports;
+
+	/**
+	 * The cached value of the '{@link #getOwnedPackageImports() <em>Owned Package Import</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedPackageImports()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<PackageImport> ownedPackageImports;
+
+	/**
+	 * The cached value of the '{@link #getOwnedRules() <em>Owned Rule</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedRules()
+	 * @generated NOT
+	 * @ordered
+	 */
+	protected EList<Constraint> ownedRules;
+
+	/**
+	 * The cached value of the '{@link #getOwnedConstraints() <em>Owned Constraint</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedConstraints()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Constraint> ownedConstraints;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -203,13 +236,13 @@ public abstract class NamespaceImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<ElementImport> getElementImports() {
 		if (elementImports == null) {
-			elementImports = new EObjectContainmentWithInverseEList.Resolving<ElementImport>(
+			elementImports = new SubsetSupersetEObjectResolvingEList<ElementImport>(
 				ElementImport.class, this, UMLPackage.NAMESPACE__ELEMENT_IMPORT,
-				UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE);
+				null, ELEMENT_IMPORT_ESUBSETS);
 		}
 		return elementImports;
 	}
@@ -217,16 +250,11 @@ public abstract class NamespaceImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ElementImport createElementImport(
 			PackageableElement importedElement) {
-		ElementImport newElementImport = (ElementImport) create(
-			UMLPackage.Literals.ELEMENT_IMPORT);
-		getElementImports().add(newElementImport);
-		if (importedElement != null)
-			newElementImport.setImportedElement(importedElement);
-		return newElementImport;
+		return createOwnedElementImport(importedElement);
 	}
 
 	/**
@@ -235,13 +263,19 @@ public abstract class NamespaceImpl
 	 * @generated
 	 */
 	public ElementImport getElementImport(PackageableElement importedElement) {
-		return getElementImport(importedElement, false);
+		elementImportLoop : for (ElementImport elementImport : getElementImports()) {
+			if (importedElement != null
+				&& !importedElement.equals(elementImport.getImportedElement()))
+				continue elementImportLoop;
+			return elementImport;
+		}
+		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ElementImport getElementImport(PackageableElement importedElement,
 			boolean createOnDemand) {
@@ -259,13 +293,13 @@ public abstract class NamespaceImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<PackageImport> getPackageImports() {
 		if (packageImports == null) {
-			packageImports = new EObjectContainmentWithInverseEList.Resolving<PackageImport>(
+			packageImports = new SubsetSupersetEObjectResolvingEList<PackageImport>(
 				PackageImport.class, this, UMLPackage.NAMESPACE__PACKAGE_IMPORT,
-				UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE);
+				null, PACKAGE_IMPORT_ESUBSETS);
 		}
 		return packageImports;
 	}
@@ -273,16 +307,11 @@ public abstract class NamespaceImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public PackageImport createPackageImport(
 			org.eclipse.uml2.uml.Package importedPackage) {
-		PackageImport newPackageImport = (PackageImport) create(
-			UMLPackage.Literals.PACKAGE_IMPORT);
-		getPackageImports().add(newPackageImport);
-		if (importedPackage != null)
-			newPackageImport.setImportedPackage(importedPackage);
-		return newPackageImport;
+		return createOwnedPackageImport(importedPackage);
 	}
 
 	/**
@@ -292,13 +321,19 @@ public abstract class NamespaceImpl
 	 */
 	public PackageImport getPackageImport(
 			org.eclipse.uml2.uml.Package importedPackage) {
-		return getPackageImport(importedPackage, false);
+		packageImportLoop : for (PackageImport packageImport : getPackageImports()) {
+			if (importedPackage != null
+				&& !importedPackage.equals(packageImport.getImportedPackage()))
+				continue packageImportLoop;
+			return packageImport;
+		}
+		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public PackageImport getPackageImport(
 			org.eclipse.uml2.uml.Package importedPackage,
@@ -319,11 +354,191 @@ public abstract class NamespaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<ElementImport> getOwnedElementImports() {
+		if (ownedElementImports == null) {
+			ownedElementImports = new EObjectContainmentEList.Resolving<ElementImport>(
+				ElementImport.class, this,
+				UMLPackage.NAMESPACE__OWNED_ELEMENT_IMPORT);
+		}
+		return ownedElementImports;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ElementImport createOwnedElementImport(
+			PackageableElement importedElement) {
+		ElementImport newOwnedElementImport = (ElementImport) create(
+			UMLPackage.Literals.ELEMENT_IMPORT);
+		getOwnedElementImports().add(newOwnedElementImport);
+		if (importedElement != null)
+			newOwnedElementImport.setImportedElement(importedElement);
+		return newOwnedElementImport;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ElementImport getOwnedElementImport(
+			PackageableElement importedElement) {
+		return getOwnedElementImport(importedElement, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ElementImport getOwnedElementImport(
+			PackageableElement importedElement, boolean createOnDemand) {
+		ownedElementImportLoop : for (ElementImport ownedElementImport : getOwnedElementImports()) {
+			if (importedElement != null && !importedElement
+				.equals(ownedElementImport.getImportedElement()))
+				continue ownedElementImportLoop;
+			return ownedElementImport;
+		}
+		return createOnDemand
+			? createOwnedElementImport(importedElement)
+			: null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<PackageImport> getOwnedPackageImports() {
+		if (ownedPackageImports == null) {
+			ownedPackageImports = new EObjectContainmentEList.Resolving<PackageImport>(
+				PackageImport.class, this,
+				UMLPackage.NAMESPACE__OWNED_PACKAGE_IMPORT);
+		}
+		return ownedPackageImports;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PackageImport createOwnedPackageImport(
+			org.eclipse.uml2.uml.Package importedPackage) {
+		PackageImport newOwnedPackageImport = (PackageImport) create(
+			UMLPackage.Literals.PACKAGE_IMPORT);
+		getOwnedPackageImports().add(newOwnedPackageImport);
+		if (importedPackage != null)
+			newOwnedPackageImport.setImportedPackage(importedPackage);
+		return newOwnedPackageImport;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PackageImport getOwnedPackageImport(
+			org.eclipse.uml2.uml.Package importedPackage) {
+		return getOwnedPackageImport(importedPackage, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PackageImport getOwnedPackageImport(
+			org.eclipse.uml2.uml.Package importedPackage,
+			boolean createOnDemand) {
+		ownedPackageImportLoop : for (PackageImport ownedPackageImport : getOwnedPackageImports()) {
+			if (importedPackage != null && !importedPackage
+				.equals(ownedPackageImport.getImportedPackage()))
+				continue ownedPackageImportLoop;
+			return ownedPackageImport;
+		}
+		return createOnDemand
+			? createOwnedPackageImport(importedPackage)
+			: null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Constraint> getOwnedConstraints() {
+		if (ownedConstraints == null) {
+			ownedConstraints = new EObjectContainmentEList.Resolving<Constraint>(
+				Constraint.class, this, UMLPackage.NAMESPACE__OWNED_CONSTRAINT);
+		}
+		return ownedConstraints;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint createOwnedConstraint(String name, EClass eClass) {
+		Constraint newOwnedConstraint = (Constraint) create(eClass);
+		getOwnedConstraints().add(newOwnedConstraint);
+		if (name != null)
+			newOwnedConstraint.setName(name);
+		return newOwnedConstraint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint createOwnedConstraint(String name) {
+		return createOwnedConstraint(name, UMLPackage.Literals.CONSTRAINT);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint getOwnedConstraint(String name) {
+		return getOwnedConstraint(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint getOwnedConstraint(String name, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand) {
+		ownedConstraintLoop : for (Constraint ownedConstraint : getOwnedConstraints()) {
+			if (eClass != null && !eClass.isInstance(ownedConstraint))
+				continue ownedConstraintLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedConstraint.getName())
+				: name.equals(ownedConstraint.getName())))
+				continue ownedConstraintLoop;
+			return ownedConstraint;
+		}
+		return createOnDemand && eClass != null
+			? createOwnedConstraint(name, eClass)
+			: null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
 	public EList<Constraint> getOwnedRules() {
 		if (ownedRules == null) {
-			ownedRules = new EObjectContainmentWithInverseEList.Resolving<Constraint>(
-				Constraint.class, this, UMLPackage.NAMESPACE__OWNED_RULE,
-				UMLPackage.CONSTRAINT__CONTEXT);
+			ownedRules = new SubsetSupersetEObjectResolvingEList<Constraint>(
+				Constraint.class, this, UMLPackage.NAMESPACE__OWNED_RULE, null,
+				OWNED_RULE_ESUBSETS);
 		}
 		return ownedRules;
 	}
@@ -331,23 +546,19 @@ public abstract class NamespaceImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Constraint createOwnedRule(String name, EClass eClass) {
-		Constraint newOwnedRule = (Constraint) create(eClass);
-		getOwnedRules().add(newOwnedRule);
-		if (name != null)
-			newOwnedRule.setName(name);
-		return newOwnedRule;
+		return createOwnedConstraint(name, eClass);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Constraint createOwnedRule(String name) {
-		return createOwnedRule(name, UMLPackage.Literals.CONSTRAINT);
+		return createOwnedConstraint(name);
 	}
 
 	/**
@@ -356,13 +567,32 @@ public abstract class NamespaceImpl
 	 * @generated
 	 */
 	public Constraint getOwnedRule(String name) {
-		return getOwnedRule(name, false, null, false);
+		return getOwnedRule(name, false, null);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
+	 */
+	public Constraint getOwnedRule(String name, boolean ignoreCase,
+			EClass eClass) {
+		ownedRuleLoop : for (Constraint ownedRule : getOwnedRules()) {
+			if (eClass != null && !eClass.isInstance(ownedRule))
+				continue ownedRuleLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(ownedRule.getName())
+				: name.equals(ownedRule.getName())))
+				continue ownedRuleLoop;
+			return ownedRule;
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
 	 */
 	public Constraint getOwnedRule(String name, boolean ignoreCase,
 			EClass eClass, boolean createOnDemand) {
@@ -570,32 +800,6 @@ public abstract class NamespaceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case UMLPackage.NAMESPACE__EANNOTATIONS :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.NAMESPACE__OWNED_RULE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.NAMESPACE__ELEMENT_IMPORT :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.NAMESPACE__PACKAGE_IMPORT :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
-					.basicAdd(otherEnd, msgs);
-		}
-		return eDynamicInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
@@ -608,14 +812,14 @@ public abstract class NamespaceImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.NAMESPACE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.NAMESPACE__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules())
+			case UMLPackage.NAMESPACE__OWNED_ELEMENT_IMPORT :
+				return ((InternalEList<?>) getOwnedElementImports())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.NAMESPACE__ELEMENT_IMPORT :
-				return ((InternalEList<?>) getElementImports())
+			case UMLPackage.NAMESPACE__OWNED_PACKAGE_IMPORT :
+				return ((InternalEList<?>) getOwnedPackageImports())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.NAMESPACE__PACKAGE_IMPORT :
-				return ((InternalEList<?>) getPackageImports())
+			case UMLPackage.NAMESPACE__OWNED_CONSTRAINT :
+				return ((InternalEList<?>) getOwnedConstraints())
 					.basicRemove(otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
@@ -663,6 +867,12 @@ public abstract class NamespaceImpl
 				return getPackageImports();
 			case UMLPackage.NAMESPACE__OWNED_MEMBER :
 				return getOwnedMembers();
+			case UMLPackage.NAMESPACE__OWNED_ELEMENT_IMPORT :
+				return getOwnedElementImports();
+			case UMLPackage.NAMESPACE__OWNED_PACKAGE_IMPORT :
+				return getOwnedPackageImports();
+			case UMLPackage.NAMESPACE__OWNED_CONSTRAINT :
+				return getOwnedConstraints();
 			case UMLPackage.NAMESPACE__IMPORTED_MEMBER :
 				return getImportedMembers();
 			case UMLPackage.NAMESPACE__MEMBER :
@@ -714,6 +924,21 @@ public abstract class NamespaceImpl
 				getPackageImports()
 					.addAll((Collection<? extends PackageImport>) newValue);
 				return;
+			case UMLPackage.NAMESPACE__OWNED_ELEMENT_IMPORT :
+				getOwnedElementImports().clear();
+				getOwnedElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
+				return;
+			case UMLPackage.NAMESPACE__OWNED_PACKAGE_IMPORT :
+				getOwnedPackageImports().clear();
+				getOwnedPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
+				return;
+			case UMLPackage.NAMESPACE__OWNED_CONSTRAINT :
+				getOwnedConstraints().clear();
+				getOwnedConstraints()
+					.addAll((Collection<? extends Constraint>) newValue);
+				return;
 		}
 		eDynamicSet(featureID, newValue);
 	}
@@ -750,6 +975,15 @@ public abstract class NamespaceImpl
 			case UMLPackage.NAMESPACE__PACKAGE_IMPORT :
 				getPackageImports().clear();
 				return;
+			case UMLPackage.NAMESPACE__OWNED_ELEMENT_IMPORT :
+				getOwnedElementImports().clear();
+				return;
+			case UMLPackage.NAMESPACE__OWNED_PACKAGE_IMPORT :
+				getOwnedPackageImports().clear();
+				return;
+			case UMLPackage.NAMESPACE__OWNED_CONSTRAINT :
+				getOwnedConstraints().clear();
+				return;
 		}
 		eDynamicUnset(featureID);
 	}
@@ -785,13 +1019,21 @@ public abstract class NamespaceImpl
 			case UMLPackage.NAMESPACE__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.NAMESPACE__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
+				return !getOwnedRules().isEmpty();
 			case UMLPackage.NAMESPACE__ELEMENT_IMPORT :
-				return elementImports != null && !elementImports.isEmpty();
+				return !getElementImports().isEmpty();
 			case UMLPackage.NAMESPACE__PACKAGE_IMPORT :
-				return packageImports != null && !packageImports.isEmpty();
+				return !getPackageImports().isEmpty();
 			case UMLPackage.NAMESPACE__OWNED_MEMBER :
 				return isSetOwnedMembers();
+			case UMLPackage.NAMESPACE__OWNED_ELEMENT_IMPORT :
+				return ownedElementImports != null
+					&& !ownedElementImports.isEmpty();
+			case UMLPackage.NAMESPACE__OWNED_PACKAGE_IMPORT :
+				return ownedPackageImports != null
+					&& !ownedPackageImports.isEmpty();
+			case UMLPackage.NAMESPACE__OWNED_CONSTRAINT :
+				return ownedConstraints != null && !ownedConstraints.isEmpty();
 			case UMLPackage.NAMESPACE__IMPORTED_MEMBER :
 				return !getImportedMembers().isEmpty();
 			case UMLPackage.NAMESPACE__MEMBER :
@@ -1049,6 +1291,39 @@ public abstract class NamespaceImpl
 	protected static final int[] MEMBER_ESUBSETS = new int[]{
 		UMLPackage.NAMESPACE__OWNED_MEMBER,
 		UMLPackage.NAMESPACE__IMPORTED_MEMBER};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedRules() <em>Owned Rule</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedRules()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_RULE_ESUBSETS = new int[]{
+		UMLPackage.NAMESPACE__OWNED_CONSTRAINT};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getElementImports() <em>Element Import</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getElementImports()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] ELEMENT_IMPORT_ESUBSETS = new int[]{
+		UMLPackage.NAMESPACE__OWNED_ELEMENT_IMPORT};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getPackageImports() <em>Package Import</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPackageImports()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] PACKAGE_IMPORT_ESUBSETS = new int[]{
+		UMLPackage.NAMESPACE__OWNED_PACKAGE_IMPORT};
 
 	/**
 	 * <!-- begin-user-doc -->

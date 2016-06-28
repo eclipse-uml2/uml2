@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 464702
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -48,7 +48,7 @@ public interface ProtocolTransition
 		extends Transition {
 
 	/**
-	 * Returns the value of the '<em><b>Post Condition</b></em>' reference.
+	 * Returns the value of the '<em><b>Post Condition</b></em>' containment reference.
 	 * <p>
 	 * This feature subsets the following features:
 	 * </p>
@@ -61,26 +61,26 @@ public interface ProtocolTransition
 	 * Specifies the post condition of the Transition which is the Condition that should be obtained once the Transition is triggered. This post condition is part of the post condition of the Operation connected to the Transition.
 	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Post Condition</em>' reference.
+	 * @return the value of the '<em>Post Condition</em>' containment reference.
 	 * @see #setPostCondition(Constraint)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProtocolTransition_PostCondition()
-	 * @model ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	Constraint getPostCondition();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.ProtocolTransition#getPostCondition <em>Post Condition</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.ProtocolTransition#getPostCondition <em>Post Condition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Post Condition</em>' reference.
+	 * @param value the new value of the '<em>Post Condition</em>' containment reference.
 	 * @see #getPostCondition()
 	 * @generated
 	 */
 	void setPostCondition(Constraint value);
 
 	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and sets the '<em><b>Post Condition</b></em>' reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and sets the '<em><b>Post Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.
@@ -92,7 +92,7 @@ public interface ProtocolTransition
 	Constraint createPostCondition(String name, EClass eClass);
 
 	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.Constraint},with the specified '<em><b>Name</b></em>', and sets the '<em><b>Post Condition</b></em>' reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.Constraint},with the specified '<em><b>Name</b></em>', and sets the '<em><b>Post Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.
@@ -178,6 +178,29 @@ public interface ProtocolTransition
 	 * @generated
 	 */
 	void setPreCondition(Constraint value);
+
+	/**
+	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and sets the '<em><b>Pre Condition</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Constraint} to create.
+	 * @return The new {@link org.eclipse.uml2.uml.Constraint}.
+	 * @see #getPreCondition()
+	 * @generated
+	 */
+	Constraint createPreCondition(String name, EClass eClass);
+
+	/**
+	 * Creates a new {@link org.eclipse.uml2.uml.Constraint},with the specified '<em><b>Name</b></em>', and sets the '<em><b>Pre Condition</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.
+	 * @return The new {@link org.eclipse.uml2.uml.Constraint}.
+	 * @see #getPreCondition()
+	 * @generated
+	 */
+	Constraint createPreCondition(String name);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 383550, 386251, 418466, 485756
+ *   Kenn Hussey (CEA) - 327039, 383550, 386251, 418466, 485756, 464702
  *   Christian W. Damus (CEA) - 251963, 451350
  *
  */
@@ -251,7 +251,7 @@ public interface Behavior
 	BehavioredClassifier getContext();
 
 	/**
-	 * Returns the value of the '<em><b>Precondition</b></em>' reference list.
+	 * Returns the value of the '<em><b>Precondition</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Constraint}.
 	 * <p>
 	 * This feature subsets the following features:
@@ -265,15 +265,15 @@ public interface Behavior
 	 * An optional set of Constraints specifying what must be fulfilled before the Behavior is invoked.
 	 * <p>From package UML::CommonBehavior.</p>
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Precondition</em>' reference list.
+	 * @return the value of the '<em>Precondition</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavior_Precondition()
-	 * @model ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<Constraint> getPreconditions();
 
 	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Precondition</b></em>' reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Precondition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.
@@ -285,7 +285,7 @@ public interface Behavior
 	Constraint createPrecondition(String name, EClass eClass);
 
 	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Precondition</b></em>' reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Precondition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.
@@ -296,7 +296,7 @@ public interface Behavior
 	Constraint createPrecondition(String name);
 
 	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Precondition</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Precondition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Constraint} to retrieve, or <code>null</code>.
@@ -307,7 +307,7 @@ public interface Behavior
 	Constraint getPrecondition(String name);
 
 	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Precondition</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Precondition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Constraint} to retrieve, or <code>null</code>.
@@ -322,7 +322,7 @@ public interface Behavior
 			boolean createOnDemand);
 
 	/**
-	 * Returns the value of the '<em><b>Postcondition</b></em>' reference list.
+	 * Returns the value of the '<em><b>Postcondition</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Constraint}.
 	 * <p>
 	 * This feature subsets the following features:
@@ -336,15 +336,15 @@ public interface Behavior
 	 * An optional set of Constraints specifying what is fulfilled after the execution of the Behavior is completed, if its precondition was fulfilled before its invocation.
 	 * <p>From package UML::CommonBehavior.</p>
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Postcondition</em>' reference list.
+	 * @return the value of the '<em>Postcondition</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavior_Postcondition()
-	 * @model ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<Constraint> getPostconditions();
 
 	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Postcondition</b></em>' reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Postcondition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.
@@ -356,7 +356,7 @@ public interface Behavior
 	Constraint createPostcondition(String name, EClass eClass);
 
 	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Postcondition</b></em>' reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Postcondition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.
@@ -367,7 +367,7 @@ public interface Behavior
 	Constraint createPostcondition(String name);
 
 	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Postcondition</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Postcondition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Constraint} to retrieve, or <code>null</code>.
@@ -378,7 +378,7 @@ public interface Behavior
 	Constraint getPostcondition(String name);
 
 	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Postcondition</b></em>' reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Postcondition</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Constraint} to retrieve, or <code>null</code>.

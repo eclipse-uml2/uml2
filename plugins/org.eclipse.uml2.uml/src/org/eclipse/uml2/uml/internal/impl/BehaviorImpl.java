@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756, 464702
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -39,7 +39,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
-import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Behavior;
@@ -89,7 +89,6 @@ import org.eclipse.uml2.uml.internal.operations.BehaviorOperations;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getOwnedMembers <em>Owned Member</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getOwnedRules <em>Owned Rule</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getRedefinedClassifiers <em>Redefined Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getSpecification <em>Specification</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getContext <em>Context</em>}</li>
@@ -167,7 +166,7 @@ public abstract class BehaviorImpl
 	protected EList<ParameterSet> ownedParameterSets;
 
 	/**
-	 * The cached value of the '{@link #getPostconditions() <em>Postcondition</em>}' reference list.
+	 * The cached value of the '{@link #getPostconditions() <em>Postcondition</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPostconditions()
@@ -177,7 +176,7 @@ public abstract class BehaviorImpl
 	protected EList<Constraint> postconditions;
 
 	/**
-	 * The cached value of the '{@link #getPreconditions() <em>Precondition</em>}' reference list.
+	 * The cached value of the '{@link #getPreconditions() <em>Precondition</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPreconditions()
@@ -427,25 +426,11 @@ public abstract class BehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	@SuppressWarnings("serial")
 	public EList<Constraint> getPreconditions() {
 		if (preconditions == null) {
-			preconditions = new SubsetSupersetEObjectResolvingEList<Constraint>(
+			preconditions = new SubsetSupersetEObjectContainmentEList.Resolving<Constraint>(
 				Constraint.class, this, UMLPackage.BEHAVIOR__PRECONDITION,
-				PRECONDITION_ESUPERSETS, null) {
-
-				@Override
-				protected boolean enforceSubsetConstraints() {
-					return true;
-				}
-
-				@Override
-				protected void didAdd(int index, Constraint newObject) {
-					super.didAdd(index, newObject);
-
-					supersetAdd(newObject);
-				}
-			};
+				PRECONDITION_ESUPERSETS, null);
 		}
 		return preconditions;
 	}
@@ -455,25 +440,11 @@ public abstract class BehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	@SuppressWarnings("serial")
 	public EList<Constraint> getPostconditions() {
 		if (postconditions == null) {
 			postconditions = new SubsetSupersetEObjectResolvingEList<Constraint>(
 				Constraint.class, this, UMLPackage.BEHAVIOR__POSTCONDITION,
-				POSTCONDITION_ESUPERSETS, null) {
-
-				@Override
-				protected boolean enforceSubsetConstraints() {
-					return true;
-				}
-
-				@Override
-				protected void didAdd(int index, Constraint newObject) {
-					super.didAdd(index, newObject);
-
-					supersetAdd(newObject);
-				}
-			};
+				POSTCONDITION_ESUPERSETS, null);
 		}
 		return postconditions;
 	}
@@ -693,15 +664,6 @@ public abstract class BehaviorImpl
 			case UMLPackage.BEHAVIOR__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.BEHAVIOR__OWNED_RULE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.BEHAVIOR__ELEMENT_IMPORT :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.BEHAVIOR__PACKAGE_IMPORT :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -773,14 +735,14 @@ public abstract class BehaviorImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.BEHAVIOR__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules())
+			case UMLPackage.BEHAVIOR__OWNED_ELEMENT_IMPORT :
+				return ((InternalEList<?>) getOwnedElementImports())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.BEHAVIOR__ELEMENT_IMPORT :
-				return ((InternalEList<?>) getElementImports())
+			case UMLPackage.BEHAVIOR__OWNED_PACKAGE_IMPORT :
+				return ((InternalEList<?>) getOwnedPackageImports())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.BEHAVIOR__PACKAGE_IMPORT :
-				return ((InternalEList<?>) getPackageImports())
+			case UMLPackage.BEHAVIOR__OWNED_CONSTRAINT :
+				return ((InternalEList<?>) getOwnedConstraints())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
@@ -838,6 +800,12 @@ public abstract class BehaviorImpl
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET :
 				return ((InternalEList<?>) getOwnedParameterSets())
 					.basicRemove(otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__POSTCONDITION :
+				return ((InternalEList<?>) getPostconditions())
+					.basicRemove(otherEnd, msgs);
+			case UMLPackage.BEHAVIOR__PRECONDITION :
+				return ((InternalEList<?>) getPreconditions())
+					.basicRemove(otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -884,6 +852,12 @@ public abstract class BehaviorImpl
 				return getPackageImports();
 			case UMLPackage.BEHAVIOR__OWNED_MEMBER :
 				return getOwnedMembers();
+			case UMLPackage.BEHAVIOR__OWNED_ELEMENT_IMPORT :
+				return getOwnedElementImports();
+			case UMLPackage.BEHAVIOR__OWNED_PACKAGE_IMPORT :
+				return getOwnedPackageImports();
+			case UMLPackage.BEHAVIOR__OWNED_CONSTRAINT :
+				return getOwnedConstraints();
 			case UMLPackage.BEHAVIOR__IMPORTED_MEMBER :
 				return getImportedMembers();
 			case UMLPackage.BEHAVIOR__MEMBER :
@@ -1038,6 +1012,21 @@ public abstract class BehaviorImpl
 				getPackageImports().clear();
 				getPackageImports()
 					.addAll((Collection<? extends PackageImport>) newValue);
+				return;
+			case UMLPackage.BEHAVIOR__OWNED_ELEMENT_IMPORT :
+				getOwnedElementImports().clear();
+				getOwnedElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
+				return;
+			case UMLPackage.BEHAVIOR__OWNED_PACKAGE_IMPORT :
+				getOwnedPackageImports().clear();
+				getOwnedPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
+				return;
+			case UMLPackage.BEHAVIOR__OWNED_CONSTRAINT :
+				getOwnedConstraints().clear();
+				getOwnedConstraints()
+					.addAll((Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -1220,6 +1209,15 @@ public abstract class BehaviorImpl
 			case UMLPackage.BEHAVIOR__PACKAGE_IMPORT :
 				getPackageImports().clear();
 				return;
+			case UMLPackage.BEHAVIOR__OWNED_ELEMENT_IMPORT :
+				getOwnedElementImports().clear();
+				return;
+			case UMLPackage.BEHAVIOR__OWNED_PACKAGE_IMPORT :
+				getOwnedPackageImports().clear();
+				return;
+			case UMLPackage.BEHAVIOR__OWNED_CONSTRAINT :
+				getOwnedConstraints().clear();
+				return;
 			case UMLPackage.BEHAVIOR__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
@@ -1357,13 +1355,21 @@ public abstract class BehaviorImpl
 			case UMLPackage.BEHAVIOR__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.BEHAVIOR__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
+				return !getOwnedRules().isEmpty();
 			case UMLPackage.BEHAVIOR__ELEMENT_IMPORT :
-				return elementImports != null && !elementImports.isEmpty();
+				return !getElementImports().isEmpty();
 			case UMLPackage.BEHAVIOR__PACKAGE_IMPORT :
-				return packageImports != null && !packageImports.isEmpty();
+				return !getPackageImports().isEmpty();
 			case UMLPackage.BEHAVIOR__OWNED_MEMBER :
 				return isSetOwnedMembers();
+			case UMLPackage.BEHAVIOR__OWNED_ELEMENT_IMPORT :
+				return ownedElementImports != null
+					&& !ownedElementImports.isEmpty();
+			case UMLPackage.BEHAVIOR__OWNED_PACKAGE_IMPORT :
+				return ownedPackageImports != null
+					&& !ownedPackageImports.isEmpty();
+			case UMLPackage.BEHAVIOR__OWNED_CONSTRAINT :
+				return ownedConstraints != null && !ownedConstraints.isEmpty();
 			case UMLPackage.BEHAVIOR__IMPORTED_MEMBER :
 				return !getImportedMembers().isEmpty();
 			case UMLPackage.BEHAVIOR__MEMBER :
@@ -1862,15 +1868,14 @@ public abstract class BehaviorImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-
 	@Override
 	public EList<Constraint> getOwnedRules() {
 		if (ownedRules == null) {
-			ownedRules = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<Constraint>(
+			ownedRules = new SubsetSupersetEObjectResolvingEList<Constraint>(
 				Constraint.class, this, UMLPackage.BEHAVIOR__OWNED_RULE, null,
-				OWNED_RULE_ESUBSETS, UMLPackage.CONSTRAINT__CONTEXT);
+				OWNED_RULE_ESUBSETS);
 		}
 		return ownedRules;
 	}
@@ -1918,7 +1923,7 @@ public abstract class BehaviorImpl
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPostconditions()
-	 * @generated
+	 * @generated NOT
 	 * @ordered
 	 */
 	protected static final int[] POSTCONDITION_ESUPERSETS = new int[]{
@@ -1981,7 +1986,7 @@ public abstract class BehaviorImpl
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPreconditions()
-	 * @generated
+	 * @generated NOT
 	 * @ordered
 	 */
 	protected static final int[] PRECONDITION_ESUPERSETS = new int[]{

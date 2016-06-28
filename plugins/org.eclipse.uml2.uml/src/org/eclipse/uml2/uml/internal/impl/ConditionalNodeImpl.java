@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 397139, 418466, 451350, 485756
+ *   Kenn Hussey (CEA) - 327039, 351774, 397139, 418466, 451350, 485756, 464702
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -467,14 +467,14 @@ public class ConditionalNodeImpl
 			case UMLPackage.CONDITIONAL_NODE__LOCAL_PRECONDITION :
 				return ((InternalEList<?>) getLocalPreconditions())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.CONDITIONAL_NODE__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules())
+			case UMLPackage.CONDITIONAL_NODE__OWNED_ELEMENT_IMPORT :
+				return ((InternalEList<?>) getOwnedElementImports())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.CONDITIONAL_NODE__ELEMENT_IMPORT :
-				return ((InternalEList<?>) getElementImports())
+			case UMLPackage.CONDITIONAL_NODE__OWNED_PACKAGE_IMPORT :
+				return ((InternalEList<?>) getOwnedPackageImports())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.CONDITIONAL_NODE__PACKAGE_IMPORT :
-				return ((InternalEList<?>) getPackageImports())
+			case UMLPackage.CONDITIONAL_NODE__OWNED_CONSTRAINT :
+				return ((InternalEList<?>) getOwnedConstraints())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CONDITIONAL_NODE__EDGE :
 				return ((InternalEList<?>) getEdges()).basicRemove(otherEnd,
@@ -585,6 +585,12 @@ public class ConditionalNodeImpl
 				return getPackageImports();
 			case UMLPackage.CONDITIONAL_NODE__OWNED_MEMBER :
 				return getOwnedMembers();
+			case UMLPackage.CONDITIONAL_NODE__OWNED_ELEMENT_IMPORT :
+				return getOwnedElementImports();
+			case UMLPackage.CONDITIONAL_NODE__OWNED_PACKAGE_IMPORT :
+				return getOwnedPackageImports();
+			case UMLPackage.CONDITIONAL_NODE__OWNED_CONSTRAINT :
+				return getOwnedConstraints();
 			case UMLPackage.CONDITIONAL_NODE__IMPORTED_MEMBER :
 				return getImportedMembers();
 			case UMLPackage.CONDITIONAL_NODE__MEMBER :
@@ -722,6 +728,21 @@ public class ConditionalNodeImpl
 				getPackageImports()
 					.addAll((Collection<? extends PackageImport>) newValue);
 				return;
+			case UMLPackage.CONDITIONAL_NODE__OWNED_ELEMENT_IMPORT :
+				getOwnedElementImports().clear();
+				getOwnedElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
+				return;
+			case UMLPackage.CONDITIONAL_NODE__OWNED_PACKAGE_IMPORT :
+				getOwnedPackageImports().clear();
+				getOwnedPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
+				return;
+			case UMLPackage.CONDITIONAL_NODE__OWNED_CONSTRAINT :
+				getOwnedConstraints().clear();
+				getOwnedConstraints()
+					.addAll((Collection<? extends Constraint>) newValue);
+				return;
 			case UMLPackage.CONDITIONAL_NODE__IN_ACTIVITY :
 				setInActivity((Activity) newValue);
 				return;
@@ -839,6 +860,15 @@ public class ConditionalNodeImpl
 			case UMLPackage.CONDITIONAL_NODE__PACKAGE_IMPORT :
 				getPackageImports().clear();
 				return;
+			case UMLPackage.CONDITIONAL_NODE__OWNED_ELEMENT_IMPORT :
+				getOwnedElementImports().clear();
+				return;
+			case UMLPackage.CONDITIONAL_NODE__OWNED_PACKAGE_IMPORT :
+				getOwnedPackageImports().clear();
+				return;
+			case UMLPackage.CONDITIONAL_NODE__OWNED_CONSTRAINT :
+				getOwnedConstraints().clear();
+				return;
 			case UMLPackage.CONDITIONAL_NODE__IN_ACTIVITY :
 				setInActivity((Activity) null);
 				return;
@@ -947,13 +977,21 @@ public class ConditionalNodeImpl
 			case UMLPackage.CONDITIONAL_NODE__OUTPUT :
 				return isSetOutputs();
 			case UMLPackage.CONDITIONAL_NODE__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
+				return !getOwnedRules().isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__ELEMENT_IMPORT :
-				return elementImports != null && !elementImports.isEmpty();
+				return !getElementImports().isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__PACKAGE_IMPORT :
-				return packageImports != null && !packageImports.isEmpty();
+				return !getPackageImports().isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__OWNED_MEMBER :
 				return isSetOwnedMembers();
+			case UMLPackage.CONDITIONAL_NODE__OWNED_ELEMENT_IMPORT :
+				return ownedElementImports != null
+					&& !ownedElementImports.isEmpty();
+			case UMLPackage.CONDITIONAL_NODE__OWNED_PACKAGE_IMPORT :
+				return ownedPackageImports != null
+					&& !ownedPackageImports.isEmpty();
+			case UMLPackage.CONDITIONAL_NODE__OWNED_CONSTRAINT :
+				return ownedConstraints != null && !ownedConstraints.isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__IMPORTED_MEMBER :
 				return !getImportedMembers().isEmpty();
 			case UMLPackage.CONDITIONAL_NODE__MEMBER :

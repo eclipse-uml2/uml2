@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039, 418466, 451350
+ *   Kenn Hussey (CEA) - 327039, 418466, 451350, 464702
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -300,7 +300,7 @@ public interface State
 	void setRedefinedState(State value);
 
 	/**
-	 * Returns the value of the '<em><b>State Invariant</b></em>' reference.
+	 * Returns the value of the '<em><b>State Invariant</b></em>' containment reference.
 	 * <p>
 	 * This feature subsets the following features:
 	 * </p>
@@ -313,26 +313,26 @@ public interface State
 	 * Specifies conditions that are always true when this State is the current State. In ProtocolStateMachines state invariants are additional conditions to the preconditions of the outgoing Transitions, and to the postcondition of the incoming Transitions.
 	 * <p>From package UML::StateMachines.</p>
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>State Invariant</em>' reference.
+	 * @return the value of the '<em>State Invariant</em>' containment reference.
 	 * @see #setStateInvariant(Constraint)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_StateInvariant()
-	 * @model ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	Constraint getStateInvariant();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.State#getStateInvariant <em>State Invariant</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.State#getStateInvariant <em>State Invariant</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>State Invariant</em>' reference.
+	 * @param value the new value of the '<em>State Invariant</em>' containment reference.
 	 * @see #getStateInvariant()
 	 * @generated
 	 */
 	void setStateInvariant(Constraint value);
 
 	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and sets the '<em><b>State Invariant</b></em>' reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and sets the '<em><b>State Invariant</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.
@@ -344,7 +344,7 @@ public interface State
 	Constraint createStateInvariant(String name, EClass eClass);
 
 	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.Constraint},with the specified '<em><b>Name</b></em>', and sets the '<em><b>State Invariant</b></em>' reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.Constraint},with the specified '<em><b>Name</b></em>', and sets the '<em><b>State Invariant</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.

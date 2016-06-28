@@ -259,14 +259,14 @@
       <eAnnotations source="subsets" references="#//Namespace/ownedMember"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="postcondition" ordered="false"
-        upperBound="-1" eType="#//Constraint">
+        upperBound="-1" eType="#//Constraint" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="An optional set of Constraints specifying what is fulfilled after the execution of the Behavior is completed, if its precondition was fulfilled before its invocation.&#xA;&lt;p>From package UML::CommonBehavior.&lt;/p>"/>
       </eAnnotations>
       <eAnnotations source="subsets" references="#//Namespace/ownedRule"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="precondition" ordered="false"
-        upperBound="-1" eType="#//Constraint">
+        upperBound="-1" eType="#//Constraint" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="An optional set of Constraints specifying what must be fulfilled before the Behavior is invoked.&#xA;&lt;p>From package UML::CommonBehavior.&lt;/p>"/>
       </eAnnotations>
@@ -992,23 +992,47 @@
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedRule" ordered="false"
-        upperBound="-1" eType="#//Constraint" containment="true" eOpposite="#//Constraint/context">
+        upperBound="-1" eType="#//Constraint" volatile="true" transient="true" derived="true"
+        eOpposite="#//Constraint/context">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies a set of Constraints owned by this Namespace.&#xA;&lt;p>From package UML::CommonStructure.&lt;/p>"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/CDO">
+        <details key="persistent" value="true"/>
+        <details key="filter" value="ownedConstraint"/>
       </eAnnotations>
       <eAnnotations source="subsets" references="#//Namespace/ownedMember"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="elementImport" ordered="false"
-        upperBound="-1" eType="#//ElementImport" containment="true" eOpposite="#//ElementImport/importingNamespace">
+        upperBound="-1" eType="#//ElementImport" volatile="true" transient="true"
+        derived="true" eOpposite="#//ElementImport/importingNamespace">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References the ElementImports owned by the Namespace.&#xA;&lt;p>From package UML::CommonStructure.&lt;/p>"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/CDO">
+        <details key="persistent" value="true"/>
+        <details key="filter" value="ownedElementImport"/>
       </eAnnotations>
       <eAnnotations source="subsets" references="#//Element/ownedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="packageImport" ordered="false"
-        upperBound="-1" eType="#//PackageImport" containment="true" eOpposite="#//PackageImport/importingNamespace">
+        upperBound="-1" eType="#//PackageImport" volatile="true" transient="true"
+        derived="true" eOpposite="#//PackageImport/importingNamespace">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References the PackageImports owned by the Namespace.&#xA;&lt;p>From package UML::CommonStructure.&lt;/p>"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/CDO">
+        <details key="persistent" value="true"/>
+        <details key="filter" value="ownedPackageImport"/>
       </eAnnotations>
       <eAnnotations source="subsets" references="#//Element/ownedElement"/>
     </eStructuralFeatures>
@@ -1020,6 +1044,30 @@
       </eAnnotations>
       <eAnnotations source="union"/>
       <eAnnotations source="subsets" references="#//Element/ownedElement #//Namespace/member"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedElementImport" ordered="false"
+        upperBound="-1" eType="#//ElementImport" containment="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="elementImport"/>
+        <details key="kind" value="element"/>
+      </eAnnotations>
+      <eAnnotations source="subsets" references="#//Namespace/elementImport"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPackageImport" ordered="false"
+        upperBound="-1" eType="#//PackageImport" containment="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="packageImport"/>
+        <details key="kind" value="element"/>
+      </eAnnotations>
+      <eAnnotations source="subsets" references="#//Namespace/packageImport"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedConstraint" ordered="false"
+        upperBound="-1" eType="#//Constraint" containment="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="ownedRule"/>
+        <details key="kind" value="element"/>
+      </eAnnotations>
+      <eAnnotations source="subsets" references="#//Namespace/ownedRule"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="importedMember" ordered="false"
         upperBound="-1" eType="#//PackageableElement" changeable="false" volatile="true"
@@ -2005,14 +2053,14 @@
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="metaclassReference" ordered="false"
-        upperBound="-1" eType="#//ElementImport">
+        upperBound="-1" eType="#//ElementImport" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References a metaclass that may be extended.&#xA;&lt;p>From package UML::Packages.&lt;/p>"/>
       </eAnnotations>
       <eAnnotations source="subsets" references="#//Namespace/elementImport"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="metamodelReference" ordered="false"
-        upperBound="-1" eType="#//PackageImport">
+        upperBound="-1" eType="#//PackageImport" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="References a package containing (directly or indirectly) metaclasses that may be extended.&#xA;&lt;p>From package UML::Packages.&lt;/p>"/>
       </eAnnotations>
@@ -4712,7 +4760,7 @@
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bodyCondition" ordered="false"
-        eType="#//Constraint">
+        eType="#//Constraint" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="An optional Constraint on the result values of an invocation of this Operation.&#xA;&lt;p>From package UML::Classification.&lt;/p>"/>
       </eAnnotations>
@@ -4770,14 +4818,14 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="postcondition" ordered="false"
-        upperBound="-1" eType="#//Constraint">
+        upperBound="-1" eType="#//Constraint" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="An optional set of Constraints specifying the state of the system when the Operation is completed.&#xA;&lt;p>From package UML::Classification.&lt;/p>"/>
       </eAnnotations>
       <eAnnotations source="subsets" references="#//Namespace/ownedRule"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="precondition" ordered="false"
-        upperBound="-1" eType="#//Constraint">
+        upperBound="-1" eType="#//Constraint" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="An optional set of Constraints on the state of the system when the Operation is invoked.&#xA;&lt;p>From package UML::Classification.&lt;/p>"/>
       </eAnnotations>
@@ -5186,7 +5234,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="context" ordered="false"
-        eType="#//Namespace" eOpposite="#//Namespace/ownedRule">
+        eType="#//Namespace" volatile="true" transient="true" derived="true" eOpposite="#//Namespace/ownedRule">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the Namespace that owns the Constraint.&#xA;&lt;p>From package UML::CommonStructure.&lt;/p>"/>
       </eAnnotations>
@@ -6367,7 +6415,7 @@
       <eAnnotations source="subsets" references="#//RedefinableElement/redefinedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="stateInvariant" ordered="false"
-        eType="#//Constraint">
+        eType="#//Constraint" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies conditions that are always true when this State is the current State. In ProtocolStateMachines state invariants are additional conditions to the preconditions of the outgoing Transitions, and to the postcondition of the incoming Transitions.&#xA;&lt;p>From package UML::StateMachines.&lt;/p>"/>
       </eAnnotations>
@@ -6843,7 +6891,7 @@
       <eAnnotations source="subsets" references="#//Element/ownedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="guard" ordered="false"
-        eType="#//Constraint">
+        eType="#//Constraint" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A guard is a Constraint that provides a fine-grained control over the firing of the Transition. The guard is evaluated when an Event occurrence is dispatched by the StateMachine. If the guard is true at that time, the Transition may be enabled, otherwise, it is disabled. Guards should be pure expressions without side effects. Guard expressions with side effects are ill formed.&#xA;&lt;p>From package UML::StateMachines.&lt;/p>"/>
       </eAnnotations>
@@ -7374,7 +7422,8 @@
       <eAnnotations source="subsets" references="#//DirectedRelationship/target"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="importingNamespace" ordered="false"
-        lowerBound="1" eType="#//Namespace" eOpposite="#//Namespace/elementImport">
+        lowerBound="1" eType="#//Namespace" volatile="true" transient="true" derived="true"
+        eOpposite="#//Namespace/elementImport">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the Namespace that imports a PackageableElement from another Namespace.&#xA;&lt;p>From package UML::CommonStructure.&lt;/p>"/>
       </eAnnotations>
@@ -7418,7 +7467,8 @@
       <eAnnotations source="subsets" references="#//DirectedRelationship/target"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="importingNamespace" ordered="false"
-        lowerBound="1" eType="#//Namespace" eOpposite="#//Namespace/packageImport">
+        lowerBound="1" eType="#//Namespace" volatile="true" transient="true" derived="true"
+        eOpposite="#//Namespace/packageImport">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the Namespace that imports the members from a Package.&#xA;&lt;p>From package UML::CommonStructure.&lt;/p>"/>
       </eAnnotations>
@@ -16712,7 +16762,7 @@
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="postCondition" ordered="false"
-        eType="#//Constraint">
+        eType="#//Constraint" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the post condition of the Transition which is the Condition that should be obtained once the Transition is triggered. This post condition is part of the post condition of the Operation connected to the Transition.&#xA;&lt;p>From package UML::StateMachines.&lt;/p>"/>
       </eAnnotations>

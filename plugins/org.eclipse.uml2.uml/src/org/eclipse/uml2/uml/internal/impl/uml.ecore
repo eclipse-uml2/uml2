@@ -145,11 +145,11 @@
       <eAnnotations source="subsets" references="#//Namespace/ownedMember"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="postcondition" ordered="false"
-        upperBound="-1" eType="#//Constraint">
+        upperBound="-1" eType="#//Constraint" containment="true">
       <eAnnotations source="subsets" references="#//Namespace/ownedRule"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="precondition" ordered="false"
-        upperBound="-1" eType="#//Constraint">
+        upperBound="-1" eType="#//Constraint" containment="true">
       <eAnnotations source="subsets" references="#//Namespace/ownedRule"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="redefinedBehavior" ordered="false"
@@ -471,15 +471,39 @@
     </eOperations>
     <eOperations name="membersAreDistinguishable" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedRule" ordered="false"
-        upperBound="-1" eType="#//Constraint" containment="true" eOpposite="#//Constraint/context">
+        upperBound="-1" eType="#//Constraint" volatile="true" transient="true" derived="true"
+        eOpposite="#//Constraint/context">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/CDO">
+        <details key="persistent" value="true"/>
+        <details key="filter" value="ownedConstraint"/>
+      </eAnnotations>
       <eAnnotations source="subsets" references="#//Namespace/ownedMember"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="elementImport" ordered="false"
-        upperBound="-1" eType="#//ElementImport" containment="true" eOpposite="#//ElementImport/importingNamespace">
+        upperBound="-1" eType="#//ElementImport" volatile="true" transient="true"
+        derived="true" eOpposite="#//ElementImport/importingNamespace">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/CDO">
+        <details key="persistent" value="true"/>
+        <details key="filter" value="ownedElementImport"/>
+      </eAnnotations>
       <eAnnotations source="subsets" references="#//Element/ownedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="packageImport" ordered="false"
-        upperBound="-1" eType="#//PackageImport" containment="true" eOpposite="#//PackageImport/importingNamespace">
+        upperBound="-1" eType="#//PackageImport" volatile="true" transient="true"
+        derived="true" eOpposite="#//PackageImport/importingNamespace">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/CDO">
+        <details key="persistent" value="true"/>
+        <details key="filter" value="ownedPackageImport"/>
+      </eAnnotations>
       <eAnnotations source="subsets" references="#//Element/ownedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedMember" ordered="false"
@@ -487,6 +511,30 @@
         transient="true" derived="true" eOpposite="#//NamedElement/namespace">
       <eAnnotations source="union"/>
       <eAnnotations source="subsets" references="#//Element/ownedElement #//Namespace/member"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedElementImport" ordered="false"
+        upperBound="-1" eType="#//ElementImport" containment="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="elementImport"/>
+        <details key="kind" value="element"/>
+      </eAnnotations>
+      <eAnnotations source="subsets" references="#//Namespace/elementImport"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPackageImport" ordered="false"
+        upperBound="-1" eType="#//PackageImport" containment="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="packageImport"/>
+        <details key="kind" value="element"/>
+      </eAnnotations>
+      <eAnnotations source="subsets" references="#//Namespace/packageImport"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedConstraint" ordered="false"
+        upperBound="-1" eType="#//Constraint" containment="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="ownedRule"/>
+        <details key="kind" value="element"/>
+      </eAnnotations>
+      <eAnnotations source="subsets" references="#//Namespace/ownedRule"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="importedMember" ordered="false"
         upperBound="-1" eType="#//PackageableElement" changeable="false" volatile="true"
@@ -864,11 +912,11 @@
     <eOperations name="getReferencedMetamodels" ordered="false" upperBound="-1" eType="#//Model"/>
     <eOperations name="isDefined" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="metaclassReference" ordered="false"
-        upperBound="-1" eType="#//ElementImport">
+        upperBound="-1" eType="#//ElementImport" containment="true">
       <eAnnotations source="subsets" references="#//Namespace/elementImport"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="metamodelReference" ordered="false"
-        upperBound="-1" eType="#//PackageImport">
+        upperBound="-1" eType="#//PackageImport" containment="true">
       <eAnnotations source="subsets" references="#//Namespace/packageImport"/>
     </eStructuralFeatures>
   </eClassifiers>
@@ -2048,7 +2096,7 @@
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bodyCondition" ordered="false"
-        eType="#//Constraint">
+        eType="#//Constraint" containment="true">
       <eAnnotations source="subsets" references="#//Namespace/ownedRule"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" ordered="false"
@@ -2078,11 +2126,11 @@
         changeable="false" volatile="true" transient="true" defaultValueLiteral="1"
         derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="postcondition" ordered="false"
-        upperBound="-1" eType="#//Constraint">
+        upperBound="-1" eType="#//Constraint" containment="true">
       <eAnnotations source="subsets" references="#//Namespace/ownedRule"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="precondition" ordered="false"
-        upperBound="-1" eType="#//Constraint">
+        upperBound="-1" eType="#//Constraint" containment="true">
       <eAnnotations source="subsets" references="#//Namespace/ownedRule"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="redefinedOperation" ordered="false"
@@ -2269,7 +2317,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="constrainedElement" upperBound="-1"
         eType="#//Element"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="context" ordered="false"
-        eType="#//Namespace" eOpposite="#//Namespace/ownedRule">
+        eType="#//Namespace" volatile="true" transient="true" derived="true" eOpposite="#//Namespace/ownedRule">
       <eAnnotations source="subsets" references="#//NamedElement/namespace"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="specification" ordered="false"
@@ -2823,7 +2871,7 @@
       <eAnnotations source="subsets" references="#//RedefinableElement/redefinedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="stateInvariant" ordered="false"
-        eType="#//Constraint">
+        eType="#//Constraint" containment="true">
       <eAnnotations source="subsets" references="#//Namespace/ownedRule"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="submachine" ordered="false"
@@ -3044,7 +3092,7 @@
       <eAnnotations source="subsets" references="#//Element/ownedElement"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="guard" ordered="false"
-        eType="#//Constraint">
+        eType="#//Constraint" containment="true">
       <eAnnotations source="subsets" references="#//Namespace/ownedRule"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" ordered="false" lowerBound="1"
@@ -3276,7 +3324,8 @@
       <eAnnotations source="subsets" references="#//DirectedRelationship/target"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="importingNamespace" ordered="false"
-        lowerBound="1" eType="#//Namespace" eOpposite="#//Namespace/elementImport">
+        lowerBound="1" eType="#//Namespace" volatile="true" transient="true" derived="true"
+        eOpposite="#//Namespace/elementImport">
       <eAnnotations source="subsets" references="#//DirectedRelationship/source #//Element/owner"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" ordered="false"
@@ -3297,7 +3346,8 @@
       <eAnnotations source="subsets" references="#//DirectedRelationship/target"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="importingNamespace" ordered="false"
-        lowerBound="1" eType="#//Namespace" eOpposite="#//Namespace/packageImport">
+        lowerBound="1" eType="#//Namespace" volatile="true" transient="true" derived="true"
+        eOpposite="#//Namespace/packageImport">
       <eAnnotations source="subsets" references="#//DirectedRelationship/source #//Element/owner"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" ordered="false"
@@ -7615,7 +7665,7 @@
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="postCondition" ordered="false"
-        eType="#//Constraint">
+        eType="#//Constraint" containment="true">
       <eAnnotations source="subsets" references="#//Namespace/ownedRule"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="preCondition" ordered="false"

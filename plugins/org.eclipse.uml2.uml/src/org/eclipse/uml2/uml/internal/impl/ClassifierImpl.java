@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 212765, 418466, 454400, 451350, 485756
+ *   Kenn Hussey (CEA) - 327039, 351774, 212765, 418466, 454400, 451350, 485756, 464702
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -2193,15 +2193,6 @@ public abstract class ClassifierImpl
 			case UMLPackage.CLASSIFIER__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.CLASSIFIER__OWNED_RULE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.CLASSIFIER__ELEMENT_IMPORT :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.CLASSIFIER__PACKAGE_IMPORT :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -2260,14 +2251,14 @@ public abstract class ClassifierImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASSIFIER__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.CLASSIFIER__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules())
+			case UMLPackage.CLASSIFIER__OWNED_ELEMENT_IMPORT :
+				return ((InternalEList<?>) getOwnedElementImports())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.CLASSIFIER__ELEMENT_IMPORT :
-				return ((InternalEList<?>) getElementImports())
+			case UMLPackage.CLASSIFIER__OWNED_PACKAGE_IMPORT :
+				return ((InternalEList<?>) getOwnedPackageImports())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.CLASSIFIER__PACKAGE_IMPORT :
-				return ((InternalEList<?>) getPackageImports())
+			case UMLPackage.CLASSIFIER__OWNED_CONSTRAINT :
+				return ((InternalEList<?>) getOwnedConstraints())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
@@ -2359,6 +2350,12 @@ public abstract class ClassifierImpl
 				return getPackageImports();
 			case UMLPackage.CLASSIFIER__OWNED_MEMBER :
 				return getOwnedMembers();
+			case UMLPackage.CLASSIFIER__OWNED_ELEMENT_IMPORT :
+				return getOwnedElementImports();
+			case UMLPackage.CLASSIFIER__OWNED_PACKAGE_IMPORT :
+				return getOwnedPackageImports();
+			case UMLPackage.CLASSIFIER__OWNED_CONSTRAINT :
+				return getOwnedConstraints();
 			case UMLPackage.CLASSIFIER__IMPORTED_MEMBER :
 				return getImportedMembers();
 			case UMLPackage.CLASSIFIER__MEMBER :
@@ -2464,6 +2461,21 @@ public abstract class ClassifierImpl
 				getPackageImports()
 					.addAll((Collection<? extends PackageImport>) newValue);
 				return;
+			case UMLPackage.CLASSIFIER__OWNED_ELEMENT_IMPORT :
+				getOwnedElementImports().clear();
+				getOwnedElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
+				return;
+			case UMLPackage.CLASSIFIER__OWNED_PACKAGE_IMPORT :
+				getOwnedPackageImports().clear();
+				getOwnedPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
+				return;
+			case UMLPackage.CLASSIFIER__OWNED_CONSTRAINT :
+				getOwnedConstraints().clear();
+				getOwnedConstraints()
+					.addAll((Collection<? extends Constraint>) newValue);
+				return;
 			case UMLPackage.CLASSIFIER__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
 				return;
@@ -2568,6 +2580,15 @@ public abstract class ClassifierImpl
 			case UMLPackage.CLASSIFIER__PACKAGE_IMPORT :
 				getPackageImports().clear();
 				return;
+			case UMLPackage.CLASSIFIER__OWNED_ELEMENT_IMPORT :
+				getOwnedElementImports().clear();
+				return;
+			case UMLPackage.CLASSIFIER__OWNED_PACKAGE_IMPORT :
+				getOwnedPackageImports().clear();
+				return;
+			case UMLPackage.CLASSIFIER__OWNED_CONSTRAINT :
+				getOwnedConstraints().clear();
+				return;
 			case UMLPackage.CLASSIFIER__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
@@ -2654,13 +2675,21 @@ public abstract class ClassifierImpl
 			case UMLPackage.CLASSIFIER__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.CLASSIFIER__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
+				return !getOwnedRules().isEmpty();
 			case UMLPackage.CLASSIFIER__ELEMENT_IMPORT :
-				return elementImports != null && !elementImports.isEmpty();
+				return !getElementImports().isEmpty();
 			case UMLPackage.CLASSIFIER__PACKAGE_IMPORT :
-				return packageImports != null && !packageImports.isEmpty();
+				return !getPackageImports().isEmpty();
 			case UMLPackage.CLASSIFIER__OWNED_MEMBER :
 				return isSetOwnedMembers();
+			case UMLPackage.CLASSIFIER__OWNED_ELEMENT_IMPORT :
+				return ownedElementImports != null
+					&& !ownedElementImports.isEmpty();
+			case UMLPackage.CLASSIFIER__OWNED_PACKAGE_IMPORT :
+				return ownedPackageImports != null
+					&& !ownedPackageImports.isEmpty();
+			case UMLPackage.CLASSIFIER__OWNED_CONSTRAINT :
+				return ownedConstraints != null && !ownedConstraints.isEmpty();
 			case UMLPackage.CLASSIFIER__IMPORTED_MEMBER :
 				return !getImportedMembers().isEmpty();
 			case UMLPackage.CLASSIFIER__MEMBER :

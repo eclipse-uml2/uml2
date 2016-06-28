@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
- *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
+ *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756, 464702
  *   Christian W. Damus (CEA) - 251963
  *
  */
@@ -40,6 +40,9 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link org.eclipse.uml2.uml.Namespace#getElementImports <em>Element Import</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Namespace#getPackageImports <em>Package Import</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers <em>Owned Member</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Namespace#getOwnedElementImports <em>Owned Element Import</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Namespace#getOwnedPackageImports <em>Owned Package Import</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Namespace#getOwnedConstraints <em>Owned Constraint</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Namespace#getImportedMembers <em>Imported Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Namespace#getMembers <em>Member</em>}</li>
  * </ul>
@@ -52,7 +55,7 @@ public interface Namespace
 		extends NamedElement {
 
 	/**
-	 * Returns the value of the '<em><b>Element Import</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Element Import</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ElementImport}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ElementImport#getImportingNamespace <em>Importing Namespace</em>}'.
 	 * <p>
@@ -67,10 +70,12 @@ public interface Namespace
 	 * References the ElementImports owned by the Namespace.
 	 * <p>From package UML::CommonStructure.</p>
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Element Import</em>' containment reference list.
+	 * @return the value of the '<em>Element Import</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamespace_ElementImport()
 	 * @see org.eclipse.uml2.uml.ElementImport#getImportingNamespace
-	 * @model opposite="importingNamespace" containment="true" resolveProxies="true" ordered="false"
+	 * @model opposite="importingNamespace" transient="true" volatile="true" derived="true" ordered="false"
+	 *        extendedMetaData="kind='attribute'"
+	 *        annotation="http://www.eclipse.org/emf/CDO persistent='true' filter='ownedElementImport'"
 	 * @generated
 	 */
 	EList<ElementImport> getElementImports();
@@ -82,12 +87,12 @@ public interface Namespace
 	 * @param importedElement The '<em><b>Imported Element</b></em>' for the new {@link org.eclipse.uml2.uml.ElementImport}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.ElementImport}.
 	 * @see #getElementImports()
-	 * @generated
+	 * @generated NOT
 	 */
 	ElementImport createElementImport(PackageableElement importedElement);
 
 	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.ElementImport} with the specified '<em><b>Imported Element</b></em>' from the '<em><b>Element Import</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ElementImport} with the specified '<em><b>Imported Element</b></em>' from the '<em><b>Element Import</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param importedElement The '<em><b>Imported Element</b></em>' of the {@link org.eclipse.uml2.uml.ElementImport} to retrieve, or <code>null</code>.
@@ -105,13 +110,13 @@ public interface Namespace
 	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.ElementImport} on demand if not found.
 	 * @return The first {@link org.eclipse.uml2.uml.ElementImport} with the specified '<em><b>Imported Element</b></em>', or <code>null</code>.
 	 * @see #getElementImports()
-	 * @generated
+	 * @generated NOT
 	 */
 	ElementImport getElementImport(PackageableElement importedElement,
 			boolean createOnDemand);
 
 	/**
-	 * Returns the value of the '<em><b>Package Import</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Package Import</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.PackageImport}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.PackageImport#getImportingNamespace <em>Importing Namespace</em>}'.
 	 * <p>
@@ -126,10 +131,12 @@ public interface Namespace
 	 * References the PackageImports owned by the Namespace.
 	 * <p>From package UML::CommonStructure.</p>
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Package Import</em>' containment reference list.
+	 * @return the value of the '<em>Package Import</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamespace_PackageImport()
 	 * @see org.eclipse.uml2.uml.PackageImport#getImportingNamespace
-	 * @model opposite="importingNamespace" containment="true" resolveProxies="true" ordered="false"
+	 * @model opposite="importingNamespace" transient="true" volatile="true" derived="true" ordered="false"
+	 *        extendedMetaData="kind='attribute'"
+	 *        annotation="http://www.eclipse.org/emf/CDO persistent='true' filter='ownedPackageImport'"
 	 * @generated
 	 */
 	EList<PackageImport> getPackageImports();
@@ -141,13 +148,13 @@ public interface Namespace
 	 * @param importedPackage The '<em><b>Imported Package</b></em>' for the new {@link org.eclipse.uml2.uml.PackageImport}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.PackageImport}.
 	 * @see #getPackageImports()
-	 * @generated
+	 * @generated NOT
 	 */
 	PackageImport createPackageImport(
 			org.eclipse.uml2.uml.Package importedPackage);
 
 	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.PackageImport} with the specified '<em><b>Imported Package</b></em>' from the '<em><b>Package Import</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.PackageImport} with the specified '<em><b>Imported Package</b></em>' from the '<em><b>Package Import</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param importedPackage The '<em><b>Imported Package</b></em>' of the {@link org.eclipse.uml2.uml.PackageImport} to retrieve, or <code>null</code>.
@@ -166,13 +173,13 @@ public interface Namespace
 	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.PackageImport} on demand if not found.
 	 * @return The first {@link org.eclipse.uml2.uml.PackageImport} with the specified '<em><b>Imported Package</b></em>', or <code>null</code>.
 	 * @see #getPackageImports()
-	 * @generated
+	 * @generated NOT
 	 */
 	PackageImport getPackageImport(org.eclipse.uml2.uml.Package importedPackage,
 			boolean createOnDemand);
 
 	/**
-	 * Returns the value of the '<em><b>Owned Rule</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Owned Rule</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Constraint}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Constraint#getContext <em>Context</em>}'.
 	 * <p>
@@ -187,10 +194,12 @@ public interface Namespace
 	 * Specifies a set of Constraints owned by this Namespace.
 	 * <p>From package UML::CommonStructure.</p>
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Owned Rule</em>' containment reference list.
+	 * @return the value of the '<em>Owned Rule</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamespace_OwnedRule()
 	 * @see org.eclipse.uml2.uml.Constraint#getContext
-	 * @model opposite="context" containment="true" resolveProxies="true" ordered="false"
+	 * @model opposite="context" transient="true" volatile="true" derived="true" ordered="false"
+	 *        extendedMetaData="kind='attribute'"
+	 *        annotation="http://www.eclipse.org/emf/CDO persistent='true' filter='ownedConstraint'"
 	 * @generated
 	 */
 	EList<Constraint> getOwnedRules();
@@ -203,7 +212,7 @@ public interface Namespace
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Constraint} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.Constraint}.
 	 * @see #getOwnedRules()
-	 * @generated
+	 * @generated NOT
 	 */
 	Constraint createOwnedRule(String name, EClass eClass);
 
@@ -214,12 +223,12 @@ public interface Namespace
 	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.
 	 * @return The new {@link org.eclipse.uml2.uml.Constraint}.
 	 * @see #getOwnedRules()
-	 * @generated
+	 * @generated NOT
 	 */
 	Constraint createOwnedRule(String name);
 
 	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Rule</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Rule</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Constraint} to retrieve, or <code>null</code>.
@@ -228,6 +237,19 @@ public interface Namespace
 	 * @generated
 	 */
 	Constraint getOwnedRule(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Rule</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Constraint} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Constraint} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getOwnedRules()
+	 * @generated
+	 */
+	Constraint getOwnedRule(String name, boolean ignoreCase, EClass eClass);
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Rule</b></em>' containment reference list.
@@ -381,6 +403,197 @@ public interface Namespace
 	 * @generated
 	 */
 	NamedElement getOwnedMember(String name, boolean ignoreCase, EClass eClass);
+
+	/**
+	 * Returns the value of the '<em><b>Owned Element Import</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.uml2.uml.ElementImport}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * </p>
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getElementImports() <em>Element Import</em>}'</li>
+	 * </ul>
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Owned Element Import</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Owned Element Import</em>' containment reference list.
+	 * @see org.eclipse.uml2.uml.UMLPackage#getNamespace_OwnedElementImport()
+	 * @model containment="true" resolveProxies="true" ordered="false"
+	 *        extendedMetaData="name='elementImport' kind='element'"
+	 * @generated
+	 */
+	EList<ElementImport> getOwnedElementImports();
+
+	/**
+	 * Creates a new {@link org.eclipse.uml2.uml.ElementImport}, with the specified '<em><b>Imported Element</b></em>', and appends it to the '<em><b>Owned Element Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param importedElement The '<em><b>Imported Element</b></em>' for the new {@link org.eclipse.uml2.uml.ElementImport}, or <code>null</code>.
+	 * @return The new {@link org.eclipse.uml2.uml.ElementImport}.
+	 * @see #getOwnedElementImports()
+	 * @generated
+	 */
+	ElementImport createOwnedElementImport(PackageableElement importedElement);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ElementImport} with the specified '<em><b>Imported Element</b></em>' from the '<em><b>Owned Element Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param importedElement The '<em><b>Imported Element</b></em>' of the {@link org.eclipse.uml2.uml.ElementImport} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.ElementImport} with the specified '<em><b>Imported Element</b></em>', or <code>null</code>.
+	 * @see #getOwnedElementImports()
+	 * @generated
+	 */
+	ElementImport getOwnedElementImport(PackageableElement importedElement);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ElementImport} with the specified '<em><b>Imported Element</b></em>' from the '<em><b>Owned Element Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param importedElement The '<em><b>Imported Element</b></em>' of the {@link org.eclipse.uml2.uml.ElementImport} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.ElementImport} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.ElementImport} with the specified '<em><b>Imported Element</b></em>', or <code>null</code>.
+	 * @see #getOwnedElementImports()
+	 * @generated
+	 */
+	ElementImport getOwnedElementImport(PackageableElement importedElement,
+			boolean createOnDemand);
+
+	/**
+	 * Returns the value of the '<em><b>Owned Package Import</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.uml2.uml.PackageImport}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * </p>
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getPackageImports() <em>Package Import</em>}'</li>
+	 * </ul>
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Owned Package Import</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Owned Package Import</em>' containment reference list.
+	 * @see org.eclipse.uml2.uml.UMLPackage#getNamespace_OwnedPackageImport()
+	 * @model containment="true" resolveProxies="true" ordered="false"
+	 *        extendedMetaData="name='packageImport' kind='element'"
+	 * @generated
+	 */
+	EList<PackageImport> getOwnedPackageImports();
+
+	/**
+	 * Creates a new {@link org.eclipse.uml2.uml.PackageImport}, with the specified '<em><b>Imported Package</b></em>', and appends it to the '<em><b>Owned Package Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param importedPackage The '<em><b>Imported Package</b></em>' for the new {@link org.eclipse.uml2.uml.PackageImport}, or <code>null</code>.
+	 * @return The new {@link org.eclipse.uml2.uml.PackageImport}.
+	 * @see #getOwnedPackageImports()
+	 * @generated
+	 */
+	PackageImport createOwnedPackageImport(
+			org.eclipse.uml2.uml.Package importedPackage);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.PackageImport} with the specified '<em><b>Imported Package</b></em>' from the '<em><b>Owned Package Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param importedPackage The '<em><b>Imported Package</b></em>' of the {@link org.eclipse.uml2.uml.PackageImport} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.PackageImport} with the specified '<em><b>Imported Package</b></em>', or <code>null</code>.
+	 * @see #getOwnedPackageImports()
+	 * @generated
+	 */
+	PackageImport getOwnedPackageImport(
+			org.eclipse.uml2.uml.Package importedPackage);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.PackageImport} with the specified '<em><b>Imported Package</b></em>' from the '<em><b>Owned Package Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param importedPackage The '<em><b>Imported Package</b></em>' of the {@link org.eclipse.uml2.uml.PackageImport} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.PackageImport} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.PackageImport} with the specified '<em><b>Imported Package</b></em>', or <code>null</code>.
+	 * @see #getOwnedPackageImports()
+	 * @generated
+	 */
+	PackageImport getOwnedPackageImport(
+			org.eclipse.uml2.uml.Package importedPackage,
+			boolean createOnDemand);
+
+	/**
+	 * Returns the value of the '<em><b>Owned Constraint</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.uml2.uml.Constraint}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * </p>
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedRules() <em>Owned Rule</em>}'</li>
+	 * </ul>
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Owned Constraint</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Owned Constraint</em>' containment reference list.
+	 * @see org.eclipse.uml2.uml.UMLPackage#getNamespace_OwnedConstraint()
+	 * @model containment="true" resolveProxies="true" ordered="false"
+	 *        extendedMetaData="name='ownedRule' kind='element'"
+	 * @generated
+	 */
+	EList<Constraint> getOwnedConstraints();
+
+	/**
+	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Owned Constraint</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Constraint} to create.
+	 * @return The new {@link org.eclipse.uml2.uml.Constraint}.
+	 * @see #getOwnedConstraints()
+	 * @generated
+	 */
+	Constraint createOwnedConstraint(String name, EClass eClass);
+
+	/**
+	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Owned Constraint</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.
+	 * @return The new {@link org.eclipse.uml2.uml.Constraint}.
+	 * @see #getOwnedConstraints()
+	 * @generated
+	 */
+	Constraint createOwnedConstraint(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Constraint</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Constraint} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getOwnedConstraints()
+	 * @generated
+	 */
+	Constraint getOwnedConstraint(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Constraint</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Constraint} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Constraint} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.Constraint} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.Constraint} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getOwnedConstraints()
+	 * @generated
+	 */
+	Constraint getOwnedConstraint(String name, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand);
 
 	/**
 	 * <!-- begin-user-doc -->

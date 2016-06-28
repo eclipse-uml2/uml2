@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   Kenn Hussey (CEA) - initial API and implementation
- *   Kenn Hussey (CEA) - 418466, 485756
+ *   Kenn Hussey (CEA) - 418466, 485756, 464702
  *
  */
 package org.eclipse.uml2.uml.util;
@@ -1043,6 +1043,22 @@ public class UMLDerivedUnionAdapter
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
 				break;
+			case UMLPackage.STEREOTYPE__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.STEREOTYPE__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.STEREOTYPE__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
 			case UMLPackage.STEREOTYPE__IMPORTED_MEMBER :
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
@@ -1244,6 +1260,22 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.CLASS__OWNED_MEMBER :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
+			case UMLPackage.CLASS__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.CLASS__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.CLASS__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				notifyChanged(notification, eClass,
@@ -1530,6 +1562,22 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.PACKAGE__OWNED_MEMBER :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
+			case UMLPackage.PACKAGE__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.PACKAGE__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.PACKAGE__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				notifyChanged(notification, eClass,
@@ -1852,6 +1900,22 @@ public class UMLDerivedUnionAdapter
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
 				break;
+			case UMLPackage.PROFILE__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.PROFILE__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.PROFILE__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
 			case UMLPackage.PROFILE__IMPORTED_MEMBER :
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
@@ -2050,6 +2114,22 @@ public class UMLDerivedUnionAdapter
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
 				break;
+			case UMLPackage.EXTENSION__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.EXTENSION__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.EXTENSION__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
 			case UMLPackage.EXTENSION__IMPORTED_MEMBER :
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
@@ -2185,6 +2265,22 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.ASSOCIATION__OWNED_MEMBER :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
+			case UMLPackage.ASSOCIATION__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.ASSOCIATION__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.ASSOCIATION__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				notifyChanged(notification, eClass,
@@ -2553,6 +2649,22 @@ public class UMLDerivedUnionAdapter
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
 				break;
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__IMPORTED_MEMBER :
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
@@ -2698,6 +2810,22 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.ARTIFACT__OWNED_MEMBER :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
+			case UMLPackage.ARTIFACT__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.ARTIFACT__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.ARTIFACT__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				notifyChanged(notification, eClass,
@@ -2904,6 +3032,22 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.OPERATION__OWNED_MEMBER :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
+			case UMLPackage.OPERATION__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.OPERATION__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.OPERATION__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				notifyChanged(notification, eClass,
@@ -3169,6 +3313,22 @@ public class UMLDerivedUnionAdapter
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
 				break;
+			case UMLPackage.INTERFACE__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.INTERFACE__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.INTERFACE__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
 			case UMLPackage.INTERFACE__IMPORTED_MEMBER :
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
@@ -3333,6 +3493,22 @@ public class UMLDerivedUnionAdapter
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
 				break;
+			case UMLPackage.RECEPTION__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.RECEPTION__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.RECEPTION__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
 			case UMLPackage.RECEPTION__IMPORTED_MEMBER :
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
@@ -3396,6 +3572,22 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.SIGNAL__OWNED_MEMBER :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
+			case UMLPackage.SIGNAL__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.SIGNAL__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.SIGNAL__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				notifyChanged(notification, eClass,
@@ -3520,6 +3712,22 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_MEMBER :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
+			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				notifyChanged(notification, eClass,
@@ -3782,6 +3990,22 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.STATE_MACHINE__OWNED_MEMBER :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
+			case UMLPackage.STATE_MACHINE__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.STATE_MACHINE__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.STATE_MACHINE__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				notifyChanged(notification, eClass,
@@ -4089,6 +4313,22 @@ public class UMLDerivedUnionAdapter
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
 				break;
+			case UMLPackage.REGION__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.REGION__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.REGION__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
 			case UMLPackage.REGION__IMPORTED_MEMBER :
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
@@ -4168,6 +4408,22 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.STATE__OWNED_MEMBER :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
+			case UMLPackage.STATE__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.STATE__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.STATE__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				notifyChanged(notification, eClass,
@@ -4488,6 +4744,22 @@ public class UMLDerivedUnionAdapter
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
 				break;
+			case UMLPackage.TRANSITION__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.TRANSITION__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.TRANSITION__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
 			case UMLPackage.TRANSITION__IMPORTED_MEMBER :
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
@@ -4679,6 +4951,22 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.DATA_TYPE__OWNED_MEMBER :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
+			case UMLPackage.DATA_TYPE__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.DATA_TYPE__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.DATA_TYPE__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				notifyChanged(notification, eClass,
@@ -4946,6 +5234,22 @@ public class UMLDerivedUnionAdapter
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
 				break;
+			case UMLPackage.MODEL__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.MODEL__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.MODEL__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
 			case UMLPackage.MODEL__IMPORTED_MEMBER :
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
@@ -5051,6 +5355,22 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.ENUMERATION__OWNED_MEMBER :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
+			case UMLPackage.ENUMERATION__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.ENUMERATION__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.ENUMERATION__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				notifyChanged(notification, eClass,
@@ -5313,6 +5633,22 @@ public class UMLDerivedUnionAdapter
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
 				break;
+			case UMLPackage.PRIMITIVE_TYPE__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.PRIMITIVE_TYPE__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.PRIMITIVE_TYPE__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
 			case UMLPackage.PRIMITIVE_TYPE__IMPORTED_MEMBER :
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
@@ -5522,6 +5858,22 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.COLLABORATION__OWNED_MEMBER :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
+			case UMLPackage.COLLABORATION__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.COLLABORATION__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.COLLABORATION__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				notifyChanged(notification, eClass,
@@ -5800,6 +6152,22 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.USE_CASE__OWNED_MEMBER :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
+			case UMLPackage.USE_CASE__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.USE_CASE__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.USE_CASE__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				notifyChanged(notification, eClass,
@@ -6439,6 +6807,22 @@ public class UMLDerivedUnionAdapter
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
 				break;
+			case UMLPackage.ACTIVITY__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.ACTIVITY__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.ACTIVITY__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
 			case UMLPackage.ACTIVITY__IMPORTED_MEMBER :
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
@@ -6812,6 +7196,22 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_MEMBER :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
+			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				notifyChanged(notification, eClass,
@@ -7394,6 +7794,22 @@ public class UMLDerivedUnionAdapter
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
 				break;
+			case UMLPackage.INTERACTION__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.INTERACTION__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.INTERACTION__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
 			case UMLPackage.INTERACTION__IMPORTED_MEMBER :
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
@@ -7683,6 +8099,22 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.INTERACTION_OPERAND__OWNED_MEMBER :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
+			case UMLPackage.INTERACTION_OPERAND__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.INTERACTION_OPERAND__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.INTERACTION_OPERAND__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				notifyChanged(notification, eClass,
@@ -8048,6 +8480,22 @@ public class UMLDerivedUnionAdapter
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
 				break;
+			case UMLPackage.ACTOR__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.ACTOR__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.ACTOR__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
 			case UMLPackage.ACTOR__IMPORTED_MEMBER :
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
@@ -8378,6 +8826,22 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_MEMBER :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
+			case UMLPackage.ASSOCIATION_CLASS__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.ASSOCIATION_CLASS__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.ASSOCIATION_CLASS__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				notifyChanged(notification, eClass,
@@ -9302,6 +9766,22 @@ public class UMLDerivedUnionAdapter
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
 				break;
+			case UMLPackage.COMMUNICATION_PATH__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.COMMUNICATION_PATH__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.COMMUNICATION_PATH__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
 			case UMLPackage.COMMUNICATION_PATH__IMPORTED_MEMBER :
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
@@ -9437,6 +9917,22 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.COMPONENT__OWNED_MEMBER :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
+			case UMLPackage.COMPONENT__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.COMPONENT__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.COMPONENT__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				notifyChanged(notification, eClass,
@@ -9761,6 +10257,22 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.CONDITIONAL_NODE__OWNED_MEMBER :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
+			case UMLPackage.CONDITIONAL_NODE__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.CONDITIONAL_NODE__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.CONDITIONAL_NODE__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				notifyChanged(notification, eClass,
@@ -10734,6 +11246,22 @@ public class UMLDerivedUnionAdapter
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
 				break;
+			case UMLPackage.DEVICE__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.DEVICE__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.DEVICE__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
 			case UMLPackage.DEVICE__IMPORTED_MEMBER :
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
@@ -10942,6 +11470,22 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.NODE__OWNED_MEMBER :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
+			case UMLPackage.NODE__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.NODE__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.NODE__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				notifyChanged(notification, eClass,
@@ -11365,6 +11909,22 @@ public class UMLDerivedUnionAdapter
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
 				break;
+			case UMLPackage.EXECUTION_ENVIRONMENT__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.EXECUTION_ENVIRONMENT__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.EXECUTION_ENVIRONMENT__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
 			case UMLPackage.EXECUTION_ENVIRONMENT__IMPORTED_MEMBER :
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
@@ -11716,6 +12276,22 @@ public class UMLDerivedUnionAdapter
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
 				break;
+			case UMLPackage.EXPANSION_REGION__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.EXPANSION_REGION__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.EXPANSION_REGION__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
 			case UMLPackage.EXPANSION_REGION__IMPORTED_MEMBER :
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
@@ -11807,6 +12383,22 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.FINAL_STATE__OWNED_MEMBER :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
+			case UMLPackage.FINAL_STATE__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.FINAL_STATE__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.FINAL_STATE__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				notifyChanged(notification, eClass,
@@ -12013,6 +12605,22 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.FUNCTION_BEHAVIOR__OWNED_MEMBER :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
+			case UMLPackage.FUNCTION_BEHAVIOR__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.FUNCTION_BEHAVIOR__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.FUNCTION_BEHAVIOR__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				notifyChanged(notification, eClass,
@@ -12255,6 +12863,22 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_MEMBER :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				notifyChanged(notification, eClass,
@@ -12547,6 +13171,22 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.INFORMATION_ITEM__OWNED_MEMBER :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
+			case UMLPackage.INFORMATION_ITEM__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.INFORMATION_ITEM__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.INFORMATION_ITEM__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				notifyChanged(notification, eClass,
@@ -13016,6 +13656,22 @@ public class UMLDerivedUnionAdapter
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
 				break;
+			case UMLPackage.LOOP_NODE__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.LOOP_NODE__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.LOOP_NODE__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
 			case UMLPackage.LOOP_NODE__IMPORTED_MEMBER :
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.NAMESPACE__MEMBER);
@@ -13259,6 +13915,22 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.PROTOCOL_TRANSITION__OWNED_MEMBER :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
+			case UMLPackage.PROTOCOL_TRANSITION__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.PROTOCOL_TRANSITION__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.PROTOCOL_TRANSITION__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				notifyChanged(notification, eClass,
@@ -14663,6 +15335,22 @@ public class UMLDerivedUnionAdapter
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				break;
 			case UMLPackage.SEQUENCE_NODE__OWNED_MEMBER :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__MEMBER);
+				break;
+			case UMLPackage.SEQUENCE_NODE__OWNED_ELEMENT_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.SEQUENCE_NODE__OWNED_PACKAGE_IMPORT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+				break;
+			case UMLPackage.SEQUENCE_NODE__OWNED_CONSTRAINT :
+				notifyChanged(notification, eClass,
+					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 				notifyChanged(notification, eClass,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 				notifyChanged(notification, eClass,

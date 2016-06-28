@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
- *   Kenn Hussey (CEA) - 327039, 351774, 212765, 418466, 451350, 485756
+ *   Kenn Hussey (CEA) - 327039, 351774, 212765, 418466, 451350, 485756, 464702
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -41,9 +41,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
-
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.CallConcurrencyKind;
 import org.eclipse.uml2.uml.Classifier;
@@ -95,7 +94,6 @@ import org.eclipse.uml2.uml.internal.operations.TemplateableElementOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getRedefinedElements <em>Redefined Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getOwnedRules <em>Owned Rule</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getBodyCondition <em>Body Condition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getClass_ <em>Class</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getDatatype <em>Datatype</em>}</li>
@@ -150,7 +148,7 @@ public class OperationImpl
 	protected TemplateSignature ownedTemplateSignature;
 
 	/**
-	 * The cached value of the '{@link #getBodyCondition() <em>Body Condition</em>}' reference.
+	 * The cached value of the '{@link #getBodyCondition() <em>Body Condition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getBodyCondition()
@@ -210,7 +208,7 @@ public class OperationImpl
 	protected static final int LOWER_EDEFAULT = 1;
 
 	/**
-	 * The cached value of the '{@link #getPostconditions() <em>Postcondition</em>}' reference list.
+	 * The cached value of the '{@link #getPostconditions() <em>Postcondition</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPostconditions()
@@ -220,7 +218,7 @@ public class OperationImpl
 	protected EList<Constraint> postconditions;
 
 	/**
-	 * The cached value of the '{@link #getPreconditions() <em>Precondition</em>}' reference list.
+	 * The cached value of the '{@link #getPreconditions() <em>Precondition</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPreconditions()
@@ -757,14 +755,14 @@ public class OperationImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public EList<Constraint> getOwnedRules() {
 		if (ownedRules == null) {
-			ownedRules = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<Constraint>(
+			ownedRules = new SubsetSupersetEObjectResolvingEList<Constraint>(
 				Constraint.class, this, UMLPackage.OPERATION__OWNED_RULE, null,
-				OWNED_RULE_ESUBSETS, UMLPackage.CONSTRAINT__CONTEXT);
+				OWNED_RULE_ESUBSETS);
 		}
 		return ownedRules;
 	}
@@ -894,11 +892,11 @@ public class OperationImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<Constraint> getPreconditions() {
 		if (preconditions == null) {
-			preconditions = new SubsetSupersetEObjectResolvingEList<Constraint>(
+			preconditions = new SubsetSupersetEObjectContainmentEList.Resolving<Constraint>(
 				Constraint.class, this, UMLPackage.OPERATION__PRECONDITION,
 				PRECONDITION_ESUPERSETS, null);
 		}
@@ -908,11 +906,11 @@ public class OperationImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<Constraint> getPostconditions() {
 		if (postconditions == null) {
-			postconditions = new SubsetSupersetEObjectResolvingEList<Constraint>(
+			postconditions = new SubsetSupersetEObjectContainmentEList.Resolving.Resolving<Constraint>(
 				Constraint.class, this, UMLPackage.OPERATION__POSTCONDITION,
 				POSTCONDITION_ESUPERSETS, null);
 		}
@@ -1054,6 +1052,20 @@ public class OperationImpl
 			InternalEObject oldBodyCondition = (InternalEObject) bodyCondition;
 			bodyCondition = (Constraint) eResolveProxy(oldBodyCondition);
 			if (bodyCondition != oldBodyCondition) {
+				InternalEObject newBodyCondition = (InternalEObject) bodyCondition;
+				NotificationChain msgs = oldBodyCondition.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.OPERATION__BODY_CONDITION,
+					null, null);
+				if (newBodyCondition.eInternalContainer() == null) {
+					msgs = newBodyCondition
+						.eInverseAdd(this,
+							EOPPOSITE_FEATURE_BASE
+								- UMLPackage.OPERATION__BODY_CONDITION,
+							null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.OPERATION__BODY_CONDITION, oldBodyCondition,
@@ -1077,22 +1089,47 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setBodyCondition(Constraint newBodyCondition) {
+	public NotificationChain basicSetBodyCondition(Constraint newBodyCondition,
+			NotificationChain msgs) {
 		Constraint oldBodyCondition = bodyCondition;
 		bodyCondition = newBodyCondition;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.OPERATION__BODY_CONDITION, oldBodyCondition,
-				bodyCondition));
-		Resource.Internal eInternalResource = eInternalResource();
-		if (eInternalResource == null || !eInternalResource.isLoading()) {
-			if (newBodyCondition != null) {
-				EList<Constraint> ownedRules = getOwnedRules();
-				if (!ownedRules.contains(newBodyCondition)) {
-					ownedRules.add(newBodyCondition);
-				}
-			}
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this,
+				Notification.SET, UMLPackage.OPERATION__BODY_CONDITION,
+				oldBodyCondition, newBodyCondition);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBodyCondition(Constraint newBodyCondition) {
+		if (newBodyCondition != bodyCondition) {
+			NotificationChain msgs = null;
+			if (bodyCondition != null)
+				msgs = ((InternalEObject) bodyCondition).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.OPERATION__BODY_CONDITION,
+					null, msgs);
+			if (newBodyCondition != null)
+				msgs = ((InternalEObject) newBodyCondition).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.OPERATION__BODY_CONDITION,
+					null, msgs);
+			msgs = basicSetBodyCondition(newBodyCondition, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				UMLPackage.OPERATION__BODY_CONDITION, newBodyCondition,
+				newBodyCondition));
 	}
 
 	/**
@@ -1488,15 +1525,6 @@ public class OperationImpl
 			case UMLPackage.OPERATION__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.OPERATION__OWNED_RULE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.OPERATION__ELEMENT_IMPORT :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.OPERATION__PACKAGE_IMPORT :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.OPERATION__METHOD :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getMethods())
 					.basicAdd(otherEnd, msgs);
@@ -1559,14 +1587,14 @@ public class OperationImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.OPERATION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.OPERATION__OWNED_RULE :
-				return ((InternalEList<?>) getOwnedRules())
+			case UMLPackage.OPERATION__OWNED_ELEMENT_IMPORT :
+				return ((InternalEList<?>) getOwnedElementImports())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.OPERATION__ELEMENT_IMPORT :
-				return ((InternalEList<?>) getElementImports())
+			case UMLPackage.OPERATION__OWNED_PACKAGE_IMPORT :
+				return ((InternalEList<?>) getOwnedPackageImports())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.OPERATION__PACKAGE_IMPORT :
-				return ((InternalEList<?>) getPackageImports())
+			case UMLPackage.OPERATION__OWNED_CONSTRAINT :
+				return ((InternalEList<?>) getOwnedConstraints())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.OPERATION__METHOD :
 				return ((InternalEList<?>) getMethods()).basicRemove(otherEnd,
@@ -1586,12 +1614,20 @@ public class OperationImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
 				return basicSetOwnedTemplateSignature(null, msgs);
+			case UMLPackage.OPERATION__BODY_CONDITION :
+				return basicSetBodyCondition(null, msgs);
 			case UMLPackage.OPERATION__CLASS :
 				return basicSetClass_(null, msgs);
 			case UMLPackage.OPERATION__DATATYPE :
 				return basicSetDatatype(null, msgs);
 			case UMLPackage.OPERATION__INTERFACE :
 				return basicSetInterface(null, msgs);
+			case UMLPackage.OPERATION__POSTCONDITION :
+				return ((InternalEList<?>) getPostconditions())
+					.basicRemove(otherEnd, msgs);
+			case UMLPackage.OPERATION__PRECONDITION :
+				return ((InternalEList<?>) getPreconditions())
+					.basicRemove(otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1667,6 +1703,12 @@ public class OperationImpl
 				return getPackageImports();
 			case UMLPackage.OPERATION__OWNED_MEMBER :
 				return getOwnedMembers();
+			case UMLPackage.OPERATION__OWNED_ELEMENT_IMPORT :
+				return getOwnedElementImports();
+			case UMLPackage.OPERATION__OWNED_PACKAGE_IMPORT :
+				return getOwnedPackageImports();
+			case UMLPackage.OPERATION__OWNED_CONSTRAINT :
+				return getOwnedConstraints();
 			case UMLPackage.OPERATION__IMPORTED_MEMBER :
 				return getImportedMembers();
 			case UMLPackage.OPERATION__MEMBER :
@@ -1790,6 +1832,21 @@ public class OperationImpl
 				getPackageImports()
 					.addAll((Collection<? extends PackageImport>) newValue);
 				return;
+			case UMLPackage.OPERATION__OWNED_ELEMENT_IMPORT :
+				getOwnedElementImports().clear();
+				getOwnedElementImports()
+					.addAll((Collection<? extends ElementImport>) newValue);
+				return;
+			case UMLPackage.OPERATION__OWNED_PACKAGE_IMPORT :
+				getOwnedPackageImports().clear();
+				getOwnedPackageImports()
+					.addAll((Collection<? extends PackageImport>) newValue);
+				return;
+			case UMLPackage.OPERATION__OWNED_CONSTRAINT :
+				getOwnedConstraints().clear();
+				getOwnedConstraints()
+					.addAll((Collection<? extends Constraint>) newValue);
+				return;
 			case UMLPackage.OPERATION__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
 				return;
@@ -1901,6 +1958,15 @@ public class OperationImpl
 			case UMLPackage.OPERATION__PACKAGE_IMPORT :
 				getPackageImports().clear();
 				return;
+			case UMLPackage.OPERATION__OWNED_ELEMENT_IMPORT :
+				getOwnedElementImports().clear();
+				return;
+			case UMLPackage.OPERATION__OWNED_PACKAGE_IMPORT :
+				getOwnedPackageImports().clear();
+				return;
+			case UMLPackage.OPERATION__OWNED_CONSTRAINT :
+				getOwnedConstraints().clear();
+				return;
 			case UMLPackage.OPERATION__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
@@ -1996,13 +2062,21 @@ public class OperationImpl
 			case UMLPackage.OPERATION__VISIBILITY :
 				return isSetVisibility();
 			case UMLPackage.OPERATION__OWNED_RULE :
-				return ownedRules != null && !ownedRules.isEmpty();
+				return !getOwnedRules().isEmpty();
 			case UMLPackage.OPERATION__ELEMENT_IMPORT :
-				return elementImports != null && !elementImports.isEmpty();
+				return !getElementImports().isEmpty();
 			case UMLPackage.OPERATION__PACKAGE_IMPORT :
-				return packageImports != null && !packageImports.isEmpty();
+				return !getPackageImports().isEmpty();
 			case UMLPackage.OPERATION__OWNED_MEMBER :
 				return isSetOwnedMembers();
+			case UMLPackage.OPERATION__OWNED_ELEMENT_IMPORT :
+				return ownedElementImports != null
+					&& !ownedElementImports.isEmpty();
+			case UMLPackage.OPERATION__OWNED_PACKAGE_IMPORT :
+				return ownedPackageImports != null
+					&& !ownedPackageImports.isEmpty();
+			case UMLPackage.OPERATION__OWNED_CONSTRAINT :
+				return ownedConstraints != null && !ownedConstraints.isEmpty();
 			case UMLPackage.OPERATION__IMPORTED_MEMBER :
 				return !getImportedMembers().isEmpty();
 			case UMLPackage.OPERATION__MEMBER :
@@ -2592,10 +2666,11 @@ public class OperationImpl
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getOwnedRules()
-	 * @generated
+	 * @generated NOT
 	 * @ordered
 	 */
 	protected static final int[] OWNED_RULE_ESUBSETS = new int[]{
+		UMLPackage.OPERATION__OWNED_CONSTRAINT,
 		UMLPackage.OPERATION__BODY_CONDITION,
 		UMLPackage.OPERATION__POSTCONDITION,
 		UMLPackage.OPERATION__PRECONDITION};
@@ -2605,7 +2680,7 @@ public class OperationImpl
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPostconditions()
-	 * @generated
+	 * @generated NOT
 	 * @ordered
 	 */
 	protected static final int[] POSTCONDITION_ESUPERSETS = new int[]{
@@ -2668,7 +2743,7 @@ public class OperationImpl
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPreconditions()
-	 * @generated
+	 * @generated NOT
 	 * @ordered
 	 */
 	protected static final int[] PRECONDITION_ESUPERSETS = new int[]{
