@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 CEA and others.
+ * Copyright (c) 2011, 2016 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   Kenn Hussey (CEA) - initial API and implementation
- *   Kenn Hussey (CEA) - 351774
+ *   Kenn Hussey (CEA) - 351774, 464702
  *
  */
 package org.eclipse.uml2.uml.internal.resource;
@@ -39,8 +39,11 @@ public class UMLSaveImpl
 		protected int featureKind(EStructuralFeature f) {
 			return f == UMLPackage.Literals.ACTIVITY__GROUP
 				|| f == UMLPackage.Literals.ACTIVITY__NODE
-				? OBJECT_HREF_MANY
-				: super.featureKind(f);
+				|| f == UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT
+				|| f == UMLPackage.Literals.NAMESPACE__OWNED_RULE
+				|| f == UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT
+					? OBJECT_HREF_MANY
+					: super.featureKind(f);
 		}
 
 	}
