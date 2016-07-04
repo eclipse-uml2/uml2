@@ -29,11 +29,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.resource.Resource;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
@@ -349,16 +349,20 @@ public abstract class NamespaceImpl
 			: null;
 	}
 
+	protected static final int[] OWNED_ELEMENT_IMPPORT_ESUPERSETS = new int[]{
+		UMLPackage.NAMESPACE__ELEMENT_IMPORT};
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<ElementImport> getOwnedElementImports() {
 		if (ownedElementImports == null) {
-			ownedElementImports = new EObjectContainmentEList.Resolving<ElementImport>(
+			ownedElementImports = new SubsetSupersetEObjectContainmentEList.Resolving<ElementImport>(
 				ElementImport.class, this,
-				UMLPackage.NAMESPACE__OWNED_ELEMENT_IMPORT);
+				UMLPackage.NAMESPACE__OWNED_ELEMENT_IMPORT,
+				OWNED_ELEMENT_IMPPORT_ESUPERSETS, null);
 		}
 		return ownedElementImports;
 	}
@@ -406,16 +410,20 @@ public abstract class NamespaceImpl
 			: null;
 	}
 
+	protected static final int[] OWNED_PACKAGE_IMPPORT_ESUPERSETS = new int[]{
+		UMLPackage.NAMESPACE__PACKAGE_IMPORT};
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<PackageImport> getOwnedPackageImports() {
 		if (ownedPackageImports == null) {
-			ownedPackageImports = new EObjectContainmentEList.Resolving<PackageImport>(
+			ownedPackageImports = new SubsetSupersetEObjectContainmentEList.Resolving<PackageImport>(
 				PackageImport.class, this,
-				UMLPackage.NAMESPACE__OWNED_PACKAGE_IMPORT);
+				UMLPackage.NAMESPACE__OWNED_PACKAGE_IMPORT,
+				OWNED_PACKAGE_IMPPORT_ESUPERSETS, null);
 		}
 		return ownedPackageImports;
 	}
@@ -464,15 +472,19 @@ public abstract class NamespaceImpl
 			: null;
 	}
 
+	protected static final int[] OWNED_CONSTRAINT_ESUPERSETS = new int[]{
+		UMLPackage.NAMESPACE__OWNED_RULE};
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<Constraint> getOwnedConstraints() {
 		if (ownedConstraints == null) {
-			ownedConstraints = new EObjectContainmentEList.Resolving<Constraint>(
-				Constraint.class, this, UMLPackage.NAMESPACE__OWNED_CONSTRAINT);
+			ownedConstraints = new SubsetSupersetEObjectContainmentEList.Resolving<Constraint>(
+				Constraint.class, this, UMLPackage.NAMESPACE__OWNED_CONSTRAINT,
+				OWNED_CONSTRAINT_ESUPERSETS, null);
 		}
 		return ownedConstraints;
 	}
