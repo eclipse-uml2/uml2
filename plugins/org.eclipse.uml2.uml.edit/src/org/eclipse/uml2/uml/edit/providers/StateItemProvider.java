@@ -705,7 +705,7 @@ public class StateItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
+		boolean qualify = childFeature == UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT
 			|| childFeature == UMLPackage.Literals.STATE__STATE_INVARIANT
 			|| childFeature == UMLPackage.Literals.STATE__DO_ACTIVITY
 			|| childFeature == UMLPackage.Literals.STATE__ENTRY
@@ -723,7 +723,7 @@ public class StateItemProvider
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createRemoveCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
@@ -731,6 +731,7 @@ public class StateItemProvider
 		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
 			return new SupersetRemoveCommand(domain, owner, feature,
 				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT,
 					UMLPackage.Literals.STATE__STATE_INVARIANT},
 				collection);
 		}
@@ -741,7 +742,7 @@ public class StateItemProvider
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object, java.util.Collection)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
@@ -751,6 +752,7 @@ public class StateItemProvider
 			return new SubsetSupersetReplaceCommand(domain, owner, feature,
 				null,
 				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT,
 					UMLPackage.Literals.STATE__STATE_INVARIANT},
 				value, collection);
 		}
@@ -762,7 +764,7 @@ public class StateItemProvider
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createSetCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
@@ -776,6 +778,7 @@ public class StateItemProvider
 		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
 			return new SubsetSupersetSetCommand(domain, owner, feature, null,
 				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT,
 					UMLPackage.Literals.STATE__STATE_INVARIANT},
 				value);
 		}

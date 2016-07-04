@@ -163,7 +163,7 @@ public class ModelItemProvider
 
 		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
 			|| childFeature == UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT
-			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
+			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT
 			|| childFeature == UMLPackage.Literals.PACKAGE__NESTED_PACKAGE
 			|| childFeature == UMLPackage.Literals.PACKAGE__OWNED_STEREOTYPE
 			|| childFeature == UMLPackage.Literals.PACKAGE__OWNED_TYPE;

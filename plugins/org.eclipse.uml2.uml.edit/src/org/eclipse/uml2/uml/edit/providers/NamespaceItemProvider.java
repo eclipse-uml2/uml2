@@ -17,15 +17,19 @@ package org.eclipse.uml2.uml.edit.providers;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
+import org.eclipse.uml2.common.edit.command.SubsetAddCommand;
+import org.eclipse.uml2.common.edit.command.SubsetSupersetReplaceCommand;
+import org.eclipse.uml2.common.edit.command.SubsetSupersetSetCommand;
+import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -85,8 +89,7 @@ public class NamespaceItemProvider
 			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
 				"_UI_Namespace_elementImport_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT, true, false, true,
-			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			null, null, null));
 	}
 
 	/**
@@ -104,8 +107,7 @@ public class NamespaceItemProvider
 			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
 				"_UI_Namespace_packageImport_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT, true, false, true,
-			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			null, null, null));
 	}
 
 	/**
@@ -122,8 +124,7 @@ public class NamespaceItemProvider
 			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
 				"_UI_Namespace_ownedRule_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.NAMESPACE__OWNED_RULE, true, false, true, null,
-			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			null, null));
 	}
 
 	/**
@@ -195,9 +196,12 @@ public class NamespaceItemProvider
 			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.Literals.NAMESPACE__OWNED_RULE);
-			childrenFeatures.add(UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT);
-			childrenFeatures.add(UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT);
+			childrenFeatures
+				.add(UMLPackage.Literals.NAMESPACE__OWNED_ELEMENT_IMPORT);
+			childrenFeatures
+				.add(UMLPackage.Literals.NAMESPACE__OWNED_PACKAGE_IMPORT);
+			childrenFeatures
+				.add(UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT);
 		}
 		return childrenFeatures;
 	}
@@ -256,6 +260,12 @@ public class NamespaceItemProvider
 			case UMLPackage.NAMESPACE__ELEMENT_IMPORT :
 			case UMLPackage.NAMESPACE__PACKAGE_IMPORT :
 				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+				return;
+			case UMLPackage.NAMESPACE__OWNED_ELEMENT_IMPORT :
+			case UMLPackage.NAMESPACE__OWNED_PACKAGE_IMPORT :
+			case UMLPackage.NAMESPACE__OWNED_CONSTRAINT :
+				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 				return;
 		}
@@ -274,33 +284,171 @@ public class NamespaceItemProvider
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.Literals.NAMESPACE__OWNED_RULE,
-				UMLFactory.eINSTANCE.createConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.NAMESPACE__OWNED_ELEMENT_IMPORT,
+			UMLFactory.eINSTANCE.createElementImport()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.Literals.NAMESPACE__OWNED_RULE,
-				UMLFactory.eINSTANCE.createInteractionConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.NAMESPACE__OWNED_PACKAGE_IMPORT,
+			UMLFactory.eINSTANCE.createPackageImport()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.Literals.NAMESPACE__OWNED_RULE,
-				UMLFactory.eINSTANCE.createIntervalConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT,
+			UMLFactory.eINSTANCE.createConstraint()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.Literals.NAMESPACE__OWNED_RULE,
-				UMLFactory.eINSTANCE.createDurationConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT,
+			UMLFactory.eINSTANCE.createInteractionConstraint()));
 
-		newChildDescriptors
-			.add(createChildParameter(UMLPackage.Literals.NAMESPACE__OWNED_RULE,
-				UMLFactory.eINSTANCE.createTimeConstraint()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT,
+			UMLFactory.eINSTANCE.createIntervalConstraint()));
 
-		newChildDescriptors.add(
-			createChildParameter(UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT,
-				UMLFactory.eINSTANCE.createElementImport()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT,
+			UMLFactory.eINSTANCE.createDurationConstraint()));
 
-		newChildDescriptors.add(
-			createChildParameter(UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT,
-				UMLFactory.eINSTANCE.createPackageImport()));
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT,
+			UMLFactory.eINSTANCE.createTimeConstraint()));
+	}
+
+	@Override
+	protected Command createAddCommand(EditingDomain domain, EObject owner,
+			EStructuralFeature feature, Collection<?> collection, int index) {
+		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT) {
+			return new SubsetAddCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_RULE},
+				collection, index);
+		}
+		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_ELEMENT_IMPORT) {
+			return new SubsetAddCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT},
+				collection, index);
+		}
+		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_PACKAGE_IMPORT) {
+			return new SubsetAddCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT},
+				collection, index);
+		}
+		return super.createAddCommand(domain, owner, feature, collection,
+			index);
+	}
+
+	@Override
+	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
+			EStructuralFeature feature, Collection<?> collection) {
+		if (feature == UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT) {
+			return new SupersetRemoveCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_ELEMENT_IMPORT},
+				collection);
+		}
+		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
+			return new SupersetRemoveCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT},
+				collection);
+		}
+		if (feature == UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT) {
+			return new SupersetRemoveCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_PACKAGE_IMPORT},
+				collection);
+		}
+		return super.createRemoveCommand(domain, owner, feature, collection);
+	}
+
+	@Override
+	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
+			EStructuralFeature feature, Object value,
+			Collection<?> collection) {
+		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT) {
+			return new SubsetSupersetReplaceCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_RULE},
+				null, value, collection);
+		}
+		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_ELEMENT_IMPORT) {
+			return new SubsetSupersetReplaceCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT},
+				null, value, collection);
+		}
+		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_PACKAGE_IMPORT) {
+			return new SubsetSupersetReplaceCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT},
+				null, value, collection);
+		}
+		if (feature == UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT) {
+			return new SubsetSupersetReplaceCommand(domain, owner, feature,
+				null,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_ELEMENT_IMPORT},
+				value, collection);
+		}
+		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
+			return new SubsetSupersetReplaceCommand(domain, owner, feature,
+				null,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT},
+				value, collection);
+		}
+		if (feature == UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT) {
+			return new SubsetSupersetReplaceCommand(domain, owner, feature,
+				null,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_PACKAGE_IMPORT},
+				value, collection);
+		}
+		return super.createReplaceCommand(domain, owner, feature, value,
+			collection);
+	}
+
+	@Override
+	protected Command createSetCommand(EditingDomain domain, EObject owner,
+			EStructuralFeature feature, Object value) {
+		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT) {
+			return new SubsetSupersetSetCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_RULE},
+				null, value);
+		}
+		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_ELEMENT_IMPORT) {
+			return new SubsetSupersetSetCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT},
+				null, value);
+		}
+		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_PACKAGE_IMPORT) {
+			return new SubsetSupersetSetCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT},
+				null, value);
+		}
+		if (feature == UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT) {
+			return new SubsetSupersetSetCommand(domain, owner, feature, null,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_ELEMENT_IMPORT},
+				value);
+		}
+		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
+			return new SubsetSupersetSetCommand(domain, owner, feature, null,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT},
+				value);
+		}
+		if (feature == UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT) {
+			return new SubsetSupersetSetCommand(domain, owner, feature, null,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_PACKAGE_IMPORT},
+				value);
+		}
+		return super.createSetCommand(domain, owner, feature, value);
 	}
 
 }

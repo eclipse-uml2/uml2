@@ -570,7 +570,7 @@ public class ComponentItemProvider
 
 		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
 			|| childFeature == UMLPackage.Literals.COMPONENT__PACKAGED_ELEMENT
-			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
+			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT
 			|| childFeature == UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE
 			|| childFeature == UMLPackage.Literals.CLASSIFIER__REPRESENTATION
 			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE

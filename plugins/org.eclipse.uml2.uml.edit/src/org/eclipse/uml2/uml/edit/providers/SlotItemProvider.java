@@ -182,8 +182,9 @@ public class SlotItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return appendLabel(appendType(
-			appendKeywords(new StringBuffer(), object), "_UI_Slot_type"), //$NON-NLS-1$
+		return appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_Slot_type"), //$NON-NLS-1$
 			((Slot) object).getDefiningFeature()).toString();
 	}
 

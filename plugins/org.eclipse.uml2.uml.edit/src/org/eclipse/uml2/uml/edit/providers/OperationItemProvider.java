@@ -281,7 +281,8 @@ public class OperationItemProvider
 			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
 				"_UI_Operation_precondition_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.OPERATION__PRECONDITION, true, false, true,
-			null, null, null));
+			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -299,7 +300,8 @@ public class OperationItemProvider
 			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
 				"_UI_Operation_postcondition_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.OPERATION__POSTCONDITION, true, false, true,
-			null, null, null));
+			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -336,7 +338,8 @@ public class OperationItemProvider
 			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
 				"_UI_Operation_bodyCondition_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.OPERATION__BODY_CONDITION, true, false, true,
-			null, null, null));
+			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -427,6 +430,9 @@ public class OperationItemProvider
 				UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING);
 			childrenFeatures.add(
 				UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
+			childrenFeatures.add(UMLPackage.Literals.OPERATION__BODY_CONDITION);
+			childrenFeatures.add(UMLPackage.Literals.OPERATION__POSTCONDITION);
+			childrenFeatures.add(UMLPackage.Literals.OPERATION__PRECONDITION);
 		}
 		return childrenFeatures;
 	}
@@ -550,19 +556,19 @@ public class OperationItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Operation.class)) {
-			case UMLPackage.OPERATION__BODY_CONDITION :
 			case UMLPackage.OPERATION__IS_ORDERED :
 			case UMLPackage.OPERATION__IS_QUERY :
 			case UMLPackage.OPERATION__IS_UNIQUE :
 			case UMLPackage.OPERATION__LOWER :
-			case UMLPackage.OPERATION__POSTCONDITION :
-			case UMLPackage.OPERATION__PRECONDITION :
 			case UMLPackage.OPERATION__UPPER :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;
 			case UMLPackage.OPERATION__TEMPLATE_BINDING :
 			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
+			case UMLPackage.OPERATION__BODY_CONDITION :
+			case UMLPackage.OPERATION__POSTCONDITION :
+			case UMLPackage.OPERATION__PRECONDITION :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 				return;
@@ -667,7 +673,7 @@ public class OperationItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
+		boolean qualify = childFeature == UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT
 			|| childFeature == UMLPackage.Literals.OPERATION__BODY_CONDITION
 			|| childFeature == UMLPackage.Literals.OPERATION__POSTCONDITION
 			|| childFeature == UMLPackage.Literals.OPERATION__PRECONDITION;
@@ -684,7 +690,7 @@ public class OperationItemProvider
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createAddCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection, int)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected Command createAddCommand(EditingDomain domain, EObject owner,
@@ -709,7 +715,7 @@ public class OperationItemProvider
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createRemoveCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
@@ -717,6 +723,7 @@ public class OperationItemProvider
 		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
 			return new SupersetRemoveCommand(domain, owner, feature,
 				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT,
 					UMLPackage.Literals.OPERATION__BODY_CONDITION,
 					UMLPackage.Literals.OPERATION__POSTCONDITION,
 					UMLPackage.Literals.OPERATION__PRECONDITION},
@@ -729,7 +736,7 @@ public class OperationItemProvider
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object, java.util.Collection)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
@@ -751,6 +758,7 @@ public class OperationItemProvider
 			return new SubsetSupersetReplaceCommand(domain, owner, feature,
 				null,
 				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT,
 					UMLPackage.Literals.OPERATION__BODY_CONDITION,
 					UMLPackage.Literals.OPERATION__POSTCONDITION,
 					UMLPackage.Literals.OPERATION__PRECONDITION},
@@ -764,7 +772,7 @@ public class OperationItemProvider
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createSetCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
@@ -796,6 +804,7 @@ public class OperationItemProvider
 		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
 			return new SubsetSupersetSetCommand(domain, owner, feature, null,
 				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT,
 					UMLPackage.Literals.OPERATION__BODY_CONDITION,
 					UMLPackage.Literals.OPERATION__POSTCONDITION,
 					UMLPackage.Literals.OPERATION__PRECONDITION},

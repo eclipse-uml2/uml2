@@ -244,6 +244,8 @@ public class BehaviorItemProvider
 			childrenFeatures.add(UMLPackage.Literals.BEHAVIOR__OWNED_PARAMETER);
 			childrenFeatures
 				.add(UMLPackage.Literals.BEHAVIOR__OWNED_PARAMETER_SET);
+			childrenFeatures.add(UMLPackage.Literals.BEHAVIOR__POSTCONDITION);
+			childrenFeatures.add(UMLPackage.Literals.BEHAVIOR__PRECONDITION);
 		}
 		return childrenFeatures;
 	}
@@ -299,13 +301,13 @@ public class BehaviorItemProvider
 
 		switch (notification.getFeatureID(Behavior.class)) {
 			case UMLPackage.BEHAVIOR__IS_REENTRANT :
-			case UMLPackage.BEHAVIOR__POSTCONDITION :
-			case UMLPackage.BEHAVIOR__PRECONDITION :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER :
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET :
+			case UMLPackage.BEHAVIOR__POSTCONDITION :
+			case UMLPackage.BEHAVIOR__PRECONDITION :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 				return;
@@ -386,7 +388,7 @@ public class BehaviorItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
+		boolean qualify = childFeature == UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT
 			|| childFeature == UMLPackage.Literals.BEHAVIOR__POSTCONDITION
 			|| childFeature == UMLPackage.Literals.BEHAVIOR__PRECONDITION
 			|| childFeature == UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE
@@ -410,7 +412,7 @@ public class BehaviorItemProvider
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createAddCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection, int)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected Command createAddCommand(EditingDomain domain, EObject owner,
@@ -441,7 +443,7 @@ public class BehaviorItemProvider
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createRemoveCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
@@ -449,6 +451,7 @@ public class BehaviorItemProvider
 		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
 			return new SupersetRemoveCommand(domain, owner, feature,
 				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT,
 					UMLPackage.Literals.BEHAVIOR__POSTCONDITION,
 					UMLPackage.Literals.BEHAVIOR__PRECONDITION},
 				collection);
@@ -466,7 +469,7 @@ public class BehaviorItemProvider
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object, java.util.Collection)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
@@ -494,6 +497,7 @@ public class BehaviorItemProvider
 			return new SubsetSupersetReplaceCommand(domain, owner, feature,
 				null,
 				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT,
 					UMLPackage.Literals.BEHAVIOR__POSTCONDITION,
 					UMLPackage.Literals.BEHAVIOR__PRECONDITION},
 				value, collection);
@@ -513,7 +517,7 @@ public class BehaviorItemProvider
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createSetCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
@@ -539,6 +543,7 @@ public class BehaviorItemProvider
 		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
 			return new SubsetSupersetSetCommand(domain, owner, feature, null,
 				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT,
 					UMLPackage.Literals.BEHAVIOR__POSTCONDITION,
 					UMLPackage.Literals.BEHAVIOR__PRECONDITION},
 				value);

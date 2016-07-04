@@ -301,6 +301,7 @@ public class TransitionItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(UMLPackage.Literals.TRANSITION__EFFECT);
+			childrenFeatures.add(UMLPackage.Literals.TRANSITION__GUARD);
 			childrenFeatures.add(UMLPackage.Literals.TRANSITION__TRIGGER);
 		}
 		return childrenFeatures;
@@ -369,12 +370,12 @@ public class TransitionItemProvider
 
 		switch (notification.getFeatureID(Transition.class)) {
 			case UMLPackage.TRANSITION__IS_LEAF :
-			case UMLPackage.TRANSITION__GUARD :
 			case UMLPackage.TRANSITION__KIND :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;
 			case UMLPackage.TRANSITION__EFFECT :
+			case UMLPackage.TRANSITION__GUARD :
 			case UMLPackage.TRANSITION__TRIGGER :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
@@ -456,7 +457,7 @@ public class TransitionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
+		boolean qualify = childFeature == UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT
 			|| childFeature == UMLPackage.Literals.TRANSITION__GUARD;
 
 		if (qualify) {
@@ -471,14 +472,16 @@ public class TransitionItemProvider
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createRemoveCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection<?> collection) {
 		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
 			return new SupersetRemoveCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.Literals.TRANSITION__GUARD},
+				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT,
+					UMLPackage.Literals.TRANSITION__GUARD},
 				collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
@@ -488,7 +491,7 @@ public class TransitionItemProvider
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object, java.util.Collection)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
@@ -497,7 +500,9 @@ public class TransitionItemProvider
 		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
 			return new SubsetSupersetReplaceCommand(domain, owner, feature,
 				null,
-				new EStructuralFeature[]{UMLPackage.Literals.TRANSITION__GUARD},
+				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT,
+					UMLPackage.Literals.TRANSITION__GUARD},
 				value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value,
@@ -508,7 +513,7 @@ public class TransitionItemProvider
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createSetCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
@@ -521,7 +526,9 @@ public class TransitionItemProvider
 		}
 		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
 			return new SubsetSupersetSetCommand(domain, owner, feature, null,
-				new EStructuralFeature[]{UMLPackage.Literals.TRANSITION__GUARD},
+				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT,
+					UMLPackage.Literals.TRANSITION__GUARD},
 				value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);

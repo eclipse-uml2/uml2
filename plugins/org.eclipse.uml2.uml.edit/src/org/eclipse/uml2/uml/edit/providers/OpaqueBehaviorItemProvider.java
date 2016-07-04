@@ -182,7 +182,7 @@ public class OpaqueBehaviorItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
+		boolean qualify = childFeature == UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT
 			|| childFeature == UMLPackage.Literals.BEHAVIOR__POSTCONDITION
 			|| childFeature == UMLPackage.Literals.BEHAVIOR__PRECONDITION
 			|| childFeature == UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE

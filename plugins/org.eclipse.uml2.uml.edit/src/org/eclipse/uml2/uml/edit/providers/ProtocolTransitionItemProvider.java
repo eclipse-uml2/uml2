@@ -116,6 +116,40 @@ public class ProtocolTransitionItemProvider
 	}
 
 	/**
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(
+			Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures
+				.add(UMLPackage.Literals.PROTOCOL_TRANSITION__POST_CONDITION);
+			childrenFeatures
+				.add(UMLPackage.Literals.PROTOCOL_TRANSITION__PRE_CONDITION);
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
+	}
+
+	/**
 	 * This adds a property descriptor for the Pre Condition feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -131,7 +165,9 @@ public class ProtocolTransitionItemProvider
 				"_UI_ProtocolTransition_preCondition_feature", //$NON-NLS-1$
 				"_UI_ProtocolTransition_type"), //$NON-NLS-1$
 			UMLPackage.Literals.PROTOCOL_TRANSITION__PRE_CONDITION, true, false,
-			true, null, null, null));
+			true, null, null,
+			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -183,8 +219,9 @@ public class ProtocolTransitionItemProvider
 
 		switch (notification.getFeatureID(ProtocolTransition.class)) {
 			case UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION :
+			case UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION :
 				fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), false, true));
+					notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -221,6 +258,26 @@ public class ProtocolTransitionItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PROTOCOL_TRANSITION__POST_CONDITION,
 			UMLFactory.eINSTANCE.createTimeConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROTOCOL_TRANSITION__PRE_CONDITION,
+			UMLFactory.eINSTANCE.createConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROTOCOL_TRANSITION__PRE_CONDITION,
+			UMLFactory.eINSTANCE.createInteractionConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROTOCOL_TRANSITION__PRE_CONDITION,
+			UMLFactory.eINSTANCE.createIntervalConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROTOCOL_TRANSITION__PRE_CONDITION,
+			UMLFactory.eINSTANCE.createDurationConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROTOCOL_TRANSITION__PRE_CONDITION,
+			UMLFactory.eINSTANCE.createTimeConstraint()));
 	}
 
 	/**
@@ -235,9 +292,10 @@ public class ProtocolTransitionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
+		boolean qualify = childFeature == UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT
 			|| childFeature == UMLPackage.Literals.TRANSITION__GUARD
-			|| childFeature == UMLPackage.Literals.PROTOCOL_TRANSITION__POST_CONDITION;
+			|| childFeature == UMLPackage.Literals.PROTOCOL_TRANSITION__POST_CONDITION
+			|| childFeature == UMLPackage.Literals.PROTOCOL_TRANSITION__PRE_CONDITION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
@@ -251,14 +309,16 @@ public class ProtocolTransitionItemProvider
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createRemoveCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection<?> collection) {
 		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
 			return new SupersetRemoveCommand(domain, owner, feature,
-				new EStructuralFeature[]{UMLPackage.Literals.TRANSITION__GUARD,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT,
+					UMLPackage.Literals.TRANSITION__GUARD,
 					UMLPackage.Literals.PROTOCOL_TRANSITION__POST_CONDITION},
 				collection);
 		}
@@ -269,7 +329,7 @@ public class ProtocolTransitionItemProvider
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object, java.util.Collection)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
@@ -278,7 +338,9 @@ public class ProtocolTransitionItemProvider
 		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
 			return new SubsetSupersetReplaceCommand(domain, owner, feature,
 				null,
-				new EStructuralFeature[]{UMLPackage.Literals.TRANSITION__GUARD,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT,
+					UMLPackage.Literals.TRANSITION__GUARD,
 					UMLPackage.Literals.PROTOCOL_TRANSITION__POST_CONDITION},
 				value, collection);
 		}
@@ -290,7 +352,7 @@ public class ProtocolTransitionItemProvider
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createSetCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
@@ -316,7 +378,9 @@ public class ProtocolTransitionItemProvider
 		}
 		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
 			return new SubsetSupersetSetCommand(domain, owner, feature, null,
-				new EStructuralFeature[]{UMLPackage.Literals.TRANSITION__GUARD,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT,
+					UMLPackage.Literals.TRANSITION__GUARD,
 					UMLPackage.Literals.PROTOCOL_TRANSITION__POST_CONDITION},
 				value);
 		}

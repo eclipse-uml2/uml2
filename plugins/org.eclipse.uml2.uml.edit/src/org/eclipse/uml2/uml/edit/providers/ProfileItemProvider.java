@@ -91,7 +91,8 @@ public class ProfileItemProvider
 			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
 				"_UI_Profile_metaclassReference_feature", "_UI_Profile_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.PROFILE__METACLASS_REFERENCE, true, false, true,
-			null, null, null));
+			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
 	}
 
 	/**
@@ -109,7 +110,42 @@ public class ProfileItemProvider
 			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
 				"_UI_Profile_metamodelReference_feature", "_UI_Profile_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.PROFILE__METAMODEL_REFERENCE, true, false, true,
-			null, null, null));
+			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+		}));
+	}
+
+	/**
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(
+			Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures
+				.add(UMLPackage.Literals.PROFILE__METACLASS_REFERENCE);
+			childrenFeatures
+				.add(UMLPackage.Literals.PROFILE__METAMODEL_REFERENCE);
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -163,7 +199,7 @@ public class ProfileItemProvider
 			case UMLPackage.PROFILE__METACLASS_REFERENCE :
 			case UMLPackage.PROFILE__METAMODEL_REFERENCE :
 				fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), false, true));
+					notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -204,11 +240,11 @@ public class ProfileItemProvider
 
 		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
 			|| childFeature == UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT
-			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
-			|| childFeature == UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT
+			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_ELEMENT_IMPORT
 			|| childFeature == UMLPackage.Literals.PROFILE__METACLASS_REFERENCE
-			|| childFeature == UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT
+			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_PACKAGE_IMPORT
 			|| childFeature == UMLPackage.Literals.PROFILE__METAMODEL_REFERENCE
+			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT
 			|| childFeature == UMLPackage.Literals.PACKAGE__NESTED_PACKAGE
 			|| childFeature == UMLPackage.Literals.PACKAGE__OWNED_STEREOTYPE
 			|| childFeature == UMLPackage.Literals.PACKAGE__OWNED_TYPE;
@@ -225,7 +261,7 @@ public class ProfileItemProvider
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createAddCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection, int)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected Command createAddCommand(EditingDomain domain, EObject owner,
@@ -250,7 +286,7 @@ public class ProfileItemProvider
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createRemoveCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
@@ -258,12 +294,14 @@ public class ProfileItemProvider
 		if (feature == UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT) {
 			return new SupersetRemoveCommand(domain, owner, feature,
 				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_ELEMENT_IMPORT,
 					UMLPackage.Literals.PROFILE__METACLASS_REFERENCE},
 				collection);
 		}
 		if (feature == UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT) {
 			return new SupersetRemoveCommand(domain, owner, feature,
 				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_PACKAGE_IMPORT,
 					UMLPackage.Literals.PROFILE__METAMODEL_REFERENCE},
 				collection);
 		}
@@ -274,7 +312,7 @@ public class ProfileItemProvider
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object, java.util.Collection)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
@@ -296,6 +334,7 @@ public class ProfileItemProvider
 			return new SubsetSupersetReplaceCommand(domain, owner, feature,
 				null,
 				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_ELEMENT_IMPORT,
 					UMLPackage.Literals.PROFILE__METACLASS_REFERENCE},
 				value, collection);
 		}
@@ -303,6 +342,7 @@ public class ProfileItemProvider
 			return new SubsetSupersetReplaceCommand(domain, owner, feature,
 				null,
 				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_PACKAGE_IMPORT,
 					UMLPackage.Literals.PROFILE__METAMODEL_REFERENCE},
 				value, collection);
 		}
@@ -314,7 +354,7 @@ public class ProfileItemProvider
 	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createSetCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
@@ -334,12 +374,14 @@ public class ProfileItemProvider
 		if (feature == UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT) {
 			return new SubsetSupersetSetCommand(domain, owner, feature, null,
 				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_ELEMENT_IMPORT,
 					UMLPackage.Literals.PROFILE__METACLASS_REFERENCE},
 				value);
 		}
 		if (feature == UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT) {
 			return new SubsetSupersetSetCommand(domain, owner, feature, null,
 				new EStructuralFeature[]{
+					UMLPackage.Literals.NAMESPACE__OWNED_PACKAGE_IMPORT,
 					UMLPackage.Literals.PROFILE__METAMODEL_REFERENCE},
 				value);
 		}

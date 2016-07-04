@@ -381,7 +381,7 @@ public class SequenceNodeItemProvider
 
 		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
 			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
-			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
+			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT
 			|| childFeature == UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__STRUCTURED_NODE_INPUT
 			|| childFeature == UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE
 			|| childFeature == UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__STRUCTURED_NODE_OUTPUT

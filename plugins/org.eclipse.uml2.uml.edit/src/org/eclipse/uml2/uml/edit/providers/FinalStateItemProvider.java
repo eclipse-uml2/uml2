@@ -133,7 +133,7 @@ public class FinalStateItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
+		boolean qualify = childFeature == UMLPackage.Literals.NAMESPACE__OWNED_CONSTRAINT
 			|| childFeature == UMLPackage.Literals.STATE__STATE_INVARIANT
 			|| childFeature == UMLPackage.Literals.STATE__DO_ACTIVITY
 			|| childFeature == UMLPackage.Literals.STATE__ENTRY

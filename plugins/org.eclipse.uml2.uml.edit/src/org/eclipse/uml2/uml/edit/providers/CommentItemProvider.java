@@ -129,8 +129,9 @@ public class CommentItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return appendString(appendType(
-			appendKeywords(new StringBuffer(), object), "_UI_Comment_type"), //$NON-NLS-1$
+		return appendString(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_Comment_type"), //$NON-NLS-1$
 			crop(((Comment) object).getBody())).toString();
 	}
 
