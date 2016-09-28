@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, Christian W. Damus, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,7 @@
  *   Yann Tanguy (CEA) - 350402
  *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998, 180744, 403374, 416833, 420338, 405065, 431342
  *   E.D.Willink - 420338
- *   Christian W. Damus - 444588
+ *   Christian W. Damus - 444588, 501740
  *
  */
 package org.eclipse.uml2.uml.util;
@@ -11681,7 +11681,36 @@ public class UMLUtil
 		return getNamedElement(definition, null);
 	}
 
+	private static final String NAMED_ELEMENT_CACHE_KEY = "UMLUtil::getNamedElement(ENamedElement, EObject)"; //$NON-NLS-1$
+
 	protected static NamedElement getNamedElement(ENamedElement definition,
+			EObject context) {
+		NamedElement result = null;
+		CacheAdapter adapter = CacheAdapter.getInstance();
+
+		@SuppressWarnings("unchecked")
+		Map<ENamedElement, NamedElement> cache = (Map<ENamedElement, NamedElement>) adapter
+			.get(null, NAMED_ELEMENT_CACHE_KEY);
+
+		if (cache != null) {
+			result = cache.get(definition);
+		}
+
+		if (result == null) {
+
+			if (cache == null) {
+				cache = new HashMap<ENamedElement, NamedElement>();
+				adapter.put(null, NAMED_ELEMENT_CACHE_KEY, cache);
+			}
+
+			result = basicGetNamedElement(definition, context);
+			cache.put(definition, result);
+		}
+
+		return result;
+	}
+	
+	private static NamedElement basicGetNamedElement(ENamedElement definition,
 			EObject context) {
 
 		if (definition instanceof EClassifier) {
