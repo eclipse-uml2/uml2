@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, Christian W. Damus, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, Christian W. Damus, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,7 @@
  *   Yann Tanguy (CEA) - 350402
  *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998, 180744, 403374, 416833, 420338, 405065, 431342
  *   E.D.Willink - 420338
- *   Christian W. Damus - 444588, 501740
+ *   Christian W. Damus - 444588, 501740, 512520
  *
  */
 package org.eclipse.uml2.uml.util;
@@ -11688,9 +11688,13 @@ public class UMLUtil
 		NamedElement result = null;
 		CacheAdapter adapter = CacheAdapter.getInstance();
 
+		Resource resource = (context == null)
+			? null
+			: context.eResource();
+
 		@SuppressWarnings("unchecked")
 		Map<ENamedElement, NamedElement> cache = (Map<ENamedElement, NamedElement>) adapter
-			.get(null, NAMED_ELEMENT_CACHE_KEY);
+			.get(resource, null, NAMED_ELEMENT_CACHE_KEY);
 
 		if (cache != null) {
 			result = cache.get(definition);
@@ -11700,7 +11704,7 @@ public class UMLUtil
 
 			if (cache == null) {
 				cache = new HashMap<ENamedElement, NamedElement>();
-				adapter.put(null, NAMED_ELEMENT_CACHE_KEY, cache);
+				adapter.put(resource, null, NAMED_ELEMENT_CACHE_KEY, cache);
 			}
 
 			result = basicGetNamedElement(definition, context);
