@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
- *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598, 422000, 416833, 424568, 427167, 418466, 419324, 429994, 433157, 439915, 446388, 454864, 458906, 461374, 463066, 468230, 481712, 491587, 495564, 512439, 512520, 514386
+ *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598, 422000, 416833, 424568, 427167, 418466, 419324, 429994, 433157, 439915, 446388, 454864, 458906, 461374, 463066, 468230, 481712, 491587, 495564, 512439, 512520, 514386, 514624
  *   Yann Tanguy (CEA) - 350402
  *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998, 180744, 403374, 416833, 420338, 405065, 431342
  *   E.D.Willink - 420338, 512439
@@ -6828,7 +6828,11 @@ public class UMLUtil
 		protected void qualifyName(ENamedElement eNamedElement,
 				String qualifier) {
 			String name = eNamedElement.getName();
-			String qualifiedName = qualifier + '_' + name;
+			String qualifiedName = name
+				.startsWith(Extension.METACLASS_ROLE_PREFIX)
+					? Extension.METACLASS_ROLE_PREFIX + qualifier + '_' + name
+						.substring(Extension.METACLASS_ROLE_PREFIX.length())
+					: qualifier + '_' + name;
 
 			if (DEBUG) {
 				System.err.println("Qualified " //$NON-NLS-1$
@@ -7010,18 +7014,6 @@ public class UMLUtil
 											}
 
 											qualifyName(mixinEOperation);
-
-											List<EObject> redefinedOperations = getEAnnotation(
-												mixinEOperation,
-												ANNOTATION__REDEFINES, true)
-												.getReferences();
-
-											if (!redefinedOperations
-												.contains(eOperation)) {
-
-												redefinedOperations
-													.add(eOperation);
-											}
 										} else if (OPTION__DISCARD
 											.equals(options
 												.get(OPTION__DUPLICATE_OPERATION_INHERITANCE))) {
@@ -7355,18 +7347,6 @@ public class UMLUtil
 											}
 
 											qualifyName(mixinEStructuralFeature);
-
-											EList<EObject> redefinedFeatures = getEAnnotation(
-												mixinEStructuralFeature,
-												ANNOTATION__REDEFINES, true)
-												.getReferences();
-
-											if (!redefinedFeatures
-												.contains(eStructuralFeature)) {
-
-												redefinedFeatures
-													.add(eStructuralFeature);
-											}
 										} else if (OPTION__DISCARD
 											.equals(options
 												.get(OPTION__DUPLICATE_FEATURE_INHERITANCE))) {
