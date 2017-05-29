@@ -4381,7 +4381,9 @@ public class UMLUtil
 			}
 
 			if (!safeEquals(ecoreName, name)
-				&& isEmpty(getOriginalName(eNamedElement))) {
+				&& isEmpty(EcoreUtil.getAnnotation(eNamedElement,
+					UML2_UML_PACKAGE_2_0_NS_URI,
+					ANNOTATION_DETAIL__ORIGINAL_NAME))) {
 
 				// record the original name, regardless whether it was converted
 				// by the camel-case names option or by munging to get a valid
