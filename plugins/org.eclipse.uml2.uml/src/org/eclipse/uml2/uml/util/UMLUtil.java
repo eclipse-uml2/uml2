@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
- *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598, 422000, 416833, 424568, 427167, 418466, 419324, 429994, 433157, 439915, 446388, 454864, 458906, 461374, 463066, 468230, 481712, 491587, 495564, 512439, 512520, 514386, 514624
+ *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598, 422000, 416833, 424568, 427167, 418466, 419324, 429994, 433157, 439915, 446388, 454864, 458906, 461374, 463066, 468230, 481712, 491587, 495564, 512439, 512520, 514386, 514624, 517384
  *   Yann Tanguy (CEA) - 350402
  *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998, 180744, 403374, 416833, 420338, 405065, 431342
  *   E.D.Willink - 420338, 512439
@@ -4380,7 +4380,9 @@ public class UMLUtil
 				ecoreName = getValidJavaIdentifier(ecoreName);
 			}
 
-			if (!safeEquals(ecoreName, name)) {
+			if (!safeEquals(ecoreName, name)
+				&& isEmpty(getOriginalName(eNamedElement))) {
+
 				// record the original name, regardless whether it was converted
 				// by the camel-case names option or by munging to get a valid
 				// Java identifier, because clients such as OCL will require the
