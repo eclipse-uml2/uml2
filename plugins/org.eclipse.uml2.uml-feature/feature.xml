@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.uml2.uml"
       label="%feature.label"
-      version="5.2.3.qualifier"
+      version="5.2.4.qualifier"
       provider-name="%feature.provider-name"
       image="eclipse_update_120.jpg"
       license-feature="org.eclipse.uml2.license"
