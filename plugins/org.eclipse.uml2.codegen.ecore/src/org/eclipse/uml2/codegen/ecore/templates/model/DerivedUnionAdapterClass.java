@@ -44,22 +44,18 @@ public class DerivedUnionAdapterClass
   protected final String TEXT_26 = ":" + NL + "\t\t\t\tnotify";
   protected final String TEXT_27 = "Changed(notification, eClass);" + NL + "\t\t\t\tbreak;";
   protected final String TEXT_28 = NL + "\t\t}" + NL + "\t}" + NL + "" + NL + "\t/**" + NL + "\t * Does nothing; clients may override so that it does something." + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @param notification a description of the change." + NL + "\t * @param eClass the Ecore class of the notifier." + NL + "\t * @param derivedUnion the derived union affected by the change." + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic void notifyChanged(";
-  protected final String TEXT_29 = " notification, ";
-  protected final String TEXT_30 = " eClass, ";
-  protected final String TEXT_31 = " derivedUnion)" + NL + "\t{" + NL + "\t\t// Do nothing." + NL + "\t}" + NL;
-  protected final String TEXT_32 = NL + "\t/**" + NL + "\t * Calls <code>notifyChanged</code> for each affected derived union." + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @param notification a description of the change." + NL + "\t * @param eClass the Ecore class of the notifier." + NL + "\t * @generated" + NL + "\t */" + NL + "\tprotected void notify";
-  protected final String TEXT_33 = "Changed(";
-  protected final String TEXT_34 = " notification, ";
-  protected final String TEXT_35 = " eClass)" + NL + "\t{" + NL + "\t\tswitch (notification.getFeatureID(";
-  protected final String TEXT_36 = ".class))" + NL + "\t\t{";
-  protected final String TEXT_37 = NL + "\t\t\tcase ";
-  protected final String TEXT_38 = ":";
-  protected final String TEXT_39 = NL + "\t\t\t\tnotifyChanged(notification, eClass, ";
-  protected final String TEXT_40 = ");";
-  protected final String TEXT_41 = NL + "\t\t\t\tbreak;";
-  protected final String TEXT_42 = NL + "\t\t}" + NL + "\t}" + NL;
-  protected final String TEXT_43 = NL + "} //";
-  protected final String TEXT_44 = NL;
+  protected final String TEXT_29 = " eClass, ";
+  protected final String TEXT_30 = " derivedUnion)" + NL + "\t{" + NL + "\t\t// Do nothing." + NL + "\t}" + NL;
+  protected final String TEXT_31 = NL + "\t/**" + NL + "\t * Calls <code>notifyChanged</code> for each affected derived union." + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @param notification a description of the change." + NL + "\t * @param eClass the Ecore class of the notifier." + NL + "\t * @generated" + NL + "\t */" + NL + "\tprotected void notify";
+  protected final String TEXT_32 = "Changed(";
+  protected final String TEXT_33 = " eClass)" + NL + "\t{" + NL + "\t\tswitch (notification.getFeatureID(";
+  protected final String TEXT_34 = ".class))" + NL + "\t\t{";
+  protected final String TEXT_35 = ":";
+  protected final String TEXT_36 = NL + "\t\t\t\tnotifyChanged(notification, eClass, ";
+  protected final String TEXT_37 = ");";
+  protected final String TEXT_38 = NL + "\t\t\t\tbreak;";
+  protected final String TEXT_39 = NL + "\t\t}" + NL + "\t}" + NL;
+  protected final String TEXT_40 = NL + "} //";
 
   public String generate(Object argument)
   {
@@ -138,38 +134,38 @@ public class DerivedUnionAdapterClass
     }
     stringBuffer.append(TEXT_28);
     stringBuffer.append(genModel.getImportedName("org.eclipse.emf.common.notify.Notification"));
+    stringBuffer.append(TEXT_22);
+    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EClass"));
     stringBuffer.append(TEXT_29);
-    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EClass"));
-    stringBuffer.append(TEXT_30);
     stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature"));
-    stringBuffer.append(TEXT_31);
+    stringBuffer.append(TEXT_30);
     for (GenClass genClass : UML2GenModelUtil.getDerivedUnionAdapterGenClasses(genPackage)) {
-    stringBuffer.append(TEXT_32);
+    stringBuffer.append(TEXT_31);
     stringBuffer.append(genClass.getName());
-    stringBuffer.append(TEXT_33);
+    stringBuffer.append(TEXT_32);
     stringBuffer.append(genModel.getImportedName("org.eclipse.emf.common.notify.Notification"));
-    stringBuffer.append(TEXT_34);
+    stringBuffer.append(TEXT_22);
     stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EClass"));
-    stringBuffer.append(TEXT_35);
+    stringBuffer.append(TEXT_33);
     stringBuffer.append(genClass.getRawImportedInterfaceName());
-    stringBuffer.append(TEXT_36);
+    stringBuffer.append(TEXT_34);
     for (GenFeature genFeature : genClass.getAllGenFeatures()) { List<GenFeature> allSubsettedUnionGenFeatures = UML2GenModelUtil.getAllSubsettedUnionGenFeatures(genFeature); if (!allSubsettedUnionGenFeatures.isEmpty()) {
-    stringBuffer.append(TEXT_37);
+    stringBuffer.append(TEXT_24);
     stringBuffer.append(genClass.getQualifiedFeatureID(genFeature));
-    stringBuffer.append(TEXT_38);
+    stringBuffer.append(TEXT_35);
     for (GenFeature subsettedUnionGenFeature : allSubsettedUnionGenFeatures) {
-    stringBuffer.append(TEXT_39);
+    stringBuffer.append(TEXT_36);
     stringBuffer.append(subsettedUnionGenFeature.getQualifiedFeatureAccessor());
-    stringBuffer.append(TEXT_40);
+    stringBuffer.append(TEXT_37);
     }
-    stringBuffer.append(TEXT_41);
+    stringBuffer.append(TEXT_38);
     }}
-    stringBuffer.append(TEXT_42);
+    stringBuffer.append(TEXT_39);
     }
-    stringBuffer.append(TEXT_43);
+    stringBuffer.append(TEXT_40);
     stringBuffer.append(UML2GenModelUtil.getDerivedUnionAdapterClassName(genPackage));
     genModel.emitSortedImports();
-    stringBuffer.append(TEXT_44);
+    stringBuffer.append(TEXT_13);
     return stringBuffer.toString();
   }
 }

@@ -34,11 +34,9 @@ public class ResourceInterface
   protected final String TEXT_17 = "();" + NL + "" + NL + "\t}" + NL + "" + NL + "\t/**" + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * The file extension for '<em><b>";
   protected final String TEXT_18 = "</b></em>' resources." + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic static final String FILE_EXTENSION = \"";
   protected final String TEXT_19 = "\";";
-  protected final String TEXT_20 = NL;
-  protected final String TEXT_21 = NL + "\t/**" + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * The default encoding for '<em><b>";
-  protected final String TEXT_22 = "</b></em>' resources." + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic static final String DEFAULT_ENCODING = \"UTF-8\";";
-  protected final String TEXT_23 = NL;
-  protected final String TEXT_24 = NL + "} //";
+  protected final String TEXT_20 = NL + "\t/**" + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * The default encoding for '<em><b>";
+  protected final String TEXT_21 = "</b></em>' resources." + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic static final String DEFAULT_ENCODING = \"UTF-8\";";
+  protected final String TEXT_22 = NL + "} //";
 
   public String generate(Object argument)
   {
@@ -100,15 +98,15 @@ public class ResourceInterface
     stringBuffer.append(genPackage.getFileExtension());
     stringBuffer.append(TEXT_19);
     stringBuffer.append(genModel.getNonNLS());
-    stringBuffer.append(TEXT_20);
+    stringBuffer.append(TEXT_13);
     if (UML2GenModelUtil.isXMLResource(genPackage)) {
-    stringBuffer.append(TEXT_21);
+    stringBuffer.append(TEXT_20);
     stringBuffer.append(genPackage.getPackageName());
-    stringBuffer.append(TEXT_22);
+    stringBuffer.append(TEXT_21);
     stringBuffer.append(genModel.getNonNLS());
-    stringBuffer.append(TEXT_23);
+    stringBuffer.append(TEXT_13);
     }
-    stringBuffer.append(TEXT_24);
+    stringBuffer.append(TEXT_22);
     stringBuffer.append(UML2GenModelUtil.getResourceInterfaceName(genPackage));
     genModel.emitSortedImports();
     return stringBuffer.toString();
