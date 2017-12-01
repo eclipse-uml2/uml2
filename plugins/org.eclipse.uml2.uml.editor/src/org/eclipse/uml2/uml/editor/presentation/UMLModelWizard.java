@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation and others.
+ * Copyright (c) 2005, 2017 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,9 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 227392, 204200
- *   Kenn Hussey - 323181
+ *   Kenn Hussey - 323181, 522658
  *
- * $Id: UMLModelWizard.java,v 1.12 2010/09/28 20:59:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -113,8 +112,8 @@ public class UMLModelWizard
 	 * @generated
 	 */
 	public static final List<String> FILE_EXTENSIONS = Collections
-		.unmodifiableList(Arrays.asList(UMLEditorPlugin.INSTANCE.getString(
-			"_UI_UMLEditorFilenameExtensions").split("\\s*,\\s*"))); //$NON-NLS-1$ //$NON-NLS-2$
+		.unmodifiableList(Arrays.asList(UMLEditorPlugin.INSTANCE
+			.getString("_UI_UMLEditorFilenameExtensions").split("\\s*,\\s*"))); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * A formatted list of supported file extensions, suitable for display.
@@ -123,8 +122,8 @@ public class UMLModelWizard
 	 * @generated
 	 */
 	public static final String FORMATTED_FILE_EXTENSIONS = UMLEditorPlugin.INSTANCE
-		.getString("_UI_UMLEditorFilenameExtensions").replaceAll("\\s*,\\s*",
-			", ");
+		.getString("_UI_UMLEditorFilenameExtensions")
+		.replaceAll("\\s*,\\s*", ", ");
 
 	/**
 	 * This caches an instance of the model package.
@@ -192,9 +191,9 @@ public class UMLModelWizard
 		this.workbench = workbench;
 		this.selection = selection;
 		setWindowTitle(UMLEditorPlugin.INSTANCE.getString("_UI_Wizard_label")); //$NON-NLS-1$
-		setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE
-			.getImageDescriptor(UMLEditorPlugin.INSTANCE
-				.getImage("full/wizban/NewUML"))); //$NON-NLS-1$
+		setDefaultPageImageDescriptor(
+			ExtendedImageRegistry.INSTANCE.getImageDescriptor(
+				UMLEditorPlugin.INSTANCE.getImage("full/wizban/NewUML"))); //$NON-NLS-1$
 	}
 
 	/**
@@ -271,8 +270,8 @@ public class UMLModelWizard
 
 						// Get the URI of the model file.
 						//
-						URI fileURI = URI.createPlatformResourceURI(modelFile
-							.getFullPath().toString(), true);
+						URI fileURI = URI.createPlatformResourceURI(
+							modelFile.getFullPath().toString(), true);
 
 						// Create a resource for this file.
 						//
@@ -323,20 +322,17 @@ public class UMLModelWizard
 			// Open an editor on the new file.
 			//
 			try {
-				page.openEditor(
-					new FileEditorInput(modelFile),
-					workbench
-						.getEditorRegistry()
-						.getDefaultEditor(
-							modelFile.getFullPath().toString(),
-							Platform.getContentTypeManager().getContentType(
-								UMLPackage.eCONTENT_TYPE)).getId());
+				page.openEditor(new FileEditorInput(modelFile),
+					workbench.getEditorRegistry()
+						.getDefaultEditor(modelFile.getFullPath().toString(),
+							Platform.getContentTypeManager()
+								.getContentType(UMLPackage.eCONTENT_TYPE))
+					.getId());
 			} catch (PartInitException exception) {
-				MessageDialog
-					.openError(
-						workbenchWindow.getShell(),
-						UMLEditorPlugin.INSTANCE
-							.getString("_UI_OpenEditorError_label"), exception.getMessage()); //$NON-NLS-1$
+				MessageDialog.openError(
+					workbenchWindow.getShell(), UMLEditorPlugin.INSTANCE
+						.getString("_UI_OpenEditorError_label"), //$NON-NLS-1$
+					exception.getMessage());
 				return false;
 			}
 
@@ -379,7 +375,8 @@ public class UMLModelWizard
 				String extension = new Path(getFileName()).getFileExtension();
 				if (extension == null || !FILE_EXTENSIONS.contains(extension)) {
 					String key = FILE_EXTENSIONS.size() > 1
-						? "_WARN_FilenameExtensions" : "_WARN_FilenameExtension"; //$NON-NLS-1$ //$NON-NLS-2$
+						? "_WARN_FilenameExtensions" //$NON-NLS-1$
+						: "_WARN_FilenameExtension"; //$NON-NLS-1$
 					setErrorMessage(UMLEditorPlugin.INSTANCE.getString(key,
 						new Object[]{FORMATTED_FILE_EXTENSIONS}));
 					return false;
@@ -462,8 +459,8 @@ public class UMLModelWizard
 
 			Label containerLabel = new Label(composite, SWT.LEFT);
 			{
-				containerLabel.setText(UMLEditorPlugin.INSTANCE
-					.getString("_UI_ModelObject")); //$NON-NLS-1$
+				containerLabel.setText(
+					UMLEditorPlugin.INSTANCE.getString("_UI_ModelObject")); //$NON-NLS-1$
 
 				GridData data = new GridData();
 				data.horizontalAlignment = GridData.FILL;
@@ -489,8 +486,8 @@ public class UMLModelWizard
 
 			Label encodingLabel = new Label(composite, SWT.LEFT);
 			{
-				encodingLabel.setText(UMLEditorPlugin.INSTANCE
-					.getString("_UI_XMLEncoding")); //$NON-NLS-1$
+				encodingLabel.setText(
+					UMLEditorPlugin.INSTANCE.getString("_UI_XMLEncoding")); //$NON-NLS-1$
 
 				GridData data = new GridData();
 				data.horizontalAlignment = GridData.FILL;
@@ -607,8 +604,8 @@ public class UMLModelWizard
 				encodings = new ArrayList<String>();
 				for (StringTokenizer stringTokenizer = new StringTokenizer(
 					UMLEditorPlugin.INSTANCE
-						.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens();) //$NON-NLS-1$
-				{
+						.getString("_UI_XMLEncodingChoices")); stringTokenizer //$NON-NLS-1$
+							.hasMoreTokens();) {
 					encodings.add(stringTokenizer.nextToken());
 				}
 			}
@@ -626,15 +623,14 @@ public class UMLModelWizard
 	public void addPages() {
 		// Create a page, set the title, and the initial model file name.
 		//
-		newFileCreationPage = new UMLModelWizardNewFileCreationPage(
-			"Whatever", selection); //$NON-NLS-1$
-		newFileCreationPage.setTitle(UMLEditorPlugin.INSTANCE
-			.getString("_UI_UMLModelWizard_label")); //$NON-NLS-1$
+		newFileCreationPage = new UMLModelWizardNewFileCreationPage("Whatever", //$NON-NLS-1$
+			selection);
+		newFileCreationPage.setTitle(
+			UMLEditorPlugin.INSTANCE.getString("_UI_UMLModelWizard_label")); //$NON-NLS-1$
 		newFileCreationPage.setDescription(UMLEditorPlugin.INSTANCE
 			.getString("_UI_UMLModelWizard_description")); //$NON-NLS-1$
-		newFileCreationPage
-			.setFileName(UMLEditorPlugin.INSTANCE
-				.getString("_UI_UMLEditorFilenameDefaultBase") + "." + FILE_EXTENSIONS.get(0)); //$NON-NLS-1$ //$NON-NLS-2$
+		newFileCreationPage.setFileName(UMLEditorPlugin.INSTANCE.getString(
+			"_UI_UMLEditorFilenameDefaultBase") + "." + FILE_EXTENSIONS.get(0)); //$NON-NLS-1$ //$NON-NLS-2$
 		addPage(newFileCreationPage);
 
 		// Try and get the resource selection to determine a current directory for the file dialog.
@@ -657,8 +653,8 @@ public class UMLModelWizard
 					|| selectedResource instanceof IProject) {
 					// Set this for the container.
 					//
-					newFileCreationPage.setContainerFullPath(selectedResource
-						.getFullPath());
+					newFileCreationPage
+						.setContainerFullPath(selectedResource.getFullPath());
 
 					// Make up a unique new name here.
 					//
@@ -666,12 +662,12 @@ public class UMLModelWizard
 						.getString("_UI_UMLEditorFilenameDefaultBase"); //$NON-NLS-1$
 					String defaultModelFilenameExtension = FILE_EXTENSIONS
 						.get(0);
-					String modelFilename = defaultModelBaseFilename
-						+ "." + defaultModelFilenameExtension; //$NON-NLS-1$
+					String modelFilename = defaultModelBaseFilename + "." //$NON-NLS-1$
+						+ defaultModelFilenameExtension;
 					for (int i = 1; ((IContainer) selectedResource)
 						.findMember(modelFilename) != null; ++i) {
-						modelFilename = defaultModelBaseFilename + i
-							+ "." + defaultModelFilenameExtension; //$NON-NLS-1$
+						modelFilename = defaultModelBaseFilename + i + "." //$NON-NLS-1$
+							+ defaultModelFilenameExtension;
 					}
 					newFileCreationPage.setFileName(modelFilename);
 				}
@@ -679,8 +675,8 @@ public class UMLModelWizard
 		}
 		initialObjectCreationPage = new UMLModelWizardInitialObjectCreationPage(
 			"Whatever2"); //$NON-NLS-1$
-		initialObjectCreationPage.setTitle(UMLEditorPlugin.INSTANCE
-			.getString("_UI_UMLModelWizard_label")); //$NON-NLS-1$
+		initialObjectCreationPage.setTitle(
+			UMLEditorPlugin.INSTANCE.getString("_UI_UMLModelWizard_label")); //$NON-NLS-1$
 		initialObjectCreationPage.setDescription(UMLEditorPlugin.INSTANCE
 			.getString("_UI_Wizard_initial_object_description")); //$NON-NLS-1$
 		addPage(initialObjectCreationPage);

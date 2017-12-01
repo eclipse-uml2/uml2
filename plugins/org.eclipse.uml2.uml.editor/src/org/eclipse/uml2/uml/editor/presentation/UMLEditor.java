@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418, 156879, 227392, 226178, 232332, 247980
- *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey - 286329, 323181, 522658
  *   Kenn Hussey (CEA) - 327039, 351774, 364419, 292633, 397324, 204658, 173565, 408612, 414970, 427833, 433216, 443017, 434958, 433768
  *   Christian W. Damus - 355218
  *   Christian W. Damus (CEA) - 286444
@@ -165,6 +165,7 @@ import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Tree;
@@ -342,14 +343,15 @@ public class UMLEditor
 
 		public void partActivated(IWorkbenchPart p) {
 			if (p instanceof ContentOutline) {
-				if (((ContentOutline) p).getCurrentPage() == contentOutlinePage) {
+				if (((ContentOutline) p)
+					.getCurrentPage() == contentOutlinePage) {
 					getActionBarContributor().setActiveEditor(UMLEditor.this);
 
 					setCurrentViewer(contentOutlineViewer);
 				}
 			} else if (p instanceof PropertySheet) {
-				if (propertySheetPages.contains(((PropertySheet) p)
-					.getCurrentPage())) {
+				if (propertySheetPages
+					.contains(((PropertySheet) p).getCurrentPage())) {
 					getActionBarContributor().setActiveEditor(UMLEditor.this);
 					handleActivate();
 				}
@@ -417,6 +419,8 @@ public class UMLEditor
 	 */
 	protected EContentAdapter problemIndicationAdapter = new EContentAdapter() {
 
+		protected boolean dispatching;
+
 		@Override
 		public void notifyChanged(Notification notification) {
 			if (notification.getNotifier() instanceof Resource) {
@@ -433,21 +437,25 @@ public class UMLEditor
 						} else {
 							resourceToDiagnosticMap.remove(resource);
 						}
-
-						if (updateProblemIndication) {
-							getSite().getShell().getDisplay()
-								.asyncExec(new Runnable() {
-
-									public void run() {
-										updateProblemIndication();
-									}
-								});
-						}
+						dispatchUpdateProblemIndication();
 						break;
 					}
 				}
 			} else {
 				super.notifyChanged(notification);
+			}
+		}
+
+		protected void dispatchUpdateProblemIndication() {
+			if (updateProblemIndication && !dispatching) {
+				dispatching = true;
+				getSite().getShell().getDisplay().asyncExec(new Runnable() {
+
+					public void run() {
+						dispatching = false;
+						updateProblemIndication();
+					}
+				});
 			}
 		}
 
@@ -460,14 +468,7 @@ public class UMLEditor
 		protected void unsetTarget(Resource target) {
 			basicUnsetTarget(target);
 			resourceToDiagnosticMap.remove(target);
-			if (updateProblemIndication) {
-				getSite().getShell().getDisplay().asyncExec(new Runnable() {
-
-					public void run() {
-						updateProblemIndication();
-					}
-				});
-			}
+			dispatchUpdateProblemIndication();
 		}
 	};
 
@@ -501,18 +502,23 @@ public class UMLEditor
 										delta.getFullPath().toString(), true),
 										false);
 								if (resource != null) {
-									if (delta.getKind() == IResourceDelta.REMOVED) {
+									if (delta
+										.getKind() == IResourceDelta.REMOVED) {
 										removedResources.add(resource);
 									} else {
-										if ((delta.getFlags() & IResourceDelta.MARKERS) != 0) {
+										if ((delta.getFlags()
+											& IResourceDelta.MARKERS) != 0) {
 											DiagnosticDecorator.DiagnosticAdapter
-												.update(resource, markerHelper
-													.getMarkerDiagnostics(
-														resource, (IFile) delta
-															.getResource(),
-														false));
+												.update(resource,
+													markerHelper
+														.getMarkerDiagnostics(
+															resource,
+															(IFile) delta
+																.getResource(),
+															false));
 										}
-										if ((delta.getFlags() & IResourceDelta.CONTENT) != 0) {
+										if ((delta.getFlags()
+											& IResourceDelta.CONTENT) != 0) {
 											if (!savedResources
 												.remove(resource)) {
 												changedResources.add(resource);
@@ -543,8 +549,8 @@ public class UMLEditor
 					getSite().getShell().getDisplay().asyncExec(new Runnable() {
 
 						public void run() {
-							removedResources.addAll(visitor
-								.getRemovedResources());
+							removedResources
+								.addAll(visitor.getRemovedResources());
 							if (!isDirty()) {
 								getSite().getPage().closeEditor(UMLEditor.this,
 									false);
@@ -557,9 +563,10 @@ public class UMLEditor
 					getSite().getShell().getDisplay().asyncExec(new Runnable() {
 
 						public void run() {
-							changedResources.addAll(visitor
-								.getChangedResources());
-							if (getSite().getPage().getActiveEditor() == UMLEditor.this) {
+							changedResources
+								.addAll(visitor.getChangedResources());
+							if (getSite().getPage()
+								.getActiveEditor() == UMLEditor.this) {
 								handleActivate();
 							}
 						}
@@ -589,8 +596,8 @@ public class UMLEditor
 						.getSource()).getMostRecentCommand();
 
 					if (mostRecentCommand != null) {
-						setSelectionToViewer(mostRecentCommand
-							.getAffectedObjects());
+						setSelectionToViewer(
+							mostRecentCommand.getAffectedObjects());
 					}
 
 					for (Iterator<PropertySheetPage> i = propertySheetPages
@@ -620,11 +627,13 @@ public class UMLEditor
 			if (!msg.isTouch() && (getViewer() != null)
 				&& !getViewer().getControl().isDisposed()) {
 				if (msg.getNotifier() instanceof Resource) {
-					if (msg.getFeatureID(Resource.class) == Resource.RESOURCE__IS_LOADED) {
+					if (msg.getFeatureID(
+						Resource.class) == Resource.RESOURCE__IS_LOADED) {
 						refreshViewer();
 					}
 				} else if (msg.getNotifier() instanceof ResourceSet) {
-					if (msg.getFeatureID(ResourceSet.class) == ResourceSet.RESOURCE_SET__RESOURCES) {
+					if (msg.getFeatureID(
+						ResourceSet.class) == ResourceSet.RESOURCE_SET__RESOURCES) {
 						switch (msg.getEventType()) {
 							case Notification.ADD :
 								handleResource((Resource) msg.getNewValue());
@@ -637,7 +646,8 @@ public class UMLEditor
 								break;
 							case Notification.SET :
 								if (msg.getNewValue() != null) {
-									handleResource((Resource) msg.getNewValue());
+									handleResource(
+										(Resource) msg.getNewValue());
 								}
 								break;
 						}
@@ -737,8 +747,8 @@ public class UMLEditor
 		if (!changedResources.isEmpty()
 			&& (!isDirty() || handleDirtyConflict())) {
 			if (isDirty()) {
-				changedResources.addAll(editingDomain.getResourceSet()
-					.getResources());
+				changedResources
+					.addAll(editingDomain.getResourceSet().getResources());
 			}
 			editingDomain.getCommandStack().flush();
 
@@ -777,7 +787,8 @@ public class UMLEditor
 			BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK,
 				"org.eclipse.uml2.uml.editor", //$NON-NLS-1$
 				0, null, new Object[]{editingDomain.getResourceSet()});
-			for (Diagnostic childDiagnostic : resourceToDiagnosticMap.values()) {
+			for (Diagnostic childDiagnostic : resourceToDiagnosticMap
+				.values()) {
 				if (childDiagnostic.getSeverity() != Diagnostic.OK) {
 					diagnostic.add(childDiagnostic);
 				}
@@ -798,7 +809,8 @@ public class UMLEditor
 				try {
 					addPage(++lastEditorPage, problemEditorPart,
 						getEditorInput());
-					setPageText(lastEditorPage, problemEditorPart.getPartName());
+					setPageText(lastEditorPage,
+						problemEditorPart.getPartName());
 					setActivePage(lastEditorPage);
 					showTabs();
 				} catch (PartInitException exception) {
@@ -807,13 +819,10 @@ public class UMLEditor
 			}
 
 			if (markerHelper.hasMarkers(editingDomain.getResourceSet())) {
-				markerHelper.deleteMarkers(editingDomain.getResourceSet());
-				if (diagnostic.getSeverity() != Diagnostic.OK) {
-					try {
-						markerHelper.createMarkers(diagnostic);
-					} catch (CoreException exception) {
-						UMLEditorPlugin.INSTANCE.log(exception);
-					}
+				try {
+					markerHelper.updateMarkers(diagnostic);
+				} catch (CoreException exception) {
+					UMLEditorPlugin.INSTANCE.log(exception);
 				}
 			}
 		}
@@ -941,8 +950,9 @@ public class UMLEditor
 					// Try to select the items in the current content viewer of the editor.
 					//
 					if (currentViewer != null) {
-						currentViewer.setSelection(new StructuredSelection(
-							theSelection.toArray()), true);
+						currentViewer.setSelection(
+							new StructuredSelection(theSelection.toArray()),
+							true);
 					}
 				}
 			};
@@ -1082,8 +1092,8 @@ public class UMLEditor
 		int dndOperations = DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK;
 		Transfer[] transfers = new Transfer[]{LocalTransfer.getInstance(),
 			LocalSelectionTransfer.getTransfer(), FileTransfer.getInstance()};
-		viewer.addDragSupport(dndOperations, transfers, new ViewerDragAdapter(
-			viewer));
+		viewer.addDragSupport(dndOperations, transfers,
+			new ViewerDragAdapter(viewer));
 		viewer.addDropSupport(dndOperations, transfers,
 			new EditingDomainViewerDropAdapter(editingDomain, viewer));
 	}
@@ -1095,8 +1105,8 @@ public class UMLEditor
 	 * @generated
 	 */
 	public void createModelGen() {
-		URI resourceURI = EditUIUtil.getURI(getEditorInput(), editingDomain
-			.getResourceSet().getURIConverter());
+		URI resourceURI = EditUIUtil.getURI(getEditorInput(),
+			editingDomain.getResourceSet().getURIConverter());
 		Exception exception = null;
 		Resource resource = null;
 		try {
@@ -1135,11 +1145,11 @@ public class UMLEditor
 
 			if (uriMap.containsKey(uri)) {
 				uri = uriMap.get(uri);
-			} else if (UML22UMLResource.FILE_EXTENSION.equals(uri
-				.fileExtension())) {
+			} else if (UML22UMLResource.FILE_EXTENSION
+				.equals(uri.fileExtension())) {
 
-				uri = uri.trimFileExtension().appendFileExtension(
-					UMLResource.FILE_EXTENSION);
+				uri = uri.trimFileExtension()
+					.appendFileExtension(UMLResource.FILE_EXTENSION);
 
 				if (i == 0) {
 					setInputWithNotify(new URIEditorInput(uri));
@@ -1161,8 +1171,9 @@ public class UMLEditor
 		if (saveNeeded) {
 			IProgressMonitor progressMonitor = getActionBars()
 				.getStatusLineManager() != null
-				? getActionBars().getStatusLineManager().getProgressMonitor()
-				: new NullProgressMonitor();
+					? getActionBars().getStatusLineManager()
+						.getProgressMonitor()
+					: new NullProgressMonitor();
 			doSave(progressMonitor);
 		}
 
@@ -1184,21 +1195,17 @@ public class UMLEditor
 		if (hasErrors || !resource.getWarnings().isEmpty()) {
 			BasicDiagnostic basicDiagnostic = new BasicDiagnostic(hasErrors
 				? Diagnostic.ERROR
-				: Diagnostic.WARNING,
-				"org.eclipse.uml2.uml.editor", //$NON-NLS-1$
-				0,
-				getString("_UI_CreateModelError_message", resource.getURI()), //$NON-NLS-1$
+				: Diagnostic.WARNING, "org.eclipse.uml2.uml.editor", //$NON-NLS-1$
+				0, getString("_UI_CreateModelError_message", resource.getURI()), //$NON-NLS-1$
 				new Object[]{exception == null
 					? (Object) resource
 					: exception});
 			basicDiagnostic.merge(EcoreUtil.computeDiagnostic(resource, true));
 			return basicDiagnostic;
 		} else if (exception != null) {
-			return new BasicDiagnostic(
-				Diagnostic.ERROR,
+			return new BasicDiagnostic(Diagnostic.ERROR,
 				"org.eclipse.uml2.uml.editor", //$NON-NLS-1$
-				0,
-				getString("_UI_CreateModelError_message", resource.getURI()), //$NON-NLS-1$
+				0, getString("_UI_CreateModelError_message", resource.getURI()), //$NON-NLS-1$
 				new Object[]{exception});
 		} else {
 			return Diagnostic.OK_INSTANCE;
@@ -1226,16 +1233,19 @@ public class UMLEditor
 			selectionViewer = new TreeViewer(tree);
 			setCurrentViewer(selectionViewer);
 
-			selectionViewer
-				.setContentProvider(new AdapterFactoryContentProvider(
-					adapterFactory));
+			selectionViewer.setUseHashlookup(true);
+			selectionViewer.setContentProvider(
+				new AdapterFactoryContentProvider(adapterFactory));
 			selectionViewer.setLabelProvider(new DecoratingColumLabelProvider(
 				new AdapterFactoryLabelProvider.FontAndColorProvider(
-					adapterFactory, selectionViewer), new DiagnosticDecorator(
-					editingDomain.getResourceSet(), selectionViewer)));
+					adapterFactory, selectionViewer),
+				new DiagnosticDecorator(editingDomain.getResourceSet(),
+					selectionViewer)));
 			selectionViewer.setInput(editingDomain.getResourceSet());
-			selectionViewer.setSelection(new StructuredSelection(editingDomain
-				.getResourceSet().getResources().get(0)), true);
+			selectionViewer.setSelection(
+				new StructuredSelection(
+					editingDomain.getResourceSet().getResources().get(0)),
+				true);
 
 			new AdapterFactoryTreeEditor(selectionViewer.getTree(),
 				adapterFactory);
@@ -1250,7 +1260,9 @@ public class UMLEditor
 			getSite().getShell().getDisplay().asyncExec(new Runnable() {
 
 				public void run() {
-					setActivePage(0);
+					if (!getContainer().isDisposed()) {
+						setActivePage(0);
+					}
 				}
 			});
 		}
@@ -1291,9 +1303,10 @@ public class UMLEditor
 		if (getPageCount() <= 1) {
 			setPageText(0, ""); //$NON-NLS-1$
 			if (getContainer() instanceof CTabFolder) {
-				((CTabFolder) getContainer()).setTabHeight(1);
 				Point point = getContainer().getSize();
-				getContainer().setSize(point.x, point.y + 6);
+				Rectangle clientArea = getContainer().getClientArea();
+				getContainer().setSize(point.x,
+					2 * point.y - clientArea.height - clientArea.y);
 			}
 		}
 	}
@@ -1309,9 +1322,10 @@ public class UMLEditor
 		if (getPageCount() > 1) {
 			setPageText(0, getString("_UI_SelectionPage_label")); //$NON-NLS-1$
 			if (getContainer() instanceof CTabFolder) {
-				((CTabFolder) getContainer()).setTabHeight(SWT.DEFAULT);
 				Point point = getContainer().getSize();
-				getContainer().setSize(point.x, point.y - 6);
+				Rectangle clientArea = getContainer().getClientArea();
+				getContainer().setSize(point.x,
+					clientArea.height + clientArea.y);
 			}
 		}
 	}
@@ -1339,15 +1353,15 @@ public class UMLEditor
 	 */
 	@SuppressWarnings("rawtypes")
 	@Override
-	public Object getAdapter(Class key) {
+	public <T> T getAdapter(Class<T> key) {
 		if (key.equals(IContentOutlinePage.class)) {
 			return showOutlineView()
-				? getContentOutlinePage()
+				? key.cast(getContentOutlinePage())
 				: null;
 		} else if (key.equals(IPropertySheetPage.class)) {
-			return getPropertySheetPage();
+			return key.cast(getPropertySheetPage());
 		} else if (key.equals(IGotoMarker.class)) {
-			return this;
+			return key.cast(this);
 		} else {
 			return super.getAdapter(key);
 		}
@@ -1374,17 +1388,18 @@ public class UMLEditor
 
 					// Set up the tree viewer.
 					//
-					contentOutlineViewer
-						.setContentProvider(new AdapterFactoryContentProvider(
-							adapterFactory));
+					contentOutlineViewer.setUseHashlookup(true);
+					contentOutlineViewer.setContentProvider(
+						new AdapterFactoryContentProvider(adapterFactory));
 					contentOutlineViewer
 						.setLabelProvider(new DecoratingColumLabelProvider(
 							new AdapterFactoryLabelProvider.FontAndColorProvider(
 								adapterFactory, contentOutlineViewer),
-							new DiagnosticDecorator(editingDomain
-								.getResourceSet(), contentOutlineViewer)));
-					contentOutlineViewer.setInput(editingDomain
-						.getResourceSet());
+							new DiagnosticDecorator(
+								editingDomain.getResourceSet(),
+								contentOutlineViewer)));
+					contentOutlineViewer
+						.setInput(editingDomain.getResourceSet());
 
 					new ColumnViewerInformationControlToolTipSupport(
 						contentOutlineViewer,
@@ -1399,9 +1414,11 @@ public class UMLEditor
 						.isEmpty()) {
 						// Select the root object in the view.
 						//
-						contentOutlineViewer.setSelection(
-							new StructuredSelection(editingDomain
-								.getResourceSet().getResources().get(0)), true);
+						contentOutlineViewer
+							.setSelection(
+								new StructuredSelection(editingDomain
+									.getResourceSet().getResources().get(0)),
+							true);
 					}
 				}
 
@@ -1448,7 +1465,8 @@ public class UMLEditor
 	 */
 	public IPropertySheetPage getPropertySheetPageGen() {
 		PropertySheetPage propertySheetPage = new ExtendedPropertySheetPage(
-			editingDomain, ExtendedPropertySheetPage.Decoration.MANUAL) {
+			editingDomain, ExtendedPropertySheetPage.Decoration.MANUAL, null, 0,
+			false) {
 
 			@Override
 			public void setSelectionToViewer(List<?> selection) {
@@ -1462,9 +1480,8 @@ public class UMLEditor
 				getActionBarContributor().shareGlobalActions(this, actionBars);
 			}
 		};
-		propertySheetPage
-			.setPropertySourceProvider(new AdapterFactoryContentProvider(
-				adapterFactory));
+		propertySheetPage.setPropertySourceProvider(
+			new AdapterFactoryContentProvider(adapterFactory));
 		propertySheetPages.add(propertySheetPage);
 
 		return propertySheetPage;
@@ -1487,9 +1504,8 @@ public class UMLEditor
 			}
 		};
 
-		propertySheetPage
-			.setPropertySourceProvider(new UMLAdapterFactoryContentProvider(
-				adapterFactory));
+		propertySheetPage.setPropertySourceProvider(
+			new UMLAdapterFactoryContentProvider(adapterFactory));
 		propertySheetPages.add(propertySheetPage);
 
 		return propertySheetPage;
@@ -1519,8 +1535,8 @@ public class UMLEditor
 
 				// Set the selection to the widget.
 				//
-				selectionViewer.setSelection(new StructuredSelection(
-					selectionList));
+				selectionViewer
+					.setSelection(new StructuredSelection(selectionList));
 			}
 		}
 	}
@@ -1570,7 +1586,8 @@ public class UMLEditor
 				for (int i = 0; i < resources.size(); i++) {
 					Resource resource = resources.get(i);
 
-					if ((first || !resource.getContents().isEmpty() || isPersisted(resource))
+					if ((first || !resource.getContents().isEmpty()
+						|| isPersisted(resource))
 						&& !editingDomain.isReadOnly(resource)) {
 						try {
 							long timeStamp = resource.getTimeStamp();
@@ -1658,7 +1675,8 @@ public class UMLEditor
 		Map<Element, List<EObject>> allExternalStereotypeApplications = new HashMap<Element, List<EObject>>();
 
 		for (TreeIterator<EObject> allProperContents = EcoreUtil
-			.getAllProperContents(resource, true); allProperContents.hasNext();) {
+			.getAllProperContents(resource, true); allProperContents
+				.hasNext();) {
 
 			EObject properContent = allProperContents.next();
 
@@ -1690,8 +1708,8 @@ public class UMLEditor
 			}
 		}
 
-		for (Iterator<EObject> contents = resource.getContents().iterator(); contents
-			.hasNext();) {
+		for (Iterator<EObject> contents = resource.getContents()
+			.iterator(); contents.hasNext();) {
 
 			EObject eObject = contents.next();
 			contents.remove();
@@ -1731,8 +1749,8 @@ public class UMLEditor
 			IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
 
 			if (file != null) {
-				URI newURI = URI.createPlatformResourceURI(file.getFullPath()
-					.toString(), true);
+				URI newURI = URI.createPlatformResourceURI(
+					file.getFullPath().toString(), true);
 
 				ResourceSet resourceSet = editingDomain.getResourceSet();
 				EList<Resource> resources = resourceSet.getResources();
@@ -1746,13 +1764,11 @@ public class UMLEditor
 				if (!UML2Util.safeEquals(fileExtension, newFileExtension)) {
 					copyResource(resourceSet, resource, newURI);
 
-					if (MessageDialog
-						.openQuestion(
-							getSite().getShell(),
-							getTitle(),
-							UMLEditorPlugin.INSTANCE
-								.getString(
-									"_UI_Save_All_Resources_As", new Object[]{fileExtension, newFileExtension}))) { //$NON-NLS-1$
+					if (MessageDialog.openQuestion(getSite().getShell(),
+						getTitle(),
+						UMLEditorPlugin.INSTANCE.getString(
+							"_UI_Save_All_Resources_As", //$NON-NLS-1$
+							new Object[]{fileExtension, newFileExtension}))) {
 
 						for (int i = 1; i < resources.size(); i++) {
 							resource = resources.get(i);
@@ -1760,7 +1776,8 @@ public class UMLEditor
 
 							if (UML2Util.safeEquals(uri.fileExtension(),
 								fileExtension)
-								&& (!resource.getContents().isEmpty() || isPersisted(resource))
+								&& (!resource.getContents().isEmpty()
+									|| isPersisted(resource))
 								&& !editingDomain.isReadOnly(resource)) {
 
 								copyResource(resourceSet, resource,
@@ -1787,8 +1804,8 @@ public class UMLEditor
 		setPartName(editorInput.getName());
 		IProgressMonitor progressMonitor = getActionBars()
 			.getStatusLineManager() != null
-			? getActionBars().getStatusLineManager().getProgressMonitor()
-			: new NullProgressMonitor();
+				? getActionBars().getStatusLineManager().getProgressMonitor()
+				: new NullProgressMonitor();
 		doSave(progressMonitor);
 	}
 
@@ -1800,8 +1817,8 @@ public class UMLEditor
 	public void gotoMarker(IMarker marker) {
 		try {
 			if (marker.isSubtypeOf((EValidator.MARKER))) {
-				String uriAttribute = marker.getAttribute(
-					EValidator.URI_ATTRIBUTE, null);
+				String uriAttribute = marker
+					.getAttribute(EValidator.URI_ATTRIBUTE, null);
 				if (uriAttribute != null) {
 					URI uri = URI.createURI(uriAttribute);
 					EObject eObject = editingDomain.getResourceSet()
@@ -1850,7 +1867,8 @@ public class UMLEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void addSelectionChangedListener(ISelectionChangedListener listener) {
+	public void addSelectionChangedListener(
+			ISelectionChangedListener listener) {
 		selectionChangedListeners.add(listener);
 	}
 
@@ -1900,8 +1918,8 @@ public class UMLEditor
 	public void setStatusLineManager(ISelection selection) {
 		IStatusLineManager statusLineManager = currentViewer != null
 			&& currentViewer == contentOutlineViewer
-			? contentOutlineStatusLineManager
-			: getActionBars().getStatusLineManager();
+				? contentOutlineStatusLineManager
+				: getActionBars().getStatusLineManager();
 
 		if (statusLineManager != null) {
 			if (selection instanceof IStructuredSelection) {
@@ -1915,16 +1933,16 @@ public class UMLEditor
 					}
 					case 1 : {
 						String text = new AdapterFactoryItemDelegator(
-							adapterFactory).getText(collection.iterator()
-							.next());
-						statusLineManager.setMessage(getString(
-							"_UI_SingleObjectSelected", text)); //$NON-NLS-1$
+							adapterFactory)
+								.getText(collection.iterator().next());
+						statusLineManager.setMessage(
+							getString("_UI_SingleObjectSelected", text)); //$NON-NLS-1$
 						break;
 					}
 					default : {
 						statusLineManager
-							.setMessage(getString(
-								"_UI_MultiObjectSelected", Integer.toString(collection.size()))); //$NON-NLS-1$
+							.setMessage(getString("_UI_MultiObjectSelected", //$NON-NLS-1$
+								Integer.toString(collection.size())));
 						break;
 					}
 				}
@@ -2001,8 +2019,8 @@ public class UMLEditor
 	public void disposeGen() {
 		updateProblemIndication = false;
 
-		ResourcesPlugin.getWorkspace().removeResourceChangeListener(
-			resourceChangeListener);
+		ResourcesPlugin.getWorkspace()
+			.removeResourceChangeListener(resourceChangeListener);
 
 		getSite().getPage().removePartListener(partListener);
 
@@ -2034,13 +2052,14 @@ public class UMLEditor
 		}
 
 		if (commandStackListener != null && editingDomain != null) {
-			editingDomain.getCommandStack().removeCommandStackListener(
-				commandStackListener);
+			editingDomain.getCommandStack()
+				.removeCommandStackListener(commandStackListener);
 		}
 
 		disposeGen();
 
-		for (Resource resource : editingDomain.getResourceSet().getResources()) {
+		for (Resource resource : editingDomain.getResourceSet()
+			.getResources()) {
 			resource.unload();
 		}
 	}
@@ -2058,7 +2077,8 @@ public class UMLEditor
 	protected static class UMLAdapterFactoryContentProvider
 			extends AdapterFactoryContentProvider {
 
-		protected UMLAdapterFactoryContentProvider(AdapterFactory adapterFactory) {
+		protected UMLAdapterFactoryContentProvider(
+				AdapterFactory adapterFactory) {
 			super(adapterFactory);
 		}
 
@@ -2108,8 +2128,8 @@ public class UMLEditor
 				if (stereotypeApplicationItemPropertyDescriptors != null) {
 
 					for (IItemPropertyDescriptor itemPropertyDescriptor : stereotypeApplicationItemPropertyDescriptors) {
-						propertyDescriptors
-							.add(createPropertyDescriptor(itemPropertyDescriptor));
+						propertyDescriptors.add(
+							createPropertyDescriptor(itemPropertyDescriptor));
 					}
 				}
 			}
@@ -2125,16 +2145,16 @@ public class UMLEditor
 
 			return itemPropertyDescriptor == null
 				&& itemPropertySource instanceof ElementItemProvider
-				? ((ElementItemProvider) itemPropertySource)
-					.getStereotypeApplicationPropertyDescriptor(object,
-						propertyId)
-				: itemPropertyDescriptor;
+					? ((ElementItemProvider) itemPropertySource)
+						.getStereotypeApplicationPropertyDescriptor(object,
+							propertyId)
+					: itemPropertyDescriptor;
 		}
 
 		@Override
 		public Object getPropertyValue(Object propertyId) {
-			return getItemPropertyDescriptor(propertyId).getPropertyValue(
-				object);
+			return getItemPropertyDescriptor(propertyId)
+				.getPropertyValue(object);
 		}
 
 		@Override
@@ -2155,7 +2175,8 @@ public class UMLEditor
 
 		@Override
 		public boolean isPropertyResettable(Object propertyId) {
-			IItemPropertyDescriptor propertyDescriptor = getItemPropertyDescriptor(propertyId);
+			IItemPropertyDescriptor propertyDescriptor = getItemPropertyDescriptor(
+				propertyId);
 			return propertyDescriptor.canSetProperty(object)
 				&& propertyDescriptor.isPropertySet(object);
 		}
@@ -2202,8 +2223,8 @@ public class UMLEditor
 
 				@Override
 				public Image getImage(Object object) {
-					return ExtendedImageRegistry.getInstance().getImage(
-						itemLabelProvider.getImage(object));
+					return ExtendedImageRegistry.getInstance()
+						.getImage(itemLabelProvider.getImage(object));
 				}
 			};
 		}
@@ -2225,8 +2246,8 @@ public class UMLEditor
 			}
 		}
 
-		for (TreeIterator<EObject> allContents = EcoreUtil.getAllContents(
-			eObject, true); allContents.hasNext();) {
+		for (TreeIterator<EObject> allContents = EcoreUtil
+			.getAllContents(eObject, true); allContents.hasNext();) {
 
 			EObject content = allContents.next();
 
@@ -2276,7 +2297,8 @@ public class UMLEditor
 	protected static class UMLCutToClipboardCommand
 			extends CutToClipboardCommand {
 
-		protected UMLCutToClipboardCommand(EditingDomain domain, Command command) {
+		protected UMLCutToClipboardCommand(EditingDomain domain,
+				Command command) {
 			super(domain, command);
 		}
 
@@ -2293,8 +2315,8 @@ public class UMLEditor
 						final List<EObject> allStereotypeApplications = collectAllStereotypeApplications(
 							(EObject) object, new ArrayList<EObject>());
 
-						compoundCommand.append(new ChangeCommand(domain,
-							new Runnable() {
+						compoundCommand
+							.append(new ChangeCommand(domain, new Runnable() {
 
 								public void run() {
 
@@ -2302,15 +2324,15 @@ public class UMLEditor
 										UMLUtil.StereotypeApplicationHelper
 											.getInstance(null)
 											.removeFromContainmentList(
-												UMLUtil
-													.getBaseElement(stereotypeApplication),
+												UMLUtil.getBaseElement(
+													stereotypeApplication),
 												stereotypeApplication);
 									}
 								}
 							}));
 
-						compoundCommand.append(new IdentityCommand(
-							allStereotypeApplications));
+						compoundCommand.append(
+							new IdentityCommand(allStereotypeApplications));
 					}
 				}
 			}
@@ -2338,8 +2360,8 @@ public class UMLEditor
 						: null);
 			}
 
-			private static Element getBaseElement(
-					EObject stereotypeApplication, Object context) {
+			private static Element getBaseElement(EObject stereotypeApplication,
+					Object context) {
 				return getStereotype(stereotypeApplication, context) != null
 					? getBaseElement(stereotypeApplication.eClass(),
 						stereotypeApplication)
@@ -2432,7 +2454,8 @@ public class UMLEditor
 										baseElement.getNearestPackage(),
 										stereotype) == definition
 										|| getAppliedDefinition(
-											ownerNearestPackage, stereotype) == definition) {
+											ownerNearestPackage,
+											stereotype) == definition) {
 
 										stereotypeApplicationsToAdd
 											.add(stereotypeApplication);
@@ -2457,20 +2480,20 @@ public class UMLEditor
 								return new ChangeCommand(domain,
 									new Runnable() {
 
-										public void run() {
+									public void run() {
 
-											for (EObject stereotypeApplication : stereotypeApplicationsToAdd) {
-												UMLUtil.StereotypeApplicationHelper
-													.getInstance(null)
-													.addToContainmentList(
-														PrivateUMLUtil
-															.getBaseElement(
-																stereotypeApplication,
-																owner),
-														stereotypeApplication);
-											}
+										for (EObject stereotypeApplication : stereotypeApplicationsToAdd) {
+											UMLUtil.StereotypeApplicationHelper
+												.getInstance(null)
+												.addToContainmentList(
+													PrivateUMLUtil
+														.getBaseElement(
+															stereotypeApplication,
+															owner),
+													stereotypeApplication);
 										}
-									});
+									}
+								});
 							}
 						});
 					}
@@ -2529,9 +2552,8 @@ public class UMLEditor
 
 				for (Object object : clipboard) {
 
-					if (object instanceof EObject
-						&& PrivateUMLUtil
-							.getStereotype((EObject) object, owner) != null) {
+					if (object instanceof EObject && PrivateUMLUtil
+						.getStereotype((EObject) object, owner) != null) {
 
 						continue;
 					}

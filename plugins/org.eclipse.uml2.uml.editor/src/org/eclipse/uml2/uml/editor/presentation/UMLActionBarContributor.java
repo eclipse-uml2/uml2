@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey - 323181
+ *   Kenn Hussey - 323181, 522658
  *   Kenn Hussey (CEA) - 281326
  *
  */
@@ -114,8 +114,8 @@ public class UMLActionBarContributor
 	 * @generated
 	 */
 	protected IAction showPropertiesViewAction = new Action(
-		UMLEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) //$NON-NLS-1$
-	{
+		UMLEditorPlugin.INSTANCE
+			.getString("_UI_ShowPropertiesView_menu_item")) { //$NON-NLS-1$
 
 		@Override
 		public void run() {
@@ -135,8 +135,7 @@ public class UMLActionBarContributor
 	 * @generated
 	 */
 	protected IAction refreshViewerAction = new Action(
-		UMLEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) //$NON-NLS-1$
-	{
+		UMLEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) { //$NON-NLS-1$
 
 		@Override
 		public boolean isEnabled() {
@@ -244,7 +243,8 @@ public class UMLActionBarContributor
 		super.contributeToMenu(menuManager);
 
 		IMenuManager submenuManager = new MenuManager(
-			UMLEditorPlugin.INSTANCE.getString("_UI_UMLEditor_menu"), "org.eclipse.uml2.umlMenuID"); //$NON-NLS-1$ //$NON-NLS-2$
+			UMLEditorPlugin.INSTANCE.getString("_UI_UMLEditor_menu"), //$NON-NLS-1$
+			"org.eclipse.uml2.umlMenuID"); //$NON-NLS-1$
 		menuManager.insertAfter("additions", submenuManager); //$NON-NLS-1$
 		submenuManager.add(new Separator("settings")); //$NON-NLS-1$
 		submenuManager.add(new Separator("actions")); //$NON-NLS-1$
@@ -318,7 +318,8 @@ public class UMLActionBarContributor
 		// Remove any menu items for old selection.
 		//
 		if (createChildMenuManager != null) {
-			depopulateManager(createChildMenuManager, createChildSubmenuActions);
+			depopulateManager(createChildMenuManager,
+				createChildSubmenuActions);
 			depopulateManager(createChildMenuManager, createChildActions);
 		}
 		if (createSiblingMenuManager != null) {
@@ -352,7 +353,8 @@ public class UMLActionBarContributor
 		createChildSubmenuActions = extractSubmenuActions(createChildActions);
 		createSiblingActions = generateCreateSiblingActions(
 			newSiblingDescriptors, selection);
-		createSiblingSubmenuActions = extractSubmenuActions(createSiblingActions);
+		createSiblingSubmenuActions = extractSubmenuActions(
+			createSiblingActions);
 
 		if (createChildMenuManager != null) {
 			populateManager(createChildMenuManager, createChildSubmenuActions,
@@ -397,8 +399,8 @@ public class UMLActionBarContributor
 			new Comparator<IAction>() {
 
 				public int compare(IAction a1, IAction a2) {
-					return CommonPlugin.INSTANCE.getComparator().compare(
-						a1.getText(), a2.getText());
+					return CommonPlugin.INSTANCE.getComparator()
+						.compare(a1.getText(), a2.getText());
 				}
 			});
 
@@ -417,8 +419,8 @@ public class UMLActionBarContributor
 		Collection<IAction> actions = new ArrayList<IAction>();
 		if (descriptors != null) {
 			for (Object descriptor : descriptors) {
-				actions.add(new CreateSiblingAction(activeEditorPart,
-					selection, descriptor));
+				actions.add(new CreateSiblingAction(activeEditorPart, selection,
+					descriptor));
 			}
 		}
 		return actions;
@@ -433,8 +435,8 @@ public class UMLActionBarContributor
 			new Comparator<IAction>() {
 
 				public int compare(IAction a1, IAction a2) {
-					return CommonPlugin.INSTANCE.getComparator().compare(
-						a1.getText(), a2.getText());
+					return CommonPlugin.INSTANCE.getComparator()
+						.compare(a1.getText(), a2.getText());
 				}
 			});
 
@@ -654,7 +656,7 @@ public class UMLActionBarContributor
 
 			for (TreeIterator<EObject> allProperContents = EcoreUtil
 				.getAllProperContents(eObject, true); allProperContents
-				.hasNext();) {
+					.hasNext();) {
 
 				EObject content = allProperContents.next();
 
@@ -682,8 +684,8 @@ public class UMLActionBarContributor
 				return false;
 			}
 
-			Object object = AdapterFactoryEditingDomain.unwrap(selection
-				.getFirstElement());
+			Object object = AdapterFactoryEditingDomain
+				.unwrap(selection.getFirstElement());
 			boolean result = domain.isControllable(object);
 			eObject = result
 				? (EObject) object
@@ -705,8 +707,8 @@ public class UMLActionBarContributor
 						EMFEditUIPlugin.INSTANCE
 							.getString("_UI_UncontrolCommand_label")); //$NON-NLS-1$		        		
 
-					compoundCommand.append(new RemoveCommand(domain, eObject
-						.eResource().getContents(), eObject));
+					compoundCommand.append(new RemoveCommand(domain,
+						eObject.eResource().getContents(), eObject));
 
 					final List<EObject> allStereotypeApplications = collectAllStereotypeApplications(
 						eObject, new ArrayList<EObject>());
@@ -720,10 +722,11 @@ public class UMLActionBarContributor
 								public void run() {
 
 									for (EObject stereotypeApplication : allStereotypeApplications) {
-										UMLUtil.StereotypeApplicationHelper.INSTANCE.addToContainmentList(
-											UMLUtil
-												.getBaseElement(stereotypeApplication),
-											stereotypeApplication);
+										UMLUtil.StereotypeApplicationHelper.INSTANCE
+											.addToContainmentList(
+												UMLUtil.getBaseElement(
+													stereotypeApplication),
+												stereotypeApplication);
 									}
 								}
 							});
@@ -758,8 +761,8 @@ public class UMLActionBarContributor
 					EMFEditUIPlugin.INSTANCE
 						.getString("_UI_ControlCommand_label")); //$NON-NLS-1$		        		
 
-				compoundCommand.append(new AddCommand(domain, resource
-					.getContents(), eObject));
+				compoundCommand.append(
+					new AddCommand(domain, resource.getContents(), eObject));
 
 				final List<EObject> allStereotypeApplications = collectAllStereotypeApplications(
 					eObject, new ArrayList<EObject>());
@@ -773,10 +776,11 @@ public class UMLActionBarContributor
 							public void run() {
 
 								for (EObject stereotypeApplication : allStereotypeApplications) {
-									UMLUtil.StereotypeApplicationHelper.INSTANCE.addToContainmentList(
-										UMLUtil
-											.getBaseElement(stereotypeApplication),
-										stereotypeApplication);
+									UMLUtil.StereotypeApplicationHelper.INSTANCE
+										.addToContainmentList(
+											UMLUtil.getBaseElement(
+												stereotypeApplication),
+											stereotypeApplication);
 								}
 							}
 						});
@@ -864,13 +868,14 @@ public class UMLActionBarContributor
 
 				@Override
 				protected boolean doValidateContents(EObject eObject,
-						DiagnosticChain diagnostics, Map<Object, Object> context) {
+						DiagnosticChain diagnostics,
+						Map<Object, Object> context) {
 					boolean result = doValidateStereotypeApplications(eObject,
 						diagnostics, context);
 
 					if (result || diagnostics != null) {
-						result &= super.doValidateContents(eObject,
-							diagnostics, context);
+						result &= super.doValidateContents(eObject, diagnostics,
+							context);
 					}
 
 					return result;
@@ -878,15 +883,16 @@ public class UMLActionBarContributor
 
 				@Override
 				public boolean validate(EClass eClass, EObject eObject,
-						DiagnosticChain diagnostics, Map<Object, Object> context) {
+						DiagnosticChain diagnostics,
+						Map<Object, Object> context) {
 					progressMonitor.worked(1);
-					return super
-						.validate(eClass, eObject, diagnostics, context);
+					return super.validate(eClass, eObject, diagnostics,
+						context);
 				}
 			};
 
-			progressMonitor.setTaskName(EMFEditUIPlugin.INSTANCE.getString(
-				"_UI_Validating_message", new Object[]{diagnostician //$NON-NLS-1$
+			progressMonitor.setTaskName(EMFEditUIPlugin.INSTANCE
+				.getString("_UI_Validating_message", new Object[]{diagnostician //$NON-NLS-1$
 					.getObjectLabel(eObject)}));
 
 			return diagnostician.validate(eObject);
