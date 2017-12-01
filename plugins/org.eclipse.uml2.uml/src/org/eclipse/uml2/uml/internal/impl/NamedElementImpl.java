@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Sergey Boyko (Borland) - 282440
- *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey - 286329, 323181, 519572
  *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
@@ -930,7 +930,7 @@ public abstract class NamedElementImpl
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: "); //$NON-NLS-1$
 		if ((eFlags & NAME_ESETFLAG) != 0)
 			result.append(name);

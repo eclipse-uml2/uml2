@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2016 CEA and others.
+ * Copyright (c) 2011, 2017 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   Kenn Hussey (CEA) - initial API and implementation
  *   Kenn Hussey (CEA) - 351774, 418466, 451350, 485756
+ *   Kenn Hussey - 519572
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -492,7 +493,7 @@ public class LiteralRealImpl
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (value: "); //$NON-NLS-1$
 		result.append(value);
 		result.append(')');

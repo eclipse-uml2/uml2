@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
+ *   Kenn Hussey - 519572
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -353,7 +354,7 @@ public class TimeObservationImpl
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (firstEvent: "); //$NON-NLS-1$
 		result.append((eFlags & FIRST_EVENT_EFLAG) != 0);
 		result.append(')');

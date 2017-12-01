@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey - 286329, 323181, 519572
  *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
  *
  */
@@ -719,7 +719,7 @@ public class OpaqueExpressionImpl
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (body: "); //$NON-NLS-1$
 		result.append(bodies);
 		result.append(", language: "); //$NON-NLS-1$
