@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 247980
- *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey - 286329, 323181, 485764
  *   Kenn Hussey (CEA) - 327039, 351774, 366083, 382637, 297216, 418466, 485756
  *
  */
@@ -1881,7 +1881,7 @@ public class UMLPackageImpl
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link UMLPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -1895,10 +1895,10 @@ public class UMLPackageImpl
 				.getEPackage(UMLPackage.eNS_URI);
 
 		// Obtain or create and register package
-		UMLPackageImpl theUMLPackage = (UMLPackageImpl) (EPackage.Registry.INSTANCE
-			.get(eNS_URI) instanceof UMLPackageImpl
-				? EPackage.Registry.INSTANCE.get(eNS_URI)
-				: new UMLPackageImpl());
+		Object registeredUMLPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		UMLPackageImpl theUMLPackage = registeredUMLPackage instanceof UMLPackageImpl
+			? (UMLPackageImpl) registeredUMLPackage
+			: new UMLPackageImpl();
 
 		isInited = true;
 
