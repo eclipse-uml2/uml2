@@ -1349,18 +1349,19 @@ public class UMLEditor
 	 * This is how the framework determines which interfaces we implement.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated not
 	 */
+	@SuppressWarnings("rawtypes")
 	@Override
-	public <T> T getAdapter(Class<T> key) {
+	public Object getAdapter(Class key) {
 		if (key.equals(IContentOutlinePage.class)) {
 			return showOutlineView()
-				? key.cast(getContentOutlinePage())
+				? getContentOutlinePage()
 				: null;
 		} else if (key.equals(IPropertySheetPage.class)) {
-			return key.cast(getPropertySheetPage());
+			return getPropertySheetPage();
 		} else if (key.equals(IGotoMarker.class)) {
-			return key.cast(this);
+			return this;
 		} else {
 			return super.getAdapter(key);
 		}
