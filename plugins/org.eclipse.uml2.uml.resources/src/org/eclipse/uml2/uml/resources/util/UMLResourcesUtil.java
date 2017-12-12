@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, 2014 CEA, Obeo, and others.
+ * Copyright (c) 2012, 2017 CEA, Obeo, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *   Kenn Hussey (CEA) - 389542, 399544, 425846, 418466, 429352
  *   Mikael Barbero (Obeo) - 414572
  *   Christian W. Damus (CEA) - 414572, 401682
+ *   Kenn Hussey - 526217
  */
 package org.eclipse.uml2.uml.resources.util;
 
@@ -406,13 +407,20 @@ public class UMLResourcesUtil
 	 * @since 5.0
 	 */
 	public static Map<URI, URI> initURIConverterURIMap(Map<URI, URI> uriMap) {
-		URI baseURI = getBaseUMLResourceURI();
-		mapUMLResourceURIs(uriMap, UMLResource.METAMODELS_PATHMAP,
-			baseURI.appendSegment("metamodels")); //$NON-NLS-1$
-		mapUMLResourceURIs(uriMap, UMLResource.PROFILES_PATHMAP,
-			baseURI.appendSegment("profiles")); //$NON-NLS-1$
-		mapUMLResourceURIs(uriMap, UMLResource.LIBRARIES_PATHMAP,
-			baseURI.appendSegment("libraries")); //$NON-NLS-1$
+		URI umlURI = getBaseUMLURI();
+		mapURIs(uriMap, "platform:/plugin/org.eclipse.uml2.uml/model/", //$NON-NLS-1$
+			umlURI.appendSegment("model"), "org.eclipse.uml2.uml"); //$NON-NLS-1$ //$NON-NLS-2$
+
+		URI umlResourcesURI = getBaseUMLResourcesURI();
+		mapURIs(uriMap, UMLResource.METAMODELS_PATHMAP,
+			umlResourcesURI.appendSegment("metamodels"), //$NON-NLS-1$
+			ResourcesPlugin.PLUGIN_ID);
+		mapURIs(uriMap, UMLResource.PROFILES_PATHMAP,
+			umlResourcesURI.appendSegment("profiles"), //$NON-NLS-1$
+			ResourcesPlugin.PLUGIN_ID);
+		mapURIs(uriMap, UMLResource.LIBRARIES_PATHMAP,
+			umlResourcesURI.appendSegment("libraries"), //$NON-NLS-1$
+			ResourcesPlugin.PLUGIN_ID);
 
 		return uriMap;
 	}
@@ -444,7 +452,31 @@ public class UMLResourcesUtil
 		return ePackageNsURIToProfileLocationMap;
 	}
 
-	private static URI getBaseUMLResourceURI() {
+	private static URI getBaseUMLURI() {
+		URL resultURL = UMLUtil.class.getClassLoader()
+			.getResource(String.format("models/%s", "UML.ecore")); //$NON-NLS-1$ //$NON-NLS-2$
+
+		URI result;
+
+		if (resultURL != null) {
+			// remove the /model/UML.ecore segments of the resource
+			// we found
+			result = URI.createURI(resultURL.toExternalForm(), true)
+				.trimSegments(2);
+		} else {
+			// probably, we're not running with JARs, so assume the source
+			// project folder layout
+			resultURL = UMLUtil.class.getResource("UMLUtil.class"); //$NON-NLS-1$
+
+			String baseURL = resultURL.toExternalForm();
+			baseURL = baseURL.substring(0, baseURL.lastIndexOf("/bin/")); //$NON-NLS-1$
+			result = URI.createURI(baseURL, true);
+		}
+
+		return result;
+	}
+
+	private static URI getBaseUMLResourcesURI() {
 		URI umlMetamodel = URI.createURI(UMLResource.UML_METAMODEL_URI);
 		URL resultURL = UMLResourcesUtil.class.getClassLoader().getResource(
 			String.format("metamodels/%s", umlMetamodel.lastSegment())); //$NON-NLS-1$
@@ -470,8 +502,8 @@ public class UMLResourcesUtil
 		return result;
 	}
 
-	private static void mapUMLResourceURIs(Map<URI, URI> uriMap, String uri,
-			URI location) {
+	private static void mapURIs(Map<URI, URI> uriMap, String uri, URI location,
+			String pluginID) {
 
 		URI prefix = URI.createURI(uri);
 
@@ -490,7 +522,7 @@ public class UMLResourcesUtil
 		// and platform URIs, too
 		String folder = location.segment(location.segmentCount() - 2);
 		String platformURI = String.format("%s/%s/", //$NON-NLS-1$
-			ResourcesPlugin.PLUGIN_ID, folder);
+			pluginID, folder);
 		uriMap.put(URI.createPlatformPluginURI(platformURI, true), location);
 		uriMap.put(URI.createPlatformResourceURI(platformURI, true), location);
 	}
