@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: UML2 Releng Tycho
+Bundle-SymbolicName: org.eclipse.uml2.releng.tycho
+Bundle-Version: 1.0.0.qualifier

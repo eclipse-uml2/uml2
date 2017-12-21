@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.eclipse.uml2</groupId>
+    <artifactId>org.eclipse.uml2.releng.tycho</artifactId>
+    <version>5.4.0-SNAPSHOT</version>
+    <relativePath>../releng/org.eclipse.uml2.releng.tycho</relativePath>
+  </parent>
+  <groupId>org.eclipse.uml2.plugins</groupId>
+  <artifactId>plugins</artifactId>
+  <version>5.4.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <modules>
+    <module>org.eclipse.uml2</module>
+    <module>org.eclipse.uml2.ant</module>
+    <module>org.eclipse.uml2.capabilities</module>
+    <module>org.eclipse.uml2.codegen.ecore</module>
+    <module>org.eclipse.uml2.codegen.ecore.ui</module>
+    <module>org.eclipse.uml2.common</module>
+    <module>org.eclipse.uml2.common.edit</module>
+    <module>org.eclipse.uml2.types</module>
+    <module>org.eclipse.uml2.uml</module>
+    <module>org.eclipse.uml2.uml.ecore.exporter</module>
+    <module>org.eclipse.uml2.uml.ecore.importer</module>
+    <module>org.eclipse.uml2.uml.edit</module>
+    <module>org.eclipse.uml2.uml.editor</module>
+    <module>org.eclipse.uml2.uml.profile.standard</module>
+    <module>org.eclipse.uml2.uml.resources</module>
+    <module>org.eclipse.uml2.uml.validation</module>
+  </modules>
+</project>
