@@ -33,9 +33,9 @@ http://www.eclipse.org/legal/epl-v10.html
       id="org.eclipse.uml2"
       version="0.0.0"/> 
 
-   <includes
+   <!--includes
       id="org.eclipse.uml2.source"
-      version="0.0.0"/> 
+      version="0.0.0"/--> 
 
    <includes
       id="org.eclipse.uml2.examples"
