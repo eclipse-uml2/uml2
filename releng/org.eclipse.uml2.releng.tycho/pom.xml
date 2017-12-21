@@ -144,6 +144,7 @@
           <archive>
             <addMavenDescriptor>false</addMavenDescriptor>
           </archive>
+          <includeBinaryFeature>false</includeBinaryFeature>
         </configuration>
         <executions>
           <execution>
