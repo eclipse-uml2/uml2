@@ -11,6 +11,7 @@
  *   Manuel Bork <bork@yatta.de> (Yatta Solutions GmbH) - 421756, 422000
  *   Kenn Hussey (CEA) - 424895, 511674, 512520
  *   Christian W. Damus - 444588, 497359, 501740
+ *   Kenn Hussey - 526568
  *   
  */
 package org.eclipse.uml2.uml.bug.tests;
@@ -65,7 +66,7 @@ public class UMLBugTests
 		result.addTest(Bug497359Test.suite());
 		result.addTest(Bug501740Test.suite());
 		result.addTest(Bug511674Test.suite());
-		result.addTest(Bug512520Test.suite());
+		// result.addTest(Bug512520Test.suite()); FIXME 526520
 		
 		// keep this one at the end because it runs long
 		result.addTest(Bug332057Test.suite());
