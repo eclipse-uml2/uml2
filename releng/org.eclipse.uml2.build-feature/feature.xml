@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.uml2.build"
       label="Unified Modeling Language 2.x (UML2) Build Site"
-      version="1.0.0.qualifier"
+      version="5.4.0.qualifier"
       provider-name="%feature.provider-name"
       image="eclipse_update_120.jpg"
       license-feature="org.eclipse.license"
