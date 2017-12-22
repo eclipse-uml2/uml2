@@ -14,13 +14,9 @@
 
 package org.eclipse.uml2.uml.bug.tests;
 
-import java.util.Collections;
-
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.uml2.common.util.UML2Util;
@@ -84,12 +80,6 @@ public class Bug512520Test
 	public void testGetAppliedStereotype() {
 		final URI modelURI = URI
 			.createURI("pathmap://UML_TEST_MODELS/Bug401804.uml", true);
-
-		// This abstract URI resolves to a platform:/plugin URI, which needs to
-		// be further resolved to a physical location URI
-		URIConverter.URI_MAP.putAll(EcorePlugin
-			.computePlatformResourceToPlatformPluginMap(Collections
-				.singleton(URIConverter.INSTANCE.normalize(modelURI))));
 
 		//
 		// Load the same model twice in different resource sets, first
