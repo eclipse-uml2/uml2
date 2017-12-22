@@ -206,12 +206,12 @@
         </plugin>
         <plugin>
           <groupId>org.eclipse.tycho</groupId>
-           <artifactId>tycho-surefire-plugin</artifactId>
-           <version>${tycho-version}</version>
-           <configuration>
-             <argLine>${tycho.testArgLine} -Xms40m -Xmx1G ${os-jvm-flags}</argLine>
-             <failIfNoTests>false</failIfNoTests>
-           </configuration>
+          <artifactId>tycho-surefire-plugin</artifactId>
+          <version>1.0.0</version>
+          <configuration>
+            <argLine>${tycho.testArgLine} -Xms40m -Xmx1G ${os-jvm-flags}</argLine>
+            <failIfNoTests>false</failIfNoTests>
+          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
