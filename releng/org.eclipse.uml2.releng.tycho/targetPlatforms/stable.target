@@ -3,7 +3,7 @@
 <locations>
   <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
     <unit id="org.eclipse.sdk.feature.group" version="0.0.0"/>
-    <repository location="http://download.eclipse.org/eclipse/updates/3.5"/>
+    <repository location="http://download.eclipse.org/eclipse/updates/4.8milestones"/>
   </location>
   <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
     <unit id="org.eclipse.emf.sdk.feature.group" version="0.0.0"/>
@@ -11,11 +11,14 @@
   </location>
   <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
     <unit id="org.eclipse.emf.validation" version="0.0.0"/>
-    <repository location="http://download.eclipse.org/modeling/emf/updates/milestones"/>
+    <repository location="http://download.eclipse.org/modeling/emf/validation/updates/milestones"/>
   </location>
   <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
     <unit id="org.eclipse.license.feature.group" version="0.0.0"/>
     <repository location="http://download.eclipse.org/cbi/updates/license"/>
+  </location>
+  <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+    <repository location="http://download.eclipse.org/tools/orbit/R-builds/R20170516192513/repository"/>
   </location>
 </locations>
 </target>
