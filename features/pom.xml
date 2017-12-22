@@ -20,7 +20,7 @@
     <module>org.eclipse.uml2.doc-feature</module>
     <module>org.eclipse.uml2.examples-feature</module>
     <module>org.eclipse.uml2.sdk-feature</module>
-    <!--module>org.eclipse.uml2.tests-feature</module-->
+    <module>org.eclipse.uml2.tests-feature</module>
     <module>org.eclipse.uml2.uml-feature</module>
     <module>org.eclipse.uml2.uml.edit-feature</module>
   </modules>
