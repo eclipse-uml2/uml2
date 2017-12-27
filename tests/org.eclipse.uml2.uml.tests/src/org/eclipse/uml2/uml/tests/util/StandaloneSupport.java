@@ -9,6 +9,7 @@
  *   Christian W. Damus (CEA) - initial API and implementation
  *   Christian W. Damus (CEA) - 414572, 401682, 420338, 437977
  *   Christian W. Damus - 512520
+ *   Kenn Hussey - 526679
  *
  */
 package org.eclipse.uml2.uml.tests.util;
@@ -28,6 +29,7 @@ import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.resources.util.UMLResourcesUtil;
+import org.eclipse.uml2.uml.tests.UMLAllTests;
 
 /**
  * Utility for configuring the test environment for stand-alone execution.
@@ -48,6 +50,7 @@ public class StandaloneSupport {
 	}
 
 	public static void initGlobals() {
+
 		if (!isStandalone()) {
 			throw new IllegalStateException("not running stand-alone"); //$NON-NLS-1$
 		}
@@ -58,6 +61,7 @@ public class StandaloneSupport {
 	}
 
 	public static ResourceSet init(ResourceSet rset) {
+
 		if (!isStandalone()) {
 			throw new IllegalStateException("not running stand-alone"); //$NON-NLS-1$
 		}
@@ -76,12 +80,24 @@ public class StandaloneSupport {
 		// mappings do not have an a priori resource set context in which to
 		// load the mapping models that they use, so they rely on the global
 		// URI map
-		URI prefix = getBaseUMLMappingsResourceURI();
-		mapUMLMappingResourceURIs(
+		URI prefix = getBaseUMLURI();
+
+		mapURIs(
 			URIConverter.URI_MAP,
 			URI.createPlatformPluginURI(
 				String.format("%s/model", UML_PLUGIN_ID), true), //$NON-NLS-1$
-			prefix);
+			prefix.appendSegment("model")); //$NON-NLS-1$
+
+		
+		prefix = getBaseUMLTestsURI();
+
+		mapURIs(URIConverter.URI_MAP,
+			URI.createURI("pathmap://UML_TEST_MODELS/"), //$NON-NLS-1$
+			prefix.appendSegment("models")); //$NON-NLS-1$
+
+		mapURIs(URIConverter.URI_MAP,
+			URI.createURI("pathmap://UML_TEST_PROFILES/"), //$NON-NLS-1$
+			prefix.appendSegment("profiles")); //$NON-NLS-1$
 
 		return rset;
 	}
@@ -110,7 +126,7 @@ public class StandaloneSupport {
 				result = new TestSuite(String.format(
 					"<%s skipped because Eclipse is not running>", name)); //$NON-NLS-1$
 			}
-		} catch (LinkageError e) {
+		} catch (LinkageError le) {
 			// no (or incomplete) Eclipse environment on the classpath
 			result = new TestSuite(String.format(
 				"<%s skipped because Eclipse is not running>", name)); //$NON-NLS-1$
@@ -186,30 +202,67 @@ public class StandaloneSupport {
 		return result;
 	}
 
-	private static URI getBaseUMLMappingsResourceURI() {
+	private static URI getBaseUMLURI() {
 		URL resultURL = UMLPlugin.class.getClassLoader().getResource(
 			"model/UML2_2_UML.ecore2xml"); //$NON-NLS-1$
 
 		URI result;
 
 		if (resultURL != null) {
-			// remove the UML2_2_UML.ecore2xml segment of the resource we found
+			// remove the model/UML2_2_UML.ecore2xml segments of the resource we found
 			result = URI.createURI(resultURL.toExternalForm(), true)
-				.trimSegments(1);
+				.trimSegments(2);
 		} else {
 			// probably, we're not running with JARs, so assume the source
 			// project folder layout
 			resultURL = UMLPlugin.class.getResource("UMLPlugin.class"); //$NON-NLS-1$
 
 			String baseURL = resultURL.toExternalForm();
-			baseURL = baseURL.substring(0, baseURL.lastIndexOf("/bin/")); //$NON-NLS-1$
-			result = URI.createURI(baseURL, true).appendSegment("model"); //$NON-NLS-1$
+			
+			if (baseURL.contains("/bin/")) { //$NON-NLS-1$
+				baseURL = baseURL.substring(0, baseURL.lastIndexOf("/bin/")); //$NON-NLS-1$
+			} else {
+				baseURL = "/"; //$NON-NLS-1$
+			}
+
+			result = URI.createURI(baseURL, true);
 		}
 
 		return result;
 	}
 
-	private static void mapUMLMappingResourceURIs(Map<URI, URI> uriMap,
+	private static URI getBaseUMLTestsURI() {
+		URL resultURL = UMLAllTests.class.getClassLoader()
+			.getResource("models/Bug401804.uml"); //$NON-NLS-1$
+
+		URI result;
+
+		if (resultURL != null) {
+			// remove the models/Bug401804.uml segments of the resource we found
+			result = URI.createURI(resultURL.toExternalForm(), true)
+				.trimSegments(2);
+		} else {
+			// probably, we're not running with JARs, so assume the source
+			// project folder layout
+			resultURL = UMLAllTests.class.getResource("UMLAllTests.class"); //$NON-NLS-1$
+
+			String baseURL = resultURL.toExternalForm();
+
+			if (baseURL.contains("/bin/")) { //$NON-NLS-1$
+				baseURL = baseURL.substring(0, baseURL.lastIndexOf("/bin/")); //$NON-NLS-1$
+			} else if (baseURL.contains("/target/classes/")) { //$NON-NLS-1$
+				baseURL = baseURL.substring(0, baseURL.indexOf("/target/classes/")); //$NON-NLS-1$
+			} else {
+				baseURL = "/"; //$NON-NLS-1$
+			}
+
+			result = URI.createURI(baseURL, true);
+		}
+
+		return result;
+	}
+
+	private static void mapURIs(Map<URI, URI> uriMap,
 			URI prefix, URI location) {
 
 		// ensure trailing separator (make it a "URI prefix")
