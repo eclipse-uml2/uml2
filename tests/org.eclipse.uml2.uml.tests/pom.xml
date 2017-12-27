@@ -48,6 +48,7 @@
               <useUIHarness>true</useUIHarness>
               <useUIThread>true</useUIThread>
               <argLine>-ea</argLine>
+              <!--argLine>-ea -XstartOnFirstThread</argLine-->
               <reportsDirectory>${project.build.directory}/surefire-reports/plugin</reportsDirectory>
             </configuration>
           </execution>
