@@ -469,11 +469,11 @@ public class UMLResourcesUtil
 			resultURL = UMLUtil.class.getResource("UMLUtil.class"); //$NON-NLS-1$
 
 			String baseURL = resultURL.toExternalForm();
-			
-			if (baseURL.contains("/bin/")) { //$NON-NLS-1$
-				baseURL = baseURL.substring(0, baseURL.lastIndexOf("/bin/")); //$NON-NLS-1$
-			} else {
-				baseURL = "/"; //$NON-NLS-1$
+
+			int index = baseURL.lastIndexOf("/bin/"); //$NON-NLS-1$
+
+			if (index != -1) {
+				baseURL = baseURL.substring(0, index);
 			}
 
 			result = URI.createURI(baseURL, true);
@@ -502,10 +502,10 @@ public class UMLResourcesUtil
 
 			String baseURL = resultURL.toExternalForm();
 
-			if (baseURL.contains("/bin/")) { //$NON-NLS-1$
-				baseURL = baseURL.substring(0, baseURL.lastIndexOf("/bin/")); //$NON-NLS-1$
-			} else {
-				baseURL = "/"; //$NON-NLS-1$
+			int index = baseURL.lastIndexOf("/bin/"); //$NON-NLS-1$
+
+			if (index != -1) {
+				baseURL = baseURL.substring(0, index);
 			}
 
 			result = URI.createURI(baseURL, true);
