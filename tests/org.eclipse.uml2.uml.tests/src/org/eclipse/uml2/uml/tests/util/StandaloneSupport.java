@@ -203,13 +203,14 @@ public class StandaloneSupport {
 	}
 
 	private static URI getBaseUMLURI() {
-		URL resultURL = UMLPlugin.class.getClassLoader().getResource(
-			"model/UML2_2_UML.ecore2xml"); //$NON-NLS-1$
+		URL resultURL = UMLPlugin.class.getClassLoader()
+			.getResource("model/UML2_2_UML.ecore2xml"); //$NON-NLS-1$
 
 		URI result;
 
 		if (resultURL != null) {
-			// remove the model/UML2_2_UML.ecore2xml segments of the resource we found
+			// remove the model/UML2_2_UML.ecore2xml segments of the resource we
+			// found
 			result = URI.createURI(resultURL.toExternalForm(), true)
 				.trimSegments(2);
 		} else {
@@ -218,11 +219,11 @@ public class StandaloneSupport {
 			resultURL = UMLPlugin.class.getResource("UMLPlugin.class"); //$NON-NLS-1$
 
 			String baseURL = resultURL.toExternalForm();
-			
-			if (baseURL.contains("/bin/")) { //$NON-NLS-1$
-				baseURL = baseURL.substring(0, baseURL.lastIndexOf("/bin/")); //$NON-NLS-1$
-			} else {
-				baseURL = "/"; //$NON-NLS-1$
+
+			int index = baseURL.lastIndexOf("/bin/"); //$NON-NLS-1$
+
+			if (index != -1) {
+				baseURL = baseURL.substring(0, index);
 			}
 
 			result = URI.createURI(baseURL, true);
@@ -248,12 +249,14 @@ public class StandaloneSupport {
 
 			String baseURL = resultURL.toExternalForm();
 
-			if (baseURL.contains("/bin/")) { //$NON-NLS-1$
-				baseURL = baseURL.substring(0, baseURL.lastIndexOf("/bin/")); //$NON-NLS-1$
-			} else if (baseURL.contains("/target/classes/")) { //$NON-NLS-1$
-				baseURL = baseURL.substring(0, baseURL.indexOf("/target/classes/")); //$NON-NLS-1$
-			} else {
-				baseURL = "/"; //$NON-NLS-1$
+			int index = baseURL.lastIndexOf("/bin/"); //$NON-NLS-1$
+
+			if (index == -1) {
+				index = baseURL.lastIndexOf("/target/classes/"); //$NON-NLS-1$
+			}
+
+			if (index != -1) {
+				baseURL = baseURL.substring(0, index);
 			}
 
 			result = URI.createURI(baseURL, true);
