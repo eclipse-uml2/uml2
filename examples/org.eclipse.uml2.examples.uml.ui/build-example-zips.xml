@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
- Copyright (c) 2010, 2014 E.D.Willink, CEA, and others.
+ Copyright (c) 2010, 2017 E.D.Willink, CEA, and others.
  All rights reserved.   This program and the accompanying materials
  are made available under the terms of the Eclipse Public License v1.0
  which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  Contributors: 
    E.D.Willink - initial API and implementation
    Christian W. Damus (CEA) - adapted from OCL project for 382342
+   Kenn Hussey - 526568
 -->
 <project name="org.eclipse.uml2.examples.uml.ui" default="zip.examples" basedir=".">
 	<target name="init">
@@ -19,13 +20,13 @@
 	
 	<target name="zip.examples" depends="init">
 		<!-- UML2 examples -->
-		<eclipse.convertPath resourcePath="org.eclipse.uml2.examples.gettingstarted" property="projectDir"/>
-		<zip destfile="zips/gettingstarted.zip" basedir="${projectDir}">
+		<!--eclipse.convertPath resourcePath="org.eclipse.uml2.examples.gettingstarted" property="projectDir"/-->
+		<zip destfile="zips/gettingstarted.zip" basedir="../org.eclipse.uml2.examples.gettingstarted">
 			<patternset refid="zip.excludes"/>
 		</zip>
 		
-        <eclipse.convertPath resourcePath="org.eclipse.uml2.examples.introtoprofiles" property="projectDir"/>
-        <zip destfile="zips/introtoprofiles.zip" basedir="${projectDir}">
+        <!--eclipse.convertPath resourcePath="org.eclipse.uml2.examples.introtoprofiles" property="projectDir"/-->
+        <zip destfile="zips/introtoprofiles.zip" basedir="../org.eclipse.uml2.examples.introtoprofiles">
             <patternset refid="zip.excludes"/>
         </zip>
 	</target>
