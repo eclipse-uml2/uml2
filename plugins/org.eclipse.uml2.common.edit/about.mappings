@@ -1,4 +1,4 @@
-# Copyright (c) 2006, 2013 IBM Corporation, CEA, and others.
+# Copyright (c) 2006, 2017 IBM Corporation, CEA, and others.
 # All rights reserved.   This program and the accompanying materials
 # are made available under the terms of the Eclipse Public License v1.0
 # which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
 # Contributors: 
 #   IBM - initial API and implementation
 #   Christian W. Damus (CEA) - 227616
+#   Kenn Hussey - 526568
 #
 
 # about.mappings
@@ -14,4 +15,4 @@
 # java.io.Properties file (ISO 8859-1 with "\" escapes)
 # This file does not need to be translated.
 
-0=@build@
+0=${buildId}
