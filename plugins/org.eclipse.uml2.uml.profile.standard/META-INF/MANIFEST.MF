@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.uml2.uml.profile.standard;singleton:=true
-Bundle-Version: 1.0.100.qualifier
+Bundle-Version: 1.4.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: org.eclipse.uml2.uml.profile.standard.StandardPlugin$Implementation
 Bundle-Vendor: %providerName
@@ -12,6 +12,6 @@ Export-Package: org.eclipse.uml2.uml.profile.standard,
  org.eclipse.uml2.uml.profile.standard.internal.impl,
  org.eclipse.uml2.uml.profile.standard.internal.operations,
  org.eclipse.uml2.uml.profile.standard.util
-Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.uml2.uml;visibility:=reexport
+Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.5.0,4.0.0)",
+ org.eclipse.uml2.uml;bundle-version="[5.4.0,6.0.0)";visibility:=reexport
 Bundle-ActivationPolicy: lazy
