@@ -56,6 +56,7 @@
     <maven-install-version>2.5.1</maven-install-version>
     <maven-deploy-version>2.8.1</maven-deploy-version>
     <maven-site-version>3.4</maven-site-version>
+    <maven-antrun-version>1.7</maven-antrun-version>
     <maven-resources-version>2.6</maven-resources-version>
     <maven-surefire-version>2.17</maven-surefire-version>
 
@@ -217,6 +218,11 @@
             <argLine>${tycho.testArgLine} -Xms40m -Xmx1G ${os-jvm-flags}</argLine>
             <failIfNoTests>false</failIfNoTests>
           </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-antrun-plugin</artifactId>
+          <version>${maven-antrun-version}</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
