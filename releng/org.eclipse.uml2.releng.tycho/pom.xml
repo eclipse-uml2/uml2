@@ -148,6 +148,9 @@
           <archive>
             <addMavenDescriptor>false</addMavenDescriptor>
           </archive>
+          <excludes>
+            <plugin id="org.eclipse.uml2.doc"/>
+          </excludes>
         </configuration>
         <executions>
           <execution>
@@ -180,6 +183,7 @@
               pom.xml
               .polyglot.build.properties
             </jgit.ignore>
+            <jgit.dirtyWorkingTree>warning</jgit.dirtyWorkingTree>
           </configuration>
           <dependencies>
             <dependency>
@@ -351,6 +355,13 @@
           <plugin>
             <groupId>org.eclipse.tycho.extras</groupId>
             <artifactId>tycho-pack200a-plugin</artifactId>
+            <configuration>
+              <excludes>
+                <plugin id="org.eclipse.uml2"/>
+                <plugin id="org.eclipse.uml2.doc"/>
+                <plugin id="org.eclipse.uml2.examples"/>
+              </excludes>
+            </configuration>
             <executions>
               <execution>
                 <id>pack200-normalize</id>
@@ -377,6 +388,13 @@
           <plugin>
             <groupId>org.eclipse.tycho.extras</groupId>
             <artifactId>tycho-pack200b-plugin</artifactId>
+            <configuration>
+              <excludes>
+                <plugin id="org.eclipse.uml2"/>
+                <plugin id="org.eclipse.uml2.doc"/>
+                <plugin id="org.eclipse.uml2.examples"/>
+              </excludes>
+            </configuration>
             <executions>
               <execution>
                 <id>pack200-pack</id>
