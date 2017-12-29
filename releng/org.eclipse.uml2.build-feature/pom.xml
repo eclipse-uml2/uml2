@@ -13,6 +13,18 @@
   <version>5.4.0-SNAPSHOT</version>
   <packaging>eclipse-repository</packaging>
   <build>
+    <resources>
+      <resource>
+        <directory>.</directory>
+        <filtering>true</filtering>
+        <includes>
+          <include>downloads.sh</include>
+          <include>index.html</include>
+          <include>publisher.properties</include>
+          <include>updates.sh</include>
+        </includes>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
