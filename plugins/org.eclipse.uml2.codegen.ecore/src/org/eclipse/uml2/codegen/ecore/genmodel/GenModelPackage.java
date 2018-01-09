@@ -10,6 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 208016, 247980
  *   Kenn Hussey - 286329, 522703
  *   Kenn Hussey (CEA) - 351777, 397324, 414970, 451350
+ *   Sebastien Revol (CEA) - 529044
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
@@ -1632,6 +1633,16 @@ public interface GenModelPackage
 		+ 4;
 
 	/**
+	 * The feature id for the '<em><b>Operations Folder</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__OPERATIONS_FOLDER = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL_FEATURE_COUNT
+		+ 5;
+
+	/**
 	 * The number of structural features of the '<em>Gen Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1639,7 +1650,7 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_MODEL_FEATURE_COUNT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL_FEATURE_COUNT
-		+ 5;
+		+ 6;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenOperationImpl <em>Gen Operation</em>}' class.
@@ -2339,6 +2350,17 @@ public interface GenModelPackage
 	EAttribute getGenModel_InvariantPrefix();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.uml2.codegen.ecore.genmodel.GenModel#getOperationsFolder <em>Operations Folder</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Operations Folder</em>'.
+	 * @see org.eclipse.uml2.codegen.ecore.genmodel.GenModel#getOperationsFolder()
+	 * @see #getGenModel()
+	 * @generated
+	 */
+	EAttribute getGenModel_OperationsFolder();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.uml2.codegen.ecore.genmodel.GenOperation <em>Gen Operation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2585,6 +2607,15 @@ public interface GenModelPackage
 		 */
 		EAttribute GEN_MODEL__INVARIANT_PREFIX = eINSTANCE
 			.getGenModel_InvariantPrefix();
+
+		/**
+		 * The meta object literal for the '<em><b>Operations Folder</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GEN_MODEL__OPERATIONS_FOLDER = eINSTANCE
+			.getGenModel_OperationsFolder();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenOperationImpl <em>Gen Operation</em>}' class.

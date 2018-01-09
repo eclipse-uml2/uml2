@@ -33,6 +33,7 @@
       <genFeatures createChild="false" propertyCategory="UML2" ecoreFeature="ecore:EAttribute GenModel.ecore#//GenModel/cacheAdapterSupport"/>
       <genFeatures createChild="false" propertyCategory="UML2" ecoreFeature="ecore:EAttribute GenModel.ecore#//GenModel/safeStrings"/>
       <genFeatures createChild="false" propertyCategory="UML2" ecoreFeature="ecore:EAttribute GenModel.ecore#//GenModel/invariantPrefix"/>
+      <genFeatures createChild="false" propertyCategory="UML2" ecoreFeature="ecore:EAttribute GenModel.ecore#//GenModel/operationsFolder"/>
     </genClasses>
     <genClasses image="false" ecoreClass="GenModel.ecore#//GenOperation">
       <genFeatures createChild="false" propertyCategory="UML2" ecoreFeature="ecore:EAttribute GenModel.ecore#//GenOperation/cacheAdapterScope"/>

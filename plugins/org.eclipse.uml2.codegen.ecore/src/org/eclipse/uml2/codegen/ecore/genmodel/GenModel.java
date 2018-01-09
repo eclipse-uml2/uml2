@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 451350
+ *   Sebastien Revol (CEA) - 529044
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
@@ -26,6 +27,7 @@ package org.eclipse.uml2.codegen.ecore.genmodel;
  *   <li>{@link org.eclipse.uml2.codegen.ecore.genmodel.GenModel#isCacheAdapterSupport <em>Cache Adapter Support</em>}</li>
  *   <li>{@link org.eclipse.uml2.codegen.ecore.genmodel.GenModel#isSafeStrings <em>Safe Strings</em>}</li>
  *   <li>{@link org.eclipse.uml2.codegen.ecore.genmodel.GenModel#getInvariantPrefix <em>Invariant Prefix</em>}</li>
+ *   <li>{@link org.eclipse.uml2.codegen.ecore.genmodel.GenModel#getOperationsFolder <em>Operations Folder</em>}</li>
  * </ul>
  *
  * @see org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage#getGenModel()
@@ -164,5 +166,31 @@ public interface GenModel
 	 * @generated
 	 */
 	void setInvariantPrefix(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Operations Folder</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Operations Folder</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Operations Folder</em>' attribute.
+	 * @see #setOperationsFolder(String)
+	 * @see org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage#getGenModel_OperationsFolder()
+	 * @model
+	 * @generated
+	 */
+	String getOperationsFolder();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.uml2.codegen.ecore.genmodel.GenModel#getOperationsFolder <em>Operations Folder</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Operations Folder</em>' attribute.
+	 * @see #getOperationsFolder()
+	 * @generated
+	 */
+	void setOperationsFolder(String value);
 
 } // GenModel

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2006, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 206636
+ *   Sebastien Revol (CEA) - 529044
  *
- * $Id: UML2GenClassGeneratorAdapter.java,v 1.3 2008/03/21 00:22:59 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.generator;
 
@@ -73,7 +73,7 @@ public class UML2GenClassGeneratorAdapter
 				"_UI_GeneratingJavaClass_message", new Object[]{genClass //$NON-NLS-1$
 					.getQualifiedOperationsClassName()});
 			monitor.subTask(message);
-			generateJava(genClass.getGenModel().getModelDirectory(),
+			generateJava(UML2GenModelUtil.getOperationsFolderPath(genClass.getGenModel()),
 				UML2GenModelUtil.getOperationsPackageName(genPackage), genClass
 					.getOperationsClassName(), getJETEmitter(
 					getJETEmitterDescriptors(), OPERATIONS_CLASS_ID), null,

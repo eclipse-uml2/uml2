@@ -19,6 +19,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheAdapterSupport" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="safeStrings" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="invariantPrefix" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operationsFolder" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GenOperation" eSuperTypes="platform:/plugin/org.eclipse.emf.codegen.ecore/model/GenModel.ecore#//GenOperation #//GenTypedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheAdapterScope" eType="#//GenCacheAdapterScope"/>

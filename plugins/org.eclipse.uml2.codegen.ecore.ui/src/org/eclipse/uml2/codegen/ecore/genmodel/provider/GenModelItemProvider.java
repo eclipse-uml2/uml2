@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 414970
  *   Kenn Hussey - 522703
+ *   Sebastien Revol (CEA) - 529044
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
@@ -66,6 +67,7 @@ public class GenModelItemProvider
 			addCacheAdapterSupportPropertyDescriptor(object);
 			addSafeStringsPropertyDescriptor(object);
 			addInvariantPrefixPropertyDescriptor(object);
+			addOperationsFolderPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -171,6 +173,26 @@ public class GenModelItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Operations Folder feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOperationsFolderPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_GenModel_operationsFolder_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_GenModel_operationsFolder_feature", "_UI_GenModel_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			GenModelPackage.Literals.GEN_MODEL__OPERATIONS_FOLDER, true, false,
+			false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+			getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
+			null));
+	}
+
+	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -198,6 +220,7 @@ public class GenModelItemProvider
 			case GenModelPackage.GEN_MODEL__CACHE_ADAPTER_SUPPORT :
 			case GenModelPackage.GEN_MODEL__SAFE_STRINGS :
 			case GenModelPackage.GEN_MODEL__INVARIANT_PREFIX :
+			case GenModelPackage.GEN_MODEL__OPERATIONS_FOLDER :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;

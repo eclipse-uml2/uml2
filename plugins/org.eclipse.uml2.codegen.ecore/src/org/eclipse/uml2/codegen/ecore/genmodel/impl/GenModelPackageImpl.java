@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 208016, 247980
  *   Kenn Hussey - 522703
+ *   Sebastien Revol (CEA) - 529044
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
@@ -352,6 +353,15 @@ public class GenModelPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getGenModel_OperationsFolder() {
+		return (EAttribute) genModelEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getGenOperation() {
 		return genOperationEClass;
 	}
@@ -471,6 +481,7 @@ public class GenModelPackageImpl
 		createEAttribute(genModelEClass, GEN_MODEL__CACHE_ADAPTER_SUPPORT);
 		createEAttribute(genModelEClass, GEN_MODEL__SAFE_STRINGS);
 		createEAttribute(genModelEClass, GEN_MODEL__INVARIANT_PREFIX);
+		createEAttribute(genModelEClass, GEN_MODEL__OPERATIONS_FOLDER);
 
 		genOperationEClass = createEClass(GEN_OPERATION);
 		createEAttribute(genOperationEClass,
@@ -606,6 +617,10 @@ public class GenModelPackageImpl
 			!IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGenModel_InvariantPrefix(),
 			theEcorePackage.getEString(), "invariantPrefix", null, 0, 1, //$NON-NLS-1$
+			GenModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+			!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGenModel_OperationsFolder(),
+			theEcorePackage.getEString(), "operationsFolder", null, 0, 1, //$NON-NLS-1$
 			GenModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
 			!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208016, 206636
  *   Kenn Hussey (CEA) - 394623, 212765
+ *   Sebastien Revol (CEA) - 529044
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.util;
@@ -16,6 +17,8 @@ package org.eclipse.uml2.codegen.ecore.genmodel.util;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.codegen.ecore.genmodel.GenAnnotation;
 import org.eclipse.emf.codegen.ecore.genmodel.GenBase;
 import org.eclipse.emf.codegen.ecore.genmodel.GenClass;
@@ -101,6 +104,26 @@ public class UML2GenModelUtil {
 		return genModel instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenModel
 			&& ((org.eclipse.uml2.codegen.ecore.genmodel.GenModel) genModel)
 				.isSafeStrings();
+	}
+
+	public static String getOperationsFolder(GenModel genModel) {
+		return genModel instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenModel
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenModel) genModel)
+				.getOperationsFolder()
+			: null;
+	}
+
+	public static String getOperationsFolderPath(GenModel genModel) {
+		String modelDirectory = genModel.getModelDirectory();
+		String result = modelDirectory;
+		String operationsFolder = getOperationsFolder(genModel);
+		if (operationsFolder != null && modelDirectory != null) {
+			IPath modelDirectoryPath = new Path(modelDirectory);
+			result = modelDirectoryPath
+				.removeLastSegments(modelDirectoryPath.segmentCount() - 1)
+				.append(operationsFolder).toString();
+		}
+		return result;
 	}
 
 	// GenPackage utilities

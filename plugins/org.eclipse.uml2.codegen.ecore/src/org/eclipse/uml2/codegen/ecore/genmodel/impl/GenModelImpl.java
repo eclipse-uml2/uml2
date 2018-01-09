@@ -10,6 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 208016, 247980
  *   Kenn Hussey - 284809, 522703
  *   Kenn Hussey (CEA) - 358792, 351777, 382637, 212765, 451350
+ *   Sebastien Revol (CEA) - 529044
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
@@ -51,6 +52,7 @@ import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
  *   <li>{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelImpl#isCacheAdapterSupport <em>Cache Adapter Support</em>}</li>
  *   <li>{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelImpl#isSafeStrings <em>Safe Strings</em>}</li>
  *   <li>{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelImpl#getInvariantPrefix <em>Invariant Prefix</em>}</li>
+ *   <li>{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelImpl#getOperationsFolder <em>Operations Folder</em>}</li>
  * </ul>
  *
  * @generated
@@ -158,6 +160,26 @@ public class GenModelImpl
 	 * @ordered
 	 */
 	protected String invariantPrefix = INVARIANT_PREFIX_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getOperationsFolder() <em>Operations Folder</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOperationsFolder()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String OPERATIONS_FOLDER_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getOperationsFolder() <em>Operations Folder</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOperationsFolder()
+	 * @generated
+	 * @ordered
+	 */
+	protected String operationsFolder = OPERATIONS_FOLDER_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -324,6 +346,30 @@ public class GenModelImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getOperationsFolder() {
+		return operationsFolder;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOperationsFolder(String newOperationsFolder) {
+		String oldOperationsFolder = operationsFolder;
+		operationsFolder = newOperationsFolder;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				GenModelPackage.GEN_MODEL__OPERATIONS_FOLDER
+					+ EOFFSET_CORRECTION,
+				oldOperationsFolder, operationsFolder));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID - EOFFSET_CORRECTION) {
@@ -337,6 +383,8 @@ public class GenModelImpl
 				return isSafeStrings();
 			case GenModelPackage.GEN_MODEL__INVARIANT_PREFIX :
 				return getInvariantPrefix();
+			case GenModelPackage.GEN_MODEL__OPERATIONS_FOLDER :
+				return getOperationsFolder();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -364,6 +412,9 @@ public class GenModelImpl
 			case GenModelPackage.GEN_MODEL__INVARIANT_PREFIX :
 				setInvariantPrefix((String) newValue);
 				return;
+			case GenModelPackage.GEN_MODEL__OPERATIONS_FOLDER :
+				setOperationsFolder((String) newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -390,6 +441,9 @@ public class GenModelImpl
 				return;
 			case GenModelPackage.GEN_MODEL__INVARIANT_PREFIX :
 				setInvariantPrefix(INVARIANT_PREFIX_EDEFAULT);
+				return;
+			case GenModelPackage.GEN_MODEL__OPERATIONS_FOLDER :
+				setOperationsFolder(OPERATIONS_FOLDER_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -419,6 +473,10 @@ public class GenModelImpl
 				return INVARIANT_PREFIX_EDEFAULT == null
 					? invariantPrefix != null
 					: !INVARIANT_PREFIX_EDEFAULT.equals(invariantPrefix);
+			case GenModelPackage.GEN_MODEL__OPERATIONS_FOLDER :
+				return OPERATIONS_FOLDER_EDEFAULT == null
+					? operationsFolder != null
+					: !OPERATIONS_FOLDER_EDEFAULT.equals(operationsFolder);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -454,6 +512,9 @@ public class GenModelImpl
 				case GenModelPackage.GEN_MODEL__INVARIANT_PREFIX :
 					return GenModelPackage.GEN_MODEL__INVARIANT_PREFIX
 						+ EOFFSET_CORRECTION;
+				case GenModelPackage.GEN_MODEL__OPERATIONS_FOLDER :
+					return GenModelPackage.GEN_MODEL__OPERATIONS_FOLDER
+						+ EOFFSET_CORRECTION;
 				default :
 					return -1;
 			}
@@ -482,6 +543,8 @@ public class GenModelImpl
 		result.append((eFlags & SAFE_STRINGS_EFLAG) != 0);
 		result.append(", invariantPrefix: "); //$NON-NLS-1$
 		result.append(invariantPrefix);
+		result.append(", operationsFolder: "); //$NON-NLS-1$
+		result.append(operationsFolder);
 		result.append(')');
 		return result.toString();
 	}
