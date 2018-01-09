@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 397324, 414970
+ *   Kenn Hussey - 522703
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
@@ -21,7 +22,9 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.codegen.ecore.genmodel.GenClassifier;
@@ -60,8 +63,29 @@ public class GenClassifierItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addDocumentationPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Documentation feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 */
+	protected void addDocumentationPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_GenClassifier_documentation_feature"), //$NON-NLS-1$
+			getString("_UI_GenClassifier_documentation_description"), //$NON-NLS-1$
+			org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.Literals.GEN_CLASSIFIER__DOCUMENTATION,
+			true, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+			getString("_UI_ModelPropertyCategory"), //$NON-NLS-1$
+			null));
 	}
 
 	/**
@@ -100,6 +124,7 @@ public class GenClassifierItemProvider
 		switch (notification.getFeatureID(GenClassifier.class)) {
 			case GenModelPackage.GEN_CLASSIFIER__GEN_PACKAGE :
 			case GenModelPackage.GEN_CLASSIFIER__GEN_TYPE_PARAMETERS :
+			case GenModelPackage.GEN_CLASSIFIER__DOCUMENTATION :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;

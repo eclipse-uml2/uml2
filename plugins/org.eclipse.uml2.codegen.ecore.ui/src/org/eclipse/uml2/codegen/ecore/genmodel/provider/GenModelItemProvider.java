@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 414970
+ *   Kenn Hussey - 522703
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
@@ -76,18 +77,17 @@ public class GenModelItemProvider
 	 * @generated
 	 */
 	protected void addFactoryMethodsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_GenModel_factoryMethods_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_GenModel_factoryMethods_feature", "_UI_GenModel_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				GenModelPackage.Literals.GEN_MODEL__FACTORY_METHODS, true,
-				false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_GenModel_factoryMethods_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_GenModel_factoryMethods_feature", "_UI_GenModel_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			GenModelPackage.Literals.GEN_MODEL__FACTORY_METHODS, true, false,
+			false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+			getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
+			null));
 	}
 
 	/**
@@ -97,18 +97,17 @@ public class GenModelItemProvider
 	 * @generated
 	 */
 	protected void addPluralizedGettersPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_GenModel_pluralizedGetters_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_GenModel_pluralizedGetters_feature", "_UI_GenModel_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				GenModelPackage.Literals.GEN_MODEL__PLURALIZED_GETTERS, true,
-				false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_GenModel_pluralizedGetters_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_GenModel_pluralizedGetters_feature", "_UI_GenModel_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			GenModelPackage.Literals.GEN_MODEL__PLURALIZED_GETTERS, true, false,
+			false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+			getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
+			null));
 	}
 
 	/**
@@ -118,18 +117,18 @@ public class GenModelItemProvider
 	 * @generated
 	 */
 	protected void addCacheAdapterSupportPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_GenModel_cacheAdapterSupport_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_GenModel_cacheAdapterSupport_feature", "_UI_GenModel_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				GenModelPackage.Literals.GEN_MODEL__CACHE_ADAPTER_SUPPORT,
-				true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_GenModel_cacheAdapterSupport_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_GenModel_cacheAdapterSupport_feature", //$NON-NLS-1$
+				"_UI_GenModel_type"), //$NON-NLS-1$
+			GenModelPackage.Literals.GEN_MODEL__CACHE_ADAPTER_SUPPORT, true,
+			false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+			getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
+			null));
 	}
 
 	/**
@@ -139,18 +138,16 @@ public class GenModelItemProvider
 	 * @generated
 	 */
 	protected void addSafeStringsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_GenModel_safeStrings_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_GenModel_safeStrings_feature", "_UI_GenModel_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				GenModelPackage.Literals.GEN_MODEL__SAFE_STRINGS, true, false,
-				false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(), getString("_UI_GenModel_safeStrings_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_GenModel_safeStrings_feature", "_UI_GenModel_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			GenModelPackage.Literals.GEN_MODEL__SAFE_STRINGS, true, false,
+			false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+			getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
+			null));
 	}
 
 	/**
@@ -160,18 +157,17 @@ public class GenModelItemProvider
 	 * @generated
 	 */
 	protected void addInvariantPrefixPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_GenModel_invariantPrefix_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_GenModel_invariantPrefix_feature", "_UI_GenModel_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				GenModelPackage.Literals.GEN_MODEL__INVARIANT_PREFIX, true,
-				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
-				null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_GenModel_invariantPrefix_feature"), //$NON-NLS-1$
+			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+				"_UI_GenModel_invariantPrefix_feature", "_UI_GenModel_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			GenModelPackage.Literals.GEN_MODEL__INVARIANT_PREFIX, true, false,
+			false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+			getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
+			null));
 	}
 
 	/**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208016, 204200
- *   Kenn Hussey - 286329
+ *   Kenn Hussey - 286329, 522703
  *   Kenn Hussey (CEA) - 322715, 418466, 451350
  *
  */
@@ -109,7 +109,8 @@ public class GenOperationImpl
 	 * @generated
 	 */
 	private static final int EOFFSET_CORRECTION = GenModelPackage.Literals.GEN_OPERATION
-		.getFeatureID(GenModelPackage.Literals.GEN_OPERATION__CACHE_ADAPTER_SCOPE)
+		.getFeatureID(
+			GenModelPackage.Literals.GEN_OPERATION__CACHE_ADAPTER_SCOPE)
 		- GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE;
 
 	/**
@@ -137,7 +138,8 @@ public class GenOperationImpl
 	 * @generated
 	 */
 	public GenCacheAdapterScope getCacheAdapterScopeGen() {
-		return CACHE_ADAPTER_SCOPE_EFLAG_VALUES[(eFlags & CACHE_ADAPTER_SCOPE_EFLAG) >>> CACHE_ADAPTER_SCOPE_EFLAG_OFFSET];
+		return CACHE_ADAPTER_SCOPE_EFLAG_VALUES[(eFlags
+			& CACHE_ADAPTER_SCOPE_EFLAG) >>> CACHE_ADAPTER_SCOPE_EFLAG_OFFSET];
 	}
 
 	public GenCacheAdapterScope getCacheAdapterScope() {
@@ -161,18 +163,19 @@ public class GenOperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCacheAdapterScope(GenCacheAdapterScope newCacheAdapterScope) {
-		GenCacheAdapterScope oldCacheAdapterScope = CACHE_ADAPTER_SCOPE_EFLAG_VALUES[(eFlags & CACHE_ADAPTER_SCOPE_EFLAG) >>> CACHE_ADAPTER_SCOPE_EFLAG_OFFSET];
+	public void setCacheAdapterScope(
+			GenCacheAdapterScope newCacheAdapterScope) {
+		GenCacheAdapterScope oldCacheAdapterScope = CACHE_ADAPTER_SCOPE_EFLAG_VALUES[(eFlags
+			& CACHE_ADAPTER_SCOPE_EFLAG) >>> CACHE_ADAPTER_SCOPE_EFLAG_OFFSET];
 		if (newCacheAdapterScope == null)
 			newCacheAdapterScope = CACHE_ADAPTER_SCOPE_EDEFAULT;
-		eFlags = eFlags
-			& ~CACHE_ADAPTER_SCOPE_EFLAG
-			| newCacheAdapterScope.ordinal() << CACHE_ADAPTER_SCOPE_EFLAG_OFFSET;
+		eFlags = eFlags & ~CACHE_ADAPTER_SCOPE_EFLAG | newCacheAdapterScope
+			.ordinal() << CACHE_ADAPTER_SCOPE_EFLAG_OFFSET;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE
-					+ EOFFSET_CORRECTION, oldCacheAdapterScope,
-				newCacheAdapterScope));
+					+ EOFFSET_CORRECTION,
+				oldCacheAdapterScope, newCacheAdapterScope));
 	}
 
 	/**
@@ -228,7 +231,8 @@ public class GenOperationImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID - EOFFSET_CORRECTION) {
 			case GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE :
-				return (eFlags & CACHE_ADAPTER_SCOPE_EFLAG) != CACHE_ADAPTER_SCOPE_EFLAG_DEFAULT;
+				return (eFlags
+					& CACHE_ADAPTER_SCOPE_EFLAG) != CACHE_ADAPTER_SCOPE_EFLAG_DEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -239,7 +243,8 @@ public class GenOperationImpl
 	 * @generated
 	 */
 	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+	public int eDerivedStructuralFeatureID(int baseFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == GenBase.class) {
 			switch (baseFeatureID) {
 				default :
@@ -274,10 +279,10 @@ public class GenOperationImpl
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (cacheAdapterScope: "); //$NON-NLS-1$
-		result
-			.append(CACHE_ADAPTER_SCOPE_EFLAG_VALUES[(eFlags & CACHE_ADAPTER_SCOPE_EFLAG) >>> CACHE_ADAPTER_SCOPE_EFLAG_OFFSET]);
+		result.append(CACHE_ADAPTER_SCOPE_EFLAG_VALUES[(eFlags
+			& CACHE_ADAPTER_SCOPE_EFLAG) >>> CACHE_ADAPTER_SCOPE_EFLAG_OFFSET]);
 		result.append(')');
 		return result.toString();
 	}
@@ -292,8 +297,8 @@ public class GenOperationImpl
 	@Override
 	public GenClass getGenClass() {
 		return isDuplicate()
-			? findGenClass(Generator
-				.getEcoreContainingClass(getEcoreOperation()))
+			? findGenClass(
+				Generator.getEcoreContainingClass(getEcoreOperation()))
 			: super.getGenClass();
 	}
 
@@ -395,8 +400,8 @@ public class GenOperationImpl
 			org.eclipse.emf.codegen.ecore.genmodel.GenOperation oldGenOperationVersion) {
 		super.reconcileSettings(oldGenOperationVersion);
 
-		setCacheAdapterScope(UML2GenModelUtil
-			.getCacheAdapterScope(oldGenOperationVersion));
+		setCacheAdapterScope(
+			UML2GenModelUtil.getCacheAdapterScope(oldGenOperationVersion));
 	}
 
 	@Override
@@ -464,13 +469,13 @@ public class GenOperationImpl
 	@Override
 	public boolean hasInvocationDelegate() {
 
-		if (isDuplicate()
-			&& getGenModel().getRuntimeVersion().getValue() >= GenRuntimeVersion.EMF26_VALUE) {
+		if (isDuplicate() && getGenModel().getRuntimeVersion()
+			.getValue() >= GenRuntimeVersion.EMF26_VALUE) {
 
-			for (String invocationDelegate : EcoreUtil
-				.getInvocationDelegates(getGenClass().getGenPackage()
-					.getEcorePackage())) {
-				if (getEcoreOperation().getEAnnotation(invocationDelegate) != null)
+			for (String invocationDelegate : EcoreUtil.getInvocationDelegates(
+				getGenClass().getGenPackage().getEcorePackage())) {
+				if (getEcoreOperation()
+					.getEAnnotation(invocationDelegate) != null)
 					return EOperation.Internal.InvocationDelegate.Factory.Registry.INSTANCE
 						.getFactory(invocationDelegate) != null;
 			}

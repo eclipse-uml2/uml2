@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 247980
  *   Kenn Hussey (CEA) - 394623, 212765, 451350
+ *   Kenn Hussey - 522703
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
@@ -133,7 +134,8 @@ public class GenPackageImpl
 	 * @generated
 	 */
 	public void setResourceInterfaces(boolean newResourceInterfaces) {
-		boolean oldResourceInterfaces = (eFlags & RESOURCE_INTERFACES_EFLAG) != 0;
+		boolean oldResourceInterfaces = (eFlags
+			& RESOURCE_INTERFACES_EFLAG) != 0;
 		if (newResourceInterfaces)
 			eFlags |= RESOURCE_INTERFACES_EFLAG;
 		else
@@ -141,8 +143,8 @@ public class GenPackageImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				GenModelPackage.GEN_PACKAGE__RESOURCE_INTERFACES
-					+ EOFFSET_CORRECTION, oldResourceInterfaces,
-				newResourceInterfaces));
+					+ EOFFSET_CORRECTION,
+				oldResourceInterfaces, newResourceInterfaces));
 	}
 
 	/**
@@ -165,8 +167,8 @@ public class GenPackageImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				GenModelPackage.GEN_PACKAGE__OPERATIONS_PACKAGE
-					+ EOFFSET_CORRECTION, oldOperationsPackage,
-				operationsPackage));
+					+ EOFFSET_CORRECTION,
+				oldOperationsPackage, operationsPackage));
 	}
 
 	/**
@@ -230,7 +232,8 @@ public class GenPackageImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID - EOFFSET_CORRECTION) {
 			case GenModelPackage.GEN_PACKAGE__RESOURCE_INTERFACES :
-				return ((eFlags & RESOURCE_INTERFACES_EFLAG) != 0) != RESOURCE_INTERFACES_EDEFAULT;
+				return ((eFlags
+					& RESOURCE_INTERFACES_EFLAG) != 0) != RESOURCE_INTERFACES_EDEFAULT;
 			case GenModelPackage.GEN_PACKAGE__OPERATIONS_PACKAGE :
 				return OPERATIONS_PACKAGE_EDEFAULT == null
 					? operationsPackage != null
@@ -245,7 +248,8 @@ public class GenPackageImpl
 	 * @generated
 	 */
 	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+	public int eDerivedStructuralFeatureID(int baseFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == GenBase.class) {
 			switch (baseFeatureID) {
 				default :
@@ -277,7 +281,7 @@ public class GenPackageImpl
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (resourceInterfaces: "); //$NON-NLS-1$
 		result.append((eFlags & RESOURCE_INTERFACES_EFLAG) != 0);
 		result.append(", operationsPackage: "); //$NON-NLS-1$
@@ -307,21 +311,21 @@ public class GenPackageImpl
 	}
 
 	public String getImportedResourceInterfaceName() {
-		return getGenModel().getImportedName(
-			getQualifiedResourceInterfaceName());
+		return getGenModel()
+			.getImportedName(getQualifiedResourceInterfaceName());
 	}
 
 	public String getImportedResourceBaseInterfaceName() {
 		switch (getResource().getValue()) {
 			case GenResourceKind.XML :
-				return getGenModel().getImportedName(
-					"org.eclipse.emf.ecore.xmi.XMLResource"); //$NON-NLS-1$
+				return getGenModel()
+					.getImportedName("org.eclipse.emf.ecore.xmi.XMLResource"); //$NON-NLS-1$
 			case GenResourceKind.XMI :
-				return getGenModel().getImportedName(
-					"org.eclipse.emf.ecore.xmi.XMIResource"); //$NON-NLS-1$
+				return getGenModel()
+					.getImportedName("org.eclipse.emf.ecore.xmi.XMIResource"); //$NON-NLS-1$
 			default :
-				return getGenModel().getImportedName(
-					"org.eclipse.emf.ecore.resource.Resource"); //$NON-NLS-1$
+				return getGenModel()
+					.getImportedName("org.eclipse.emf.ecore.resource.Resource"); //$NON-NLS-1$
 		}
 	}
 
@@ -330,8 +334,8 @@ public class GenPackageImpl
 	}
 
 	public String getImportedResourceFactoryBaseInterfaceName() {
-		return getGenModel().getImportedName(
-			"org.eclipse.emf.ecore.resource.Resource") //$NON-NLS-1$
+		return getGenModel()
+			.getImportedName("org.eclipse.emf.ecore.resource.Resource") //$NON-NLS-1$
 			+ ".Factory"; //$NON-NLS-1$
 	}
 
@@ -366,10 +370,10 @@ public class GenPackageImpl
 			org.eclipse.emf.codegen.ecore.genmodel.GenPackage oldGenPackageVersion) {
 		super.reconcileSettings(oldGenPackageVersion);
 
-		setOperationsPackage(UML2GenModelUtil
-			.getOperationsPackage(oldGenPackageVersion));
-		setResourceInterfaces(UML2GenModelUtil
-			.isResourceInterfaces(oldGenPackageVersion));
+		setOperationsPackage(
+			UML2GenModelUtil.getOperationsPackage(oldGenPackageVersion));
+		setResourceInterfaces(
+			UML2GenModelUtil.isResourceInterfaces(oldGenPackageVersion));
 	}
 
 	public String getDerivedUnionAdapterClassName() {
@@ -377,17 +381,16 @@ public class GenPackageImpl
 	}
 
 	public String getQualifiedDerivedUnionAdapterClassName() {
-		return getUtilitiesPackageName()
-			+ "." + getDerivedUnionAdapterClassName(); //$NON-NLS-1$
+		return getUtilitiesPackageName() + "." //$NON-NLS-1$
+			+ getDerivedUnionAdapterClassName();
 	}
 
 	public List<GenClass> getDerivedUnionAdapterGenClasses() {
 		return filterGenClasses(getGenClasses(), new GenClassFilter() {
 
 			public boolean accept(GenClass genClass) {
-				return !genClass.isAbstract()
-					&& !UML2GenModelUtil.getAllUnionGenFeatures(genClass)
-						.isEmpty();
+				return !genClass.isAbstract() && !UML2GenModelUtil
+					.getAllUnionGenFeatures(genClass).isEmpty();
 			}
 		});
 	}
@@ -405,11 +408,11 @@ public class GenPackageImpl
 
 					EMap<String, String> details = eAnnotation.getDetails();
 
-					if (details
-						.containsKey(EcorePackage.Literals.ETYPED_ELEMENT__LOWER_BOUND
+					if (details.containsKey(
+						EcorePackage.Literals.ETYPED_ELEMENT__LOWER_BOUND
 							.getName())
-						|| details
-							.containsKey(EcorePackage.Literals.ETYPED_ELEMENT__UPPER_BOUND
+						|| details.containsKey(
+							EcorePackage.Literals.ETYPED_ELEMENT__UPPER_BOUND
 								.getName())) {
 
 						return true;

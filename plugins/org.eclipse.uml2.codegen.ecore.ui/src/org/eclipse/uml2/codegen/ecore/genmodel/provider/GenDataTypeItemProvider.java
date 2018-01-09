@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 414970
+ *   Kenn Hussey - 522703
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
@@ -21,6 +22,7 @@ import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
+//import org.eclipse.uml2.codegen.ecore.genmodel.GenDataType;
 import org.eclipse.uml2.codegen.ecore.ui.CodeGenEcoreUIPlugin;
 
 /**

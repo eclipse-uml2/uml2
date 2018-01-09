@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 208016, 247980
- *   Kenn Hussey - 286329
+ *   Kenn Hussey - 286329, 522703
  *   Kenn Hussey (CEA) - 351777, 397324, 414970, 451350
  *
  */
@@ -104,7 +104,8 @@ public interface GenModelPackage
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_BASE_FEATURE_COUNT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_BASE_FEATURE_COUNT + 0;
+	int GEN_BASE_FEATURE_COUNT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_BASE_FEATURE_COUNT
+		+ 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenClassImpl <em>Gen Class</em>}' class.
@@ -142,6 +143,16 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_CLASS__GEN_TYPE_PARAMETERS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_CLASS__GEN_TYPE_PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_CLASS__DOCUMENTATION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_CLASS__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Provider</b></em>' attribute.
@@ -213,7 +224,8 @@ public interface GenModelPackage
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_CLASS_FEATURE_COUNT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_CLASS_FEATURE_COUNT + 0;
+	int GEN_CLASS_FEATURE_COUNT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_CLASS_FEATURE_COUNT
+		+ 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenClassifierImpl <em>Gen Classifier</em>}' class.
@@ -253,13 +265,24 @@ public interface GenModelPackage
 	int GEN_CLASSIFIER__GEN_TYPE_PARAMETERS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_CLASSIFIER__GEN_TYPE_PARAMETERS;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_CLASSIFIER__DOCUMENTATION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_CLASSIFIER__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Gen Classifier</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_CLASSIFIER_FEATURE_COUNT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_CLASSIFIER_FEATURE_COUNT + 0;
+	int GEN_CLASSIFIER_FEATURE_COUNT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_CLASSIFIER_FEATURE_COUNT
+		+ 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenDataTypeImpl <em>Gen Data Type</em>}' class.
@@ -299,6 +322,16 @@ public interface GenModelPackage
 	int GEN_DATA_TYPE__GEN_TYPE_PARAMETERS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_DATA_TYPE__GEN_TYPE_PARAMETERS;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_DATA_TYPE__DOCUMENTATION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_DATA_TYPE__DOCUMENTATION;
+
+	/**
 	 * The feature id for the '<em><b>Ecore Data Type</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -308,13 +341,34 @@ public interface GenModelPackage
 	int GEN_DATA_TYPE__ECORE_DATA_TYPE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_DATA_TYPE__ECORE_DATA_TYPE;
 
 	/**
+	 * The feature id for the '<em><b>Create</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_DATA_TYPE__CREATE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_DATA_TYPE__CREATE;
+
+	/**
+	 * The feature id for the '<em><b>Convert</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_DATA_TYPE__CONVERT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_DATA_TYPE__CONVERT;
+
+	/**
 	 * The number of structural features of the '<em>Gen Data Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DATA_TYPE_FEATURE_COUNT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_DATA_TYPE_FEATURE_COUNT + 0;
+	int GEN_DATA_TYPE_FEATURE_COUNT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_DATA_TYPE_FEATURE_COUNT
+		+ 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenEnumImpl <em>Gen Enum</em>}' class.
@@ -354,6 +408,16 @@ public interface GenModelPackage
 	int GEN_ENUM__GEN_TYPE_PARAMETERS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_ENUM__GEN_TYPE_PARAMETERS;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_ENUM__DOCUMENTATION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_ENUM__DOCUMENTATION;
+
+	/**
 	 * The feature id for the '<em><b>Ecore Data Type</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -361,6 +425,26 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_ENUM__ECORE_DATA_TYPE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_ENUM__ECORE_DATA_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Create</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_ENUM__CREATE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_ENUM__CREATE;
+
+	/**
+	 * The feature id for the '<em><b>Convert</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_ENUM__CONVERT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_ENUM__CONVERT;
 
 	/**
 	 * The feature id for the '<em><b>Type Safe Enum Compatible</b></em>' attribute.
@@ -396,7 +480,8 @@ public interface GenModelPackage
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_ENUM_FEATURE_COUNT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_ENUM_FEATURE_COUNT + 0;
+	int GEN_ENUM_FEATURE_COUNT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_ENUM_FEATURE_COUNT
+		+ 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenEnumLiteralImpl <em>Gen Enum Literal</em>}' class.
@@ -436,13 +521,24 @@ public interface GenModelPackage
 	int GEN_ENUM_LITERAL__ECORE_ENUM_LITERAL = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_ENUM_LITERAL__ECORE_ENUM_LITERAL;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_ENUM_LITERAL__DOCUMENTATION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_ENUM_LITERAL__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Gen Enum Literal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_ENUM_LITERAL_FEATURE_COUNT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_ENUM_LITERAL_FEATURE_COUNT + 0;
+	int GEN_ENUM_LITERAL_FEATURE_COUNT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_ENUM_LITERAL_FEATURE_COUNT
+		+ 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenFeatureImpl <em>Gen Feature</em>}' class.
@@ -462,6 +558,16 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_FEATURE__GEN_ANNOTATIONS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_FEATURE__GEN_ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_FEATURE__DOCUMENTATION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_FEATURE__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Property</b></em>' attribute.
@@ -563,13 +669,64 @@ public interface GenModelPackage
 	int GEN_FEATURE__ECORE_FEATURE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_FEATURE__ECORE_FEATURE;
 
 	/**
+	 * The feature id for the '<em><b>Suppressed Get Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_FEATURE__SUPPRESSED_GET_VISIBILITY = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_FEATURE__SUPPRESSED_GET_VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Suppressed Set Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_FEATURE__SUPPRESSED_SET_VISIBILITY = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_FEATURE__SUPPRESSED_SET_VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Suppressed Is Set Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_FEATURE__SUPPRESSED_IS_SET_VISIBILITY = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_FEATURE__SUPPRESSED_IS_SET_VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Suppressed Unset Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_FEATURE__SUPPRESSED_UNSET_VISIBILITY = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_FEATURE__SUPPRESSED_UNSET_VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Get</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_FEATURE__GET = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_FEATURE__GET;
+
+	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_FEATURE__KEY = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_FEATURE_FEATURE_COUNT + 0;
+	int GEN_FEATURE__KEY = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_FEATURE_FEATURE_COUNT
+		+ 0;
 
 	/**
 	 * The feature id for the '<em><b>Pluralization Exception</b></em>' attribute.
@@ -578,7 +735,8 @@ public interface GenModelPackage
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_FEATURE__PLURALIZATION_EXCEPTION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_FEATURE_FEATURE_COUNT + 1;
+	int GEN_FEATURE__PLURALIZATION_EXCEPTION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_FEATURE_FEATURE_COUNT
+		+ 1;
 
 	/**
 	 * The number of structural features of the '<em>Gen Feature</em>' class.
@@ -587,7 +745,8 @@ public interface GenModelPackage
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_FEATURE_FEATURE_COUNT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_FEATURE_FEATURE_COUNT + 2;
+	int GEN_FEATURE_FEATURE_COUNT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_FEATURE_FEATURE_COUNT
+		+ 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelImpl <em>Gen Model</em>}' class.
@@ -1383,13 +1542,54 @@ public interface GenModelPackage
 	int GEN_MODEL__OS_GI_COMPATIBLE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__OS_GI_COMPATIBLE;
 
 	/**
+	 * The feature id for the '<em><b>Eclipse Platform Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__ECLIPSE_PLATFORM_VERSION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__ECLIPSE_PLATFORM_VERSION;
+
+	/**
+	 * The feature id for the '<em><b>Model Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__MODEL_DOCUMENTATION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__MODEL_DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Auto Resize Properties</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__AUTO_RESIZE_PROPERTIES = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__AUTO_RESIZE_PROPERTIES;
+
+	/**
+	 * The feature id for the '<em><b>Auto Expand Properties</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__AUTO_EXPAND_PROPERTIES = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__AUTO_EXPAND_PROPERTIES;
+
+	/**
 	 * The feature id for the '<em><b>Factory Methods</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_MODEL__FACTORY_METHODS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL_FEATURE_COUNT + 0;
+	int GEN_MODEL__FACTORY_METHODS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL_FEATURE_COUNT
+		+ 0;
 
 	/**
 	 * The feature id for the '<em><b>Pluralized Getters</b></em>' attribute.
@@ -1398,7 +1598,8 @@ public interface GenModelPackage
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_MODEL__PLURALIZED_GETTERS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL_FEATURE_COUNT + 1;
+	int GEN_MODEL__PLURALIZED_GETTERS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL_FEATURE_COUNT
+		+ 1;
 
 	/**
 	 * The feature id for the '<em><b>Cache Adapter Support</b></em>' attribute.
@@ -1407,7 +1608,8 @@ public interface GenModelPackage
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_MODEL__CACHE_ADAPTER_SUPPORT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL_FEATURE_COUNT + 2;
+	int GEN_MODEL__CACHE_ADAPTER_SUPPORT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL_FEATURE_COUNT
+		+ 2;
 
 	/**
 	 * The feature id for the '<em><b>Safe Strings</b></em>' attribute.
@@ -1416,7 +1618,8 @@ public interface GenModelPackage
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_MODEL__SAFE_STRINGS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL_FEATURE_COUNT + 3;
+	int GEN_MODEL__SAFE_STRINGS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL_FEATURE_COUNT
+		+ 3;
 
 	/**
 	 * The feature id for the '<em><b>Invariant Prefix</b></em>' attribute.
@@ -1425,7 +1628,8 @@ public interface GenModelPackage
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_MODEL__INVARIANT_PREFIX = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL_FEATURE_COUNT + 4;
+	int GEN_MODEL__INVARIANT_PREFIX = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL_FEATURE_COUNT
+		+ 4;
 
 	/**
 	 * The number of structural features of the '<em>Gen Model</em>' class.
@@ -1434,7 +1638,8 @@ public interface GenModelPackage
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_MODEL_FEATURE_COUNT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL_FEATURE_COUNT + 5;
+	int GEN_MODEL_FEATURE_COUNT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL_FEATURE_COUNT
+		+ 5;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenOperationImpl <em>Gen Operation</em>}' class.
@@ -1454,6 +1659,16 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_OPERATION__GEN_ANNOTATIONS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_OPERATION__GEN_ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_OPERATION__DOCUMENTATION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_OPERATION__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Gen Class</b></em>' container reference.
@@ -1492,13 +1707,34 @@ public interface GenModelPackage
 	int GEN_OPERATION__GEN_TYPE_PARAMETERS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_OPERATION__GEN_TYPE_PARAMETERS;
 
 	/**
+	 * The feature id for the '<em><b>Suppressed Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_OPERATION__SUPPRESSED_VISIBILITY = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_OPERATION__SUPPRESSED_VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Body</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_OPERATION__BODY = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_OPERATION__BODY;
+
+	/**
 	 * The feature id for the '<em><b>Cache Adapter Scope</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_OPERATION__CACHE_ADAPTER_SCOPE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_OPERATION_FEATURE_COUNT + 0;
+	int GEN_OPERATION__CACHE_ADAPTER_SCOPE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_OPERATION_FEATURE_COUNT
+		+ 0;
 
 	/**
 	 * The number of structural features of the '<em>Gen Operation</em>' class.
@@ -1507,7 +1743,8 @@ public interface GenModelPackage
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_OPERATION_FEATURE_COUNT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_OPERATION_FEATURE_COUNT + 1;
+	int GEN_OPERATION_FEATURE_COUNT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_OPERATION_FEATURE_COUNT
+		+ 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenPackageImpl <em>Gen Package</em>}' class.
@@ -1799,13 +2036,24 @@ public interface GenModelPackage
 	int GEN_PACKAGE__PUBLICATION_LOCATION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__PUBLICATION_LOCATION;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_PACKAGE__DOCUMENTATION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__DOCUMENTATION;
+
+	/**
 	 * The feature id for the '<em><b>Resource Interfaces</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_PACKAGE__RESOURCE_INTERFACES = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE_FEATURE_COUNT + 0;
+	int GEN_PACKAGE__RESOURCE_INTERFACES = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE_FEATURE_COUNT
+		+ 0;
 
 	/**
 	 * The feature id for the '<em><b>Operations Package</b></em>' attribute.
@@ -1814,7 +2062,8 @@ public interface GenModelPackage
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_PACKAGE__OPERATIONS_PACKAGE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE_FEATURE_COUNT + 1;
+	int GEN_PACKAGE__OPERATIONS_PACKAGE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE_FEATURE_COUNT
+		+ 1;
 
 	/**
 	 * The number of structural features of the '<em>Gen Package</em>' class.
@@ -1823,7 +2072,8 @@ public interface GenModelPackage
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_PACKAGE_FEATURE_COUNT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE_FEATURE_COUNT + 2;
+	int GEN_PACKAGE_FEATURE_COUNT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE_FEATURE_COUNT
+		+ 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenParameterImpl <em>Gen Parameter</em>}' class.
@@ -1843,6 +2093,16 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_PARAMETER__GEN_ANNOTATIONS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PARAMETER__GEN_ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_PARAMETER__DOCUMENTATION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PARAMETER__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Gen Operation</b></em>' container reference.
@@ -1869,7 +2129,8 @@ public interface GenModelPackage
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_PARAMETER_FEATURE_COUNT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PARAMETER_FEATURE_COUNT + 0;
+	int GEN_PARAMETER_FEATURE_COUNT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PARAMETER_FEATURE_COUNT
+		+ 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenTypedElementImpl <em>Gen Typed Element</em>}' class.
@@ -1891,13 +2152,24 @@ public interface GenModelPackage
 	int GEN_TYPED_ELEMENT__GEN_ANNOTATIONS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_TYPED_ELEMENT__GEN_ANNOTATIONS;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_TYPED_ELEMENT__DOCUMENTATION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_TYPED_ELEMENT__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Gen Typed Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_TYPED_ELEMENT_FEATURE_COUNT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_TYPED_ELEMENT_FEATURE_COUNT + 0;
+	int GEN_TYPED_ELEMENT_FEATURE_COUNT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_TYPED_ELEMENT_FEATURE_COUNT
+		+ 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.GenCacheAdapterScope <em>Gen Cache Adapter Scope</em>}' enum.

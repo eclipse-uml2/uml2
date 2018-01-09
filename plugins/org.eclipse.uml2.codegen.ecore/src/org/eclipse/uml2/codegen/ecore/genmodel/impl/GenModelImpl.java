@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208016, 247980
- *   Kenn Hussey - 284809
+ *   Kenn Hussey - 284809, 522703
  *   Kenn Hussey (CEA) - 358792, 351777, 382637, 212765, 451350
  *
  */
@@ -208,9 +208,7 @@ public class GenModelImpl
 		else
 			eFlags &= ~FACTORY_METHODS_EFLAG;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-				this,
-				Notification.SET,
+			eNotify(new ENotificationImpl(this, Notification.SET,
 				GenModelPackage.GEN_MODEL__FACTORY_METHODS + EOFFSET_CORRECTION,
 				oldFactoryMethods, newFactoryMethods));
 	}
@@ -238,8 +236,8 @@ public class GenModelImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				GenModelPackage.GEN_MODEL__PLURALIZED_GETTERS
-					+ EOFFSET_CORRECTION, oldPluralizedGetters,
-				newPluralizedGetters));
+					+ EOFFSET_CORRECTION,
+				oldPluralizedGetters, newPluralizedGetters));
 	}
 
 	/**
@@ -257,7 +255,8 @@ public class GenModelImpl
 	 * @generated
 	 */
 	public void setCacheAdapterSupport(boolean newCacheAdapterSupport) {
-		boolean oldCacheAdapterSupport = (eFlags & CACHE_ADAPTER_SUPPORT_EFLAG) != 0;
+		boolean oldCacheAdapterSupport = (eFlags
+			& CACHE_ADAPTER_SUPPORT_EFLAG) != 0;
 		if (newCacheAdapterSupport)
 			eFlags |= CACHE_ADAPTER_SUPPORT_EFLAG;
 		else
@@ -265,8 +264,8 @@ public class GenModelImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				GenModelPackage.GEN_MODEL__CACHE_ADAPTER_SUPPORT
-					+ EOFFSET_CORRECTION, oldCacheAdapterSupport,
-				newCacheAdapterSupport));
+					+ EOFFSET_CORRECTION,
+				oldCacheAdapterSupport, newCacheAdapterSupport));
 	}
 
 	/**
@@ -313,9 +312,11 @@ public class GenModelImpl
 		String oldInvariantPrefix = invariantPrefix;
 		invariantPrefix = newInvariantPrefix;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				GenModelPackage.GEN_MODEL__INVARIANT_PREFIX
-					+ EOFFSET_CORRECTION, oldInvariantPrefix, invariantPrefix));
+			eNotify(
+				new ENotificationImpl(this, Notification.SET,
+					GenModelPackage.GEN_MODEL__INVARIANT_PREFIX
+						+ EOFFSET_CORRECTION,
+					oldInvariantPrefix, invariantPrefix));
 	}
 
 	/**
@@ -403,13 +404,17 @@ public class GenModelImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID - EOFFSET_CORRECTION) {
 			case GenModelPackage.GEN_MODEL__FACTORY_METHODS :
-				return ((eFlags & FACTORY_METHODS_EFLAG) != 0) != FACTORY_METHODS_EDEFAULT;
+				return ((eFlags
+					& FACTORY_METHODS_EFLAG) != 0) != FACTORY_METHODS_EDEFAULT;
 			case GenModelPackage.GEN_MODEL__PLURALIZED_GETTERS :
-				return ((eFlags & PLURALIZED_GETTERS_EFLAG) != 0) != PLURALIZED_GETTERS_EDEFAULT;
+				return ((eFlags
+					& PLURALIZED_GETTERS_EFLAG) != 0) != PLURALIZED_GETTERS_EDEFAULT;
 			case GenModelPackage.GEN_MODEL__CACHE_ADAPTER_SUPPORT :
-				return ((eFlags & CACHE_ADAPTER_SUPPORT_EFLAG) != 0) != CACHE_ADAPTER_SUPPORT_EDEFAULT;
+				return ((eFlags
+					& CACHE_ADAPTER_SUPPORT_EFLAG) != 0) != CACHE_ADAPTER_SUPPORT_EDEFAULT;
 			case GenModelPackage.GEN_MODEL__SAFE_STRINGS :
-				return ((eFlags & SAFE_STRINGS_EFLAG) != 0) != SAFE_STRINGS_EDEFAULT;
+				return ((eFlags
+					& SAFE_STRINGS_EFLAG) != 0) != SAFE_STRINGS_EDEFAULT;
 			case GenModelPackage.GEN_MODEL__INVARIANT_PREFIX :
 				return INVARIANT_PREFIX_EDEFAULT == null
 					? invariantPrefix != null
@@ -424,7 +429,8 @@ public class GenModelImpl
 	 * @generated
 	 */
 	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+	public int eDerivedStructuralFeatureID(int baseFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == GenBase.class) {
 			switch (baseFeatureID) {
 				default :
@@ -465,7 +471,7 @@ public class GenModelImpl
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (factoryMethods: "); //$NON-NLS-1$
 		result.append((eFlags & FACTORY_METHODS_EFLAG) != 0);
 		result.append(", pluralizedGetters: "); //$NON-NLS-1$
@@ -548,14 +554,16 @@ public class GenModelImpl
 
 				for (GenClass genClass : genPackage.getGenClasses()) {
 
-					if (!UML2GenModelUtil.getImplementedRedefinedGenFeatures(
-						genClass).isEmpty()
-						|| !UML2GenModelUtil.getImplementedSubsetGenFeatures(
-							genClass).isEmpty()
-						|| !UML2GenModelUtil.getImplementedSupersetGenFeatures(
-							genClass).isEmpty()
-						|| !UML2GenModelUtil.getImplementedUnionGenFeatures(
-							genClass).isEmpty()) {
+					if (!UML2GenModelUtil
+						.getImplementedRedefinedGenFeatures(genClass).isEmpty()
+						|| !UML2GenModelUtil
+							.getImplementedSubsetGenFeatures(genClass).isEmpty()
+						|| !UML2GenModelUtil
+							.getImplementedSupersetGenFeatures(genClass)
+							.isEmpty()
+						|| !UML2GenModelUtil
+							.getImplementedUnionGenFeatures(genClass)
+							.isEmpty()) {
 
 						result.add("org.eclipse.uml2.common"); //$NON-NLS-1$
 						break genPackageLoop;
@@ -583,21 +591,23 @@ public class GenModelImpl
 			org.eclipse.emf.codegen.ecore.genmodel.GenModel oldGenModelVersion) {
 		super.reconcileSettings(oldGenModelVersion);
 
-		setCacheAdapterSupport(UML2GenModelUtil
-			.isCacheAdapterSupport(oldGenModelVersion));
-		setFactoryMethods(UML2GenModelUtil.isFactoryMethods(oldGenModelVersion));
-		setInvariantPrefix(UML2GenModelUtil
-			.getInvariantPrefix(oldGenModelVersion));
-		setPluralizedGetters(UML2GenModelUtil
-			.isPluralizedGetters(oldGenModelVersion));
+		setCacheAdapterSupport(
+			UML2GenModelUtil.isCacheAdapterSupport(oldGenModelVersion));
+		setFactoryMethods(
+			UML2GenModelUtil.isFactoryMethods(oldGenModelVersion));
+		setInvariantPrefix(
+			UML2GenModelUtil.getInvariantPrefix(oldGenModelVersion));
+		setPluralizedGetters(
+			UML2GenModelUtil.isPluralizedGetters(oldGenModelVersion));
 		setSafeStrings(UML2GenModelUtil.isSafeStrings(oldGenModelVersion));
 	}
 
 	@Override
 	public boolean isSuppressedAnnotation(String source) {
 		return super.isSuppressedAnnotation(source)
-			|| (isSuppressGenModelAnnotations() && UML2GenModelUtil.UML2_GEN_MODEL_PACKAGE_1_1_NS_URI
-				.equals(source));
+			|| (isSuppressGenModelAnnotations()
+				&& UML2GenModelUtil.UML2_GEN_MODEL_PACKAGE_1_1_NS_URI
+					.equals(source));
 	}
 
 	@Override
@@ -608,8 +618,8 @@ public class GenModelImpl
 		if (genPackage.hasClassifiers()
 			&& UML2GenModelUtil.isOperationsClasses(genPackage)) {
 
-			packageNames.add(UML2GenModelUtil
-				.getOperationsPackageName(genPackage));
+			packageNames
+				.add(UML2GenModelUtil.getOperationsPackageName(genPackage));
 		}
 	}
 

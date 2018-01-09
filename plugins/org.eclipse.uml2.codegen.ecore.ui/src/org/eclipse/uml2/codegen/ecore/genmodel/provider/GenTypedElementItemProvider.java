@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,12 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 414970
+ *   Kenn Hussey - 522703
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
 
 import java.util.List;
 
+import org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage;
 import org.eclipse.emf.codegen.ecore.genmodel.provider.GenBaseItemProvider;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -21,8 +23,12 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.uml2.codegen.ecore.genmodel.GenTypedElement;
 import org.eclipse.uml2.codegen.ecore.ui.CodeGenEcoreUIPlugin;
 
 /**
@@ -55,8 +61,29 @@ public class GenTypedElementItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addDocumentationPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Documentation feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 */
+	protected void addDocumentationPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+			((ComposeableAdapterFactory) adapterFactory)
+				.getRootAdapterFactory(),
+			getResourceLocator(),
+			getString("_UI_GenTypedElement_documentation_feature"), //$NON-NLS-1$
+			getString("_UI_GenTypedElement_documentation_description"), //$NON-NLS-1$
+			GenModelPackage.Literals.GEN_TYPED_ELEMENT__DOCUMENTATION, true,
+			true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+			getString("_UI_ModelPropertyCategory"), //$NON-NLS-1$
+			null));
 	}
 
 	/**
@@ -80,6 +107,13 @@ public class GenTypedElementItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(GenTypedElement.class)) {
+			case org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage.GEN_TYPED_ELEMENT__DOCUMENTATION :
+				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208016, 247980
- *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey - 286329, 323181, 522703
  *   Kenn Hussey (CEA) - 394623, 212765, 451350
  *
  */
@@ -163,7 +163,8 @@ public class GenFeatureImpl
 	 * @generated
 	 */
 	public void setPluralizationException(boolean newPluralizationException) {
-		boolean oldPluralizationException = (eFlags & PLURALIZATION_EXCEPTION_EFLAG) != 0;
+		boolean oldPluralizationException = (eFlags
+			& PLURALIZATION_EXCEPTION_EFLAG) != 0;
 		if (newPluralizationException)
 			eFlags |= PLURALIZATION_EXCEPTION_EFLAG;
 		else
@@ -171,8 +172,8 @@ public class GenFeatureImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				GenModelPackage.GEN_FEATURE__PLURALIZATION_EXCEPTION
-					+ EOFFSET_CORRECTION, oldPluralizationException,
-				newPluralizationException));
+					+ EOFFSET_CORRECTION,
+				oldPluralizationException, newPluralizationException));
 	}
 
 	/**
@@ -238,7 +239,8 @@ public class GenFeatureImpl
 			case GenModelPackage.GEN_FEATURE__KEY :
 				return ((eFlags & KEY_EFLAG) != 0) != KEY_EDEFAULT;
 			case GenModelPackage.GEN_FEATURE__PLURALIZATION_EXCEPTION :
-				return ((eFlags & PLURALIZATION_EXCEPTION_EFLAG) != 0) != PLURALIZATION_EXCEPTION_EDEFAULT;
+				return ((eFlags
+					& PLURALIZATION_EXCEPTION_EFLAG) != 0) != PLURALIZATION_EXCEPTION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -249,7 +251,8 @@ public class GenFeatureImpl
 	 * @generated
 	 */
 	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+	public int eDerivedStructuralFeatureID(int baseFeatureID,
+			Class<?> baseClass) {
 		if (baseClass == GenBase.class) {
 			switch (baseFeatureID) {
 				default :
@@ -287,7 +290,7 @@ public class GenFeatureImpl
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (key: "); //$NON-NLS-1$
 		result.append((eFlags & KEY_EFLAG) != 0);
 		result.append(", pluralizationException: "); //$NON-NLS-1$
@@ -331,10 +334,10 @@ public class GenFeatureImpl
 			: (isListType()
 				&& UML2GenModelUtil.isPluralizedGetters(getGenModel())
 				&& !isPluralizationException()
-				? Generator.pluralize(getCapName())
-				: ("Class".equals(getCapName()) //$NON-NLS-1$
-					? "Class_" //$NON-NLS-1$
-					: getCapName()));
+					? Generator.pluralize(getCapName())
+					: ("Class".equals(getCapName()) //$NON-NLS-1$
+						? "Class_" //$NON-NLS-1$
+						: getCapName()));
 	}
 
 	@Override
@@ -342,8 +345,8 @@ public class GenFeatureImpl
 		return isListType()
 			&& UML2GenModelUtil.isPluralizedGetters(getGenModel())
 			&& !isPluralizationException()
-			? safeName(Generator.pluralize(uncapPrefixedName(getName())))
-			: super.getSafeName();
+				? safeName(Generator.pluralize(uncapPrefixedName(getName())))
+				: super.getSafeName();
 	}
 
 	@Override
@@ -373,8 +376,8 @@ public class GenFeatureImpl
 
 					if (genOperation.getName().equals(result)
 						&& genOperation.getGenParameters().isEmpty()
-						&& !genOperation.getType(context).equals(
-							getType(context))) {
+						&& !genOperation.getType(context)
+							.equals(getType(context))) {
 
 						result = result + "_"; //$NON-NLS-1$
 						break;
@@ -497,8 +500,8 @@ public class GenFeatureImpl
 			.getKeyGenFeatures(getTypeGenClass())) {
 
 			if (keyGenFeature.isContains()) {
-				keyGenFeatures.addAll(UML2GenModelUtil.getKeyGenFeatures(
-					keyGenFeature.getTypeGenClass(), false));
+				keyGenFeatures.addAll(UML2GenModelUtil
+					.getKeyGenFeatures(keyGenFeature.getTypeGenClass(), false));
 			} else {
 				keyGenFeatures.add(keyGenFeature);
 			}
@@ -558,11 +561,12 @@ public class GenFeatureImpl
 						if (formal) {
 
 							if (keyGenFeature.isListType()) {
-								keyFeatureParameter.append(getGenModel()
-									.getImportedName(
+								keyFeatureParameter
+									.append(getGenModel().getImportedName(
 										"org.eclipse.emf.common.util.EList")); //$NON-NLS-1$
 
-								if (getEffectiveComplianceLevel().getValue() >= GenJDKLevel.JDK50) {
+								if (getEffectiveComplianceLevel()
+									.getValue() >= GenJDKLevel.JDK50) {
 									keyFeatureParameter.append('<');
 									keyFeatureParameter
 										.append(nestedKeyGenFeature
@@ -577,11 +581,11 @@ public class GenFeatureImpl
 							keyFeatureParameter.append(' ');
 						}
 
-						return keyFeatureParameter.append(
-							keyGenFeature.getUncapName()
+						return keyFeatureParameter
+							.append(keyGenFeature.getUncapName()
 								+ (keyGenFeature.isListType()
-									? Generator.pluralize(nestedKeyGenFeature
-										.getCapName())
+									? Generator.pluralize(
+										nestedKeyGenFeature.getCapName())
 									: nestedKeyGenFeature.getCapName()))
 							.toString();
 					}
@@ -589,13 +593,14 @@ public class GenFeatureImpl
 			} else if (count++ == index) {
 
 				if (formal) {
-					keyFeatureParameter.append(keyGenFeature
-						.getImportedType(context));
+					keyFeatureParameter
+						.append(keyGenFeature.getImportedType(context));
 					keyFeatureParameter.append(' ');
 				}
 
-				return keyFeatureParameter.append(
-					uncapName(keyGenFeature.getAccessorName())).toString();
+				return keyFeatureParameter
+					.append(uncapName(keyGenFeature.getAccessorName()))
+					.toString();
 			}
 		}
 
@@ -620,8 +625,8 @@ public class GenFeatureImpl
 		StringBuffer keyFeatureParameters = new StringBuffer();
 
 		for (int i = 0, size = getKeyGenFeatures().size(); i < size; i++) {
-			keyFeatureParameters.append(getKeyFeatureParameter(context, i,
-				formal));
+			keyFeatureParameters
+				.append(getKeyFeatureParameter(context, i, formal));
 
 			if (i + 1 < size) {
 				keyFeatureParameters.append(", "); //$NON-NLS-1$
@@ -651,26 +656,23 @@ public class GenFeatureImpl
 						.next();
 
 					if (count++ == index) {
-						return formattedKeyFeatureName
-							.append(
-								"'<em><b>" //$NON-NLS-1$
-									+ format(
-										keyGenFeature.getCapName()
-											+ (keyGenFeature.isListType()
-												? Generator
-													.pluralize(nestedKeyGenFeature
-														.getCapName())
-												: nestedKeyGenFeature
-													.getCapName()), ' ', null,
-										false, false) + "</b></em>'") //$NON-NLS-1$
+						return formattedKeyFeatureName.append("'<em><b>" //$NON-NLS-1$
+							+ format(
+								keyGenFeature.getCapName()
+									+ (keyGenFeature.isListType()
+										? Generator.pluralize(
+											nestedKeyGenFeature.getCapName())
+										: nestedKeyGenFeature.getCapName()),
+								' ', null, false, false)
+							+ "</b></em>'") //$NON-NLS-1$
 							.toString();
 					}
 				}
 			} else if (count++ == index) {
-				return formattedKeyFeatureName.append(
-					"'<em><b>" //$NON-NLS-1$
-						+ format(keyGenFeature.getAccessorName(), ' ', null,
-							false, false) + "</b></em>'").toString(); //$NON-NLS-1$
+				return formattedKeyFeatureName.append("'<em><b>" //$NON-NLS-1$
+					+ format(keyGenFeature.getAccessorName(), ' ', null, false,
+						false)
+					+ "</b></em>'").toString(); //$NON-NLS-1$
 			}
 		}
 
@@ -804,8 +806,8 @@ public class GenFeatureImpl
 		super.reconcileSettings(oldGenFeatureVersion);
 
 		setKey(UML2GenModelUtil.isKey(oldGenFeatureVersion));
-		setPluralizationException(UML2GenModelUtil
-			.isPluralizationException(oldGenFeatureVersion));
+		setPluralizationException(
+			UML2GenModelUtil.isPluralizationException(oldGenFeatureVersion));
 	}
 
 	@Override
@@ -831,12 +833,11 @@ public class GenFeatureImpl
 	@Override
 	public boolean hasSettingDelegate() {
 
-		if (isDuplicate()
-			&& getGenModel().getRuntimeVersion().getValue() >= GenRuntimeVersion.EMF26_VALUE) {
+		if (isDuplicate() && getGenModel().getRuntimeVersion()
+			.getValue() >= GenRuntimeVersion.EMF26_VALUE) {
 
-			for (String settingDelegate : EcoreUtil
-				.getSettingDelegates(getGenClass().getGenPackage()
-					.getEcorePackage())) {
+			for (String settingDelegate : EcoreUtil.getSettingDelegates(
+				getGenClass().getGenPackage().getEcorePackage())) {
 				if (getEcoreFeature().getEAnnotation(settingDelegate) != null)
 					return EStructuralFeature.Internal.SettingDelegate.Factory.Registry.INSTANCE
 						.getFactory(settingDelegate) != null;
@@ -863,18 +864,18 @@ public class GenFeatureImpl
 	}
 
 	public String getRedefinitionLowerBound() {
-		return String.valueOf(Generator
-			.getRedefinitionLowerBound(getEcoreFeature()));
+		return String
+			.valueOf(Generator.getRedefinitionLowerBound(getEcoreFeature()));
 	}
 
 	public String getRedefinitionUpperBound() {
-		return String.valueOf(Generator
-			.getRedefinitionUpperBound(getEcoreFeature()));
+		return String
+			.valueOf(Generator.getRedefinitionUpperBound(getEcoreFeature()));
 	}
 
 	public GenClassifier getRedefinitionTypeGenClassifier() {
-		return findGenClassifier(Generator
-			.getRedefinitionEType(getEcoreFeature()));
+		return findGenClassifier(
+			Generator.getRedefinitionEType(getEcoreFeature()));
 	}
 
 } // GenFeatureImpl

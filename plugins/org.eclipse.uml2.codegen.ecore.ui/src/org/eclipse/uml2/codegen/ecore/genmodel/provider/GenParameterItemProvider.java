@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2014 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,27 +8,21 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 414970
+ *   Kennn Hussey - 522703
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
 
 import java.util.List;
 
-import org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage;
-
-import org.eclipse.emf.codegen.ecore.genmodel.provider.GenBaseItemProvider;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.eclipse.uml2.codegen.ecore.genmodel.GenParameter;
-
+//import org.eclipse.uml2.codegen.ecore.genmodel.GenParameter;
 import org.eclipse.uml2.codegen.ecore.ui.CodeGenEcoreUIPlugin;
 
 /**
@@ -38,7 +32,8 @@ import org.eclipse.uml2.codegen.ecore.ui.CodeGenEcoreUIPlugin;
  * @generated
  */
 public class GenParameterItemProvider
-		extends GenBaseItemProvider {
+		extends
+		org.eclipse.emf.codegen.ecore.genmodel.provider.GenParameterItemProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -61,29 +56,8 @@ public class GenParameterItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addEcoreParameterPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Ecore Parameter feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addEcoreParameterPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_GenParameter_ecoreParameter_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_GenParameter_ecoreParameter_feature", "_UI_GenParameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				GenModelPackage.Literals.GEN_PARAMETER__ECORE_PARAMETER, false,
-				false, false, null, getString("_UI_EcorePropertyCategory"), //$NON-NLS-1$
-				null));
 	}
 
 	/**
@@ -118,13 +92,6 @@ public class GenParameterItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-
-		switch (notification.getFeatureID(GenParameter.class)) {
-			case org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage.GEN_PARAMETER__ECORE_PARAMETER :
-				fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), false, true));
-				return;
-		}
 		super.notifyChanged(notification);
 	}
 
