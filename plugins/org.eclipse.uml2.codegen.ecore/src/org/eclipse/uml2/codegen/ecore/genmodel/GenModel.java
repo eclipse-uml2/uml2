@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 451350
  *   Sebastien Revol (CEA) - 529044
+ *   Kenn Hussey - 529044
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
@@ -192,5 +193,7 @@ public interface GenModel
 	 * @generated
 	 */
 	void setOperationsFolder(String value);
+
+	String getOperationsPath();
 
 } // GenModel

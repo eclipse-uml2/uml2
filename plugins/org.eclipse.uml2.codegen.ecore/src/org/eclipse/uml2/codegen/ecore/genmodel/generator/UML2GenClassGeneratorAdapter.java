@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 206636
  *   Sebastien Revol (CEA) - 529044
+ *   Kenn Hussey - 529044
  *
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.generator;
@@ -73,11 +74,12 @@ public class UML2GenClassGeneratorAdapter
 				"_UI_GeneratingJavaClass_message", new Object[]{genClass //$NON-NLS-1$
 					.getQualifiedOperationsClassName()});
 			monitor.subTask(message);
-			generateJava(UML2GenModelUtil.getOperationsFolderPath(genClass.getGenModel()),
-				UML2GenModelUtil.getOperationsPackageName(genPackage), genClass
-					.getOperationsClassName(), getJETEmitter(
-					getJETEmitterDescriptors(), OPERATIONS_CLASS_ID), null,
-				createMonitor(monitor, 1));
+			generateJava(
+				UML2GenModelUtil.getOperationsPath(genClass.getGenModel()),
+				UML2GenModelUtil.getOperationsPackageName(genPackage),
+				genClass.getOperationsClassName(),
+				getJETEmitter(getJETEmitterDescriptors(), OPERATIONS_CLASS_ID),
+				null, createMonitor(monitor, 1));
 		} else {
 			monitor.worked(1);
 		}

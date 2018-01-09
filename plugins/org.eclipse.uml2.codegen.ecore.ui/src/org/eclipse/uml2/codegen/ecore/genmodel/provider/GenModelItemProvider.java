@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 414970
- *   Kenn Hussey - 522703
+ *   Kenn Hussey - 522703, 529044
  *   Sebastien Revol (CEA) - 529044
  *
  */
@@ -184,8 +184,7 @@ public class GenModelItemProvider
 				.getRootAdapterFactory(),
 			getResourceLocator(),
 			getString("_UI_GenModel_operationsFolder_feature"), //$NON-NLS-1$
-			getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
-				"_UI_GenModel_operationsFolder_feature", "_UI_GenModel_type"), //$NON-NLS-1$ //$NON-NLS-2$
+			getString("_UI_GenModel_operationsFolder_description"), //$NON-NLS-1$
 			GenModelPackage.Literals.GEN_MODEL__OPERATIONS_FOLDER, true, false,
 			false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 			getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$

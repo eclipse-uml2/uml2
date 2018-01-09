@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208016, 247980
- *   Kenn Hussey - 284809, 522703
+ *   Kenn Hussey - 284809, 522703, 529044
  *   Kenn Hussey (CEA) - 358792, 351777, 382637, 212765, 451350
  *   Sebastien Revol (CEA) - 529044
  *
@@ -17,6 +17,7 @@ package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
 import java.util.List;
 
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.codegen.ecore.genmodel.GenClass;
 import org.eclipse.emf.codegen.ecore.genmodel.GenDataType;
 import org.eclipse.emf.codegen.ecore.genmodel.GenEnum;
@@ -684,6 +685,63 @@ public class GenModelImpl
 			packageNames
 				.add(UML2GenModelUtil.getOperationsPackageName(genPackage));
 		}
+	}
+
+	public String getOperationsPath() {
+		String operationsFolder = getOperationsFolder();
+
+		if (!isBlank(operationsFolder)) {
+			return new Path(getModelProjectDirectory()).append(operationsFolder)
+				.toString();
+		}
+
+		return getModelDirectory();
+
+	}
+
+	@Override
+	public List<String> getModelSourceFolders() {
+		List<String> modelSourceFolders = super.getModelSourceFolders();
+
+		if (!isBlank(getOperationsFolder())) {
+			String sourceFolder = getSourceFolder(getOperationsPath());
+
+			if (sourceFolder != null) {
+				modelSourceFolders.add(sourceFolder);
+			}
+		}
+
+		return modelSourceFolders;
+	}
+
+	@Override
+	public List<String> getEditorSourceFolders() {
+		List<String> editorSourceFolders = super.getEditorSourceFolders();
+
+		if (sameModelEditorProject() && !isBlank(getOperationsFolder())) {
+			String sourceFolder = getSourceFolder(getOperationsPath());
+
+			if (sourceFolder != null) {
+				editorSourceFolders.add(sourceFolder);
+			}
+		}
+
+		return editorSourceFolders;
+	}
+
+	@Override
+	public List<String> getEditSourceFolders() {
+		List<String> editSourceFolders = super.getEditSourceFolders();
+
+		if (sameModelEditProject() && !isBlank(getOperationsFolder())) {
+			String sourceFolder = getSourceFolder(getOperationsPath());
+
+			if (sourceFolder != null) {
+				editSourceFolders.add(sourceFolder);
+			}
+		}
+
+		return editSourceFolders;
 	}
 
 }
