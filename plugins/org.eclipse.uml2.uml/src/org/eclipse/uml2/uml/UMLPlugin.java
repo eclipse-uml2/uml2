@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,8 @@
  *   Kenn Hussey (Embarcadero Technologies) - 215488
  *   Kenn Hussey (CEA) - 279044, 485756
  *   Christian W. Damus (CEA) - 401804
+ *   Kenn Hussey - 529564
+ *   Camille Letavernier - 529564
  *
  */
 package org.eclipse.uml2.uml;
@@ -46,12 +48,16 @@ public final class UMLPlugin
 			extends RegistryReader {
 
 		protected static final String TAG_PROFILE = "profile"; //$NON-NLS-1$
+		
+		protected static final String TAG_PACKAGE = "package"; //$NON-NLS-1$
 
 		protected static final String ATT_URI = "uri"; //$NON-NLS-1$
 
 		protected static final String ATT_LOCATION = "location"; //$NON-NLS-1$
 
 		protected Map<String, URI> ePackageNsURIToProfileLocationMap;
+		
+		protected Map<String, URI> ePackageNsURIToPackageLocationMap;
 
 		protected PackageRegistryReader(IExtensionRegistry pluginRegistry,
 				String pluginID, String extensionPointID) {
@@ -60,24 +66,29 @@ public final class UMLPlugin
 
 		protected PackageRegistryReader(IExtensionRegistry pluginRegistry,
 				String pluginID, String extensionPointID,
-				Map<String, URI> ePackageNsURIToProfileLocationMap) {
+				Map<String, URI> ePackageNsURIToProfileLocationMap, Map<String, URI> ePackageNsURIToPackageLocationMap) {
 			this(pluginRegistry, pluginID, extensionPointID);
 
 			this.ePackageNsURIToProfileLocationMap = ePackageNsURIToProfileLocationMap;
+			this.ePackageNsURIToPackageLocationMap = ePackageNsURIToPackageLocationMap;
 		}
 
 		@Override
 		protected boolean readElement(IConfigurationElement element,
 				boolean add) {
 
-			if (element.getName().equals(TAG_PROFILE)) {
+			String tagName = element.getName();
+			if (tagName.equals(TAG_PROFILE) || tagName.equals(TAG_PACKAGE)) {
+				Map<String, URI> uriToLocationMap = tagName.equals(TAG_PROFILE) 
+						? ePackageNsURIToProfileLocationMap 
+						: ePackageNsURIToPackageLocationMap;
+				
 				String uri = element.getAttribute(ATT_URI);
 
 				if (uri == null) {
 					logMissingAttribute(element, ATT_URI);
 				} else if (add) {
-
-					if (ePackageNsURIToProfileLocationMap != null) {
+					if (uriToLocationMap != null) {
 						String location = element.getAttribute(ATT_LOCATION);
 
 						if (location != null) {
@@ -91,14 +102,14 @@ public final class UMLPlugin
 									false);
 							}
 
-							ePackageNsURIToProfileLocationMap.put(uri,
+							uriToLocationMap.put(uri,
 								profileLocation);
 						}
 					}
 
 					return true;
 				} else {
-					ePackageNsURIToProfileLocationMap.remove(uri);
+					uriToLocationMap.remove(uri);
 					return true;
 				}
 			}
@@ -116,10 +127,10 @@ public final class UMLPlugin
 		}
 
 		protected GeneratedPackageRegistryReader(
-				Map<String, URI> ePackageNsURIToProfileLocationMap) {
+				Map<String, URI> ePackageNsURIToProfileLocationMap, Map<String, URI> ePackageNsURIToPackageLocationMap) {
 			super(Platform.getExtensionRegistry(),
 				UMLPlugin.INSTANCE.getSymbolicName(), GENERATED_PACKAGE_PPID,
-				ePackageNsURIToProfileLocationMap);
+				ePackageNsURIToProfileLocationMap, ePackageNsURIToPackageLocationMap);
 		}
 	}
 
@@ -135,7 +146,7 @@ public final class UMLPlugin
 				Map<String, URI> ePackageNsURIToProfileLocationMap) {
 			super(Platform.getExtensionRegistry(),
 				UMLPlugin.INSTANCE.getSymbolicName(), DYNAMIC_PACKAGE_PPID,
-				ePackageNsURIToProfileLocationMap);
+				ePackageNsURIToProfileLocationMap, null);
 		}
 	}
 
@@ -148,6 +159,17 @@ public final class UMLPlugin
 		}
 
 		return ePackageNsURIToProfileLocationMap;
+	}
+	
+	private static Map<String, URI> ePackageNsURIToPackageLocationMap;
+
+	public static Map<String, URI> getEPackageNsURIToPackageLocationMap() {
+
+		if (ePackageNsURIToPackageLocationMap == null) {
+			ePackageNsURIToPackageLocationMap = new HashMap<String, URI>();
+		}
+
+		return ePackageNsURIToPackageLocationMap;
 	}
 
 	protected static final String GENERATED_PACKAGE_PPID = "generated_package"; //$NON-NLS-1$
@@ -279,7 +301,7 @@ public final class UMLPlugin
 
 		private static void internalProcessExtensions() {
 			new GeneratedPackageRegistryReader(
-				getEPackageNsURIToProfileLocationMap()).readRegistry();
+				getEPackageNsURIToProfileLocationMap(), getEPackageNsURIToPackageLocationMap()).readRegistry();
 			new DynamicPackageRegistryReader(
 				getEPackageNsURIToProfileLocationMap()).readRegistry();
 		}

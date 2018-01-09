@@ -9,13 +9,13 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
- *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125, 528925
+ *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125, 528925, 529564
  *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598, 422000, 416833, 424568, 427167, 418466, 419324, 429994, 433157, 439915, 446388, 454864, 458906, 461374, 463066, 468230, 481712, 491587, 495564, 512439, 512520, 514386, 514624, 517384
  *   Yann Tanguy (CEA) - 350402
  *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998, 180744, 403374, 416833, 420338, 405065, 431342
  *   E.D.Willink - 420338, 512439
  *   Christian W. Damus - 444588, 497359, 501740
- *   Camille Latavernier - 528925
+ *   Camille Letavernier - 528925, 529564
  *
  */
 package org.eclipse.uml2.uml.util;
@@ -11586,6 +11586,22 @@ public class UMLUtil
 	 * @return The profile.
 	 */
 	public static Profile getProfile(EPackage definition) {
+		org.eclipse.uml2.uml.Package package_ = getPackage(definition);
+		if (package_ instanceof Profile) {
+			return (Profile)package_;
+		}
+		return null;
+	}
+	
+	/**
+	 * Retrieves the package for which the specified package represents a
+	 * definition.
+	 * 
+	 * @param definition
+	 *            The package.
+	 * @return The package.
+	 */
+	public static org.eclipse.uml2.uml.Package getPackage(EPackage definition) {
 		EObject eContainer = definition.eContainer();
 
 		if (eContainer instanceof EAnnotation) {
@@ -11594,19 +11610,19 @@ public class UMLUtil
 			if (safeEquals(eAnnotation.getSource(), UML2_UML_PACKAGE_2_0_NS_URI)) {
 				eContainer = eAnnotation.eContainer();
 
-				if (eContainer instanceof Profile) {
-					return (Profile) eContainer;
+				if (eContainer instanceof org.eclipse.uml2.uml.Package) {
+					return (org.eclipse.uml2.uml.Package) eContainer;
 				}
 			}
 		}
 
 		return null;
 	}
+	
+	public static org.eclipse.uml2.uml.Package getPackage(EPackage definition, EObject context) {
+		org.eclipse.uml2.uml.Package package_ = getPackage(definition);
 
-	public static Profile getProfile(EPackage definition, EObject context) {
-		Profile profile = getProfile(definition);
-
-		if (profile == null && context != null) {
+		if (package_ == null && context != null) {
 			Resource eResource = context.eResource();
 
 			if (eResource != null) {
@@ -11615,12 +11631,18 @@ public class UMLUtil
 				if (resourceSet != null) {
 					String nsURI = definition.getNsURI();
 					URI location = UMLPlugin
-						.getEPackageNsURIToProfileLocationMap().get(nsURI);
+							.getEPackageNsURIToProfileLocationMap().get(nsURI);
+					
+					if (location == null) {
+						//Check if a package is registered for this URI
+						location = UMLPlugin
+								.getEPackageNsURIToPackageLocationMap().get(nsURI);
+					}
 
 					if (location != null) {
 
 						try {
-							profile = (Profile) resourceSet.getEObject(
+							package_ = (org.eclipse.uml2.uml.Package) resourceSet.getEObject(
 								location, true);
 						} catch (Exception e) {
 							UMLPlugin.INSTANCE.log(e);
@@ -11635,8 +11657,8 @@ public class UMLUtil
 
 								Object object = allProperContents.next();
 
-								if (object instanceof Profile) {
-									EAnnotation eAnnotation = ((Profile) object)
+								if (object instanceof org.eclipse.uml2.uml.Package) {
+									EAnnotation eAnnotation = ((org.eclipse.uml2.uml.Package) object)
 										.getEAnnotation(UML2_UML_PACKAGE_2_0_NS_URI);
 
 									if (eAnnotation != null) {
@@ -11649,7 +11671,7 @@ public class UMLUtil
 													((EPackage) content)
 														.getNsURI())) {
 
-												profile = (Profile) object;
+												package_ = (org.eclipse.uml2.uml.Package) object;
 												break LOOP;
 											}
 										}
@@ -11664,7 +11686,16 @@ public class UMLUtil
 			}
 		}
 
-		return profile;
+		return package_;
+	}
+
+	public static Profile getProfile(EPackage definition, EObject context) {
+		org.eclipse.uml2.uml.Package package_ = getPackage(definition, context);
+		if (package_ instanceof Profile) {
+			return (Profile)package_;
+		}
+
+		return null;
 	}
 
 	protected static String getEcoreName(NamedElement namedElement) {
@@ -11823,9 +11854,9 @@ public class UMLUtil
 			return null;
 		} else if (definition instanceof EPackage) {
 			EPackage ePackage = (EPackage) definition;
-			Profile profile = getProfile(ePackage, context);
+			org.eclipse.uml2.uml.Package package_ = getPackage(ePackage, context);
 
-			if (profile == null) {
+			if (package_ == null) {
 				EPackage eSuperPackage = ePackage.getESuperPackage();
 
 				if (eSuperPackage != null) {
@@ -11846,7 +11877,7 @@ public class UMLUtil
 				}
 			}
 
-			return profile;
+			return package_;
 		} else {
 			return null;
 		}
