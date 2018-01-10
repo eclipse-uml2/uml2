@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 CEA and others.
+ * Copyright (c) 2014, 2018 CEA and others.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -8,6 +8,7 @@
  *
  * Contributors:
  *   Christian W. Damus (CEA) - initial API and implementation
+ *   Ed Willink - 529547
  *
  */
 package org.eclipse.uml2.uml.bug.tests;
@@ -96,7 +97,7 @@ public class Bug332057Test
 
 		try {
 			assertTrue("Deadlock occurred",
-				latch.await(TIMEOUT, TimeUnit.MINUTES));
+				latch.await(60 * TIMEOUT, TimeUnit.SECONDS));
 			assertTrue("Some thread failed with an exception.",
 				exceptions.isEmpty());
 		} catch (InterruptedException e) {
