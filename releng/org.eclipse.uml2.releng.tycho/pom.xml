@@ -176,7 +176,7 @@
             <sourceReferences>
               <generate>true</generate>
             </sourceReferences>
-            <timestampProvider>jgit</timestampProvider>
+            <!--timestampProvider>jgit</timestampProvider-->
             <jgit.ignore>
               pom.xml
               .polyglot.build.properties
@@ -189,11 +189,11 @@
               <artifactId>tycho-sourceref-jgit</artifactId>
               <version>${tycho-extras-version}</version>
             </dependency>
-            <dependency>
+            <!--dependency>
               <groupId>org.eclipse.tycho.extras</groupId>
               <artifactId>tycho-buildtimestamp-jgit</artifactId>
               <version>${tycho-extras-version}</version>
-            </dependency>
+            </dependency-->
           </dependencies>
         </plugin>
         <plugin>
