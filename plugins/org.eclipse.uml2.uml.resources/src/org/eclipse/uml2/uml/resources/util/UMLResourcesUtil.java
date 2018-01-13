@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, 2017 CEA, Obeo, and others.
+ * Copyright (c) 2012, 2018 CEA, Obeo, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -454,7 +454,7 @@ public class UMLResourcesUtil
 
 	private static URI getBaseUMLURI() {
 		URL resultURL = UMLUtil.class.getClassLoader()
-			.getResource(String.format("models/%s", "UML.ecore")); //$NON-NLS-1$ //$NON-NLS-2$
+			.getResource(String.format("model/%s", "UML.ecore")); //$NON-NLS-1$ //$NON-NLS-2$
 
 		URI result;
 

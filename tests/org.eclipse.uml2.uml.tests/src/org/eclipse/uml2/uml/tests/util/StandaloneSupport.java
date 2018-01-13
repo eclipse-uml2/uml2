@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013, 2017 CEA, Christian W. Damus, and others.
+ * Copyright (c) 2013, 2018 CEA, Christian W. Damus, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   Christian W. Damus (CEA) - initial API and implementation
  *   Christian W. Damus (CEA) - 414572, 401682, 420338, 437977
  *   Christian W. Damus - 512520
- *   Kenn Hussey - 526679
+ *   Kenn Hussey - 526679, 526217
  *
  */
 package org.eclipse.uml2.uml.tests.util;
@@ -35,8 +35,6 @@ import org.eclipse.uml2.uml.tests.UMLAllTests;
  * Utility for configuring the test environment for stand-alone execution.
  */
 public class StandaloneSupport {
-
-	private static final String UML_PLUGIN_ID = "org.eclipse.uml2.uml"; //$NON-NLS-1$
 
 	/**
 	 * Not instantiable by clients.
@@ -66,30 +64,14 @@ public class StandaloneSupport {
 			throw new IllegalStateException("not running stand-alone"); //$NON-NLS-1$
 		}
 
-		UMLResourcesUtil.initLocalRegistries(rset);
+		UMLResourcesUtil.init(rset);
 
 		if (rset != null) {
 			rset.getResourceFactoryRegistry().getExtensionToFactoryMap()
 				.put("ecore", new EcoreResourceFactoryImpl()); //$NON-NLS-1$
 		}
 
-		// Create URI mappings for resources in the UML plug-in (not UML
-		// Resources), such as the Ecore2XML mappings required for
-		// certain legacy model test cases. NOTE that these must be
-		// registered globally because the resource factories that use these
-		// mappings do not have an a priori resource set context in which to
-		// load the mapping models that they use, so they rely on the global
-		// URI map
-		URI prefix = getBaseUMLURI();
-
-		mapURIs(
-			URIConverter.URI_MAP,
-			URI.createPlatformPluginURI(
-				String.format("%s/model", UML_PLUGIN_ID), true), //$NON-NLS-1$
-			prefix.appendSegment("model")); //$NON-NLS-1$
-
-		
-		prefix = getBaseUMLTestsURI();
+		URI prefix = getBaseUMLTestsURI();
 
 		mapURIs(URIConverter.URI_MAP,
 			URI.createURI("pathmap://UML_TEST_MODELS/"), //$NON-NLS-1$
@@ -197,36 +179,6 @@ public class StandaloneSupport {
 		} catch (Exception e) {
 			result = new TestSuite(String.format(
 				"<Failed to instantiate test %s>", testClass)); //$NON-NLS-1$
-		}
-
-		return result;
-	}
-
-	private static URI getBaseUMLURI() {
-		URL resultURL = UMLPlugin.class.getClassLoader()
-			.getResource("model/UML2_2_UML.ecore2xml"); //$NON-NLS-1$
-
-		URI result;
-
-		if (resultURL != null) {
-			// remove the model/UML2_2_UML.ecore2xml segments of the resource we
-			// found
-			result = URI.createURI(resultURL.toExternalForm(), true)
-				.trimSegments(2);
-		} else {
-			// probably, we're not running with JARs, so assume the source
-			// project folder layout
-			resultURL = UMLPlugin.class.getResource("UMLPlugin.class"); //$NON-NLS-1$
-
-			String baseURL = resultURL.toExternalForm();
-
-			int index = baseURL.lastIndexOf("/bin/"); //$NON-NLS-1$
-
-			if (index != -1) {
-				baseURL = baseURL.substring(0, index);
-			}
-
-			result = URI.createURI(baseURL, true);
 		}
 
 		return result;
