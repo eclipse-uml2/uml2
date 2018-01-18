@@ -362,9 +362,9 @@ public class UMLUtil
 
 			return new StereotypeApplicationHelper();
 		}
-
+		
 		protected EList<EObject> getContainmentList(Element element,
-				EClass definition) {
+				EClass definition, Stereotype stereotype) {
 			Resource eResource = element.eResource();
 
 			if (eResource != null) {
@@ -374,18 +374,28 @@ public class UMLUtil
 			return null;
 		}
 
+		protected EList<EObject> getContainmentList(Element element,
+				EClass definition) {
+			return getContainmentList(element, definition, null);
+		}
+		
 		public boolean addToContainmentList(Element element,
-				EObject stereotypeApplication) {
+				EObject stereotypeApplication, Stereotype stereotype) {
 			boolean result = false;
 
 			EList<EObject> containmentList = getContainmentList(element,
-				stereotypeApplication.eClass());
+				stereotypeApplication.eClass(), stereotype);
 
 			if (containmentList != null) {
 				result = containmentList.add(stereotypeApplication);
 			}
 
 			return result;
+		}
+
+		public boolean addToContainmentList(Element element,
+				EObject stereotypeApplication) {
+			return addToContainmentList(element, stereotypeApplication, null);
 		}
 
 		public boolean removeFromContainmentList(Element element,
@@ -401,16 +411,20 @@ public class UMLUtil
 
 			return result;
 		}
-
-		public EObject applyStereotype(Element element, EClass definition) {
+		
+		public EObject applyStereotype(Element element, EClass definition, Stereotype stereotype) {
 			EObject stereotypeApplication = EcoreUtil.create(definition);
 
 			CacheAdapter.getInstance().adapt(stereotypeApplication);
 
-			addToContainmentList(element, stereotypeApplication);
-			setBaseElement(stereotypeApplication, element);
+			addToContainmentList(element, stereotypeApplication, stereotype);
+			setBaseElement(stereotypeApplication, element, stereotype);
 
 			return stereotypeApplication;
+		}
+
+		public EObject applyStereotype(Element element, EClass definition) {
+			return applyStereotype(element, definition, null);
 		}
 	}
 
@@ -12170,6 +12184,44 @@ public class UMLUtil
 
 		return null;
 	}
+	
+	/**
+	 * Sets the base element for the specified stereotype application to the
+	 * specified element.
+	 * 
+	 * @param stereotypeApplication
+	 *            The stereotype application.
+	 * @param element
+	 *            The new base element.
+	 * @param stereotype
+	 *  		  The stereotype being applied.
+	 */
+	protected static void setBaseElement(EObject stereotypeApplication,
+			Element element, Stereotype stereotype) {
+
+		if (stereotypeApplication != null) {
+			EClass eClass = stereotypeApplication.eClass();
+
+			if (stereotype == null) {
+				stereotype = getStereotype(eClass, stereotypeApplication);
+				if (stereotype == null) {
+					return;
+				}
+			}
+			
+			for (EReference eReference : eClass
+				.getEAllReferences()) {
+
+				if (eReference.getName().startsWith(
+					Extension.METACLASS_ROLE_PREFIX)
+					&& (element == null || eReference.getEType()
+						.isInstance(element))) {
+
+					stereotypeApplication.eSet(eReference, element);
+				}
+			}
+		}
+	}
 
 	/**
 	 * Sets the base element for the specified stereotype application to the
@@ -12182,25 +12234,11 @@ public class UMLUtil
 	 */
 	public static void setBaseElement(EObject stereotypeApplication,
 			Element element) {
-
-		if (stereotypeApplication != null) {
-			EClass eClass = stereotypeApplication.eClass();
-
-			if (getStereotype(eClass, stereotypeApplication) != null) {
-
-				for (EStructuralFeature eStructuralFeature : eClass
-					.getEAllStructuralFeatures()) {
-
-					if (eStructuralFeature.getName().startsWith(
-						Extension.METACLASS_ROLE_PREFIX)
-						&& (element == null || eStructuralFeature.getEType()
-							.isInstance(element))) {
-
-						stereotypeApplication.eSet(eStructuralFeature, element);
-					}
-				}
-			}
-		}
+		setBaseElement(stereotypeApplication, element, null);
+	}
+	
+	protected static EObject applyStereotype(Element element, EClass definition, Stereotype stereotype) {
+		return StereotypeApplicationHelper.getInstance(element).applyStereotype(element, definition, stereotype);
 	}
 
 	protected static EObject applyStereotype(Element element, EClass definition) {

@@ -1506,7 +1506,7 @@ public class ElementOperations
 					stereotype.getQualifiedName()));
 		}
 
-		return applyStereotype(element, definition);
+		return applyStereotype(element, definition, stereotype);
 	}
 
 	protected static EList<EObject> unapplyAllNonApplicableStereotypes(
