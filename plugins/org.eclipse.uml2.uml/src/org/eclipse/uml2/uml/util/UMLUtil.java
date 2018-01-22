@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, Christian W. Damus, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, Christian W. Damus, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,12 +9,13 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
- *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125
+ *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184, 335125, 528925
  *   Kenn Hussey (CEA) - 327039, 358792, 364419, 366350, 307343, 382637, 273949, 389542, 389495, 316165, 392833, 399544, 322715, 163556, 212765, 397324, 204658, 408612, 411731, 269598, 422000, 416833, 424568, 427167, 418466, 419324, 429994, 433157, 439915, 446388, 454864, 458906, 461374, 463066, 468230, 481712, 491587, 495564, 512439, 512520, 514386, 514624, 517384
  *   Yann Tanguy (CEA) - 350402
  *   Christian W. Damus (CEA) - 392833, 251963, 405061, 409396, 176998, 180744, 403374, 416833, 420338, 405065, 431342
  *   E.D.Willink - 420338, 512439
  *   Christian W. Damus - 444588, 497359, 501740
+ *   Camille Latavernier - 528925
  *
  */
 package org.eclipse.uml2.uml.util;
@@ -302,15 +303,16 @@ public class UMLUtil
 		 * 
 		 * @since 5.1
 		 */
-		public static StereotypeApplicationHelper getInstance(Notifier context) {
+		public static StereotypeApplicationHelper getInstance(
+				Notifier context) {
 			if (context == null) {
 				return INSTANCE;
 			} else if (context instanceof ResourceSet) {
-				return getInstance((ResourceSet)context);
+				return getInstance((ResourceSet) context);
 			} else if (context instanceof Resource) {
-				return getInstance(((Resource)context).getResourceSet());
+				return getInstance(((Resource) context).getResourceSet());
 			} else if (context instanceof EObject) {
-				return getInstance(((EObject)context).eResource());
+				return getInstance(((EObject) context).eResource());
 			} else {
 				return INSTANCE;
 			}
@@ -334,7 +336,8 @@ public class UMLUtil
 		 * 
 		 * @since 5.1
 		 */
-		public static StereotypeApplicationHelper setInstance(ResourceSet resourceSet, StereotypeApplicationHelper instance) {
+		public static StereotypeApplicationHelper setInstance(
+				ResourceSet resourceSet, StereotypeApplicationHelper instance) {
 			StereotypeApplicationHelper result = HelperLink.link(resourceSet,
 				StereotypeApplicationHelper.class, instance);
 
@@ -344,17 +347,21 @@ public class UMLUtil
 				: result;
 		}
 
-		private static StereotypeApplicationHelper getInstance(ResourceSet resourceSet) {
+		private static StereotypeApplicationHelper getInstance(
+				ResourceSet resourceSet) {
 			HelperLink<StereotypeApplicationHelper> link = (resourceSet == null)
 				? null
 				: HelperLink.getInstance(resourceSet,
 					StereotypeApplicationHelper.class);
-			return (link != null) ? link.getHelper() : INSTANCE;
+			return (link != null)
+				? link.getHelper()
+				: INSTANCE;
 		}
-		
+
 		private static StereotypeApplicationHelper createStereotypeApplicationHelper() {
 			StereotypeApplicationHelper stereotypeApplicationHelper = UML2Util
-				.loadClassFromSystemProperty("org.eclipse.uml2.uml.util.UMLUtil$StereotypeApplicationHelper.INSTANCE"); //$NON-NLS-1$
+				.loadClassFromSystemProperty(
+					"org.eclipse.uml2.uml.util.UMLUtil$StereotypeApplicationHelper.INSTANCE"); //$NON-NLS-1$
 
 			if (stereotypeApplicationHelper != null) {
 				return stereotypeApplicationHelper;
@@ -362,7 +369,7 @@ public class UMLUtil
 
 			return new StereotypeApplicationHelper();
 		}
-		
+
 		protected EList<EObject> getContainmentList(Element element,
 				EClass definition, Stereotype stereotype) {
 			Resource eResource = element.eResource();
@@ -378,7 +385,7 @@ public class UMLUtil
 				EClass definition) {
 			return getContainmentList(element, definition, null);
 		}
-		
+
 		public boolean addToContainmentList(Element element,
 				EObject stereotypeApplication, Stereotype stereotype) {
 			boolean result = false;
@@ -411,8 +418,9 @@ public class UMLUtil
 
 			return result;
 		}
-		
-		public EObject applyStereotype(Element element, EClass definition, Stereotype stereotype) {
+
+		public EObject applyStereotype(Element element, EClass definition,
+				Stereotype stereotype) {
 			EObject stereotypeApplication = EcoreUtil.create(definition);
 
 			CacheAdapter.getInstance().adapt(stereotypeApplication);
@@ -12184,7 +12192,7 @@ public class UMLUtil
 
 		return null;
 	}
-	
+
 	/**
 	 * Sets the base element for the specified stereotype application to the
 	 * specified element.
@@ -12194,7 +12202,7 @@ public class UMLUtil
 	 * @param element
 	 *            The new base element.
 	 * @param stereotype
-	 *  		  The stereotype being applied.
+	 *            The stereotype being applied.
 	 */
 	protected static void setBaseElement(EObject stereotypeApplication,
 			Element element, Stereotype stereotype) {
@@ -12204,18 +12212,18 @@ public class UMLUtil
 
 			if (stereotype == null) {
 				stereotype = getStereotype(eClass, stereotypeApplication);
+
 				if (stereotype == null) {
 					return;
 				}
 			}
-			
-			for (EReference eReference : eClass
-				.getEAllReferences()) {
 
-				if (eReference.getName().startsWith(
-					Extension.METACLASS_ROLE_PREFIX)
-					&& (element == null || eReference.getEType()
-						.isInstance(element))) {
+			for (EReference eReference : eClass.getEAllReferences()) {
+
+				if (eReference.getName()
+					.startsWith(Extension.METACLASS_ROLE_PREFIX)
+					&& (element == null
+						|| eReference.getEType().isInstance(element))) {
 
 					stereotypeApplication.eSet(eReference, element);
 				}
@@ -12236,7 +12244,7 @@ public class UMLUtil
 			Element element) {
 		setBaseElement(stereotypeApplication, element, null);
 	}
-	
+
 	protected static EObject applyStereotype(Element element, EClass definition, Stereotype stereotype) {
 		return StereotypeApplicationHelper.getInstance(element).applyStereotype(element, definition, stereotype);
 	}
