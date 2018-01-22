@@ -372,6 +372,11 @@ public class UMLUtil
 
 		protected EList<EObject> getContainmentList(Element element,
 				EClass definition, Stereotype stereotype) {
+			return getContainmentList(element, definition);
+		}
+
+		protected EList<EObject> getContainmentList(Element element,
+				EClass definition) {
 			Resource eResource = element.eResource();
 
 			if (eResource != null) {
@@ -379,11 +384,6 @@ public class UMLUtil
 			}
 
 			return null;
-		}
-
-		protected EList<EObject> getContainmentList(Element element,
-				EClass definition) {
-			return getContainmentList(element, definition, null);
 		}
 
 		public boolean addToContainmentList(Element element,
@@ -410,7 +410,7 @@ public class UMLUtil
 			boolean result = false;
 
 			EList<EObject> containmentList = getContainmentList(element,
-				stereotypeApplication.eClass());
+				stereotypeApplication.eClass(), null);
 
 			if (containmentList != null) {
 				result = containmentList.remove(stereotypeApplication);
