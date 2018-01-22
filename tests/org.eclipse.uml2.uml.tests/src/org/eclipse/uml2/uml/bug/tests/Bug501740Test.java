@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 Christian W. Damus and others.
+ * Copyright (c) 2016, 2018 Christian W. Damus and others.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -8,6 +8,7 @@
  *
  * Contributors:
  *   Christian W. Damus - initial API and implementation
+ *   Kenn Hussey - 528925
  *
  */
 package org.eclipse.uml2.uml.bug.tests;
@@ -190,7 +191,7 @@ public class Bug501740Test
 	protected static EObject applyStereotype(Element element,
 			EClass definition) {
 		return StereotypeApplicationHelper.getInstance(element)
-			.applyStereotype(element, definition);
+			.applyStereotype(element, definition, null);
 	}
 
 }

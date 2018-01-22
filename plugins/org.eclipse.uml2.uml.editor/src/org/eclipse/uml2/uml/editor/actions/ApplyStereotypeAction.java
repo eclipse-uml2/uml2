@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey - 286329
+ *   Kenn Hussey - 286329, 528295
  *   Christian W. Damus (CEA) - 326915, 286444
  *
  */
@@ -129,9 +129,10 @@ public class ApplyStereotypeAction
 							for (Stereotype result : dialog.getResult()) {
 								EObject newApplication = element
 									.applyStereotype(result);
+
 								if (helper != null) {
 									helper.addToContainmentList(element,
-										newApplication);
+										newApplication, result);
 								}
 							}
 						}

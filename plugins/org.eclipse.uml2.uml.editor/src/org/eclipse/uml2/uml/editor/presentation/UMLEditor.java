@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418, 156879, 227392, 226178, 232332, 247980
- *   Kenn Hussey - 286329, 323181, 522658
+ *   Kenn Hussey - 286329, 323181, 522658, 528925
  *   Kenn Hussey (CEA) - 327039, 351774, 364419, 292633, 397324, 204658, 173565, 408612, 414970, 427833, 433216, 443017, 434958, 433768
  *   Christian W. Damus - 355218
  *   Christian W. Damus (CEA) - 286444
@@ -1693,7 +1693,7 @@ public class UMLEditor
 						if (stereotypeApplication.eResource() != resource
 							&& StereotypeApplicationHelper.getInstance(null)
 								.removeFromContainmentList(element,
-									stereotypeApplication)) {
+									stereotypeApplication, null)) {
 
 							externalStereotypeApplications
 								.add(stereotypeApplication);
@@ -1722,7 +1722,7 @@ public class UMLEditor
 				.get(element)) {
 
 				StereotypeApplicationHelper.getInstance(null)
-					.addToContainmentList(element, stereotypeApplication);
+					.addToContainmentList(element, stereotypeApplication, null);
 			}
 		}
 
@@ -2326,7 +2326,7 @@ public class UMLEditor
 											.removeFromContainmentList(
 												UMLUtil.getBaseElement(
 													stereotypeApplication),
-												stereotypeApplication);
+												stereotypeApplication, null);
 									}
 								}
 							}));
@@ -2480,20 +2480,21 @@ public class UMLEditor
 								return new ChangeCommand(domain,
 									new Runnable() {
 
-									public void run() {
+										public void run() {
 
-										for (EObject stereotypeApplication : stereotypeApplicationsToAdd) {
-											UMLUtil.StereotypeApplicationHelper
-												.getInstance(null)
-												.addToContainmentList(
-													PrivateUMLUtil
-														.getBaseElement(
-															stereotypeApplication,
-															owner),
-													stereotypeApplication);
+											for (EObject stereotypeApplication : stereotypeApplicationsToAdd) {
+												UMLUtil.StereotypeApplicationHelper
+													.getInstance(null)
+													.addToContainmentList(
+														PrivateUMLUtil
+															.getBaseElement(
+																stereotypeApplication,
+																owner),
+														stereotypeApplication,
+														null);
+											}
 										}
-									}
-								});
+									});
 							}
 						});
 					}

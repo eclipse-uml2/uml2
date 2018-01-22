@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 Christian W. Damus and others.
+ * Copyright (c) 2014, 2018 Christian W. Damus and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   Christian W. Damus - initial API and implementation
+ *   Kenn Hussey - 528925
  *   
  */
 package org.eclipse.uml2.uml.bug.tests;
@@ -214,7 +215,7 @@ public class Bug444588StereotypesTest
 
 		@Override
 		protected EList<EObject> getContainmentList(Element element,
-				EClass definition) {
+				EClass definition, Stereotype stereotype) {
 
 			Resource companionResource = null;
 
@@ -227,8 +228,8 @@ public class Bug444588StereotypesTest
 						.appendFileExtension("stereotypes.xmi");
 
 					try {
-						companionResource = rset
-							.getResource(companionURI, true);
+						companionResource = rset.getResource(companionURI,
+							true);
 					} catch (Exception e) {
 						// Doesn't exist. Create it, next
 					}
@@ -241,7 +242,7 @@ public class Bug444588StereotypesTest
 
 			return (companionResource != null)
 				? companionResource.getContents()
-				: super.getContainmentList(element, definition);
+				: super.getContainmentList(element, definition, stereotype);
 		}
 	}
 }

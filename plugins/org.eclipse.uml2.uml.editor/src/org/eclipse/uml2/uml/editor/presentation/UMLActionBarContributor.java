@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2017 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey - 323181, 522658
+ *   Kenn Hussey - 323181, 522658, 528295
  *   Kenn Hussey (CEA) - 281326
  *
  */
@@ -722,11 +722,12 @@ public class UMLActionBarContributor
 								public void run() {
 
 									for (EObject stereotypeApplication : allStereotypeApplications) {
-										UMLUtil.StereotypeApplicationHelper.INSTANCE
+										UMLUtil.StereotypeApplicationHelper
+											.getInstance(null)
 											.addToContainmentList(
 												UMLUtil.getBaseElement(
 													stereotypeApplication),
-												stereotypeApplication);
+												stereotypeApplication, null);
 									}
 								}
 							});
@@ -776,11 +777,11 @@ public class UMLActionBarContributor
 							public void run() {
 
 								for (EObject stereotypeApplication : allStereotypeApplications) {
-									UMLUtil.StereotypeApplicationHelper.INSTANCE
-										.addToContainmentList(
+									UMLUtil.StereotypeApplicationHelper
+										.getInstance(null).addToContainmentList(
 											UMLUtil.getBaseElement(
 												stereotypeApplication),
-											stereotypeApplication);
+											stereotypeApplication, null);
 								}
 							}
 						});
