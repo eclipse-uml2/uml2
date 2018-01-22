@@ -1374,11 +1374,11 @@ public class ElementOperations
 					for (Map.Entry<Stereotype, EClass> definitionEntry : stereotypeEntry
 						.getValue().entrySet()) {
 
-						if (!element
-							.isStereotypeApplied(definitionEntry.getKey())) {
+						Stereotype stereotype = definitionEntry.getKey();
 
+						if (!element.isStereotypeApplied(stereotype)) {
 							stereotypeApplications.add(applyStereotype(element,
-								definitionEntry.getValue()));
+								definitionEntry.getValue(), stereotype));
 						}
 					}
 				}
