@@ -11587,12 +11587,14 @@ public class UMLUtil
 	 */
 	public static Profile getProfile(EPackage definition) {
 		org.eclipse.uml2.uml.Package package_ = getPackage(definition);
+
 		if (package_ instanceof Profile) {
-			return (Profile)package_;
+			return (Profile) package_;
 		}
+
 		return null;
 	}
-	
+
 	/**
 	 * Retrieves the package for which the specified package represents a
 	 * definition.
@@ -11607,7 +11609,9 @@ public class UMLUtil
 		if (eContainer instanceof EAnnotation) {
 			EAnnotation eAnnotation = (EAnnotation) eContainer;
 
-			if (safeEquals(eAnnotation.getSource(), UML2_UML_PACKAGE_2_0_NS_URI)) {
+			if (safeEquals(eAnnotation.getSource(),
+				UML2_UML_PACKAGE_2_0_NS_URI)) {
+
 				eContainer = eAnnotation.eContainer();
 
 				if (eContainer instanceof org.eclipse.uml2.uml.Package) {
@@ -11618,8 +11622,9 @@ public class UMLUtil
 
 		return null;
 	}
-	
-	public static org.eclipse.uml2.uml.Package getPackage(EPackage definition, EObject context) {
+
+	public static org.eclipse.uml2.uml.Package getPackage(EPackage definition,
+			EObject context) {
 		org.eclipse.uml2.uml.Package package_ = getPackage(definition);
 
 		if (package_ == null && context != null) {
@@ -11631,19 +11636,19 @@ public class UMLUtil
 				if (resourceSet != null) {
 					String nsURI = definition.getNsURI();
 					URI location = UMLPlugin
-							.getEPackageNsURIToProfileLocationMap().get(nsURI);
-					
+						.getEPackageNsURIToProfileLocationMap().get(nsURI);
+
 					if (location == null) {
-						//Check if a package is registered for this URI
+						// check if a package is registered for this URI
 						location = UMLPlugin
-								.getEPackageNsURIToPackageLocationMap().get(nsURI);
+							.getEPackageNsURIToPackageLocationMap().get(nsURI);
 					}
 
 					if (location != null) {
 
 						try {
-							package_ = (org.eclipse.uml2.uml.Package) resourceSet.getEObject(
-								location, true);
+							package_ = (org.eclipse.uml2.uml.Package) resourceSet
+								.getEObject(location, true);
 						} catch (Exception e) {
 							UMLPlugin.INSTANCE.log(e);
 						}
@@ -11652,14 +11657,15 @@ public class UMLUtil
 							.getResources()) {
 
 							for (TreeIterator<Object> allProperContents = EcoreUtil
-								.getAllProperContents(resource, false); allProperContents
-								.hasNext();) {
+								.getAllProperContents(resource,
+									false); allProperContents.hasNext();) {
 
 								Object object = allProperContents.next();
 
 								if (object instanceof org.eclipse.uml2.uml.Package) {
 									EAnnotation eAnnotation = ((org.eclipse.uml2.uml.Package) object)
-										.getEAnnotation(UML2_UML_PACKAGE_2_0_NS_URI);
+										.getEAnnotation(
+											UML2_UML_PACKAGE_2_0_NS_URI);
 
 									if (eAnnotation != null) {
 
@@ -11691,8 +11697,9 @@ public class UMLUtil
 
 	public static Profile getProfile(EPackage definition, EObject context) {
 		org.eclipse.uml2.uml.Package package_ = getPackage(definition, context);
+
 		if (package_ instanceof Profile) {
-			return (Profile)package_;
+			return (Profile) package_;
 		}
 
 		return null;
@@ -11797,7 +11804,9 @@ public class UMLUtil
 				if (!references.isEmpty()) {
 					EObject reference = references.get(0);
 
-					if ((reference instanceof Classifier) && !reference.eIsProxy()) {
+					if ((reference instanceof Classifier)
+						&& !reference.eIsProxy()) {
+
 						return (NamedElement) reference;
 					}
 				}
@@ -11826,7 +11835,8 @@ public class UMLUtil
 			if (classifier != null) {
 				String name = definition.getName();
 
-				for (Property ownedAttribute : classifier.getOwnedAttributes()) {
+				for (Property ownedAttribute : classifier
+					.getOwnedAttributes()) {
 
 					if (safeEquals(getEcoreName(ownedAttribute), name)) {
 						return ownedAttribute;
@@ -11854,7 +11864,8 @@ public class UMLUtil
 			return null;
 		} else if (definition instanceof EPackage) {
 			EPackage ePackage = (EPackage) definition;
-			org.eclipse.uml2.uml.Package package_ = getPackage(ePackage, context);
+			org.eclipse.uml2.uml.Package package_ = getPackage(ePackage,
+				context);
 
 			if (package_ == null) {
 				EPackage eSuperPackage = ePackage.getESuperPackage();
