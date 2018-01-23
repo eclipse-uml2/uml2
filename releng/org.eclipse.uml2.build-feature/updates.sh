@@ -2,10 +2,10 @@
 #
 #    Promote the PUBLISH__BUILD to an updates repository.
 #
-#    PUBLISH__BUILD_TYPE     Build type N/I/S, blank suppresses promotion
+#    PUBLISH__BUILD_TYPE     Build type N/I/S/R, blank suppresses promotion
 #    PUBLISH__BUILD          The base URL of the build to be published, e.g., https://hudson.eclipse.org/uml2/job/mdt-uml2-master/lastSuccessfulBuild
 #    PUBLISH__VERSION        Unqualified version, e.g., 5.4.0
-#    PUBLISH__QUALIFIER      Version qualifier, e.g., v20171228-2349
+#    PUBLISH__QUALIFIER      Build qualifier, e.g., I20171228-2349
 #
 updatesFolder="/home/data/httpd/download.eclipse.org/modeling/mdt/uml2/updates/"
 group="modeling.mdt.uml2"
@@ -28,6 +28,11 @@ then
   then
     repoFolder="${updatesFolder}${PUBLISH__VERSION:0:3}milestones"
     repoName="Milestone"
+  elif [ "${PUBLISH__BUILD_TYPE}" = "R" ]
+  then
+    repoFolder="${updatesFolder}${PUBLISH__VERSION:0:3}"
+    repoName="Release"
+  else
   else
     repoFolder="${updatesFolder}${PUBLISH__VERSION:0:3}-other"
     repoName="Other"

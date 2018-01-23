@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?><target includeMode="feature" name="Eclipse UML2 Release Build Target Platform" sequenceNumber="16">
+<locations>
+  <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+    <unit id="org.eclipse.sdk.feature.group" version="0.0.0"/>
+    <repository location="http://download.eclipse.org/eclipse/updates/4.8milestones"/>
+  </location>
+  <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+    <unit id="org.eclipse.emf.sdk.feature.group" version="0.0.0"/>
+    <repository location="http://download.eclipse.org/modeling/emf/emf/builds/milestone"/>
+  </location>
+  <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+    <unit id="org.eclipse.emf.validation" version="0.0.0"/>
+    <repository location="http://download.eclipse.org/modeling/emf/validation/updates/milestones"/>
+  </location>
+  <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+    <unit id="org.eclipse.license.feature.group" version="0.0.0"/>
+    <repository location="http://download.eclipse.org/cbi/updates/license"/>
+  </location>
+  <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+    <repository location="http://download.eclipse.org/tools/orbit/R-builds/R20170516192513/repository"/>
+  </location>
+</locations>
+</target>
