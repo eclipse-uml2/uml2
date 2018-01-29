@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013, 2017 CEA, Christian W. Damus, and others.
+ * Copyright (c) 2013, 2018 CEA, Christian W. Damus, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,7 @@
  *   Manuel Bork <bork@yatta.de> (Yatta Solutions GmbH) - 421756, 422000
  *   Kenn Hussey (CEA) - 424895, 511674, 512520
  *   Christian W. Damus - 444588, 497359, 501740
- *   Kenn Hussey - 526679
+ *   Kenn Hussey - 526679, 528762
  *   
  */
 package org.eclipse.uml2.uml.bug.tests;
@@ -67,6 +67,7 @@ public class UMLBugTests
 		result.addTest(Bug501740Test.suite());
 		result.addTest(Bug511674Test.suite());
 		result.addTest(Bug512520Test.suite());
+		result.addTest(Bug528762Test.suite());
 		
 		// keep this one at the end because it runs long
 		result.addTest(Bug332057Test.suite());
