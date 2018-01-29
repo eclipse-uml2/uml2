@@ -33,7 +33,6 @@ then
     repoFolder="${updatesFolder}${PUBLISH__VERSION:0:3}"
     repoName="Release"
   else
-  else
     repoFolder="${updatesFolder}${PUBLISH__VERSION:0:3}-other"
     repoName="Other"
   fi
