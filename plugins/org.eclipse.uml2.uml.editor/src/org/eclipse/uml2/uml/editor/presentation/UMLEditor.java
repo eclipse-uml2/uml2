@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418, 156879, 227392, 226178, 232332, 247980
- *   Kenn Hussey - 286329, 323181, 522658, 528925
+ *   Kenn Hussey - 286329, 323181, 522658, 528925, 530555
  *   Kenn Hussey (CEA) - 327039, 351774, 364419, 292633, 397324, 204658, 173565, 408612, 414970, 427833, 433216, 443017, 434958, 433768
  *   Christian W. Damus - 355218
  *   Christian W. Damus (CEA) - 286444
@@ -1351,7 +1351,7 @@ public class UMLEditor
 	 * <!-- end-user-doc -->
 	 * @generated not
 	 */
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	@Override
 	public Object getAdapter(Class key) {
 		if (key.equals(IContentOutlinePage.class)) {
@@ -1418,7 +1418,7 @@ public class UMLEditor
 							.setSelection(
 								new StructuredSelection(editingDomain
 									.getResourceSet().getResources().get(0)),
-							true);
+								true);
 					}
 				}
 
@@ -2138,10 +2138,11 @@ public class UMLEditor
 				.toArray(new IPropertyDescriptor[propertyDescriptors.size()]);
 		}
 
+		@Override
 		protected IItemPropertyDescriptor getItemPropertyDescriptor(
 				Object propertyId) {
-			IItemPropertyDescriptor itemPropertyDescriptor = itemPropertySource
-				.getPropertyDescriptor(object, propertyId);
+			IItemPropertyDescriptor itemPropertyDescriptor = super.getItemPropertyDescriptor(
+				propertyId);
 
 			return itemPropertyDescriptor == null
 				&& itemPropertySource instanceof ElementItemProvider
@@ -2150,37 +2151,6 @@ public class UMLEditor
 							propertyId)
 					: itemPropertyDescriptor;
 		}
-
-		@Override
-		public Object getPropertyValue(Object propertyId) {
-			return getItemPropertyDescriptor(propertyId)
-				.getPropertyValue(object);
-		}
-
-		@Override
-		public boolean isPropertySet(Object propertyId) {
-			return getItemPropertyDescriptor(propertyId).isPropertySet(object);
-		}
-
-		@Override
-		public void resetPropertyValue(Object propertyId) {
-			getItemPropertyDescriptor(propertyId).resetPropertyValue(object);
-		}
-
-		@Override
-		public void setPropertyValue(Object propertyId, Object value) {
-			getItemPropertyDescriptor(propertyId).setPropertyValue(object,
-				value);
-		}
-
-		@Override
-		public boolean isPropertyResettable(Object propertyId) {
-			IItemPropertyDescriptor propertyDescriptor = getItemPropertyDescriptor(
-				propertyId);
-			return propertyDescriptor.canSetProperty(object)
-				&& propertyDescriptor.isPropertySet(object);
-		}
-
 	}
 
 	protected static class UMLPropertyDescriptor
