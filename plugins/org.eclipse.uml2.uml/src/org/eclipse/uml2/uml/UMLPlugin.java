@@ -66,7 +66,8 @@ public final class UMLPlugin
 
 		protected PackageRegistryReader(IExtensionRegistry pluginRegistry,
 				String pluginID, String extensionPointID,
-				Map<String, URI> ePackageNsURIToProfileLocationMap, Map<String, URI> ePackageNsURIToPackageLocationMap) {
+				Map<String, URI> ePackageNsURIToProfileLocationMap,
+				Map<String, URI> ePackageNsURIToPackageLocationMap) {
 			this(pluginRegistry, pluginID, extensionPointID);
 
 			this.ePackageNsURIToProfileLocationMap = ePackageNsURIToProfileLocationMap;
