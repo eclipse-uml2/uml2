@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 215418, 204200
- *   Kenn Hussey - 323181
+ *   Kenn Hussey - 323181, 438123
  *   Kenn Hussey (CEA) - 327039, 351774, 418466, 414970, 370089, 459723, 511674
  *
  */
@@ -99,7 +99,7 @@ public class ClassItemProvider
 			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR, true,
 			false, true, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -117,7 +117,7 @@ public class ClassItemProvider
 				"_UI_Class_ownedOperation_feature", "_UI_Class_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.CLASS__OWNED_OPERATION, true, false, true, null,
 			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -157,7 +157,7 @@ public class ClassItemProvider
 			UMLPackage.Literals.BEHAVIORED_CLASSIFIER__INTERFACE_REALIZATION,
 			true, false, true, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -175,7 +175,7 @@ public class ClassItemProvider
 				"_UI_Class_superClass_feature", "_UI_Class_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.CLASS__SUPER_CLASS, true, false, true, null,
 			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -211,7 +211,7 @@ public class ClassItemProvider
 				"_UI_Class_nestedClassifier_feature", "_UI_Class_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, true, false, true,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -229,7 +229,7 @@ public class ClassItemProvider
 				"_UI_Class_ownedReception_feature", "_UI_Class_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.CLASS__OWNED_RECEPTION, true, false, true, null,
 			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**

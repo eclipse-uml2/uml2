@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208353, 205188, 215418, 204200
- *   Kenn Hussey - 323181
+ *   Kenn Hussey - 323181, 438123
  *   Kenn Hussey (CEA) - 327039, 351774, 418466, 370089, 511674
  *   Christian W. Damus (CEA) - 412912, 414970
  *
@@ -137,7 +137,7 @@ public class PropertyItemProvider
 			UMLPackage.Literals.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
 			true, false, true, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -157,7 +157,7 @@ public class PropertyItemProvider
 				"_UI_ConnectableElement_type"), //$NON-NLS-1$
 			UMLPackage.Literals.CONNECTABLE_ELEMENT__END, false, false, false,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -178,7 +178,7 @@ public class PropertyItemProvider
 			UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT, false,
 			false, false, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -199,7 +199,7 @@ public class PropertyItemProvider
 			UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT, true, false,
 			true, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -217,7 +217,7 @@ public class PropertyItemProvider
 				"_UI_Property_datatype_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.PROPERTY__DATATYPE, true, false, true, null,
 			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -235,7 +235,7 @@ public class PropertyItemProvider
 				"_UI_Property_interface_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.PROPERTY__INTERFACE, true, false, true, null,
 			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -253,7 +253,7 @@ public class PropertyItemProvider
 				"_UI_Property_class_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.PROPERTY__CLASS, true, false, true, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -341,7 +341,7 @@ public class PropertyItemProvider
 				"_UI_Property_defaultValue_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, true, false, true,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -377,7 +377,7 @@ public class PropertyItemProvider
 				"_UI_Property_associationEnd_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.PROPERTY__ASSOCIATION_END, true, false, true,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -395,7 +395,7 @@ public class PropertyItemProvider
 				"_UI_Property_qualifier_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.PROPERTY__QUALIFIER, true, false, true, null,
 			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -414,7 +414,7 @@ public class PropertyItemProvider
 			UMLPackage.Literals.PROPERTY__IS_COMPOSITE, true, false, false,
 			ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -467,7 +467,7 @@ public class PropertyItemProvider
 				"_UI_Property_opposite_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.PROPERTY__OPPOSITE, true, false, true, null,
 			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -486,7 +486,7 @@ public class PropertyItemProvider
 				"_UI_Property_owningAssociation_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.PROPERTY__OWNING_ASSOCIATION, true, false, true,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**

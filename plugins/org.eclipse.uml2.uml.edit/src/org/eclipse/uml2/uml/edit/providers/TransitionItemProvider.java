@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
- *   Kenn Hussey - 323181
+ *   Kenn Hussey - 323181, 438123
  *   Kenn Hussey (CEA) - 327039, 418466, 414970, 370089, 459723, 511674
  *
  */
@@ -121,7 +121,7 @@ public class TransitionItemProvider
 			UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT, false,
 			false, false, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -142,7 +142,7 @@ public class TransitionItemProvider
 			UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
 			false, false, false, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -177,7 +177,7 @@ public class TransitionItemProvider
 				"_UI_Transition_container_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.TRANSITION__CONTAINER, true, false, true, null,
 			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -231,7 +231,7 @@ public class TransitionItemProvider
 				"_UI_Transition_guard_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.TRANSITION__GUARD, true, false, true, null,
 			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -249,7 +249,7 @@ public class TransitionItemProvider
 				"_UI_Transition_effect_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.TRANSITION__EFFECT, true, false, true, null,
 			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -267,7 +267,7 @@ public class TransitionItemProvider
 				"_UI_Transition_trigger_feature", "_UI_Transition_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.TRANSITION__TRIGGER, true, false, true, null,
 			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**

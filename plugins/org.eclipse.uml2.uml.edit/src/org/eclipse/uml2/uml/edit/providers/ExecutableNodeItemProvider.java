@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
- *   Kenn Hussey - 323181
+ *   Kenn Hussey - 323181, 438123
  *   Kenn Hussey (CEA) - 414970, 370089, 511674
  *
  */
@@ -81,7 +81,7 @@ public class ExecutableNodeItemProvider
 				"_UI_ExecutableNode_type"), //$NON-NLS-1$
 			UMLPackage.Literals.EXECUTABLE_NODE__HANDLER, true, false, true,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -136,8 +136,7 @@ public class ExecutableNodeItemProvider
 		String label = ((ExecutableNode) object).getName();
 		return label == null || label.length() == 0
 			? getString("_UI_ExecutableNode_type") //$NON-NLS-1$
-			:
-			getString("_UI_ExecutableNode_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			: getString("_UI_ExecutableNode_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

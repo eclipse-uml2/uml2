@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 215418, 204200
- *   Kenn Hussey - 323181
+ *   Kenn Hussey - 323181, 438123
  *   Kenn Hussey (CEA) - 327039, 351774, 418466, 414970, 370089, 459723, 511674
  *
  */
@@ -93,7 +93,7 @@ public class InterfaceItemProvider
 				"_UI_Interface_ownedAttribute_feature", "_UI_Interface_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.INTERFACE__OWNED_ATTRIBUTE, true, false, true,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -112,7 +112,7 @@ public class InterfaceItemProvider
 				"_UI_Interface_nestedClassifier_feature", "_UI_Interface_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER, true, false, true,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -150,7 +150,7 @@ public class InterfaceItemProvider
 				"_UI_Interface_ownedReception_feature", "_UI_Interface_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.INTERFACE__OWNED_RECEPTION, true, false, true,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -168,7 +168,7 @@ public class InterfaceItemProvider
 				"_UI_Interface_protocol_feature", "_UI_Interface_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.INTERFACE__PROTOCOL, true, false, true, null,
 			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -187,7 +187,7 @@ public class InterfaceItemProvider
 				"_UI_Interface_ownedOperation_feature", "_UI_Interface_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.INTERFACE__OWNED_OPERATION, true, false, true,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**

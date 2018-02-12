@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
- *   Kenn Hussey - 323181
+ *   Kenn Hussey - 323181, 438123
  *   Kenn Hussey (CEA) - 327039, 418466, 414970, 370089, 459723, 511674
  *
  */
@@ -133,7 +133,7 @@ public class ClassifierItemProvider
 			UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT, false,
 			false, false, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -154,7 +154,7 @@ public class ClassifierItemProvider
 			UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
 			false, false, false, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -195,7 +195,7 @@ public class ClassifierItemProvider
 			UMLPackage.Literals.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
 			true, false, true, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -213,7 +213,7 @@ public class ClassifierItemProvider
 				"_UI_Type_package_feature", "_UI_Type_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.TYPE__PACKAGE, true, false, true, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -234,7 +234,7 @@ public class ClassifierItemProvider
 			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING, true,
 			false, true, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -255,7 +255,7 @@ public class ClassifierItemProvider
 			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
 			true, false, true, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -312,7 +312,7 @@ public class ClassifierItemProvider
 				"_UI_Classifier_ownedUseCase_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE, true, false, true,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -349,7 +349,7 @@ public class ClassifierItemProvider
 				"_UI_Classifier_feature_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.CLASSIFIER__FEATURE, false, false, false, null,
 			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -370,7 +370,7 @@ public class ClassifierItemProvider
 			UMLPackage.Literals.CLASSIFIER__INHERITED_MEMBER, false, false,
 			false, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -407,7 +407,7 @@ public class ClassifierItemProvider
 				"_UI_Classifier_general_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.CLASSIFIER__GENERAL, true, false, true, null,
 			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -426,7 +426,7 @@ public class ClassifierItemProvider
 				"_UI_Classifier_generalization_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.CLASSIFIER__GENERALIZATION, true, false, true,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -461,7 +461,7 @@ public class ClassifierItemProvider
 				"_UI_Classifier_attribute_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.CLASSIFIER__ATTRIBUTE, false, false, false,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -482,7 +482,7 @@ public class ClassifierItemProvider
 			UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE, true, false,
 			true, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -519,7 +519,7 @@ public class ClassifierItemProvider
 				"_UI_Classifier_substitution_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.CLASSIFIER__SUBSTITUTION, true, false, true,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -584,8 +584,7 @@ public class ClassifierItemProvider
 		String label = ((Classifier) object).getName();
 		return label == null || label.length() == 0
 			? getString("_UI_Classifier_type") //$NON-NLS-1$
-			:
-			getString("_UI_Classifier_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			: getString("_UI_Classifier_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

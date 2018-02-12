@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey (CEA) - 327039, 414970, 370089, 511674
+ *   Kenn Hussey - 438123
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -109,7 +110,7 @@ public class ConnectableElementItemProvider
 			UMLPackage.Literals.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
 			true, false, true, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -129,7 +130,7 @@ public class ConnectableElementItemProvider
 				"_UI_ConnectableElement_type"), //$NON-NLS-1$
 			UMLPackage.Literals.CONNECTABLE_ELEMENT__END, false, false, false,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -153,8 +154,7 @@ public class ConnectableElementItemProvider
 		String label = ((ConnectableElement) object).getName();
 		return label == null || label.length() == 0
 			? getString("_UI_ConnectableElement_type") //$NON-NLS-1$
-			:
-			getString("_UI_ConnectableElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			: getString("_UI_ConnectableElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

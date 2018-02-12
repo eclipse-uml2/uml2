@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
- *   Kenn Hussey - 323181
+ *   Kenn Hussey - 323181, 438123
  *   Kenn Hussey (CEA) - 327039, 418466, 414970, 370089, 459723, 464702, 511674
  *
  */
@@ -128,7 +128,7 @@ public class StateItemProvider
 			UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT, false,
 			false, false, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -149,7 +149,7 @@ public class StateItemProvider
 			UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
 			false, false, false, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -167,7 +167,7 @@ public class StateItemProvider
 				"_UI_Vertex_container_feature", "_UI_Vertex_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.VERTEX__CONTAINER, true, false, true, null,
 			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -185,7 +185,7 @@ public class StateItemProvider
 				"_UI_Vertex_outgoing_feature", "_UI_Vertex_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.VERTEX__OUTGOING, false, false, false, null,
 			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -203,7 +203,7 @@ public class StateItemProvider
 				"_UI_Vertex_incoming_feature", "_UI_Vertex_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.VERTEX__INCOMING, false, false, false, null,
 			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -222,7 +222,7 @@ public class StateItemProvider
 			UMLPackage.Literals.STATE__IS_COMPOSITE, false, false, false,
 			ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -241,7 +241,7 @@ public class StateItemProvider
 			UMLPackage.Literals.STATE__IS_ORTHOGONAL, false, false, false,
 			ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -260,7 +260,7 @@ public class StateItemProvider
 			UMLPackage.Literals.STATE__IS_SIMPLE, false, false, false,
 			ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -280,7 +280,7 @@ public class StateItemProvider
 			UMLPackage.Literals.STATE__IS_SUBMACHINE_STATE, false, false, false,
 			ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -315,7 +315,7 @@ public class StateItemProvider
 				"_UI_State_connection_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.STATE__CONNECTION, true, false, true, null,
 			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -334,7 +334,7 @@ public class StateItemProvider
 				"_UI_State_connectionPoint_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.STATE__CONNECTION_POINT, true, false, true,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -369,7 +369,7 @@ public class StateItemProvider
 				"_UI_State_stateInvariant_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.STATE__STATE_INVARIANT, true, false, true, null,
 			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -387,7 +387,7 @@ public class StateItemProvider
 				"_UI_State_entry_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.STATE__ENTRY, true, false, true, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -405,7 +405,7 @@ public class StateItemProvider
 				"_UI_State_exit_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.STATE__EXIT, true, false, true, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -423,7 +423,7 @@ public class StateItemProvider
 				"_UI_State_doActivity_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.STATE__DO_ACTIVITY, true, false, true, null,
 			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -442,7 +442,7 @@ public class StateItemProvider
 				"_UI_State_deferrableTrigger_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.STATE__DEFERRABLE_TRIGGER, true, false, true,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -460,7 +460,7 @@ public class StateItemProvider
 				"_UI_State_region_feature", "_UI_State_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.STATE__REGION, true, false, true, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
- *   Kenn Hussey - 323181
+ *   Kenn Hussey - 323181, 438123
  *   Kenn Hussey (CEA) - 327039, 351774, 418466, 414970, 370089, 511674
  *
  */
@@ -98,7 +98,7 @@ public class StructuredActivityNodeItemProvider
 				"_UI_Namespace_elementImport_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT, true, false, true,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -117,7 +117,7 @@ public class StructuredActivityNodeItemProvider
 				"_UI_Namespace_packageImport_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT, true, false, true,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -135,7 +135,7 @@ public class StructuredActivityNodeItemProvider
 				"_UI_Namespace_ownedRule_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.NAMESPACE__OWNED_RULE, true, false, true, null,
 			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -153,7 +153,7 @@ public class StructuredActivityNodeItemProvider
 				"_UI_Namespace_member_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.NAMESPACE__MEMBER, false, false, false, null,
 			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -172,7 +172,7 @@ public class StructuredActivityNodeItemProvider
 				"_UI_Namespace_importedMember_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.NAMESPACE__IMPORTED_MEMBER, false, false, false,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -191,7 +191,7 @@ public class StructuredActivityNodeItemProvider
 				"_UI_Namespace_ownedMember_feature", "_UI_Namespace_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.NAMESPACE__OWNED_MEMBER, false, false, false,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -210,7 +210,7 @@ public class StructuredActivityNodeItemProvider
 				"_UI_ActivityGroup_subgroup_feature", "_UI_ActivityGroup_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.ACTIVITY_GROUP__SUBGROUP, false, false, false,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -231,7 +231,7 @@ public class StructuredActivityNodeItemProvider
 			UMLPackage.Literals.ACTIVITY_GROUP__SUPER_GROUP, false, false,
 			false, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -252,7 +252,7 @@ public class StructuredActivityNodeItemProvider
 			UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE, false, false,
 			false, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -272,7 +272,7 @@ public class StructuredActivityNodeItemProvider
 				"_UI_ActivityGroup_type"), //$NON-NLS-1$
 			UMLPackage.Literals.ACTIVITY_GROUP__IN_ACTIVITY, true, false, true,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -293,7 +293,7 @@ public class StructuredActivityNodeItemProvider
 			UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_EDGE, false, false,
 			false, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -314,7 +314,7 @@ public class StructuredActivityNodeItemProvider
 			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__VARIABLE, true, false,
 			true, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -335,7 +335,7 @@ public class StructuredActivityNodeItemProvider
 			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE, true, false,
 			true, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -356,7 +356,7 @@ public class StructuredActivityNodeItemProvider
 			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__STRUCTURED_NODE_INPUT,
 			true, false, true, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -378,7 +378,7 @@ public class StructuredActivityNodeItemProvider
 			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__STRUCTURED_NODE_OUTPUT,
 			true, false, true, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -419,7 +419,7 @@ public class StructuredActivityNodeItemProvider
 			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__EDGE, true, false,
 			true, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
- *   Kenn Hussey - 323181
+ *   Kenn Hussey - 323181, 438123
  *   Kenn Hussey (CEA) - 327039, 418466, 414970, 370089, 459723, 511674
  *
  */
@@ -116,7 +116,7 @@ public class RedefinableTemplateSignatureItemProvider
 				"_UI_TemplateSignature_type"), //$NON-NLS-1$
 			UMLPackage.Literals.TEMPLATE_SIGNATURE__TEMPLATE, true, false, true,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -137,7 +137,7 @@ public class RedefinableTemplateSignatureItemProvider
 			UMLPackage.Literals.TEMPLATE_SIGNATURE__OWNED_PARAMETER, true,
 			false, true, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -179,7 +179,7 @@ public class RedefinableTemplateSignatureItemProvider
 			UMLPackage.Literals.REDEFINABLE_TEMPLATE_SIGNATURE__INHERITED_PARAMETER,
 			false, false, false, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -200,7 +200,7 @@ public class RedefinableTemplateSignatureItemProvider
 			UMLPackage.Literals.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER,
 			true, false, true, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**

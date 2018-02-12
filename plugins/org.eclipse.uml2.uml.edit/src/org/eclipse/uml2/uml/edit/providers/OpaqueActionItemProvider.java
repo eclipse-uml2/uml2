@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
- *   Kenn Hussey - 323181
+ *   Kenn Hussey - 323181, 438123
  *   Kenn Hussey (CEA) - 327039, 414970, 370089, 511674
  *
  */
@@ -120,7 +120,7 @@ public class OpaqueActionItemProvider
 				"_UI_OpaqueAction_inputValue_feature", "_UI_OpaqueAction_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.OPAQUE_ACTION__INPUT_VALUE, true, false, true,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -140,7 +140,7 @@ public class OpaqueActionItemProvider
 				"_UI_OpaqueAction_type"), //$NON-NLS-1$
 			UMLPackage.Literals.OPAQUE_ACTION__OUTPUT_VALUE, true, false, true,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**

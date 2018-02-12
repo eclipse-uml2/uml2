@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey (CEA) - 327039, 351774, 418466, 414970, 370089, 511674
+ *   Kenn Hussey - 438123
  *
  */
 package org.eclipse.uml2.uml.edit.providers;
@@ -100,7 +101,7 @@ public class ActivityNodeItemProvider
 				"_UI_ActivityNode_inGroup_feature", "_UI_ActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.ACTIVITY_NODE__IN_GROUP, false, false, false,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -140,7 +141,7 @@ public class ActivityNodeItemProvider
 			UMLPackage.Literals.ACTIVITY_NODE__IN_STRUCTURED_NODE, true, false,
 			true, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -159,7 +160,7 @@ public class ActivityNodeItemProvider
 				"_UI_ActivityNode_activity_feature", "_UI_ActivityNode_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.ACTIVITY_NODE__ACTIVITY, true, false, true,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -239,8 +240,7 @@ public class ActivityNodeItemProvider
 		String label = ((ActivityNode) object).getName();
 		return label == null || label.length() == 0
 			? getString("_UI_ActivityNode_type") //$NON-NLS-1$
-			:
-			getString("_UI_ActivityNode_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			: getString("_UI_ActivityNode_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

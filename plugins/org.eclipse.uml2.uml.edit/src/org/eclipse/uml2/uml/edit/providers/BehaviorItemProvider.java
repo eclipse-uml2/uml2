@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
- *   Kenn Hussey - 296008, 323181
+ *   Kenn Hussey - 296008, 323181, 438123
  *   Kenn Hussey (CEA) - 327039, 418466, 414970, 370089, 459723, 511674
  *
  */
@@ -113,7 +113,7 @@ public class BehaviorItemProvider
 				"_UI_Behavior_ownedParameter_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.BEHAVIOR__OWNED_PARAMETER, true, false, true,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -133,7 +133,7 @@ public class BehaviorItemProvider
 			UMLPackage.Literals.BEHAVIOR__OWNED_PARAMETER_SET, true, false,
 			true, null, null,
 			new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -152,7 +152,7 @@ public class BehaviorItemProvider
 				"_UI_Behavior_postcondition_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.BEHAVIOR__POSTCONDITION, true, false, true,
 			null, null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -171,7 +171,7 @@ public class BehaviorItemProvider
 				"_UI_Behavior_precondition_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.BEHAVIOR__PRECONDITION, true, false, true, null,
 			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -207,7 +207,7 @@ public class BehaviorItemProvider
 				"_UI_Behavior_context_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$
 			UMLPackage.Literals.BEHAVIOR__CONTEXT, false, false, false, null,
 			null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-		}));
+			}));
 	}
 
 	/**
@@ -282,8 +282,7 @@ public class BehaviorItemProvider
 		String label = ((Behavior) object).getName();
 		return label == null || label.length() == 0
 			? getString("_UI_Behavior_type") //$NON-NLS-1$
-			:
-			getString("_UI_Behavior_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			: getString("_UI_Behavior_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
