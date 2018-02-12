@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2006, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
  *   Christian W. Damus (CEA) - 251963
+ *   Kenn Hussey - 342235
  *
  */
 package org.eclipse.uml2.uml;
@@ -33,11 +34,14 @@ import org.eclipse.emf.common.util.Enumerator;
  * @generated
  */
 public enum TransitionKind
-	implements Enumerator {
+		implements Enumerator {
 	/**
 	 * The '<em><b>Internal</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Implies that the Transition, if triggered, occurs without exiting or entering the source State (i.e., it does not cause a state change). This means that the entry or exit condition of the source State will not be invoked. An internal Transition can be taken even if the SateMachine is in one or more Regions nested within the associated State.
+	 * <!-- end-model-doc -->
 	 * @see #INTERNAL
 	 * @generated
 	 * @ordered
@@ -48,6 +52,9 @@ public enum TransitionKind
 	 * The '<em><b>Local</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Implies that the Transition, if triggered, will not exit the composite (source) State, but it will exit and re-enter any state within the composite State that is in the current state configuration.
+	 * <!-- end-model-doc -->
 	 * @see #LOCAL
 	 * @generated
 	 * @ordered
@@ -58,6 +65,9 @@ public enum TransitionKind
 	 * The '<em><b>External</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Implies that the Transition, if triggered, will exit the composite (source) State.
+	 * <!-- end-model-doc -->
 	 * @see #EXTERNAL
 	 * @generated
 	 * @ordered

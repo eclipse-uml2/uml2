@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2006, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Christian W. Damus (CEA) - 251963
  *   Kenn Hussey (CEA) - 418466, 451350, 485756
+ *   Kenn Hussey - 342235
  *
  */
 package org.eclipse.uml2.uml;
@@ -33,11 +34,14 @@ import org.eclipse.emf.common.util.Enumerator;
  * @generated
  */
 public enum MessageKind
-	implements Enumerator {
+		implements Enumerator {
 	/**
 	 * The '<em><b>Complete</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * sendEvent and receiveEvent are present
+	 * <!-- end-model-doc -->
 	 * @see #COMPLETE
 	 * @generated
 	 * @ordered
@@ -48,6 +52,9 @@ public enum MessageKind
 	 * The '<em><b>Lost</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * sendEvent present and receiveEvent absent
+	 * <!-- end-model-doc -->
 	 * @see #LOST
 	 * @generated
 	 * @ordered
@@ -58,6 +65,9 @@ public enum MessageKind
 	 * The '<em><b>Found</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * sendEvent absent and receiveEvent present
+	 * <!-- end-model-doc -->
 	 * @see #FOUND
 	 * @generated
 	 * @ordered
@@ -68,6 +78,9 @@ public enum MessageKind
 	 * The '<em><b>Unknown</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * sendEvent and receiveEvent absent (should not appear)
+	 * <!-- end-model-doc -->
 	 * @see #UNKNOWN
 	 * @generated
 	 * @ordered

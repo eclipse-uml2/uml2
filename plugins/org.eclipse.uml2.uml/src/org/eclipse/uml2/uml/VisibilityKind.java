@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2006, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
  *   Christian W. Damus (CEA) - 251963
+ *   Kenn Hussey - 342235
  *
  */
 package org.eclipse.uml2.uml;
@@ -33,11 +34,14 @@ import org.eclipse.emf.common.util.Enumerator;
  * @generated
  */
 public enum VisibilityKind
-	implements Enumerator {
+		implements Enumerator {
 	/**
 	 * The '<em><b>Public</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A Named Element with public visibility is visible to all elements that can access the contents of the Namespace that owns it.
+	 * <!-- end-model-doc -->
 	 * @see #PUBLIC
 	 * @generated
 	 * @ordered
@@ -48,6 +52,9 @@ public enum VisibilityKind
 	 * The '<em><b>Private</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A NamedElement with private visibility is only visible inside the Namespace that owns it.
+	 * <!-- end-model-doc -->
 	 * @see #PRIVATE
 	 * @generated
 	 * @ordered
@@ -58,6 +65,9 @@ public enum VisibilityKind
 	 * The '<em><b>Protected</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A NamedElement with protected visibility is visible to Elements that have a generalization relationship to the Namespace that owns it.
+	 * <!-- end-model-doc -->
 	 * @see #PROTECTED
 	 * @generated
 	 * @ordered
@@ -68,6 +78,9 @@ public enum VisibilityKind
 	 * The '<em><b>Package</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A NamedElement with package visibility is visible to all Elements within the nearest enclosing Package (given that other owning Elements have proper visibility). Outside the nearest enclosing Package, a NamedElement marked as having package visibility is not visible.  Only NamedElements that are not owned by Packages can be marked as having package visibility.
+	 * <!-- end-model-doc -->
 	 * @see #PACKAGE
 	 * @generated
 	 * @ordered

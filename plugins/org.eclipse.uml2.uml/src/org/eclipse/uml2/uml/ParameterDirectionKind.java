@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2006, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Christian W. Damus (CEA) - 251963
  *   Kenn Hussey (CEA) - 418466, 451350, 485756
+ *   Kenn Hussey - 342235
  *
  */
 package org.eclipse.uml2.uml;
@@ -33,11 +34,14 @@ import org.eclipse.emf.common.util.Enumerator;
  * @generated
  */
 public enum ParameterDirectionKind
-	implements Enumerator {
+		implements Enumerator {
 	/**
 	 * The '<em><b>In</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates that Parameter values are passed in by the caller.
+	 * <!-- end-model-doc -->
 	 * @see #IN
 	 * @generated
 	 * @ordered
@@ -48,6 +52,9 @@ public enum ParameterDirectionKind
 	 * The '<em><b>Inout</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates that Parameter values are passed in by the caller and (possibly different) values passed out to the caller.
+	 * <!-- end-model-doc -->
 	 * @see #INOUT
 	 * @generated
 	 * @ordered
@@ -58,6 +65,9 @@ public enum ParameterDirectionKind
 	 * The '<em><b>Out</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates that Parameter values are passed out to the caller.
+	 * <!-- end-model-doc -->
 	 * @see #OUT
 	 * @generated
 	 * @ordered
@@ -68,6 +78,9 @@ public enum ParameterDirectionKind
 	 * The '<em><b>Return</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates that Parameter values are passed as return values back to the caller.
+	 * <!-- end-model-doc -->
 	 * @see #RETURN
 	 * @generated
 	 * @ordered

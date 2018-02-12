@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2006, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Christian W. Damus (CEA) - 251963
  *   Kenn Hussey (CEA) - 418466, 451350, 485756
+ *   Kenn Hussey - 342235
  *
  */
 package org.eclipse.uml2.uml;
@@ -33,11 +34,14 @@ import org.eclipse.emf.common.util.Enumerator;
  * @generated
  */
 public enum AggregationKind
-	implements Enumerator {
+		implements Enumerator {
 	/**
 	 * The '<em><b>None</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates that the Property has no aggregation.
+	 * <!-- end-model-doc -->
 	 * @see #NONE
 	 * @generated
 	 * @ordered
@@ -48,6 +52,9 @@ public enum AggregationKind
 	 * The '<em><b>Shared</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates that the Property has shared aggregation.
+	 * <!-- end-model-doc -->
 	 * @see #SHARED
 	 * @generated
 	 * @ordered
@@ -58,6 +65,9 @@ public enum AggregationKind
 	 * The '<em><b>Composite</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates that the Property is aggregated compositely, i.e., the composite object has responsibility for the existence and storage of the composed objects (parts).
+	 * <!-- end-model-doc -->
 	 * @see #COMPOSITE
 	 * @generated
 	 * @ordered

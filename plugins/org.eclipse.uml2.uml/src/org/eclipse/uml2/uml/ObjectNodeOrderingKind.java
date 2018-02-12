@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2006, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Christian W. Damus (CEA) - 251963
  *   Kenn Hussey (CEA) - 418466, 451350, 485756
+ *   Kenn Hussey - 342235
  *
  */
 package org.eclipse.uml2.uml;
@@ -33,11 +34,14 @@ import org.eclipse.emf.common.util.Enumerator;
  * @generated
  */
 public enum ObjectNodeOrderingKind
-	implements Enumerator {
+		implements Enumerator {
 	/**
 	 * The '<em><b>Unordered</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates that tokens are unordered.
+	 * <!-- end-model-doc -->
 	 * @see #UNORDERED
 	 * @generated
 	 * @ordered
@@ -48,6 +52,9 @@ public enum ObjectNodeOrderingKind
 	 * The '<em><b>Ordered</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates that tokens are ordered.
+	 * <!-- end-model-doc -->
 	 * @see #ORDERED
 	 * @generated
 	 * @ordered
@@ -58,6 +65,9 @@ public enum ObjectNodeOrderingKind
 	 * The '<em><b>LIFO</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates that tokens are queued in a last in, first out manner.
+	 * <!-- end-model-doc -->
 	 * @see #LIFO
 	 * @generated
 	 * @ordered
@@ -68,6 +78,9 @@ public enum ObjectNodeOrderingKind
 	 * The '<em><b>FIFO</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates that tokens are queued in a first in, first out manner.
+	 * <!-- end-model-doc -->
 	 * @see #FIFO
 	 * @generated
 	 * @ordered

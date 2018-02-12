@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2006, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Christian W. Damus (CEA) - 251963
  *   Kenn Hussey (CEA) - 418466, 451350, 485756
+ *   Kenn - 342235
  *
  */
 package org.eclipse.uml2.uml;
@@ -33,11 +34,14 @@ import org.eclipse.emf.common.util.Enumerator;
  * @generated
  */
 public enum InteractionOperatorKind
-	implements Enumerator {
+		implements Enumerator {
 	/**
 	 * The '<em><b>Seq</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The InteractionOperatorKind seq designates that the CombinedFragment represents a weak sequencing between the behaviors of the operands.
+	 * <!-- end-model-doc -->
 	 * @see #SEQ
 	 * @generated
 	 * @ordered
@@ -48,6 +52,9 @@ public enum InteractionOperatorKind
 	 * The '<em><b>Alt</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The InteractionOperatorKind alt designates that the CombinedFragment represents a choice of behavior. At most one of the operands will be chosen. The chosen operand must have an explicit or implicit guard expression that evaluates to true at this point in the interaction. An implicit true guard is implied if the operand has no guard.
+	 * <!-- end-model-doc -->
 	 * @see #ALT
 	 * @generated
 	 * @ordered
@@ -58,6 +65,9 @@ public enum InteractionOperatorKind
 	 * The '<em><b>Opt</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The InteractionOperatorKind opt designates that the CombinedFragment represents a choice of behavior where either the (sole) operand happens or nothing happens. An option is semantically equivalent to an alternative CombinedFragment where there is one operand with non-empty content and the second operand is empty.
+	 * <!-- end-model-doc -->
 	 * @see #OPT
 	 * @generated
 	 * @ordered
@@ -68,6 +78,9 @@ public enum InteractionOperatorKind
 	 * The '<em><b>Break</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The InteractionOperatorKind break designates that the CombinedFragment represents a breaking scenario in the sense that the operand is a scenario that is performed instead of the remainder of the enclosing InteractionFragment. A break operator with a guard is chosen when the guard is true and the rest of the enclosing Interaction Fragment is ignored. When the guard of the break operand is false, the break operand is ignored and the rest of the enclosing InteractionFragment is chosen. The choice between a break operand without a guard and the rest of the enclosing InteractionFragment is done non-deterministically.
+	 * <!-- end-model-doc -->
 	 * @see #BREAK
 	 * @generated
 	 * @ordered
@@ -78,6 +91,9 @@ public enum InteractionOperatorKind
 	 * The '<em><b>Par</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The InteractionOperatorKind par designates that the CombinedFragment represents a parallel merge between the behaviors of the operands. The OccurrenceSpecifications of the different operands can be interleaved in any way as long as the ordering imposed by each operand as such is preserved.
+	 * <!-- end-model-doc -->
 	 * @see #PAR
 	 * @generated
 	 * @ordered
@@ -88,6 +104,9 @@ public enum InteractionOperatorKind
 	 * The '<em><b>Strict</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The InteractionOperatorKind strict designates that the CombinedFragment represents a strict sequencing between the behaviors of the operands. The semantics of strict sequencing defines a strict ordering of the operands on the first level within the CombinedFragment with interactionOperator strict. Therefore OccurrenceSpecifications within contained CombinedFragment will not directly be compared with other OccurrenceSpecifications of the enclosing CombinedFragment.
+	 * <!-- end-model-doc -->
 	 * @see #STRICT
 	 * @generated
 	 * @ordered
@@ -98,6 +117,9 @@ public enum InteractionOperatorKind
 	 * The '<em><b>Loop</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The InteractionOperatorKind loop designates that the CombinedFragment represents a loop. The loop operand will be repeated a number of times.
+	 * <!-- end-model-doc -->
 	 * @see #LOOP
 	 * @generated
 	 * @ordered
@@ -108,6 +130,9 @@ public enum InteractionOperatorKind
 	 * The '<em><b>Critical</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The InteractionOperatorKind critical designates that the CombinedFragment represents a critical region. A critical region means that the traces of the region cannot be interleaved by other OccurrenceSpecifications (on those Lifelines covered by the region). This means that the region is treated atomically by the enclosing fragment when determining the set of valid traces. Even though enclosing CombinedFragments may imply that some OccurrenceSpecifications may interleave into the region, such as with par-operator, this is prevented by defining a region.
+	 * <!-- end-model-doc -->
 	 * @see #CRITICAL
 	 * @generated
 	 * @ordered
@@ -118,6 +143,9 @@ public enum InteractionOperatorKind
 	 * The '<em><b>Neg</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The InteractionOperatorKind neg designates that the CombinedFragment represents traces that are defined to be invalid.
+	 * <!-- end-model-doc -->
 	 * @see #NEG
 	 * @generated
 	 * @ordered
@@ -128,6 +156,9 @@ public enum InteractionOperatorKind
 	 * The '<em><b>Assert</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The InteractionOperatorKind assert designates that the CombinedFragment represents an assertion. The sequences of the operand of the assertion are the only valid continuations. All other continuations result in an invalid trace.
+	 * <!-- end-model-doc -->
 	 * @see #ASSERT
 	 * @generated
 	 * @ordered
@@ -138,6 +169,9 @@ public enum InteractionOperatorKind
 	 * The '<em><b>Ignore</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The InteractionOperatorKind ignore designates that there are some message types that are not shown within this combined fragment. These message types can be considered insignificant and are implicitly ignored if they appear in a corresponding execution. Alternatively, one can understand ignore to mean that the message types that are ignored can appear anywhere in the traces.
+	 * <!-- end-model-doc -->
 	 * @see #IGNORE
 	 * @generated
 	 * @ordered
@@ -148,6 +182,9 @@ public enum InteractionOperatorKind
 	 * The '<em><b>Consider</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The InteractionOperatorKind consider designates which messages should be considered within this combined fragment. This is equivalent to defining every other message to be ignored.
+	 * <!-- end-model-doc -->
 	 * @see #CONSIDER
 	 * @generated
 	 * @ordered

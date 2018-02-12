@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2006, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Christian W. Damus (CEA) - 251963
  *   Kenn Hussey (CEA) - 418466, 451350, 485756
+ *   Kenn Hussey - 342235
  *
  */
 package org.eclipse.uml2.uml;
@@ -33,11 +34,14 @@ import org.eclipse.emf.common.util.Enumerator;
  * @generated
  */
 public enum ExpansionKind
-	implements Enumerator {
+		implements Enumerator {
 	/**
 	 * The '<em><b>Parallel</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The content of the ExpansionRegion is executed concurrently for the elements of the input collections.
+	 * <!-- end-model-doc -->
 	 * @see #PARALLEL
 	 * @generated
 	 * @ordered
@@ -48,6 +52,9 @@ public enum ExpansionKind
 	 * The '<em><b>Iterative</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The content of the ExpansionRegion is executed iteratively for the elements of the input collections, in the order of the input elements, if the collections are ordered.
+	 * <!-- end-model-doc -->
 	 * @see #ITERATIVE
 	 * @generated
 	 * @ordered
@@ -58,6 +65,9 @@ public enum ExpansionKind
 	 * The '<em><b>Stream</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A stream of input collection elements flows into a single execution of the content of the ExpansionRegion, in the order of the collection elements if the input collections are ordered.
+	 * <!-- end-model-doc -->
 	 * @see #STREAM
 	 * @generated
 	 * @ordered
