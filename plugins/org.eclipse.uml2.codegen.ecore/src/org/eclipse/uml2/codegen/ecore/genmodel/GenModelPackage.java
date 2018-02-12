@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 208016, 247980
- *   Kenn Hussey - 286329, 522703
+ *   Kenn Hussey - 286329, 522703, 438123
  *   Kenn Hussey (CEA) - 351777, 397324, 414970, 451350
  *   Sebastien Revol (CEA) - 529044
  *
@@ -362,6 +362,16 @@ public interface GenModelPackage
 	int GEN_DATA_TYPE__CONVERT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_DATA_TYPE__CONVERT;
 
 	/**
+	 * The feature id for the '<em><b>Property Editor Factory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_DATA_TYPE__PROPERTY_EDITOR_FACTORY = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_DATA_TYPE__PROPERTY_EDITOR_FACTORY;
+
+	/**
 	 * The number of structural features of the '<em>Gen Data Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -446,6 +456,16 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_ENUM__CONVERT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_ENUM__CONVERT;
+
+	/**
+	 * The feature id for the '<em><b>Property Editor Factory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_ENUM__PROPERTY_EDITOR_FACTORY = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_ENUM__PROPERTY_EDITOR_FACTORY;
 
 	/**
 	 * The feature id for the '<em><b>Type Safe Enum Compatible</b></em>' attribute.
@@ -718,6 +738,16 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_FEATURE__GET = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_FEATURE__GET;
+
+	/**
+	 * The feature id for the '<em><b>Property Editor Factory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_FEATURE__PROPERTY_EDITOR_FACTORY = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_FEATURE__PROPERTY_EDITOR_FACTORY;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -1581,6 +1611,46 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_MODEL__AUTO_EXPAND_PROPERTIES = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__AUTO_EXPAND_PROPERTIES;
+
+	/**
+	 * The feature id for the '<em><b>Find Action</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__FIND_ACTION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__FIND_ACTION;
+
+	/**
+	 * The feature id for the '<em><b>Expand All Action</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__EXPAND_ALL_ACTION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__EXPAND_ALL_ACTION;
+
+	/**
+	 * The feature id for the '<em><b>Collapse All Action</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__COLLAPSE_ALL_ACTION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__COLLAPSE_ALL_ACTION;
+
+	/**
+	 * The feature id for the '<em><b>Revert Action</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @since 2.14
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__REVERT_ACTION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__REVERT_ACTION;
 
 	/**
 	 * The feature id for the '<em><b>Factory Methods</b></em>' attribute.
