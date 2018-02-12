@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey - 323181, 522658, 528925
+ *   Kenn Hussey - 323181, 522658, 528925, 531034
  *   Kenn Hussey (CEA) - 281326
  *
  */
@@ -227,6 +227,7 @@ public class UMLActionBarContributor
 	 */
 	@Override
 	public void contributeToToolBar(IToolBarManager toolBarManager) {
+		super.contributeToToolBar(toolBarManager);
 		toolBarManager.add(new Separator("uml-settings")); //$NON-NLS-1$
 		toolBarManager.add(new Separator("uml-additions")); //$NON-NLS-1$
 	}
