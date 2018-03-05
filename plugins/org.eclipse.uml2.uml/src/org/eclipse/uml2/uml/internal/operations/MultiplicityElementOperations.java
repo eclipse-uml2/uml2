@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -91,14 +91,12 @@ public class MultiplicityElementOperations
 			result = false;
 
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(Diagnostic.WARNING,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.MULTIPLICITY_ELEMENT__LOWER_GE0,
-						UMLPlugin.INSTANCE.getString(
-							"_UI_MultiplicityElement_LowerGE0_diagnostic", //$NON-NLS-1$
-							getMessageSubstitutions(context,
-								multiplicityElement)),
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE,
+					UMLValidator.MULTIPLICITY_ELEMENT__LOWER_GE0,
+					UMLPlugin.INSTANCE.getString(
+						"_UI_MultiplicityElement_LowerGE0_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, multiplicityElement)),
 					new Object[]{multiplicityElement,
 						new Integer(lowerBound)}));
 			}
@@ -196,8 +194,7 @@ public class MultiplicityElementOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateValueSpecificationNoSideEffects", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(multiplicityElement, context)}),
-					new Object[]{multiplicityElement}));
+								.getObjectLabel(multiplicityElement, context)}), new Object[]{multiplicityElement}));
 			}
 			return false;
 		}
@@ -231,8 +228,7 @@ public class MultiplicityElementOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateValueSpecificationConstant", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(multiplicityElement, context)}),
-					new Object[]{multiplicityElement}));
+								.getObjectLabel(multiplicityElement, context)}), new Object[]{multiplicityElement}));
 			}
 			return false;
 		}
@@ -267,8 +263,7 @@ public class MultiplicityElementOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateLowerIsInteger", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(multiplicityElement, context)}),
-					new Object[]{multiplicityElement}));
+								.getObjectLabel(multiplicityElement, context)}), new Object[]{multiplicityElement}));
 			}
 			return false;
 		}
@@ -303,8 +298,7 @@ public class MultiplicityElementOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateUpperIsUnlimitedNatural", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(multiplicityElement, context)}),
-					new Object[]{multiplicityElement}));
+								.getObjectLabel(multiplicityElement, context)}), new Object[]{multiplicityElement}));
 			}
 			return false;
 		}

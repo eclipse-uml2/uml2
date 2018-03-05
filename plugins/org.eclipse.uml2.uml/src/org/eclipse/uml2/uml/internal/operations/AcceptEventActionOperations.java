@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -81,8 +81,7 @@ public class AcceptEventActionOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateOneOutputPin", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(acceptEventAction, context)}),
-					new Object[]{acceptEventAction}));
+								.getObjectLabel(acceptEventAction, context)}), new Object[]{acceptEventAction}));
 			}
 			return false;
 		}
@@ -117,8 +116,7 @@ public class AcceptEventActionOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateNoInputPins", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(acceptEventAction, context)}),
-					new Object[]{acceptEventAction}));
+								.getObjectLabel(acceptEventAction, context)}), new Object[]{acceptEventAction}));
 			}
 			return false;
 		}
@@ -156,8 +154,7 @@ public class AcceptEventActionOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateNoOutputPins", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(acceptEventAction, context)}),
-					new Object[]{acceptEventAction}));
+								.getObjectLabel(acceptEventAction, context)}), new Object[]{acceptEventAction}));
 			}
 			return false;
 		}
@@ -200,8 +197,7 @@ public class AcceptEventActionOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateUnmarshallSignalEvents", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(acceptEventAction, context)}),
-					new Object[]{acceptEventAction}));
+								.getObjectLabel(acceptEventAction, context)}), new Object[]{acceptEventAction}));
 			}
 			return false;
 		}
@@ -241,8 +237,7 @@ public class AcceptEventActionOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateConformingType", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(acceptEventAction, context)}),
-					new Object[]{acceptEventAction}));
+								.getObjectLabel(acceptEventAction, context)}), new Object[]{acceptEventAction}));
 			}
 			return false;
 		}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014, 2015 CEA and others.
+ * Copyright (c) 2014, 2018 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -82,7 +82,8 @@ public class ImplementationClassImpl
 	public org.eclipse.uml2.uml.Class getBase_Class() {
 		if (base_Class != null && base_Class.eIsProxy()) {
 			InternalEObject oldBase_Class = (InternalEObject) base_Class;
-			base_Class = (org.eclipse.uml2.uml.Class) eResolveProxy(oldBase_Class);
+			base_Class = (org.eclipse.uml2.uml.Class) eResolveProxy(
+				oldBase_Class);
 			if (base_Class != oldBase_Class) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -112,8 +113,8 @@ public class ImplementationClassImpl
 		base_Class = newBase_Class;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				StandardPackage.IMPLEMENTATION_CLASS__BASE_CLASS,
-				oldBase_Class, base_Class));
+				StandardPackage.IMPLEMENTATION_CLASS__BASE_CLASS, oldBase_Class,
+				base_Class));
 	}
 
 	/**

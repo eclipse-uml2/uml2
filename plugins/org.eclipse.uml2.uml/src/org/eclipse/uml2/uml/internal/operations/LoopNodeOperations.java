@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -90,8 +90,7 @@ public class LoopNodeOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateInputEdges", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(loopNode, context)}),
-					new Object[]{loopNode}));
+								.getObjectLabel(loopNode, context)}), new Object[]{loopNode}));
 			}
 			return false;
 		}
@@ -125,8 +124,7 @@ public class LoopNodeOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateExecutableNodes", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(loopNode, context)}),
-					new Object[]{loopNode}));
+								.getObjectLabel(loopNode, context)}), new Object[]{loopNode}));
 			}
 			return false;
 		}
@@ -160,8 +158,7 @@ public class LoopNodeOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateBodyOutputPins", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(loopNode, context)}),
-					new Object[]{loopNode}));
+								.getObjectLabel(loopNode, context)}), new Object[]{loopNode}));
 			}
 			return false;
 		}
@@ -197,8 +194,7 @@ public class LoopNodeOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateSetupTestAndBody", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(loopNode, context)}),
-					new Object[]{loopNode}));
+								.getObjectLabel(loopNode, context)}), new Object[]{loopNode}));
 			}
 			return false;
 		}
@@ -237,8 +233,7 @@ public class LoopNodeOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateMatchingOutputPins", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(loopNode, context)}),
-					new Object[]{loopNode}));
+								.getObjectLabel(loopNode, context)}), new Object[]{loopNode}));
 			}
 			return false;
 		}
@@ -276,8 +271,7 @@ public class LoopNodeOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateMatchingLoopVariables", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(loopNode, context)}),
-					new Object[]{loopNode}));
+								.getObjectLabel(loopNode, context)}), new Object[]{loopNode}));
 			}
 			return false;
 		}
@@ -315,8 +309,7 @@ public class LoopNodeOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateMatchingResultPins", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(loopNode, context)}),
-					new Object[]{loopNode}));
+								.getObjectLabel(loopNode, context)}), new Object[]{loopNode}));
 			}
 			return false;
 		}
@@ -350,8 +343,7 @@ public class LoopNodeOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateLoopVariableOutgoing", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(loopNode, context)}),
-					new Object[]{loopNode}));
+								.getObjectLabel(loopNode, context)}), new Object[]{loopNode}));
 			}
 			return false;
 		}
@@ -424,8 +416,7 @@ public class LoopNodeOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateResultNoIncoming", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(loopNode, context)}),
-					new Object[]{loopNode}));
+								.getObjectLabel(loopNode, context)}), new Object[]{loopNode}));
 			}
 			return false;
 		}

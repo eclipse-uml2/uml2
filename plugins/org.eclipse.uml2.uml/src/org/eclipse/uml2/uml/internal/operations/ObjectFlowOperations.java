@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -81,8 +81,7 @@ public class ObjectFlowOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateCompatibleTypes", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(objectFlow, context)}),
-					new Object[]{objectFlow}));
+								.getObjectLabel(objectFlow, context)}), new Object[]{objectFlow}));
 			}
 			return false;
 		}
@@ -115,8 +114,7 @@ public class ObjectFlowOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateSameUpperBounds", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(objectFlow, context)}),
-					new Object[]{objectFlow}));
+								.getObjectLabel(objectFlow, context)}), new Object[]{objectFlow}));
 			}
 			return false;
 		}
@@ -149,8 +147,7 @@ public class ObjectFlowOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateTarget", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(objectFlow, context)}),
-					new Object[]{objectFlow}));
+								.getObjectLabel(objectFlow, context)}), new Object[]{objectFlow}));
 			}
 			return false;
 		}
@@ -187,8 +184,7 @@ public class ObjectFlowOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateInputAndOutputParameter", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(objectFlow, context)}),
-					new Object[]{objectFlow}));
+								.getObjectLabel(objectFlow, context)}), new Object[]{objectFlow}));
 			}
 			return false;
 		}
@@ -222,8 +218,7 @@ public class ObjectFlowOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateNoExecutableNodes", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(objectFlow, context)}),
-					new Object[]{objectFlow}));
+								.getObjectLabel(objectFlow, context)}), new Object[]{objectFlow}));
 			}
 			return false;
 		}
@@ -259,8 +254,7 @@ public class ObjectFlowOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateTransformationBehavior", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(objectFlow, context)}),
-					new Object[]{objectFlow}));
+								.getObjectLabel(objectFlow, context)}), new Object[]{objectFlow}));
 			}
 			return false;
 		}
@@ -294,8 +288,7 @@ public class ObjectFlowOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateSelectionBehavior", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(objectFlow, context)}),
-					new Object[]{objectFlow}));
+								.getObjectLabel(objectFlow, context)}), new Object[]{objectFlow}));
 			}
 			return false;
 		}
@@ -330,8 +323,7 @@ public class ObjectFlowOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateIsMulticastOrIsMultireceive", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(objectFlow, context)}),
-					new Object[]{objectFlow}));
+								.getObjectLabel(objectFlow, context)}), new Object[]{objectFlow}));
 			}
 			return false;
 		}

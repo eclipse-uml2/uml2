@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -308,11 +308,8 @@ public class UnmarshallActionImpl
 						- UMLPackage.UNMARSHALL_ACTION__OBJECT,
 					null, null);
 				if (newObject.eInternalContainer() == null) {
-					msgs = newObject
-						.eInverseAdd(this,
-							EOPPOSITE_FEATURE_BASE
-								- UMLPackage.UNMARSHALL_ACTION__OBJECT,
-							null, msgs);
+					msgs = newObject.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.UNMARSHALL_ACTION__OBJECT, null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();

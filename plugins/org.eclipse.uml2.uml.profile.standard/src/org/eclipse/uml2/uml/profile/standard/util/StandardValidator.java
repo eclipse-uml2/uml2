@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 CEA and others.
+ * Copyright (c) 2014, 2018 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -273,8 +273,8 @@ public class StandardValidator
 			case StandardPackage.SOURCE :
 				return validateSource((Source) value, diagnostics, context);
 			case StandardPackage.SPECIFICATION :
-				return validateSpecification((Specification) value,
-					diagnostics, context);
+				return validateSpecification((Specification) value, diagnostics,
+					context);
 			case StandardPackage.SUBSYSTEM :
 				return validateSubsystem((Subsystem) value, diagnostics,
 					context);
@@ -349,9 +349,10 @@ public class StandardValidator
 	 * @generated
 	 */
 	public boolean validateCall_validateClientAndSupplierAreOperations(
-			Call call, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return call
-			.validateClientAndSupplierAreOperations(diagnostics, context);
+			Call call, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return call.validateClientAndSupplierAreOperations(diagnostics,
+			context);
 	}
 
 	/**
@@ -363,8 +364,8 @@ public class StandardValidator
 			Map<Object, Object> context) {
 		if (!validate_NoCircularContainment(create, diagnostics, context))
 			return false;
-		boolean result = validate_EveryMultiplicityConforms(create,
-			diagnostics, context);
+		boolean result = validate_EveryMultiplicityConforms(create, diagnostics,
+			context);
 		if (result || diagnostics != null)
 			result &= validate_EveryDataValueConforms(create, diagnostics,
 				context);
@@ -381,7 +382,8 @@ public class StandardValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(create, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_EveryMapEntryUnique(create, diagnostics, context);
+			result &= validate_EveryMapEntryUnique(create, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateCreate_validateClientAndSupplierAreClassifiers(
 				create, diagnostics, context);
@@ -416,8 +418,8 @@ public class StandardValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateDestroy(Destroy destroy,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateDestroy(Destroy destroy, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(destroy, diagnostics, context);
 	}
 
@@ -458,7 +460,8 @@ public class StandardValidator
 	 */
 	public boolean validateExecutable(Executable executable,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(executable, diagnostics, context);
+		return validate_EveryDefaultConstraint(executable, diagnostics,
+			context);
 	}
 
 	/**
@@ -496,8 +499,8 @@ public class StandardValidator
 			result &= validate_EveryDataValueConforms(implement, diagnostics,
 				context);
 		if (result || diagnostics != null)
-			result &= validate_EveryReferenceIsContained(implement,
-				diagnostics, context);
+			result &= validate_EveryReferenceIsContained(implement, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryBidirectionalReferenceIsPaired(implement,
 				diagnostics, context);
@@ -540,8 +543,8 @@ public class StandardValidator
 		if (!validate_NoCircularContainment(implementationClass, diagnostics,
 			context))
 			return false;
-		boolean result = validate_EveryMultiplicityConforms(
-			implementationClass, diagnostics, context);
+		boolean result = validate_EveryMultiplicityConforms(implementationClass,
+			diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryDataValueConforms(implementationClass,
 				diagnostics, context);
@@ -608,7 +611,8 @@ public class StandardValidator
 		if (result || diagnostics != null)
 			result &= validate_UniqueID(instantiate, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_EveryKeyUnique(instantiate, diagnostics, context);
+			result &= validate_EveryKeyUnique(instantiate, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryMapEntryUnique(instantiate, diagnostics,
 				context);
@@ -636,8 +640,8 @@ public class StandardValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateLibrary(Library library,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateLibrary(Library library, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(library, diagnostics, context);
 	}
 
@@ -699,7 +703,8 @@ public class StandardValidator
 		if (result || diagnostics != null)
 			result &= validate_UniqueID(realization, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_EveryKeyUnique(realization, diagnostics, context);
+			result &= validate_EveryKeyUnique(realization, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryMapEntryUnique(realization, diagnostics,
 				context);
@@ -794,7 +799,8 @@ public class StandardValidator
 	 * @generated
 	 */
 	public boolean validateSend_validateClientOperationSendsSupplierSignal(
-			Send send, DiagnosticChain diagnostics, Map<Object, Object> context) {
+			Send send, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return send.validateClientOperationSendsSupplierSignal(diagnostics,
 			context);
 	}
@@ -804,8 +810,8 @@ public class StandardValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateService(Service service,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateService(Service service, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(service, diagnostics, context);
 	}
 
@@ -826,7 +832,8 @@ public class StandardValidator
 	 */
 	public boolean validateSpecification(Specification specification,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(specification, diagnostics, context))
+		if (!validate_NoCircularContainment(specification, diagnostics,
+			context))
 			return false;
 		boolean result = validate_EveryMultiplicityConforms(specification,
 			diagnostics, context);
@@ -938,8 +945,8 @@ public class StandardValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateUtility(Utility utility,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateUtility(Utility utility, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		if (!validate_NoCircularContainment(utility, diagnostics, context))
 			return false;
 		boolean result = validate_EveryMultiplicityConforms(utility,
@@ -954,7 +961,8 @@ public class StandardValidator
 			result &= validate_EveryBidirectionalReferenceIsPaired(utility,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validate_EveryProxyResolves(utility, diagnostics, context);
+			result &= validate_EveryProxyResolves(utility, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validate_UniqueID(utility, diagnostics, context);
 		if (result || diagnostics != null)

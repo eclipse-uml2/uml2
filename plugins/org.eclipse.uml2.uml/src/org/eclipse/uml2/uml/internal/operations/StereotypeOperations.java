@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -106,8 +106,7 @@ public class StereotypeOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateBinaryAssociationsOnly", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(stereotype, context)}),
-					new Object[]{stereotype}));
+								.getObjectLabel(stereotype, context)}), new Object[]{stereotype}));
 			}
 			return false;
 		}
@@ -140,8 +139,7 @@ public class StereotypeOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateNameNotClash", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(stereotype, context)}),
-					new Object[]{stereotype}));
+								.getObjectLabel(stereotype, context)}), new Object[]{stereotype}));
 			}
 			return false;
 		}
@@ -177,8 +175,7 @@ public class StereotypeOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateAssociationEndOwnership", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(stereotype, context)}),
-					new Object[]{stereotype}));
+								.getObjectLabel(stereotype, context)}), new Object[]{stereotype}));
 			}
 			return false;
 		}
@@ -211,8 +208,7 @@ public class StereotypeOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateBasePropertyUpperBound", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(stereotype, context)}),
-					new Object[]{stereotype}));
+								.getObjectLabel(stereotype, context)}), new Object[]{stereotype}));
 			}
 			return false;
 		}
@@ -247,8 +243,7 @@ public class StereotypeOperations
 						new Object[]{
 							"validateBasePropertyMultiplicitySingleExtension", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(stereotype, context)}),
-					new Object[]{stereotype}));
+								.getObjectLabel(stereotype, context)}), new Object[]{stereotype}));
 			}
 			return false;
 		}
@@ -283,8 +278,7 @@ public class StereotypeOperations
 						new Object[]{
 							"validateBasePropertyMultiplicityMultipleExtension", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(stereotype, context)}),
-					new Object[]{stereotype}));
+								.getObjectLabel(stereotype, context)}), new Object[]{stereotype}));
 			}
 			return false;
 		}
@@ -319,8 +313,7 @@ public class StereotypeOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateGeneralize", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(stereotype, context)}),
-					new Object[]{stereotype}));
+								.getObjectLabel(stereotype, context)}), new Object[]{stereotype}));
 			}
 			return false;
 		}

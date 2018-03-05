@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -78,8 +78,7 @@ public class ConnectionPointReferenceOperations
 						new Object[]{"validateEntryPseudostates", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
 								.getObjectLabel(connectionPointReference,
-									context)}),
-					new Object[]{connectionPointReference}));
+									context)}), new Object[]{connectionPointReference}));
 			}
 			return false;
 		}
@@ -115,8 +114,7 @@ public class ConnectionPointReferenceOperations
 						new Object[]{"validateExitPseudostates", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
 								.getObjectLabel(connectionPointReference,
-									context)}),
-					new Object[]{connectionPointReference}));
+									context)}), new Object[]{connectionPointReference}));
 			}
 			return false;
 		}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014, 2015 CEA and others.
+ * Copyright (c) 2014, 2018 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -73,8 +73,8 @@ public class ScriptImpl
 			if (base_Artifact != oldBase_Artifact) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						StandardPackage.SCRIPT__BASE_ARTIFACT,
-						oldBase_Artifact, base_Artifact));
+						StandardPackage.SCRIPT__BASE_ARTIFACT, oldBase_Artifact,
+						base_Artifact));
 			}
 		}
 		return base_Artifact;

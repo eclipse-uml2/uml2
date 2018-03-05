@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -83,8 +83,7 @@ public class PseudostateOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateInitialVertex", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(pseudostate, context)}),
-					new Object[]{pseudostate}));
+								.getObjectLabel(pseudostate, context)}), new Object[]{pseudostate}));
 			}
 			return false;
 		}
@@ -118,8 +117,7 @@ public class PseudostateOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateHistoryVertices", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(pseudostate, context)}),
-					new Object[]{pseudostate}));
+								.getObjectLabel(pseudostate, context)}), new Object[]{pseudostate}));
 			}
 			return false;
 		}
@@ -153,8 +151,7 @@ public class PseudostateOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateJoinVertex", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(pseudostate, context)}),
-					new Object[]{pseudostate}));
+								.getObjectLabel(pseudostate, context)}), new Object[]{pseudostate}));
 			}
 			return false;
 		}
@@ -195,8 +192,7 @@ public class PseudostateOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateTransitionsIncoming", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(pseudostate, context)}),
-					new Object[]{pseudostate}));
+								.getObjectLabel(pseudostate, context)}), new Object[]{pseudostate}));
 			}
 			return false;
 		}
@@ -230,8 +226,7 @@ public class PseudostateOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateForkVertex", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(pseudostate, context)}),
-					new Object[]{pseudostate}));
+								.getObjectLabel(pseudostate, context)}), new Object[]{pseudostate}));
 			}
 			return false;
 		}
@@ -272,8 +267,7 @@ public class PseudostateOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateTransitionsOutgoing", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(pseudostate, context)}),
-					new Object[]{pseudostate}));
+								.getObjectLabel(pseudostate, context)}), new Object[]{pseudostate}));
 			}
 			return false;
 		}
@@ -307,8 +301,7 @@ public class PseudostateOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateJunctionVertex", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(pseudostate, context)}),
-					new Object[]{pseudostate}));
+								.getObjectLabel(pseudostate, context)}), new Object[]{pseudostate}));
 			}
 			return false;
 		}
@@ -342,8 +335,7 @@ public class PseudostateOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateChoiceVertex", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(pseudostate, context)}),
-					new Object[]{pseudostate}));
+								.getObjectLabel(pseudostate, context)}), new Object[]{pseudostate}));
 			}
 			return false;
 		}
@@ -377,8 +369,7 @@ public class PseudostateOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateOutgoingFromInitial", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(pseudostate, context)}),
-					new Object[]{pseudostate}));
+								.getObjectLabel(pseudostate, context)}), new Object[]{pseudostate}));
 			}
 			return false;
 		}

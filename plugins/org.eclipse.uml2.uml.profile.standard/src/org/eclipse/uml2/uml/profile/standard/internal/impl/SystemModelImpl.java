@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014, 2015 CEA and others.
+ * Copyright (c) 2014, 2018 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -83,8 +83,8 @@ public class SystemModelImpl
 			if (base_Model != oldBase_Model) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						StandardPackage.SYSTEM_MODEL__BASE_MODEL,
-						oldBase_Model, base_Model));
+						StandardPackage.SYSTEM_MODEL__BASE_MODEL, oldBase_Model,
+						base_Model));
 			}
 		}
 		return base_Model;

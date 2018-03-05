@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -83,8 +83,7 @@ public class DecisionNodeOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateIncomingOutgoingEdges", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(decisionNode, context)}),
-					new Object[]{decisionNode}));
+								.getObjectLabel(decisionNode, context)}), new Object[]{decisionNode}));
 			}
 			return false;
 		}
@@ -121,8 +120,7 @@ public class DecisionNodeOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateEdges", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(decisionNode, context)}),
-					new Object[]{decisionNode}));
+								.getObjectLabel(decisionNode, context)}), new Object[]{decisionNode}));
 			}
 			return false;
 		}
@@ -157,8 +155,7 @@ public class DecisionNodeOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateDecisionInputFlowIncoming", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(decisionNode, context)}),
-					new Object[]{decisionNode}));
+								.getObjectLabel(decisionNode, context)}), new Object[]{decisionNode}));
 			}
 			return false;
 		}
@@ -197,8 +194,7 @@ public class DecisionNodeOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateParameters", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(decisionNode, context)}),
-					new Object[]{decisionNode}));
+								.getObjectLabel(decisionNode, context)}), new Object[]{decisionNode}));
 			}
 			return false;
 		}
@@ -233,8 +229,7 @@ public class DecisionNodeOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateZeroInputParameters", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(decisionNode, context)}),
-					new Object[]{decisionNode}));
+								.getObjectLabel(decisionNode, context)}), new Object[]{decisionNode}));
 			}
 			return false;
 		}
@@ -270,8 +265,7 @@ public class DecisionNodeOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateIncomingObjectOneInputParameter", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(decisionNode, context)}),
-					new Object[]{decisionNode}));
+								.getObjectLabel(decisionNode, context)}), new Object[]{decisionNode}));
 			}
 			return false;
 		}
@@ -307,8 +301,7 @@ public class DecisionNodeOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateIncomingControlOneInputParameter", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(decisionNode, context)}),
-					new Object[]{decisionNode}));
+								.getObjectLabel(decisionNode, context)}), new Object[]{decisionNode}));
 			}
 			return false;
 		}
@@ -343,8 +336,7 @@ public class DecisionNodeOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateTwoInputParameters", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(decisionNode, context)}),
-					new Object[]{decisionNode}));
+								.getObjectLabel(decisionNode, context)}), new Object[]{decisionNode}));
 			}
 			return false;
 		}

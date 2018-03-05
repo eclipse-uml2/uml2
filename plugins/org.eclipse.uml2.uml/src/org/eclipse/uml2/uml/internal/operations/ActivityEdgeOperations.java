@@ -77,8 +77,7 @@ public class ActivityEdgeOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateSourceAndTarget", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(activityEdge, context)}),
-					new Object[]{activityEdge}));
+								.getObjectLabel(activityEdge, context)}), new Object[]{activityEdge}));
 			}
 			return false;
 		}

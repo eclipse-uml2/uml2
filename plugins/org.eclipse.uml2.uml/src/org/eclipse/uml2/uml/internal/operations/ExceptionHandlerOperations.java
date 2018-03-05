@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -81,8 +81,7 @@ public class ExceptionHandlerOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateHandlerBodyEdges", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(exceptionHandler, context)}),
-					new Object[]{exceptionHandler}));
+								.getObjectLabel(exceptionHandler, context)}), new Object[]{exceptionHandler}));
 			}
 			return false;
 		}
@@ -126,8 +125,7 @@ public class ExceptionHandlerOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateOutputPins", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(exceptionHandler, context)}),
-					new Object[]{exceptionHandler}));
+								.getObjectLabel(exceptionHandler, context)}), new Object[]{exceptionHandler}));
 			}
 			return false;
 		}
@@ -163,8 +161,7 @@ public class ExceptionHandlerOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateOneInput", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(exceptionHandler, context)}),
-					new Object[]{exceptionHandler}));
+								.getObjectLabel(exceptionHandler, context)}), new Object[]{exceptionHandler}));
 			}
 			return false;
 		}
@@ -201,8 +198,7 @@ public class ExceptionHandlerOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateEdgeSourceTarget", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(exceptionHandler, context)}),
-					new Object[]{exceptionHandler}));
+								.getObjectLabel(exceptionHandler, context)}), new Object[]{exceptionHandler}));
 			}
 			return false;
 		}
@@ -237,8 +233,7 @@ public class ExceptionHandlerOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateHandlerBodyOwner", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(exceptionHandler, context)}),
-					new Object[]{exceptionHandler}));
+								.getObjectLabel(exceptionHandler, context)}), new Object[]{exceptionHandler}));
 			}
 			return false;
 		}
@@ -274,8 +269,7 @@ public class ExceptionHandlerOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateExceptionInputType", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(exceptionHandler, context)}),
-					new Object[]{exceptionHandler}));
+								.getObjectLabel(exceptionHandler, context)}), new Object[]{exceptionHandler}));
 			}
 			return false;
 		}

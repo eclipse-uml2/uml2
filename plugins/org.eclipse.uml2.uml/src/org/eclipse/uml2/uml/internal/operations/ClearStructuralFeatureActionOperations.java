@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2008, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2008, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -78,8 +78,7 @@ public class ClearStructuralFeatureActionOperations
 						new Object[]{"validateTypeOfResult", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
 								.getObjectLabel(clearStructuralFeatureAction,
-									context)}),
-					new Object[]{clearStructuralFeatureAction}));
+									context)}), new Object[]{clearStructuralFeatureAction}));
 			}
 			return false;
 		}
@@ -115,8 +114,7 @@ public class ClearStructuralFeatureActionOperations
 						new Object[]{"validateMultiplicityOfResult", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
 								.getObjectLabel(clearStructuralFeatureAction,
-									context)}),
-					new Object[]{clearStructuralFeatureAction}));
+									context)}), new Object[]{clearStructuralFeatureAction}));
 			}
 			return false;
 		}

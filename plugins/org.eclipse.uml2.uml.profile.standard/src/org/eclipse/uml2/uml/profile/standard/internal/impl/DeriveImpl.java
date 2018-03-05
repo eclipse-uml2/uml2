@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014, 2015 CEA and others.
+ * Copyright (c) 2014, 2018 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -97,11 +97,14 @@ public class DeriveImpl
 				InternalEObject newComputation = (InternalEObject) computation;
 				NotificationChain msgs = oldComputation.eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- StandardPackage.DERIVE__COMPUTATION, null, null);
+						- StandardPackage.DERIVE__COMPUTATION,
+					null, null);
 				if (newComputation.eInternalContainer() == null) {
-					msgs = newComputation.eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE
-							- StandardPackage.DERIVE__COMPUTATION, null, msgs);
+					msgs = newComputation
+						.eInverseAdd(this,
+							EOPPOSITE_FEATURE_BASE
+								- StandardPackage.DERIVE__COMPUTATION,
+							null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
@@ -155,11 +158,13 @@ public class DeriveImpl
 			if (computation != null)
 				msgs = ((InternalEObject) computation).eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- StandardPackage.DERIVE__COMPUTATION, null, msgs);
+						- StandardPackage.DERIVE__COMPUTATION,
+					null, msgs);
 			if (newComputation != null)
 				msgs = ((InternalEObject) newComputation).eInverseAdd(this,
 					EOPPOSITE_FEATURE_BASE
-						- StandardPackage.DERIVE__COMPUTATION, null, msgs);
+						- StandardPackage.DERIVE__COMPUTATION,
+					null, msgs);
 			msgs = basicSetComputation(newComputation, msgs);
 			if (msgs != null)
 				msgs.dispatch();

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -276,9 +276,8 @@ public abstract class WriteStructuralFeatureActionImpl
 						- UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__RESULT,
 					null, null);
 				if (newResult.eInternalContainer() == null) {
-					msgs = newResult.eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE
-							- UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__RESULT,
+					msgs = newResult.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__RESULT,
 						null, msgs);
 				}
 				if (msgs != null)

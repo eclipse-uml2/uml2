@@ -114,8 +114,8 @@ public class UMLActionBarContributor
 	 * @generated
 	 */
 	protected IAction showPropertiesViewAction = new Action(
-		UMLEditorPlugin.INSTANCE
-			.getString("_UI_ShowPropertiesView_menu_item")) { //$NON-NLS-1$
+		UMLEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) //$NON-NLS-1$
+	{
 
 		@Override
 		public void run() {
@@ -135,7 +135,8 @@ public class UMLActionBarContributor
 	 * @generated
 	 */
 	protected IAction refreshViewerAction = new Action(
-		UMLEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) { //$NON-NLS-1$
+		UMLEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) //$NON-NLS-1$
+	{
 
 		@Override
 		public boolean isEnabled() {

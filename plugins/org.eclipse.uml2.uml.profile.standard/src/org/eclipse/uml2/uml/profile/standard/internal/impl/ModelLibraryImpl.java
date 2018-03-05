@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014, 2015 CEA and others.
+ * Copyright (c) 2014, 2018 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -77,7 +77,8 @@ public class ModelLibraryImpl
 	public org.eclipse.uml2.uml.Package getBase_Package() {
 		if (base_Package != null && base_Package.eIsProxy()) {
 			InternalEObject oldBase_Package = (InternalEObject) base_Package;
-			base_Package = (org.eclipse.uml2.uml.Package) eResolveProxy(oldBase_Package);
+			base_Package = (org.eclipse.uml2.uml.Package) eResolveProxy(
+				oldBase_Package);
 			if (base_Package != oldBase_Package) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,

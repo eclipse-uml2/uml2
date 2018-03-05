@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -83,8 +83,7 @@ public class ReadLinkObjectEndActionOperations
 						new Object[]{"validateProperty", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
 								.getObjectLabel(readLinkObjectEndAction,
-									context)}),
-					new Object[]{readLinkObjectEndAction}));
+									context)}), new Object[]{readLinkObjectEndAction}));
 			}
 			return false;
 		}
@@ -120,8 +119,7 @@ public class ReadLinkObjectEndActionOperations
 						new Object[]{"validateAssociationOfAssociation", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
 								.getObjectLabel(readLinkObjectEndAction,
-									context)}),
-					new Object[]{readLinkObjectEndAction}));
+									context)}), new Object[]{readLinkObjectEndAction}));
 			}
 			return false;
 		}
@@ -157,8 +155,7 @@ public class ReadLinkObjectEndActionOperations
 						new Object[]{"validateEndsOfAssociation", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
 								.getObjectLabel(readLinkObjectEndAction,
-									context)}),
-					new Object[]{readLinkObjectEndAction}));
+									context)}), new Object[]{readLinkObjectEndAction}));
 			}
 			return false;
 		}
@@ -194,8 +191,7 @@ public class ReadLinkObjectEndActionOperations
 						new Object[]{"validateTypeOfObject", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
 								.getObjectLabel(readLinkObjectEndAction,
-									context)}),
-					new Object[]{readLinkObjectEndAction}));
+									context)}), new Object[]{readLinkObjectEndAction}));
 			}
 			return false;
 		}
@@ -231,8 +227,7 @@ public class ReadLinkObjectEndActionOperations
 						new Object[]{"validateMultiplicityOfObject", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
 								.getObjectLabel(readLinkObjectEndAction,
-									context)}),
-					new Object[]{readLinkObjectEndAction}));
+									context)}), new Object[]{readLinkObjectEndAction}));
 			}
 			return false;
 		}
@@ -268,8 +263,7 @@ public class ReadLinkObjectEndActionOperations
 						new Object[]{"validateTypeOfResult", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
 								.getObjectLabel(readLinkObjectEndAction,
-									context)}),
-					new Object[]{readLinkObjectEndAction}));
+									context)}), new Object[]{readLinkObjectEndAction}));
 			}
 			return false;
 		}
@@ -305,8 +299,7 @@ public class ReadLinkObjectEndActionOperations
 						new Object[]{"validateMultiplicityOfResult", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
 								.getObjectLabel(readLinkObjectEndAction,
-									context)}),
-					new Object[]{readLinkObjectEndAction}));
+									context)}), new Object[]{readLinkObjectEndAction}));
 			}
 			return false;
 		}

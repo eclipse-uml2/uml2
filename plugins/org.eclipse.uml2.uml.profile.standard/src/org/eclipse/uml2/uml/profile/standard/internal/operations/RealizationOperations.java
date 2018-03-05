@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2014 CEA and others.
+ * Copyright (c) 2011, 2018 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -70,24 +70,19 @@ public class RealizationOperations
 
 		Classifier base_Classifier = realization.getBase_Classifier();
 
-		if (base_Classifier != null
-			&& getStereotypeApplication(base_Classifier,
-				ImplementationClass.class) != null) {
+		if (base_Classifier != null && getStereotypeApplication(base_Classifier,
+			ImplementationClass.class) != null) {
 
 			result = false;
 
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.WARNING,
-						StandardValidator.DIAGNOSTIC_SOURCE,
-						StandardValidator.REALIZATION__CANNOT_BE_IMPLEMENTATION_CLASS,
-						StandardPlugin.INSTANCE
-							.getString(
-								"_UI_Realization_CannotBeImplementationClass_diagnostic", //$NON-NLS-1$
-								getMessageSubstitutions(context,
-									base_Classifier)),
-						new Object[]{base_Classifier}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					StandardValidator.DIAGNOSTIC_SOURCE,
+					StandardValidator.REALIZATION__CANNOT_BE_IMPLEMENTATION_CLASS,
+					StandardPlugin.INSTANCE.getString(
+						"_UI_Realization_CannotBeImplementationClass_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, base_Classifier)),
+					new Object[]{base_Classifier}));
 			}
 		}
 

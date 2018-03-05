@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -100,8 +100,7 @@ public class ContinuationOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateSameName", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(continuation, context)}),
-					new Object[]{continuation}));
+								.getObjectLabel(continuation, context)}), new Object[]{continuation}));
 			}
 			return false;
 		}
@@ -138,8 +137,7 @@ public class ContinuationOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateGlobal", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(continuation, context)}),
-					new Object[]{continuation}));
+								.getObjectLabel(continuation, context)}), new Object[]{continuation}));
 			}
 			return false;
 		}
@@ -177,8 +175,7 @@ public class ContinuationOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateFirstOrLastInteractionFragment", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(continuation, context)}),
-					new Object[]{continuation}));
+								.getObjectLabel(continuation, context)}), new Object[]{continuation}));
 			}
 			return false;
 		}

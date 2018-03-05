@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -102,8 +102,7 @@ public class MessageOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateSendingReceivingMessageEvent", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(message, context)}),
-					new Object[]{message}));
+								.getObjectLabel(message, context)}), new Object[]{message}));
 			}
 			return false;
 		}
@@ -141,8 +140,7 @@ public class MessageOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateSignatureReferTo", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(message, context)}),
-					new Object[]{message}));
+								.getObjectLabel(message, context)}), new Object[]{message}));
 			}
 			return false;
 		}
@@ -184,8 +182,7 @@ public class MessageOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateSignatureIsOperationRequest", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(message, context)}),
-					new Object[]{message}));
+								.getObjectLabel(message, context)}), new Object[]{message}));
 			}
 			return false;
 		}
@@ -227,8 +224,7 @@ public class MessageOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateSignatureIsOperationReply", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(message, context)}),
-					new Object[]{message}));
+								.getObjectLabel(message, context)}), new Object[]{message}));
 			}
 			return false;
 		}
@@ -343,8 +339,7 @@ public class MessageOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateArguments", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(message, context)}),
-					new Object[]{message}));
+								.getObjectLabel(message, context)}), new Object[]{message}));
 			}
 			return false;
 		}
@@ -384,8 +379,7 @@ public class MessageOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateCannotCrossBoundaries", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(message, context)}),
-					new Object[]{message}));
+								.getObjectLabel(message, context)}), new Object[]{message}));
 			}
 			return false;
 		}
@@ -418,8 +412,7 @@ public class MessageOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateOccurrenceSpecifications", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(message, context)}),
-					new Object[]{message}));
+								.getObjectLabel(message, context)}), new Object[]{message}));
 			}
 			return false;
 		}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014, 2016 CEA and others.
+ * Copyright (c) 2014, 2018 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -75,8 +75,7 @@ public class TriggerOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateTriggerWithPorts", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(trigger, context)}),
-					new Object[]{trigger}));
+								.getObjectLabel(trigger, context)}), new Object[]{trigger}));
 			}
 			return false;
 		}

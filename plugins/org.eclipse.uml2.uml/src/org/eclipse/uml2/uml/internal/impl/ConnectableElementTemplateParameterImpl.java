@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -215,9 +215,8 @@ public class ConnectableElementTemplateParameterImpl
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
 				if (ownedParameteredElement != null)
 					msgs = ((InternalEObject) ownedParameteredElement)
-						.eInverseRemove(this,
-							EOPPOSITE_FEATURE_BASE
-								- UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+							- UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 							null, msgs);
 				return basicSetOwnedParameteredElement(
 					(ParameterableElement) otherEnd, msgs);

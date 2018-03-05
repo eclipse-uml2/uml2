@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -560,9 +560,8 @@ public class StringExpressionImpl
 			case UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
-						.eInverseRemove(this,
-							EOPPOSITE_FEATURE_BASE
-								- UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE,
+						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+							- UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE,
 							null, msgs);
 				return basicSetOwnedTemplateSignature(
 					(TemplateSignature) otherEnd, msgs);

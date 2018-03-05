@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -77,8 +77,7 @@ public class PartDecompositionOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validatePartsOfInternalStructures", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(partDecomposition, context)}),
-					new Object[]{partDecomposition}));
+								.getObjectLabel(partDecomposition, context)}), new Object[]{partDecomposition}));
 			}
 			return false;
 		}
@@ -111,8 +110,7 @@ public class PartDecompositionOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateAssume", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(partDecomposition, context)}),
-					new Object[]{partDecomposition}));
+								.getObjectLabel(partDecomposition, context)}), new Object[]{partDecomposition}));
 			}
 			return false;
 		}
@@ -146,8 +144,7 @@ public class PartDecompositionOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateCommutativityOfDecomposition", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(partDecomposition, context)}),
-					new Object[]{partDecomposition}));
+								.getObjectLabel(partDecomposition, context)}), new Object[]{partDecomposition}));
 			}
 			return false;
 		}

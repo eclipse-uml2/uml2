@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2014 CEA and others.
+ * Copyright (c) 2011, 2018 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -79,7 +79,8 @@ public class ImplementOperations
 
 				for (NamedElement supplier : dependency.getSuppliers()) {
 
-					if (getStereotypeApplication(supplier, Specification.class) != null) {
+					if (getStereotypeApplication(supplier,
+						Specification.class) != null) {
 						result = true;
 						break LOOP;
 					}

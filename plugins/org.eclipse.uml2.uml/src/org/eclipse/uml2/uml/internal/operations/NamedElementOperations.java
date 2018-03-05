@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -106,8 +106,7 @@ public class NamedElementOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateHasNoQualifiedName", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(namedElement, context)}),
-					new Object[]{namedElement}));
+								.getObjectLabel(namedElement, context)}), new Object[]{namedElement}));
 			}
 			return false;
 		}
@@ -142,8 +141,7 @@ public class NamedElementOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateHasQualifiedName", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(namedElement, context)}),
-					new Object[]{namedElement}));
+								.getObjectLabel(namedElement, context)}), new Object[]{namedElement}));
 			}
 			return false;
 		}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2014 CEA and others.
+ * Copyright (c) 2011, 2018 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -70,22 +70,19 @@ public class ImplementationClassOperations
 		org.eclipse.uml2.uml.Class base_Class = implementationClass
 			.getBase_Class();
 
-		if (base_Class != null
-			&& getStereotypeApplication(base_Class, Realization.class) != null) {
+		if (base_Class != null && getStereotypeApplication(base_Class,
+			Realization.class) != null) {
 
 			result = false;
 
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.WARNING,
-						StandardValidator.DIAGNOSTIC_SOURCE,
-						StandardValidator.IMPLEMENTATION_CLASS__CANNOT_BE_REALIZATION,
-						StandardPlugin.INSTANCE
-							.getString(
-								"_UI_ImplementationClass_CannotBeRealization_diagnostic", //$NON-NLS-1$
-								getMessageSubstitutions(context, base_Class)),
-						new Object[]{base_Class}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					StandardValidator.DIAGNOSTIC_SOURCE,
+					StandardValidator.IMPLEMENTATION_CLASS__CANNOT_BE_REALIZATION,
+					StandardPlugin.INSTANCE.getString(
+						"_UI_ImplementationClass_CannotBeRealization_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, base_Class)),
+					new Object[]{base_Class}));
 			}
 		}
 

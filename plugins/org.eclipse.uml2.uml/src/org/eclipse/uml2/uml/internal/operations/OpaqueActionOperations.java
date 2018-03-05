@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014, 2016 CEA and others.
+ * Copyright (c) 2014, 2018 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -75,8 +75,7 @@ public class OpaqueActionOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateLanguageBodySize", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(opaqueAction, context)}),
-					new Object[]{opaqueAction}));
+								.getObjectLabel(opaqueAction, context)}), new Object[]{opaqueAction}));
 			}
 			return false;
 		}

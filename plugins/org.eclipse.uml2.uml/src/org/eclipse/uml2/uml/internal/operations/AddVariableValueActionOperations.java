@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -68,14 +68,12 @@ public class AddVariableValueActionOperations
 		boolean result = addVariableValueAction.getValue() != null;
 
 		if (!result && diagnostics != null) {
-			diagnostics
-				.add(new BasicDiagnostic(Diagnostic.WARNING,
-					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.ADD_VARIABLE_VALUE_ACTION__REQUIRED_VALUE,
-					UMLPlugin.INSTANCE.getString(
-						"_UI_AddVariableValueAction_RequiredValue_diagnostic", //$NON-NLS-1$
-						getMessageSubstitutions(context,
-							addVariableValueAction)),
+			diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+				UMLValidator.DIAGNOSTIC_SOURCE,
+				UMLValidator.ADD_VARIABLE_VALUE_ACTION__REQUIRED_VALUE,
+				UMLPlugin.INSTANCE.getString(
+					"_UI_AddVariableValueAction_RequiredValue_diagnostic", //$NON-NLS-1$
+					getMessageSubstitutions(context, addVariableValueAction)),
 				new Object[]{addVariableValueAction}));
 		}
 
@@ -116,8 +114,7 @@ public class AddVariableValueActionOperations
 						new Object[]{"validateInsertAtPin", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
 								.getObjectLabel(addVariableValueAction,
-									context)}),
-					new Object[]{addVariableValueAction}));
+									context)}), new Object[]{addVariableValueAction}));
 			}
 			return false;
 		}

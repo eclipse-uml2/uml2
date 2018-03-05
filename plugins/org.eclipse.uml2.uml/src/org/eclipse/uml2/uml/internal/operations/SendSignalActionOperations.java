@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -77,8 +77,7 @@ public class SendSignalActionOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateNumberOrder", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(sendSignalAction, context)}),
-					new Object[]{sendSignalAction}));
+								.getObjectLabel(sendSignalAction, context)}), new Object[]{sendSignalAction}));
 			}
 			return false;
 		}
@@ -113,8 +112,7 @@ public class SendSignalActionOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateTypeTargetPin", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(sendSignalAction, context)}),
-					new Object[]{sendSignalAction}));
+								.getObjectLabel(sendSignalAction, context)}), new Object[]{sendSignalAction}));
 			}
 			return false;
 		}
@@ -153,8 +151,7 @@ public class SendSignalActionOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateTypeOrderingMultiplicity", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(sendSignalAction, context)}),
-					new Object[]{sendSignalAction}));
+								.getObjectLabel(sendSignalAction, context)}), new Object[]{sendSignalAction}));
 			}
 			return false;
 		}

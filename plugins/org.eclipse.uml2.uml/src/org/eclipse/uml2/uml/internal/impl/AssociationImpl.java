@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -495,9 +495,8 @@ public class AssociationImpl
 			case UMLPackage.ASSOCIATION__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
-						.eInverseRemove(this,
-							EOPPOSITE_FEATURE_BASE
-								- UMLPackage.ASSOCIATION__OWNED_TEMPLATE_SIGNATURE,
+						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+							- UMLPackage.ASSOCIATION__OWNED_TEMPLATE_SIGNATURE,
 							null, msgs);
 				return basicSetOwnedTemplateSignature(
 					(TemplateSignature) otherEnd, msgs);

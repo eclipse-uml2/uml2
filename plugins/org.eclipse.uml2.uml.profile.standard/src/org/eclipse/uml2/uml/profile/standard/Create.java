@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014, 2015 CEA and others.
+ * Copyright (c) 2014, 2018 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -107,7 +107,7 @@ public interface Create
 	 * @model
 	 * @generated
 	 */
-	boolean validateClientAndSupplierAreClassifiers(
-			DiagnosticChain diagnostics, Map<Object, Object> context);
+	boolean validateClientAndSupplierAreClassifiers(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // Create

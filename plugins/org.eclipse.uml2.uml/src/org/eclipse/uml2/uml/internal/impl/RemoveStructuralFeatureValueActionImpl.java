@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -200,9 +200,8 @@ public class RemoveStructuralFeatureValueActionImpl
 						- UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REMOVE_AT,
 					null, null);
 				if (newRemoveAt.eInternalContainer() == null) {
-					msgs = newRemoveAt.eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE
-							- UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REMOVE_AT,
+					msgs = newRemoveAt.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REMOVE_AT,
 						null, msgs);
 				}
 				if (msgs != null)

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2014 CEA and others.
+ * Copyright (c) 2011, 2018 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -64,9 +64,8 @@ public class CreateOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static boolean validateClientAndSupplierAreClassifiers(
-			Create create, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
+	public static boolean validateClientAndSupplierAreClassifiers(Create create,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = true;
 
 		Usage base_Usage = create.getBase_Usage();
@@ -93,16 +92,13 @@ public class CreateOperations
 			}
 
 			if (!result && diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.WARNING,
-						StandardValidator.DIAGNOSTIC_SOURCE,
-						StandardValidator.CREATE__CLIENT_AND_SUPPLIER_ARE_CLASSIFIERS,
-						StandardPlugin.INSTANCE
-							.getString(
-								"_UI_Create_ClientAndSupplierAreClassifiers_diagnostic", //$NON-NLS-1$
-								getMessageSubstitutions(context, base_Usage)),
-						new Object[]{base_Usage}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					StandardValidator.DIAGNOSTIC_SOURCE,
+					StandardValidator.CREATE__CLIENT_AND_SUPPLIER_ARE_CLASSIFIERS,
+					StandardPlugin.INSTANCE.getString(
+						"_UI_Create_ClientAndSupplierAreClassifiers_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, base_Usage)),
+					new Object[]{base_Usage}));
 			}
 		}
 

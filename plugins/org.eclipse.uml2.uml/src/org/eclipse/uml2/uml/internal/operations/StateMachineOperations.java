@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2017 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -90,8 +90,7 @@ public class StateMachineOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateClassifierContext", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(stateMachine, context)}),
-					new Object[]{stateMachine}));
+								.getObjectLabel(stateMachine, context)}), new Object[]{stateMachine}));
 			}
 			return false;
 		}
@@ -125,8 +124,7 @@ public class StateMachineOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateContextClassifier", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(stateMachine, context)}),
-					new Object[]{stateMachine}));
+								.getObjectLabel(stateMachine, context)}), new Object[]{stateMachine}));
 			}
 			return false;
 		}
@@ -298,8 +296,7 @@ public class StateMachineOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateConnectionPoints", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(stateMachine, context)}),
-					new Object[]{stateMachine}));
+								.getObjectLabel(stateMachine, context)}), new Object[]{stateMachine}));
 			}
 			return false;
 		}
@@ -333,8 +330,7 @@ public class StateMachineOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateMethod", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(stateMachine, context)}),
-					new Object[]{stateMachine}));
+								.getObjectLabel(stateMachine, context)}), new Object[]{stateMachine}));
 			}
 			return false;
 		}

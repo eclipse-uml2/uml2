@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -195,7 +195,7 @@ public class ClassifierOperations
 								"_UI_Classifier_SpecializeType_diagnostic", //$NON-NLS-1$
 								getMessageSubstitutions(context, classifier,
 									parent)),
-						new Object[]{classifier, parent}));
+							new Object[]{classifier, parent}));
 				}
 			}
 		}
@@ -233,8 +233,7 @@ public class ClassifierOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateMapsToGeneralizationSet", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(classifier, context)}),
-					new Object[]{classifier}));
+								.getObjectLabel(classifier, context)}), new Object[]{classifier}));
 			}
 			return false;
 		}
@@ -268,8 +267,7 @@ public class ClassifierOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateNonFinalParents", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(classifier, context)}),
-					new Object[]{classifier}));
+								.getObjectLabel(classifier, context)}), new Object[]{classifier}));
 			}
 			return false;
 		}

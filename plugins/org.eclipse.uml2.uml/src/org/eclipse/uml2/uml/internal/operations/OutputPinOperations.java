@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2006, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -79,8 +79,7 @@ public class OutputPinOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateIncomingEdgesStructuredOnly", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(outputPin, context)}),
-					new Object[]{outputPin}));
+								.getObjectLabel(outputPin, context)}), new Object[]{outputPin}));
 			}
 			return false;
 		}

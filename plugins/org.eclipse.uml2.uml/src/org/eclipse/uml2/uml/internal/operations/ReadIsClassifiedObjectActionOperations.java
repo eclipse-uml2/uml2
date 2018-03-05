@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -80,8 +80,7 @@ public class ReadIsClassifiedObjectActionOperations
 						new Object[]{"validateMultiplicityOfInput", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
 								.getObjectLabel(readIsClassifiedObjectAction,
-									context)}),
-					new Object[]{readIsClassifiedObjectAction}));
+									context)}), new Object[]{readIsClassifiedObjectAction}));
 			}
 			return false;
 		}
@@ -117,8 +116,7 @@ public class ReadIsClassifiedObjectActionOperations
 						new Object[]{"validateNoType", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
 								.getObjectLabel(readIsClassifiedObjectAction,
-									context)}),
-					new Object[]{readIsClassifiedObjectAction}));
+									context)}), new Object[]{readIsClassifiedObjectAction}));
 			}
 			return false;
 		}
@@ -154,8 +152,7 @@ public class ReadIsClassifiedObjectActionOperations
 						new Object[]{"validateMultiplicityOfOutput", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
 								.getObjectLabel(readIsClassifiedObjectAction,
-									context)}),
-					new Object[]{readIsClassifiedObjectAction}));
+									context)}), new Object[]{readIsClassifiedObjectAction}));
 			}
 			return false;
 		}
@@ -191,8 +188,7 @@ public class ReadIsClassifiedObjectActionOperations
 						new Object[]{"validateBooleanResult", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
 								.getObjectLabel(readIsClassifiedObjectAction,
-									context)}),
-					new Object[]{readIsClassifiedObjectAction}));
+									context)}), new Object[]{readIsClassifiedObjectAction}));
 			}
 			return false;
 		}

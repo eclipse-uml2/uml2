@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 CEA and others.
+ * Copyright (c) 2014, 2018 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,8 +19,10 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.EValidator;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.eclipse.uml2.types.TypesPackage;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.profile.standard.Auxiliary;
@@ -328,7 +330,7 @@ public class StandardPackageImpl
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link StandardPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -344,15 +346,18 @@ public class StandardPackageImpl
 				.getEPackage(StandardPackage.eNS_URI);
 
 		// Obtain or create and register package
-		StandardPackageImpl theStandardPackage = (StandardPackageImpl) (EPackage.Registry.INSTANCE
-			.get(eNS_URI) instanceof StandardPackageImpl
-			? EPackage.Registry.INSTANCE.get(eNS_URI)
-			: new StandardPackageImpl());
+		Object registeredStandardPackage = EPackage.Registry.INSTANCE
+			.get(eNS_URI);
+		StandardPackageImpl theStandardPackage = registeredStandardPackage instanceof StandardPackageImpl
+			? (StandardPackageImpl) registeredStandardPackage
+			: new StandardPackageImpl();
 
 		isInited = true;
 
 		// Initialize simple dependencies
 		UMLPackage.eINSTANCE.eClass();
+		EcorePackage.eINSTANCE.eClass();
+		TypesPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theStandardPackage.createPackageContents();
@@ -1225,30 +1230,27 @@ public class StandardPackageImpl
 		sourceEClass.getESuperTypes().add(this.getFile());
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(
-			auxiliaryEClass,
-			Auxiliary.class,
-			"Auxiliary", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getAuxiliary_Base_Class(),
-			theUMLPackage.getClass_(),
-			null,
-			"base_Class", null, 1, 1, Auxiliary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEClass(auxiliaryEClass, Auxiliary.class, "Auxiliary", !IS_ABSTRACT, //$NON-NLS-1$
+			!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAuxiliary_Base_Class(), theUMLPackage.getClass_(),
+			null, "base_Class", null, 1, 1, Auxiliary.class, !IS_TRANSIENT, //$NON-NLS-1$
+			!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
-		initEClass(callEClass, Call.class,
-			"Call", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getCall_Base_Usage(),
-			theUMLPackage.getUsage(),
-			null,
-			"base_Usage", null, 1, 1, Call.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEClass(callEClass, Call.class, "Call", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+			IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCall_Base_Usage(), theUMLPackage.getUsage(), null,
+			"base_Usage", null, 1, 1, Call.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
+			IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+			IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		EOperation op = initEOperation(
 			getCall__ValidateClientAndSupplierAreOperations__DiagnosticChain_Map(),
 			ecorePackage.getEBoolean(),
-			"validateClientAndSupplierAreOperations", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(),
-			"diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+			"validateClientAndSupplierAreOperations", 0, 1, IS_UNIQUE, //$NON-NLS-1$
+			IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, //$NON-NLS-1$
+			1, IS_UNIQUE, IS_ORDERED);
 		EGenericType g1 = createEGenericType(ecorePackage.getEMap());
 		EGenericType g2 = createEGenericType(ecorePackage.getEJavaObject());
 		g1.getETypeArguments().add(g2);
@@ -1256,25 +1258,25 @@ public class StandardPackageImpl
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(createEClass, Create.class,
-			"Create", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getCreate_Base_BehavioralFeature(),
-			theUMLPackage.getBehavioralFeature(),
-			null,
-			"base_BehavioralFeature", null, 0, 1, Create.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getCreate_Base_Usage(),
-			theUMLPackage.getUsage(),
-			null,
-			"base_Usage", null, 0, 1, Create.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEClass(createEClass, Create.class, "Create", !IS_ABSTRACT, //$NON-NLS-1$
+			!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCreate_Base_BehavioralFeature(),
+			theUMLPackage.getBehavioralFeature(), null,
+			"base_BehavioralFeature", null, 0, 1, Create.class, !IS_TRANSIENT, //$NON-NLS-1$
+			!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getCreate_Base_Usage(), theUMLPackage.getUsage(), null,
+			"base_Usage", null, 0, 1, Create.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
+			IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+			IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		op = initEOperation(
 			getCreate__ValidateClientAndSupplierAreClassifiers__DiagnosticChain_Map(),
 			ecorePackage.getEBoolean(),
-			"validateClientAndSupplierAreClassifiers", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(),
-			"diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+			"validateClientAndSupplierAreClassifiers", 0, 1, IS_UNIQUE, //$NON-NLS-1$
+			IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, //$NON-NLS-1$
+			1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(ecorePackage.getEMap());
 		g2 = createEGenericType(ecorePackage.getEJavaObject());
 		g1.getETypeArguments().add(g2);
@@ -1282,87 +1284,75 @@ public class StandardPackageImpl
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(deriveEClass, Derive.class,
-			"Derive", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getDerive_Computation(),
-			theUMLPackage.getValueSpecification(),
-			null,
-			"computation", null, 1, 1, Derive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-			getDerive_Base_Abstraction(),
-			theUMLPackage.getAbstraction(),
-			null,
-			"base_Abstraction", null, 1, 1, Derive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEClass(deriveEClass, Derive.class, "Derive", !IS_ABSTRACT, //$NON-NLS-1$
+			!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDerive_Computation(),
+			theUMLPackage.getValueSpecification(), null, "computation", null, 1, //$NON-NLS-1$
+			1, Derive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+			IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+			!IS_DERIVED, !IS_ORDERED);
+		initEReference(getDerive_Base_Abstraction(),
+			theUMLPackage.getAbstraction(), null, "base_Abstraction", null, 1, //$NON-NLS-1$
+			1, Derive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+			!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+			!IS_DERIVED, !IS_ORDERED);
 
-		initEClass(destroyEClass, Destroy.class,
-			"Destroy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getDestroy_Base_BehavioralFeature(),
-			theUMLPackage.getBehavioralFeature(),
-			null,
-			"base_BehavioralFeature", null, 1, 1, Destroy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEClass(destroyEClass, Destroy.class, "Destroy", !IS_ABSTRACT, //$NON-NLS-1$
+			!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDestroy_Base_BehavioralFeature(),
+			theUMLPackage.getBehavioralFeature(), null,
+			"base_BehavioralFeature", null, 1, 1, Destroy.class, !IS_TRANSIENT, //$NON-NLS-1$
+			!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
-		initEClass(
-			documentEClass,
-			Document.class,
-			"Document", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(documentEClass, Document.class, "Document", !IS_ABSTRACT, //$NON-NLS-1$
+			!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(fileEClass, File.class,
-			"File", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getFile_Base_Artifact(),
-			theUMLPackage.getArtifact(),
-			null,
-			"base_Artifact", null, 1, 1, File.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEClass(fileEClass, File.class, "File", IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+			IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getFile_Base_Artifact(), theUMLPackage.getArtifact(),
+			null, "base_Artifact", null, 1, 1, File.class, !IS_TRANSIENT, //$NON-NLS-1$
+			!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
-		initEClass(entityEClass, Entity.class,
-			"Entity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getEntity_Base_Component(),
-			theUMLPackage.getComponent(),
-			null,
-			"base_Component", null, 1, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEClass(entityEClass, Entity.class, "Entity", !IS_ABSTRACT, //$NON-NLS-1$
+			!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEntity_Base_Component(), theUMLPackage.getComponent(),
+			null, "base_Component", null, 1, 1, Entity.class, !IS_TRANSIENT, //$NON-NLS-1$
+			!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
-		initEClass(
-			executableEClass,
-			Executable.class,
-			"Executable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(executableEClass, Executable.class, "Executable", //$NON-NLS-1$
+			!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(focusEClass, Focus.class,
-			"Focus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getFocus_Base_Class(),
-			theUMLPackage.getClass_(),
-			null,
-			"base_Class", null, 1, 1, Focus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEClass(focusEClass, Focus.class, "Focus", !IS_ABSTRACT, //$NON-NLS-1$
+			!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getFocus_Base_Class(), theUMLPackage.getClass_(), null,
+			"base_Class", null, 1, 1, Focus.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
+			IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+			IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
-		initEClass(
-			frameworkEClass,
-			Framework.class,
-			"Framework", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getFramework_Base_Package(),
-			theUMLPackage.getPackage(),
-			null,
-			"base_Package", null, 1, 1, Framework.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEClass(frameworkEClass, Framework.class, "Framework", !IS_ABSTRACT, //$NON-NLS-1$
+			!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getFramework_Base_Package(), theUMLPackage.getPackage(),
+			null, "base_Package", null, 1, 1, Framework.class, !IS_TRANSIENT, //$NON-NLS-1$
+			!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
-		initEClass(
-			implementEClass,
-			Implement.class,
-			"Implement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getImplement_Base_Component(),
-			theUMLPackage.getComponent(),
-			null,
-			"base_Component", null, 1, 1, Implement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEClass(implementEClass, Implement.class, "Implement", !IS_ABSTRACT, //$NON-NLS-1$
+			!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getImplement_Base_Component(),
+			theUMLPackage.getComponent(), null, "base_Component", null, 1, 1, //$NON-NLS-1$
+			Implement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+			!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+			!IS_DERIVED, !IS_ORDERED);
 
 		op = initEOperation(
 			getImplement__ValidateImplementsSpecification__DiagnosticChain_Map(),
-			ecorePackage.getEBoolean(),
-			"validateImplementsSpecification", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(),
-			"diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+			ecorePackage.getEBoolean(), "validateImplementsSpecification", 0, 1, //$NON-NLS-1$
+			IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, //$NON-NLS-1$
+			1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(ecorePackage.getEMap());
 		g2 = createEGenericType(ecorePackage.getEJavaObject());
 		g1.getETypeArguments().add(g2);
@@ -1370,22 +1360,21 @@ public class StandardPackageImpl
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(
-			implementationClassEClass,
-			ImplementationClass.class,
-			"ImplementationClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getImplementationClass_Base_Class(),
-			theUMLPackage.getClass_(),
-			null,
-			"base_Class", null, 1, 1, ImplementationClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEClass(implementationClassEClass, ImplementationClass.class,
+			"ImplementationClass", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+			IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getImplementationClass_Base_Class(),
+			theUMLPackage.getClass_(), null, "base_Class", null, 1, 1, //$NON-NLS-1$
+			ImplementationClass.class, !IS_TRANSIENT, !IS_VOLATILE,
+			IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+			IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		op = initEOperation(
 			getImplementationClass__ValidateCannotBeRealization__DiagnosticChain_Map(),
-			ecorePackage.getEBoolean(),
-			"validateCannotBeRealization", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(),
-			"diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+			ecorePackage.getEBoolean(), "validateCannotBeRealization", 0, 1, //$NON-NLS-1$
+			IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, //$NON-NLS-1$
+			1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(ecorePackage.getEMap());
 		g2 = createEGenericType(ecorePackage.getEJavaObject());
 		g1.getETypeArguments().add(g2);
@@ -1393,22 +1382,20 @@ public class StandardPackageImpl
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(
-			instantiateEClass,
-			Instantiate.class,
-			"Instantiate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getInstantiate_Base_Usage(),
-			theUMLPackage.getUsage(),
-			null,
-			"base_Usage", null, 1, 1, Instantiate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEClass(instantiateEClass, Instantiate.class, "Instantiate", //$NON-NLS-1$
+			!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getInstantiate_Base_Usage(), theUMLPackage.getUsage(),
+			null, "base_Usage", null, 1, 1, Instantiate.class, !IS_TRANSIENT, //$NON-NLS-1$
+			!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		op = initEOperation(
 			getInstantiate__ValidateClientAndSupplierAreClassifiers__DiagnosticChain_Map(),
 			ecorePackage.getEBoolean(),
-			"validateClientAndSupplierAreClassifiers", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(),
-			"diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+			"validateClientAndSupplierAreClassifiers", 0, 1, IS_UNIQUE, //$NON-NLS-1$
+			IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, //$NON-NLS-1$
+			1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(ecorePackage.getEMap());
 		g2 = createEGenericType(ecorePackage.getEJavaObject());
 		g1.getETypeArguments().add(g2);
@@ -1416,54 +1403,47 @@ public class StandardPackageImpl
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(libraryEClass, Library.class,
-			"Library", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(libraryEClass, Library.class, "Library", !IS_ABSTRACT, //$NON-NLS-1$
+			!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(
-			metaclassEClass,
-			Metaclass.class,
-			"Metaclass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getMetaclass_Base_Class(),
-			theUMLPackage.getClass_(),
-			null,
-			"base_Class", null, 1, 1, Metaclass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEClass(metaclassEClass, Metaclass.class, "Metaclass", !IS_ABSTRACT, //$NON-NLS-1$
+			!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMetaclass_Base_Class(), theUMLPackage.getClass_(),
+			null, "base_Class", null, 1, 1, Metaclass.class, !IS_TRANSIENT, //$NON-NLS-1$
+			!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
-		initEClass(
-			modelLibraryEClass,
-			ModelLibrary.class,
-			"ModelLibrary", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getModelLibrary_Base_Package(),
-			theUMLPackage.getPackage(),
-			null,
-			"base_Package", null, 1, 1, ModelLibrary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEClass(modelLibraryEClass, ModelLibrary.class, "ModelLibrary", //$NON-NLS-1$
+			!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getModelLibrary_Base_Package(),
+			theUMLPackage.getPackage(), null, "base_Package", null, 1, 1, //$NON-NLS-1$
+			ModelLibrary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+			!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+			!IS_DERIVED, !IS_ORDERED);
 
 		initEClass(processEClass,
-			org.eclipse.uml2.uml.profile.standard.Process.class,
-			"Process", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getProcess_Base_Component(),
-			theUMLPackage.getComponent(),
-			null,
-			"base_Component", null, 1, 1, org.eclipse.uml2.uml.profile.standard.Process.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+			org.eclipse.uml2.uml.profile.standard.Process.class, "Process", //$NON-NLS-1$
+			!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getProcess_Base_Component(),
+			theUMLPackage.getComponent(), null, "base_Component", null, 1, 1, //$NON-NLS-1$
+			org.eclipse.uml2.uml.profile.standard.Process.class, !IS_TRANSIENT,
+			!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
-		initEClass(
-			realizationEClass,
-			Realization.class,
-			"Realization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getRealization_Base_Classifier(),
-			theUMLPackage.getClassifier(),
-			null,
-			"base_Classifier", null, 1, 1, Realization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEClass(realizationEClass, Realization.class, "Realization", //$NON-NLS-1$
+			!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRealization_Base_Classifier(),
+			theUMLPackage.getClassifier(), null, "base_Classifier", null, 1, 1, //$NON-NLS-1$
+			Realization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+			!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+			!IS_DERIVED, !IS_ORDERED);
 
 		op = initEOperation(
 			getRealization__ValidateCannotBeImplementationClass__DiagnosticChain_Map(),
-			ecorePackage.getEBoolean(),
-			"validateCannotBeImplementationClass", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(),
-			"diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+			ecorePackage.getEBoolean(), "validateCannotBeImplementationClass", //$NON-NLS-1$
+			0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, //$NON-NLS-1$
+			1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(ecorePackage.getEMap());
 		g2 = createEGenericType(ecorePackage.getEJavaObject());
 		g1.getETypeArguments().add(g2);
@@ -1471,41 +1451,38 @@ public class StandardPackageImpl
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(refineEClass, Refine.class,
-			"Refine", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getRefine_Base_Abstraction(),
-			theUMLPackage.getAbstraction(),
-			null,
-			"base_Abstraction", null, 1, 1, Refine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEClass(refineEClass, Refine.class, "Refine", !IS_ABSTRACT, //$NON-NLS-1$
+			!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRefine_Base_Abstraction(),
+			theUMLPackage.getAbstraction(), null, "base_Abstraction", null, 1, //$NON-NLS-1$
+			1, Refine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+			!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+			!IS_DERIVED, !IS_ORDERED);
 
-		initEClass(
-			responsibilityEClass,
-			Responsibility.class,
-			"Responsibility", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getResponsibility_Base_Usage(),
-			theUMLPackage.getUsage(),
-			null,
-			"base_Usage", null, 1, 1, Responsibility.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEClass(responsibilityEClass, Responsibility.class, "Responsibility", //$NON-NLS-1$
+			!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getResponsibility_Base_Usage(), theUMLPackage.getUsage(),
+			null, "base_Usage", null, 1, 1, Responsibility.class, !IS_TRANSIENT, //$NON-NLS-1$
+			!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
-		initEClass(scriptEClass, Script.class,
-			"Script", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(scriptEClass, Script.class, "Script", !IS_ABSTRACT, //$NON-NLS-1$
+			!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(sendEClass, Send.class,
-			"Send", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getSend_Base_Usage(),
-			theUMLPackage.getUsage(),
-			null,
-			"base_Usage", null, 1, 1, Send.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEClass(sendEClass, Send.class, "Send", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+			IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSend_Base_Usage(), theUMLPackage.getUsage(), null,
+			"base_Usage", null, 1, 1, Send.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
+			IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+			IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		op = initEOperation(
 			getSend__ValidateClientOperationSendsSupplierSignal__DiagnosticChain_Map(),
 			ecorePackage.getEBoolean(),
-			"validateClientOperationSendsSupplierSignal", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(),
-			"diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+			"validateClientOperationSendsSupplierSignal", 0, 1, IS_UNIQUE, //$NON-NLS-1$
+			IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, //$NON-NLS-1$
+			1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(ecorePackage.getEMap());
 		g2 = createEGenericType(ecorePackage.getEJavaObject());
 		g1.getETypeArguments().add(g2);
@@ -1513,33 +1490,31 @@ public class StandardPackageImpl
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(serviceEClass, Service.class,
-			"Service", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getService_Base_Component(),
-			theUMLPackage.getComponent(),
-			null,
-			"base_Component", null, 1, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEClass(serviceEClass, Service.class, "Service", !IS_ABSTRACT, //$NON-NLS-1$
+			!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getService_Base_Component(),
+			theUMLPackage.getComponent(), null, "base_Component", null, 1, 1, //$NON-NLS-1$
+			Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+			!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+			!IS_DERIVED, !IS_ORDERED);
 
-		initEClass(sourceEClass, Source.class,
-			"Source", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(sourceEClass, Source.class, "Source", !IS_ABSTRACT, //$NON-NLS-1$
+			!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(
-			specificationEClass,
-			Specification.class,
-			"Specification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getSpecification_Base_Classifier(),
-			theUMLPackage.getClassifier(),
-			null,
-			"base_Classifier", null, 1, 1, Specification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEClass(specificationEClass, Specification.class, "Specification", //$NON-NLS-1$
+			!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSpecification_Base_Classifier(),
+			theUMLPackage.getClassifier(), null, "base_Classifier", null, 1, 1, //$NON-NLS-1$
+			Specification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+			!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+			!IS_DERIVED, !IS_ORDERED);
 
 		op = initEOperation(
 			getSpecification__ValidateCannotBeType__DiagnosticChain_Map(),
-			ecorePackage.getEBoolean(),
-			"validateCannotBeType", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(),
-			"diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+			ecorePackage.getEBoolean(), "validateCannotBeType", 0, 1, IS_UNIQUE, //$NON-NLS-1$
+			IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, //$NON-NLS-1$
+			1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(ecorePackage.getEMap());
 		g2 = createEGenericType(ecorePackage.getEJavaObject());
 		g1.getETypeArguments().add(g2);
@@ -1547,38 +1522,35 @@ public class StandardPackageImpl
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(
-			subsystemEClass,
-			Subsystem.class,
-			"Subsystem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getSubsystem_Base_Component(),
-			theUMLPackage.getComponent(),
-			null,
-			"base_Component", null, 1, 1, Subsystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEClass(subsystemEClass, Subsystem.class, "Subsystem", !IS_ABSTRACT, //$NON-NLS-1$
+			!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSubsystem_Base_Component(),
+			theUMLPackage.getComponent(), null, "base_Component", null, 1, 1, //$NON-NLS-1$
+			Subsystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+			!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+			!IS_DERIVED, !IS_ORDERED);
 
-		initEClass(traceEClass, Trace.class,
-			"Trace", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getTrace_Base_Abstraction(),
-			theUMLPackage.getAbstraction(),
-			null,
-			"base_Abstraction", null, 1, 1, Trace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEClass(traceEClass, Trace.class, "Trace", !IS_ABSTRACT, //$NON-NLS-1$
+			!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTrace_Base_Abstraction(),
+			theUMLPackage.getAbstraction(), null, "base_Abstraction", null, 1, //$NON-NLS-1$
+			1, Trace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+			!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+			!IS_DERIVED, !IS_ORDERED);
 
-		initEClass(typeEClass, Type.class,
-			"Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getType_Base_Class(),
-			theUMLPackage.getClass_(),
-			null,
-			"base_Class", null, 1, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+			IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getType_Base_Class(), theUMLPackage.getClass_(), null,
+			"base_Class", null, 1, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
+			IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+			IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		op = initEOperation(
 			getType__ValidateCannotBeSpecification__DiagnosticChain_Map(),
-			ecorePackage.getEBoolean(),
-			"validateCannotBeSpecification", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(),
-			"diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+			ecorePackage.getEBoolean(), "validateCannotBeSpecification", 0, 1, //$NON-NLS-1$
+			IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, //$NON-NLS-1$
+			1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(ecorePackage.getEMap());
 		g2 = createEGenericType(ecorePackage.getEJavaObject());
 		g1.getETypeArguments().add(g2);
@@ -1586,20 +1558,19 @@ public class StandardPackageImpl
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(utilityEClass, Utility.class,
-			"Utility", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getUtility_Base_Class(),
-			theUMLPackage.getClass_(),
-			null,
-			"base_Class", null, 1, 1, Utility.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEClass(utilityEClass, Utility.class, "Utility", !IS_ABSTRACT, //$NON-NLS-1$
+			!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getUtility_Base_Class(), theUMLPackage.getClass_(), null,
+			"base_Class", null, 1, 1, Utility.class, !IS_TRANSIENT, //$NON-NLS-1$
+			!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		op = initEOperation(
 			getUtility__ValidateIsUtility__DiagnosticChain_Map(),
-			ecorePackage.getEBoolean(),
-			"validateIsUtility", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEDiagnosticChain(),
-			"diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+			ecorePackage.getEBoolean(), "validateIsUtility", 0, 1, IS_UNIQUE, //$NON-NLS-1$
+			IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, //$NON-NLS-1$
+			1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(ecorePackage.getEMap());
 		g2 = createEGenericType(ecorePackage.getEJavaObject());
 		g1.getETypeArguments().add(g2);
@@ -1607,35 +1578,27 @@ public class StandardPackageImpl
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(
-			buildComponentEClass,
-			BuildComponent.class,
-			"BuildComponent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getBuildComponent_Base_Component(),
-			theUMLPackage.getComponent(),
-			null,
-			"base_Component", null, 1, 1, BuildComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEClass(buildComponentEClass, BuildComponent.class, "BuildComponent", //$NON-NLS-1$
+			!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getBuildComponent_Base_Component(),
+			theUMLPackage.getComponent(), null, "base_Component", null, 1, 1, //$NON-NLS-1$
+			BuildComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+			!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+			!IS_DERIVED, !IS_ORDERED);
 
-		initEClass(
-			metamodelEClass,
-			Metamodel.class,
-			"Metamodel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getMetamodel_Base_Model(),
-			theUMLPackage.getModel(),
-			null,
-			"base_Model", null, 1, 1, Metamodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEClass(metamodelEClass, Metamodel.class, "Metamodel", !IS_ABSTRACT, //$NON-NLS-1$
+			!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMetamodel_Base_Model(), theUMLPackage.getModel(),
+			null, "base_Model", null, 1, 1, Metamodel.class, !IS_TRANSIENT, //$NON-NLS-1$
+			!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
-		initEClass(
-			systemModelEClass,
-			SystemModel.class,
-			"SystemModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-			getSystemModel_Base_Model(),
-			theUMLPackage.getModel(),
-			null,
-			"base_Model", null, 1, 1, SystemModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEClass(systemModelEClass, SystemModel.class, "SystemModel", //$NON-NLS-1$
+			!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSystemModel_Base_Model(), theUMLPackage.getModel(),
+			null, "base_Model", null, 1, 1, SystemModel.class, !IS_TRANSIENT, //$NON-NLS-1$
+			!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -1654,7 +1617,7 @@ public class StandardPackageImpl
 	 * @generated
 	 */
 	protected void createUMLAnnotations() {
-		String source = "http://www.eclipse.org/uml2/2.0.0/UML"; //$NON-NLS-1$	
+		String source = "http://www.eclipse.org/uml2/2.0.0/UML"; //$NON-NLS-1$
 		addAnnotation(this, source, new String[]{"originalName", "Standard" //$NON-NLS-1$ //$NON-NLS-2$
 		});
 	}
@@ -1666,7 +1629,7 @@ public class StandardPackageImpl
 	 * @generated
 	 */
 	protected void createDuplicatesAnnotations() {
-		String source = "duplicates"; //$NON-NLS-1$	
+		String source = "duplicates"; //$NON-NLS-1$
 		addAnnotation(documentEClass, source, new String[]{});
 		addAnnotation(executableEClass, source, new String[]{});
 		addAnnotation(libraryEClass, source, new String[]{});

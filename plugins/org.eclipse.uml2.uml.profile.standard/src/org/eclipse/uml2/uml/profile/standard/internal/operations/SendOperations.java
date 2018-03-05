@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2014 CEA and others.
+ * Copyright (c) 2011, 2018 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -93,16 +93,13 @@ public class SendOperations
 			}
 
 			if (!result && diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.WARNING,
-						StandardValidator.DIAGNOSTIC_SOURCE,
-						StandardValidator.SEND__CLIENT_OPERATION_SENDS_SUPPLIER_SIGNAL,
-						StandardPlugin.INSTANCE
-							.getString(
-								"_UI_Send_ClientOperationSendsSupplierSignal_diagnostic", //$NON-NLS-1$
-								getMessageSubstitutions(context, base_Usage)),
-						new Object[]{base_Usage}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					StandardValidator.DIAGNOSTIC_SOURCE,
+					StandardValidator.SEND__CLIENT_OPERATION_SENDS_SUPPLIER_SIGNAL,
+					StandardPlugin.INSTANCE.getString(
+						"_UI_Send_ClientOperationSendsSupplierSignal_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, base_Usage)),
+					new Object[]{base_Usage}));
 			}
 		}
 

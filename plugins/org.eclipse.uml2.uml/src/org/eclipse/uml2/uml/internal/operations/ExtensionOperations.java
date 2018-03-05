@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -87,8 +87,7 @@ public class ExtensionOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateNonOwnedEnd", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(extension, context)}),
-					new Object[]{extension}));
+								.getObjectLabel(extension, context)}), new Object[]{extension}));
 			}
 			return false;
 		}
@@ -122,8 +121,7 @@ public class ExtensionOperations
 						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
 						new Object[]{"validateIsBinary", //$NON-NLS-1$
 							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(extension, context)}),
-					new Object[]{extension}));
+								.getObjectLabel(extension, context)}), new Object[]{extension}));
 			}
 			return false;
 		}
