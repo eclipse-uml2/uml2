@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setup:Configuration
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
+    label="UML2 Development Environment">
+  <installation
+      name="uml2.development.environment.installation"
+      label="UML2 Development Environment Installation">
+    <productVersion
+        href="index:/org.eclipse.setup#//@productCatalogs[name='org.eclipse.products']/@products[name='epp.package.committers']/@versions[name='photon']"/>
+    <description>The UML2 development environment workspace provides the source for working with UML2 along with a target platform and appropriate preferences.</description>
+  </installation>
+  <workspace
+      name="uml2.development.environment.workspace"
+      label="UML2 Development Environment Workspace">
+    <stream
+        href="index:/org.eclipse.setup#//@projectCatalogs[name='org.eclipse']/@projects[name='uml2']/@streams[name='master']"/>
+    <description>The UML2 development environment installation provides the tools for working with UML2.</description>
+  </workspace>
+  <description>The UML2 development environment configuration provides the full development environment for working with UML2.</description>
+</setup:Configuration>
