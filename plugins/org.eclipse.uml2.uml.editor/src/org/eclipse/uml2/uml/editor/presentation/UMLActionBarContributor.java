@@ -578,7 +578,7 @@ public class UMLActionBarContributor
 					if (submenuActions
 						.containsKey(submenuManager.getMenuText())) {
 						depopulateManager(submenuManager,
-							submenuActions.get(contributionItem));
+							submenuActions.get(submenuManager.getMenuText()));
 						manager.remove(contributionItem);
 					}
 				}

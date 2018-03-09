@@ -148,7 +148,7 @@ public class PackageOperations
 			Element baseElement = getBaseElement(eObject);
 			return baseElement == null
 				? super.createCopy(eObject)
-				: applyStereotype(baseElement, getTarget(eObject.eClass()));
+				: applyStereotype(baseElement, getTarget(eObject.eClass()), null);
 		}
 
 		@Override

@@ -7305,7 +7305,7 @@ public class UMLUtil
 				EReference eOpposite = eStructuralFeature.getEOpposite();
 
 				if (eOpposite != null
-					&& !featuresToDuplicate.contains(eOpposite)) {
+					&& !featuresToDuplicate.contains((EStructuralFeature.Internal)eOpposite)) {
 
 					eOpposite.setEOpposite(null);
 
