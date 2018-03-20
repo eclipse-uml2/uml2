@@ -400,7 +400,7 @@ public class StateOperations
 
 					if (redefinedRegion instanceof Region
 						&& ((Region) redefinedRegion).getSubvertices()
-							.contains((State)redefinedElement)) {
+							.contains((State) redefinedElement)) {
 
 						return true;
 					}
