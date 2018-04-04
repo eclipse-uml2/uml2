@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey - 323181, 522658, 528925, 531034
+ *   Kenn Hussey - 323181, 522658, 528925, 531034, 533169
  *   Kenn Hussey (CEA) - 281326
  *
  */
@@ -427,15 +427,19 @@ public class UMLActionBarContributor
 
 	protected void configureActions(List<IAction> actions,
 			List<Object> descriptors) {
+
 		for (int i = 0, size = actions.size(); i < size; ++i) {
 			IAction action = actions.get(i);
 			Object descriptor = descriptors.get(i);
+
 			if (descriptor instanceof CommandParameter) {
 				EObject eObject = ((CommandParameter) descriptor).getEValue();
+
 				if (eObject instanceof EAnnotation) {
 					String source = ((EAnnotation) eObject).getSource();
+
 					if (source != null) {
-						action.setText(action.getText() + " -" + source);
+						action.setText(action.getText() + " - " + source); //$NON-NLS-1$
 					}
 				}
 			}
