@@ -49,11 +49,15 @@ import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.ui.EMFEditUIPlugin;
+import org.eclipse.emf.edit.ui.action.CollapseAllAction;
 import org.eclipse.emf.edit.ui.action.ControlAction;
 import org.eclipse.emf.edit.ui.action.CreateChildAction;
 import org.eclipse.emf.edit.ui.action.CreateSiblingAction;
 import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
+import org.eclipse.emf.edit.ui.action.ExpandAllAction;
+import org.eclipse.emf.edit.ui.action.FindAction;
 import org.eclipse.emf.edit.ui.action.LoadResourceAction;
+import org.eclipse.emf.edit.ui.action.RevertAction;
 import org.eclipse.emf.edit.ui.action.ValidateAction;
 
 import org.eclipse.jface.action.Action;
@@ -220,6 +224,11 @@ public class UMLActionBarContributor
 
 		validateAction = new UMLValidateAction();
 		controlAction = new UMLControlAction();
+
+	    findAction = FindAction.create();
+	    revertAction = new RevertAction();
+	    expandAllAction = new ExpandAllAction();
+	    collapseAllAction = new CollapseAllAction();
 	}
 
 	/**
@@ -400,7 +409,8 @@ public class UMLActionBarContributor
 			descriptors, selection);
 
 		if (descriptors != null) {
-			configureActions(createChildActions, new ArrayList<Object>(descriptors));
+			configureActions(createChildActions,
+				new ArrayList<Object>(descriptors));
 		}
 
 		Collections.<IAction> sort(createChildActions,
@@ -415,7 +425,8 @@ public class UMLActionBarContributor
 		return createChildActions;
 	}
 
-	protected void configureActions(List<IAction> actions, List<Object> descriptors) {
+	protected void configureActions(List<IAction> actions,
+			List<Object> descriptors) {
 		for (int i = 0, size = actions.size(); i < size; ++i) {
 			IAction action = actions.get(i);
 			Object descriptor = descriptors.get(i);
@@ -456,7 +467,8 @@ public class UMLActionBarContributor
 			descriptors, selection);
 
 		if (descriptors != null) {
-			configureActions(createSiblingActions, new ArrayList<Object>(descriptors));
+			configureActions(createSiblingActions,
+				new ArrayList<Object>(descriptors));
 		}
 
 		Collections.<IAction> sort(createSiblingActions,

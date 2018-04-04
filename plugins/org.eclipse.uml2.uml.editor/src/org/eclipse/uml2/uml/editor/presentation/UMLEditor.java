@@ -82,6 +82,9 @@ import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
 import org.eclipse.emf.edit.ui.provider.PropertyDescriptor;
 import org.eclipse.emf.edit.ui.provider.PropertySource;
 
+import org.eclipse.emf.edit.ui.util.FindAndReplaceTarget;
+import org.eclipse.emf.edit.ui.util.IRevertablePart;
+import org.eclipse.jface.text.IFindReplaceTarget;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 
 import org.eclipse.emf.common.ui.MarkerHelper;
@@ -233,7 +236,7 @@ import org.eclipse.uml2.uml.util.UMLUtil.StereotypeApplicationHelper;
 public class UMLEditor
 		extends MultiPageEditorPart
 		implements IEditingDomainProvider, ISelectionProvider, IMenuListener,
-		IViewerProvider, IGotoMarker {
+		IViewerProvider, IGotoMarker, IRevertablePart {
 
 	/**
 	 * This keeps track of the editing domain that is used to track all changes to the model.
@@ -1362,6 +1365,9 @@ public class UMLEditor
 			return getPropertySheetPage();
 		} else if (key.equals(IGotoMarker.class)) {
 			return this;
+		} else if (key.equals(IFindReplaceTarget.class)) {
+			return FindAndReplaceTarget.getAdapter(key, this,
+				UMLEditorPlugin.getPlugin());
 		} else {
 			return super.getAdapter(key);
 		}
@@ -1465,8 +1471,8 @@ public class UMLEditor
 	 */
 	public IPropertySheetPage getPropertySheetPageGen() {
 		PropertySheetPage propertySheetPage = new ExtendedPropertySheetPage(
-			editingDomain, ExtendedPropertySheetPage.Decoration.MANUAL, null, 0,
-			false) {
+			editingDomain, ExtendedPropertySheetPage.Decoration.MANUAL, null,
+			10, true) {
 
 			@Override
 			public void setSelectionToViewer(List<?> selection) {
@@ -1489,7 +1495,8 @@ public class UMLEditor
 
 	public IPropertySheetPage getPropertySheetPage() {
 		PropertySheetPage propertySheetPage = new ExtendedPropertySheetPage(
-			editingDomain) {
+			editingDomain, ExtendedPropertySheetPage.Decoration.MANUAL, null,
+			10, true) {
 
 			@Override
 			public void setSelectionToViewer(List<?> selection) {
@@ -1551,6 +1558,47 @@ public class UMLEditor
 	public boolean isDirty() {
 		return ((BasicCommandStack) editingDomain.getCommandStack())
 			.isSaveNeeded();
+	}
+
+	/**
+	 * This is for implementing {@link IRevertablePart}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void doRevert() {
+		ResourceSet resourceSet = editingDomain.getResourceSet();
+		List<Resource> resources = resourceSet.getResources();
+		List<Resource> unloadedResources = new ArrayList<Resource>();
+		updateProblemIndication = false;
+		for (int i = 0; i < resources.size(); ++i) {
+			Resource resource = resources.get(i);
+			if (resource.isLoaded()) {
+				resource.unload();
+				unloadedResources.add(resource);
+			}
+		}
+
+		resourceToDiagnosticMap.clear();
+		for (Resource resource : unloadedResources) {
+			try {
+				resource.load(resourceSet.getLoadOptions());
+			} catch (IOException exception) {
+				if (!resourceToDiagnosticMap.containsKey(resource)) {
+					resourceToDiagnosticMap.put(resource,
+						analyzeResourceProblems(resource, exception));
+				}
+			}
+		}
+
+		editingDomain.getCommandStack().flush();
+
+		if (AdapterFactoryEditingDomain.isStale(editorSelection)) {
+			setSelection(StructuredSelection.EMPTY);
+		}
+
+		updateProblemIndication = true;
+		updateProblemIndication();
 	}
 
 	/**
