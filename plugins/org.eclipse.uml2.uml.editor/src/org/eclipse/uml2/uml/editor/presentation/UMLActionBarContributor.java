@@ -34,12 +34,14 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.TreeIterator;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -397,6 +399,10 @@ public class UMLActionBarContributor
 		List<IAction> createChildActions = (List<IAction>) generateCreateChildActionsGen(
 			descriptors, selection);
 
+		if (descriptors != null) {
+			configureActions(createChildActions, new ArrayList<Object>(descriptors));
+		}
+
 		Collections.<IAction> sort(createChildActions,
 			new Comparator<IAction>() {
 
@@ -407,6 +413,22 @@ public class UMLActionBarContributor
 			});
 
 		return createChildActions;
+	}
+
+	protected void configureActions(List<IAction> actions, List<Object> descriptors) {
+		for (int i = 0, size = actions.size(); i < size; ++i) {
+			IAction action = actions.get(i);
+			Object descriptor = descriptors.get(i);
+			if (descriptor instanceof CommandParameter) {
+				EObject eObject = ((CommandParameter) descriptor).getEValue();
+				if (eObject instanceof EAnnotation) {
+					String source = ((EAnnotation) eObject).getSource();
+					if (source != null) {
+						action.setText(action.getText() + " -" + source);
+					}
+				}
+			}
+		}
 	}
 
 	/**
@@ -432,6 +454,10 @@ public class UMLActionBarContributor
 			Collection<?> descriptors, ISelection selection) {
 		List<IAction> createSiblingActions = (List<IAction>) generateCreateSiblingActionsGen(
 			descriptors, selection);
+
+		if (descriptors != null) {
+			configureActions(createSiblingActions, new ArrayList<Object>(descriptors));
+		}
 
 		Collections.<IAction> sort(createSiblingActions,
 			new Comparator<IAction>() {
