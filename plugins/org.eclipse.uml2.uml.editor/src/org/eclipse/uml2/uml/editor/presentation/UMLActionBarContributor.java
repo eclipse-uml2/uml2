@@ -225,10 +225,10 @@ public class UMLActionBarContributor
 		validateAction = new UMLValidateAction();
 		controlAction = new UMLControlAction();
 
-	    findAction = FindAction.create();
-	    revertAction = new RevertAction();
-	    expandAllAction = new ExpandAllAction();
-	    collapseAllAction = new CollapseAllAction();
+		findAction = FindAction.create();
+		revertAction = new RevertAction();
+		expandAllAction = new ExpandAllAction();
+		collapseAllAction = new CollapseAllAction();
 	}
 
 	/**
