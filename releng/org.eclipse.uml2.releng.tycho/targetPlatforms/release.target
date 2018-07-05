@@ -3,15 +3,15 @@
 <locations>
   <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
     <unit id="org.eclipse.sdk.feature.group" version="0.0.0"/>
-    <repository location="http://download.eclipse.org/eclipse/updates/4.8milestones"/>
+    <repository location="http://download.eclipse.org/eclipse/updates/4.8"/>
   </location>
   <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
     <unit id="org.eclipse.emf.sdk.feature.group" version="0.0.0"/>
-    <repository location="http://download.eclipse.org/modeling/emf/emf/builds/milestone"/>
+    <repository location="http://download.eclipse.org/modeling/emf/emf/builds/release/2.14"/>
   </location>
   <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
     <unit id="org.eclipse.emf.validation" version="0.0.0"/>
-    <repository location="http://download.eclipse.org/modeling/emf/validation/updates/milestones"/>
+    <repository location="http://download.eclipse.org/modeling/emf/validation/updates/releases"/>
   </location>
   <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
     <unit id="org.eclipse.license.feature.group" version="0.0.0"/>
