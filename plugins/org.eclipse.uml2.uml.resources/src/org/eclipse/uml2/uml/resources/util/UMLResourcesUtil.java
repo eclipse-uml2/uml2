@@ -10,7 +10,7 @@
  *   Kenn Hussey (CEA) - 389542, 399544, 425846, 418466, 429352
  *   Mikael Barbero (Obeo) - 414572
  *   Christian W. Damus (CEA) - 414572, 401682
- *   Kenn Hussey - 526217
+ *   Kenn Hussey - 526217, 539580
  */
 package org.eclipse.uml2.uml.resources.util;
 
@@ -193,20 +193,20 @@ public class UMLResourcesUtil
 
 	/**
 	 * <p>
-	 * Initializes the registries for the specified resource set (and/or the
-	 * global registries) with the registrations needed to work with UML2
-	 * resources in stand-alone mode (i.e., without Eclipse).
+	 * Initializes the global registries and, if provided, the local registries
+	 * for the specified resource set, with the registrations needed to work
+	 * with UML2 resources in stand-alone mode (i.e., without Eclipse).
 	 * </p>
 	 * <p>
-	 * <string>Note</string> that as of the 4.2 release, clients now have more
-	 * fine-grained control of which registries (local or global) are
+	 * <string>Note</string> that as of the 5.0 release, clients now have more
+	 * fine-grained control over which registries (local or global) are
 	 * initialized. Clients are encouraged to use these new APIs to ensure
 	 * optimal behaviour and, where necessary, isolation from other code in the
 	 * same class loader using the global registries.
 	 * </p>
 	 * 
 	 * @param resourceSet
-	 *            The resource set whose registries to initialize, or
+	 *            The resource set whose local registries to initialize, or
 	 *            <code>null</code> to perform only global registrations.
 	 * @return The resource set (or <code>null</code>).
 	 * 
