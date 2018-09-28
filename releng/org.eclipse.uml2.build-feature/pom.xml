@@ -10,7 +10,7 @@
   </parent>
   <groupId>org.eclipse.uml2</groupId>
   <artifactId>org.eclipse.uml2.build</artifactId>
-  <version>5.4.1-SNAPSHOT</version>
+  <version>5.4.2-SNAPSHOT</version>
   <packaging>eclipse-repository</packaging>
   <build>
     <resources>
