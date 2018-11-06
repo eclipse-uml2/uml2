@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2014 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
  *   Keith Campbell (IBM) - 343783
  *   Kenn Hussey (CEA) - 316165, 322715, 212765, 421756, 424568, 443662
  *   Christian W. Damus (CEA) - 405065
+#   Eike Stepper - 540812
  *
  */
 package org.eclipse.uml2.common.util;
@@ -1107,8 +1108,8 @@ public class UML2Util {
 	 */
 	public static Collection<EStructuralFeature.Setting> getNonNavigableInverseReferences(
 			EObject eObject) {
-		ECrossReferenceAdapter crossReferenceAdapter = ECrossReferenceAdapter
-			.getCrossReferenceAdapter(eObject);
+		ECrossReferenceAdapter crossReferenceAdapter = CacheAdapter
+			.getInstance().provideCrossReferenceAdapter(eObject);
 		return crossReferenceAdapter == null
 			? Collections.<EStructuralFeature.Setting> emptyList()
 			: crossReferenceAdapter.getNonNavigableInverseReferences(eObject);
@@ -1123,8 +1124,8 @@ public class UML2Util {
 	 */
 	public static Collection<EStructuralFeature.Setting> getInverseReferences(
 			EObject eObject) {
-		ECrossReferenceAdapter crossReferenceAdapter = ECrossReferenceAdapter
-			.getCrossReferenceAdapter(eObject);
+		ECrossReferenceAdapter crossReferenceAdapter = CacheAdapter
+			.getInstance().provideCrossReferenceAdapter(eObject);
 		return crossReferenceAdapter == null
 			? Collections.<EStructuralFeature.Setting> emptyList()
 			: crossReferenceAdapter.getInverseReferences(eObject);

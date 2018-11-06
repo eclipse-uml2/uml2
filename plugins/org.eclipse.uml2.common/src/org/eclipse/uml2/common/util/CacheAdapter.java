@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2015 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2004, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
  *   Kenn Hussey - 335125
  *   Christian W. Damus (CEA) - 389632, 332057
  *   Kenn Hussey (CEA) - 418466, 455572
+ *   Eike Stepper - 540812
  *
  */
 package org.eclipse.uml2.common.util;
@@ -24,21 +25,28 @@ import java.util.Map;
 import java.util.Set;
 import java.util.WeakHashMap;
 
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.RegistryFactory;
+import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.plugin.RegistryReader;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.uml2.common.CommonPlugin;
 
 public class CacheAdapter
 		extends ECrossReferenceAdapter {
@@ -124,7 +132,64 @@ public class CacheAdapter
 		}
 	}
 
-	private static final CacheAdapter INSTANCE = createCacheAdapter();
+	/**
+	 * @author Eike Stepper
+	 */
+	private static final class OverrideRegistryReader
+			extends RegistryReader {
+
+		private static final String PPID = "cache_adapter_override";
+
+		private static final String TAG_CACHE_ADAPTER = "cacheAdapter";
+
+		private static final String ATT_CLASS = "class";
+
+		private CacheAdapter cacheAdapter;
+
+		private OverrideRegistryReader() {
+			super(RegistryFactory.getRegistry(),
+				CommonPlugin.INSTANCE.getSymbolicName(), PPID);
+		}
+
+		public CacheAdapter getCacheAdapter() {
+			return cacheAdapter;
+		}
+
+		@Override
+		protected boolean readElement(IConfigurationElement element,
+				boolean add) {
+			if (element.getName().equals(TAG_CACHE_ADAPTER)) {
+				String className = element.getAttribute(ATT_CLASS);
+				if (className == null) {
+					logMissingAttribute(element, ATT_CLASS);
+				} else if (add) {
+					if (cacheAdapter != null) {
+						if (!cacheAdapter.getClass().getName()
+							.equals(className)) {
+							CommonPlugin.INSTANCE.log(
+								"Ignored '" + className + "' in favour of '"
+									+ cacheAdapter.getClass().getName() + "'");
+						}
+
+						return false;
+					}
+
+					try {
+						cacheAdapter = (CacheAdapter) element
+							.createExecutableExtension(ATT_CLASS);
+					} catch (CoreException e) {
+						throw new WrappedException(e);
+					}
+				}
+				
+				return true;
+			}
+
+			return false;
+		}
+	}
+
+	private static CacheAdapter INSTANCE = createCacheAdapter();
 
 	protected static final ThreadLocal<CacheAdapter> THREAD_LOCAL = System
 		.getProperty("org.eclipse.uml2.common.util.CacheAdapter.ThreadLocal") != null //$NON-NLS-1$
@@ -155,6 +220,16 @@ public class CacheAdapter
 			return cacheAdapter;
 		}
 
+		if (EMFPlugin.IS_ECLIPSE_RUNNING) {
+			OverrideRegistryReader registryReader = new OverrideRegistryReader();
+			registryReader.readRegistry();
+			cacheAdapter = registryReader.getCacheAdapter();
+
+			if (cacheAdapter != null) {
+				return cacheAdapter;
+			}
+		}
+
 		return new CacheAdapter();
 	}
 
@@ -164,7 +239,7 @@ public class CacheAdapter
 
 	protected boolean adapting = false;
 
-	private URIConverter uriConverter = null;
+	protected URIConverter uriConverter = null;
 
 	public static CacheAdapter getCacheAdapter(Notifier notifier) {
 		List<Adapter> eAdapters = notifier.eAdapters();
@@ -289,9 +364,12 @@ public class CacheAdapter
 		boolean result = false;
 
 		if (notifier != null) {
-			adapting = true;
-			result = addAdapter(notifier.eAdapters());
-			adapting = false;
+			try {
+				adapting = true;
+				result = addAdapter(notifier.eAdapters());
+			} finally {
+				adapting = false;
+			}
 		}
 
 		return result;
@@ -321,6 +399,10 @@ public class CacheAdapter
 		}
 	}
 
+	protected ECrossReferenceAdapter provideCrossReferenceAdapter(EObject eObject) {
+		return getCrossReferenceAdapter(eObject);
+	}
+	
 	@Override
 	public Collection<EStructuralFeature.Setting> getNonNavigableInverseReferences(
 			EObject eObject) {
