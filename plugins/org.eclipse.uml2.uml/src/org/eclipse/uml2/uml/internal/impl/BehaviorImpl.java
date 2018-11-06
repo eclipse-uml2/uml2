@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181, 519572
  *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
+ *   Eike Stepper - 540786
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -22,11 +23,11 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -38,9 +39,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
+
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehavioralFeature;
@@ -216,6 +217,31 @@ public abstract class BehaviorImpl
 		return UMLPackage.Literals.BEHAVIOR;
 	}
 
+	@SuppressWarnings("unused")
+	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+		if (eStructuralFeature == UMLPackage.Literals.BEHAVIOR__REDEFINED_BEHAVIOR) {
+			return createRedefinedBehaviorsList();
+		}
+		
+		if (eStructuralFeature == UMLPackage.Literals.BEHAVIOR__PRECONDITION) {
+			return createPreconditionsList();
+		}
+
+		if (eStructuralFeature == UMLPackage.Literals.BEHAVIOR__POSTCONDITION) {
+			return createPostconditionsList();
+		}
+
+		if (eStructuralFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
+			return createOwnedRulesList();
+		}
+		
+		if (eStructuralFeature == UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER) {
+			return createRedefinedClassifiersList();
+		}
+		
+		return null;
+	}
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -331,15 +357,19 @@ public abstract class BehaviorImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
 	public EList<Behavior> getRedefinedBehaviors() {
 		if (redefinedBehaviors == null) {
-			redefinedBehaviors = new SubsetSupersetEObjectResolvingEList<Behavior>(
-				Behavior.class, this, UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR,
-				REDEFINED_BEHAVIOR_ESUPERSETS, null);
+			redefinedBehaviors = createRedefinedBehaviorsList();
 		}
 		return redefinedBehaviors;
+	}
+
+	private EList<Behavior> createRedefinedBehaviorsList() {
+		return new SubsetSupersetEObjectResolvingEList<Behavior>(
+			Behavior.class, this, UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR,
+			REDEFINED_BEHAVIOR_ESUPERSETS, null);
 	}
 
 	/**
@@ -425,57 +455,65 @@ public abstract class BehaviorImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated NOT_CDO
 	 */
-	@SuppressWarnings("serial")
 	public EList<Constraint> getPreconditions() {
 		if (preconditions == null) {
-			preconditions = new SubsetSupersetEObjectResolvingEList<Constraint>(
-				Constraint.class, this, UMLPackage.BEHAVIOR__PRECONDITION,
-				PRECONDITION_ESUPERSETS, null) {
-
-				@Override
-				protected boolean enforceSubsetConstraints() {
-					return true;
-				}
-
-				@Override
-				protected void didAdd(int index, Constraint newObject) {
-					super.didAdd(index, newObject);
-
-					supersetAdd(newObject);
-				}
-			};
+			preconditions = createPreconditionsList();
 		}
 		return preconditions;
+	}
+
+	@SuppressWarnings("serial")
+	private EList<Constraint> createPreconditionsList() {
+		return new SubsetSupersetEObjectResolvingEList<Constraint>(
+			Constraint.class, this, UMLPackage.BEHAVIOR__PRECONDITION,
+			PRECONDITION_ESUPERSETS, null) {
+
+			@Override
+			protected boolean enforceSubsetConstraints() {
+				return true;
+			}
+
+			@Override
+			protected void didAdd(int index, Constraint newObject) {
+				super.didAdd(index, newObject);
+
+				supersetAdd(newObject);
+			}
+		};
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated NOT_CDO
 	 */
-	@SuppressWarnings("serial")
 	public EList<Constraint> getPostconditions() {
 		if (postconditions == null) {
-			postconditions = new SubsetSupersetEObjectResolvingEList<Constraint>(
-				Constraint.class, this, UMLPackage.BEHAVIOR__POSTCONDITION,
-				POSTCONDITION_ESUPERSETS, null) {
-
-				@Override
-				protected boolean enforceSubsetConstraints() {
-					return true;
-				}
-
-				@Override
-				protected void didAdd(int index, Constraint newObject) {
-					super.didAdd(index, newObject);
-
-					supersetAdd(newObject);
-				}
-			};
+			postconditions = createPostconditionsList();
 		}
 		return postconditions;
+	}
+
+	@SuppressWarnings("serial")
+	private EList<Constraint> createPostconditionsList() {
+		return new SubsetSupersetEObjectResolvingEList<Constraint>(
+			Constraint.class, this, UMLPackage.BEHAVIOR__POSTCONDITION,
+			POSTCONDITION_ESUPERSETS, null) {
+
+			@Override
+			protected boolean enforceSubsetConstraints() {
+				return true;
+			}
+
+			@Override
+			protected void didAdd(int index, Constraint newObject) {
+				super.didAdd(index, newObject);
+
+				supersetAdd(newObject);
+			}
+		};
 	}
 
 	/**
@@ -1862,17 +1900,21 @@ public abstract class BehaviorImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
 
 	@Override
 	public EList<Constraint> getOwnedRules() {
 		if (ownedRules == null) {
-			ownedRules = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<Constraint>(
-				Constraint.class, this, UMLPackage.BEHAVIOR__OWNED_RULE, null,
-				OWNED_RULE_ESUBSETS, UMLPackage.CONSTRAINT__CONTEXT);
+			ownedRules = createOwnedRulesList();
 		}
 		return ownedRules;
+	}
+
+	private EList<Constraint> createOwnedRulesList() {
+		return new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<Constraint>(
+			Constraint.class, this, UMLPackage.BEHAVIOR__OWNED_RULE, null,
+			OWNED_RULE_ESUBSETS, UMLPackage.CONSTRAINT__CONTEXT);
 	}
 
 	/**
@@ -1889,17 +1931,21 @@ public abstract class BehaviorImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
 	@Override
 	public EList<Classifier> getRedefinedClassifiers() {
 		if (redefinedClassifiers == null) {
-			redefinedClassifiers = new SubsetSupersetEObjectResolvingEList<Classifier>(
-				Classifier.class, this,
-				UMLPackage.BEHAVIOR__REDEFINED_CLASSIFIER, null,
-				REDEFINED_CLASSIFIER_ESUBSETS);
+			redefinedClassifiers = createRedefinedClassifiersList();
 		}
 		return redefinedClassifiers;
+	}
+
+	private EList<Classifier> createRedefinedClassifiersList() {
+		return new SubsetSupersetEObjectResolvingEList<Classifier>(
+			Classifier.class, this,
+			UMLPackage.BEHAVIOR__REDEFINED_CLASSIFIER, null,
+			REDEFINED_CLASSIFIER_ESUBSETS);
 	}
 
 	/**

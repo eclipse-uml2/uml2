@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,11 +10,13 @@
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181, 519572
  *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
+ *   Eike Stepper - 540786
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
 import java.util.List;
 import java.util.ListIterator;
@@ -24,7 +26,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAnnotation;
@@ -57,9 +58,9 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.Feature;
-import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.GeneralizationSet;
+import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -216,6 +217,15 @@ public class ClassImpl
 		return UMLPackage.Literals.CLASS;
 	}
 
+	@SuppressWarnings("unused")
+	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+		if (eStructuralFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR) {
+			return createOwnedBehaviorsList();
+		}
+
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -271,15 +281,19 @@ public class ClassImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
 	public EList<Behavior> getOwnedBehaviors() {
 		if (ownedBehaviors == null) {
-			ownedBehaviors = new SubsetSupersetEObjectContainmentEList.Resolving<Behavior>(
-				Behavior.class, this, UMLPackage.CLASS__OWNED_BEHAVIOR, null,
-				OWNED_BEHAVIOR_ESUBSETS);
+			ownedBehaviors = createOwnedBehaviorsList();
 		}
 		return ownedBehaviors;
+	}
+
+	private EList<Behavior> createOwnedBehaviorsList() {
+		return new SubsetSupersetEObjectContainmentEList.Resolving<Behavior>(
+			Behavior.class, this, UMLPackage.CLASS__OWNED_BEHAVIOR, null,
+			OWNED_BEHAVIOR_ESUBSETS);
 	}
 
 	/**

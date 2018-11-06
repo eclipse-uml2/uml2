@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,22 +10,24 @@
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181, 519572
  *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
+ *   Eike Stepper - 540786
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -181,19 +183,36 @@ public class PortImpl
 		return UMLPackage.Literals.PORT;
 	}
 
+	@SuppressWarnings("unused")
+	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+		if (eStructuralFeature == UMLPackage.Literals.PORT__REDEFINED_PORT) {
+			return createRedefinedPortsList();
+		}
+
+		if (eStructuralFeature == UMLPackage.Literals.PROPERTY__REDEFINED_PROPERTY) {
+			return createRedefinedPropertiesList();
+		}
+		
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
 	@Override
 	public EList<Property> getRedefinedProperties() {
 		if (redefinedProperties == null) {
-			redefinedProperties = new SubsetSupersetEObjectResolvingEList<Property>(
-				Property.class, this, UMLPackage.PORT__REDEFINED_PROPERTY, null,
-				REDEFINED_PROPERTY_ESUBSETS);
+			redefinedProperties = createRedefinedPropertiesList();
 		}
 		return redefinedProperties;
+	}
+
+	private EList<Property> createRedefinedPropertiesList() {
+		return new SubsetSupersetEObjectResolvingEList<Property>(
+			Property.class, this, UMLPackage.PORT__REDEFINED_PROPERTY, null,
+			REDEFINED_PROPERTY_ESUBSETS);
 	}
 
 	/**
@@ -331,15 +350,19 @@ public class PortImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
 	public EList<Port> getRedefinedPorts() {
 		if (redefinedPorts == null) {
-			redefinedPorts = new SubsetSupersetEObjectResolvingEList<Port>(
-				Port.class, this, UMLPackage.PORT__REDEFINED_PORT,
-				REDEFINED_PORT_ESUPERSETS, null);
+			redefinedPorts = createRedefinedPortsList();
 		}
 		return redefinedPorts;
+	}
+
+	private EList<Port> createRedefinedPortsList() {
+		return new SubsetSupersetEObjectResolvingEList<Port>(
+			Port.class, this, UMLPackage.PORT__REDEFINED_PORT,
+			REDEFINED_PORT_ESUPERSETS, null);
 	}
 
 	/**

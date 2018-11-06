@@ -10,11 +10,13 @@
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181, 519572
  *   Kenn Hussey (CEA) - 327039, 351774, 212765, 418466, 454400, 451350, 485756
+ *   Eike Stepper - 540786
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
 import java.util.Map;
 
@@ -22,11 +24,11 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -66,8 +68,8 @@ import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.RedefinableElement;
-import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.RedefinableTemplateSignature;
+import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuralFeature;
 import org.eclipse.uml2.uml.Substitution;
@@ -86,7 +88,6 @@ import org.eclipse.uml2.uml.internal.operations.PackageableElementOperations;
 import org.eclipse.uml2.uml.internal.operations.ParameterableElementOperations;
 import org.eclipse.uml2.uml.internal.operations.RedefinableElementOperations;
 import org.eclipse.uml2.uml.internal.operations.TemplateableElementOperations;
-
 import org.eclipse.uml2.uml.internal.operations.TypeOperations;
 
 /**
@@ -320,6 +321,15 @@ public abstract class ClassifierImpl
 	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.CLASSIFIER;
+	}
+
+	@SuppressWarnings("unused")
+	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+		if (eStructuralFeature == UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE) {
+			return createCollaborationUsesList();
+		}
+
+		return null;
 	}
 
 	/**
@@ -1154,16 +1164,20 @@ public abstract class ClassifierImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
 	public EList<CollaborationUse> getCollaborationUses() {
 		if (collaborationUses == null) {
-			collaborationUses = new SubsetSupersetEObjectContainmentEList.Resolving<CollaborationUse>(
-				CollaborationUse.class, this,
-				UMLPackage.CLASSIFIER__COLLABORATION_USE, null,
-				COLLABORATION_USE_ESUBSETS);
+			collaborationUses = createCollaborationUsesList();
 		}
 		return collaborationUses;
+	}
+
+	private EList<CollaborationUse> createCollaborationUsesList() {
+		return new SubsetSupersetEObjectContainmentEList.Resolving<CollaborationUse>(
+			CollaborationUse.class, this,
+			UMLPackage.CLASSIFIER__COLLABORATION_USE, null,
+			COLLABORATION_USE_ESUBSETS);
 	}
 
 	/**

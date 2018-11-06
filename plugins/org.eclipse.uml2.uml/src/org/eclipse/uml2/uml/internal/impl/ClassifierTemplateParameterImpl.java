@@ -9,11 +9,13 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181, 519572
  *   Kenn Hussey (CEA) - 327039, 351774, 212765, 418466, 451350, 485756
+ *   Eike Stepper - 540786
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
 import java.util.Map;
 
@@ -21,15 +23,17 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.uml2.uml.Classifier;
@@ -249,6 +253,7 @@ public class ClassifierTemplateParameterImpl
 
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 
+			ParameterableElement ownedParameteredElement = basicGetOwnedParameteredElement();
 			if (ownedParameteredElement != null
 				&& ownedParameteredElement != newParameteredElement) {
 

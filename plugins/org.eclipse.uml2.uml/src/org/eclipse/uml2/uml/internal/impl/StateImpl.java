@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,11 +10,13 @@
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181, 519572
  *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
+ *   Eike Stepper - 540786
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -28,6 +30,7 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -42,8 +45,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
+
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Comment;
@@ -289,6 +292,15 @@ public class StateImpl
 	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.STATE;
+	}
+
+	@SuppressWarnings("unused")
+	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+		if (eStructuralFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
+			return createOwnedRulesList();
+		}
+
+		return null;
 	}
 
 	/**
@@ -2431,16 +2443,20 @@ public class StateImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
 	@Override
 	public EList<Constraint> getOwnedRules() {
 		if (ownedRules == null) {
-			ownedRules = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<Constraint>(
-				Constraint.class, this, UMLPackage.STATE__OWNED_RULE, null,
-				OWNED_RULE_ESUBSETS, UMLPackage.CONSTRAINT__CONTEXT);
+			ownedRules = createOwnedRulesList();
 		}
 		return ownedRules;
+	}
+
+	private EList<Constraint> createOwnedRulesList() {
+		return new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<Constraint>(
+			Constraint.class, this, UMLPackage.STATE__OWNED_RULE, null,
+			OWNED_RULE_ESUBSETS, UMLPackage.CONSTRAINT__CONTEXT);
 	}
 
 	/**

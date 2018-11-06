@@ -195,6 +195,10 @@
     <description>${scope.project.label}</description>
   </setupTask>
   <setupTask
+      xsi:type="setup:StringSubstitutionTask"
+      name="git.clone.uml2"
+      value="${git.clone.uml2}"/>
+  <setupTask
       xsi:type="setup.targlets:TargletTask">
     <targlet
         name="${scope.project.label}"

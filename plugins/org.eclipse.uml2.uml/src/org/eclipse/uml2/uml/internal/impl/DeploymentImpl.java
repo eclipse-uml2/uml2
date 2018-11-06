@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,11 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
+ *   Eike Stepper - 540786
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -20,6 +22,7 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -108,6 +111,23 @@ public class DeploymentImpl
 		return UMLPackage.Literals.DEPLOYMENT;
 	}
 
+	@SuppressWarnings("unused")
+	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+		if (eStructuralFeature == UMLPackage.Literals.DEPENDENCY__CLIENT) {
+			return createClientsList();
+		}
+
+		if (eStructuralFeature == UMLPackage.Literals.DEPLOYMENT__DEPLOYED_ARTIFACT) {
+			return createDeployedArtifactsList();
+		}
+		
+		if (eStructuralFeature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
+			return createSuppliersList();
+		}
+		
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -138,46 +158,58 @@ public class DeploymentImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
 	@Override
 	public EList<NamedElement> getSuppliers() {
 		if (suppliers == null) {
-			suppliers = new SubsetSupersetEObjectResolvingEList<NamedElement>(
-				NamedElement.class, this, UMLPackage.DEPLOYMENT__SUPPLIER, null,
-				SUPPLIER_ESUBSETS);
+			suppliers = createSuppliersList();
 		}
 		return suppliers;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<NamedElement> getClients() {
-		if (clients == null) {
-			clients = new SubsetSupersetEObjectResolvingEList<NamedElement>(
-				NamedElement.class, this, UMLPackage.DEPLOYMENT__CLIENT, null,
-				CLIENT_ESUBSETS);
-		}
-		return clients;
+	private EList<NamedElement> createSuppliersList() {
+		return new SubsetSupersetEObjectResolvingEList<NamedElement>(
+			NamedElement.class, this, UMLPackage.DEPLOYMENT__SUPPLIER, null,
+			SUPPLIER_ESUBSETS);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
+	 */
+	@Override
+	public EList<NamedElement> getClients() {
+		if (clients == null) {
+			clients = createClientsList();
+		}
+		return clients;
+	}
+
+	private EList<NamedElement> createClientsList() {
+		return new SubsetSupersetEObjectResolvingEList<NamedElement>(
+			NamedElement.class, this, UMLPackage.DEPLOYMENT__CLIENT, null,
+			CLIENT_ESUBSETS);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT_CDO
 	 */
 	public EList<DeployedArtifact> getDeployedArtifacts() {
 		if (deployedArtifacts == null) {
-			deployedArtifacts = new SubsetSupersetEObjectResolvingEList<DeployedArtifact>(
-				DeployedArtifact.class, this,
-				UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT,
-				DEPLOYED_ARTIFACT_ESUPERSETS, null);
+			deployedArtifacts = createDeployedArtifactsList();
 		}
 		return deployedArtifacts;
+	}
+
+	private EList<DeployedArtifact> createDeployedArtifactsList() {
+		return new SubsetSupersetEObjectResolvingEList<DeployedArtifact>(
+			DeployedArtifact.class, this,
+			UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT,
+			DEPLOYED_ARTIFACT_ESUPERSETS, null);
 	}
 
 	/**

@@ -9,33 +9,36 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
  *   Kenn Hussey (CEA) - 327039, 351774, 212765, 418466, 451350, 485756
+ *   Eike Stepper - 540786
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
+
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.ElementImport;
-import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.ExtensionEnd;
 import org.eclipse.uml2.uml.Generalization;
@@ -55,9 +58,9 @@ import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
-
 import org.eclipse.uml2.uml.UseCase;
 import org.eclipse.uml2.uml.VisibilityKind;
+
 import org.eclipse.uml2.uml.internal.operations.ExtensionOperations;
 
 /**
@@ -107,30 +110,34 @@ public class ExtensionImpl
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.EXTENSION;
 	}
+	
+	@SuppressWarnings("unused")
+	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+		if (eStructuralFeature == UMLPackage.Literals.ASSOCIATION__OWNED_END) {
+			return createOwnedEndsList();
+		}
+
+		return null;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
-	public EList<Property> getOwnedEndsGen() {
+	@Override
+	public EList<Property> getOwnedEnds() {
 		if (ownedEnds == null) {
-			ownedEnds = new EObjectContainmentWithInverseEList.Resolving<Property>(
-				ExtensionEnd.class, this, UMLPackage.EXTENSION__OWNED_END,
-				UMLPackage.PROPERTY__OWNING_ASSOCIATION);
+			ownedEnds = createOwnedEndsList();
 		}
 		return ownedEnds;
 	}
 
-	@Override
-	public EList<Property> getOwnedEnds() {
-		if (ownedEnds == null) {
-			ownedEnds = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<Property>(
-				ExtensionEnd.class, this, UMLPackage.EXTENSION__OWNED_END,
-				OWNED_END_ESUPERSETS, OWNED_END_ESUBSETS,
-				UMLPackage.PROPERTY__OWNING_ASSOCIATION);
-		}
-		return ownedEnds;
+	private EList<Property> createOwnedEndsList() {
+		return new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<Property>(
+			ExtensionEnd.class, this, UMLPackage.EXTENSION__OWNED_END,
+			OWNED_END_ESUPERSETS, OWNED_END_ESUBSETS,
+			UMLPackage.PROPERTY__OWNING_ASSOCIATION);
 	}
 
 	/**

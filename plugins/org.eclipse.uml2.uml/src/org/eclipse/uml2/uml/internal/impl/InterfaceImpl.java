@@ -9,11 +9,13 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
  *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
+ *   Eike Stepper - 540786
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
 import java.util.Map;
 
@@ -21,11 +23,11 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -38,8 +40,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
+
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.CollaborationUse;
@@ -177,6 +179,19 @@ public class InterfaceImpl
 	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.INTERFACE;
+	}
+
+	@SuppressWarnings("unused")
+	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+		if (eStructuralFeature == UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER) {
+			return createRedefinedClassifiersList();
+		}
+
+		if (eStructuralFeature == UMLPackage.Literals.INTERFACE__REDEFINED_INTERFACE) {
+			return createRedefinedInterfacesList();
+		}
+		
+		return null;
 	}
 
 	/**
@@ -389,16 +404,20 @@ public class InterfaceImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
 	public EList<Interface> getRedefinedInterfaces() {
 		if (redefinedInterfaces == null) {
-			redefinedInterfaces = new SubsetSupersetEObjectResolvingEList<Interface>(
-				Interface.class, this,
-				UMLPackage.INTERFACE__REDEFINED_INTERFACE,
-				REDEFINED_INTERFACE_ESUPERSETS, null);
+			redefinedInterfaces = createRedefinedInterfacesList();
 		}
 		return redefinedInterfaces;
+	}
+
+	private EList<Interface> createRedefinedInterfacesList() {
+		return new SubsetSupersetEObjectResolvingEList<Interface>(
+			Interface.class, this,
+			UMLPackage.INTERFACE__REDEFINED_INTERFACE,
+			REDEFINED_INTERFACE_ESUPERSETS, null);
 	}
 
 	/**
@@ -1706,17 +1725,21 @@ public class InterfaceImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
 	@Override
 	public EList<Classifier> getRedefinedClassifiers() {
 		if (redefinedClassifiers == null) {
-			redefinedClassifiers = new SubsetSupersetEObjectResolvingEList<Classifier>(
-				Classifier.class, this,
-				UMLPackage.INTERFACE__REDEFINED_CLASSIFIER, null,
-				REDEFINED_CLASSIFIER_ESUBSETS);
+			redefinedClassifiers = createRedefinedClassifiersList();
 		}
 		return redefinedClassifiers;
+	}
+
+	private EList<Classifier> createRedefinedClassifiersList() {
+		return new SubsetSupersetEObjectResolvingEList<Classifier>(
+			Classifier.class, this,
+			UMLPackage.INTERFACE__REDEFINED_CLASSIFIER, null,
+			REDEFINED_CLASSIFIER_ESUBSETS);
 	}
 
 	/**

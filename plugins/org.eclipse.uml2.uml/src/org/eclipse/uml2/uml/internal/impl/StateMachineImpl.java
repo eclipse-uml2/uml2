@@ -9,22 +9,23 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
  *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 479276, 485756, 511674
+ *   Eike Stepper - 540786
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.DiagnosticChain;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.resource.Resource;
@@ -35,8 +36,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
+
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehavioralFeature;
@@ -158,6 +159,19 @@ public class StateMachineImpl
 	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.STATE_MACHINE;
+	}
+
+	@SuppressWarnings("unused")
+	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+		if (eStructuralFeature == UMLPackage.Literals.STATE_MACHINE__EXTENDED_STATE_MACHINE) {
+			return createExtendedStateMachinesList();
+		}
+
+		if (eStructuralFeature == UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER) {
+			return createRedefinedClassifiersList();
+		}
+		
+		return null;
 	}
 
 	/**
@@ -345,16 +359,20 @@ public class StateMachineImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
 	public EList<StateMachine> getExtendedStateMachines() {
 		if (extendedStateMachines == null) {
-			extendedStateMachines = new SubsetSupersetEObjectResolvingEList<StateMachine>(
-				StateMachine.class, this,
-				UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE,
-				EXTENDED_STATE_MACHINE_ESUPERSETS, null);
+			extendedStateMachines = createExtendedStateMachinesList();
 		}
 		return extendedStateMachines;
+	}
+
+	private EList<StateMachine> createExtendedStateMachinesList() {
+		return new SubsetSupersetEObjectResolvingEList<StateMachine>(
+			StateMachine.class, this,
+			UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE,
+			EXTENDED_STATE_MACHINE_ESUPERSETS, null);
 	}
 
 	/**
@@ -1705,17 +1723,21 @@ public class StateMachineImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
 	@Override
 	public EList<Classifier> getRedefinedClassifiers() {
 		if (redefinedClassifiers == null) {
-			redefinedClassifiers = new SubsetSupersetEObjectResolvingEList<Classifier>(
-				Classifier.class, this,
-				UMLPackage.STATE_MACHINE__REDEFINED_CLASSIFIER, null,
-				REDEFINED_CLASSIFIER_ESUBSETS);
+			redefinedClassifiers = createRedefinedClassifiersList();
 		}
 		return redefinedClassifiers;
+	}
+
+	private EList<Classifier> createRedefinedClassifiersList() {
+		return new SubsetSupersetEObjectResolvingEList<Classifier>(
+			Classifier.class, this,
+			UMLPackage.STATE_MACHINE__REDEFINED_CLASSIFIER, null,
+			REDEFINED_CLASSIFIER_ESUBSETS);
 	}
 
 	/**

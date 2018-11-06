@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,11 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
+ *   Eike Stepper - 540786
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -20,6 +22,7 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -93,6 +96,23 @@ public class ComponentRealizationImpl
 		return UMLPackage.Literals.COMPONENT_REALIZATION;
 	}
 
+	@SuppressWarnings("unused")
+	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+		if (eStructuralFeature == UMLPackage.Literals.DEPENDENCY__CLIENT) {
+			return createClientsList();
+		}
+
+		if (eStructuralFeature == UMLPackage.Literals.COMPONENT_REALIZATION__REALIZING_CLASSIFIER) {
+			return createRealizingClassifiersList();
+		}
+		
+		if (eStructuralFeature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
+			return createSuppliersList();
+		}
+		
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -109,17 +129,21 @@ public class ComponentRealizationImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
 	@Override
 	public EList<NamedElement> getClients() {
 		if (clients == null) {
-			clients = new SubsetSupersetEObjectResolvingEList<NamedElement>(
-				NamedElement.class, this,
-				UMLPackage.COMPONENT_REALIZATION__CLIENT, null,
-				CLIENT_ESUBSETS);
+			clients = createClientsList();
 		}
 		return clients;
+	}
+
+	private EList<NamedElement> createClientsList() {
+		return new SubsetSupersetEObjectResolvingEList<NamedElement>(
+			NamedElement.class, this,
+			UMLPackage.COMPONENT_REALIZATION__CLIENT, null,
+			CLIENT_ESUBSETS);
 	}
 
 	/**
@@ -136,17 +160,21 @@ public class ComponentRealizationImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
 	@Override
 	public EList<NamedElement> getSuppliers() {
 		if (suppliers == null) {
-			suppliers = new SubsetSupersetEObjectResolvingEList<NamedElement>(
-				NamedElement.class, this,
-				UMLPackage.COMPONENT_REALIZATION__SUPPLIER, null,
-				SUPPLIER_ESUBSETS);
+			suppliers = createSuppliersList();
 		}
 		return suppliers;
+	}
+
+	private EList<NamedElement> createSuppliersList() {
+		return new SubsetSupersetEObjectResolvingEList<NamedElement>(
+			NamedElement.class, this,
+			UMLPackage.COMPONENT_REALIZATION__SUPPLIER, null,
+			SUPPLIER_ESUBSETS);
 	}
 
 	/**
@@ -233,16 +261,20 @@ public class ComponentRealizationImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
 	public EList<Classifier> getRealizingClassifiers() {
 		if (realizingClassifiers == null) {
-			realizingClassifiers = new SubsetSupersetEObjectResolvingEList<Classifier>(
-				Classifier.class, this,
-				UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER,
-				REALIZING_CLASSIFIER_ESUPERSETS, null);
+			realizingClassifiers = createRealizingClassifiersList();
 		}
 		return realizingClassifiers;
+	}
+
+	private EList<Classifier> createRealizingClassifiersList() {
+		return new SubsetSupersetEObjectResolvingEList<Classifier>(
+			Classifier.class, this,
+			UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER,
+			REALIZING_CLASSIFIER_ESUPERSETS, null);
 	}
 
 	/**

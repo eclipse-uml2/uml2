@@ -10,11 +10,13 @@
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181, 519572
  *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
+ *   Eike Stepper - 540786
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
 import java.util.Map;
 
@@ -22,11 +24,11 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -174,6 +176,23 @@ public class AssociationClassImpl
 		return UMLPackage.Literals.ASSOCIATION_CLASS;
 	}
 
+	@SuppressWarnings("unused")
+	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+		if (eStructuralFeature == UMLPackage.Literals.ASSOCIATION__MEMBER_END) {
+			return createMemberEndsList();
+		}
+
+		if (eStructuralFeature == UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END) {
+			return createNavigableOwnedEndsList();
+		}
+
+		if (eStructuralFeature == UMLPackage.Literals.ASSOCIATION__OWNED_END) {
+			return createOwnedEndsList();
+		}
+		
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -286,30 +305,38 @@ public class AssociationClassImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
 	public EList<Property> getMemberEnds() {
 		if (memberEnds == null) {
-			memberEnds = new SubsetSupersetEObjectWithInverseResolvingEList<Property>(
-				Property.class, this, UMLPackage.ASSOCIATION_CLASS__MEMBER_END,
-				null, MEMBER_END_ESUBSETS, UMLPackage.PROPERTY__ASSOCIATION);
+			memberEnds = createMemberEndsList();
 		}
 		return memberEnds;
+	}
+
+	private EList<Property> createMemberEndsList() {
+		return new SubsetSupersetEObjectWithInverseResolvingEList<Property>(
+			Property.class, this, UMLPackage.ASSOCIATION_CLASS__MEMBER_END,
+			null, MEMBER_END_ESUBSETS, UMLPackage.PROPERTY__ASSOCIATION);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
 	public EList<Property> getOwnedEnds() {
 		if (ownedEnds == null) {
-			ownedEnds = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<Property>(
-				Property.class, this, UMLPackage.ASSOCIATION_CLASS__OWNED_END,
-				OWNED_END_ESUPERSETS, OWNED_END_ESUBSETS,
-				UMLPackage.PROPERTY__OWNING_ASSOCIATION);
+			ownedEnds = createOwnedEndsList();
 		}
 		return ownedEnds;
+	}
+
+	private EList<Property> createOwnedEndsList() {
+		return new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<Property>(
+			Property.class, this, UMLPackage.ASSOCIATION_CLASS__OWNED_END,
+			OWNED_END_ESUPERSETS, OWNED_END_ESUBSETS,
+			UMLPackage.PROPERTY__OWNING_ASSOCIATION);
 	}
 
 	/**
@@ -388,16 +415,20 @@ public class AssociationClassImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
 	public EList<Property> getNavigableOwnedEnds() {
 		if (navigableOwnedEnds == null) {
-			navigableOwnedEnds = new SubsetSupersetEObjectResolvingEList<Property>(
-				Property.class, this,
-				UMLPackage.ASSOCIATION_CLASS__NAVIGABLE_OWNED_END,
-				NAVIGABLE_OWNED_END_ESUPERSETS, null);
+			navigableOwnedEnds = createNavigableOwnedEndsList();
 		}
 		return navigableOwnedEnds;
+	}
+
+	private EList<Property> createNavigableOwnedEndsList() {
+		return new SubsetSupersetEObjectResolvingEList<Property>(
+			Property.class, this,
+			UMLPackage.ASSOCIATION_CLASS__NAVIGABLE_OWNED_END,
+			NAVIGABLE_OWNED_END_ESUPERSETS, null);
 	}
 
 	/**

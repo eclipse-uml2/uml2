@@ -8,26 +8,32 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 212765, 418466, 451350, 485756
+ *   Eike Stepper - 540786
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
 import java.util.Map;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.OperationTemplateParameter;
@@ -35,6 +41,7 @@ import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.UMLPackage;
+
 import org.eclipse.uml2.uml.internal.operations.OperationTemplateParameterOperations;
 
 /**
@@ -142,6 +149,7 @@ public class OperationTemplateParameterImpl
 
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 
+			ParameterableElement ownedParameteredElement = basicGetOwnedParameteredElement();
 			if (ownedParameteredElement != null
 				&& ownedParameteredElement != newParameteredElement) {
 

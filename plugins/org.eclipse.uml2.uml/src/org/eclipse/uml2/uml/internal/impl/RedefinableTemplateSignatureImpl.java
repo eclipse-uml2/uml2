@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,11 +9,13 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
  *   Kenn Hussey (CEA) - 327039, 351774, 386760, 212765, 418466, 451350, 485756
+ *   Eike Stepper - 540786
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
 import java.util.Map;
 
@@ -21,7 +23,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAnnotation;
@@ -31,6 +32,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
@@ -134,6 +136,19 @@ public class RedefinableTemplateSignatureImpl
 		return UMLPackage.Literals.REDEFINABLE_TEMPLATE_SIGNATURE;
 	}
 
+	@SuppressWarnings("unused")
+	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+		if (eStructuralFeature == UMLPackage.Literals.TEMPLATE_SIGNATURE__PARAMETER) {
+			return createParametersList();
+		}
+		
+		if (eStructuralFeature == UMLPackage.Literals.TEMPLATE_SIGNATURE__OWNED_PARAMETER) {
+			return createOwnedParametersList();
+		}
+		
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -165,16 +180,20 @@ public class RedefinableTemplateSignatureImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
 	public EList<TemplateParameter> getParameters() {
 		if (parameters == null) {
-			parameters = new SubsetSupersetEObjectResolvingEList<TemplateParameter>(
-				TemplateParameter.class, this,
-				UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER, null,
-				PARAMETER_ESUBSETS);
+			parameters = createParametersList();
 		}
 		return parameters;
+	}
+
+	private EList<TemplateParameter> createParametersList() {
+		return new SubsetSupersetEObjectResolvingEList<TemplateParameter>(
+			TemplateParameter.class, this,
+			UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER, null,
+			PARAMETER_ESUBSETS);
 	}
 
 	/**
@@ -268,13 +287,17 @@ public class RedefinableTemplateSignatureImpl
 	 */
 	public EList<TemplateParameter> getOwnedParameters() {
 		if (ownedParameters == null) {
-			ownedParameters = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<TemplateParameter>(
-				TemplateParameter.class, this,
-				UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER,
-				OWNED_PARAMETER_ESUPERSETS, null,
-				UMLPackage.TEMPLATE_PARAMETER__SIGNATURE);
+			ownedParameters = createOwnedParametersList();
 		}
 		return ownedParameters;
+	}
+
+	private EList<TemplateParameter> createOwnedParametersList() {
+		return new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<TemplateParameter>(
+			TemplateParameter.class, this,
+			UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__OWNED_PARAMETER,
+			OWNED_PARAMETER_ESUPERSETS, null,
+			UMLPackage.TEMPLATE_PARAMETER__SIGNATURE);
 	}
 
 	/**

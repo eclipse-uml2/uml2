@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2017 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181, 519572
  *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
+ *   Eike Stepper - 540786
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -22,11 +23,11 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -119,7 +120,7 @@ public class ActivityImpl
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getGroups()
-	 * @generated NOT
+	 * @generated NOT_CDO
 	 * @ordered
 	 */
 	protected EList<ActivityGroup> groups;
@@ -159,7 +160,7 @@ public class ActivityImpl
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getNodes()
-	 * @generated NOT
+	 * @generated NOT_CDO
 	 * @ordered
 	 */
 	protected EList<ActivityNode> nodes;
@@ -253,6 +254,35 @@ public class ActivityImpl
 		return UMLPackage.Literals.ACTIVITY;
 	}
 
+	@SuppressWarnings("unused")
+	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+		if (eStructuralFeature == UMLPackage.Literals.ACTIVITY__GROUP) {
+			return createGroupsList();
+		}
+
+		if (eStructuralFeature == UMLPackage.Literals.ACTIVITY__NODE) {
+			return createNodesList();
+		}
+
+		if (eStructuralFeature == UMLPackage.Literals.ACTIVITY__STRUCTURED_NODE) {
+			return createStructuredNodesList();
+		}
+		
+		if (eStructuralFeature == UMLPackage.Literals.ACTIVITY__PARTITION) {
+			return createPartitionsList();
+		}
+		
+		if (eStructuralFeature == UMLPackage.Literals.ACTIVITY__OWNED_GROUP) {
+			return createOwnedGroupsList();
+		}
+		
+		if (eStructuralFeature == UMLPackage.Literals.ACTIVITY__OWNED_NODE) {
+			return createOwnedNodesList();
+		}
+		
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -313,11 +343,15 @@ public class ActivityImpl
 	 */
 	public EList<ActivityGroup> getGroups() {
 		if (groups == null) {
-			groups = new SubsetSupersetEObjectResolvingEList<ActivityGroup>(
-				ActivityGroup.class, this, UMLPackage.ACTIVITY__GROUP, null,
-				GROUP_ESUBSETS);
+			groups = createGroupsList();
 		}
 		return groups;
+	}
+
+	private EList<ActivityGroup> createGroupsList() {
+		return new SubsetSupersetEObjectResolvingEList<ActivityGroup>(
+			ActivityGroup.class, this, UMLPackage.ACTIVITY__GROUP, null,
+			GROUP_ESUBSETS);
 	}
 
 	/**
@@ -327,11 +361,15 @@ public class ActivityImpl
 	 */
 	public EList<ActivityNode> getNodes() {
 		if (nodes == null) {
-			nodes = new SubsetSupersetEObjectResolvingEList<ActivityNode>(
-				ActivityNode.class, this, UMLPackage.ACTIVITY__NODE, null,
-				NODE_ESUBSETS);
+			nodes = createNodesList();
 		}
 		return nodes;
+	}
+
+	private EList<ActivityNode> createNodesList() {
+		return new SubsetSupersetEObjectResolvingEList<ActivityNode>(
+			ActivityNode.class, this, UMLPackage.ACTIVITY__NODE, null,
+			NODE_ESUBSETS);
 	}
 
 	/**
@@ -418,16 +456,20 @@ public class ActivityImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated NOT_CDO
 	 */
 	public EList<StructuredActivityNode> getStructuredNodes() {
 		if (structuredNodes == null) {
-			structuredNodes = new SubsetSupersetEObjectContainmentEList.Resolving<StructuredActivityNode>(
-				StructuredActivityNode.class, this,
-				UMLPackage.ACTIVITY__STRUCTURED_NODE,
-				STRUCTURED_NODE_ESUPERSETS, null);
+			structuredNodes = createStructuredNodesList();
 		}
 		return structuredNodes;
+	}
+
+	private EList<StructuredActivityNode> createStructuredNodesList() {
+		return new SubsetSupersetEObjectContainmentEList.Resolving<StructuredActivityNode>(
+			StructuredActivityNode.class, this,
+			UMLPackage.ACTIVITY__STRUCTURED_NODE,
+			STRUCTURED_NODE_ESUPERSETS, null);
 	}
 
 	/**
@@ -574,15 +616,19 @@ public class ActivityImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
 	public EList<ActivityPartition> getPartitions() {
 		if (partitions == null) {
-			partitions = new SubsetSupersetEObjectResolvingEList<ActivityPartition>(
-				ActivityPartition.class, this, UMLPackage.ACTIVITY__PARTITION,
-				PARTITION_ESUPERSETS, null);
+			partitions = createPartitionsList();
 		}
 		return partitions;
+	}
+
+	private EList<ActivityPartition> createPartitionsList() {
+		return new SubsetSupersetEObjectResolvingEList<ActivityPartition>(
+			ActivityPartition.class, this, UMLPackage.ACTIVITY__PARTITION,
+			PARTITION_ESUPERSETS, null);
 	}
 
 	/**
@@ -1934,15 +1980,19 @@ public class ActivityImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated NOT_CDO
 	 */
 	public EList<ActivityGroup> getOwnedGroups() {
 		if (ownedGroups == null) {
-			ownedGroups = new SubsetSupersetEObjectContainmentEList.Resolving<ActivityGroup>(
-				ActivityGroup.class, this, UMLPackage.ACTIVITY__OWNED_GROUP,
-				OWNED_GROUP_ESUPERSETS, OWNED_GROUP_ESUBSETS);
+			ownedGroups = createOwnedGroupsList();
 		}
 		return ownedGroups;
+	}
+
+	private EList<ActivityGroup> createOwnedGroupsList() {
+		return new SubsetSupersetEObjectContainmentEList.Resolving<ActivityGroup>(
+			ActivityGroup.class, this, UMLPackage.ACTIVITY__OWNED_GROUP,
+			OWNED_GROUP_ESUPERSETS, OWNED_GROUP_ESUBSETS);
 	}
 
 	/**
@@ -2044,15 +2094,19 @@ public class ActivityImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated NOT_CDO
 	 */
 	public EList<ActivityNode> getOwnedNodes() {
 		if (ownedNodes == null) {
-			ownedNodes = new SubsetSupersetEObjectContainmentEList.Resolving<ActivityNode>(
-				ActivityNode.class, this, UMLPackage.ACTIVITY__OWNED_NODE,
-				OWNED_NODE_ESUPERSETS, null);
+			ownedNodes = createOwnedNodesList();
 		}
 		return ownedNodes;
+	}
+
+	private EList<ActivityNode> createOwnedNodesList() {
+		return new SubsetSupersetEObjectContainmentEList.Resolving<ActivityNode>(
+			ActivityNode.class, this, UMLPackage.ACTIVITY__OWNED_NODE,
+			OWNED_NODE_ESUPERSETS, null);
 	}
 
 	protected static final int[] OWNED_NODE_ESUPERSETS = new int[]{

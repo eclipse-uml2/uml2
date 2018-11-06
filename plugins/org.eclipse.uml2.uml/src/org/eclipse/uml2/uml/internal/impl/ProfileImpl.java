@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,18 +9,19 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
  *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
+ *   Eike Stepper - 540786
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAnnotation;
@@ -28,6 +29,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -120,20 +122,45 @@ public class ProfileImpl
 		return UMLPackage.Literals.PROFILE;
 	}
 
+	@SuppressWarnings("unused")
+	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+		if (eStructuralFeature == UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT) {
+			return createElementImportsList();
+		}
+
+		if (eStructuralFeature == UMLPackage.Literals.PROFILE__METACLASS_REFERENCE) {
+			return createMetaclassReferencesList();
+		}
+		
+		if (eStructuralFeature == UMLPackage.Literals.PROFILE__METAMODEL_REFERENCE) {
+			return createMetamodelReferencesList();
+		}
+		
+		if (eStructuralFeature == UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT) {
+			return createPackageImportsList();
+		}
+		
+		return null;
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
 	@Override
 	public EList<ElementImport> getElementImports() {
 		if (elementImports == null) {
-			elementImports = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<ElementImport>(
-				ElementImport.class, this, UMLPackage.PROFILE__ELEMENT_IMPORT,
-				null, ELEMENT_IMPORT_ESUBSETS,
-				UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE);
+			elementImports = createElementImportsList();
 		}
 		return elementImports;
+	}
+
+	private EList<ElementImport> createElementImportsList() {
+		return new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<ElementImport>(
+			ElementImport.class, this, UMLPackage.PROFILE__ELEMENT_IMPORT,
+			null, ELEMENT_IMPORT_ESUBSETS,
+			UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE);
 	}
 
 	/**
@@ -150,17 +177,21 @@ public class ProfileImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
 	@Override
 	public EList<PackageImport> getPackageImports() {
 		if (packageImports == null) {
-			packageImports = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<PackageImport>(
-				PackageImport.class, this, UMLPackage.PROFILE__PACKAGE_IMPORT,
-				null, PACKAGE_IMPORT_ESUBSETS,
-				UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE);
+			packageImports = createPackageImportsList();
 		}
 		return packageImports;
+	}
+
+	private EList<PackageImport> createPackageImportsList() {
+		return new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<PackageImport>(
+			PackageImport.class, this, UMLPackage.PROFILE__PACKAGE_IMPORT,
+			null, PACKAGE_IMPORT_ESUBSETS,
+			UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE);
 	}
 
 	/**
@@ -199,16 +230,20 @@ public class ProfileImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
 	public EList<ElementImport> getMetaclassReferences() {
 		if (metaclassReferences == null) {
-			metaclassReferences = new SubsetSupersetEObjectResolvingEList<ElementImport>(
-				ElementImport.class, this,
-				UMLPackage.PROFILE__METACLASS_REFERENCE,
-				METACLASS_REFERENCE_ESUPERSETS, null);
+			metaclassReferences = createMetaclassReferencesList();
 		}
 		return metaclassReferences;
+	}
+
+	private EList<ElementImport> createMetaclassReferencesList() {
+		return new SubsetSupersetEObjectResolvingEList<ElementImport>(
+			ElementImport.class, this,
+			UMLPackage.PROFILE__METACLASS_REFERENCE,
+			METACLASS_REFERENCE_ESUPERSETS, null);
 	}
 
 	/**
@@ -257,16 +292,20 @@ public class ProfileImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
 	public EList<PackageImport> getMetamodelReferences() {
 		if (metamodelReferences == null) {
-			metamodelReferences = new SubsetSupersetEObjectResolvingEList<PackageImport>(
-				PackageImport.class, this,
-				UMLPackage.PROFILE__METAMODEL_REFERENCE,
-				METAMODEL_REFERENCE_ESUPERSETS, null);
+			metamodelReferences = createMetamodelReferencesList();
 		}
 		return metamodelReferences;
+	}
+
+	private EList<PackageImport> createMetamodelReferencesList() {
+		return new SubsetSupersetEObjectResolvingEList<PackageImport>(
+			PackageImport.class, this,
+			UMLPackage.PROFILE__METAMODEL_REFERENCE,
+			METAMODEL_REFERENCE_ESUPERSETS, null);
 	}
 
 	/**

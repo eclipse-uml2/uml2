@@ -9,11 +9,13 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
  *   Kenn Hussey (CEA) - 327039, 351774, 418466, 451350, 485756
+ *   Eike Stepper - 540786
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
 import java.util.Map;
 
@@ -21,14 +23,15 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
@@ -37,8 +40,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentEList;
+
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehavioredClassifier;
@@ -155,6 +158,15 @@ public class CollaborationImpl
 	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.COLLABORATION;
+	}
+
+	@SuppressWarnings("unused")
+	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+		if (eStructuralFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR) {
+			return createOwnedBehaviorsList();
+		}
+
+		return null;
 	}
 
 	/**
@@ -1400,15 +1412,19 @@ public class CollaborationImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
 	public EList<Behavior> getOwnedBehaviors() {
 		if (ownedBehaviors == null) {
-			ownedBehaviors = new SubsetSupersetEObjectContainmentEList.Resolving<Behavior>(
-				Behavior.class, this, UMLPackage.COLLABORATION__OWNED_BEHAVIOR,
-				null, OWNED_BEHAVIOR_ESUBSETS);
+			ownedBehaviors = createOwnedBehaviorsList();
 		}
 		return ownedBehaviors;
+	}
+
+	private EList<Behavior> createOwnedBehaviorsList() {
+		return new SubsetSupersetEObjectContainmentEList.Resolving<Behavior>(
+			Behavior.class, this, UMLPackage.COLLABORATION__OWNED_BEHAVIOR,
+			null, OWNED_BEHAVIOR_ESUBSETS);
 	}
 
 	/**

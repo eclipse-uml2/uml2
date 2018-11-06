@@ -10,11 +10,13 @@
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181, 519572
  *   Kenn Hussey (CEA) - 327039, 351774, 212765, 418466, 451350, 485756
+ *   Eike Stepper - 540786
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
 import java.util.Map;
 
@@ -22,11 +24,11 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -56,9 +58,9 @@ import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Operation;
+import org.eclipse.uml2.uml.OperationTemplateParameter;
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.PackageableElement;
-import org.eclipse.uml2.uml.OperationTemplateParameter;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterSet;
 import org.eclipse.uml2.uml.ParameterableElement;
@@ -266,6 +268,23 @@ public class OperationImpl
 	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.OPERATION;
+	}
+
+	@SuppressWarnings("unused")
+	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+		if (eStructuralFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
+			return createOwnedRulesList();
+		}
+
+		if (eStructuralFeature == UMLPackage.Literals.OPERATION__POSTCONDITION) {
+			return createPostconditionsList();
+		}
+
+		if (eStructuralFeature == UMLPackage.Literals.OPERATION__PRECONDITION) {
+			return createPreconditionsList();
+		}
+		
+		return null;
 	}
 
 	/**
@@ -757,16 +776,20 @@ public class OperationImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
 	@Override
 	public EList<Constraint> getOwnedRules() {
 		if (ownedRules == null) {
-			ownedRules = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<Constraint>(
-				Constraint.class, this, UMLPackage.OPERATION__OWNED_RULE, null,
-				OWNED_RULE_ESUBSETS, UMLPackage.CONSTRAINT__CONTEXT);
+			ownedRules = createOwnedRulesList();
 		}
 		return ownedRules;
+	}
+
+	private EList<Constraint> createOwnedRulesList() {
+		return new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<Constraint>(
+			Constraint.class, this, UMLPackage.OPERATION__OWNED_RULE, null,
+			OWNED_RULE_ESUBSETS, UMLPackage.CONSTRAINT__CONTEXT);
 	}
 
 	/**
@@ -894,29 +917,37 @@ public class OperationImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
 	public EList<Constraint> getPreconditions() {
 		if (preconditions == null) {
-			preconditions = new SubsetSupersetEObjectResolvingEList<Constraint>(
-				Constraint.class, this, UMLPackage.OPERATION__PRECONDITION,
-				PRECONDITION_ESUPERSETS, null);
+			preconditions = createPreconditionsList();
 		}
 		return preconditions;
+	}
+
+	private EList<Constraint> createPreconditionsList() {
+		return new SubsetSupersetEObjectResolvingEList<Constraint>(
+			Constraint.class, this, UMLPackage.OPERATION__PRECONDITION,
+			PRECONDITION_ESUPERSETS, null);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT_CDO
 	 */
 	public EList<Constraint> getPostconditions() {
 		if (postconditions == null) {
-			postconditions = new SubsetSupersetEObjectResolvingEList<Constraint>(
-				Constraint.class, this, UMLPackage.OPERATION__POSTCONDITION,
-				POSTCONDITION_ESUPERSETS, null);
+			postconditions = createPostconditionsList();
 		}
 		return postconditions;
+	}
+
+	private EList<Constraint> createPostconditionsList() {
+		return new SubsetSupersetEObjectResolvingEList<Constraint>(
+			Constraint.class, this, UMLPackage.OPERATION__POSTCONDITION,
+			POSTCONDITION_ESUPERSETS, null);
 	}
 
 	/**
