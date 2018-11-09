@@ -324,7 +324,8 @@ public abstract class ClassifierImpl
 	}
 
 	@SuppressWarnings("unused")
-	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+	private EList<?> createSubsetSupersetList(
+			EStructuralFeature eStructuralFeature) {
 		if (eStructuralFeature == UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE) {
 			return createCollaborationUsesList();
 		}

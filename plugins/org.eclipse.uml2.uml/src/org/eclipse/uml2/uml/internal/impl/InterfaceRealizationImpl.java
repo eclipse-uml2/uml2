@@ -97,7 +97,8 @@ public class InterfaceRealizationImpl
 	}
 
 	@SuppressWarnings("unused")
-	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+	private EList<?> createSubsetSupersetList(
+			EStructuralFeature eStructuralFeature) {
 		if (eStructuralFeature == UMLPackage.Literals.DEPENDENCY__CLIENT) {
 			return createClientsList();
 		}
@@ -105,7 +106,7 @@ public class InterfaceRealizationImpl
 		if (eStructuralFeature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
 			return createSuppliersList();
 		}
-		
+
 		return null;
 	}
 
@@ -182,9 +183,8 @@ public class InterfaceRealizationImpl
 
 	private EList<NamedElement> createClientsList() {
 		return new SubsetSupersetEObjectResolvingEList<NamedElement>(
-			NamedElement.class, this,
-			UMLPackage.INTERFACE_REALIZATION__CLIENT, null,
-			CLIENT_ESUBSETS);
+			NamedElement.class, this, UMLPackage.INTERFACE_REALIZATION__CLIENT,
+			null, CLIENT_ESUBSETS);
 	}
 
 	/**

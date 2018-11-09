@@ -96,7 +96,8 @@ public class SubstitutionImpl
 	}
 
 	@SuppressWarnings("unused")
-	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+	private EList<?> createSubsetSupersetList(
+			EStructuralFeature eStructuralFeature) {
 		if (eStructuralFeature == UMLPackage.Literals.DEPENDENCY__CLIENT) {
 			return createClientsList();
 		}
@@ -104,7 +105,7 @@ public class SubstitutionImpl
 		if (eStructuralFeature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
 			return createSuppliersList();
 		}
-		
+
 		return null;
 	}
 
@@ -150,8 +151,8 @@ public class SubstitutionImpl
 
 	private EList<NamedElement> createSuppliersList() {
 		return new SubsetSupersetEObjectResolvingEList<NamedElement>(
-			NamedElement.class, this, UMLPackage.SUBSTITUTION__SUPPLIER,
-			null, SUPPLIER_ESUBSETS);
+			NamedElement.class, this, UMLPackage.SUBSTITUTION__SUPPLIER, null,
+			SUPPLIER_ESUBSETS);
 	}
 
 	/**

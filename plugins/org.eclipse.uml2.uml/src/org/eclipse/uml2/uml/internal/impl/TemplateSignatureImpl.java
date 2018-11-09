@@ -113,15 +113,16 @@ public class TemplateSignatureImpl
 	}
 
 	@SuppressWarnings("unused")
-	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+	private EList<?> createSubsetSupersetList(
+			EStructuralFeature eStructuralFeature) {
 		if (eStructuralFeature == UMLPackage.Literals.TEMPLATE_SIGNATURE__PARAMETER) {
 			return createParametersList();
 		}
-		
+
 		if (eStructuralFeature == UMLPackage.Literals.TEMPLATE_SIGNATURE__OWNED_PARAMETER) {
 			return createOwnedParametersList();
 		}
-		
+
 		return null;
 	}
 
@@ -168,8 +169,7 @@ public class TemplateSignatureImpl
 	private EList<TemplateParameter> createParametersList() {
 		return new SubsetSupersetEObjectResolvingEList<TemplateParameter>(
 			TemplateParameter.class, this,
-			UMLPackage.TEMPLATE_SIGNATURE__PARAMETER, null,
-			PARAMETER_ESUBSETS);
+			UMLPackage.TEMPLATE_SIGNATURE__PARAMETER, null, PARAMETER_ESUBSETS);
 	}
 
 	/**
@@ -241,7 +241,11 @@ public class TemplateSignatureImpl
 	 */
 	public EList<TemplateParameter> getOwnedParameters() {
 		if (ownedParameters == null) {
-			ownedParameters = createOwnedParametersList();
+			ownedParameters = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<TemplateParameter>(
+				TemplateParameter.class, this,
+				UMLPackage.TEMPLATE_SIGNATURE__OWNED_PARAMETER,
+				OWNED_PARAMETER_ESUPERSETS, null,
+				UMLPackage.TEMPLATE_PARAMETER__SIGNATURE);
 		}
 		return ownedParameters;
 	}

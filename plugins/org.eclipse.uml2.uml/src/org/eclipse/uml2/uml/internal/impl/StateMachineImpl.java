@@ -162,7 +162,8 @@ public class StateMachineImpl
 	}
 
 	@SuppressWarnings("unused")
-	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+	private EList<?> createSubsetSupersetList(
+			EStructuralFeature eStructuralFeature) {
 		if (eStructuralFeature == UMLPackage.Literals.STATE_MACHINE__EXTENDED_STATE_MACHINE) {
 			return createExtendedStateMachinesList();
 		}
@@ -170,7 +171,7 @@ public class StateMachineImpl
 		if (eStructuralFeature == UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER) {
 			return createRedefinedClassifiersList();
 		}
-		
+
 		return null;
 	}
 

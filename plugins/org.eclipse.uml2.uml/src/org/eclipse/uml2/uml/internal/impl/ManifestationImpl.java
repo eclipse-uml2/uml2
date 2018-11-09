@@ -88,7 +88,8 @@ public class ManifestationImpl
 	}
 
 	@SuppressWarnings("unused")
-	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+	private EList<?> createSubsetSupersetList(
+			EStructuralFeature eStructuralFeature) {
 		if (eStructuralFeature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
 			return createSuppliersList();
 		}
@@ -111,8 +112,8 @@ public class ManifestationImpl
 
 	private EList<NamedElement> createSuppliersList() {
 		return new SubsetSupersetEObjectResolvingEList<NamedElement>(
-			NamedElement.class, this, UMLPackage.MANIFESTATION__SUPPLIER,
-			null, SUPPLIER_ESUBSETS);
+			NamedElement.class, this, UMLPackage.MANIFESTATION__SUPPLIER, null,
+			SUPPLIER_ESUBSETS);
 	}
 
 	/**

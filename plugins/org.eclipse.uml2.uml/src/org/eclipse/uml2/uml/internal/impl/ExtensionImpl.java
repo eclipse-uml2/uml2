@@ -110,9 +110,10 @@ public class ExtensionImpl
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.EXTENSION;
 	}
-	
+
 	@SuppressWarnings("unused")
-	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+	private EList<?> createSubsetSupersetList(
+			EStructuralFeature eStructuralFeature) {
 		if (eStructuralFeature == UMLPackage.Literals.ASSOCIATION__OWNED_END) {
 			return createOwnedEndsList();
 		}

@@ -182,7 +182,8 @@ public class InterfaceImpl
 	}
 
 	@SuppressWarnings("unused")
-	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+	private EList<?> createSubsetSupersetList(
+			EStructuralFeature eStructuralFeature) {
 		if (eStructuralFeature == UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER) {
 			return createRedefinedClassifiersList();
 		}
@@ -190,7 +191,7 @@ public class InterfaceImpl
 		if (eStructuralFeature == UMLPackage.Literals.INTERFACE__REDEFINED_INTERFACE) {
 			return createRedefinedInterfacesList();
 		}
-		
+
 		return null;
 	}
 
@@ -415,8 +416,7 @@ public class InterfaceImpl
 
 	private EList<Interface> createRedefinedInterfacesList() {
 		return new SubsetSupersetEObjectResolvingEList<Interface>(
-			Interface.class, this,
-			UMLPackage.INTERFACE__REDEFINED_INTERFACE,
+			Interface.class, this, UMLPackage.INTERFACE__REDEFINED_INTERFACE,
 			REDEFINED_INTERFACE_ESUPERSETS, null);
 	}
 
@@ -1737,9 +1737,8 @@ public class InterfaceImpl
 
 	private EList<Classifier> createRedefinedClassifiersList() {
 		return new SubsetSupersetEObjectResolvingEList<Classifier>(
-			Classifier.class, this,
-			UMLPackage.INTERFACE__REDEFINED_CLASSIFIER, null,
-			REDEFINED_CLASSIFIER_ESUBSETS);
+			Classifier.class, this, UMLPackage.INTERFACE__REDEFINED_CLASSIFIER,
+			null, REDEFINED_CLASSIFIER_ESUBSETS);
 	}
 
 	/**

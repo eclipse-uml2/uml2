@@ -255,7 +255,8 @@ public class ActivityImpl
 	}
 
 	@SuppressWarnings("unused")
-	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+	private EList<?> createSubsetSupersetList(
+			EStructuralFeature eStructuralFeature) {
 		if (eStructuralFeature == UMLPackage.Literals.ACTIVITY__GROUP) {
 			return createGroupsList();
 		}
@@ -267,19 +268,19 @@ public class ActivityImpl
 		if (eStructuralFeature == UMLPackage.Literals.ACTIVITY__STRUCTURED_NODE) {
 			return createStructuredNodesList();
 		}
-		
+
 		if (eStructuralFeature == UMLPackage.Literals.ACTIVITY__PARTITION) {
 			return createPartitionsList();
 		}
-		
+
 		if (eStructuralFeature == UMLPackage.Literals.ACTIVITY__OWNED_GROUP) {
 			return createOwnedGroupsList();
 		}
-		
+
 		if (eStructuralFeature == UMLPackage.Literals.ACTIVITY__OWNED_NODE) {
 			return createOwnedNodesList();
 		}
-		
+
 		return null;
 	}
 
@@ -468,8 +469,8 @@ public class ActivityImpl
 	private EList<StructuredActivityNode> createStructuredNodesList() {
 		return new SubsetSupersetEObjectContainmentEList.Resolving<StructuredActivityNode>(
 			StructuredActivityNode.class, this,
-			UMLPackage.ACTIVITY__STRUCTURED_NODE,
-			STRUCTURED_NODE_ESUPERSETS, null);
+			UMLPackage.ACTIVITY__STRUCTURED_NODE, STRUCTURED_NODE_ESUPERSETS,
+			null);
 	}
 
 	/**

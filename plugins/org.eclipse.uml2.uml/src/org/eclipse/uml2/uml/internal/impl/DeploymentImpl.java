@@ -112,7 +112,8 @@ public class DeploymentImpl
 	}
 
 	@SuppressWarnings("unused")
-	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+	private EList<?> createSubsetSupersetList(
+			EStructuralFeature eStructuralFeature) {
 		if (eStructuralFeature == UMLPackage.Literals.DEPENDENCY__CLIENT) {
 			return createClientsList();
 		}
@@ -120,11 +121,11 @@ public class DeploymentImpl
 		if (eStructuralFeature == UMLPackage.Literals.DEPLOYMENT__DEPLOYED_ARTIFACT) {
 			return createDeployedArtifactsList();
 		}
-		
+
 		if (eStructuralFeature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
 			return createSuppliersList();
 		}
-		
+
 		return null;
 	}
 

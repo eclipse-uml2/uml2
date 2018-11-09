@@ -218,11 +218,12 @@ public abstract class BehaviorImpl
 	}
 
 	@SuppressWarnings("unused")
-	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+	private EList<?> createSubsetSupersetList(
+			EStructuralFeature eStructuralFeature) {
 		if (eStructuralFeature == UMLPackage.Literals.BEHAVIOR__REDEFINED_BEHAVIOR) {
 			return createRedefinedBehaviorsList();
 		}
-		
+
 		if (eStructuralFeature == UMLPackage.Literals.BEHAVIOR__PRECONDITION) {
 			return createPreconditionsList();
 		}
@@ -234,14 +235,14 @@ public abstract class BehaviorImpl
 		if (eStructuralFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
 			return createOwnedRulesList();
 		}
-		
+
 		if (eStructuralFeature == UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER) {
 			return createRedefinedClassifiersList();
 		}
-		
+
 		return null;
 	}
-	
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -367,8 +368,8 @@ public abstract class BehaviorImpl
 	}
 
 	private EList<Behavior> createRedefinedBehaviorsList() {
-		return new SubsetSupersetEObjectResolvingEList<Behavior>(
-			Behavior.class, this, UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR,
+		return new SubsetSupersetEObjectResolvingEList<Behavior>(Behavior.class,
+			this, UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR,
 			REDEFINED_BEHAVIOR_ESUPERSETS, null);
 	}
 
@@ -1943,9 +1944,8 @@ public abstract class BehaviorImpl
 
 	private EList<Classifier> createRedefinedClassifiersList() {
 		return new SubsetSupersetEObjectResolvingEList<Classifier>(
-			Classifier.class, this,
-			UMLPackage.BEHAVIOR__REDEFINED_CLASSIFIER, null,
-			REDEFINED_CLASSIFIER_ESUBSETS);
+			Classifier.class, this, UMLPackage.BEHAVIOR__REDEFINED_CLASSIFIER,
+			null, REDEFINED_CLASSIFIER_ESUBSETS);
 	}
 
 	/**

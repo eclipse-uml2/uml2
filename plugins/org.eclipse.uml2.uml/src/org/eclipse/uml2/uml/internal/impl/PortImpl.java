@@ -184,7 +184,8 @@ public class PortImpl
 	}
 
 	@SuppressWarnings("unused")
-	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+	private EList<?> createSubsetSupersetList(
+			EStructuralFeature eStructuralFeature) {
 		if (eStructuralFeature == UMLPackage.Literals.PORT__REDEFINED_PORT) {
 			return createRedefinedPortsList();
 		}
@@ -192,7 +193,7 @@ public class PortImpl
 		if (eStructuralFeature == UMLPackage.Literals.PROPERTY__REDEFINED_PROPERTY) {
 			return createRedefinedPropertiesList();
 		}
-		
+
 		return null;
 	}
 
@@ -210,8 +211,8 @@ public class PortImpl
 	}
 
 	private EList<Property> createRedefinedPropertiesList() {
-		return new SubsetSupersetEObjectResolvingEList<Property>(
-			Property.class, this, UMLPackage.PORT__REDEFINED_PROPERTY, null,
+		return new SubsetSupersetEObjectResolvingEList<Property>(Property.class,
+			this, UMLPackage.PORT__REDEFINED_PROPERTY, null,
 			REDEFINED_PROPERTY_ESUBSETS);
 	}
 
@@ -360,9 +361,8 @@ public class PortImpl
 	}
 
 	private EList<Port> createRedefinedPortsList() {
-		return new SubsetSupersetEObjectResolvingEList<Port>(
-			Port.class, this, UMLPackage.PORT__REDEFINED_PORT,
-			REDEFINED_PORT_ESUPERSETS, null);
+		return new SubsetSupersetEObjectResolvingEList<Port>(Port.class, this,
+			UMLPackage.PORT__REDEFINED_PORT, REDEFINED_PORT_ESUPERSETS, null);
 	}
 
 	/**

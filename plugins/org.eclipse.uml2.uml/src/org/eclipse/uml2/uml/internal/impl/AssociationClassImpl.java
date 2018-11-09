@@ -177,7 +177,8 @@ public class AssociationClassImpl
 	}
 
 	@SuppressWarnings("unused")
-	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+	private EList<?> createSubsetSupersetList(
+			EStructuralFeature eStructuralFeature) {
 		if (eStructuralFeature == UMLPackage.Literals.ASSOCIATION__MEMBER_END) {
 			return createMemberEndsList();
 		}
@@ -189,7 +190,7 @@ public class AssociationClassImpl
 		if (eStructuralFeature == UMLPackage.Literals.ASSOCIATION__OWNED_END) {
 			return createOwnedEndsList();
 		}
-		
+
 		return null;
 	}
 
@@ -425,9 +426,8 @@ public class AssociationClassImpl
 	}
 
 	private EList<Property> createNavigableOwnedEndsList() {
-		return new SubsetSupersetEObjectResolvingEList<Property>(
-			Property.class, this,
-			UMLPackage.ASSOCIATION_CLASS__NAVIGABLE_OWNED_END,
+		return new SubsetSupersetEObjectResolvingEList<Property>(Property.class,
+			this, UMLPackage.ASSOCIATION_CLASS__NAVIGABLE_OWNED_END,
 			NAVIGABLE_OWNED_END_ESUPERSETS, null);
 	}
 

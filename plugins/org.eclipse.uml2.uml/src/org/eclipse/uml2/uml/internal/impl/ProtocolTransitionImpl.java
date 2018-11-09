@@ -131,7 +131,8 @@ public class ProtocolTransitionImpl
 	}
 
 	@SuppressWarnings("unused")
-	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+	private EList<?> createSubsetSupersetList(
+			EStructuralFeature eStructuralFeature) {
 		if (eStructuralFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
 			return createOwnedRulesList();
 		}
@@ -154,9 +155,8 @@ public class ProtocolTransitionImpl
 
 	private EList<Constraint> createOwnedRulesList() {
 		return new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<Constraint>(
-			Constraint.class, this,
-			UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE, null,
-			OWNED_RULE_ESUBSETS, UMLPackage.CONSTRAINT__CONTEXT);
+			Constraint.class, this, UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE,
+			null, OWNED_RULE_ESUBSETS, UMLPackage.CONSTRAINT__CONTEXT);
 	}
 
 	/**

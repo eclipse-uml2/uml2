@@ -251,7 +251,8 @@ public class TransitionImpl
 	}
 
 	@SuppressWarnings("unused")
-	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+	private EList<?> createSubsetSupersetList(
+			EStructuralFeature eStructuralFeature) {
 		if (eStructuralFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
 			return createOwnedRulesList();
 		}

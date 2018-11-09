@@ -123,7 +123,8 @@ public class ProfileImpl
 	}
 
 	@SuppressWarnings("unused")
-	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+	private EList<?> createSubsetSupersetList(
+			EStructuralFeature eStructuralFeature) {
 		if (eStructuralFeature == UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT) {
 			return createElementImportsList();
 		}
@@ -131,15 +132,15 @@ public class ProfileImpl
 		if (eStructuralFeature == UMLPackage.Literals.PROFILE__METACLASS_REFERENCE) {
 			return createMetaclassReferencesList();
 		}
-		
+
 		if (eStructuralFeature == UMLPackage.Literals.PROFILE__METAMODEL_REFERENCE) {
 			return createMetamodelReferencesList();
 		}
-		
+
 		if (eStructuralFeature == UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT) {
 			return createPackageImportsList();
 		}
-		
+
 		return null;
 	}
 
@@ -158,8 +159,8 @@ public class ProfileImpl
 
 	private EList<ElementImport> createElementImportsList() {
 		return new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<ElementImport>(
-			ElementImport.class, this, UMLPackage.PROFILE__ELEMENT_IMPORT,
-			null, ELEMENT_IMPORT_ESUBSETS,
+			ElementImport.class, this, UMLPackage.PROFILE__ELEMENT_IMPORT, null,
+			ELEMENT_IMPORT_ESUBSETS,
 			UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE);
 	}
 
@@ -189,8 +190,8 @@ public class ProfileImpl
 
 	private EList<PackageImport> createPackageImportsList() {
 		return new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<PackageImport>(
-			PackageImport.class, this, UMLPackage.PROFILE__PACKAGE_IMPORT,
-			null, PACKAGE_IMPORT_ESUBSETS,
+			PackageImport.class, this, UMLPackage.PROFILE__PACKAGE_IMPORT, null,
+			PACKAGE_IMPORT_ESUBSETS,
 			UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE);
 	}
 
@@ -241,8 +242,7 @@ public class ProfileImpl
 
 	private EList<ElementImport> createMetaclassReferencesList() {
 		return new SubsetSupersetEObjectResolvingEList<ElementImport>(
-			ElementImport.class, this,
-			UMLPackage.PROFILE__METACLASS_REFERENCE,
+			ElementImport.class, this, UMLPackage.PROFILE__METACLASS_REFERENCE,
 			METACLASS_REFERENCE_ESUPERSETS, null);
 	}
 
@@ -303,8 +303,7 @@ public class ProfileImpl
 
 	private EList<PackageImport> createMetamodelReferencesList() {
 		return new SubsetSupersetEObjectResolvingEList<PackageImport>(
-			PackageImport.class, this,
-			UMLPackage.PROFILE__METAMODEL_REFERENCE,
+			PackageImport.class, this, UMLPackage.PROFILE__METAMODEL_REFERENCE,
 			METAMODEL_REFERENCE_ESUPERSETS, null);
 	}
 

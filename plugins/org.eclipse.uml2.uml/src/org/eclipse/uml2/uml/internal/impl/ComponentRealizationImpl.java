@@ -97,7 +97,8 @@ public class ComponentRealizationImpl
 	}
 
 	@SuppressWarnings("unused")
-	private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+	private EList<?> createSubsetSupersetList(
+			EStructuralFeature eStructuralFeature) {
 		if (eStructuralFeature == UMLPackage.Literals.DEPENDENCY__CLIENT) {
 			return createClientsList();
 		}
@@ -105,11 +106,11 @@ public class ComponentRealizationImpl
 		if (eStructuralFeature == UMLPackage.Literals.COMPONENT_REALIZATION__REALIZING_CLASSIFIER) {
 			return createRealizingClassifiersList();
 		}
-		
+
 		if (eStructuralFeature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
 			return createSuppliersList();
 		}
-		
+
 		return null;
 	}
 
@@ -141,9 +142,8 @@ public class ComponentRealizationImpl
 
 	private EList<NamedElement> createClientsList() {
 		return new SubsetSupersetEObjectResolvingEList<NamedElement>(
-			NamedElement.class, this,
-			UMLPackage.COMPONENT_REALIZATION__CLIENT, null,
-			CLIENT_ESUBSETS);
+			NamedElement.class, this, UMLPackage.COMPONENT_REALIZATION__CLIENT,
+			null, CLIENT_ESUBSETS);
 	}
 
 	/**
