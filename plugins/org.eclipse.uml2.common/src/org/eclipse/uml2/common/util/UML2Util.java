@@ -11,7 +11,7 @@
  *   Keith Campbell (IBM) - 343783
  *   Kenn Hussey (CEA) - 316165, 322715, 212765, 421756, 424568, 443662
  *   Christian W. Damus (CEA) - 405065
-#   Eike Stepper - 540812
+ *   Eike Stepper - 540812
  *
  */
 package org.eclipse.uml2.common.util;

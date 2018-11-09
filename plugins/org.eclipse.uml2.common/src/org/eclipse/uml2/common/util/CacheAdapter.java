@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 220065
- *   Kenn Hussey - 335125
+ *   Kenn Hussey - 335125, 540812
  *   Christian W. Damus (CEA) - 389632, 332057
  *   Kenn Hussey (CEA) - 418466, 455572
  *   Eike Stepper - 540812
@@ -138,11 +138,11 @@ public class CacheAdapter
 	private static final class OverrideRegistryReader
 			extends RegistryReader {
 
-		private static final String PPID = "cache_adapter_override";
+		private static final String PPID = "cache_adapter_override"; //$NON-NLS-1$
 
-		private static final String TAG_CACHE_ADAPTER = "cacheAdapter";
+		private static final String TAG_CACHE_ADAPTER = "cacheAdapter"; //$NON-NLS-1$
 
-		private static final String ATT_CLASS = "class";
+		private static final String ATT_CLASS = "class"; //$NON-NLS-1$
 
 		private CacheAdapter cacheAdapter;
 
@@ -160,15 +160,19 @@ public class CacheAdapter
 				boolean add) {
 			if (element.getName().equals(TAG_CACHE_ADAPTER)) {
 				String className = element.getAttribute(ATT_CLASS);
+
 				if (className == null) {
 					logMissingAttribute(element, ATT_CLASS);
 				} else if (add) {
+
 					if (cacheAdapter != null) {
+
 						if (!cacheAdapter.getClass().getName()
 							.equals(className)) {
+
 							CommonPlugin.INSTANCE.log(
-								"Ignored '" + className + "' in favour of '"
-									+ cacheAdapter.getClass().getName() + "'");
+								"Ignored '" + className + "' in favour of '" //$NON-NLS-1$ //$NON-NLS-2$
+									+ cacheAdapter.getClass().getName() + "'"); //$NON-NLS-1$
 						}
 
 						return false;
@@ -181,7 +185,7 @@ public class CacheAdapter
 						throw new WrappedException(e);
 					}
 				}
-				
+
 				return true;
 			}
 
@@ -213,8 +217,8 @@ public class CacheAdapter
 	}
 
 	private static CacheAdapter createCacheAdapter() {
-		CacheAdapter cacheAdapter = UML2Util
-			.loadClassFromSystemProperty("org.eclipse.uml2.common.util.CacheAdapter.INSTANCE"); //$NON-NLS-1$
+		CacheAdapter cacheAdapter = UML2Util.loadClassFromSystemProperty(
+			"org.eclipse.uml2.common.util.CacheAdapter.INSTANCE"); //$NON-NLS-1$
 
 		if (cacheAdapter != null) {
 			return cacheAdapter;
@@ -399,10 +403,11 @@ public class CacheAdapter
 		}
 	}
 
-	protected ECrossReferenceAdapter provideCrossReferenceAdapter(EObject eObject) {
+	protected ECrossReferenceAdapter provideCrossReferenceAdapter(
+			EObject eObject) {
 		return getCrossReferenceAdapter(eObject);
 	}
-	
+
 	@Override
 	public Collection<EStructuralFeature.Setting> getNonNavigableInverseReferences(
 			EObject eObject) {
