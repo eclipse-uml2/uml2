@@ -47,8 +47,8 @@
               <testClass>org.eclipse.uml2.uml.tests.UMLAllTests</testClass>
               <useUIHarness>true</useUIHarness>
               <useUIThread>true</useUIThread>
-              <!--argLine>-ea</argLine-->
-              <argLine>-ea -XstartOnFirstThread</argLine>
+              <argLine>-ea</argLine>
+              <!--argLine>-ea -XstartOnFirstThread</argLine-->
               <reportsDirectory>${project.build.directory}/surefire-reports/plugin</reportsDirectory>
             </configuration>
           </execution>
