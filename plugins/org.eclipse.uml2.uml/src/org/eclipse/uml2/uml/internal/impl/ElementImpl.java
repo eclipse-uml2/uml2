@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2016 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey - 286329, 323181, 335125
+ *   Kenn Hussey - 286329, 323181, 335125, 541314
  *   Kenn Hussey (CEA) - 327039, 424895, 451350, 485756
  *
  */
@@ -808,7 +808,7 @@ public abstract class ElementImpl
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return The cache adapter for this '<em><b>Element</b></em>'.
-	 * @generated NOT
+	 * @generated
 	 */
 	protected CacheAdapter getCacheAdapter() {
 		return CacheAdapter.getInstance();

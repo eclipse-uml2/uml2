@@ -36,7 +36,7 @@
 	 */
 	protected <%=genModel.getImportedName("org.eclipse.uml2.common.util.CacheAdapter")%> getCacheAdapter()
 	{
-		return <%=genModel.getImportedName("org.eclipse.uml2.common.util.CacheAdapter")%>.getCacheAdapter(this);
+		return <%=genModel.getImportedName("org.eclipse.uml2.common.util.CacheAdapter")%>.getInstance();
 	}
 
     <%}%>
