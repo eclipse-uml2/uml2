@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * http://www.eclipse.org/legal/epl-v20.html
  *
  * Contributors:
  *   IBM - initial API and implementation
@@ -12,6 +12,7 @@
  *   Kenn Hussey (CEA) - 316165, 322715, 212765, 421756, 424568, 443662
  *   Christian W. Damus (CEA) - 405065
  *   Eike Stepper - 540812
+ *   Kenn Hussey - 535301
  *
  */
 package org.eclipse.uml2.common.util;
