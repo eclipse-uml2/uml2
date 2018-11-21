@@ -2,14 +2,14 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.uml2.ant;singleton:=true
-Bundle-Version: 1.4.0.qualifier
+Bundle-Version: 1.5.0.qualifier
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-ClassPath: .
 Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.5.0,4.0.0)",
- org.eclipse.uml2.uml;bundle-version="[5.4.0,6.0.0)",
- org.eclipse.emf.ant;bundle-version="[2.8.0,3.0.0)",
+ org.eclipse.uml2.uml;bundle-version="[5.5.0,6.0.0)",
+ org.eclipse.emf.ant;bundle-version="[2.10.0,3.0.0)",
  org.apache.ant;bundle-version="[1.7.0,2.0.0)",
  org.eclipse.core.resources;bundle-version="[3.5.0,4.0.0)"
 Export-Package: org.eclipse.uml2.ant,
@@ -18,3 +18,4 @@ Export-Package: org.eclipse.uml2.ant,
  org.eclipse.uml2.ant.util
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.uml2.ant.AntPlugin
+Automatic-Module-Name: org.eclipse.uml2.ant
