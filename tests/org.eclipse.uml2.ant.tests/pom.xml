@@ -4,12 +4,12 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.eclipse.uml2</groupId>
   <artifactId>org.eclipse.uml2.ant.tests</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.5.0-SNAPSHOT</version>
   <packaging>eclipse-test-plugin</packaging>
   <parent>
     <groupId>org.eclipse.uml2.tests</groupId>
     <artifactId>tests</artifactId>
-    <version>5.4.0-SNAPSHOT</version>
+    <version>5.5.0-SNAPSHOT</version>
   </parent>
   <build>
   <plugins>
