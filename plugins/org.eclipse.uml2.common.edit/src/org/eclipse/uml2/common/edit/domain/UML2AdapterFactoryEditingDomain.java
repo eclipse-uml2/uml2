@@ -1,14 +1,14 @@
 /*
- * Copyright (c) 2006, 2007 IBM Corporation and others.
+ * Copyright (c) 2006, 2018 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * http://www.eclipse.org/legal/epl-v20.html
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey - 535301
  *
- * $Id: UML2AdapterFactoryEditingDomain.java,v 1.2 2007/01/04 18:53:45 khussey Exp $
  */
 package org.eclipse.uml2.common.edit.domain;
 
