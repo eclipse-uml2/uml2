@@ -1,15 +1,15 @@
 /*
  * Copyright (c) 2013, 2018 CEA, Christian W. Damus, and others.
  * All rights reserved.   This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * http://www.eclipse.org/legal/epl-v20.html
  *
  * Contributors:
  *   Christian W. Damus (CEA) - initial API and implementation
  *   Christian W. Damus (CEA) - 414572, 401682, 420338, 437977
  *   Christian W. Damus - 512520
- *   Kenn Hussey - 526679, 526217
+ *   Kenn Hussey - 526679, 526217, 535301
  *
  */
 package org.eclipse.uml2.uml.tests.util;

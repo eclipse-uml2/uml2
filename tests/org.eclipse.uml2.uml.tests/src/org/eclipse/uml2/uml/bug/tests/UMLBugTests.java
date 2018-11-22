@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2013, 2018 CEA, Christian W. Damus, and others.
  * All rights reserved.   This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * http://www.eclipse.org/legal/epl-v20.html
  *
  * Contributors:
  *   Christian W. Damus (CEA) - initial API and implementation
@@ -11,7 +11,7 @@
  *   Manuel Bork <bork@yatta.de> (Yatta Solutions GmbH) - 421756, 422000
  *   Kenn Hussey (CEA) - 424895, 511674, 512520
  *   Christian W. Damus - 444588, 497359, 501740
- *   Kenn Hussey - 526679, 528762
+ *   Kenn Hussey - 526679, 528762, 535301
  *   
  */
 package org.eclipse.uml2.uml.bug.tests;
