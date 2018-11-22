@@ -9,7 +9,7 @@
  *   Christian W. Damus (CEA) - initial API and implementation
  *   Christian W. Damus (CEA) - 414572, 401682, 420338, 437977
  *   Christian W. Damus - 512520
- *   Kenn Hussey - 526679, 526217, 535301
+ *   Kenn Hussey - 526679, 526217, 535301, 540812
  *
  */
 package org.eclipse.uml2.uml.tests.util;
@@ -27,7 +27,6 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
-import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.resources.util.UMLResourcesUtil;
 import org.eclipse.uml2.uml.tests.UMLAllTests;
 
@@ -53,8 +52,6 @@ public class StandaloneSupport {
 			throw new IllegalStateException("not running stand-alone"); //$NON-NLS-1$
 		}
 		
-		UMLPlugin.ExtensionProcessor.process(null);
-
 		UMLResourcesUtil.initGlobalRegistries();
 	}
 
