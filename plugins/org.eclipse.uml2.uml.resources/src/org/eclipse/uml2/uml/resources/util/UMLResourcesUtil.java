@@ -1,16 +1,16 @@
 /*
  * Copyright (c) 2012, 2018 CEA, Obeo, and others.
  * All rights reserved.   This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * http://www.eclipse.org/legal/epl-v20.html
  *
  * Contributors:
  *   Kenn Hussey (CEA) - initial API and implementation
  *   Kenn Hussey (CEA) - 389542, 399544, 425846, 418466, 429352
  *   Mikael Barbero (Obeo) - 414572
  *   Christian W. Damus (CEA) - 414572, 401682
- *   Kenn Hussey - 526217, 539580
+ *   Kenn Hussey - 526217, 539580, 535301
  */
 package org.eclipse.uml2.uml.resources.util;
 
