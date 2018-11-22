@@ -2,9 +2,10 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.uml2.examples.introtoprofiles
-Bundle-Version: 5.4.0.qualifier
+Bundle-Version: 5.5.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.uml2.uml;bundle-version="[5.4.0,6.0.0)",
  org.eclipse.uml2.uml.resources;bundle-version="[5.4.0,6.0.0)"
+Automatic-Module-Name: org.eclipse.uml2.examples.introtoprofiles
