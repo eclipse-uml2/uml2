@@ -8,7 +8,7 @@
  *
  * Contributors:
  *   Christian W. Damus - initial API and implementation
- *   Kenn Hussey - 528925, 535301
+ *   Kenn Hussey - 528925, 535301, 541314
  *
  */
 package org.eclipse.uml2.uml.bug.tests;
@@ -110,7 +110,7 @@ public class Bug501740Test
 			watch.end();
 
 			// Clean up
-			CacheAdapter.getCacheAdapter(fixture).clear();
+			CacheAdapter.getInstance().clear();
 		}
 
 		watch.log("Reading");
