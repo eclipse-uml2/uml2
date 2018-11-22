@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * http://www.eclipse.org/legal/epl-v20.html
  *
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418, 156879, 227392, 226178, 232332, 247980
- *   Kenn Hussey - 286329, 323181, 522658, 528925, 530555, 531027
+ *   Kenn Hussey - 286329, 323181, 522658, 528925, 530555, 531027, 535301
  *   Kenn Hussey (CEA) - 327039, 351774, 364419, 292633, 397324, 204658, 173565, 408612, 414970, 427833, 433216, 443017, 434958, 433768
  *   Christian W. Damus - 355218
  *   Christian W. Damus (CEA) - 286444
