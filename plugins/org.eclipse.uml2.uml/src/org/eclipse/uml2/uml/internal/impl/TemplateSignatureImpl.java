@@ -1,13 +1,13 @@
 /*
  * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * http://www.eclipse.org/legal/epl-v20.html
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey - 286329, 323181, 535301
  *   Kenn Hussey (CEA) - 327039, 418466, 451350, 485756
  *   Eike Stepper - 540786
  *

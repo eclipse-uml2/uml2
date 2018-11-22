@@ -1,14 +1,15 @@
 /*
- * Copyright (c) 2006, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2006, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * http://www.eclipse.org/legal/epl-v20.html
  *
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 156879, 204200
  *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey - 535301
  * 
  */
 package org.eclipse.uml2.uml.resource;

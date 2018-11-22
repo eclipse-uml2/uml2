@@ -1,15 +1,15 @@
 /*
- * Copyright (c) 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2008, 2018 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * http://www.eclipse.org/legal/epl-v20.html
  *
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 232332
+ *   Kenn Hussey - 535301
  *
- * $Id: XMI212UMLResource.java,v 1.2 2008/11/04 14:28:39 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 

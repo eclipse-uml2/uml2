@@ -1,15 +1,15 @@
 /*
- * Copyright (c) 2007, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2007, 2018 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * http://www.eclipse.org/legal/epl-v20.html
  *
  * Contributors:
  *   Kenn Hussey (IBM Corporation) - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 218388
+ *   Kenn Hussey - 535301
  *
- * $Id: CMOF2UMLHelperImpl.java,v 1.2 2008/02/26 05:08:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
