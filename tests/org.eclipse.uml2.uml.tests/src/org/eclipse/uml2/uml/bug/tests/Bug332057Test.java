@@ -9,7 +9,7 @@
  * Contributors:
  *   Christian W. Damus (CEA) - initial API and implementation
  *   Ed Willink - 529547
- *   Kenn Hussey - 535301
+ *   Kenn Hussey - 535301, 541314
  *
  */
 package org.eclipse.uml2.uml.bug.tests;
@@ -134,7 +134,6 @@ public class Bug332057Test
 	@Override
 	protected void setUp()
 			throws Exception {
-
 		group = new ThreadGroup("CacheAdapterTest");
 		group.setDaemon(true);
 	}
@@ -184,7 +183,7 @@ public class Bug332057Test
 	private ResourceSet createResourceSet() {
 		ResourceSet result = new ResourceSetImpl();
 
-		result.eAdapters().add(new CacheAdapter());
+		result.eAdapters().add(CacheAdapter.getInstance());
 
 		if (StandaloneSupport.isStandalone()) {
 			// init touches some global registries, which may not be accessed
