@@ -1,4 +1,4 @@
-# Contributing to UML2
+# Contributing to Eclipse UML2
 
 Thanks for your interest in this project.
 
@@ -22,8 +22,9 @@ The project maintains the following source code repositories
 
 This project uses Bugzilla to track ongoing development and issues.
 
-* Search for issues: https://eclipse.org/bugs/buglist.cgi?product=MDT.UML2
-* Create a new report: https://eclipse.org/bugs/enter_bug.cgi?product=MDT.UML2
+* Search for issues: https://bugs.eclipse.org/bugs/buglist.cgi?product=MDT.UML2
+* Create a new report:
+   https://bugs.eclipse.org/bugs/enter_bug.cgi?product=MDT.UML2
 
 Be sure to search for existing bugs before you create another one. Remember that
 contributions are always welcome!
