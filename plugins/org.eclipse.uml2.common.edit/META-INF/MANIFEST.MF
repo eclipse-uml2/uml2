@@ -11,7 +11,7 @@ Export-Package: org.eclipse.uml2.common.edit.command,
  org.eclipse.uml2.common.edit.domain,
  org.eclipse.uml2.common.edit.provider
 Require-Bundle: org.eclipse.uml2.common;bundle-version="[2.5.0,3.0.0)";visibility:=reexport,
- org.eclipse.emf.ecore.edit;bundle-version="[2.10.0,3.0.0)";visibility:=reexport,
+ org.eclipse.emf.ecore.edit;bundle-version="[2.11.0,3.0.0)";visibility:=reexport,
  org.eclipse.emf.ecore.change;bundle-version="[2.13.0,3.0.0)";visibility:=reexport,
  org.eclipse.core.runtime;bundle-version="[3.5.0,4.0.0)"
 Eclipse-LazyStart: true
