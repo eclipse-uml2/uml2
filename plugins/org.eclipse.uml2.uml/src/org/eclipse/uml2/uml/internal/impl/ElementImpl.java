@@ -895,11 +895,12 @@ public abstract class ElementImpl
 	public NotificationChain eBasicSetContainer(InternalEObject newContainer,
 			int newContainerFeatureID, NotificationChain msgs) {
 
+	  InternalEObject oldContainer = eInternalContainer();
+
 		if (eDirectResource() != null && newContainer != null
 			&& eContainmentFeature(this, newContainer,
 				newContainerFeatureID) == null) {
 
-			InternalEObject oldContainer = eInternalContainer();
 			int oldContainerFeatureID = eContainerFeatureID();
 
 			eBasicSetContainer(newContainer, newContainerFeatureID);
@@ -939,15 +940,19 @@ public abstract class ElementImpl
 				msgs);
 		}
 
-		if (newContainer != null && (CHANGE_DESCRIPTION_CLASS == null
-			|| !(CHANGE_DESCRIPTION_CLASS.isInstance(newContainer)))) {
+		if (CHANGE_DESCRIPTION_CLASS == null
+			|| !(CHANGE_DESCRIPTION_CLASS.isInstance(newContainer))) {
 
 			Resource.Internal eInternalResource = eInternalResource();
-
 			if (eInternalResource == null || !eInternalResource.isLoading()) {
-				ElementOperations.unapplyAllNonApplicableStereotypes(this,
-					false);
-				ElementOperations.applyAllRequiredStereotypes(this, false);
+
+			  if (oldContainer != null) {
+			    ElementOperations.unapplyAllNonApplicableStereotypes(this, false);
+			  }
+
+			  if (newContainer != null) {
+			    ElementOperations.applyAllRequiredStereotypes(this, false);
+			  }
 			}
 		}
 
