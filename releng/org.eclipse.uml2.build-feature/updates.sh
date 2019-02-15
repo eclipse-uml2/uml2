@@ -61,4 +61,81 @@ then
 
   popd
 
+  if [ "${PUBLISH__BUILD_TYPE}" = "I" ]
+  then
+    pushd ${updatesFolder}interim
+
+      mkdir newlatest
+      chgrp -R ${group} newlatest
+      chmod -R g+w newlatest
+  
+      pushd ${updatesFolder}interim/newlatest
+        ${manageComposite} add -Dchild.repository=../../${PUBLISH__VERSION:0:3}-I-builds/${buildFolder} -Dcomposite.name="${projectRepoName} Latest Interim Build Site"
+      popd
+
+      if [ -d "latest" ]
+      then
+        mv latest oldlatest
+      fi
+
+      mv newlatest latest
+
+      if [ -d "oldlatest" ]
+      then
+        rm -rf oldlatest
+      fi
+
+    popd
+  elif [ "${PUBLISH__BUILD_TYPE}" = "S" ]
+  then
+    pushd ${updatesFolder}milestones
+
+      mkdir newlatest
+      chgrp -R ${group} newlatest
+      chmod -R g+w newlatest
+  
+      pushd ${updatesFolder}milestones/newlatest
+        ${manageComposite} add -Dchild.repository=../../${PUBLISH__VERSION:0:3}milestones/${buildFolder} -Dcomposite.name="${projectRepoName} Latest Milestone Site"
+      popd
+
+      if [ -d "latest" ]
+      then
+        mv latest oldlatest
+      fi
+
+      mv newlatest latest
+
+      if [ -d "oldlatest" ]
+      then
+        rm -rf oldlatest
+      fi
+
+    popd
+  elif [ "${PUBLISH__BUILD_TYPE}" = "R" ]
+  then
+    pushd ${updatesFolder}releases
+
+      mkdir newlatest
+      chgrp -R ${group} newlatest
+      chmod -R g+w newlatest
+  
+      pushd ${updatesFolder}releases/newlatest
+        ${manageComposite} add -Dchild.repository=../../${PUBLISH__VERSION:0:3}/${buildFolder} -Dcomposite.name="${projectRepoName} Latest Release Site"
+      popd
+
+      if [ -d "latest" ]
+      then
+        mv latest oldlatest
+      fi
+
+      mv newlatest latest
+
+      if [ -d "oldlatest" ]
+      then
+        rm -rf oldlatest
+      fi
+
+    popd
+  fi
+
 fi
