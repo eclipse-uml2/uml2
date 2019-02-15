@@ -7,11 +7,11 @@
   </location>
   <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
     <unit id="org.eclipse.emf.sdk.feature.group" version="0.0.0"/>
-    <repository location="http://download.eclipse.org/modeling/emf/emf/builds/nightly"/>
+    <repository location="http://download.eclipse.org/modeling/emf/emf/builds/release/2.15"/>
   </location>
   <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
     <unit id="org.eclipse.emf.validation" version="0.0.0"/>
-    <repository location="http://download.eclipse.org/modeling/emf/validation/updates/interim"/>
+    <repository location="http://download.eclipse.org/modeling/emf/validation/updates/releases"/>
   </location>
   <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
     <unit id="org.eclipse.license.feature.group" version="0.0.0"/>
