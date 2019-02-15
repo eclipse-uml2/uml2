@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, Christian W. Damus, and others.
+ * Copyright (c) 2005, 2019 IBM Corporation, Embarcadero Technologies, CEA, Christian W. Damus, EclipseSource and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,7 @@
  *   E.D.Willink - 420338, 512439
  *   Christian W. Damus - 444588, 497359, 501740
  *   Camille Letavernier - 528925, 529564
- *
+ *   Camille Letavernier (EclipseSource) - 544487
  */
 package org.eclipse.uml2.uml.util;
 
@@ -44,6 +44,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.UniqueEList;
@@ -4163,6 +4164,26 @@ public class UMLUtil
 		 */
 		public static final String OPTION__LINE_SEPARATOR = "LINE_SEPARATOR"; //$NON-NLS-1$
 
+		/**
+		 * The option for converting optional UML properties typed with a
+		 * primitive to unsettable Ecore attributes. Supported choices are
+		 * <code>OPTION__IGNORE</code>, <code>OPTION__REPORT</code> and
+		 * <code>OPTION__PROCESS</code>.
+		 * 
+		 * @since 5.6
+		 */
+		public static final String OPTION__UNSETTABLE_PRIMITIVE_ATTRIBUTES = "UNSETTABLE_PRIMITIVE_ATTRIBUTES"; //$NON-NLS-1$
+
+		/**
+		 * The option for converting optional UML properties typed with an
+		 * Enumeration to nullable Ecore attributes. Supported choices are
+		 * <code>OPTION__IGNORE</code>, <code>OPTION__REPORT</code> and
+		 * <code>OPTION__PROCESS</code>.
+		 * 
+		 * @since 5.6
+		 */
+		public static final String OPTION__NULLABLE_ENUM_ATTRIBUTES = "NULLABLE_ENUM_ATTRIBUTES"; //$NON-NLS-1$
+
 		private static final int DIAGNOSTIC_CODE_OFFSET = 2000;
 
 		/**
@@ -4278,7 +4299,23 @@ public class UMLUtil
 		 * @since 5.0
 		 */
 		public static final int PROPERTY_DEFAULT_EXPRESSION = DIAGNOSTIC_CODE_OFFSET + 19;
-
+		
+		/**
+		 * The diagnostic code for cases where optional attributes are not
+		 * marked as unsettable.
+		 * 
+		 * @since 5.6
+		 */
+		public static final int OPTIONAL_ATTRIBUTE = DIAGNOSTIC_CODE_OFFSET + 20;
+		
+		/**
+		 * The diagnostic code for cases where optional enum attributes are not
+		 * marked as nullable.
+		 * 
+		 * @since 5.6
+		 */
+		public static final int OPTIONAL_ENUM_ATTRIBUTE = DIAGNOSTIC_CODE_OFFSET + 21;
+		
 		protected static final Pattern ANNOTATION_PATTERN = Pattern
 			.compile("\\G\\s*((?>\\\\.|\\S)+)((?:\\s+(?>\\\\.|\\S)+\\s*+=\\s*(['\"])((?>\\\\.|.)*?)\\3)*)"); //$NON-NLS-1$
 
@@ -4290,6 +4327,8 @@ public class UMLUtil
 		protected static final String OCL_DELEGATE_URI = "http://www.eclipse.org/emf/2002/Ecore/OCL"; //$NON-NLS-1$
 
 		protected final Map<Element, EModelElement> elementToEModelElementMap = new LinkedHashMap<Element, EModelElement>();
+
+		protected final Map<EEnum, EDataType> enumToDataType = new LinkedHashMap<EEnum, EDataType>();
 
 		protected Collection<org.eclipse.uml2.uml.Package> packages = null;
 
@@ -4836,6 +4875,26 @@ public class UMLUtil
 
 				setName(eEnum, enumeration);
 
+				if (options != null && OPTION__PROCESS
+					.equals(options.get(OPTION__NULLABLE_ENUM_ATTRIBUTES))) {
+
+					// Also generate the corresponding EDataType, for optional
+					// Enums; see
+					// https://wiki.eclipse.org/EMF/Recipes#Recipe:_Generating_enumeration-based_attributes_that_support_null
+					EDataType enumType = EcoreFactory.eINSTANCE
+						.createEDataType();
+					enumToDataType.put(eEnum, enumType);
+					ePackage.getEClassifiers().add(enumType);
+
+					// XXX EMF Recipe recommends using the same name, but that's
+					// not required; using a different name will probably make
+					// it easier to generate Java and the validation isn't going
+					// to complain that 2 classifiers have the same name
+					enumType.setName(eEnum.getName() + "_Optional");
+					enumType.setInstanceTypeName(Enumerator.class.getName());
+					ExtendedMetaData.INSTANCE.setBaseType(enumType, eEnum);
+				}
+
 				defaultCase(enumeration);
 
 				return eEnum;
@@ -5351,6 +5410,101 @@ public class UMLUtil
 				}
 
 				caseMultiplicityElement(property);
+				
+				if (eStructuralFeature.getEType() != null
+					&& eStructuralFeature instanceof EAttribute
+					&& eStructuralFeature.getLowerBound() == 0
+					&& eStructuralFeature.getUpperBound() == 1) {
+
+					EAttribute eAttribute = (EAttribute) eStructuralFeature;
+
+					Class<?> instanceClass = eAttribute.getEType()
+						.getInstanceClass();
+
+					if (instanceClass != null && (instanceClass.isPrimitive()
+						|| instanceClass == String.class)) {
+
+						// Note: we need String as well, because EMF/Ecore is
+						// inconsistent regarding optional Strings that aren't
+						// unsettable, when they have a default value. The null
+						// value will be kept in memory, but not persisted,
+						// causing the value to change (from null to
+						// default) when the model is reloaded.
+						if (options != null && OPTION__PROCESS.equals(options
+							.get(OPTION__UNSETTABLE_PRIMITIVE_ATTRIBUTES))) {
+
+							((EAttribute) eAttribute).setUnsettable(true);
+
+							if (diagnostics != null) {
+								diagnostics.add(new BasicDiagnostic(
+									Diagnostic.INFO,
+									UMLValidator.DIAGNOSTIC_SOURCE,
+									OPTIONAL_ATTRIBUTE,
+									UMLPlugin.INSTANCE.getString(
+										"_UI_UML2EcoreConverter_ProcessOptionalPrimitiveAttribute_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											property)),
+									new Object[]{eAttribute}));
+							}
+						} else if (options != null
+							&& OPTION__REPORT.equals(options.get(
+								OPTION__UNSETTABLE_PRIMITIVE_ATTRIBUTES))) {
+
+							// UML multiplicity is 0..1 but the EAttribute is
+							// not unsettable; warn about the semantic
+							// inconsistency
+							diagnostics.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								OPTIONAL_ATTRIBUTE,
+								UMLPlugin.INSTANCE.getString(
+									"_UI_UML2EcoreConverter_ReportOptionalPrimitiveAttribute_diagnostic", //$NON-NLS-1$
+									getMessageSubstitutions(context, property)),
+								new Object[]{eAttribute}));
+						}
+					} else if (eAttribute.getEType() instanceof EEnum) {
+
+						if (options != null && OPTION__PROCESS.equals(
+							options.get(OPTION__NULLABLE_ENUM_ATTRIBUTES))) {
+
+							EEnum eEnum = (EEnum) eAttribute.getEType();
+							EDataType enumType = enumToDataType.get(eEnum);
+
+							// Use the optional Enum type
+							eAttribute.setEType(enumType);
+
+							// Make unsettable, so EMF can distinguish Null
+							// (NIL) from default
+							eAttribute.setUnsettable(true);
+
+							if (diagnostics != null) {
+								diagnostics.add(new BasicDiagnostic(
+									Diagnostic.INFO,
+									UMLValidator.DIAGNOSTIC_SOURCE,
+									OPTIONAL_ENUM_ATTRIBUTE,
+									UMLPlugin.INSTANCE.getString(
+										"_UI_UML2EcoreConverter_ProcessOptionalEnumAttribute_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											property)),
+									new Object[]{eAttribute}));
+							}
+						} else if (options != null && OPTION__REPORT.equals(
+							options.get(OPTION__NULLABLE_ENUM_ATTRIBUTES))) {
+
+							// UML multiplicity is 0..1 but the EAttribute is
+							// not a nullable Enum; warn about the semantic
+							// inconsistency
+							diagnostics.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								OPTIONAL_ENUM_ATTRIBUTE,
+								UMLPlugin.INSTANCE.getString(
+									"_UI_UML2EcoreConverter_ReportOptionalEnumAttribute_diagnostic", //$NON-NLS-1$
+									getMessageSubstitutions(context, property)),
+								new Object[]{eAttribute}));
+						}
+					}
+				}
 
 				defaultCase(property);
 
@@ -12941,6 +13095,21 @@ public class UMLUtil
 				OPTION__IGNORE);
 		}
 
+		if (!options.containsKey(
+			UML2EcoreConverter.OPTION__UNSETTABLE_PRIMITIVE_ATTRIBUTES)) {
+
+			options.put(
+				UML2EcoreConverter.OPTION__UNSETTABLE_PRIMITIVE_ATTRIBUTES,
+				OPTION__IGNORE);
+		}
+
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__NULLABLE_ENUM_ATTRIBUTES)) {
+
+			options.put(UML2EcoreConverter.OPTION__NULLABLE_ENUM_ATTRIBUTES,
+				OPTION__IGNORE);
+		}
+
 		return convertToEcore(package_, options, null, null);
 	}
 
@@ -13090,6 +13259,19 @@ public class UMLUtil
 				OPTION__REPORT);
 		}
 
+		if (!options.containsKey(
+			UML2EcoreConverter.OPTION__UNSETTABLE_PRIMITIVE_ATTRIBUTES)) {
+			options.put(
+				UML2EcoreConverter.OPTION__UNSETTABLE_PRIMITIVE_ATTRIBUTES,
+				OPTION__REPORT);
+		}
+
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__NULLABLE_ENUM_ATTRIBUTES)) {
+			options.put(UML2EcoreConverter.OPTION__NULLABLE_ENUM_ATTRIBUTES,
+				OPTION__REPORT);
+		}
+
 		@SuppressWarnings("unchecked")
 		Collection<EPackage> ePackages = (Collection<EPackage>) new UML2EcoreConverter()
 			.convert(Collections.singletonList(package_), options, diagnostics,
@@ -13227,6 +13409,14 @@ public class UMLUtil
 				UML2EcoreConverter.OPTION__PROPERTY_DEFAULT_EXPRESSIONS,
 				OPTION__IGNORE);
 		}
+		
+		if (!options.containsKey(UML2EcoreConverter.OPTION__UNSETTABLE_PRIMITIVE_ATTRIBUTES)) {
+			options.put(UML2EcoreConverter.OPTION__UNSETTABLE_PRIMITIVE_ATTRIBUTES, OPTION__IGNORE);
+		}
+		
+		if (!options.containsKey(UML2EcoreConverter.OPTION__NULLABLE_ENUM_ATTRIBUTES)) {
+			options.put(UML2EcoreConverter.OPTION__NULLABLE_ENUM_ATTRIBUTES, OPTION__IGNORE);
+		}
 
 		return convertToEcore(profile, options, null, null);
 	}
@@ -13357,6 +13547,19 @@ public class UMLUtil
 
 			options.put(
 				UML2EcoreConverter.OPTION__PROPERTY_DEFAULT_EXPRESSIONS,
+				OPTION__REPORT);
+		}
+
+		if (!options.containsKey(
+			UML2EcoreConverter.OPTION__UNSETTABLE_PRIMITIVE_ATTRIBUTES)) {
+			options.put(
+				UML2EcoreConverter.OPTION__UNSETTABLE_PRIMITIVE_ATTRIBUTES,
+				OPTION__REPORT);
+		}
+
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__NULLABLE_ENUM_ATTRIBUTES)) {
+			options.put(UML2EcoreConverter.OPTION__NULLABLE_ENUM_ATTRIBUTES,
 				OPTION__REPORT);
 		}
 
