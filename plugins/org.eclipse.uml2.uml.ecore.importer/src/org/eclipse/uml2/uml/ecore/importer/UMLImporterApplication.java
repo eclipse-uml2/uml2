@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2007, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2007, 2019 IBM Corporation, Embarcadero Technologies, CEA, EclipseSource and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,7 @@
  *   Kenn Hussey (CEA) - 322715
  *   Christian W. Damus (CEA) - 403374, 420338, 405065
  *   Kenn Hussey - 535301
- *
+ *   Camille Letavernier (EclipseSource) - 544487
  */
 package org.eclipse.uml2.uml.ecore.importer;
 
@@ -206,6 +206,10 @@ public class UMLImporterApplication
 			|| UMLUtil.UML2EcoreConverter.OPTION__CAMEL_CASE_NAMES
 				.equalsIgnoreCase(strippedKey)
 			|| UMLUtil.UML2EcoreConverter.OPTION__OPPOSITE_ROLE_NAMES
+				.equalsIgnoreCase(strippedKey)
+			|| UMLUtil.UML2EcoreConverter.OPTION__NULLABLE_ENUM_ATTRIBUTES
+				.equalsIgnoreCase(strippedKey)
+			|| UMLUtil.UML2EcoreConverter.OPTION__UNSETTABLE_PRIMITIVE_ATTRIBUTES
 				.equalsIgnoreCase(strippedKey);
 	}
 
