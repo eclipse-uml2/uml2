@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2019 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2019 IBM Corporation, Embarcadero Technologies, CEA, EclipseSource, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -203,21 +203,21 @@ public class UML2EcoreConverterOptionsDialog
 			UMLUtil.UML2EcoreConverter.OPTION__OPPOSITE_ROLE_NAMES,
 			new String[]{ignoreChoiceLabel, processChoiceLabel},
 			ignoreChoiceLabel);
-		
-		createOptionArea(
-			parent,
+
+		createOptionArea(parent,
 			UMLExamplesUIPlugin.INSTANCE
 				.getString("_UI_UnsettablePrimitiveAttributes_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__UNSETTABLE_PRIMITIVE_ATTRIBUTES,
-			new String[]{ignoreChoiceLabel, reportChoiceLabel, processChoiceLabel},
+			new String[]{ignoreChoiceLabel, reportChoiceLabel,
+				processChoiceLabel},
 			ignoreChoiceLabel);
-		
-		createOptionArea(
-			parent,
+
+		createOptionArea(parent,
 			UMLExamplesUIPlugin.INSTANCE
 				.getString("_UI_NullableEnumAttributes_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__NULLABLE_ENUM_ATTRIBUTES,
-			new String[]{ignoreChoiceLabel, reportChoiceLabel, processChoiceLabel},
+			new String[]{ignoreChoiceLabel, reportChoiceLabel,
+				processChoiceLabel},
 			ignoreChoiceLabel);
 	}
 

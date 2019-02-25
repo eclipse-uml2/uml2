@@ -193,19 +193,21 @@ public class Profile2EPackageConverterOptionsDialog
 			UMLUtil.UML2EcoreConverter.OPTION__OPPOSITE_ROLE_NAMES,
 			new String[]{ignoreChoiceLabel, processChoiceLabel},
 			ignoreChoiceLabel);
-		
-		createOptionArea(
-			parent,
-			UMLEditorPlugin.INSTANCE.getString("_UI_UnsettablePrimitiveAttributes_label"), //$NON-NLS-1$
+
+		createOptionArea(parent,
+			UMLEditorPlugin.INSTANCE
+				.getString("_UI_UnsettablePrimitiveAttributes_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__UNSETTABLE_PRIMITIVE_ATTRIBUTES,
-			new String[]{ignoreChoiceLabel, reportChoiceLabel, processChoiceLabel},
+			new String[]{ignoreChoiceLabel, reportChoiceLabel,
+				processChoiceLabel},
 			ignoreChoiceLabel);
-		
-		createOptionArea(
-			parent,
-			UMLEditorPlugin.INSTANCE.getString("_UI_NullableEnumAttributes_label"), //$NON-NLS-1$
+
+		createOptionArea(parent,
+			UMLEditorPlugin.INSTANCE
+				.getString("_UI_NullableEnumAttributes_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__NULLABLE_ENUM_ATTRIBUTES,
-			new String[]{ignoreChoiceLabel, reportChoiceLabel, processChoiceLabel},
+			new String[]{ignoreChoiceLabel, reportChoiceLabel,
+				processChoiceLabel},
 			ignoreChoiceLabel);
 	}
 }

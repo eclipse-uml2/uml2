@@ -286,17 +286,19 @@ public class UMLImporterDetailPage
 			UMLUtil.UML2EcoreConverter.OPTION__OPPOSITE_ROLE_NAMES,
 			new String[]{ignoreChoiceLabel, processChoiceLabel},
 			ignoreChoiceLabel);
-		addOptionControl(
-			optionsComposite,
-			UMLImporterPlugin.INSTANCE.getString("_UI_UnsettablePrimitiveAttributes_label"), //$NON-NLS-1$
+		addOptionControl(optionsComposite,
+			UMLImporterPlugin.INSTANCE
+				.getString("_UI_UnsettablePrimitiveAttributes_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__UNSETTABLE_PRIMITIVE_ATTRIBUTES,
-			new String[]{ignoreChoiceLabel, reportChoiceLabel, processChoiceLabel},
+			new String[]{ignoreChoiceLabel, reportChoiceLabel,
+				processChoiceLabel},
 			ignoreChoiceLabel);
-		addOptionControl(
-			optionsComposite,
-			UMLImporterPlugin.INSTANCE.getString("_UI_NullableEnumAttributes_label"), //$NON-NLS-1$
+		addOptionControl(optionsComposite,
+			UMLImporterPlugin.INSTANCE
+				.getString("_UI_NullableEnumAttributes_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__NULLABLE_ENUM_ATTRIBUTES,
-			new String[]{ignoreChoiceLabel, reportChoiceLabel, processChoiceLabel},
+			new String[]{ignoreChoiceLabel, reportChoiceLabel,
+				processChoiceLabel},
 			ignoreChoiceLabel);
 
 		scrolledComposite.setContent(optionsComposite);
