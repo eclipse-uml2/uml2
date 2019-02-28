@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2018 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2019 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181, 335125, 541314, 535301
  *   Kenn Hussey (CEA) - 327039, 424895, 451350, 485756
+ *   Eike Stepper - 542789
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
