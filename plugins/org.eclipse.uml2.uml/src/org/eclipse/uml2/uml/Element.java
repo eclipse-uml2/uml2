@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2019 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 205188
  *   Kenn Hussey (CEA) - 327039, 418466, 451350
  *   Christian W. Damus (CEA) - 251963
- *   Kenn Hussey - 535301
+ *   Kenn Hussey - 535301, 543231
  *
  */
 package org.eclipse.uml2.uml;
@@ -462,6 +462,13 @@ public interface Element
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * This method returns an object that represents an application of the specified
+	 * stereotype. By default, the object is attached to an appropriate resource
+	 * relative to this element (e.g., the resource that this element is currently
+	 * attached to, if any). Note, however, that <em><b>it is ultimately the caller’s
+	 * responsibility to ensure that the stereotype application is attached to (and
+	 * serialized with) the appropriate resource</b></em>.
+	 * <br><br>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Applies the specified stereotype to this element.
