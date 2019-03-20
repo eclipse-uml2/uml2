@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2019 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,7 @@
  *   Christian W. Damus (CEA) - 300957, 431998
  *   Christian W. Damus - 444588
  *   Alain Le Guennec (Esterel Technologies SAS) - 497153
- *
+ *   Camille Letavernier (EclipseSource) - 545578
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -32,7 +32,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.UniqueEList;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -44,21 +43,19 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.EcorePackage;
-
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.resource.Resource;
-
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.PackageImport;
+import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.ProfileApplication;
@@ -66,8 +63,6 @@ import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UMLPlugin;
-import org.eclipse.uml2.uml.PackageImport;
-import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.VisibilityKind;
 import org.eclipse.uml2.uml.util.UMLUtil;
 import org.eclipse.uml2.uml.util.UMLValidator;
@@ -239,8 +234,7 @@ public class PackageOperations
 			if (!eAttribute.isUnsettable() || eObject.eIsSet(eAttribute)) {
 
 				try {
-					if (eAttribute.getEType().eClass()
-						.getClassifierID() == EcorePackage.EENUM) {
+					if (UMLUtil.isEnumType(eAttribute.getEType())) {
 						copyEEnumAttribute(eAttribute, eObject, copyEObject);
 					} else {
 						copyEDataTypeAttribute(eAttribute, eObject,
@@ -305,8 +299,8 @@ public class PackageOperations
 			EAttribute targetEAttribute = (EAttribute) getTarget(eAttribute);
 
 			if (targetEAttribute != null && targetEAttribute.isChangeable()) {
-				EEnum targetEEnum = (EEnum) targetEAttribute
-					.getEAttributeType();
+				EEnum targetEEnum = UMLUtil
+					.getEnumType(targetEAttribute.getEAttributeType());
 
 				if (targetEAttribute.isMany()) {
 					@SuppressWarnings("unchecked")
@@ -922,7 +916,7 @@ public class PackageOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query containingProfile() returns the closest profile directly or indirectly containing this package (or this package itself, if it is a profile).
-	 * result = (if self.oclIsKindOf(Profile) then 
+	 * result = (if self.oclIsKindOf(Profile) then
 	 * 	self.oclAsType(Profile)
 	 * else
 	 * 	self.namespace.oclAsType(Package).containingProfile()
