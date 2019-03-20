@@ -13,7 +13,7 @@
  *   Christian W. Damus (CEA) - 300957, 431998
  *   Christian W. Damus - 444588
  *   Alain Le Guennec (Esterel Technologies SAS) - 497153
- *
+ *   Camille Letavernier (EclipseSource) - 545578
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -239,8 +239,7 @@ public class PackageOperations
 			if (!eAttribute.isUnsettable() || eObject.eIsSet(eAttribute)) {
 
 				try {
-					if (eAttribute.getEType().eClass()
-						.getClassifierID() == EcorePackage.EENUM) {
+					if (UMLUtil.isEnumType(eAttribute.getEType())) {
 						copyEEnumAttribute(eAttribute, eObject, copyEObject);
 					} else {
 						copyEDataTypeAttribute(eAttribute, eObject,
@@ -305,8 +304,8 @@ public class PackageOperations
 			EAttribute targetEAttribute = (EAttribute) getTarget(eAttribute);
 
 			if (targetEAttribute != null && targetEAttribute.isChangeable()) {
-				EEnum targetEEnum = (EEnum) targetEAttribute
-					.getEAttributeType();
+				EEnum targetEEnum = UMLUtil.getEnumType(targetEAttribute
+					.getEAttributeType());
 
 				if (targetEAttribute.isMany()) {
 					@SuppressWarnings("unchecked")
