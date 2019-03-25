@@ -13879,15 +13879,16 @@ public class UMLUtil
 	 * Test if the given {@link EClassifier} represents an Enum Type.
 	 * 
 	 * @param classifier
-	 * 		The Classifier
-	 * @return
-	 * 		<code>true</code> if this {@link EClassifier} is an Enum Type, <code>false</code> otherwise
+	 *            The Classifier
+	 * @return <code>true</code> if this {@link EClassifier} is an Enum Type,
+	 *         <code>false</code> otherwise
 	 * 
 	 * @see ExtendedMetaData#getBaseType
 	 * 
 	 * @since 5.6
 	 */
 	public static boolean isEnumType(EClassifier classifier) {
+
 		if (classifier instanceof EEnum) {
 			return true;
 		}
@@ -13900,26 +13901,31 @@ public class UMLUtil
 	}
 
 	/**
-	 * If the given {@link EClassifier} represents an Enum Type, return
-	 * the corresponding {@link EEnum}.
+	 * If the given {@link EClassifier} represents an Enum Type, return the
+	 * corresponding {@link EEnum}.
 	 * 
 	 * @param classifier
-	 * 		The Classifier
-	 * @return
-	 * 		The {@link EEnum} represented by this {@link EClassifier}, or <code>null</code>
-	 * 		if this classifier doesn't represent an {@link EEnum}
+	 *            The Classifier
+	 * @return The {@link EEnum} represented by this {@link EClassifier}, or
+	 *         <code>null</code> if this classifier doesn't represent an
+	 *         {@link EEnum}
 	 * 
 	 * @see ExtendedMetaData#getBaseType
 	 * 
 	 * @since 5.6
 	 */
 	public static EEnum getEnumType(EClassifier eType) {
+
 		if (eType instanceof EEnum) { // Standard Enums
 			return (EEnum) eType;
 		} else if (eType instanceof EDataType) { // Optional Enums
 			EDataType implType = (EDataType) eType;
-			EDataType baseType = ExtendedMetaData.INSTANCE.getBaseType(implType);
-			return baseType instanceof EEnum ? (EEnum) baseType : null;
+			EDataType baseType = ExtendedMetaData.INSTANCE
+				.getBaseType(implType);
+
+			return baseType instanceof EEnum
+				? (EEnum) baseType
+				: null;
 		}
 
 		return null;
