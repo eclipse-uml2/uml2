@@ -1,1 +1,4 @@
+<%// Check that the annotation wouldn't be emitted also by the base Ecore template (bug 547424). %>
+<%if (!(useInterfaceOverrideAnnotation && !genClass.isMapEntry() && !genClass.hasCollidingSetAccessorOperation(genFeature) && !genFeature.isSuppressedSetVisibility())) {%>
 <%@ include file="basicSetGenFeature.annotations.insert.javajetinc" fail="silent" %>
+<%}%>
