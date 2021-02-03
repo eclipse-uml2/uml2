@@ -26,7 +26,7 @@ then
     repoName="Nightly Build"
   elif [ "${PUBLISH__BUILD_TYPE}" = "I" ]
   then
-    repoFolder="${updatesFolder}${PUBLISH__VERSION:0:3}-I-builds"
+    repoFolder="5.5-I-builds"
     repoName="Integration Build"
   elif [ "${PUBLISH__BUILD_TYPE}" = "S" ]
   then
@@ -46,8 +46,8 @@ then
     mkdir -p ${repoFolder}
   fi
 
-#  pushd ${repoFolder}
-#
+  pushd ${repoFolder}
+
 #    buildFolder="${PUBLISH__BUILD_TYPE}${PUBLISH__QUALIFIER:1:8}${PUBLISH__QUALIFIER:10:4}"
 #
 #    if [ ! -d "${buildFolder}" ]
@@ -57,21 +57,17 @@ then
 #
 #    curl -s -k ${PUBLISH__BUILD}/artifact/releng/org.eclipse.uml2.build-feature/target/org.eclipse.uml2-${PUBLISH__VERSION}.${PUBLISH__QUALIFIER}.zip > ${localZip}
 #    unzip ${localZip} -d ${buildFolder}
-#    rm ${localZip}
+    rm ${localZip}
 #
 #    chgrp -R ${group} ${buildFolder}
 #    chmod -R g+w ${buildFolder}
 #    ${manageComposite} add -Dchild.repository=${buildFolder} -Dcomposite.name="${projectRepoName} ${PUBLISH__VERSION} ${repoName} Site"
-#
-#  popd
+
+  popd
 
   if [ "${PUBLISH__BUILD_TYPE}" = "I" ]
   then 
     pushd ${updatesFolder}interim
-
-      ${manageComposite} remove -Dchild.repository=../5.5-I-builds -Dcomposite.name="${projectRepoName} Interim Build Site"
-
-      ${manageComposite} add -Dchild.repository=../5.6-I-builds -Dcomposite.name="${projectRepoName} Interim Build Site"
 
 #      mkdir newlatest
 #      chgrp -R ${group} newlatest
