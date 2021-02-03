@@ -26,7 +26,7 @@ then
     repoName="Nightly Build"
   elif [ "${PUBLISH__BUILD_TYPE}" = "I" ]
   then
-    repoFolder="5.5-I-builds"
+    repoFolder="${updatesFolder}${PUBLISH__VERSION:0:3}-I-builds"
     repoName="Integration Build"
   elif [ "${PUBLISH__BUILD_TYPE}" = "S" ]
   then
