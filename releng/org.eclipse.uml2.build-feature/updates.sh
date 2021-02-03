@@ -48,46 +48,46 @@ then
 
   pushd ${repoFolder}
 
-#    buildFolder="${PUBLISH__BUILD_TYPE}${PUBLISH__QUALIFIER:1:8}${PUBLISH__QUALIFIER:10:4}"
-#
-#    if [ ! -d "${buildFolder}" ]
-#    then
-#      mkdir ${buildFolder}
-#    fi
-#
-#    curl -s -k ${PUBLISH__BUILD}/artifact/releng/org.eclipse.uml2.build-feature/target/org.eclipse.uml2-${PUBLISH__VERSION}.${PUBLISH__QUALIFIER}.zip > ${localZip}
-#    unzip ${localZip} -d ${buildFolder}
+    buildFolder="${PUBLISH__BUILD_TYPE}${PUBLISH__QUALIFIER:1:8}${PUBLISH__QUALIFIER:10:4}"
+
+    if [ ! -d "${buildFolder}" ]
+    then
+      mkdir ${buildFolder}
+    fi
+
+    curl -s -k ${PUBLISH__BUILD}/artifact/releng/org.eclipse.uml2.build-feature/target/org.eclipse.uml2-${PUBLISH__VERSION}.${PUBLISH__QUALIFIER}.zip > ${localZip}
+    unzip ${localZip} -d ${buildFolder}
     rm ${localZip}
-#
-#    chgrp -R ${group} ${buildFolder}
-#    chmod -R g+w ${buildFolder}
-#    ${manageComposite} add -Dchild.repository=${buildFolder} -Dcomposite.name="${projectRepoName} ${PUBLISH__VERSION} ${repoName} Site"
+
+    chgrp -R ${group} ${buildFolder}
+    chmod -R g+w ${buildFolder}
+    ${manageComposite} add -Dchild.repository=${buildFolder} -Dcomposite.name="${projectRepoName} ${PUBLISH__VERSION} ${repoName} Site"
 
   popd
 
   if [ "${PUBLISH__BUILD_TYPE}" = "I" ]
-  then 
+  then
     pushd ${updatesFolder}interim
 
-#      mkdir newlatest
-#      chgrp -R ${group} newlatest
-#      chmod -R g+w newlatest
-#  
-#      pushd ${updatesFolder}interim/newlatest
-#        ${manageComposite} add -Dchild.repository=../../${PUBLISH__VERSION:0:3}-I-builds/${buildFolder} -Dcomposite.name="${projectRepoName} Latest Interim Build Site"
-#      popd
-#
-#      if [ -d "latest" ]
-#      then
-#        mv latest oldlatest
-#      fi
-#
-#      mv newlatest latest
-#
-#      if [ -d "oldlatest" ]
-#      then
-#        rm -rf oldlatest
-#      fi
+      mkdir newlatest
+      chgrp -R ${group} newlatest
+      chmod -R g+w newlatest
+  
+      pushd ${updatesFolder}interim/newlatest
+        ${manageComposite} add -Dchild.repository=../../${PUBLISH__VERSION:0:3}-I-builds/${buildFolder} -Dcomposite.name="${projectRepoName} Latest Interim Build Site"
+      popd
+
+      if [ -d "latest" ]
+      then
+        mv latest oldlatest
+      fi
+
+      mv newlatest latest
+
+      if [ -d "oldlatest" ]
+      then
+        rm -rf oldlatest
+      fi
 
     popd
   elif [ "${PUBLISH__BUILD_TYPE}" = "S" ]
