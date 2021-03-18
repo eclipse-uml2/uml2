@@ -49,7 +49,7 @@
 
     <tycho.scmUrl>scm:git:https://git.eclipse.org/c/uml2/org.eclipse.uml2.git</tycho.scmUrl>
 
-    <tycho-version>1.0.0</tycho-version>
+    <tycho-version>2.2.0</tycho-version>
     <tycho-extras-version>${tycho-version}</tycho-extras-version>
 
     <maven-clean-version>2.5</maven-clean-version>
