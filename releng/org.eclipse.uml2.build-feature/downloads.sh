@@ -2,15 +2,27 @@
 #
 #	Promote the PUBLISH__BUILD to the downloads 'page'.
 #
-#    PUBLISH__BUILD_TYPE     Build type N/I/S/R, blank suppresses promotion
-#    PUBLISH__BUILD          The base URL of the build to be published, e.g., https://ci.eclipse.org/uml2/job/mdt-uml2-master/lastSuccessfulBuild
-#    PUBLISH__VERSION        Unqualified version, e.g., 5.4.0
-#    PUBLISH__QUALIFIER      Build qualifier, e.g., I20171228-2349
-#    PUBLISH__ALIAS          Non blank to use alias as part of final name
+#    -t PUBLISH__BUILD_TYPE     Build type N/I/S/R, blank suppresses promotion
+#    -b PUBLISH__BUILD          The base URL of the build to be published, e.g., https://ci.eclipse.org/uml2/job/mdt-uml2-master/lastSuccessfulBuild
+#    -v PUBLISH__VERSION        Unqualified version, e.g., 5.4.0
+#    -q PUBLISH__QUALIFIER      Build qualifier, e.g., I20171228-2349
+#    -a PUBLISH__ALIAS          Non blank to use alias as part of final name
 #
 dropsFolder="/home/data/httpd/download.eclipse.org/modeling/mdt/uml2/downloads/drops/"
 group="modeling.mdt.uml2"
 zipPrefix="mdt-uml2-Update-"
+
+while getopts b:v:t:q:a: option
+do
+case "${option}"
+in
+b) PUBLISH__BUILD=${OPTARG};;
+v) PUBLISH__VERSION=${OPTARG};;
+t) PUBLISH__BUILD_TYPE=${OPTARG};;
+q) PUBLISH__QUALIFIER=${OPTARG};;
+a) PUBLISH__ALIAS=${OPTARG};;
+esac
+done
 
 if [ -n "${PUBLISH__BUILD_TYPE}" ]
 then
