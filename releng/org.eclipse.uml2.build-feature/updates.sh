@@ -66,7 +66,7 @@ then
       mkdir ${buildFolder}
     fi
 
-    curl -s -k ${PUBLISH__BUILD}/artifact/releng/org.eclipse.uml2.build-feature/target/org.eclipse.uml2-${PUBLISH__VERSION}.${PUBLISH__QUALIFIER}.zip > ${localZip}
+    cp ~/publish.zip ${localZip}
     unzip ${localZip} -d ${buildFolder}
     rm ${localZip}
 

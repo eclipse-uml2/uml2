@@ -45,8 +45,8 @@ then
   zipFile="${zipPrefix}${fileStem}.zip"
 
   pushd ${versionFolder}
-    curl -s -k ${PUBLISH__BUILD}/artifact/releng/org.eclipse.uml2.build-feature/target/org.eclipse.uml2-${PUBLISH__VERSION}.${PUBLISH__QUALIFIER}.zip > ${zipFile}
-    curl -s -k ${PUBLISH__BUILD}/consoleText > buildlog.txt    
+    cp ~/publish.zip ${zipFile}
+    cp ~/buildlog.txt buildlog.txt
     md5sum -b ${zipFile} > ${zipFile}.md5
     sha512sum -b ${zipFile} > ${zipFile}.sha1
     # make sure permissions are for the intended group
