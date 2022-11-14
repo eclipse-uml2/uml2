@@ -85,30 +85,42 @@ public class TestCase
   protected final String TEXT_67 = "()";
   protected final String TEXT_68 = NL + "\t * ";
   protected final String TEXT_69 = NL + "\t * @generated" + NL + "\t */";
-  protected final String TEXT_70 = NL + "\t@Deprecated";
-  protected final String TEXT_71 = NL + "\tpublic void test";
-  protected final String TEXT_72 = "()" + NL + "\t{";
-  protected final String TEXT_73 = NL;
-  protected final String TEXT_74 = "\t\t// TODO: implement this feature getter test method" + NL + "\t\t// Ensure that you remove @generated or mark it @generated NOT";
-  protected final String TEXT_75 = "#set";
-  protected final String TEXT_76 = "</em>}' feature setter." + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @see ";
-  protected final String TEXT_77 = NL + "\tpublic void testSet";
-  protected final String TEXT_78 = "#unset";
-  protected final String TEXT_79 = "() <em>unset";
-  protected final String TEXT_80 = "()</em>}' method." + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @see ";
-  protected final String TEXT_81 = NL + "\tpublic void testUnset";
-  protected final String TEXT_82 = "#isSet";
-  protected final String TEXT_83 = "() <em>isSet";
-  protected final String TEXT_84 = NL + "\tpublic void testIsSet";
-  protected final String TEXT_85 = NL + "\t/**" + NL + "\t * Tests the '{@link ";
-  protected final String TEXT_86 = "</em>}' operation." + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @see ";
-  protected final String TEXT_87 = ")" + NL + "\t * @generated" + NL + "\t */";
-  protected final String TEXT_88 = "()" + NL + "\t * @generated" + NL + "\t */";
-  protected final String TEXT_89 = "()" + NL + "\t{" + NL + "\t\t// TODO: implement this redefined feature getter test method" + NL + "\t\t// Ensure that you remove @generated or mark it @generated NOT" + NL + "\t}";
-  protected final String TEXT_90 = "()" + NL + "\t{" + NL + "\t\t// TODO: implement this redefined feature setter test method" + NL + "\t\t// Ensure that you remove @generated or mark it @generated NOT" + NL + "\t}";
-  protected final String TEXT_91 = "()" + NL + "\t{" + NL + "\t\t// TODO: implement this redefined test method" + NL + "\t\t// Ensure that you remove @generated or mark it @generated NOT" + NL + "\t}";
-  protected final String TEXT_92 = "()" + NL + "\t{" + NL + "\t\t// TODO: implement this redefined operation test method" + NL + "\t\t// Ensure that you remove @generated or mark it @generated NOT" + NL + "\t}";
-  protected final String TEXT_93 = NL + "} //";
+  protected final String TEXT_70 = NL + "\t@Override";
+  protected final String TEXT_71 = NL + "\t@Deprecated";
+  protected final String TEXT_72 = NL + "\tpublic void test";
+  protected final String TEXT_73 = "()" + NL + "\t{";
+  protected final String TEXT_74 = NL;
+  protected final String TEXT_75 = "\t\t// TODO: implement this feature getter test method" + NL + "\t\t// Ensure that you remove @generated or mark it @generated NOT";
+  protected final String TEXT_76 = "#set";
+  protected final String TEXT_77 = "</em>}' feature setter." + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @see ";
+  protected final String TEXT_78 = NL + "\tpublic void testSet";
+  protected final String TEXT_79 = "#unset";
+  protected final String TEXT_80 = "() <em>unset";
+  protected final String TEXT_81 = "()</em>}' method." + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @see ";
+  protected final String TEXT_82 = NL + "\tpublic void testUnset";
+  protected final String TEXT_83 = "#isSet";
+  protected final String TEXT_84 = "() <em>isSet";
+  protected final String TEXT_85 = NL + "\tpublic void testIsSet";
+  protected final String TEXT_86 = NL + "\t/**" + NL + "\t * Tests the '{@link ";
+  protected final String TEXT_87 = "</em>}' operation." + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @see ";
+  protected final String TEXT_88 = ")" + NL + "\t * @generated" + NL + "\t */";
+  protected final String TEXT_89 = NL + "\tpublic void test";
+  protected final String TEXT_90 = "()" + NL + "\t{";
+  protected final String TEXT_91 = NL;
+  protected final String TEXT_92 = NL + "\t}";
+  protected final String TEXT_93 = NL + NL + "\t/**" + NL + "\t * Tests the '{@link ";
+  protected final String TEXT_94 = "</em>}' feature getter." + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @see ";
+  protected final String TEXT_95 = "()" + NL + "\t * @generated" + NL + "\t */";
+  protected final String TEXT_96 = "()" + NL + "\t{" + NL + "\t\t// TODO: implement this redefined feature getter test method" + NL + "\t\t// Ensure that you remove @generated or mark it @generated NOT" + NL + "\t}";
+  protected final String TEXT_97 = "</em>}' feature setter." + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @see ";
+  protected final String TEXT_98 = NL + "\tpublic void testSet";
+  protected final String TEXT_99 = "()" + NL + "\t{" + NL + "\t\t// TODO: implement this redefined feature setter test method" + NL + "\t\t// Ensure that you remove @generated or mark it @generated NOT" + NL + "\t}";
+  protected final String TEXT_100 = "()</em>}' method." + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @see ";
+  protected final String TEXT_101 = NL + "\tpublic void testUnset";
+  protected final String TEXT_102 = "()" + NL + "\t{" + NL + "\t\t// TODO: implement this redefined test method" + NL + "\t\t// Ensure that you remove @generated or mark it @generated NOT" + NL + "\t}";
+  protected final String TEXT_103 = NL + "\tpublic void testIsSet";
+  protected final String TEXT_104 = "()" + NL + "\t{" + NL + "\t\t// TODO: implement this redefined operation test method" + NL + "\t\t// Ensure that you remove @generated or mark it @generated NOT" + NL + "\t}";
+  protected final String TEXT_105 = NL + "} //";
 
   public String generate(Object argument)
   {
@@ -317,17 +329,17 @@ public class TestCase
     stringBuffer.append(TEXT_69);
     if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //TestCase/getGenFeature.annotations.insert.javajetinc
     if (genClass.getExtendedGenFeatures().contains(genFeature) || (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || (genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next()) && UML2GenModelUtil.isTest(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next()))))) {
-    stringBuffer.append(TEXT_43);
+    stringBuffer.append(TEXT_70);
     }
     }
     if (isJDK50 && genFeature.hasAPIDeprecatedTag()) {
-    stringBuffer.append(TEXT_70);
-    }
     stringBuffer.append(TEXT_71);
-    stringBuffer.append(genModel.capName(genFeature.getGetAccessor()));
+    }
     stringBuffer.append(TEXT_72);
+    stringBuffer.append(genModel.capName(genFeature.getGetAccessor()));
     stringBuffer.append(TEXT_73);
     stringBuffer.append(TEXT_74);
+    stringBuffer.append(TEXT_75);
     //TestCase/getGenFeature.todo.override.javajetinc
     stringBuffer.append(TEXT_52);
     //TestCase/getGenFeature.override.javajetinc
@@ -335,15 +347,15 @@ public class TestCase
     if (genFeature.isSet() && !genFeature.isSuppressedSetVisibility()) {
     stringBuffer.append(TEXT_65);
     stringBuffer.append(genFeature.getGenClass().getRawQualifiedInterfaceName());
-    stringBuffer.append(TEXT_75);
+    stringBuffer.append(TEXT_76);
     stringBuffer.append(genFeature.getAccessorName());
     stringBuffer.append(TEXT_15);
     stringBuffer.append(genFeature.getRawBoundType());
     stringBuffer.append(TEXT_16);
     stringBuffer.append(genFeature.getFormattedName());
-    stringBuffer.append(TEXT_76);
+    stringBuffer.append(TEXT_77);
     stringBuffer.append(genFeature.getGenClass().getRawQualifiedInterfaceName());
-    stringBuffer.append(TEXT_75);
+    stringBuffer.append(TEXT_76);
     stringBuffer.append(genFeature.getAccessorName());
     stringBuffer.append(TEXT_15);
     stringBuffer.append(genFeature.getRawBoundType());
@@ -355,17 +367,17 @@ public class TestCase
     stringBuffer.append(TEXT_69);
     if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //TestCase/setGenFeature.annotations.insert.javajetinc
     if (genClass.getExtendedGenFeatures().contains(genFeature) || (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || (genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next()) && UML2GenModelUtil.isTest(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next()))))) {
-    stringBuffer.append(TEXT_43);
+    stringBuffer.append(TEXT_70);
     }
     }
     if (isJDK50 && genFeature.hasAPIDeprecatedTag()) {
-    stringBuffer.append(TEXT_70);
+    stringBuffer.append(TEXT_71);
     }
-    stringBuffer.append(TEXT_77);
+    stringBuffer.append(TEXT_78);
     stringBuffer.append(genFeature.getAccessorName());
-    stringBuffer.append(TEXT_72);
     stringBuffer.append(TEXT_73);
     stringBuffer.append(TEXT_74);
+    stringBuffer.append(TEXT_75);
     //TestCase/setGenFeature.todo.override.javajetinc
     stringBuffer.append(TEXT_52);
     //TestCase/setGenFeature.override.javajetinc
@@ -373,13 +385,13 @@ public class TestCase
     if (genFeature.isUnset() && !genFeature.isSuppressedUnsetVisibility()) {
     stringBuffer.append(TEXT_65);
     stringBuffer.append(genFeature.getGenClass().getRawQualifiedInterfaceName());
-    stringBuffer.append(TEXT_78);
-    stringBuffer.append(genFeature.getAccessorName());
     stringBuffer.append(TEXT_79);
     stringBuffer.append(genFeature.getAccessorName());
     stringBuffer.append(TEXT_80);
+    stringBuffer.append(genFeature.getAccessorName());
+    stringBuffer.append(TEXT_81);
     stringBuffer.append(genFeature.getGenClass().getRawQualifiedInterfaceName());
-    stringBuffer.append(TEXT_78);
+    stringBuffer.append(TEXT_79);
     stringBuffer.append(genFeature.getAccessorName());
     stringBuffer.append(TEXT_67);
     if (genFeature.hasAPITags()) {
@@ -389,17 +401,17 @@ public class TestCase
     stringBuffer.append(TEXT_69);
     if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //TestCase/unsetGenFeature.annotations.insert.javajetinc
     if (genClass.getExtendedGenFeatures().contains(genFeature) || (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || (genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next()) && UML2GenModelUtil.isTest(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next()))))) {
-    stringBuffer.append(TEXT_43);
+    stringBuffer.append(TEXT_70);
     }
     }
     if (isJDK50 && genFeature.hasAPIDeprecatedTag()) {
-    stringBuffer.append(TEXT_70);
+    stringBuffer.append(TEXT_71);
     }
-    stringBuffer.append(TEXT_81);
+    stringBuffer.append(TEXT_82);
     stringBuffer.append(genFeature.getAccessorName());
-    stringBuffer.append(TEXT_72);
     stringBuffer.append(TEXT_73);
     stringBuffer.append(TEXT_74);
+    stringBuffer.append(TEXT_75);
     //TestCase/unsetGenFeature.todo.override.javajetinc
     stringBuffer.append(TEXT_52);
     //TestCase/unsetGenFeature.override.javajetinc
@@ -407,13 +419,13 @@ public class TestCase
     if (genFeature.isIsSet() && !genFeature.isSuppressedIsSetVisibility()) {
     stringBuffer.append(TEXT_65);
     stringBuffer.append(genFeature.getGenClass().getRawQualifiedInterfaceName());
-    stringBuffer.append(TEXT_82);
-    stringBuffer.append(genFeature.getAccessorName());
     stringBuffer.append(TEXT_83);
     stringBuffer.append(genFeature.getAccessorName());
-    stringBuffer.append(TEXT_80);
+    stringBuffer.append(TEXT_84);
+    stringBuffer.append(genFeature.getAccessorName());
+    stringBuffer.append(TEXT_81);
     stringBuffer.append(genFeature.getGenClass().getRawQualifiedInterfaceName());
-    stringBuffer.append(TEXT_82);
+    stringBuffer.append(TEXT_83);
     stringBuffer.append(genFeature.getAccessorName());
     stringBuffer.append(TEXT_67);
     if (genFeature.hasAPITags()) {
@@ -423,17 +435,17 @@ public class TestCase
     stringBuffer.append(TEXT_69);
     if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //TestCase/isSetGenFeature.annotations.insert.javajetinc
     if (genClass.getExtendedGenFeatures().contains(genFeature) || (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || (genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next()) && UML2GenModelUtil.isTest(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next()))))) {
-    stringBuffer.append(TEXT_43);
+    stringBuffer.append(TEXT_70);
     }
     }
     if (isJDK50 && genFeature.hasAPIDeprecatedTag()) {
-    stringBuffer.append(TEXT_70);
+    stringBuffer.append(TEXT_71);
     }
-    stringBuffer.append(TEXT_84);
+    stringBuffer.append(TEXT_85);
     stringBuffer.append(genFeature.getAccessorName());
-    stringBuffer.append(TEXT_72);
     stringBuffer.append(TEXT_73);
     stringBuffer.append(TEXT_74);
+    stringBuffer.append(TEXT_75);
     //TestCase/isSetGenFeature.todo.override.javajetinc
     stringBuffer.append(TEXT_52);
     //TestCase/isSetGenFeature.override.javajetinc
@@ -442,8 +454,8 @@ public class TestCase
     //TestCase/implementedGenFeature.override.javajetinc
     }
     for (GenOperation genOperation : genClass.getImplementedGenOperations()) {
-    stringBuffer.append(TEXT_73);
-    stringBuffer.append(TEXT_85);
+    stringBuffer.append(TEXT_74);
+    stringBuffer.append(TEXT_86);
     stringBuffer.append(genOperation.getGenClass().getQualifiedInterfaceName());
     stringBuffer.append(TEXT_10);
     stringBuffer.append(genOperation.getName());
@@ -451,121 +463,121 @@ public class TestCase
     stringBuffer.append(genOperation.getParameterTypes(", "));
     stringBuffer.append(TEXT_16);
     stringBuffer.append(genOperation.getFormattedName());
-    stringBuffer.append(TEXT_86);
+    stringBuffer.append(TEXT_87);
     stringBuffer.append(genOperation.getGenClass().getQualifiedInterfaceName());
     stringBuffer.append(TEXT_10);
     stringBuffer.append(genOperation.getName());
     stringBuffer.append(TEXT_15);
     stringBuffer.append(genOperation.getParameterTypes(", "));
-    stringBuffer.append(TEXT_87);
+    stringBuffer.append(TEXT_88);
     if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //genOperation.annotations.insert.javajetinc
     if (genClass.getExtendedGenOperations().contains(genOperation) || (UML2GenModelUtil.isDuplicate(genOperation) && (!UML2GenModelUtil.isRedefinition(genOperation) || genClass.getExtendedGenOperations().contains(UML2GenModelUtil.getRedefinedGenOperations(genOperation).iterator().next())))) {
-    stringBuffer.append(TEXT_43);
+    stringBuffer.append(TEXT_70);
     }
     }
-    stringBuffer.append(TEXT_71);
+    stringBuffer.append(TEXT_89);
     stringBuffer.append(genModel.capName(genOperation.getName()));
     stringBuffer.append(genOperation.getGenParameters().size() == 0 ? "" : "__" + genOperation.getParameterTypes("_", false));
-    stringBuffer.append(TEXT_72);
-    stringBuffer.append(TEXT_73);
-    stringBuffer.append(TEXT_74);
+    stringBuffer.append(TEXT_90);
+    stringBuffer.append(TEXT_91);
+    stringBuffer.append(TEXT_75);
     //implementedGenOperation.todo.override.javajetinc
-    stringBuffer.append(TEXT_52);
+    stringBuffer.append(TEXT_92);
     //TestCase/implementedGenOperation.override.javajetinc
     }
-    stringBuffer.append(TEXT_73);
+    stringBuffer.append(TEXT_74);
     for (GenFeature genFeature : UML2GenModelUtil.getImplementedRedefinedGenFeatures(genClass)) {
     if (genFeature.isGet() && !genFeature.isSuppressedGetVisibility()) {
-    stringBuffer.append(TEXT_65);
+    stringBuffer.append(TEXT_93);
     stringBuffer.append(genFeature.getGenClass().getQualifiedInterfaceName());
     stringBuffer.append(TEXT_10);
     stringBuffer.append(genFeature.getGetAccessor());
     stringBuffer.append(TEXT_11);
     stringBuffer.append(genFeature.getFormattedName());
-    stringBuffer.append(TEXT_66);
+    stringBuffer.append(TEXT_94);
     stringBuffer.append(genFeature.getGenClass().getQualifiedInterfaceName());
     stringBuffer.append(TEXT_10);
     stringBuffer.append(genFeature.getGetAccessor());
-    stringBuffer.append(TEXT_88);
+    stringBuffer.append(TEXT_95);
     if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50 && UML2GenModelUtil.isTest(genFeature)) { //getGenFeature.annotations.insert.javajetinc
     if (genClass.getExtendedGenFeatures().contains(genFeature) || (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || (genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next()) && UML2GenModelUtil.isTest(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next()))))) {
-    stringBuffer.append(TEXT_43);
+    stringBuffer.append(TEXT_70);
     }
     }
-    stringBuffer.append(TEXT_71);
-    stringBuffer.append(genModel.capName(genFeature.getGetAccessor()));
     stringBuffer.append(TEXT_89);
+    stringBuffer.append(genModel.capName(genFeature.getGetAccessor()));
+    stringBuffer.append(TEXT_96);
     }
     if (genFeature.isSet() && !genFeature.isSuppressedSetVisibility()) {
-    stringBuffer.append(TEXT_65);
+    stringBuffer.append(TEXT_93);
     stringBuffer.append(genFeature.getGenClass().getQualifiedInterfaceName());
-    stringBuffer.append(TEXT_75);
+    stringBuffer.append(TEXT_76);
     stringBuffer.append(genFeature.getAccessorName());
     stringBuffer.append(TEXT_15);
     stringBuffer.append(genFeature.getRawBoundType());
     stringBuffer.append(TEXT_16);
     stringBuffer.append(genFeature.getFormattedName());
-    stringBuffer.append(TEXT_76);
+    stringBuffer.append(TEXT_97);
     stringBuffer.append(genFeature.getGenClass().getQualifiedInterfaceName());
-    stringBuffer.append(TEXT_75);
+    stringBuffer.append(TEXT_76);
     stringBuffer.append(genFeature.getAccessorName());
     stringBuffer.append(TEXT_15);
     stringBuffer.append(genFeature.getRawBoundType());
-    stringBuffer.append(TEXT_87);
+    stringBuffer.append(TEXT_88);
     if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50 && UML2GenModelUtil.isTest(genFeature)) { //setGenFeature.annotations.insert.javajetinc
     if (genClass.getExtendedGenFeatures().contains(genFeature) || (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || (genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next()) && UML2GenModelUtil.isTest(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next()))))) {
-    stringBuffer.append(TEXT_43);
+    stringBuffer.append(TEXT_70);
     }
     }
-    stringBuffer.append(TEXT_77);
+    stringBuffer.append(TEXT_98);
     stringBuffer.append(genFeature.getAccessorName());
-    stringBuffer.append(TEXT_90);
+    stringBuffer.append(TEXT_99);
     }
     if (genFeature.isUnset() && !genFeature.isSuppressedUnsetVisibility()) {
-    stringBuffer.append(TEXT_65);
+    stringBuffer.append(TEXT_93);
     stringBuffer.append(genFeature.getGenClass().getQualifiedInterfaceName());
-    stringBuffer.append(TEXT_78);
-    stringBuffer.append(genFeature.getAccessorName());
     stringBuffer.append(TEXT_79);
     stringBuffer.append(genFeature.getAccessorName());
     stringBuffer.append(TEXT_80);
-    stringBuffer.append(genFeature.getGenClass().getQualifiedInterfaceName());
-    stringBuffer.append(TEXT_78);
     stringBuffer.append(genFeature.getAccessorName());
-    stringBuffer.append(TEXT_88);
+    stringBuffer.append(TEXT_100);
+    stringBuffer.append(genFeature.getGenClass().getQualifiedInterfaceName());
+    stringBuffer.append(TEXT_79);
+    stringBuffer.append(genFeature.getAccessorName());
+    stringBuffer.append(TEXT_95);
     if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50 && UML2GenModelUtil.isTest(genFeature)) { //unsetGenFeature.annotations.insert.javajetinc
     if (genClass.getExtendedGenFeatures().contains(genFeature) || (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || (genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next()) && UML2GenModelUtil.isTest(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next()))))) {
-    stringBuffer.append(TEXT_43);
+    stringBuffer.append(TEXT_70);
     }
     }
-    stringBuffer.append(TEXT_81);
+    stringBuffer.append(TEXT_101);
     stringBuffer.append(genFeature.getAccessorName());
-    stringBuffer.append(TEXT_91);
+    stringBuffer.append(TEXT_102);
     }
     if (genFeature.isIsSet() && !genFeature.isSuppressedIsSetVisibility()) {
-    stringBuffer.append(TEXT_65);
+    stringBuffer.append(TEXT_93);
     stringBuffer.append(genFeature.getGenClass().getQualifiedInterfaceName());
-    stringBuffer.append(TEXT_82);
-    stringBuffer.append(genFeature.getAccessorName());
     stringBuffer.append(TEXT_83);
     stringBuffer.append(genFeature.getAccessorName());
-    stringBuffer.append(TEXT_80);
-    stringBuffer.append(genFeature.getGenClass().getQualifiedInterfaceName());
-    stringBuffer.append(TEXT_82);
-    stringBuffer.append(genFeature.getAccessorName());
-    stringBuffer.append(TEXT_88);
-    if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50 && UML2GenModelUtil.isTest(genFeature)) { //isSetGenFeature.annotations.insert.javajetinc
-    if (genClass.getExtendedGenFeatures().contains(genFeature) || (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || (genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next()) && UML2GenModelUtil.isTest(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next()))))) {
-    stringBuffer.append(TEXT_43);
-    }
-    }
     stringBuffer.append(TEXT_84);
     stringBuffer.append(genFeature.getAccessorName());
-    stringBuffer.append(TEXT_91);
+    stringBuffer.append(TEXT_100);
+    stringBuffer.append(genFeature.getGenClass().getQualifiedInterfaceName());
+    stringBuffer.append(TEXT_83);
+    stringBuffer.append(genFeature.getAccessorName());
+    stringBuffer.append(TEXT_95);
+    if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50 && UML2GenModelUtil.isTest(genFeature)) { //isSetGenFeature.annotations.insert.javajetinc
+    if (genClass.getExtendedGenFeatures().contains(genFeature) || (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || (genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next()) && UML2GenModelUtil.isTest(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next()))))) {
+    stringBuffer.append(TEXT_70);
+    }
+    }
+    stringBuffer.append(TEXT_103);
+    stringBuffer.append(genFeature.getAccessorName());
+    stringBuffer.append(TEXT_102);
     }
     }
     for (GenOperation genOperation : UML2GenModelUtil.getImplementedRedefinedGenOperations(genClass)) {
-    stringBuffer.append(TEXT_65);
+    stringBuffer.append(TEXT_93);
     stringBuffer.append(genOperation.getGenClass().getQualifiedInterfaceName());
     stringBuffer.append(TEXT_10);
     stringBuffer.append(genOperation.getName());
@@ -573,27 +585,27 @@ public class TestCase
     stringBuffer.append(genOperation.getParameterTypes(", "));
     stringBuffer.append(TEXT_16);
     stringBuffer.append(genOperation.getFormattedName());
-    stringBuffer.append(TEXT_86);
+    stringBuffer.append(TEXT_87);
     stringBuffer.append(genOperation.getGenClass().getQualifiedInterfaceName());
     stringBuffer.append(TEXT_10);
     stringBuffer.append(genOperation.getName());
     stringBuffer.append(TEXT_15);
     stringBuffer.append(genOperation.getParameterTypes(", "));
-    stringBuffer.append(TEXT_87);
+    stringBuffer.append(TEXT_88);
     if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //genOperation.annotations.insert.javajetinc
     if (genClass.getExtendedGenOperations().contains(genOperation) || (UML2GenModelUtil.isDuplicate(genOperation) && (!UML2GenModelUtil.isRedefinition(genOperation) || genClass.getExtendedGenOperations().contains(UML2GenModelUtil.getRedefinedGenOperations(genOperation).iterator().next())))) {
-    stringBuffer.append(TEXT_43);
+    stringBuffer.append(TEXT_70);
     }
     }
-    stringBuffer.append(TEXT_71);
+    stringBuffer.append(TEXT_89);
     stringBuffer.append(genModel.capName(genOperation.getName()));
     stringBuffer.append(genOperation.getGenParameters().size() == 0 ? "" : "__" + genOperation.getParameterTypes("_", false));
-    stringBuffer.append(TEXT_92);
+    stringBuffer.append(TEXT_104);
     }
-    stringBuffer.append(TEXT_93);
+    stringBuffer.append(TEXT_105);
     stringBuffer.append(genClass.getTestCaseClassName());
     genModel.emitSortedImports();
-    stringBuffer.append(TEXT_73);
+    stringBuffer.append(TEXT_74);
     return stringBuffer.toString();
   }
 }
