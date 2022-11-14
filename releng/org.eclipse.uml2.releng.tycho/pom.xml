@@ -11,10 +11,6 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
 
-  <prerequisites>
-    <maven>3.3.9</maven>
-  </prerequisites>
-
   <groupId>org.eclipse.uml2</groupId>
   <artifactId>org.eclipse.uml2.releng.tycho</artifactId>
   <version>1.1.0-SNAPSHOT</version>
@@ -49,8 +45,10 @@
 
     <tycho.scmUrl>scm:git:https://git.eclipse.org/c/uml2/org.eclipse.uml2.git</tycho.scmUrl>
 
-    <tycho-version>2.2.0</tycho-version>
+    <tycho-version>2.7.5</tycho-version>
     <tycho-extras-version>${tycho-version}</tycho-extras-version>
+
+    <jarsigner-version>1.3.2</jarsigner-version>
 
     <maven-clean-version>2.5</maven-clean-version>
     <maven-install-version>2.5.1</maven-install-version>
@@ -58,7 +56,7 @@
     <maven-site-version>3.4</maven-site-version>
     <maven-antrun-version>1.7</maven-antrun-version>
     <maven-resources-version>2.6</maven-resources-version>
-    <maven-surefire-version>2.17</maven-surefire-version>
+    <maven-surefire-version>2.22.1</maven-surefire-version>
 
   </properties>
   
@@ -90,6 +88,7 @@
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>target-platform-configuration</artifactId>
+        <version>${tycho-version}</version>
         <configuration>
           <includePackedArtifacts>true</includePackedArtifacts>
           <resolver>p2</resolver>
@@ -213,7 +212,7 @@
         <plugin>
           <groupId>org.eclipse.tycho</groupId>
           <artifactId>tycho-surefire-plugin</artifactId>
-          <version>1.0.0</version>
+          <version>${tycho-version}</version>
           <configuration>
             <argLine>${tycho.testArgLine} -Xms40m -Xmx1G ${os-jvm-flags}</argLine>
             <failIfNoTests>false</failIfNoTests>
@@ -253,6 +252,7 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>${maven-surefire-version}</version>
+          <!--
           <dependencies>
             <dependency>
               <groupId>org.apache.maven.surefire</groupId>
@@ -260,6 +260,7 @@
               <version>${maven-surefire-version}</version>
             </dependency>
           </dependencies>
+          -->
         </plugin>
       </plugins>
     </pluginManagement>
@@ -280,6 +281,7 @@
           <plugin>
             <groupId>org.eclipse.tycho</groupId>
             <artifactId>target-platform-configuration</artifactId>
+            <version>${tycho-version}</version>
             <configuration>
               <target>
                 <artifact>
@@ -307,6 +309,7 @@
           <plugin>
             <groupId>org.eclipse.tycho</groupId>
             <artifactId>target-platform-configuration</artifactId>
+            <version>${tycho-version}</version>
             <configuration>
               <target>
                 <artifact>
@@ -361,6 +364,7 @@
           <plugin>
             <groupId>org.eclipse.tycho</groupId>
             <artifactId>target-platform-configuration</artifactId>
+            <version>${tycho-version}</version>
             <configuration>
               <target>
                 <artifact>
@@ -383,21 +387,9 @@
       <build>
         <plugins>
           <plugin>
-            <groupId>org.eclipse.tycho.extras</groupId>
-            <artifactId>tycho-pack200a-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>pack200-normalize</id>
-                <goals>
-                  <goal>normalize</goal>
-                </goals>
-                <phase>package</phase>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
             <groupId>org.eclipse.cbi.maven.plugins</groupId>
             <artifactId>eclipse-jarsigner-plugin</artifactId>
+            <version>${jarsigner-version}</version>
             <executions>
               <execution>
                 <id>sign</id>
@@ -409,21 +401,9 @@
             </executions>
           </plugin>
           <plugin>
-            <groupId>org.eclipse.tycho.extras</groupId>
-            <artifactId>tycho-pack200b-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>pack200-pack</id>
-                <goals>
-                  <goal>pack</goal>
-                </goals>
-                <phase>package</phase>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
             <groupId>org.eclipse.tycho</groupId>
             <artifactId>tycho-p2-plugin</artifactId>
+            <version>${tycho-version}</version>
             <executions>
               <execution>
                 <id>p2-metadata</id>
@@ -490,6 +470,7 @@
           <plugin>
             <groupId>org.eclipse.tycho</groupId>
             <artifactId>tycho-packaging-plugin</artifactId>
+            <version>${tycho-version}</version>
             <configuration>
               <additionalFileSets>
                 <fileSet>
