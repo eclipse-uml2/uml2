@@ -2,10 +2,10 @@
 #
 #    Promote the PUBLISH__BUILD to an updates repository.
 #
-#    PUBLISH__BUILD_TYPE     Build type N/I/S/R, blank suppresses promotion
-#    PUBLISH__BUILD          The base URL of the build to be published, e.g., https://ci.eclipse.org/uml2/job/mdt-uml2-master/lastSuccessfulBuild
-#    PUBLISH__VERSION        Unqualified version, e.g., 5.4.0
-#    PUBLISH__QUALIFIER      Build qualifier, e.g., I20171228-2349
+#    -t PUBLISH__BUILD_TYPE     Build type N/I/S/R, blank suppresses promotion
+#    -b PUBLISH__BUILD          The base URL of the build to be published, e.g., https://ci.eclipse.org/uml2/job/mdt-uml2-master/lastSuccessfulBuild
+#    -v PUBLISH__VERSION        Unqualified version, e.g., 5.4.0
+#    -q PUBLISH__QUALIFIER      Build qualifier, e.g., I20171228-2349
 #
 updatesFolder="/home/data/httpd/download.eclipse.org/modeling/mdt/uml2/updates/"
 group="modeling.mdt.uml2"
@@ -16,6 +16,17 @@ manageComposite="/shared/common/apache-ant-latest/bin/ant -f /shared/modeling/to
 export JAVA_HOME=/shared/common/jdk1.8.0_x64-latest
 java -version
 /shared/common/apache-ant-latest/bin/ant -version
+
+while getopts b:v:t:q: option
+do
+case "${option}"
+in
+b) PUBLISH__BUILD=${OPTARG};;
+v) PUBLISH__VERSION=${OPTARG};;
+t) PUBLISH__BUILD_TYPE=${OPTARG};;
+q) PUBLISH__QUALIFIER=${OPTARG};;
+esac
+done
 
 if [ -n "${PUBLISH__BUILD_TYPE}" ]
 then
@@ -55,7 +66,7 @@ then
       mkdir ${buildFolder}
     fi
 
-    curl -s -k ${PUBLISH__BUILD}/artifact/releng/org.eclipse.uml2.build-feature/target/org.eclipse.uml2-${PUBLISH__VERSION}.${PUBLISH__QUALIFIER}.zip > ${localZip}
+    cp ~/publish.zip ${localZip}
     unzip ${localZip} -d ${buildFolder}
     rm ${localZip}
 

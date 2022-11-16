@@ -229,7 +229,7 @@
     <requirement
         name="org.eclipse.uml2.sdk.feature.group"/>
     <repository
-        url="http://download.eclipse.org/modeling/mdt/uml2/updates/5.4-I-builds"/>
+        url="https://download.eclipse.org/modeling/mdt/uml2/updates/milestones/latest"/>
     <description>Install the tools needed in the IDE to work with the source code for ${scope.project.label}</description>
   </setupTask>
   <setupTask
@@ -256,7 +256,7 @@
   <setupTask
       xsi:type="setup:StringSubstitutionTask"
       name="git.clone.uml2"
-      value="${git.clone.uml2}"/>
+      value="${git.clone.uml2.location}"/>
   <setupTask
       xsi:type="setup.targlets:TargletTask">
     <targlet
