@@ -69,6 +69,19 @@
    <module>../../tests</module>
   </modules>
 
+  <distributionManagement>
+    <repository>
+      <id>repo.eclipse.org</id>
+      <name>UML2 Repository - Releases</name>
+      <url>https://repo.eclipse.org/content/repositories/uml2-releases/</url>
+    </repository>
+    <snapshotRepository>
+      <id>repo.eclipse.org</id>
+      <name>UML2 Repository - Snapshots</name>
+      <url>https://repo.eclipse.org/content/repositories/uml2-snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
+
   <build>
     <!-- This is for checkstyle and PMD -->
     <sourceDirectory>src</sourceDirectory>
