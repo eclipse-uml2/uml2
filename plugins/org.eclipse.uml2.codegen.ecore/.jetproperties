@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <jet-settings>
-	<template-container>templates;@platform:/plugin/org.eclipse.emf.codegen.ecore/templates</template-container>
- 	<source-container>src</source-container>
+  	
+  <template-container>templates;@/org.eclipse.emf.codegen.ecore/templates</template-container>
+   	
+  <source-container>src</source-container>
+  
 </jet-settings>
