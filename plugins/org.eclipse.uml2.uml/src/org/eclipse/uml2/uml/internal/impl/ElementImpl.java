@@ -24,9 +24,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -892,6 +890,8 @@ public abstract class ElementImpl
 		CHANGE_DESCRIPTION_CLASS = changeDescriptionClass;
 	}
 
+	private static final int DETACHED = 1 << 6;
+
 	@Override
 	public NotificationChain eBasicSetContainer(InternalEObject newContainer,
 			int newContainerFeatureID, NotificationChain msgs) {
@@ -942,24 +942,44 @@ public abstract class ElementImpl
 		}
 
 		if (CHANGE_DESCRIPTION_CLASS == null
-			|| !(CHANGE_DESCRIPTION_CLASS.isInstance(newContainer))) {
+				|| !(CHANGE_DESCRIPTION_CLASS.isInstance(newContainer))) {
 
 			Resource.Internal eInternalResource = eInternalResource();
+
 			if (eInternalResource == null || !eInternalResource.isLoading()) {
-
-			  if (oldContainer != null) {
-			    ElementOperations.unapplyAllNonApplicableStereotypes(this, false);
-			  }
-
-			  if (newContainer != null) {
-			    ElementOperations.applyAllRequiredStereotypes(this, false);
-			  }
+				if (oldContainer == null) {
+					// ATTACH or REATTACH (newContainer can't be null, too)
+					if ((eFlags & DETACHED) != 0) {
+						// REATTACH (was detached before)
+						ElementOperations
+							.unapplyAllNonApplicableStereotypes(this, false);
+						ElementOperations.applyAllRequiredStereotypes(this,
+							false);
+						eFlags &= ~DETACHED; // Forget former detach
+					} else {
+						// ATTACH (wasn't detached before)
+						ElementOperations.applyAllRequiredStereotypes(this,
+							false);
+					}
+				} else {
+					// DETACH or MOVE
+					if (newContainer == null) {
+						// DETACH
+						eFlags |= DETACHED; // Remember detach
+					} else {
+						// MOVE
+						ElementOperations
+							.unapplyAllNonApplicableStereotypes(this, false);
+						ElementOperations.applyAllRequiredStereotypes(this,
+							false);
+					}
+				}
 			}
 		}
 
 		return msgs;
 	}
-
+	
 	private static final int ADAPTING = 1 << 7;
 
 	@Override
