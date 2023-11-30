@@ -10,7 +10,7 @@
     xmlns:setup.p2="http://www.eclipse.org/oomph/setup/p2/1.0"
     xmlns:setup.targlets="http://www.eclipse.org/oomph/setup/targlets/1.0"
     xmlns:setup.workingsets="http://www.eclipse.org/oomph/setup/workingsets/1.0"
-    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/predicates/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupTarglets.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupWorkingSets.ecore"
+    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/JDT.ecore http://www.eclipse.org/oomph/predicates/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/SetupTarglets.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 https://raw.githubusercontent.com/eclipse-oomph/oomph/master/setups/models/SetupWorkingSets.ecore"
     name="uml2"
     label="UML2">
   <annotation
@@ -138,15 +138,14 @@
   </setupTask>
   <setupTask
       xsi:type="jdt:JRETask"
-      version="JavaSE-1.8"
-      location="${jre.location-1.8}"
-      name="JRE for JavaSE-1.8">
+      version="JavaSE-17"
+      location="${jre.location-17}">
     <description>Define the JRE needed to compile and run the Java projects of ${scope.project.label}</description>
   </setupTask>
   <setupTask
       xsi:type="setup:EclipseIniTask"
       option="-Xmx"
-      value="1024m"
+      value="2048m"
       vm="true">
     <description>Set the heap space needed to work with the projects of ${scope.project.label}</description>
   </setupTask>
@@ -234,29 +233,35 @@
   </setupTask>
   <setupTask
       xsi:type="git:GitCloneTask"
-      id="git.clone.uml2"
-      remoteURI="uml2/org.eclipse.uml2">
+      id="github.clone.uml2"
+      remoteURI="eclipse-uml2/uml2">
     <annotation
         source="http://www.eclipse.org/oomph/setup/InducedChoices">
       <detail
           key="inherit">
-        <value>eclipse.git.gerrit.remoteURIs</value>
+        <value>github.remoteURIs</value>
       </detail>
       <detail
           key="label">
-        <value>${scope.project.label} Git or Gerrit repository</value>
+        <value>${scope.project.label} Git repository</value>
       </detail>
       <detail
           key="target">
         <value>remoteURI</value>
       </detail>
     </annotation>
+    <configSections
+        name="branch">
+      <properties
+          key="autoSetupRebase"
+          value="always"/>
+    </configSections>
     <description>${scope.project.label}</description>
   </setupTask>
   <setupTask
       xsi:type="setup:StringSubstitutionTask"
       name="git.clone.uml2"
-      value="${git.clone.uml2.location}"/>
+      value="${github.clone.uml2.location}"/>
   <setupTask
       xsi:type="setup.targlets:TargletTask">
     <targlet
@@ -268,17 +273,17 @@
       <requirement
           name="*"/>
       <sourceLocator
-          rootFolder="${git.clone.uml2.location/doc}"/>
+          rootFolder="${github.clone.uml2.location/doc}"/>
       <sourceLocator
-          rootFolder="${git.clone.uml2.location/examples}"/>
+          rootFolder="${github.clone.uml2.location/examples}"/>
       <sourceLocator
-          rootFolder="${git.clone.uml2.location/features}"/>
+          rootFolder="${github.clone.uml2.location/features}"/>
       <sourceLocator
-          rootFolder="${git.clone.uml2.location/plugins}"/>
+          rootFolder="${github.clone.uml2.location/plugins}"/>
       <sourceLocator
-          rootFolder="${git.clone.uml2.location/releng}"/>
+          rootFolder="${github.clone.uml2.location/releng}"/>
       <sourceLocator
-          rootFolder="${git.clone.uml2.location/tests}"/>
+          rootFolder="${github.clone.uml2.location/tests}"/>
       <repositoryList>
         <repository
             url="http://download.eclipse.org/cbi/updates/license"/>
@@ -369,7 +374,7 @@
   <setupTask
       xsi:type="setup:StringSubstitutionTask"
       name="maven.build.java.home"
-      value="${jre.location-11}">
+      value="${jre.location-17}">
     <description>The location used to specify JAVA_HOME in the External Tools Configurations.</description>
   </setupTask>
   <setupTask
@@ -401,7 +406,7 @@
     <setupTask
         xsi:type="setup:EclipseIniTask"
         option="-Doomph.redirection.uml2"
-        value="=https://git.eclipse.org/c/uml2/org.eclipse.uml2.git/plain/releng/org.eclipse.uml2.build-feature/UML2.setup->${git.clone.uml2.location|uri}/releng/org.eclipse.uml2.build-feature/UML2.setup"
+        value="=https://raw.githubusercontent.com/eclipse-uml2/uml2/master/releng/org.eclipse.uml2.build-feature/UML2.setup->${github.clone.uml2.location|uri}/releng/org.eclipse.uml2.build-feature/UML2.setup"
         vm="true">
       <description>Set an Oomph redirection system property to redirect the logical location of this setup to its physical location in the Git clone.</description>
     </setupTask>
