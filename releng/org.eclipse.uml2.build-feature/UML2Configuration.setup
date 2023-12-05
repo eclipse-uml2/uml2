@@ -8,7 +8,7 @@
       name="uml2.development.environment.installation"
       label="UML2 Development Environment Installation">
     <productVersion
-        href="index:/org.eclipse.setup#//@productCatalogs[name='org.eclipse.products']/@products[name='epp.package.committers']/@versions[name='photon']"/>
+        href="index:/org.eclipse.setup#//@productCatalogs[name='org.eclipse.products']/@products[name='epp.package.committers']/@versions[name='latest']"/>
     <description>The UML2 development environment workspace provides the source for working with UML2 along with a target platform and appropriate preferences.</description>
   </installation>
   <workspace
