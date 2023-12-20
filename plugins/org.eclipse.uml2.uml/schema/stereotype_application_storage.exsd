@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.eclipse.uml2.uml" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="org.eclipse.uml2.uml" id="stereotype_application_storage" name="UML Stereotype Application Storage Registry"/>
+      </appInfo>
+      <documentation>
+         This extension point is used to register a custom stereotype application storage.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appInfo>
+            <meta.element />
+         </appInfo>
+      </annotation>
+      <complexType>
+         <sequence>
+            <choice minOccurs="1" maxOccurs="unbounded">
+               <element ref="storage"/>
+            </choice>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  A fully qualified identifier of the target extension point.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  An optional identifier of the extension instance.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  An optional name of the extension instance.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="storage">
+      <annotation>
+         <appInfo>
+            <meta.element labelAttribute="uri"/>
+         </appInfo>
+      </annotation>
+      <complexType>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  An ID  that uniquely identifies the stereotype application storage.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  An optional, translatable name that is displayed for the stereotype application storage in the user interface.
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="description" type="string">
+            <annotation>
+               <documentation>
+                  An optional, translatable description that is displayed for the stereotype application storage in the user interface.
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The fully qualified name of the stereotype application storage class.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.uml2.uml.util.UMLUtil$StereotypeApplicationStorage"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         5.6.0
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         Following is an example of how a custom stereotype application storage can be registered: 
+&lt;pre&gt;
+   &lt;extension point=&quot;org.eclipse.uml2.uml.stereotype_application_storage&quot;&gt;
+      &lt;storage
+            id=&quot;org.eclipse.uml2.uml.tests.TestStorage&quot;
+            name=&quot;Test Storage&quot;
+            description=&quot;Stores stereotype applications in memory.&quot;
+            class=&quot;org.eclipse.uml2.uml.bug.tests.StereotypeApplicationStorageTest$TestStorage&quot;/&gt;
+   &lt;/extension&gt;
+&lt;/pre&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         A custom stereotype application storage can also be registered from source code with &lt;samp&gt;UMLPlugin#getEPackageNsURIToProfileLocationMap()&lt;/samp&gt; as follows:
+&lt;pre&gt;
+ StereotypeApplicationStorage storage = new XyzStorage();
+ StereotypeApplicationStorage.Registry.INSTANCE.put(storage.getID(), storage);
+&lt;/pre&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         For any custom stereotype application storage, an extension to this extension point should be included in the manifest file to register it with the stereotype application storage registry.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         Copyright (c) 2023 Eike Stepper (Loehne, Germany) and others.&lt;br&gt;
+All rights reserved. This program and the accompanying materials are made available under the terms of the Eclipse Public License v2.0 which accompanies this distribution, and is available at &lt;a 
+href=&quot;http://www.eclipse.org/legal/epl-v20.html&quot;&gt;http://www.eclipse.org/legal/epl-v20.html&lt;/a&gt;
+      </documentation>
+   </annotation>
+
+</schema>
