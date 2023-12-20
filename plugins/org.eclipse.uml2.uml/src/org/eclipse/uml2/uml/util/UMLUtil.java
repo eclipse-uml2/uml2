@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2019 IBM Corporation, Embarcadero Technologies, CEA, Christian W. Damus, EclipseSource and others.
+ * Copyright (c) 2005, 2023 IBM Corporation, Embarcadero Technologies, CEA, Christian W. Damus, EclipseSource and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,8 @@
  *   Christian W. Damus - 444588, 497359, 501740
  *   Camille Letavernier - 528925, 529564
  *   Camille Letavernier (EclipseSource) - 544487, 545578
+ *   Camille Letavernier (EclipseSource) - 544487, 545578
+ *   Eike Stepper - 582622
  */
 package org.eclipse.uml2.uml.util;
 
@@ -111,6 +113,7 @@ import org.eclipse.uml2.uml.OpaqueBehavior;
 import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.OperationOwner;
+import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageMerge;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterDirectionKind;
@@ -152,6 +155,9 @@ import org.eclipse.uml2.uml.resource.XMI222UMLResource;
 import org.eclipse.uml2.uml.resource.XMI242UMLResource;
 import org.eclipse.uml2.uml.resource.XMI2UMLExtendedMetaData;
 import org.eclipse.uml2.uml.resource.XMI2UMLResource;
+import org.eclipse.uml2.uml.util.UMLUtil.StereotypeApplicationStorage;
+import org.eclipse.uml2.uml.util.UMLUtil.StereotypeApplicationStorage.ContainedByElement;
+import org.eclipse.uml2.uml.util.UMLUtil.StereotypeApplicationStorage.Registry;
 
 /**
  * Utilities for working with UML elements and resources.
@@ -274,6 +280,7 @@ public class UMLUtil
 	 * the element to which the stereotype is applied, however, stereotype 
 	 * applications may be placed in other resources.
 	 * 
+	 * @see StereotypeApplicationStorage
 	 * @since 3.0
 	 */
 	public static class StereotypeApplicationHelper {
@@ -503,6 +510,539 @@ public class UMLUtil
 		}
 	}
 
+	private static final boolean STEREOTYPE_APPLICATION_STORAGE_ENABLED_DEFAULT = //
+			Boolean.getBoolean(UMLUtil.class.getName()
+					+ ".STEREOTYPE_APPLICATION_STORAGE_ENABLED_DEFAULT"); //$NON-NLS-1$
+
+	private static final boolean STEREOTYPE_APPLICATION_STORAGE_ENABLED_OVERRIDE = //
+			Boolean.getBoolean(UMLUtil.class.getName()
+					+ ".STEREOTYPE_APPLICATION_STORAGE_ENABLED_OVERRIDE"); //$NON-NLS-1$
+
+	private static volatile boolean stereotypeApplicationStorageEnabled = STEREOTYPE_APPLICATION_STORAGE_ENABLED_OVERRIDE
+			|| STEREOTYPE_APPLICATION_STORAGE_ENABLED_DEFAULT;
+
+	/**
+	 * Returns <code>true</code> if the use of
+	 * {@link StereotypeApplicationStorage stereotype application storages} is
+	 * globally {@link #setStereotypeApplicationStorageEnabled(boolean)
+	 * enabled}, <code>false</code> otherwise.
+	 * 
+	 * @see #setStereotypeApplicationStorageEnabled(boolean)
+	 */
+	public static boolean isStereotypeApplicationStorageEnabled() {
+		return stereotypeApplicationStorageEnabled;
+	}
+
+	/**
+	 * Globally enables or disables the use of
+	 * {@link StereotypeApplicationStorage stereotype application storages}.
+	 * <p>
+	 * If the system property
+	 * <code>org.eclipse.uml2.uml.util.UMLUtil.STEREOTYPE_APPLICATION_STORAGE_ENABLED_OVERRIDE</code>
+	 * is <code>true</code> calls to this method have no effect and
+	 * {@link #isStereotypeApplicationStorageEnabled()} always returns
+	 * <code>true</code>.
+	 * <p>
+	 * If the system property
+	 * <code>org.eclipse.uml2.uml.util.UMLUtil.STEREOTYPE_APPLICATION_STORAGE_ENABLED_DEFAULT</code>
+	 * is <code>true</code> the {@link #isStereotypeApplicationStorageEnabled()}
+	 * method returns <code>true</code> until this method is called with a
+	 * different value.
+	 */
+	public static void setStereotypeApplicationStorageEnabled(boolean enabled) {
+		UMLUtil.stereotypeApplicationStorageEnabled = STEREOTYPE_APPLICATION_STORAGE_ENABLED_OVERRIDE
+				|| enabled;
+	}
+
+	protected static final String ANNOTATION__STEREOTYPE_APPLICATION_STORAGE = "http://www.eclipse.org/uml2/StereotypeApplicationStorage"; //$NON-NLS-1$
+
+	protected static final String ANNOTATION_DETAIL__ID = "id"; //$NON-NLS-1$
+	
+	private static String getStereotypeApplicationStorageIDOutermost(
+			org.eclipse.uml2.uml.Package outermostPackage) {
+		if (outermostPackage != null) {
+			EAnnotation annotation = getEAnnotation(outermostPackage,
+				ANNOTATION__STEREOTYPE_APPLICATION_STORAGE, false);
+			if (annotation != null) {
+				return annotation.getDetails().get(ANNOTATION_DETAIL__ID);
+			}
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the {@link StereotypeApplicationStorage#getID() ID} of the
+	 * {@link StereotypeApplicationStorage} currently
+	 * {@link #setStereotypeApplicationStorageID(Element, String) set} for the
+	 * {@link Resource resource} of the given {@link Element element}, or
+	 * <code>null</code> if no <code>StereotypeApplicationStorage</code> is
+	 * currently set for this resource.
+	 * 
+	 * @see #getStereotypeApplicationStorage(Element)
+	 */
+	public static String getStereotypeApplicationStorageID(Element element) {
+		org.eclipse.uml2.uml.Package outermostPackage = getOutermostPackage(
+			element, true);
+		if (outermostPackage != null) {
+			return getStereotypeApplicationStorageIDOutermost(outermostPackage);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Sets the {@link StereotypeApplicationStorage} identified by (and
+	 * {@link Registry#getStereotypeApplicationStorage(String) registered} with)
+	 * the given <code>id</code> for the resource of the given {@link Element
+	 * element}.
+	 * <p>
+	 * If <code>null</code> is passed as <code>id</code>, no
+	 * <code>StereotypeApplicationStorage</code> is set for the resource of the
+	 * given <code>element</code>. If a
+	 * <code>StereotypeApplicationStorage</code> was set, it is unset.
+	 * <p>
+	 * In either case, if the <code>StereotypeApplicationStorage</code> objects
+	 * set before and after the call to this method differ, all stereotype
+	 * application {@link EObject objects} that exist in the resource of the
+	 * given <code>element</code> are migrated to conform to the new
+	 * <code>StereotypeApplicationStorage</code> strategy.
+	 * 
+	 * @see #setStereotypeApplicationStorage(Element,
+	 *      StereotypeApplicationStorage)
+	 */
+	public static StereotypeApplicationStorage setStereotypeApplicationStorageID(
+			Element element, String id) {
+		StereotypeApplicationStorage storage = null;
+
+		if (id != null) {
+			storage = StereotypeApplicationStorage.Registry.INSTANCE
+				.getStereotypeApplicationStorage(id);
+			if (storage == null) {
+				throw new IllegalArgumentException(
+					"Stereotype application storage not found: " + id); //$NON-NLS-1$
+			}
+		}
+
+		setStereotypeApplicationStorage(element, storage);
+		return storage;
+	}
+
+	/**
+	 * Returns the {@link StereotypeApplicationStorage} currently
+	 * {@link #setStereotypeApplicationStorageID(Element, String) set} for the
+	 * {@link Resource resource} of the given {@link Element element}, or
+	 * <code>null</code> if no <code>StereotypeApplicationStorage</code> is
+	 * currently set for this resource.
+	 * 
+	 * @see #getStereotypeApplicationStorageID(Element)
+	 */
+	public static StereotypeApplicationStorage getStereotypeApplicationStorage(
+			Element element) {
+		String id = getStereotypeApplicationStorageID(element);
+		if (id != null) {
+			return StereotypeApplicationStorage.Registry.INSTANCE
+				.getStereotypeApplicationStorage(id);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Sets the given {@link StereotypeApplicationStorage}
+	 * <code>newStorage</code> for the resource of the given {@link Element
+	 * element}.
+	 * <p>
+	 * If <code>null</code> is passed as <code>id</code>, no
+	 * <code>StereotypeApplicationStorage</code> is set for the resource of the
+	 * given <code>element</code>. If a
+	 * <code>StereotypeApplicationStorage</code> was set, it is unset.
+	 * <p>
+	 * In either case, if the <code>StereotypeApplicationStorage</code> objects
+	 * set before and after the call to this method differ, all stereotype
+	 * application {@link EObject objects} that exist in the resource of the
+	 * given <code>element</code> are migrated to conform to the new
+	 * <code>StereotypeApplicationStorage</code> strategy.
+	 * 
+	 * @see #setStereotypeApplicationStorageID(Element, String)
+	 */
+	public static void setStereotypeApplicationStorage(Element element,
+			StereotypeApplicationStorage newStorage) {
+		org.eclipse.uml2.uml.Package outermostPackage = getOutermostPackage(
+			element, true);
+		if (outermostPackage == null) {
+			throw new IllegalStateException(
+				"No containing package found for " + element); //$NON-NLS-1$
+		}
+
+		EAnnotation annotation = getEAnnotation(outermostPackage,
+			ANNOTATION__STEREOTYPE_APPLICATION_STORAGE, false);
+
+		String oldID = annotation == null
+			? null
+			: annotation.getDetails().get(ANNOTATION_DETAIL__ID);
+
+		String newID = newStorage == null
+			? null
+			: newStorage.getID();
+
+		if (!safeEquals(oldID, newID)) {
+			StereotypeApplicationStorage oldStorage = StereotypeApplicationStorage.Registry.INSTANCE
+				.getStereotypeApplicationStorage(oldID);
+
+			StereotypeApplicationHelper helper = newStorage != null ? null :StereotypeApplicationHelper
+					.getInstance(outermostPackage);
+			
+			for (Iterator<EObject> it = outermostPackage.eAllContents(); it
+				.hasNext();) {
+				EObject object = it.next();
+				if (object instanceof Element) {
+					element = (Element) object;
+
+					for (EObject stereotypeApplication : element
+						.getStereotypeApplications()) {
+						Stereotype stereotype = getStereotype(
+							stereotypeApplication);
+
+						if (newStorage != null) {
+							newStorage.addStereotypeApplication(element,
+								stereotype, stereotypeApplication);
+						} else {
+							helper.addToContainmentList(element,
+								stereotypeApplication, stereotype);
+						}
+
+						if (oldStorage != null) {
+							oldStorage.cleanup(element);
+						}
+					}
+				}
+			}
+
+			if (newID != null) {
+				if (annotation == null) {
+					annotation = getEAnnotation(outermostPackage,
+						ANNOTATION__STEREOTYPE_APPLICATION_STORAGE, true);
+				}
+
+				annotation.getDetails().put(ANNOTATION_DETAIL__ID, newID);
+			} else if (annotation != null) {
+				EcoreUtil.remove(annotation);
+			}
+		}
+	}
+
+	/**
+	 * A storage and retrieval strategy for stereotype application
+	 * {@link EObject objects}.
+	 * <p>
+	 * <b>Rationale:</b>
+	 * <p>
+	 * By default stereotype application {@link EObject objects} are stored in
+	 * the {@link Resource#getContents() contents} list of the {@link Resource
+	 * resource} that contains the stereotyped {@link Element elements}. This
+	 * often causes very long {@link Resource#getContents() contents} lists and
+	 * can create a performance bottleneck especially for models that are not
+	 * loaded into main memory in their entirety.
+	 * <p>
+	 * The storage location of stereotype application {@link EObject objects}
+	 * can also be customized by creating a subclass of
+	 * {@link StereotypeApplicationHelper}. But there are two major differences
+	 * between <code>StereotypeApplicationHelper</code> and this
+	 * <code>StereotypeApplicationStorage</code>:
+	 * 
+	 * <ul>
+	 * <li><code>StereotypeApplicationHelper</code> does not provide a hook for
+	 * the <b>retrieval</b> of stereotype application {@link EObject objects}.
+	 * Instead it relies on a {@link CacheAdapter} to find the stereotype
+	 * applications, which can be very slow for large models or for models that
+	 * are not completely stored in local memory.
+	 * <p>
+	 * <code>StereotypeApplicationStorage</code>, in contrast,
+	 * {@link #getStereotypeApplications(Element) provides this hook}, so that
+	 * implementations of this interface can optimize the stereotype application
+	 * retrieval operations, as well.
+	 * 
+	 * <li><code>StereotypeApplicationHelper</code> is an {@link Adapter} that
+	 * needs to be attached to the model's {@link ResourceSet} in order to
+	 * become active. No information is <b>stored within</b> the model that
+	 * would help an application to determine and attach a specific helper
+	 * implementation. Consequently, when a model is shared between different
+	 * applications, it is possible that stereotype application {@link EObject
+	 * objects} of that model are stored according to different
+	 * <code>StereotypeApplicationHelper</code> strategies. Unless a single
+	 * storage strategy is guaranteed by the model itself, stereotype
+	 * application retrieval must be delegated to the {@link CacheAdapter} and
+	 * can not be optimized for a storage strategy.
+	 * <p>
+	 * <code>StereotypeApplicationStorage</code>, in contrast, is uniquely
+	 * identified by an {@link StereotypeApplicationStorage#getID() ID} and
+	 * registered with this ID in a global
+	 * {@link StereotypeApplicationStorage.Registry registry}. When a
+	 * <code>StereotypeApplicationStorage</code> is
+	 * {@link UMLUtil#setStereotypeApplicationStorage(Element, StereotypeApplicationStorage)
+	 * associated} with a model, this ID is <b>stored within</b> that model. The
+	 * UML2 model implementation, as opposed to individual applications,
+	 * associates and enforces the respective
+	 * <code>StereotypeApplicationStorage</code> strategy. With a single storage
+	 * strategy, guaranteed by the model itself, stereotype application
+	 * retrieval can be optimized by that storage strategy.
+	 * </ul>
+	 */
+	public interface StereotypeApplicationStorage {
+
+		/**
+		 * Returns the ID of this {@link StereotypeApplicationStorage storage},
+		 * never <code>null</code>.
+		 */
+		public String getID();
+
+		/**
+		 * Returns the translated name of this
+		 * {@link StereotypeApplicationStorage storage}, or <code>null</code> if
+		 * no translated name is available.
+		 */
+		public String getName();
+
+		/**
+		 * Returns the translated description of this
+		 * {@link StereotypeApplicationStorage storage}, or <code>null</code> if
+		 * no translated description is available.
+		 */
+		public String getDescription();
+
+		/**
+		 * Retrieves a list of all stereotype application {@link EObject
+		 * objects} of the given UML <code>element</code> according to and
+		 * optimized for the storage strategy of this
+		 * {@link StereotypeApplicationStorage storage}, never
+		 * <code>null</code>.
+		 */
+		public EList<EObject> getStereotypeApplications(Element element);
+
+		/**
+		 * Stores the given stereotype application {@link EObject object}
+		 * according to the storage strategy of this
+		 * {@link StereotypeApplicationStorage storage}.
+		 */
+		public void addStereotypeApplication(Element element,
+				Stereotype stereotype, EObject stereotypeApplication);
+
+		/**
+		 * Performs optional cleanup operations after one or more stereotype
+		 * application {@link EObject objects} were deleted.
+		 * <p>
+		 * This method is called when stereotypes were
+		 * {@link Element#unapplyStereotype(Stereotype) unapplied} or the
+		 * storage strategy was
+		 * {@link UMLUtil#setStereotypeApplicationStorage(Element, StereotypeApplicationStorage)
+		 * changed}.
+		 */
+		public void cleanup(Element element);
+
+		/**
+		 * A {@link StereotypeApplicationStorage} wrapper that is used by the
+		 * {@link StereotypeApplicationStorage.Registry Registry}.
+		 */
+		public interface Descriptor {
+
+			/**
+			 * Returns the ID of this {@link StereotypeApplicationStorage
+			 * storage} descriptor, never <code>null</code>.
+			 */
+			public String getID();
+
+			/**
+			 * Returns the translated name of this
+			 * {@link StereotypeApplicationStorage storage} descriptor, or
+			 * <code>null</code> if no translated name is available.
+			 */
+			public String getName();
+
+			/**
+			 * Returns the translated description of this
+			 * {@link StereotypeApplicationStorage storage} descriptor, or
+			 * <code>null</code> if no translated description is available.
+			 */
+			public String getDescription();
+
+			/**
+			 * Returns the wrapped {@link StereotypeApplicationStorage storage}
+			 * of this descriptor.
+			 */
+			public StereotypeApplicationStorage getStereotypeApplicationStorage();
+		}
+
+		/**
+		 * A map from {@link StereotypeApplicationStorage#getID() ID} to
+		 * {@link StereotypeApplicationStorage}.
+		 */
+		public interface Registry
+				extends Map<String, Object> {
+
+			public static final Registry INSTANCE = new StereotypeApplicationStorageRegistryImpl();
+
+			/**
+			 * Looks up the value in the map, converting
+			 * {@link StereotypeApplicationStorage.Descriptor} objects to
+			 * {@link StereotypeApplicationStorage} objects on demand.
+			 */
+			public StereotypeApplicationStorage getStereotypeApplicationStorage(
+					String id);
+		}
+
+		/**
+		 * A built-in {@link StereotypeApplicationStorage stereotype application
+		 * storage} that stores the stereotype applications of a UML element
+		 * {@link EAnnotation#getContents() within} an {@link EAnnotation} that
+		 * is {@link Element#getEAnnotations() attached} to that UML element.
+		 * <p>
+		 * This storage strategy has the advantage that the
+		 * {@link StereotypeApplicationStorage#getStereotypeApplications(Element)
+		 * retrieval} of the stereotype application objects of a specific UML
+		 * element is faster than the default storage strategy (which stores the
+		 * stereotype applications of all model elements in the
+		 * {@link Resource#getContents() contents list} of the model's
+		 * {@link Resource resource} ).
+		 */
+		public static final class ContainedByElement
+				implements StereotypeApplicationStorage {
+
+			/**
+			 * The singleton instance of this
+			 * {@link StereotypeApplicationStorage storage}.
+			 */
+			public static final ContainedByElement INSTANCE = new ContainedByElement();
+
+			private static final String ANNOTATION__STEREOTYPE_APPLICATIONS = "http://www.eclipse.org/uml2/StereotypeApplications"; //$NON-NLS-1$
+
+			private ContainedByElement() {
+			}
+
+			/**
+			 * Returns the string
+			 * <code>org.eclipse.uml2.uml.ContainedByElement</code>.
+			 */
+			public String getID() {
+				return "org.eclipse.uml2.uml.ContainedByElement"; //$NON-NLS-1$
+			}
+
+			/**
+			 * {@inheritDoc}
+			 */
+			public String getName() {
+				return UMLPlugin.INSTANCE.getString(
+					"_UI_StereotypeApplicationStorage_ContainedByElement_name"); //$NON-NLS-1$
+			}
+
+			/**
+			 * {@inheritDoc}
+			 */
+			public String getDescription() {
+				return UMLPlugin.INSTANCE.getString(
+					"_UI_StereotypeApplicationStorage_ContainedByElement_description"); //$NON-NLS-1$
+			}
+
+			/**
+			 * {@inheritDoc}
+			 */
+			public EList<EObject> getStereotypeApplications(Element element) {
+				EAnnotation annotation = getEAnnotation(element,
+					ANNOTATION__STEREOTYPE_APPLICATIONS, false);
+				if (annotation != null) {
+					EList<EObject> stereotypeApplications = new UniqueEList.FastCompare<EObject>();
+
+					for (EObject eObject : annotation.getContents()) {
+						if (getStereotype(eObject) != null) {
+							stereotypeApplications.add(eObject);
+						}
+					}
+
+					return ECollections
+						.unmodifiableEList(stereotypeApplications);
+				}
+
+				return ECollections.emptyEList();
+			}
+
+			/**
+			 * Stores the given stereotype application
+			 * {@link EAnnotation#getContents() within} an on-demand-created
+			 * {@link EAnnotation} that is {@link Element#getEAnnotations()
+			 * attached} to the given UML element.
+			 */
+			public void addStereotypeApplication(Element element,
+					Stereotype stereotype, EObject stereotypeApplication) {
+				EAnnotation annotation = getEAnnotation(element,
+					ANNOTATION__STEREOTYPE_APPLICATIONS, true);
+				annotation.getContents().add(stereotypeApplication);
+			}
+
+			/**
+			 * Removes the {@link EAnnotation} that is
+			 * {@link Element#getEAnnotations() attached} to the given UML
+			 * element, if it exists and does no longer store any stereotype
+			 * applications.
+			 */
+			public void cleanup(Element element) {
+				EAnnotation annotation = getEAnnotation(element,
+					ANNOTATION__STEREOTYPE_APPLICATIONS, false);
+				if (annotation != null && annotation.getContents().isEmpty()) {
+					EcoreUtil.remove(annotation);
+				}
+			}
+
+			@Override
+			public String toString() {
+				return getID();
+			}
+		}
+	}
+
+	/**
+	 * An {@link HashMap}-based implementation of a
+	 * {@link StereotypeApplicationStorage.Registry stereotype application
+	 * storage registry}.
+	 */
+	private static final class StereotypeApplicationStorageRegistryImpl
+			extends HashMap<String, Object>
+			implements StereotypeApplicationStorage.Registry {
+
+		private static final long serialVersionUID = 1L;
+
+		/**
+		 * Constructs this stereotype application storage registry and registers
+		 * the built-in {@link ContainedByElement} storage.
+		 */
+		public StereotypeApplicationStorageRegistryImpl() {
+			put(ContainedByElement.INSTANCE.getID(),
+				ContainedByElement.INSTANCE);
+		}
+
+		/**
+		 * {@inheritDoc}
+		 */
+		public StereotypeApplicationStorage getStereotypeApplicationStorage(
+				String id) {
+			Object value = get(id);
+
+			if (value instanceof StereotypeApplicationStorage.Descriptor) {
+				StereotypeApplicationStorage.Descriptor descriptor = (StereotypeApplicationStorage.Descriptor) value;
+
+				value = descriptor.getStereotypeApplicationStorage();
+				if (value != null) {
+					put(id, value);
+				}
+			}
+
+			if (value instanceof StereotypeApplicationStorage) {
+				return (StereotypeApplicationStorage) value;
+			}
+
+			return null;
+		}
+	}
+	
 	/**
 	 * A qualified text provider that uses names of named elements as qualified
 	 * text segments and :: as a separator.
@@ -12432,8 +12972,34 @@ public class UMLUtil
 		}
 	}
 
+	private static EObject storeStereotypeApplication(Element element,
+			EClass definition, Stereotype stereotype) {
+		StereotypeApplicationStorage storage = UMLUtil
+			.getStereotypeApplicationStorage(element);
+		if (storage != null) {
+			EObject stereotypeApplication = EcoreUtil.create(definition);
+			CacheAdapter.getInstance().adapt(stereotypeApplication);
+
+			storage.addStereotypeApplication(element, stereotype,
+				stereotypeApplication);
+
+			basicSetBaseElement(stereotypeApplication, definition, element);
+			return stereotypeApplication;
+		}
+
+		return null;
+	}
+
 	protected static EObject applyStereotype(Element element, EClass definition,
 			Stereotype stereotype) {
+		if (UMLUtil.isStereotypeApplicationStorageEnabled()) {
+			EObject stereotypeApplication = storeStereotypeApplication(element,
+				definition, stereotype);
+			if (stereotypeApplication != null) {
+				return stereotypeApplication;
+			}
+		}
+
 		return StereotypeApplicationHelper.getInstance(element)
 			.applyStereotype(element, definition, stereotype);
 	}
@@ -12441,6 +13007,14 @@ public class UMLUtil
 	@Deprecated
 	protected static EObject applyStereotype(Element element,
 			EClass definition) {
+		if (UMLUtil.isStereotypeApplicationStorageEnabled()) {
+			EObject stereotypeApplication = storeStereotypeApplication(element,
+				definition, null);
+			if (stereotypeApplication != null) {
+				return stereotypeApplication;
+			}
+		}
+
 		return StereotypeApplicationHelper.getInstance(element)
 			.applyStereotype(element, definition, null);
 	}
@@ -12541,6 +13115,21 @@ public class UMLUtil
 		}
 
 		return false;
+	}
+
+	protected static org.eclipse.uml2.uml.Package getOutermostPackage(
+			Element element, boolean resolve) {
+		org.eclipse.uml2.uml.Package farthestPackage = UMLPackage.Literals.PACKAGE
+			.isInstance(element)
+				? (org.eclipse.uml2.uml.Package) element
+				: null;
+
+		while ((element = getOwningElement(element, UMLPackage.Literals.PACKAGE,
+			resolve)) != null) {
+			farthestPackage = (org.eclipse.uml2.uml.Package) element;
+		}
+
+		return farthestPackage;
 	}
 
 	protected static Element getOwningElement(Element element, EClass eClass,

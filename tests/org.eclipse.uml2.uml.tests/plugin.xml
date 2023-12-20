@@ -69,5 +69,15 @@
             location="pathmap://UML_TEST_PROFILES/Bug401804.profile.uml#_V2BR0HerEeOXG-Ysr10KOA">
       </profile>
    </extension>
+   
+   <extension
+         point="org.eclipse.uml2.uml.stereotype_application_storage">
+      <storage
+            class="org.eclipse.uml2.uml.bug.tests.StereotypeApplicationStorageTest$TestStorage"
+            description="Stores stereotype applications in memory. Used for testing."
+            id="org.eclipse.uml2.uml.tests.TestStorage"
+            name="In Memory">
+      </storage>
+   </extension>
 
 </plugin>

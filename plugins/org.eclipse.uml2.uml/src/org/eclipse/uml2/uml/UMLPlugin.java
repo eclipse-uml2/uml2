@@ -33,6 +33,8 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.plugin.RegistryReader;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.uml2.uml.resource.UMLResource;
+import org.eclipse.uml2.uml.util.UMLUtil.StereotypeApplicationStorage;
+import org.eclipse.uml2.uml.util.UMLUtil.StereotypeApplicationStorage.Descriptor;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -43,6 +45,95 @@ import org.osgi.framework.BundleContext;
  */
 public final class UMLPlugin
 		extends EMFPlugin {
+
+	private static final Map<String, StereotypeApplicationStorage> stereotypeApplicationStorages = 
+			new HashMap<String, StereotypeApplicationStorage>();
+
+	public static Map<String, StereotypeApplicationStorage> getStereotypeApplicationStorages() {
+		return stereotypeApplicationStorages;
+	}
+
+	protected static class StereotypeApplicationStorageReader
+			extends RegistryReader {
+
+		protected static final String TAG_STORAGE = "storage"; //$NON-NLS-1$
+
+		protected static final String ATT_ID = "id"; //$NON-NLS-1$
+
+		protected static final String ATT_NAME = "name"; //$NON-NLS-1$
+
+		protected static final String ATT_DESCRIPTION = "description"; //$NON-NLS-1$
+
+		protected static final String ATT_CLASS = "class"; //$NON-NLS-1$
+
+		protected StereotypeApplicationStorageReader() {
+			super(Platform.getExtensionRegistry(),
+				UMLPlugin.INSTANCE.getSymbolicName(),
+				STEREOTYPE_APPLICATION_STORAGE_PPID);
+		}
+
+		@Override
+		protected boolean readElement(IConfigurationElement element,
+				boolean add) {
+			String tagName = element.getName();
+
+			if (tagName.equals(TAG_STORAGE)) {
+				String id = element.getAttribute(ATT_ID);
+				if (id == null) {
+					logMissingAttribute(element, ATT_ID);
+					return false;
+				}
+
+				String class_ = element.getAttribute(ATT_CLASS);
+				if (class_ == null) {
+					logMissingAttribute(element, ATT_CLASS);
+					return false;
+				}
+
+				if (add) {
+					Descriptor descriptor = new DescriptorImpl(element);
+					StereotypeApplicationStorage.Registry.INSTANCE.put(id,
+						descriptor);
+				} else {
+					StereotypeApplicationStorage.Registry.INSTANCE.remove(id);
+				}
+
+				return true;
+			}
+
+			return false;
+		}
+
+		private static final class DescriptorImpl
+				extends PluginClassDescriptor
+				implements StereotypeApplicationStorage.Descriptor {
+
+			public DescriptorImpl(IConfigurationElement element) {
+				super(element, ATT_CLASS);
+			}
+
+			public String getID() {
+				return element.getAttribute(ATT_ID);
+			}
+
+			public String getName() {
+				return element.getAttribute(ATT_NAME);
+			}
+
+			public String getDescription() {
+				return element.getAttribute(ATT_DESCRIPTION);
+			}
+
+			public StereotypeApplicationStorage getStereotypeApplicationStorage() {
+				return (StereotypeApplicationStorage) createInstance();
+			}
+			
+			@Override
+			public String toString() {
+				return getID();
+			}
+		}
+	}
 
 	protected static class PackageRegistryReader
 			extends RegistryReader {
@@ -175,6 +266,8 @@ public final class UMLPlugin
 		return ePackageNsURIToPackageLocationMap;
 	}
 
+	protected static final String STEREOTYPE_APPLICATION_STORAGE_PPID = "stereotype_application_storage"; //$NON-NLS-1$
+	
 	protected static final String GENERATED_PACKAGE_PPID = "generated_package"; //$NON-NLS-1$
 
 	protected static final String DYNAMIC_PACKAGE_PPID = "dynamic_package"; //$NON-NLS-1$
@@ -303,6 +396,7 @@ public final class UMLPlugin
 		}
 
 		private static void internalProcessExtensions() {
+			new StereotypeApplicationStorageReader().readRegistry();
 			new GeneratedPackageRegistryReader(
 				getEPackageNsURIToProfileLocationMap(),
 				getEPackageNsURIToPackageLocationMap()).readRegistry();
