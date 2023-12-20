@@ -68,6 +68,7 @@ public class UMLBugTests
 		result.addTest(Bug511674Test.suite());
 		result.addTest(Bug512520Test.suite());
 		result.addTest(Bug528762Test.suite());
+		result.addTest(Bug582622StereotypeApplicationStorageTest.suite());
 		
 		return result;
 	}

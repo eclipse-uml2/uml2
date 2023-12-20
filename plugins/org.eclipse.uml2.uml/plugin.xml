@@ -59,6 +59,7 @@
     <fileTypes extension="uml" type="text" />
   </extension>
 
+  <extension-point id="stereotype_application_storage" name="%_UI_StereotypeApplicationStorage_extensionpoint" schema="schema/stereotype_application_storage.exsd" />
   <extension-point id="generated_package" name="%_UI_GeneratedPackageRegistry_extensionpoint" schema="schema/generated_package.exsd" />
   <extension-point id="dynamic_package" name="%_UI_DynamicPackageRegistry_extensionpoint" schema="schema/dynamic_package.exsd" />
 

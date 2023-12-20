@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2019 IBM Corporation, CEA, and others.
+ * Copyright (c) 2005, 2023 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181, 335125, 541314, 535301
  *   Kenn Hussey (CEA) - 327039, 424895, 451350, 485756
- *   Eike Stepper - 542789
+ *   Eike Stepper - 542789, 582622
  *
  */
 package org.eclipse.uml2.uml.internal.impl;
@@ -24,7 +24,9 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -50,6 +52,8 @@ import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.internal.operations.ElementOperations;
+import org.eclipse.uml2.uml.util.UMLUtil;
+import org.eclipse.uml2.uml.util.UMLUtil.StereotypeApplicationStorage;
 
 /**
  * <!-- begin-user-doc -->
@@ -173,7 +177,7 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<EObject> getStereotypeApplications() {
+	public EList<EObject> getStereotypeApplicationsGen() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
@@ -189,6 +193,18 @@ public abstract class ElementImpl
 		return ElementOperations.getStereotypeApplications(this);
 	}
 
+	public EList<EObject> getStereotypeApplications() {
+		StereotypeApplicationStorage storage = UMLUtil
+			.isStereotypeApplicationStorageEnabled()
+				? UMLUtil.getStereotypeApplicationStorage(this)
+				: null;
+		if (storage != null) {
+			return storage.getStereotypeApplications(this);
+		}
+
+		return getStereotypeApplicationsGen();
+	}
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -233,7 +249,7 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Stereotype> getAppliedStereotypes() {
+	public EList<Stereotype> getAppliedStereotypesGen() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
@@ -249,6 +265,26 @@ public abstract class ElementImpl
 		return ElementOperations.getAppliedStereotypes(this);
 	}
 
+	public EList<Stereotype> getAppliedStereotypes() {
+		StereotypeApplicationStorage storage = UMLUtil
+			.isStereotypeApplicationStorageEnabled()
+				? UMLUtil.getStereotypeApplicationStorage(this)
+				: null;
+		if (storage != null) {
+			EList<Stereotype> appliedStereotypes = new UniqueEList.FastCompare<Stereotype>();
+
+			for (EObject stereotypeApplication : storage
+				.getStereotypeApplications(this)) {
+				appliedStereotypes
+					.add(UMLUtil.getStereotype(stereotypeApplication));
+			}
+
+			return ECollections.unmodifiableEList(appliedStereotypes);
+		}
+
+		return getAppliedStereotypesGen();
+	}
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
