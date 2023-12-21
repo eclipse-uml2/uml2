@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2023 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@
  *   Christian W. Damus (CEA) - 300957
  *   Kenn Hussey (CEA) - 485756, 517384
  *   Camille Letavernier - 528925
+ *   Eike Stepper - 582622
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -32,7 +33,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.UniqueEList;
-
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -45,9 +45,7 @@ import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.DirectedRelationship;
 import org.eclipse.uml2.uml.Element;
@@ -55,16 +53,15 @@ import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.Model;
-import org.eclipse.uml2.uml.Relationship;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.ProfileApplication;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Relationship;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UMLPlugin;
-
 import org.eclipse.uml2.uml.util.UMLUtil;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -1523,7 +1520,7 @@ public class ElementOperations
 
 					nonApplicableStereotypes.add(stereotypeApplication);
 
-					destroy(stereotypeApplication);
+					destroyStereotypeApplication(element, stereotypeApplication);
 				}
 			}
 		}
@@ -1591,9 +1588,25 @@ public class ElementOperations
 					stereotype.getQualifiedName()));
 		}
 
-		destroy(stereotypeApplication);
+		destroyStereotypeApplication(element, stereotypeApplication);
 
 		return stereotypeApplication;
+	}
+
+	protected static void destroyStereotypeApplication(Element element,
+			EObject stereotypeApplication) {
+		destroy(stereotypeApplication);
+
+		String storageName = UMLUtil.isStereotypeApplicationStorageEnabled()
+			? getStereotypeApplicationStorageID(element)
+			: null;
+		if (storageName != null) {
+			StereotypeApplicationStorage storage = StereotypeApplicationStorage.Registry.INSTANCE
+				.getStereotypeApplicationStorage(storageName);
+			if (storage != null) {
+				storage.cleanup(element);
+			}
+		}
 	}
 
 	/**
