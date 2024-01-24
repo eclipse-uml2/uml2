@@ -2,7 +2,7 @@
 <?eclipse version="3.4"?>
 
 <!--
- Copyright (c) 2012, 2018 CEA and others.
+ Copyright (c) 2012, 2024 CEA and others.
  All rights reserved.   This program and the accompanying materials
  are made available under the terms of the Eclipse Public License v2.0
  which accompanies this distribution, and is available at
@@ -73,7 +73,7 @@
    <extension
          point="org.eclipse.uml2.uml.stereotype_application_storage">
       <storage
-            class="org.eclipse.uml2.uml.bug.tests.StereotypeApplicationStorageTest$TestStorage"
+            class="org.eclipse.uml2.uml.bug.tests.Bug582622StereotypeApplicationStorageTest$TestStorage"
             description="Stores stereotype applications in memory. Used for testing."
             id="org.eclipse.uml2.uml.tests.TestStorage"
             name="In Memory">
