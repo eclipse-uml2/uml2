@@ -177,6 +177,18 @@
         <separator name="additions"/>
       </menu>
       <action
+         label="%_UI_ChangeStereotypeApplicationStorageAction_label"
+         class="org.eclipse.uml2.uml.editor.actions.ChangeStereotypeApplicationStorageAction"
+         menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.uml.editor.ElementMenuID/additions"
+         enablesFor="1"
+         id="org.eclipse.uml2.uml.editor.ChangeStereotypeApplicationStorageActionID">
+        <enablement>
+          <objectClass
+             name="org.eclipse.uml2.uml.Element">
+          </objectClass>
+        </enablement>
+      </action>
+      <action
          label="%_UI_ExpandTemplatesAction_label"
          class="org.eclipse.uml2.uml.editor.actions.ExpandTemplatesAction"
          menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.uml.editor.ElementMenuID/additions"
