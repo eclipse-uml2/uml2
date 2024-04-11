@@ -408,6 +408,17 @@ public class GenOperationImpl
 	public boolean isOverrideOf(
 			org.eclipse.emf.codegen.ecore.genmodel.GenClass genClass,
 			org.eclipse.emf.codegen.ecore.genmodel.GenOperation genOperation) {
+		// only redefined operations can override
+		if (!isRedefinition()) {
+			return false;
+		}
+		
+		// search in redefined operations
+		List<org.eclipse.emf.codegen.ecore.genmodel.GenOperation> redefinedOperations = getRedefinedGenOperations();
+		if (redefinedOperations.contains(genOperation))
+			return true;
+		
+		// nothing to override found
 		return false;
 	}
 
