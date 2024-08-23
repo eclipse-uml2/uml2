@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2023 IBM Corporation, Embarcadero Technologies, CEA, Christian W. Damus, EclipseSource and others.
+ * Copyright (c) 2005, 2023, 2024 IBM Corporation, Embarcadero Technologies, CEA, Christian W. Damus, EclipseSource and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@
  *   Camille Letavernier (EclipseSource) - 544487, 545578
  *   Camille Letavernier (EclipseSource) - 544487, 545578
  *   Eike Stepper - 582622
+ *   Pauline Deville (CEA) - 11
  */
 package org.eclipse.uml2.uml.util;
 
@@ -27,11 +28,13 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -113,7 +116,6 @@ import org.eclipse.uml2.uml.OpaqueBehavior;
 import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.OperationOwner;
-import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageMerge;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterDirectionKind;
@@ -693,6 +695,9 @@ public class UMLUtil
 			StereotypeApplicationHelper helper = newStorage != null ? null :StereotypeApplicationHelper
 					.getInstance(outermostPackage);
 			
+			Set<StereotypeApplicationInformations> stereotypeApplicationsToAdd = new HashSet<UMLUtil.StereotypeApplicationInformations>();
+			Set<StereotypeApplicationInformations> stereotypeApplicationsToClean = new HashSet<UMLUtil.StereotypeApplicationInformations>();
+			
 			for (Iterator<EObject> it = outermostPackage.eAllContents(); it
 				.hasNext();) {
 				EObject object = it.next();
@@ -705,17 +710,28 @@ public class UMLUtil
 							stereotypeApplication);
 
 						if (newStorage != null) {
-							newStorage.addStereotypeApplication(element,
-								stereotype, stereotypeApplication);
+							stereotypeApplicationsToAdd.add(new StereotypeApplicationInformations(element, stereotype, stereotypeApplication));
 						} else {
 							helper.addToContainmentList(element,
 								stereotypeApplication, stereotype);
 						}
 
 						if (oldStorage != null) {
-							oldStorage.cleanup(element);
+							stereotypeApplicationsToClean.add(new StereotypeApplicationInformations(element, stereotype, stereotypeApplication));
 						}
 					}
+				}
+			}
+
+			if (newStorage != null) {
+				for (StereotypeApplicationInformations stereotypeApplicationInfo : stereotypeApplicationsToAdd) {
+					newStorage.addStereotypeApplication(stereotypeApplicationInfo.element, stereotypeApplicationInfo.stereotype, stereotypeApplicationInfo.stereotypeApplication);
+				}
+			}
+
+			if (oldStorage != null) {
+				for (StereotypeApplicationInformations stereotypeApplicationInfo : stereotypeApplicationsToClean) {
+					oldStorage.cleanup(stereotypeApplicationInfo.element);
 				}
 			}
 
@@ -730,6 +746,34 @@ public class UMLUtil
 				EcoreUtil.remove(annotation);
 			}
 		}
+	}
+
+	/**
+	 * Class to be able to easily manipulate stereotype applications informations
+	 */
+	private static class StereotypeApplicationInformations {
+
+		/**
+		 * 
+		 * Constructor.
+		 *
+		 * @param element
+		 *            the stereotyped element
+		 * @param stereotype
+		 *            the stereotype applied
+		 * @param stereotypeApplication
+		 *            the stereotype application
+		 */
+		public StereotypeApplicationInformations(Element element, Stereotype stereotype, EObject stereotypeApplication) {
+			super();
+			this.element = element;
+			this.stereotype = stereotype;
+			this.stereotypeApplication = stereotypeApplication;
+		}
+
+		private Element element;
+		private Stereotype stereotype;
+		private EObject stereotypeApplication;
 	}
 
 	/**
