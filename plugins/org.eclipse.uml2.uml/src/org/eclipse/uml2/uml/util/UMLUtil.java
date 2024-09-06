@@ -698,29 +698,11 @@ public class UMLUtil
 			Set<StereotypeApplicationInformations> stereotypeApplicationsToAdd = new HashSet<UMLUtil.StereotypeApplicationInformations>();
 			Set<StereotypeApplicationInformations> stereotypeApplicationsToClean = new HashSet<UMLUtil.StereotypeApplicationInformations>();
 			
-			for (Iterator<EObject> it = outermostPackage.eAllContents(); it
-				.hasNext();) {
+			manageElementForMigrationToNewStereotypeApplicationStorage(newStorage, oldStorage, helper, stereotypeApplicationsToAdd, stereotypeApplicationsToClean, outermostPackage);
+
+			for (Iterator<EObject> it = outermostPackage.eAllContents(); it.hasNext();) {
 				EObject object = it.next();
-				if (object instanceof Element) {
-					element = (Element) object;
-
-					for (EObject stereotypeApplication : element
-						.getStereotypeApplications()) {
-						Stereotype stereotype = getStereotype(
-							stereotypeApplication);
-
-						if (newStorage != null) {
-							stereotypeApplicationsToAdd.add(new StereotypeApplicationInformations(element, stereotype, stereotypeApplication));
-						} else {
-							helper.addToContainmentList(element,
-								stereotypeApplication, stereotype);
-						}
-
-						if (oldStorage != null) {
-							stereotypeApplicationsToClean.add(new StereotypeApplicationInformations(element, stereotype, stereotypeApplication));
-						}
-					}
-				}
+				manageElementForMigrationToNewStereotypeApplicationStorage(newStorage, oldStorage, helper, stereotypeApplicationsToAdd, stereotypeApplicationsToClean, object);
 			}
 
 			if (newStorage != null) {
@@ -744,6 +726,45 @@ public class UMLUtil
 				annotation.getDetails().put(ANNOTATION_DETAIL__ID, newID);
 			} else if (annotation != null) {
 				EcoreUtil.remove(annotation);
+			}
+		}
+	}
+
+	/**
+	 * The goal of this method is to store in stereotypeApplicationsToAdd and stereotypeApplicationsToClean element that should be
+	 * add of clean according to the given object
+	 * 
+	 * @param newStorage
+	 *            the new StereotypeApplicationStorage
+	 * @param oldStorage
+	 *            the old StereotypeApplicationStorage
+	 * @param helper
+	 * @param stereotypeApplicationsToAdd
+	 *            the set of StereotypeApplicationInformations to complete for stereotype application to add
+	 * @param stereotypeApplicationsToClean
+	 *            the set of StereotypeApplicationInformations to complete for stereotype application to clean
+	 * @param object
+	 *            the optionally stereotyped object
+	 */
+	private static void manageElementForMigrationToNewStereotypeApplicationStorage(StereotypeApplicationStorage newStorage, StereotypeApplicationStorage oldStorage, StereotypeApplicationHelper helper,
+			Set<StereotypeApplicationInformations> stereotypeApplicationsToAdd,
+			Set<StereotypeApplicationInformations> stereotypeApplicationsToClean, EObject object) {
+		Element element;
+		if (object instanceof Element) {
+			element = (Element) object;
+
+			for (EObject stereotypeApplication : element.getStereotypeApplications()) {
+				Stereotype stereotype = getStereotype(stereotypeApplication);
+
+				if (newStorage != null) {
+					stereotypeApplicationsToAdd.add(new StereotypeApplicationInformations(element, stereotype, stereotypeApplication));
+				} else {
+					helper.addToContainmentList(element, stereotypeApplication, stereotype);
+				}
+
+				if (oldStorage != null) {
+					stereotypeApplicationsToClean.add(new StereotypeApplicationInformations(element, stereotype, stereotypeApplication));
+				}
 			}
 		}
 	}

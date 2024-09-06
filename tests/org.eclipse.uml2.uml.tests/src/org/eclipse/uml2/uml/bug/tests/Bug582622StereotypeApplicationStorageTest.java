@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Eike Stepper (Loehne, Germany), CEA, and others..
+ * Copyright (c) 2023-2024 Eike Stepper (Loehne, Germany), CEA, and others..
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   Eike Stepper - initial API and implementation
+ *   Pauline Deville (CEA) - 13
  */
 package org.eclipse.uml2.uml.bug.tests;
 
@@ -53,7 +54,9 @@ public class Bug582622StereotypeApplicationStorageTest
 
 	private Profile profile;
 
-	private Stereotype stereo;
+	private Stereotype stereoClass;
+
+	private Stereotype stereoPackage;
 
 	public Bug582622StereotypeApplicationStorageTest() {
 		super();
@@ -143,10 +146,15 @@ public class Bug582622StereotypeApplicationStorageTest
 		profile.setURI("http://www.eclipse.org/bogus/schema/2013/profile");
 		res.getContents().add(profile);
 
-		Class metaclass = getMetaclass("Class");
-		profile.createMetaclassReference(metaclass);
-		stereo = profile.createOwnedStereotype("test", false);
-		stereo.createExtension(metaclass, false);
+		Class metaclassClass = getMetaclass("Class");
+		profile.createMetaclassReference(metaclassClass);
+		stereoClass = profile.createOwnedStereotype("test_Class", false);
+		stereoClass.createExtension(metaclassClass, false);
+
+		Class metaclassPackage = getMetaclass("Package");
+		profile.createMetaclassReference(metaclassPackage);
+		stereoPackage = profile.createOwnedStereotype("test_Package", false);
+		stereoPackage.createExtension(metaclassPackage, false);
 
 		profile.define();
 		pkg.applyProfile(profile);
@@ -190,8 +198,8 @@ public class Bug582622StereotypeApplicationStorageTest
 		// 2) Apply the stereotype. Verify that the SA is stored in the
 		// "StereotypeApplications" EAnnotation below the element.
 
-		EObject application = fixture.applyStereotype(stereo);
-		assertTrue(fixture.isStereotypeApplied(stereo));
+		EObject application = fixture.applyStereotype(stereoClass);
+		assertTrue(fixture.isStereotypeApplied(stereoClass));
 		assertURIFragment(
 			"/0/Foo/%http:%2F%2Fwww.eclipse.org%2Fuml2%2FStereotypeApplications%/@contents.0",
 			application);
@@ -199,8 +207,8 @@ public class Bug582622StereotypeApplicationStorageTest
 
 		// 3) Unapply the stereotype. Verify that the SA is deleted.
 
-		fixture.unapplyStereotype(stereo);
-		assertFalse(fixture.isStereotypeApplied(stereo));
+		fixture.unapplyStereotype(stereoClass);
+		assertFalse(fixture.isStereotypeApplied(stereoClass));
 		assertURIFragment(null, application);
 	}
 
@@ -219,15 +227,15 @@ public class Bug582622StereotypeApplicationStorageTest
 		// 2) Apply the stereotype. Verify that the SA is no longer stored in
 		// the resource's contents list.
 
-		EObject application = fixture.applyStereotype(stereo);
-		assertTrue(fixture.isStereotypeApplied(stereo));
+		EObject application = fixture.applyStereotype(stereoClass);
+		assertTrue(fixture.isStereotypeApplied(stereoClass));
 		assertURIFragment(null, application);
 		assertEquals(2, fixture.eResource().getContents().size());
 
 		// 3) Unapply the stereotype. Verify that the SA is deleted.
 
-		fixture.unapplyStereotype(stereo);
-		assertFalse(fixture.isStereotypeApplied(stereo));
+		fixture.unapplyStereotype(stereoClass);
+		assertFalse(fixture.isStereotypeApplied(stereoClass));
 		assertURIFragment(null, application);
 	}
 
@@ -236,8 +244,8 @@ public class Bug582622StereotypeApplicationStorageTest
 		// 1) Apply the stereotype while no special SA Storage
 		// is active. Verify that the SA is stored in the resource contents.
 
-		EObject application = fixture.applyStereotype(stereo);
-		assertTrue(fixture.isStereotypeApplied(stereo));
+		EObject application = fixture.applyStereotype(stereoClass);
+		assertTrue(fixture.isStereotypeApplied(stereoClass));
 		assertURIFragment("/2", application);
 		assertEquals(3, fixture.eResource().getContents().size());
 
@@ -251,7 +259,7 @@ public class Bug582622StereotypeApplicationStorageTest
 
 		UMLUtil.setStereotypeApplicationStorage(fixture,
 			ContainedByElement.INSTANCE);
-		assertTrue(fixture.isStereotypeApplied(stereo));
+		assertTrue(fixture.isStereotypeApplied(stereoClass));
 		assertURIFragment(
 			"/0/Foo/%http:%2F%2Fwww.eclipse.org%2Fuml2%2FStereotypeApplications%/@contents.0",
 			application);
@@ -265,7 +273,7 @@ public class Bug582622StereotypeApplicationStorageTest
 		// Verify that the SA is stored in the resource contents.
 
 		UMLUtil.setStereotypeApplicationStorage(fixture, null);
-		assertTrue(fixture.isStereotypeApplied(stereo));
+		assertTrue(fixture.isStereotypeApplied(stereoClass));
 		assertURIFragment("/2", application);
 		assertEquals(3, fixture.eResource().getContents().size());
 
@@ -275,14 +283,17 @@ public class Bug582622StereotypeApplicationStorageTest
 	}
 
 	public void test_migrateStereotypeApplications__TestStorage() {
-
-		// 1) Apply the stereotype while no special SA Storage
+		// 1) Apply stereotypes while no special SA Storage
 		// is active. Verify that the SA is stored in the resource contents.
+		Element rootPackage = fixture.getOwner();
+		assertTrue(rootPackage instanceof Package);
+		EObject applicationRoot = rootPackage.applyStereotype(stereoPackage);
+		assertURIFragment("/2", applicationRoot);
 
-		EObject application = fixture.applyStereotype(stereo);
-		assertTrue(fixture.isStereotypeApplied(stereo));
-		assertURIFragment("/2", application);
-		assertEquals(3, fixture.eResource().getContents().size());
+		EObject applicationFixture = fixture.applyStereotype(stereoClass);
+		assertTrue(fixture.isStereotypeApplied(stereoClass));
+		assertURIFragment("/3", applicationFixture);
+		assertEquals(4, fixture.eResource().getContents().size());
 
 		StereotypeApplicationStorage storage1 = UMLUtil
 			.getStereotypeApplicationStorage(fixture);
@@ -294,8 +305,8 @@ public class Bug582622StereotypeApplicationStorageTest
 
 		StereotypeApplicationStorage testStorage = UMLUtil
 			.setStereotypeApplicationStorageID(fixture, TestStorage.ID);
-		assertTrue(fixture.isStereotypeApplied(stereo));
-		assertURIFragment(null, application);
+		assertTrue(fixture.isStereotypeApplied(stereoClass));
+		assertURIFragment(null, applicationFixture);
 		assertEquals(2, fixture.eResource().getContents().size());
 
 		StereotypeApplicationStorage storage2 = UMLUtil
@@ -306,9 +317,11 @@ public class Bug582622StereotypeApplicationStorageTest
 		// Verify that the SA is stored in the resource contents.
 
 		UMLUtil.setStereotypeApplicationStorage(fixture, null);
-		assertTrue(fixture.isStereotypeApplied(stereo));
-		assertURIFragment("/2", application);
-		assertEquals(3, fixture.eResource().getContents().size());
+		assertTrue(rootPackage.isStereotypeApplied(stereoPackage));
+		assertTrue(fixture.isStereotypeApplied(stereoClass));
+		assertURIFragment("/2", applicationRoot);
+		assertURIFragment("/3", applicationFixture);
+		assertEquals(4, fixture.eResource().getContents().size());
 
 		StereotypeApplicationStorage storage3 = UMLUtil
 			.getStereotypeApplicationStorage(fixture);
