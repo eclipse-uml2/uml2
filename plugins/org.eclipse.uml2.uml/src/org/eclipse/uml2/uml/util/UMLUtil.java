@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2023 IBM Corporation, Embarcadero Technologies, CEA, Christian W. Damus, EclipseSource and others.
+ * Copyright (c) 2005, 2023, 2024 IBM Corporation, Embarcadero Technologies, CEA, Christian W. Damus, EclipseSource and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@
  *   Camille Letavernier (EclipseSource) - 544487, 545578
  *   Camille Letavernier (EclipseSource) - 544487, 545578
  *   Eike Stepper - 582622
+ *   Pauline Deville (CEA) - 11
  */
 package org.eclipse.uml2.uml.util;
 
@@ -27,11 +28,13 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -113,7 +116,6 @@ import org.eclipse.uml2.uml.OpaqueBehavior;
 import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.OperationOwner;
-import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageMerge;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterDirectionKind;
@@ -693,29 +695,25 @@ public class UMLUtil
 			StereotypeApplicationHelper helper = newStorage != null ? null :StereotypeApplicationHelper
 					.getInstance(outermostPackage);
 			
-			for (Iterator<EObject> it = outermostPackage.eAllContents(); it
-				.hasNext();) {
+			Set<StereotypeApplicationInformations> stereotypeApplicationsToAdd = new HashSet<UMLUtil.StereotypeApplicationInformations>();
+			Set<StereotypeApplicationInformations> stereotypeApplicationsToClean = new HashSet<UMLUtil.StereotypeApplicationInformations>();
+			
+			manageElementForMigrationToNewStereotypeApplicationStorage(newStorage, oldStorage, helper, stereotypeApplicationsToAdd, stereotypeApplicationsToClean, outermostPackage);
+
+			for (Iterator<EObject> it = outermostPackage.eAllContents(); it.hasNext();) {
 				EObject object = it.next();
-				if (object instanceof Element) {
-					element = (Element) object;
+				manageElementForMigrationToNewStereotypeApplicationStorage(newStorage, oldStorage, helper, stereotypeApplicationsToAdd, stereotypeApplicationsToClean, object);
+			}
 
-					for (EObject stereotypeApplication : element
-						.getStereotypeApplications()) {
-						Stereotype stereotype = getStereotype(
-							stereotypeApplication);
+			if (newStorage != null) {
+				for (StereotypeApplicationInformations stereotypeApplicationInfo : stereotypeApplicationsToAdd) {
+					newStorage.addStereotypeApplication(stereotypeApplicationInfo.element, stereotypeApplicationInfo.stereotype, stereotypeApplicationInfo.stereotypeApplication);
+				}
+			}
 
-						if (newStorage != null) {
-							newStorage.addStereotypeApplication(element,
-								stereotype, stereotypeApplication);
-						} else {
-							helper.addToContainmentList(element,
-								stereotypeApplication, stereotype);
-						}
-
-						if (oldStorage != null) {
-							oldStorage.cleanup(element);
-						}
-					}
+			if (oldStorage != null) {
+				for (StereotypeApplicationInformations stereotypeApplicationInfo : stereotypeApplicationsToClean) {
+					oldStorage.cleanup(stereotypeApplicationInfo.element);
 				}
 			}
 
@@ -730,6 +728,73 @@ public class UMLUtil
 				EcoreUtil.remove(annotation);
 			}
 		}
+	}
+
+	/**
+	 * The goal of this method is to store in stereotypeApplicationsToAdd and stereotypeApplicationsToClean element that should be
+	 * add of clean according to the given object
+	 * 
+	 * @param newStorage
+	 *            the new StereotypeApplicationStorage
+	 * @param oldStorage
+	 *            the old StereotypeApplicationStorage
+	 * @param helper
+	 * @param stereotypeApplicationsToAdd
+	 *            the set of StereotypeApplicationInformations to complete for stereotype application to add
+	 * @param stereotypeApplicationsToClean
+	 *            the set of StereotypeApplicationInformations to complete for stereotype application to clean
+	 * @param object
+	 *            the optionally stereotyped object
+	 */
+	private static void manageElementForMigrationToNewStereotypeApplicationStorage(StereotypeApplicationStorage newStorage, StereotypeApplicationStorage oldStorage, StereotypeApplicationHelper helper,
+			Set<StereotypeApplicationInformations> stereotypeApplicationsToAdd,
+			Set<StereotypeApplicationInformations> stereotypeApplicationsToClean, EObject object) {
+		Element element;
+		if (object instanceof Element) {
+			element = (Element) object;
+
+			for (EObject stereotypeApplication : element.getStereotypeApplications()) {
+				Stereotype stereotype = getStereotype(stereotypeApplication);
+
+				if (newStorage != null) {
+					stereotypeApplicationsToAdd.add(new StereotypeApplicationInformations(element, stereotype, stereotypeApplication));
+				} else {
+					helper.addToContainmentList(element, stereotypeApplication, stereotype);
+				}
+
+				if (oldStorage != null) {
+					stereotypeApplicationsToClean.add(new StereotypeApplicationInformations(element, stereotype, stereotypeApplication));
+				}
+			}
+		}
+	}
+
+	/**
+	 * Class to be able to easily manipulate stereotype applications informations
+	 */
+	private static class StereotypeApplicationInformations {
+
+		/**
+		 * 
+		 * Constructor.
+		 *
+		 * @param element
+		 *            the stereotyped element
+		 * @param stereotype
+		 *            the stereotype applied
+		 * @param stereotypeApplication
+		 *            the stereotype application
+		 */
+		public StereotypeApplicationInformations(Element element, Stereotype stereotype, EObject stereotypeApplication) {
+			super();
+			this.element = element;
+			this.stereotype = stereotype;
+			this.stereotypeApplication = stereotypeApplication;
+		}
+
+		private Element element;
+		private Stereotype stereotype;
+		private EObject stereotypeApplication;
 	}
 
 	/**
