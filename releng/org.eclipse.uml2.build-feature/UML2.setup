@@ -17,7 +17,7 @@
       source="http://www.eclipse.org/oomph/setup/BrandingInfo">
     <detail
         key="imageURI">
-      <value>https://git.eclipse.org/c/emf/org.eclipse.emf.git/plain/plugins/org.eclipse.emf/modeling32.png</value>
+      <value>https://raw.githubusercontent.com/eclipse-emf/org.eclipse.emf/master/plugins/org.eclipse.emf/modeling32.png</value>
     </detail>
     <detail
         key="siteURI">
