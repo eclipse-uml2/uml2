@@ -1760,13 +1760,6 @@ public class ElementOperations
 		EcoreUtil.remove(ancestorEObject);
 	}
 
-	protected static void destroyAll(Collection<EObject> eObjects) {
-
-		for (Iterator<EObject> o = eObjects.iterator(); o.hasNext();) {
-			destroy(o.next());
-		}
-	}
-
 	protected static EList<Element> allOwnedElements(Element element,
 			EList<Element> allOwnedElements) {
 
