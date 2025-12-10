@@ -1210,22 +1210,22 @@ public class ElementOperations
 	/**
 	 * Gets the existing definition of a {@code stereotype} in the context of an
 	 * {@code element}, optionally asserting its existence as a postcondition.
-	 * 
+	 *
 	 * @param element
 	 *            an element in a UML model
 	 * @param stereotype
 	 *            a stereotype
 	 * @param required
 	 *            whether to throw if the definition is not available
-	 * 
+	 *
 	 * @return the stereotype's definition, or {@code null} if it is not found
 	 *         or is not an {@link EClass}
 	 * @throws IllegalArgumentException
 	 *             if the resulting definition is {@code required} but not
 	 *             available
-	 * 
+	 *
 	 * @see #getDefinition(Element, Stereotype)
-	 * 
+	 *
 	 * @since 5.0
 	 */
 	protected static EClass getDefinition(Element element,
@@ -1715,7 +1715,7 @@ public class ElementOperations
 		if (ancestorEObject.eContents().isEmpty()) {
 
 			if (ancestorEObject instanceof Element) {
-				destroyAll(
+				UMLUtil.destroyAll(
 					((Element) ancestorEObject).getStereotypeApplications());
 				removeReferences(ancestorEObject, ancestorEObject);
 				ancestorEObject.eAdapters().clear();
@@ -1730,7 +1730,7 @@ public class ElementOperations
 				EObject eObject = allContents.next();
 
 				if (eObject instanceof Element) {
-					destroyAll(((Element) eObject).getStereotypeApplications());
+					UMLUtil.destroyAll(((Element) eObject).getStereotypeApplications());
 				}
 			}
 
@@ -1760,11 +1760,9 @@ public class ElementOperations
 		EcoreUtil.remove(ancestorEObject);
 	}
 
-	protected static void destroyAll(Collection<EObject> eObjects) {
-
-		for (Iterator<EObject> o = eObjects.iterator(); o.hasNext();) {
-			destroy(o.next());
-		}
+	@Deprecated /* @deprecated Use UMLUtil.destroyAll */
+	protected static void destroyAll(Collection<? extends EObject> eObjects) {
+		UMLUtil.destroyAll(eObjects);
 	}
 
 	protected static EList<Element> allOwnedElements(Element element,
