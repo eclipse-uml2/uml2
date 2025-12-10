@@ -1363,7 +1363,7 @@ public class Class
     stringBuffer.append(genFeature.getAPITags(genModel.getIndentation(stringBuffer)));
     }
     stringBuffer.append(TEXT_54);
-    if (genModel.useGenerics() && genFeature.isListDataType() && genFeature.isSetDefaultValue()) {
+    if (genFeature.isStaticDefaultValueUncheckedCast()) {
     stringBuffer.append(TEXT_73);
     }
     if (isJDK50 && genFeature.hasAPIDeprecatedTag()) {
