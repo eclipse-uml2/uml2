@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2016, 2018 Christian W. Damus and others.
- * 
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -43,7 +43,7 @@ import junit.framework.TestSuite;
  * Tests that we can more efficiently process profile/stereotype operations
  * on a large number of packages and stereotype applications using the
  * {@link UMLUtil#executeOperation(Runnable)} API.
- * 
+ *
  * @see https://bugs.eclipse.org/bugs/show_bug.cgi?id=497359
  */
 public class Bug497359Test extends TestCase {
@@ -71,9 +71,10 @@ public class Bug497359Test extends TestCase {
 	public void testReapplyProfile() {
 		// There is only the one
 		final Profile profile = fixture.getAppliedProfiles().get(0);
-		
+
 		runProfileOperationExperiment("reapply profile", 4, new Runnable() {
-			
+
+		//	@Override
 			public void run() {
 				fixture.applyProfile(profile);
 			}
@@ -91,7 +92,7 @@ public class Bug497359Test extends TestCase {
 		if (StandaloneSupport.isStandalone()) {
 			StandaloneSupport.init(rset);
 		}
-		
+
 		// Papyrus and other applications use this option because otherwise
 		// the profile-application annotation reference to the applied EPackage
 		// isn't set until after root elements are attached, and then because
@@ -126,7 +127,7 @@ public class Bug497359Test extends TestCase {
 		URL url = getClass().getResource("Bug497359.uml"); //$NON-NLS-1$
 		Package result = (Package) UML2Util.load(rset,
 			URI.createURI(url.toExternalForm()), UMLPackage.Literals.PACKAGE);
-		
+
 		// Load all of the sub-model units and send profile-ish resources
 		// to the end of the list
 		EcoreUtil.resolveAll(result);
@@ -138,26 +139,27 @@ public class Bug497359Test extends TestCase {
 				last = last - 1; // Keep them in the same relative order
 			}
 		}
-		
+
 		return result;
 	}
 
 	void runProfileOperationExperiment(String label, int expectedFactor,
 			final Runnable operation) {
-		
-		final int NUM_ITERATIONS = 10;
-		
+
+		final int NUM_ITERATIONS = 100;
+
 		// Take an average of a few runs on the operation as is
 		long withoutPOC = measure(NUM_ITERATIONS, operation);
-		
+
 		System.out.printf(
 				"Mean time to %s: %02.3fs%n",
 				label,
-				(double) withoutPOC / 1000.0);
+				withoutPOC / 1000.0);
 
 		// Take an average of a few runs on the operation in context
 		long withPOC = measure(NUM_ITERATIONS, new Runnable() {
-			
+
+		//	@Override
 			public void run() {
 				UMLUtil.executeOperation(operation);
 			}
@@ -166,29 +168,29 @@ public class Bug497359Test extends TestCase {
 		System.out.printf(
 				"Mean time to %s in context: %02.3fs%n",
 				label,
-				(double) withPOC / 1000.0);
-		
+				withPOC / 1000.0);
+
 		// Expect at least the expected factor of reduction in time
 		assertTrue(String.format(
 					"Expected %d times improvement in profile operation context",
 					expectedFactor),
 				withPOC <= (withoutPOC / expectedFactor));
 	}
-	
+
 	long measure(int numSamples, Runnable experiment) {
 		List<Long> samples = new ArrayList<Long>();
-		
+
 		for (int i = 0; i < numSamples; i++) {
 			long start = System.currentTimeMillis();
 			experiment.run();
 			long end = System.currentTimeMillis();
-			
+
 			// Exclude the effects of the CacheAdapter
 			CacheAdapter.getInstance().clear();
-			
+
 			samples.add(end - start);
 		}
-		
+
 		// Throw out the extremes
 		int min = 0;
 		int max = 0;
@@ -207,17 +209,17 @@ public class Bug497359Test extends TestCase {
 			samples.remove(min);
 			samples.remove(max);
 		}
-		
+
 		// Average what's left
 		long result = 0;
 		for (long sample : samples) {
 			result = result + sample;
 		}
 		result = result / samples.size();
-		
+
 		return result;
 	}
-	
+
 	void walkAllStereotypeApplications(Element element) {
 		TreeIterator<EObject> iter = UML2Util.getAllContents(element, true, false);
 		while (iter.hasNext()) {
