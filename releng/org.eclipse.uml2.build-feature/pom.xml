@@ -12,16 +12,23 @@
   <artifactId>org.eclipse.uml2.build</artifactId>
   <version>5.5.3-SNAPSHOT</version>
   <packaging>eclipse-repository</packaging>
+  <properties>
+    <maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
+  </properties>
   <build>
     <resources>
       <resource>
         <directory>.</directory>
         <filtering>true</filtering>
         <includes>
-          <include>downloads.sh</include>
+          <include>uml2-promoter.properties</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>.</directory>
+        <filtering>false</filtering>
+        <includes>
           <include>index.html</include>
-          <include>publisher.properties</include>
-          <include>updates.sh</include>
         </includes>
       </resource>
     </resources>

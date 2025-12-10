@@ -1,0 +1,140 @@
+pipeline {
+	agent {
+		label 'ubuntu-latest'
+	}
+
+	options {
+		buildDiscarder(logRotator(numToKeepStr: '5'))
+		disableConcurrentBuilds()
+		skipDefaultCheckout false
+	}
+
+	tools {
+		maven 'apache-maven-latest'
+		jdk 'openjdk-jdk17-latest'
+	}
+	
+	parameters {
+		choice(
+			name: 'BUILD_TYPE',
+			choices: ['nightly', 'milestone', 'release'],
+			description: '''
+<ul>
+<li> N - Nightly build
+<li> S - Stable / Milestone build
+<li> R - Release build
+</ul>				'''
+		)
+
+		string(
+			name: 'BUILD_PROMOTE',
+			defaultValue: 'https://ci.eclipse.org/uml2/job/uml2-master/lastSuccessfulBuild/artifact/releng/org.eclipse.uml2.build-feature/target/repository',
+			description: 'The repo to promote for the new build.'
+		)
+ 
+		string(
+			name: 'BUILD_ROOT',
+			defaultValue: '${project.build.directory}/justj-sync',
+			description: 'Root of intermediate site.'
+		)
+
+		string(
+			name: 'BUILD_REMOTE',
+			defaultValue: '-remote genie.uml2@projects-storage.eclipse.org:/home/data/httpd/download.eclipse.org/modeling/mdt/uml2',
+			description: 'JustJ command line token to specify the root of the published builds.'
+		)
+
+		string(
+			name: 'BUILD_COMMIT',
+			defaultValue: '-commit https://github.com/eclipse-uml2/uml2/commit/${env.GIT_COMMIT}',
+			description: 'JustJ command line token to specify the GIT commit of the published build.'
+		)
+
+		string(
+			name: 'BUILD_TIMESTAMP',
+			description: 'The timestamp / version qualifier of the new build. Leave blank for now.'
+		)
+
+		string(
+			name: 'BUILD_URL',
+			defaultValue: 'https://ci.eclipse.org/uml2/job/uml2-master/lastSuccessfulBuild/',
+			description: 'URL of the source build job.'
+		)
+	}
+
+	stages {
+		stage('Display Parameters') {
+			steps {
+				script {
+					env.BUILD_TYPE = params.BUILD_TYPE
+					env.BUILD_PROMOTE = params.BUILD_PROMOTE
+					env.BUILD_ROOT = params.BUILD_ROOT
+					env.BUILD_REMOTE = params.BUILD_REMOTE
+					env.BUILD_COMMIT = params.BUILD_COMMIT
+					env.BUILD_TIMESTAMP = params.BUILD_TIMESTAMP
+					env.BUILD_URL = params.BUILD_URL
+					def description = """
+BUILD_TYPE=${env.BUILD_TYPE}
+BUILD_PROMOTE=${env.BUILD_PROMOTE}
+BUILD_ROOT=${env.BUILD_ROOT}
+BUILD_REMOTE=${env.BUILD_REMOTE}
+BUILD_COMMIT=${env.BUILD_COMMIT}
+BUILD_TIMESTAMP=${env.BUILD_TIMESTAMP}
+BUILD_URL=${env.BUILD_URL}
+""".trim()
+					echo description
+					currentBuild.description = description.replace("\n", "<br/>")
+				}
+			}
+		}
+
+		stage('Build') {
+			steps {
+				sshagent(['projects-storage.eclipse.org-bot-ssh']) {
+					dir('.') {
+					sh '''
+						mvn	\
+							-f releng/org.eclipse.uml2.releng.promote/pom.xml \
+							--no-transfer-progress \
+							-DBUILD_TYPE=${BUILD_TYPE} \
+							-DBUILD_PROMOTE=${BUILD_PROMOTE} \
+							-DBUILD_ROOT=${BUILD_ROOT} \
+							"-DBUILD_REMOTE=${BUILD_REMOTE}" \
+							"-DBUILD_COMMIT=${BUILD_COMMIT}" \
+							"-DBUILD_TIMESTAMP=${BUILD_TIMESTAMP}" \
+							-DBUILD_URL=${BUILD_URL} \
+							--show-version \
+							clean \
+							verify
+						'''
+					}
+				}
+			}
+		}
+	}
+
+	post {
+		failure {
+			mail to: 'ed@willink.me.uk',
+			subject: "[UML2 CI] Build Failure ${currentBuild.fullDisplayName}",
+			mimeType: 'text/html',
+			body: "Project: ${env.JOB_NAME}<br/>Build Number: ${env.BUILD_NUMBER}<br/>Build URL: ${env.BUILD_URL}<br/>Console: ${env.BUILD_URL}/console"
+			archiveArtifacts allowEmptyArchive: true, artifacts: '**'
+		}
+
+		fixed {
+			mail to: 'ed@willink.me.uk',
+			subject: "[UML2 CI] Back to normal ${currentBuild.fullDisplayName}",
+			mimeType: 'text/html',
+			body: "Project: ${env.JOB_NAME}<br/>Build Number: ${env.BUILD_NUMBER}<br/>Build URL: ${env.BUILD_URL}<br/>Console: ${env.BUILD_URL}/console"
+		}
+
+//		always {
+//			junit '**/target/surefire-reports/TEST-*.xml'
+//		}
+
+//		cleanup {
+//			deleteDir()
+//		}
+	}
+}

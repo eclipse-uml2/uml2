@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.eclipse.uml2</groupId>
+	<artifactId>org.eclipse.uml2.releng.promote</artifactId>
+	<version>5.5.3-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<!-- based on releng/org.eclipse.nebula.site/promotion/pom.xml and https://eclipse.dev/justj/?page=tools --> 
+	<properties>
+	    <tycho-version>4.0.5</tycho-version>
+	    <tycho-extras-version>${tycho-version}</tycho-extras-version>
+		
+		<!--
+		Overrideable parameters - defaults here might suit usage as part of a total build, but we 
+		promote separately and only if the build succeeds, so overrides are probably necessary.
+		
+		The "Build UML2 Promote Test"" launch allows some testing locally.
+		
+		The "JustJ for UML2" Eclipse launch supports regular Java debugging."
+		-->
+		<BUILD_COMMIT>-commit https://github.com/eclipse-uml2/uml2/commit/?id=${env.GIT_COMMIT}</BUILD_COMMIT>
+		<BUILD_PROMOTE>${org.eclipse.justj.p2.manager.build.url}</BUILD_PROMOTE>
+		<BUILD_REMOTE>-remote genie.uml2@projects-storage.eclipse.org:/home/data/httpd/download.eclipse.org/modeling/mdt/uml2</BUILD_REMOTE>
+		<BUILD_ROOT>${project.build.directory}/justj-sync</BUILD_ROOT>
+		<BUILD_TIMESTAMP>-timestamp ${build.timestamp}</BUILD_TIMESTAMP>
+		<BUILD_TYPE>${build.type}</BUILD_TYPE>
+		<BUILD_URL>https://ci.eclipse.org/ocl/job/uml2-master/lastSuccessfulBuild/</BUILD_URL>
+		
+		<eclipse.repo>https://download.eclipse.org/releases/latest</eclipse.repo>
+		<justj.tools.repo>https://download.eclipse.org/justj/tools/updates/nightly/latest</justj.tools.repo>
+		<org.eclipse.justj.p2.manager.args></org.eclipse.justj.p2.manager.args>
+		<maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
+		
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-eclipse-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<executionEnvironment>JavaSE-17</executionEnvironment>
+					<dependencies>
+						<dependency>
+							<artifactId>org.eclipse.justj.p2</artifactId>
+							<type>eclipse-plugin</type>
+						</dependency>
+						<dependency>
+							<artifactId>org.apache.felix.scr</artifactId>
+							<type>eclipse-plugin</type>
+						</dependency>
+					</dependencies>
+					<repositories>
+						<repository>
+							<id>eclipse.repo</id>
+							<layout>p2</layout>
+							<url>${eclipse.repo}</url>
+						</repository>
+						<repository>
+							<id>justj.tools.repo</id>
+							<layout>p2</layout>
+							<url>${justj.tools.repo}</url>
+						</repository>
+					</repositories>
+				</configuration>
+				<executions>
+					<execution>
+						<id>promote</id>
+						<goals>
+							<goal>eclipse-run</goal>
+						</goals>
+						<phase>verify</phase>
+						<configuration>
+							<argLine>
+                              -Dorg.eclipse.equinox.p2.transport.ecf.retry=100
+							</argLine>
+							<appArgLine>
+                              -consoleLog
+                              -application org.eclipse.justj.p2.manager
+                              -data @None
+                              -nosplash
+                              ${org.eclipse.justj.p2.manager.args}
+                              ${BUILD_REMOTE}
+                              -retain 5
+                              -label "UML2"
+                              -build-url ${BUILD_URL}
+                              -root ${BUILD_ROOT}
+                              -relative builds
+                              -version-iu-pattern org\.eclipse\.uml2\.sdk\.feature.*
+                              -primary-iu-filter-pattern org\.eclipse\.uml2\.sdk\.feature.*
+                              ${BUILD_COMMIT}
+                              -target-url https://download.eclipse.org/modeling/mdt/uml2
+                              -promote ${BUILD_PROMOTE}
+                              ${BUILD_TIMESTAMP}
+                              -type ${BUILD_TYPE}
+                              -breadcrumb "UML2 https://projects.eclipse.org/projects/modeling.mdt.uml2"
+                              -mapping uml2->UML2
+                              -archive "P2 repos https://archive.eclipse.org/modeling/mdt/uml2/updates/releases"
+                              -archive "zips/drops https://archive.eclipse.org/modeling/mdt/uml2/downloads/drops"
+                              ${org.eclipse.justj.p2.manager.extra.args}
+							</appArgLine>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
