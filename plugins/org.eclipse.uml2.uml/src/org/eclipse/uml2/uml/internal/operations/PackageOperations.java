@@ -720,7 +720,7 @@ public class PackageOperations
 			}
 		}
 
-		destroyAll(profileApplications);
+		UMLUtil.destroyAll(profileApplications);
 
 		return package_.getAllAppliedProfiles().contains(profile)
 			? ECollections.<EObject> emptyEList()
@@ -872,7 +872,7 @@ public class PackageOperations
 			}
 		}
 
-		destroyAll(stereotypeApplications);
+		UMLUtil.destroyAll(stereotypeApplications);
 
 		for (Profile profile : profiles) {
 

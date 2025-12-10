@@ -1702,7 +1702,7 @@ public class ElementOperations
 		if (ancestorEObject.eContents().isEmpty()) {
 
 			if (ancestorEObject instanceof Element) {
-				destroyAll(
+				UMLUtil.destroyAll(
 					((Element) ancestorEObject).getStereotypeApplications());
 				removeReferences(ancestorEObject, ancestorEObject);
 				ancestorEObject.eAdapters().clear();
@@ -1717,7 +1717,7 @@ public class ElementOperations
 				EObject eObject = allContents.next();
 
 				if (eObject instanceof Element) {
-					destroyAll(((Element) eObject).getStereotypeApplications());
+					UMLUtil.destroyAll(((Element) eObject).getStereotypeApplications());
 				}
 			}
 
@@ -1747,11 +1747,9 @@ public class ElementOperations
 		EcoreUtil.remove(ancestorEObject);
 	}
 
-	protected static void destroyAll(Collection<EObject> eObjects) {
-
-		for (Iterator<EObject> o = eObjects.iterator(); o.hasNext();) {
-			destroy(o.next());
-		}
+	@Deprecated /* @deprecated Use UMLUtil.destroyAll */
+	protected static void destroyAll(Collection<? extends EObject> eObjects) {
+		UMLUtil.destroyAll(eObjects);
 	}
 
 	protected static EList<Element> allOwnedElements(Element element,
