@@ -7,7 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: org.eclipse.uml2.codegen.ecore.ui.CodeGenEcoreUIPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.eclipse.uml2.codegen.ecore.genmodel.provider,
  org.eclipse.uml2.codegen.ecore.ui
 Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.5.0,4.0.0)",
