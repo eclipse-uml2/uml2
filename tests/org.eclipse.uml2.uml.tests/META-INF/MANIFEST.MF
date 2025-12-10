@@ -6,7 +6,7 @@ Bundle-Version: 5.5.0.qualifier
 Bundle-ClassPath: uml2.uml.tests.jar
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.eclipse.uml2.uml.bug.tests,
  org.eclipse.uml2.uml.tests,
  org.eclipse.uml2.uml.tests.util,
