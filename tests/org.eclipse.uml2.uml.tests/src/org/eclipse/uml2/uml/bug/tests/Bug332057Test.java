@@ -36,6 +36,8 @@ import org.eclipse.uml2.uml.tests.util.StandaloneSupport;
 /**
  * Tests concurrent access to the {@link CacheAdapter} from multiple threads.
  */
+// See Issue #118 for discussion as to why this test is an unsound attempt to test an invalid use case.
+@Deprecated
 public class Bug332057Test
 		extends TestCase {
 
