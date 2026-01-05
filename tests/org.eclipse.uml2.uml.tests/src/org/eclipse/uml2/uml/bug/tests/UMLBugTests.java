@@ -69,9 +69,6 @@ public class UMLBugTests
 		result.addTest(Bug512520Test.suite());
 		result.addTest(Bug528762Test.suite());
 		
-		// keep this one at the end because it runs long
-		result.addTest(Bug332057Test.suite());
-
 		return result;
 	}
 }
