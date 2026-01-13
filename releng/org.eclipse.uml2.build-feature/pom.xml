@@ -19,13 +19,6 @@
     <resources>
       <resource>
         <directory>.</directory>
-        <filtering>true</filtering>
-        <includes>
-          <include>uml2-promoter.properties</include>
-        </includes>
-      </resource>
-      <resource>
-        <directory>.</directory>
         <filtering>false</filtering>
         <includes>
           <include>index.html</include>

@@ -17,9 +17,9 @@
 		Overrideable parameters - defaults here might suit usage as part of a total build, but we 
 		promote separately and only if the build succeeds, so overrides are probably necessary.
 		
-		The "Build UML2 Promote Test"" launch allows some testing locally.
+		For limited testing locally see /org.eclipse.qvtd.releng.tycho/.launches/Build QVTd Promote Test.launch.
 		
-		The "JustJ for UML2" Eclipse launch supports regular Java debugging."
+		For regular Java debugging see /org.eclipse.qvtd.releng.tycho/.launches/JustJ for QVTd.launch"
 		-->
 		<BUILD_COMMIT>-commit https://github.com/eclipse-uml2/uml2/commit/?id=${env.GIT_COMMIT}</BUILD_COMMIT>
 		<BUILD_PROMOTE>${org.eclipse.justj.p2.manager.build.url}</BUILD_PROMOTE>
@@ -74,9 +74,6 @@
 						</goals>
 						<phase>verify</phase>
 						<configuration>
-							<argLine>
-                              -Dorg.eclipse.equinox.p2.transport.ecf.retry=100
-							</argLine>
 							<appArgLine>
                               -consoleLog
                               -application org.eclipse.justj.p2.manager

@@ -75,11 +75,6 @@ pipeline {
 					env.BUILD_URL = params.BUILD_URL
 					def description = """
 BUILD_TYPE=${env.BUILD_TYPE}
-BUILD_PROMOTE=${env.BUILD_PROMOTE}
-BUILD_ROOT=${env.BUILD_ROOT}
-BUILD_REMOTE=${env.BUILD_REMOTE}
-BUILD_COMMIT=${env.BUILD_COMMIT}
-BUILD_TIMESTAMP=${env.BUILD_TIMESTAMP}
 BUILD_URL=${env.BUILD_URL}
 """.trim()
 					echo description
@@ -91,23 +86,21 @@ BUILD_URL=${env.BUILD_URL}
 		stage('Build') {
 			steps {
 				sshagent(['projects-storage.eclipse.org-bot-ssh']) {
-					dir('.') {
 					sh '''
 						mvn	\
-							-f releng/org.eclipse.uml2.releng.promote/pom.xml \
+							-f releng/org.eclipse.uml2.releng.tycho/pomPromoter.xml \
 							--no-transfer-progress \
-							-DBUILD_TYPE=${BUILD_TYPE} \
-							-DBUILD_PROMOTE=${BUILD_PROMOTE} \
-							-DBUILD_ROOT=${BUILD_ROOT} \
-							"-DBUILD_REMOTE=${BUILD_REMOTE}" \
 							"-DBUILD_COMMIT=${BUILD_COMMIT}" \
+							-DBUILD_PROMOTE=${BUILD_PROMOTE} \
+							"-DBUILD_REMOTE=${BUILD_REMOTE}" \
+							-DBUILD_ROOT=${BUILD_ROOT} \
 							"-DBUILD_TIMESTAMP=${BUILD_TIMESTAMP}" \
+							-DBUILD_TYPE=${BUILD_TYPE} \
 							-DBUILD_URL=${BUILD_URL} \
 							--show-version \
 							clean \
 							verify
 						'''
-					}
 				}
 			}
 		}
@@ -115,23 +108,21 @@ BUILD_URL=${env.BUILD_URL}
 
 	post {
 		failure {
-			mail to: 'ed@willink.me.uk',
-			subject: "[UML2 CI] Build Failure ${currentBuild.fullDisplayName}",
-			mimeType: 'text/html',
-			body: "Project: ${env.JOB_NAME}<br/>Build Number: ${env.BUILD_NUMBER}<br/>Build URL: ${env.BUILD_URL}<br/>Console: ${env.BUILD_URL}/console"
+			mail to: 'ed@willink.me.uk', subject: "[UML2 CI] Build Failure ${currentBuild.fullDisplayName}", mimeType: 'text/plain',
+body: "Project: ${env.JOB_NAME} \n\
+Build Number: ${env.BUILD_NUMBER} \n\
+Build URL: <${env.BUILD_URL}> \n\
+Console: <${env.BUILD_URL}console>"
 			archiveArtifacts allowEmptyArchive: true, artifacts: '**'
 		}
 
 		fixed {
-			mail to: 'ed@willink.me.uk',
-			subject: "[UML2 CI] Back to normal ${currentBuild.fullDisplayName}",
-			mimeType: 'text/html',
-			body: "Project: ${env.JOB_NAME}<br/>Build Number: ${env.BUILD_NUMBER}<br/>Build URL: ${env.BUILD_URL}<br/>Console: ${env.BUILD_URL}/console"
+			mail to: 'ed@willink.me.uk', subject: "[UML2 CI] Back to normal ${currentBuild.fullDisplayName}", mimeType: 'text/plain',
+body: "Project: ${env.JOB_NAME} \n\
+Build Number: ${env.BUILD_NUMBER} \n\
+Build URL: <${env.BUILD_URL}> \n\
+Console: <${env.BUILD_URL}console>"
 		}
-
-//		always {
-//			junit '**/target/surefire-reports/TEST-*.xml'
-//		}
 
 //		cleanup {
 //			deleteDir()
