@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, 2018 Christian W. Damus and others.
+ * Copyright (c) 2016, 2026 Christian W. Damus and others.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0

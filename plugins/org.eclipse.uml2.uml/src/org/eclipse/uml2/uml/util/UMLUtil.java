@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2023 IBM Corporation, Embarcadero Technologies, CEA, Christian W. Damus, EclipseSource and others.
+ * Copyright (c) 2005, 2024 IBM Corporation, Embarcadero Technologies, CEA, Christian W. Damus, EclipseSource and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
