@@ -251,6 +251,12 @@
       </detail>
     </annotation>
     <configSections
+        name="core">
+      <properties
+          key="autocrlf"
+          value="input"/>
+    </configSections>
+    <configSections
         name="branch">
       <properties
           key="autoSetupRebase"
