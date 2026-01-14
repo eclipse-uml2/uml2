@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2024 IBM Corporation, Embarcadero Technologies, CEA, Christian W. Damus, EclipseSource and others.
+ * Copyright (c) 2005, 2024 IBM Corporation, Embarcadero Technologies, CEA, Christian W. Damus, EclipseSource, Data In Motion and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,8 @@
  *   Camille Letavernier (EclipseSource) - 544487, 545578
  *   Camille Letavernier (EclipseSource) - 544487, 545578
  *   Eike Stepper - 582622
+ *   Data In Motion - UML 2.5.1 support
+ *
  */
 package org.eclipse.uml2.uml.util;
 
@@ -149,6 +151,8 @@ import org.eclipse.uml2.uml.resource.UML302UMLExtendedMetaData;
 import org.eclipse.uml2.uml.resource.UML302UMLResource;
 import org.eclipse.uml2.uml.resource.UML402UMLExtendedMetaData;
 import org.eclipse.uml2.uml.resource.UML402UMLResource;
+import org.eclipse.uml2.uml.resource.UML510UMLExtendedMetaData;
+import org.eclipse.uml2.uml.resource.UML510UMLResource;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.eclipse.uml2.uml.resource.XMI212UMLResource;
 import org.eclipse.uml2.uml.resource.XMI222UMLResource;
@@ -14278,6 +14282,9 @@ public class UMLUtil
 				.getResourceFactoryRegistry().getContentTypeToFactoryMap();
 
 			contentTypeToFactoryMap.put(
+				UML510UMLResource.UML_5_1_0_CONTENT_TYPE_IDENTIFIER,
+				UML510UMLResource.Factory.INSTANCE);
+			contentTypeToFactoryMap.put(
 				UML402UMLResource.UML_4_0_0_CONTENT_TYPE_IDENTIFIER,
 				UML402UMLResource.Factory.INSTANCE);
 			contentTypeToFactoryMap.put(
@@ -14294,6 +14301,9 @@ public class UMLUtil
 				UML22UMLResource.Factory.INSTANCE);
 			contentTypeToFactoryMap.put(
 				XMI2UMLResource.UML_CONTENT_TYPE_IDENTIFIER,
+				XMI2UMLResource.Factory.INSTANCE);
+			contentTypeToFactoryMap.put(
+				XMI2UMLResource.UML_2_5_1_CONTENT_TYPE_IDENTIFIER,
 				XMI2UMLResource.Factory.INSTANCE);
 			contentTypeToFactoryMap.put(
 				XMI242UMLResource.UML_2_4_1_CONTENT_TYPE_IDENTIFIER,
@@ -14325,6 +14335,7 @@ public class UMLUtil
 
 			Map<URI, URI> uriMap = resourceSet.getURIConverter().getURIMap();
 
+			uriMap.putAll(UML510UMLExtendedMetaData.getURIMap());
 			uriMap.putAll(UML402UMLExtendedMetaData.getURIMap());
 			uriMap.putAll(UML302UMLExtendedMetaData.getURIMap());
 			uriMap.putAll(UML212UMLExtendedMetaData.getURIMap());

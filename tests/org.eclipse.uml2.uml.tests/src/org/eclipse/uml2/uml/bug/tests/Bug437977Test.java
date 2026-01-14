@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2014, 2018 CEA and others.
- * 
+ * Copyright (c) 2014, 2025 CEA, Data In Motion, and others.
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  * Contributors:
  *   Christian W. Damus (CEA) - initial API and implementation
  *   Kenn Hussey - 535301
+ *   Data In Motion - UML 2.5.1 support
  *
  */
 package org.eclipse.uml2.uml.bug.tests;
@@ -36,6 +37,7 @@ import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.resource.CMOF2UMLResource;
+import org.eclipse.uml2.uml.resource.UML510UMLResource;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.eclipse.uml2.uml.resource.XMI2UMLResource;
 import org.eclipse.uml2.uml.tests.util.StandaloneSupport;
@@ -90,6 +92,11 @@ public class Bug437977Test
 		doTest();
 	}
 
+	@UMLVersion("uml_5_1")
+	public void testUML_5_1() {
+		doTest();
+	}
+
 	@UMLVersion("cmof_2_0")
 	public void testCMOF_2_0() {
 		doTest();
@@ -122,6 +129,11 @@ public class Bug437977Test
 
 	@UMLVersion("xmi_2_5")
 	public void testXMI_2_5() {
+		doTest();
+	}
+
+	@UMLVersion("xmi_2_5_1")
+	public void testXMI_2_5_1() {
 		doTest();
 	}
 
@@ -177,6 +189,10 @@ public class Bug437977Test
 			.put(
 				UMLResource.UML_CONTENT_TYPE_IDENTIFIER,
 				org.eclipse.uml2.uml.internal.resource.UMLResourceFactoryImpl.class);
+		result
+			.put(
+				UML510UMLResource.UML_5_1_0_CONTENT_TYPE_IDENTIFIER,
+				org.eclipse.uml2.uml.internal.resource.UML510UMLResourceFactoryImpl.class);
 
 		// OMG XMI UML Resources
 		result
@@ -194,6 +210,10 @@ public class Bug437977Test
 		result
 			.put(
 				XMI2UMLResource.UML_CONTENT_TYPE_IDENTIFIER,
+				org.eclipse.uml2.uml.internal.resource.XMI2UMLResourceFactoryImpl.class);
+		result
+			.put(
+				XMI2UMLResource.UML_2_5_1_CONTENT_TYPE_IDENTIFIER,
 				org.eclipse.uml2.uml.internal.resource.XMI2UMLResourceFactoryImpl.class);
 
 		// CMOF Resources

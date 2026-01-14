@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2006, 2025 IBM Corporation, Embarcadero Technologies, CEA, Data In Motion, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,8 @@
  *   Kenn Hussey (Embarcadero Technologies) - 204202
  *   Kenn Hussey (CEA) - 327039, 351774, 418466, 457892, 458656
  *   Kenn Hussey - 535301
- * 
+ *   Data In Motion - UML 2.5.1 support
+ *
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -37,6 +38,10 @@ public class XMI2UMLExtendedMetaData
 					uriMap = new HashMap<URI, URI>();
 
 					uriMap.put(URI.createURI(XMI2UMLResource.STANDARD_PROFILE_URI),
+						URI.createURI(UMLResource.STANDARD_PROFILE_URI));
+
+					uriMap.put(
+						URI.createURI(XMI2UMLResource.STANDARD_PROFILE_2_5_1_URI),
 						URI.createURI(UMLResource.STANDARD_PROFILE_URI));
 
 					uriMap.put(
@@ -101,10 +106,12 @@ public class XMI2UMLExtendedMetaData
 	public EPackage getPackage(String namespace) {
 
 		if (XMI2UMLResource.XMI_NS_URI.equals(namespace)
+			|| XMI2UMLResource.XMI_2_5_1_NS_URI.equals(namespace)
 			|| XMI2UMLResource.XMI_2_4_1_NS_URI.equals(namespace)
 			|| XMI2UMLResource.XMI_2_4_NS_URI.equals(namespace)
 			|| XMI2UMLResource.XMI_2_1_NS_URI.equals(namespace)
 			|| XMI2UMLResource.MOF_NS_URI.equals(namespace)
+			|| XMI2UMLResource.MOF_2_5_1_NS_URI.equals(namespace)
 			|| XMI2UMLResource.MOF_2_4_1_NS_URI.equals(namespace)
 			|| XMI2UMLResource.MOF_2_4_NS_URI.equals(namespace)
 			|| XMI2UMLResource.MOF_2_0_NS_URI.equals(namespace)) {
@@ -113,6 +120,7 @@ public class XMI2UMLExtendedMetaData
 		}
 
 		return XMI2UMLResource.UML_METAMODEL_NS_URI.equals(namespace)
+			|| XMI2UMLResource.UML_METAMODEL_2_5_1_NS_URI.equals(namespace)
 			|| XMI2UMLResource.UML_METAMODEL_2_4_1_NS_URI.equals(namespace)
 			|| XMI2UMLResource.UML_METAMODEL_2_4_NS_URI.equals(namespace)
 			|| XMI2UMLResource.UML_METAMODEL_2_2_NS_URI.equals(namespace)
@@ -121,6 +129,8 @@ public class XMI2UMLExtendedMetaData
 			? UMLPackage.eINSTANCE
 			: super.getPackage(XMI2UMLResource.STANDARD_PROFILE_NS_URI
 				.equals(namespace)
+				|| XMI2UMLResource.STANDARD_PROFILE_2_5_1_NS_URI
+					.equals(namespace)
 				|| XMI2UMLResource.STANDARD_L2_PROFILE_2_4_1_NS_URI
 					.equals(namespace)
 				|| XMI2UMLResource.STANDARD_L2_PROFILE_2_4_NS_URI

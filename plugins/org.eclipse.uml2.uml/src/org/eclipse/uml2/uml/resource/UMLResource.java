@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2005, 2025 IBM Corporation, Embarcadero Technologies, CEA, Data In Motion, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 156879, 204200
  *   Kenn Hussey (CEA) - 327039, 418466
  *   Kenn Hussey - 535301
+ *   Data In Motion - UML 2.5.1 support
  *
  */
 package org.eclipse.uml2.uml.resource;
@@ -103,6 +104,11 @@ public interface UMLResource
 	String UML_4_0_0_CONTENT_TYPE_IDENTIFIER = "org.eclipse.uml2.uml_4_0_0"; //$NON-NLS-1$
 
 	String UML_5_0_0_CONTENT_TYPE_IDENTIFIER = "org.eclipse.uml2.uml_5_0_0"; //$NON-NLS-1$
+
+	/**
+	 * @since 5.1
+	 */
+	String UML_5_1_0_CONTENT_TYPE_IDENTIFIER = "org.eclipse.uml2.uml_5_1_0"; //$NON-NLS-1$
 
 	String UML_CONTENT_TYPE_IDENTIFIER = UML_5_0_0_CONTENT_TYPE_IDENTIFIER;
 
