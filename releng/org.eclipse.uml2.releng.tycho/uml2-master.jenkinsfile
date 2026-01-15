@@ -54,13 +54,18 @@ BUILD_TYPE=${env.BUILD_TYPE}
 			steps {
 				wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
 					sh '''
+						if [[ $BUILD_TYPE == 'milestone' ]]; then
+							targetPhase='deploy'
+						else
+							targetPhase='verify'
+						fi
 						mvn	\
 							-f releng/org.eclipse.uml2.releng.tycho/pom.xml \
 							--no-transfer-progress \
 							-DBUILD_TYPE=${BUILD_TYPE} \
 							--show-version \
 							clean \
-							deploy \
+							${targetPhase} \
 							-P${BUILD_TYPE} \
 							-Psign
 						'''
