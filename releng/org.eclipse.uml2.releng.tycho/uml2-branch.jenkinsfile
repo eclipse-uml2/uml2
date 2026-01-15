@@ -1,0 +1,104 @@
+pipeline {
+	agent {
+		label 'ubuntu-latest'
+	}
+
+	options {
+		buildDiscarder(logRotator(numToKeepStr: '5'))
+		disableConcurrentBuilds()
+		skipDefaultCheckout false
+	}
+
+	tools {
+		maven 'apache-maven-latest'
+		jdk 'openjdk-jdk21-latest'
+	}
+
+	environment {
+		BUILD_TIMESTAMP = sh(returnStdout: true, script: 'date +%Y%m%d%H%M').trim()
+	}
+	
+	parameters {
+		choice(
+			name: 'BUILD_TYPE',
+			choices: ['nightly', 'milestone'],
+			description: '''
+<ul>
+<li> N - Nightly build
+<li> S - Stable / Milestone build
+</ul>				'''
+		)
+		
+		string(
+			name: 'BRANCH_NAME',
+			defaultValue: 'master',
+			description: 'Specify a bug branch name for example: (issue/123).'
+		)
+	}
+
+	stages {
+		//
+		//	Set BUILD_TYPE in the Jenkins job description.
+		//
+		stage('Display Parameters') {
+			steps {
+				script {
+					env.BUILD_TYPE = params.BUILD_TYPE
+					def description = """
+BUILD_TYPE=${env.BUILD_TYPE}
+""".trim()
+					echo description
+					currentBuild.description = description.replace("\n", "<br/>")
+				}
+			}
+		}
+		//
+		//	Do the regular project build and test.
+		//
+		stage('Build') {
+			steps {
+				wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
+					sh '''
+						mvn	\
+							-f releng/org.eclipse.uml2.releng.tycho/pom.xml \
+							--no-transfer-progress \
+							-DBUILD_TYPE=${BUILD_TYPE} \
+							--show-version \
+							clean \
+							verify \
+							-P${BUILD_TYPE} \
+							-Psign
+						'''
+				}
+				archiveArtifacts artifacts: 'releng/org.eclipse.uml2.build-feature/target/repository/**/*'
+			}
+		}
+	}
+	
+	post {
+		failure {
+			mail to: 'ed@willink.me.uk', subject: "[UML2 CI] Build Failure ${currentBuild.fullDisplayName}", mimeType: 'text/plain',
+body: "Project: ${env.JOB_NAME} \n\
+Build Number: ${env.BUILD_NUMBER} \n\
+Build URL: <${env.BUILD_URL}> \n\
+Console: <${env.BUILD_URL}console>"
+			archiveArtifacts allowEmptyArchive: true, artifacts: '**'
+		}
+
+		fixed {
+			mail to: 'ed@willink.me.uk', subject: "[UML2 CI] Back to normal ${currentBuild.fullDisplayName}", mimeType: 'text/plain',
+body: "Project: ${env.JOB_NAME} \n\
+Build Number: ${env.BUILD_NUMBER} \n\
+Build URL: <${env.BUILD_URL}> \n\
+Console: <${env.BUILD_URL}console>"
+		}
+
+		always {
+			junit '**/target/surefire-reports/TEST-*.xml'
+		}
+
+//		cleanup {
+//			deleteDir()
+//		}
+	}
+}
