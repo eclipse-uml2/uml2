@@ -74,6 +74,9 @@
 						</goals>
 						<phase>verify</phase>
 						<configuration>
+							<argLine>
+                              -Dorg.eclipse.equinox.p2.transport.ecf.retry=100
+							</argLine>
 							<appArgLine>
                               -consoleLog
                               -application org.eclipse.justj.p2.manager
