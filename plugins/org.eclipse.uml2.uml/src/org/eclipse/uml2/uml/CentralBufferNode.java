@@ -29,9 +29,8 @@ package org.eclipse.uml2.uml;
  * @model
  * @generated
  */
-public interface CentralBufferNode
-		extends ObjectNode {
+public interface CentralBufferNode extends ObjectNode {
 
-	// no methods
+  // no methods
 
 } // CentralBufferNode

@@ -37,50 +37,46 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated
  */
-public class ExtendOperations
-		extends NamedElementOperations {
+public class ExtendOperations extends NamedElementOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ExtendOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected ExtendOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The ExtensionPoints referenced by the Extend relationship must belong to the UseCase that is being extended.
-	 * extensionLocation->forAll (xp | extendedCase.extensionPoint->includes(xp))
-	 * @param extend The receiving '<em><b>Extend</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateExtensionPoints(Extend extend,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
-					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.EXTEND__EXTENSION_POINTS,
-					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
-						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
-						new Object[]{"validateExtensionPoints", //$NON-NLS-1$
-							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(extend, context)}), new Object[]{extend}));
-			}
-			return false;
-		}
-		return true;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The ExtensionPoints referenced by the Extend relationship must belong to the UseCase that is being extended.
+   * extensionLocation->forAll (xp | extendedCase.extensionPoint->includes(xp))
+   * @param extend The receiving '<em><b>Extend</b></em>' model object.
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @generated
+   */
+  public static boolean validateExtensionPoints(Extend extend, DiagnosticChain diagnostics,
+      Map<Object, Object> context) {
+    // TODO: implement this method
+    // -> specify the condition that violates the invariant
+    // -> verify the details of the diagnostic, including severity and message
+    // Ensure that you remove @generated or mark it @generated NOT
+    if (false) {
+      if (diagnostics != null) {
+        diagnostics.add(
+            new BasicDiagnostic(Diagnostic.ERROR, UMLValidator.DIAGNOSTIC_SOURCE, UMLValidator.EXTEND__EXTENSION_POINTS,
+                org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString("_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+                    new Object[] { "validateExtensionPoints", //$NON-NLS-1$
+                        org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(extend, context) }), new Object[] { extend }));
+      }
+      return false;
+    }
+    return true;
+  }
 
 } // ExtendOperations

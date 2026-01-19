@@ -37,50 +37,46 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated
  */
-public class ExtensionPointOperations
-		extends RedefinableElementOperations {
+public class ExtensionPointOperations extends RedefinableElementOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ExtensionPointOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected ExtensionPointOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * An ExtensionPoint must have a name.
-	 * name->notEmpty ()
-	 * @param extensionPoint The receiving '<em><b>Extension Point</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateMustHaveName(ExtensionPoint extensionPoint,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
-					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.EXTENSION_POINT__MUST_HAVE_NAME,
-					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
-						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
-						new Object[]{"validateMustHaveName", //$NON-NLS-1$
-							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(extensionPoint, context)}), new Object[]{extensionPoint}));
-			}
-			return false;
-		}
-		return true;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * An ExtensionPoint must have a name.
+   * name->notEmpty ()
+   * @param extensionPoint The receiving '<em><b>Extension Point</b></em>' model object.
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @generated
+   */
+  public static boolean validateMustHaveName(ExtensionPoint extensionPoint, DiagnosticChain diagnostics,
+      Map<Object, Object> context) {
+    // TODO: implement this method
+    // -> specify the condition that violates the invariant
+    // -> verify the details of the diagnostic, including severity and message
+    // Ensure that you remove @generated or mark it @generated NOT
+    if (false) {
+      if (diagnostics != null) {
+        diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR, UMLValidator.DIAGNOSTIC_SOURCE,
+            UMLValidator.EXTENSION_POINT__MUST_HAVE_NAME,
+            org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString("_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+                new Object[] { "validateMustHaveName", //$NON-NLS-1$
+                    org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(extensionPoint, context) }), new Object[] { extensionPoint }));
+      }
+      return false;
+    }
+    return true;
+  }
 
 } // ExtensionPointOperations

@@ -25,27 +25,25 @@ import org.eclipse.uml2.uml.UMLPackage;
  *
  * @generated
  */
-public abstract class ControlNodeImpl
-		extends ActivityNodeImpl
-		implements ControlNode {
+public abstract class ControlNodeImpl extends ActivityNodeImpl implements ControlNode {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ControlNodeImpl() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected ControlNodeImpl() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return UMLPackage.Literals.CONTROL_NODE;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass() {
+    return UMLPackage.Literals.CONTROL_NODE;
+  }
 
 } //ControlNodeImpl

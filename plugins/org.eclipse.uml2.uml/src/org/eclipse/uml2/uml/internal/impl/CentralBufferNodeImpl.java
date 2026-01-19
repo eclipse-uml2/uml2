@@ -25,27 +25,25 @@ import org.eclipse.uml2.uml.UMLPackage;
  *
  * @generated
  */
-public class CentralBufferNodeImpl
-		extends ObjectNodeImpl
-		implements CentralBufferNode {
+public class CentralBufferNodeImpl extends ObjectNodeImpl implements CentralBufferNode {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected CentralBufferNodeImpl() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected CentralBufferNodeImpl() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return UMLPackage.Literals.CENTRAL_BUFFER_NODE;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass() {
+    return UMLPackage.Literals.CENTRAL_BUFFER_NODE;
+  }
 
 } //CentralBufferNodeImpl

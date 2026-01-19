@@ -26,12 +26,11 @@ package org.eclipse.uml2.uml;
  *
  *
  * @see org.eclipse.uml2.uml.UMLPackage#getLiteralNull()
- * @model
+ * @model annotation="duplicates"
  * @generated
  */
-public interface LiteralNull
-		extends LiteralSpecification {
+public interface LiteralNull extends LiteralSpecification {
 
-	// no methods
+  // no methods
 
 } // LiteralNull

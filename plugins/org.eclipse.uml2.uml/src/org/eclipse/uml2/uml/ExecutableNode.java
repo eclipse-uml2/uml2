@@ -37,41 +37,41 @@ import org.eclipse.emf.common.util.EList;
  * @model abstract="true"
  * @generated
  */
-public interface ExecutableNode
-		extends ActivityNode {
+public interface ExecutableNode extends ActivityNode {
 
-	/**
-	 * Returns the value of the '<em><b>Handler</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.uml.ExceptionHandler}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ExceptionHandler#getProtectedNode <em>Protected Node</em>}'.
-	 * <p>
-	 * This feature subsets the following features:
-	 * </p>
-	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
-	 * </ul>
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A set of ExceptionHandlers that are examined if an exception propagates out of the ExceptionNode.
-	 * <p>From package UML::Activities.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Handler</em>' containment reference list.
-	 * @see org.eclipse.uml2.uml.UMLPackage#getExecutableNode_Handler()
-	 * @see org.eclipse.uml2.uml.ExceptionHandler#getProtectedNode
-	 * @model opposite="protectedNode" containment="true" resolveProxies="true" ordered="false"
-	 * @generated
-	 */
-	EList<ExceptionHandler> getHandlers();
+  /**
+   * Returns the value of the '<em><b>Handler</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.uml2.uml.ExceptionHandler}.
+   * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ExceptionHandler#getProtectedNode <em>Protected Node</em>}'.
+   * <p>
+   * This feature subsets the following features:
+   * </p>
+   * <ul>
+   *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+   * </ul>
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * A set of ExceptionHandlers that are examined if an exception propagates out of the ExceptionNode.
+   * <p>From package UML::Activities.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Handler</em>' containment reference list.
+   * @see org.eclipse.uml2.uml.UMLPackage#getExecutableNode_Handler()
+   * @see org.eclipse.uml2.uml.ExceptionHandler#getProtectedNode
+   * @model opposite="protectedNode" containment="true" resolveProxies="true" ordered="false"
+   *        annotation="subsets"
+   * @generated
+   */
+  EList<ExceptionHandler> getHandlers();
 
-	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.ExceptionHandler} and appends it to the '<em><b>Handler</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return The new {@link org.eclipse.uml2.uml.ExceptionHandler}.
-	 * @see #getHandlers()
-	 * @generated
-	 */
-	ExceptionHandler createHandler();
+  /**
+   * Creates a new {@link org.eclipse.uml2.uml.ExceptionHandler} and appends it to the '<em><b>Handler</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return The new {@link org.eclipse.uml2.uml.ExceptionHandler}.
+   * @see #getHandlers()
+   * @generated
+   */
+  ExceptionHandler createHandler();
 
 } // ExecutableNode

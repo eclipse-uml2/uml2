@@ -43,80 +43,78 @@ import org.eclipse.emf.ecore.EClass;
  * @model
  * @generated
  */
-public interface DurationObservation
-		extends Observation {
+public interface DurationObservation extends Observation {
 
-	/**
-	 * Returns the value of the '<em><b>Event</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.uml.NamedElement}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The DurationObservation is determined as the duration between the entering or exiting of a single event Element during execution, or the entering/exiting of one event Element and the entering/exiting of a second.
-	 * <p>From package UML::Values.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Event</em>' reference list.
-	 * @see org.eclipse.uml2.uml.UMLPackage#getDurationObservation_Event()
-	 * @model required="true" upper="2"
-	 * @generated
-	 */
-	EList<NamedElement> getEvents();
+  /**
+   * Returns the value of the '<em><b>Event</b></em>' reference list.
+   * The list contents are of type {@link org.eclipse.uml2.uml.NamedElement}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The DurationObservation is determined as the duration between the entering or exiting of a single event Element during execution, or the entering/exiting of one event Element and the entering/exiting of a second.
+   * <p>From package UML::Values.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Event</em>' reference list.
+   * @see org.eclipse.uml2.uml.UMLPackage#getDurationObservation_Event()
+   * @model required="true" upper="2"
+   * @generated
+   */
+  EList<NamedElement> getEvents();
 
-	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Event</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.NamedElement} to retrieve, or <code>null</code>.
-	 * @return The first {@link org.eclipse.uml2.uml.NamedElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
-	 * @see #getEvents()
-	 * @generated
-	 */
-	NamedElement getEvent(String name);
+  /**
+   * Retrieves the first {@link org.eclipse.uml2.uml.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Event</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.NamedElement} to retrieve, or <code>null</code>.
+   * @return The first {@link org.eclipse.uml2.uml.NamedElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+   * @see #getEvents()
+   * @generated
+   */
+  NamedElement getEvent(String name);
 
-	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Event</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.NamedElement} to retrieve, or <code>null</code>.
-	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
-	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.NamedElement} to retrieve, or <code>null</code>.
-	 * @return The first {@link org.eclipse.uml2.uml.NamedElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
-	 * @see #getEvents()
-	 * @generated
-	 */
-	NamedElement getEvent(String name, boolean ignoreCase, EClass eClass);
+  /**
+   * Retrieves the first {@link org.eclipse.uml2.uml.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Event</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.NamedElement} to retrieve, or <code>null</code>.
+   * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+   * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.NamedElement} to retrieve, or <code>null</code>.
+   * @return The first {@link org.eclipse.uml2.uml.NamedElement} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+   * @see #getEvents()
+   * @generated
+   */
+  NamedElement getEvent(String name, boolean ignoreCase, EClass eClass);
 
-	/**
-	 * Returns the value of the '<em><b>First Event</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.Boolean}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The value of firstEvent[i] is related to event[i] (where i is 1 or 2). If firstEvent[i] is true, then the corresponding observation event is the first time instant the execution enters event[i]. If firstEvent[i] is false, then the corresponding observation event is the time instant the execution exits event[i].
-	 * <p>From package UML::Values.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>First Event</em>' attribute list.
-	 * @see org.eclipse.uml2.uml.UMLPackage#getDurationObservation_FirstEvent()
-	 * @model dataType="org.eclipse.uml2.types.Boolean" upper="2" ordered="false"
-	 * @generated
-	 */
-	EList<Boolean> getFirstEvents();
+  /**
+   * Returns the value of the '<em><b>First Event</b></em>' attribute list.
+   * The list contents are of type {@link java.lang.Boolean}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The value of firstEvent[i] is related to event[i] (where i is 1 or 2). If firstEvent[i] is true, then the corresponding observation event is the first time instant the execution enters event[i]. If firstEvent[i] is false, then the corresponding observation event is the time instant the execution exits event[i].
+   * <p>From package UML::Values.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>First Event</em>' attribute list.
+   * @see org.eclipse.uml2.uml.UMLPackage#getDurationObservation_FirstEvent()
+   * @model dataType="org.eclipse.uml2.types.Boolean" upper="2" ordered="false"
+   * @generated
+   */
+  EList<Boolean> getFirstEvents();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The multiplicity of firstEvent must be 2 if the multiplicity of event is 2. Otherwise the multiplicity of firstEvent is 0.
-	 * if (event->size() = 2)
-	 *   then (firstEvent->size() = 2) else (firstEvent->size() = 0)
-	 * endif
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateFirstEventMultiplicity(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The multiplicity of firstEvent must be 2 if the multiplicity of event is 2. Otherwise the multiplicity of firstEvent is 0.
+   * if (event->size() = 2)
+   *   then (firstEvent->size() = 2) else (firstEvent->size() = 0)
+   * endif
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @model
+   * @generated
+   */
+  boolean validateFirstEventMultiplicity(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // DurationObservation

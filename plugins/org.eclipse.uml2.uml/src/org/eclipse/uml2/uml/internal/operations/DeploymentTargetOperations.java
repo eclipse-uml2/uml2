@@ -40,60 +40,52 @@ import org.eclipse.uml2.uml.UMLPackage;
  *
  * @generated
  */
-public class DeploymentTargetOperations
-		extends NamedElementOperations {
+public class DeploymentTargetOperations extends NamedElementOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected DeploymentTargetOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected DeploymentTargetOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Derivation for DeploymentTarget::/deployedElement
-	 * result = (deployment.deployedArtifact->select(oclIsKindOf(Artifact))->collect(oclAsType(Artifact).manifestation)->collect(utilizedElement)->asSet())
-	 * <p>From package UML::Deployments.</p>
-	 * @param deploymentTarget The receiving '<em><b>Deployment Target</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static EList<PackageableElement> getDeployedElements(
-			DeploymentTarget deploymentTarget) {
-		EList<PackageableElement> deployedElements = new UniqueEList.FastCompare<PackageableElement>();
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Derivation for DeploymentTarget::/deployedElement
+   * result = (deployment.deployedArtifact->select(oclIsKindOf(Artifact))->collect(oclAsType(Artifact).manifestation)->collect(utilizedElement)->asSet())
+   * <p>From package UML::Deployments.</p>
+   * @param deploymentTarget The receiving '<em><b>Deployment Target</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static EList<PackageableElement> getDeployedElements(DeploymentTarget deploymentTarget) {
+    EList<PackageableElement> deployedElements = new UniqueEList.FastCompare<PackageableElement>();
 
-		for (Deployment deployment : deploymentTarget.getDeployments()) {
+    for (Deployment deployment : deploymentTarget.getDeployments()) {
 
-			for (DeployedArtifact deployedArtifact : deployment
-				.getDeployedArtifacts()) {
+      for (DeployedArtifact deployedArtifact : deployment.getDeployedArtifacts()) {
 
-				if (deployedArtifact instanceof Artifact) {
+        if (deployedArtifact instanceof Artifact) {
 
-					for (Manifestation manifestation : ((Artifact) deployedArtifact)
-						.getManifestations()) {
+          for (Manifestation manifestation : ((Artifact) deployedArtifact).getManifestations()) {
 
-						PackageableElement utilizedElement = (PackageableElement) manifestation
-							.eGet(
-								UMLPackage.Literals.MANIFESTATION__UTILIZED_ELEMENT,
-								false);
+            PackageableElement utilizedElement = (PackageableElement) manifestation
+                .eGet(UMLPackage.Literals.MANIFESTATION__UTILIZED_ELEMENT, false);
 
-						if (utilizedElement != null) {
-							deployedElements.add(utilizedElement);
-						}
-					}
-				}
-			}
-		}
+            if (utilizedElement != null) {
+              deployedElements.add(utilizedElement);
+            }
+          }
+        }
+      }
+    }
 
-		return new UnionEObjectEList<PackageableElement>(
-			(InternalEObject) deploymentTarget,
-			UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT,
-			deployedElements.size(), deployedElements.toArray());
-	}
+    return new UnionEObjectEList<PackageableElement>((InternalEObject) deploymentTarget,
+        UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT, deployedElements.size(), deployedElements.toArray());
+  }
 
 } // DeploymentTargetOperations

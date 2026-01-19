@@ -36,90 +36,91 @@ package org.eclipse.uml2.uml;
  * @model
  * @generated
  */
-public interface Variable
-		extends ConnectableElement, MultiplicityElement {
+public interface Variable extends ConnectableElement, MultiplicityElement {
 
-	/**
-	 * Returns the value of the '<em><b>Activity Scope</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Activity#getVariables <em>Variable</em>}'.
-	 * <p>
-	 * This feature subsets the following features:
-	 * </p>
-	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
-	 * </ul>
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * An Activity that owns the Variable.
-	 * <p>From package UML::Activities.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Activity Scope</em>' container reference.
-	 * @see #setActivityScope(Activity)
-	 * @see org.eclipse.uml2.uml.UMLPackage#getVariable_ActivityScope()
-	 * @see org.eclipse.uml2.uml.Activity#getVariables
-	 * @model opposite="variable" transient="false" ordered="false"
-	 * @generated
-	 */
-	Activity getActivityScope();
+  /**
+   * Returns the value of the '<em><b>Activity Scope</b></em>' container reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Activity#getVariables <em>Variable</em>}'.
+   * <p>
+   * This feature subsets the following features:
+   * </p>
+   * <ul>
+   *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
+   * </ul>
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * An Activity that owns the Variable.
+   * <p>From package UML::Activities.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Activity Scope</em>' container reference.
+   * @see #setActivityScope(Activity)
+   * @see org.eclipse.uml2.uml.UMLPackage#getVariable_ActivityScope()
+   * @see org.eclipse.uml2.uml.Activity#getVariables
+   * @model opposite="variable" transient="false" ordered="false"
+   *        annotation="subsets"
+   * @generated
+   */
+  Activity getActivityScope();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.Variable#getActivityScope <em>Activity Scope</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Activity Scope</em>' container reference.
-	 * @see #getActivityScope()
-	 * @generated
-	 */
-	void setActivityScope(Activity value);
+  /**
+   * Sets the value of the '{@link org.eclipse.uml2.uml.Variable#getActivityScope <em>Activity Scope</em>}' container reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Activity Scope</em>' container reference.
+   * @see #getActivityScope()
+   * @generated
+   */
+  void setActivityScope(Activity value);
 
-	/**
-	 * Returns the value of the '<em><b>Scope</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.StructuredActivityNode#getVariables <em>Variable</em>}'.
-	 * <p>
-	 * This feature subsets the following features:
-	 * </p>
-	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
-	 * </ul>
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A StructuredActivityNode that owns the Variable.
-	 * <p>From package UML::Activities.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Scope</em>' container reference.
-	 * @see #setScope(StructuredActivityNode)
-	 * @see org.eclipse.uml2.uml.UMLPackage#getVariable_Scope()
-	 * @see org.eclipse.uml2.uml.StructuredActivityNode#getVariables
-	 * @model opposite="variable" transient="false" ordered="false"
-	 * @generated
-	 */
-	StructuredActivityNode getScope();
+  /**
+   * Returns the value of the '<em><b>Scope</b></em>' container reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.StructuredActivityNode#getVariables <em>Variable</em>}'.
+   * <p>
+   * This feature subsets the following features:
+   * </p>
+   * <ul>
+   *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
+   * </ul>
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * A StructuredActivityNode that owns the Variable.
+   * <p>From package UML::Activities.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Scope</em>' container reference.
+   * @see #setScope(StructuredActivityNode)
+   * @see org.eclipse.uml2.uml.UMLPackage#getVariable_Scope()
+   * @see org.eclipse.uml2.uml.StructuredActivityNode#getVariables
+   * @model opposite="variable" transient="false" ordered="false"
+   *        annotation="subsets"
+   * @generated
+   */
+  StructuredActivityNode getScope();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.Variable#getScope <em>Scope</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Scope</em>' container reference.
-	 * @see #getScope()
-	 * @generated
-	 */
-	void setScope(StructuredActivityNode value);
+  /**
+   * Sets the value of the '{@link org.eclipse.uml2.uml.Variable#getScope <em>Scope</em>}' container reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Scope</em>' container reference.
+   * @see #getScope()
+   * @generated
+   */
+  void setScope(StructuredActivityNode value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A Variable is accessible by Actions within its scope (the Activity or StructuredActivityNode that owns it).
-	 * result = (if scope<>null then scope.allOwnedNodes()->includes(a)
-	 * else a.containingActivity()=activityScope
-	 * endif)
-	 * <p>From package UML::Activities.</p>
-	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" aRequired="true" aOrdered="false"
-	 * @generated
-	 */
-	boolean isAccessibleBy(Action a);
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * A Variable is accessible by Actions within its scope (the Activity or StructuredActivityNode that owns it).
+   * result = (if scope<>null then scope.allOwnedNodes()->includes(a)
+   * else a.containingActivity()=activityScope
+   * endif)
+   * <p>From package UML::Activities.</p>
+   * <!-- end-model-doc -->
+   * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" aRequired="true" aOrdered="false"
+   * @generated
+   */
+  boolean isAccessibleBy(Action a);
 
 } // Variable

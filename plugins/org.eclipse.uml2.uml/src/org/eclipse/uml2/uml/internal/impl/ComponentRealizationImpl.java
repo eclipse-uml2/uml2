@@ -64,593 +64,553 @@ import org.eclipse.uml2.uml.VisibilityKind;
  *
  * @generated
  */
-public class ComponentRealizationImpl
-		extends RealizationImpl
-		implements ComponentRealization {
+public class ComponentRealizationImpl extends RealizationImpl implements ComponentRealization {
 
-	/**
-	 * The cached value of the '{@link #getRealizingClassifiers() <em>Realizing Classifier</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRealizingClassifiers()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Classifier> realizingClassifiers;
+  /**
+   * The cached value of the '{@link #getRealizingClassifiers() <em>Realizing Classifier</em>}' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRealizingClassifiers()
+   * @generated
+   * @ordered
+   */
+  protected EList<Classifier> realizingClassifiers;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ComponentRealizationImpl() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected ComponentRealizationImpl() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return UMLPackage.Literals.COMPONENT_REALIZATION;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass() {
+    return UMLPackage.Literals.COMPONENT_REALIZATION;
+  }
 
-	@SuppressWarnings("unused")
-	private EList<?> createSubsetSupersetList(
-			EStructuralFeature eStructuralFeature) {
-		if (eStructuralFeature == UMLPackage.Literals.DEPENDENCY__CLIENT) {
-			return createClientsList();
-		}
+  @SuppressWarnings("unused")
+  private EList<?> createSubsetSupersetList(EStructuralFeature eStructuralFeature) {
+    if (eStructuralFeature == UMLPackage.Literals.DEPENDENCY__CLIENT) {
+      return createClientsList();
+    }
 
-		if (eStructuralFeature == UMLPackage.Literals.COMPONENT_REALIZATION__REALIZING_CLASSIFIER) {
-			return createRealizingClassifiersList();
-		}
+    if (eStructuralFeature == UMLPackage.Literals.COMPONENT_REALIZATION__REALIZING_CLASSIFIER) {
+      return createRealizingClassifiersList();
+    }
 
-		if (eStructuralFeature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
-			return createSuppliersList();
-		}
+    if (eStructuralFeature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
+      return createSuppliersList();
+    }
 
-		return null;
-	}
+    return null;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Element getOwner() {
-		Element owner = basicGetOwner();
-		return owner != null && owner.eIsProxy()
-			? (Element) eResolveProxy((InternalEObject) owner)
-			: owner;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Element getOwner() {
+    Element owner = basicGetOwner();
+    return owner != null && owner.eIsProxy() ? (Element) eResolveProxy((InternalEObject) owner) : owner;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT_CDO
-	 */
-	@Override
-	public EList<NamedElement> getClients() {
-		if (clients == null) {
-			clients = createClientsList();
-		}
-		return clients;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated NOT_CDO
+   */
+  @Override
+  public EList<NamedElement> getClients() {
+    if (clients == null) {
+      clients = createClientsList();
+    }
+    return clients;
+  }
 
-	private EList<NamedElement> createClientsList() {
-		return new SubsetSupersetEObjectResolvingEList<NamedElement>(
-			NamedElement.class, this, UMLPackage.COMPONENT_REALIZATION__CLIENT,
-			null, CLIENT_ESUBSETS);
-	}
+  private EList<NamedElement> createClientsList() {
+    return new SubsetSupersetEObjectResolvingEList<NamedElement>(NamedElement.class, this,
+        UMLPackage.COMPONENT_REALIZATION__CLIENT, null, CLIENT_ESUBSETS);
+  }
 
-	/**
-	 * The array of subset feature identifiers for the '{@link #getClients() <em>Client</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getClients()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] CLIENT_ESUBSETS = new int[]{
-		UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER};
+  /**
+   * The array of subset feature identifiers for the '{@link #getClients() <em>Client</em>}' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getClients()
+   * @generated
+   * @ordered
+   */
+  protected static final int[] CLIENT_ESUBSETS = new int[] { UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER };
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT_CDO
-	 */
-	@Override
-	public EList<NamedElement> getSuppliers() {
-		if (suppliers == null) {
-			suppliers = createSuppliersList();
-		}
-		return suppliers;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated NOT_CDO
+   */
+  @Override
+  public EList<NamedElement> getSuppliers() {
+    if (suppliers == null) {
+      suppliers = createSuppliersList();
+    }
+    return suppliers;
+  }
 
-	private EList<NamedElement> createSuppliersList() {
-		return new SubsetSupersetEObjectResolvingEList<NamedElement>(
-			NamedElement.class, this,
-			UMLPackage.COMPONENT_REALIZATION__SUPPLIER, null,
-			SUPPLIER_ESUBSETS);
-	}
+  private EList<NamedElement> createSuppliersList() {
+    return new SubsetSupersetEObjectResolvingEList<NamedElement>(NamedElement.class, this,
+        UMLPackage.COMPONENT_REALIZATION__SUPPLIER, null, SUPPLIER_ESUBSETS);
+  }
 
-	/**
-	 * The array of subset feature identifiers for the '{@link #getSuppliers() <em>Supplier</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSuppliers()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] SUPPLIER_ESUBSETS = new int[]{
-		UMLPackage.COMPONENT_REALIZATION__ABSTRACTION};
+  /**
+   * The array of subset feature identifiers for the '{@link #getSuppliers() <em>Supplier</em>}' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSuppliers()
+   * @generated
+   * @ordered
+   */
+  protected static final int[] SUPPLIER_ESUBSETS = new int[] { UMLPackage.COMPONENT_REALIZATION__ABSTRACTION };
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Component getAbstraction() {
-		if (eContainerFeatureID() != UMLPackage.COMPONENT_REALIZATION__ABSTRACTION)
-			return null;
-		return (Component) eContainer();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Component getAbstraction() {
+    if (eContainerFeatureID() != UMLPackage.COMPONENT_REALIZATION__ABSTRACTION)
+      return null;
+    return (Component) eContainer();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Component basicGetAbstraction() {
-		if (eContainerFeatureID() != UMLPackage.COMPONENT_REALIZATION__ABSTRACTION)
-			return null;
-		return (Component) eInternalContainer();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Component basicGetAbstraction() {
+    if (eContainerFeatureID() != UMLPackage.COMPONENT_REALIZATION__ABSTRACTION)
+      return null;
+    return (Component) eInternalContainer();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetAbstraction(Component newAbstraction,
-			NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newAbstraction,
-			UMLPackage.COMPONENT_REALIZATION__ABSTRACTION, msgs);
-		Resource.Internal eInternalResource = eInternalResource();
-		if (eInternalResource == null || !eInternalResource.isLoading()) {
-			if (newAbstraction != null) {
-				EList<NamedElement> suppliers = getSuppliers();
-				if (!suppliers.contains(newAbstraction)) {
-					suppliers.add(newAbstraction);
-				}
-			}
-		}
-		return msgs;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetAbstraction(Component newAbstraction, NotificationChain msgs) {
+    msgs = eBasicSetContainer((InternalEObject) newAbstraction, UMLPackage.COMPONENT_REALIZATION__ABSTRACTION, msgs);
+    Resource.Internal eInternalResource = eInternalResource();
+    if (eInternalResource == null || !eInternalResource.isLoading()) {
+      if (newAbstraction != null) {
+        EList<NamedElement> suppliers = getSuppliers();
+        if (!suppliers.contains(newAbstraction)) {
+          suppliers.add(newAbstraction);
+        }
+      }
+    }
+    return msgs;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setAbstraction(Component newAbstraction) {
-		if (newAbstraction != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.COMPONENT_REALIZATION__ABSTRACTION
-				&& newAbstraction != null)) {
-			if (EcoreUtil.isAncestor(this, newAbstraction))
-				throw new IllegalArgumentException(
-					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newAbstraction != null)
-				msgs = ((InternalEObject) newAbstraction).eInverseAdd(this,
-					UMLPackage.COMPONENT__REALIZATION, Component.class, msgs);
-			msgs = basicSetAbstraction(newAbstraction, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.COMPONENT_REALIZATION__ABSTRACTION, newAbstraction,
-				newAbstraction));
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setAbstraction(Component newAbstraction) {
+    if (newAbstraction != eInternalContainer()
+        || (eContainerFeatureID() != UMLPackage.COMPONENT_REALIZATION__ABSTRACTION && newAbstraction != null)) {
+      if (EcoreUtil.isAncestor(this, newAbstraction))
+        throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+      NotificationChain msgs = null;
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
+      if (newAbstraction != null)
+        msgs = ((InternalEObject) newAbstraction).eInverseAdd(this, UMLPackage.COMPONENT__REALIZATION, Component.class,
+            msgs);
+      msgs = basicSetAbstraction(newAbstraction, msgs);
+      if (msgs != null)
+        msgs.dispatch();
+    } else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, UMLPackage.COMPONENT_REALIZATION__ABSTRACTION,
+          newAbstraction, newAbstraction));
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT_CDO
-	 */
-	public EList<Classifier> getRealizingClassifiers() {
-		if (realizingClassifiers == null) {
-			realizingClassifiers = createRealizingClassifiersList();
-		}
-		return realizingClassifiers;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated NOT_CDO
+   */
+  public EList<Classifier> getRealizingClassifiers() {
+    if (realizingClassifiers == null) {
+      realizingClassifiers = createRealizingClassifiersList();
+    }
+    return realizingClassifiers;
+  }
 
-	private EList<Classifier> createRealizingClassifiersList() {
-		return new SubsetSupersetEObjectResolvingEList<Classifier>(
-			Classifier.class, this,
-			UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER,
-			REALIZING_CLASSIFIER_ESUPERSETS, null);
-	}
+  private EList<Classifier> createRealizingClassifiersList() {
+    return new SubsetSupersetEObjectResolvingEList<Classifier>(Classifier.class, this,
+        UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER, REALIZING_CLASSIFIER_ESUPERSETS, null);
+  }
 
-	/**
-	 * The array of superset feature identifiers for the '{@link #getRealizingClassifiers() <em>Realizing Classifier</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRealizingClassifiers()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] REALIZING_CLASSIFIER_ESUPERSETS = new int[]{
-		UMLPackage.COMPONENT_REALIZATION__CLIENT};
+  /**
+   * The array of superset feature identifiers for the '{@link #getRealizingClassifiers() <em>Realizing Classifier</em>}' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRealizingClassifiers()
+   * @generated
+   * @ordered
+   */
+  protected static final int[] REALIZING_CLASSIFIER_ESUPERSETS = new int[] { UMLPackage.COMPONENT_REALIZATION__CLIENT };
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Classifier getRealizingClassifier(String name) {
-		return getRealizingClassifier(name, false, null);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Classifier getRealizingClassifier(String name) {
+    return getRealizingClassifier(name, false, null);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Classifier getRealizingClassifier(String name, boolean ignoreCase,
-			EClass eClass) {
-		realizingClassifierLoop : for (Classifier realizingClassifier : getRealizingClassifiers()) {
-			if (eClass != null && !eClass.isInstance(realizingClassifier))
-				continue realizingClassifierLoop;
-			if (name != null && !(ignoreCase
-				? name.equalsIgnoreCase(realizingClassifier.getName())
-				: name.equals(realizingClassifier.getName())))
-				continue realizingClassifierLoop;
-			return realizingClassifier;
-		}
-		return null;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Classifier getRealizingClassifier(String name, boolean ignoreCase, EClass eClass) {
+    realizingClassifierLoop: for (Classifier realizingClassifier : getRealizingClassifiers()) {
+      if (eClass != null && !eClass.isInstance(realizingClassifier))
+        continue realizingClassifierLoop;
+      if (name != null && !(ignoreCase ? name.equalsIgnoreCase(realizingClassifier.getName())
+          : name.equals(realizingClassifier.getName())))
+        continue realizingClassifierLoop;
+      return realizingClassifier;
+    }
+    return null;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetOwningTemplateParameter(
-					(TemplateParameter) otherEnd, msgs);
-			case UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER :
-				if (templateParameter != null)
-					msgs = ((InternalEObject) templateParameter).eInverseRemove(
-						this,
-						UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
-						TemplateParameter.class, msgs);
-				return basicSetTemplateParameter((TemplateParameter) otherEnd,
-					msgs);
-			case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetAbstraction((Component) otherEnd, msgs);
-		}
-		return eDynamicInverseAdd(otherEnd, featureID, msgs);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @SuppressWarnings("unchecked")
+  @Override
+  public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    switch (featureID) {
+    case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS:
+      return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations()).basicAdd(otherEnd, msgs);
+    case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER:
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
+      return basicSetOwningTemplateParameter((TemplateParameter) otherEnd, msgs);
+    case UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER:
+      if (templateParameter != null)
+        msgs = ((InternalEObject) templateParameter).eInverseRemove(this,
+            UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT, TemplateParameter.class, msgs);
+      return basicSetTemplateParameter((TemplateParameter) otherEnd, msgs);
+    case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION:
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
+      return basicSetAbstraction((Component) otherEnd, msgs);
+    }
+    return eDynamicInverseAdd(otherEnd, featureID, msgs);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations())
-					.basicRemove(otherEnd, msgs);
-			case UMLPackage.COMPONENT_REALIZATION__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments())
-					.basicRemove(otherEnd, msgs);
-			case UMLPackage.COMPONENT_REALIZATION__NAME_EXPRESSION :
-				return basicSetNameExpression(null, msgs);
-			case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER :
-				return basicSetOwningTemplateParameter(null, msgs);
-			case UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER :
-				return basicSetTemplateParameter(null, msgs);
-			case UMLPackage.COMPONENT_REALIZATION__MAPPING :
-				return basicSetMapping(null, msgs);
-			case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
-				return basicSetAbstraction(null, msgs);
-		}
-		return eDynamicInverseRemove(otherEnd, featureID, msgs);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    switch (featureID) {
+    case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS:
+      return ((InternalEList<?>) getEAnnotations()).basicRemove(otherEnd, msgs);
+    case UMLPackage.COMPONENT_REALIZATION__OWNED_COMMENT:
+      return ((InternalEList<?>) getOwnedComments()).basicRemove(otherEnd, msgs);
+    case UMLPackage.COMPONENT_REALIZATION__NAME_EXPRESSION:
+      return basicSetNameExpression(null, msgs);
+    case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER:
+      return basicSetOwningTemplateParameter(null, msgs);
+    case UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER:
+      return basicSetTemplateParameter(null, msgs);
+    case UMLPackage.COMPONENT_REALIZATION__MAPPING:
+      return basicSetMapping(null, msgs);
+    case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION:
+      return basicSetAbstraction(null, msgs);
+    }
+    return eDynamicInverseRemove(otherEnd, featureID, msgs);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(
-			NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-			case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER :
-				return eInternalContainer().eInverseRemove(this,
-					UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-					TemplateParameter.class, msgs);
-			case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
-				return eInternalContainer().eInverseRemove(this,
-					UMLPackage.COMPONENT__REALIZATION, Component.class, msgs);
-		}
-		return eDynamicBasicRemoveFromContainer(msgs);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+    switch (eContainerFeatureID()) {
+    case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER:
+      return eInternalContainer().eInverseRemove(this, UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+          TemplateParameter.class, msgs);
+    case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION:
+      return eInternalContainer().eInverseRemove(this, UMLPackage.COMPONENT__REALIZATION, Component.class, msgs);
+    }
+    return eDynamicBasicRemoveFromContainer(msgs);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS :
-				return getEAnnotations();
-			case UMLPackage.COMPONENT_REALIZATION__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.COMPONENT_REALIZATION__OWNED_ELEMENT :
-				return getOwnedElements();
-			case UMLPackage.COMPONENT_REALIZATION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
-			case UMLPackage.COMPONENT_REALIZATION__CLIENT_DEPENDENCY :
-				return getClientDependencies();
-			case UMLPackage.COMPONENT_REALIZATION__NAME :
-				return getName();
-			case UMLPackage.COMPONENT_REALIZATION__NAME_EXPRESSION :
-				if (resolve)
-					return getNameExpression();
-				return basicGetNameExpression();
-			case UMLPackage.COMPONENT_REALIZATION__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
-			case UMLPackage.COMPONENT_REALIZATION__QUALIFIED_NAME :
-				return getQualifiedName();
-			case UMLPackage.COMPONENT_REALIZATION__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER :
-				if (resolve)
-					return getOwningTemplateParameter();
-				return basicGetOwningTemplateParameter();
-			case UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
-			case UMLPackage.COMPONENT_REALIZATION__RELATED_ELEMENT :
-				return getRelatedElements();
-			case UMLPackage.COMPONENT_REALIZATION__SOURCE :
-				return getSources();
-			case UMLPackage.COMPONENT_REALIZATION__TARGET :
-				return getTargets();
-			case UMLPackage.COMPONENT_REALIZATION__CLIENT :
-				return getClients();
-			case UMLPackage.COMPONENT_REALIZATION__SUPPLIER :
-				return getSuppliers();
-			case UMLPackage.COMPONENT_REALIZATION__MAPPING :
-				if (resolve)
-					return getMapping();
-				return basicGetMapping();
-			case UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER :
-				return getRealizingClassifiers();
-			case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
-				if (resolve)
-					return getAbstraction();
-				return basicGetAbstraction();
-		}
-		return eDynamicGet(featureID, resolve, coreType);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    switch (featureID) {
+    case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS:
+      return getEAnnotations();
+    case UMLPackage.COMPONENT_REALIZATION__OWNED_COMMENT:
+      return getOwnedComments();
+    case UMLPackage.COMPONENT_REALIZATION__OWNED_ELEMENT:
+      return getOwnedElements();
+    case UMLPackage.COMPONENT_REALIZATION__OWNER:
+      if (resolve)
+        return getOwner();
+      return basicGetOwner();
+    case UMLPackage.COMPONENT_REALIZATION__CLIENT_DEPENDENCY:
+      return getClientDependencies();
+    case UMLPackage.COMPONENT_REALIZATION__NAME:
+      return getName();
+    case UMLPackage.COMPONENT_REALIZATION__NAME_EXPRESSION:
+      if (resolve)
+        return getNameExpression();
+      return basicGetNameExpression();
+    case UMLPackage.COMPONENT_REALIZATION__NAMESPACE:
+      if (resolve)
+        return getNamespace();
+      return basicGetNamespace();
+    case UMLPackage.COMPONENT_REALIZATION__QUALIFIED_NAME:
+      return getQualifiedName();
+    case UMLPackage.COMPONENT_REALIZATION__VISIBILITY:
+      return getVisibility();
+    case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER:
+      if (resolve)
+        return getOwningTemplateParameter();
+      return basicGetOwningTemplateParameter();
+    case UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER:
+      if (resolve)
+        return getTemplateParameter();
+      return basicGetTemplateParameter();
+    case UMLPackage.COMPONENT_REALIZATION__RELATED_ELEMENT:
+      return getRelatedElements();
+    case UMLPackage.COMPONENT_REALIZATION__SOURCE:
+      return getSources();
+    case UMLPackage.COMPONENT_REALIZATION__TARGET:
+      return getTargets();
+    case UMLPackage.COMPONENT_REALIZATION__CLIENT:
+      return getClients();
+    case UMLPackage.COMPONENT_REALIZATION__SUPPLIER:
+      return getSuppliers();
+    case UMLPackage.COMPONENT_REALIZATION__MAPPING:
+      if (resolve)
+        return getMapping();
+      return basicGetMapping();
+    case UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER:
+      return getRealizingClassifiers();
+    case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION:
+      if (resolve)
+        return getAbstraction();
+      return basicGetAbstraction();
+    }
+    return eDynamicGet(featureID, resolve, coreType);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS :
-				getEAnnotations().clear();
-				getEAnnotations()
-					.addAll((Collection<? extends EAnnotation>) newValue);
-				return;
-			case UMLPackage.COMPONENT_REALIZATION__OWNED_COMMENT :
-				getOwnedComments().clear();
-				getOwnedComments()
-					.addAll((Collection<? extends Comment>) newValue);
-				return;
-			case UMLPackage.COMPONENT_REALIZATION__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.COMPONENT_REALIZATION__NAME_EXPRESSION :
-				setNameExpression((StringExpression) newValue);
-				return;
-			case UMLPackage.COMPONENT_REALIZATION__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
-			case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER :
-				setOwningTemplateParameter((TemplateParameter) newValue);
-				return;
-			case UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) newValue);
-				return;
-			case UMLPackage.COMPONENT_REALIZATION__CLIENT :
-				getClients().clear();
-				getClients()
-					.addAll((Collection<? extends NamedElement>) newValue);
-				return;
-			case UMLPackage.COMPONENT_REALIZATION__SUPPLIER :
-				getSuppliers().clear();
-				getSuppliers()
-					.addAll((Collection<? extends NamedElement>) newValue);
-				return;
-			case UMLPackage.COMPONENT_REALIZATION__MAPPING :
-				setMapping((OpaqueExpression) newValue);
-				return;
-			case UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER :
-				getRealizingClassifiers().clear();
-				getRealizingClassifiers()
-					.addAll((Collection<? extends Classifier>) newValue);
-				return;
-			case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
-				setAbstraction((Component) newValue);
-				return;
-		}
-		eDynamicSet(featureID, newValue);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @SuppressWarnings("unchecked")
+  @Override
+  public void eSet(int featureID, Object newValue) {
+    switch (featureID) {
+    case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS:
+      getEAnnotations().clear();
+      getEAnnotations().addAll((Collection<? extends EAnnotation>) newValue);
+      return;
+    case UMLPackage.COMPONENT_REALIZATION__OWNED_COMMENT:
+      getOwnedComments().clear();
+      getOwnedComments().addAll((Collection<? extends Comment>) newValue);
+      return;
+    case UMLPackage.COMPONENT_REALIZATION__NAME:
+      setName((String) newValue);
+      return;
+    case UMLPackage.COMPONENT_REALIZATION__NAME_EXPRESSION:
+      setNameExpression((StringExpression) newValue);
+      return;
+    case UMLPackage.COMPONENT_REALIZATION__VISIBILITY:
+      setVisibility((VisibilityKind) newValue);
+      return;
+    case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER:
+      setOwningTemplateParameter((TemplateParameter) newValue);
+      return;
+    case UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER:
+      setTemplateParameter((TemplateParameter) newValue);
+      return;
+    case UMLPackage.COMPONENT_REALIZATION__CLIENT:
+      getClients().clear();
+      getClients().addAll((Collection<? extends NamedElement>) newValue);
+      return;
+    case UMLPackage.COMPONENT_REALIZATION__SUPPLIER:
+      getSuppliers().clear();
+      getSuppliers().addAll((Collection<? extends NamedElement>) newValue);
+      return;
+    case UMLPackage.COMPONENT_REALIZATION__MAPPING:
+      setMapping((OpaqueExpression) newValue);
+      return;
+    case UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER:
+      getRealizingClassifiers().clear();
+      getRealizingClassifiers().addAll((Collection<? extends Classifier>) newValue);
+      return;
+    case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION:
+      setAbstraction((Component) newValue);
+      return;
+    }
+    eDynamicSet(featureID, newValue);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void eUnset(int featureID) {
-		switch (featureID) {
-			case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS :
-				getEAnnotations().clear();
-				return;
-			case UMLPackage.COMPONENT_REALIZATION__OWNED_COMMENT :
-				getOwnedComments().clear();
-				return;
-			case UMLPackage.COMPONENT_REALIZATION__NAME :
-				unsetName();
-				return;
-			case UMLPackage.COMPONENT_REALIZATION__NAME_EXPRESSION :
-				setNameExpression((StringExpression) null);
-				return;
-			case UMLPackage.COMPONENT_REALIZATION__VISIBILITY :
-				unsetVisibility();
-				return;
-			case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER :
-				setOwningTemplateParameter((TemplateParameter) null);
-				return;
-			case UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER :
-				setTemplateParameter((TemplateParameter) null);
-				return;
-			case UMLPackage.COMPONENT_REALIZATION__CLIENT :
-				getClients().clear();
-				return;
-			case UMLPackage.COMPONENT_REALIZATION__SUPPLIER :
-				getSuppliers().clear();
-				return;
-			case UMLPackage.COMPONENT_REALIZATION__MAPPING :
-				setMapping((OpaqueExpression) null);
-				return;
-			case UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER :
-				getRealizingClassifiers().clear();
-				return;
-			case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
-				setAbstraction((Component) null);
-				return;
-		}
-		eDynamicUnset(featureID);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID) {
+    switch (featureID) {
+    case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS:
+      getEAnnotations().clear();
+      return;
+    case UMLPackage.COMPONENT_REALIZATION__OWNED_COMMENT:
+      getOwnedComments().clear();
+      return;
+    case UMLPackage.COMPONENT_REALIZATION__NAME:
+      unsetName();
+      return;
+    case UMLPackage.COMPONENT_REALIZATION__NAME_EXPRESSION:
+      setNameExpression((StringExpression) null);
+      return;
+    case UMLPackage.COMPONENT_REALIZATION__VISIBILITY:
+      unsetVisibility();
+      return;
+    case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER:
+      setOwningTemplateParameter((TemplateParameter) null);
+      return;
+    case UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER:
+      setTemplateParameter((TemplateParameter) null);
+      return;
+    case UMLPackage.COMPONENT_REALIZATION__CLIENT:
+      getClients().clear();
+      return;
+    case UMLPackage.COMPONENT_REALIZATION__SUPPLIER:
+      getSuppliers().clear();
+      return;
+    case UMLPackage.COMPONENT_REALIZATION__MAPPING:
+      setMapping((OpaqueExpression) null);
+      return;
+    case UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER:
+      getRealizingClassifiers().clear();
+      return;
+    case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION:
+      setAbstraction((Component) null);
+      return;
+    }
+    eDynamicUnset(featureID);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS :
-				return eAnnotations != null && !eAnnotations.isEmpty();
-			case UMLPackage.COMPONENT_REALIZATION__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
-			case UMLPackage.COMPONENT_REALIZATION__OWNED_ELEMENT :
-				return isSetOwnedElements();
-			case UMLPackage.COMPONENT_REALIZATION__OWNER :
-				return isSetOwner();
-			case UMLPackage.COMPONENT_REALIZATION__CLIENT_DEPENDENCY :
-				return !getClientDependencies().isEmpty();
-			case UMLPackage.COMPONENT_REALIZATION__NAME :
-				return isSetName();
-			case UMLPackage.COMPONENT_REALIZATION__NAME_EXPRESSION :
-				return nameExpression != null;
-			case UMLPackage.COMPONENT_REALIZATION__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.COMPONENT_REALIZATION__QUALIFIED_NAME :
-				return QUALIFIED_NAME_EDEFAULT == null
-					? getQualifiedName() != null
-					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.COMPONENT_REALIZATION__VISIBILITY :
-				return isSetVisibility();
-			case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER :
-				return basicGetOwningTemplateParameter() != null;
-			case UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER :
-				return templateParameter != null;
-			case UMLPackage.COMPONENT_REALIZATION__RELATED_ELEMENT :
-				return isSetRelatedElements();
-			case UMLPackage.COMPONENT_REALIZATION__SOURCE :
-				return isSetSources();
-			case UMLPackage.COMPONENT_REALIZATION__TARGET :
-				return isSetTargets();
-			case UMLPackage.COMPONENT_REALIZATION__CLIENT :
-				return clients != null && !clients.isEmpty();
-			case UMLPackage.COMPONENT_REALIZATION__SUPPLIER :
-				return suppliers != null && !suppliers.isEmpty();
-			case UMLPackage.COMPONENT_REALIZATION__MAPPING :
-				return mapping != null;
-			case UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER :
-				return realizingClassifiers != null
-					&& !realizingClassifiers.isEmpty();
-			case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
-				return basicGetAbstraction() != null;
-		}
-		return eDynamicIsSet(featureID);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID) {
+    switch (featureID) {
+    case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS:
+      return eAnnotations != null && !eAnnotations.isEmpty();
+    case UMLPackage.COMPONENT_REALIZATION__OWNED_COMMENT:
+      return ownedComments != null && !ownedComments.isEmpty();
+    case UMLPackage.COMPONENT_REALIZATION__OWNED_ELEMENT:
+      return isSetOwnedElements();
+    case UMLPackage.COMPONENT_REALIZATION__OWNER:
+      return isSetOwner();
+    case UMLPackage.COMPONENT_REALIZATION__CLIENT_DEPENDENCY:
+      return !getClientDependencies().isEmpty();
+    case UMLPackage.COMPONENT_REALIZATION__NAME:
+      return isSetName();
+    case UMLPackage.COMPONENT_REALIZATION__NAME_EXPRESSION:
+      return nameExpression != null;
+    case UMLPackage.COMPONENT_REALIZATION__NAMESPACE:
+      return isSetNamespace();
+    case UMLPackage.COMPONENT_REALIZATION__QUALIFIED_NAME:
+      return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null
+          : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
+    case UMLPackage.COMPONENT_REALIZATION__VISIBILITY:
+      return isSetVisibility();
+    case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER:
+      return basicGetOwningTemplateParameter() != null;
+    case UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER:
+      return templateParameter != null;
+    case UMLPackage.COMPONENT_REALIZATION__RELATED_ELEMENT:
+      return isSetRelatedElements();
+    case UMLPackage.COMPONENT_REALIZATION__SOURCE:
+      return isSetSources();
+    case UMLPackage.COMPONENT_REALIZATION__TARGET:
+      return isSetTargets();
+    case UMLPackage.COMPONENT_REALIZATION__CLIENT:
+      return clients != null && !clients.isEmpty();
+    case UMLPackage.COMPONENT_REALIZATION__SUPPLIER:
+      return suppliers != null && !suppliers.isEmpty();
+    case UMLPackage.COMPONENT_REALIZATION__MAPPING:
+      return mapping != null;
+    case UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER:
+      return realizingClassifiers != null && !realizingClassifiers.isEmpty();
+    case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION:
+      return basicGetAbstraction() != null;
+    }
+    return eDynamicIsSet(featureID);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Element basicGetOwner() {
-		Component abstraction = basicGetAbstraction();
-		if (abstraction != null) {
-			return abstraction;
-		}
-		return super.basicGetOwner();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Element basicGetOwner() {
+    Component abstraction = basicGetAbstraction();
+    if (abstraction != null) {
+      return abstraction;
+    }
+    return super.basicGetOwner();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean isSetOwner() {
-		return super.isSetOwner()
-			|| eIsSet(UMLPackage.COMPONENT_REALIZATION__ABSTRACTION);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean isSetOwner() {
+    return super.isSetOwner() || eIsSet(UMLPackage.COMPONENT_REALIZATION__ABSTRACTION);
+  }
 
 } //ComponentRealizationImpl

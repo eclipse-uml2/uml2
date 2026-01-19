@@ -34,53 +34,48 @@ import org.eclipse.uml2.uml.RedefinableElement;
  *
  * @generated
  */
-public class ActivityNodeOperations
-		extends RedefinableElementOperations {
+public class ActivityNodeOperations extends RedefinableElementOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ActivityNodeOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected ActivityNodeOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The Activity that directly or indirectly contains this ActivityNode.
-	 * result = (if inStructuredNode<>null then inStructuredNode.containingActivity()
-	 * else activity
-	 * endif)
-	 * <p>From package UML::Activities.</p>
-	 * @param activityNode The receiving '<em><b>Activity Node</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static Activity containingActivity(ActivityNode activityNode) {
-		StructuredActivityNode inStructuredNode = activityNode
-			.getInStructuredNode();
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The Activity that directly or indirectly contains this ActivityNode.
+   * result = (if inStructuredNode<>null then inStructuredNode.containingActivity()
+   * else activity
+   * endif)
+   * <p>From package UML::Activities.</p>
+   * @param activityNode The receiving '<em><b>Activity Node</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static Activity containingActivity(ActivityNode activityNode) {
+    StructuredActivityNode inStructuredNode = activityNode.getInStructuredNode();
 
-		return inStructuredNode != null
-			? inStructuredNode.containingActivity()
-			: activityNode.getActivity();
-	}
+    return inStructuredNode != null ? inStructuredNode.containingActivity() : activityNode.getActivity();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * result = (redefiningElement.oclIsKindOf(ActivityNode))
-	 * <p>From package UML::Activities.</p>
-	 * @param activityNode The receiving '<em><b>Activity Node</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean isConsistentWith(ActivityNode activityNode,
-			RedefinableElement redefiningElement) {
-		return redefiningElement instanceof ActivityNode;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * result = (redefiningElement.oclIsKindOf(ActivityNode))
+   * <p>From package UML::Activities.</p>
+   * @param activityNode The receiving '<em><b>Activity Node</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean isConsistentWith(ActivityNode activityNode, RedefinableElement redefiningElement) {
+    return redefiningElement instanceof ActivityNode;
+  }
 
 } // ActivityNodeOperations

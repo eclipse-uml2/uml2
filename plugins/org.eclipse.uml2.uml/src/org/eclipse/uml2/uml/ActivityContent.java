@@ -24,12 +24,12 @@ package org.eclipse.uml2.uml;
  */
 public interface ActivityContent {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model ordered="false"
-	 * @generated
-	 */
-	Activity containingActivity();
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @model ordered="false"
+   * @generated
+   */
+  Activity containingActivity();
 
 } // ActivityContent

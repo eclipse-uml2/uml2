@@ -2595,7 +2595,23 @@
       <eAnnotations source="subsets" references="#//NamedElement/namespace"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Vertex" abstract="true" eSuperTypes="#//NamedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Vertex" abstract="true" eSuperTypes="#//NamedElement #//RedefinableElement">
+    <eAnnotations source="duplicates">
+      <eAnnotations source="redefinitionContext">
+        <details key="lowerBound" value="1"/>
+        <details key="upperBound" value="1"/>
+      </eAnnotations>
+      <contents xsi:type="ecore:EOperation" name="isConsistentWith" ordered="false"
+          lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean">
+        <eAnnotations source="redefines" references="#//RedefinableElement/isConsistentWith"/>
+        <eParameters name="redefiningElement" ordered="false" lowerBound="1" eType="#//RedefinableElement"/>
+      </contents>
+      <contents xsi:type="ecore:EReference" name="redefinitionContext" ordered="false"
+          upperBound="-1" eType="#//Classifier" changeable="false" volatile="true"
+          transient="true" derived="true">
+        <eAnnotations source="redefines" references="#//RedefinableElement/redefinitionContext"/>
+      </contents>
+    </eAnnotations>
     <eOperations name="containingStateMachine" ordered="false" lowerBound="1" eType="#//StateMachine"/>
     <eOperations name="getIncomings" ordered="false" upperBound="-1" eType="#//Transition">
       <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
@@ -2623,6 +2639,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="outgoing" ordered="false"
         upperBound="-1" eType="#//Transition" changeable="false" volatile="true" transient="true"
         derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="redefinedVertex" ordered="false"
+        eType="#//Vertex">
+      <eAnnotations source="subsets" references="#//RedefinableElement/redefinedElement"/>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Region" eSuperTypes="#//Namespace #//RedefinableElement">
     <eAnnotations source="duplicates">
@@ -2706,7 +2726,7 @@
       <eAnnotations source="subsets" references="#//Namespace/ownedMember"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="State" eSuperTypes="#//Namespace #//RedefinableElement #//Vertex">
+  <eClassifiers xsi:type="ecore:EClass" name="State" eSuperTypes="#//Namespace #//Vertex">
     <eAnnotations source="duplicates">
       <eAnnotations source="redefinitionContext">
         <details key="lowerBound" value="1"/>
@@ -2820,8 +2840,8 @@
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"
         changeable="false" volatile="true" transient="true" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="redefinedState" ordered="false"
-        eType="#//State">
-      <eAnnotations source="subsets" references="#//RedefinableElement/redefinedElement"/>
+        eType="#//State" changeable="false" volatile="true" transient="true" derived="true">
+      <eAnnotations source="subsets" references="#//Vertex/redefinedVertex"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="stateInvariant" ordered="false"
         eType="#//Constraint">

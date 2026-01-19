@@ -38,86 +38,77 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated
  */
-public class DestroyObjectActionOperations
-		extends ActionOperations {
+public class DestroyObjectActionOperations extends ActionOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected DestroyObjectActionOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected DestroyObjectActionOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The multiplicity of the targe IinputPin is 1..1.
-	 * target.is(1,1)
-	 * @param destroyObjectAction The receiving '<em><b>Destroy Object Action</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateMultiplicity(
-			DestroyObjectAction destroyObjectAction,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
-					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.DESTROY_OBJECT_ACTION__MULTIPLICITY,
-					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
-						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
-						new Object[]{"validateMultiplicity", //$NON-NLS-1$
-							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(destroyObjectAction, context)}), new Object[]{destroyObjectAction}));
-			}
-			return false;
-		}
-		return true;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The multiplicity of the targe IinputPin is 1..1.
+   * target.is(1,1)
+   * @param destroyObjectAction The receiving '<em><b>Destroy Object Action</b></em>' model object.
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @generated
+   */
+  public static boolean validateMultiplicity(DestroyObjectAction destroyObjectAction, DiagnosticChain diagnostics,
+      Map<Object, Object> context) {
+    // TODO: implement this method
+    // -> specify the condition that violates the invariant
+    // -> verify the details of the diagnostic, including severity and message
+    // Ensure that you remove @generated or mark it @generated NOT
+    if (false) {
+      if (diagnostics != null) {
+        diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR, UMLValidator.DIAGNOSTIC_SOURCE,
+            UMLValidator.DESTROY_OBJECT_ACTION__MULTIPLICITY,
+            org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString("_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+                new Object[] { "validateMultiplicity", //$NON-NLS-1$
+                    org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(destroyObjectAction, context) }), new Object[] { destroyObjectAction }));
+      }
+      return false;
+    }
+    return true;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The target InputPin has no type.
-	 * target.type= null
-	 * @param destroyObjectAction The receiving '<em><b>Destroy Object Action</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateNoType(
-			DestroyObjectAction destroyObjectAction,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
-					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.DESTROY_OBJECT_ACTION__NO_TYPE,
-					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
-						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
-						new Object[]{"validateNoType", //$NON-NLS-1$
-							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(destroyObjectAction, context)}), new Object[]{destroyObjectAction}));
-			}
-			return false;
-		}
-		return true;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The target InputPin has no type.
+   * target.type= null
+   * @param destroyObjectAction The receiving '<em><b>Destroy Object Action</b></em>' model object.
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @generated
+   */
+  public static boolean validateNoType(DestroyObjectAction destroyObjectAction, DiagnosticChain diagnostics,
+      Map<Object, Object> context) {
+    // TODO: implement this method
+    // -> specify the condition that violates the invariant
+    // -> verify the details of the diagnostic, including severity and message
+    // Ensure that you remove @generated or mark it @generated NOT
+    if (false) {
+      if (diagnostics != null) {
+        diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR, UMLValidator.DIAGNOSTIC_SOURCE,
+            UMLValidator.DESTROY_OBJECT_ACTION__NO_TYPE,
+            org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString("_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+                new Object[] { "validateNoType", //$NON-NLS-1$
+                    org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(destroyObjectAction, context) }), new Object[] { destroyObjectAction }));
+      }
+      return false;
+    }
+    return true;
+  }
 
 } // DestroyObjectActionOperations

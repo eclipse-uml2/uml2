@@ -35,197 +35,232 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link org.eclipse.uml2.uml.Vertex#getContainer <em>Container</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Vertex#getIncomings <em>Incoming</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Vertex#getOutgoings <em>Outgoing</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Vertex#getRedefinedVertex <em>Redefined Vertex</em>}</li>
  * </ul>
  *
  * @see org.eclipse.uml2.uml.UMLPackage#getVertex()
  * @model abstract="true"
+ *        annotation="duplicates"
  * @generated
  */
-public interface Vertex
-		extends NamedElement {
+public interface Vertex extends NamedElement, RedefinableElement {
 
-	/**
-	 * Returns the value of the '<em><b>Outgoing</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.uml.Transition}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Specifies the Transitions departing from this Vertex.
-	 * <p>From package UML::StateMachines.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Outgoing</em>' reference list.
-	 * @see org.eclipse.uml2.uml.UMLPackage#getVertex_Outgoing()
-	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
-	 * @generated
-	 */
-	EList<Transition> getOutgoings();
+  /**
+   * Returns the value of the '<em><b>Outgoing</b></em>' reference list.
+   * The list contents are of type {@link org.eclipse.uml2.uml.Transition}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Specifies the Transitions departing from this Vertex.
+   * <p>From package UML::StateMachines.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Outgoing</em>' reference list.
+   * @see org.eclipse.uml2.uml.UMLPackage#getVertex_Outgoing()
+   * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+   * @generated
+   */
+  EList<Transition> getOutgoings();
 
-	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.Transition} with the specified '<em><b>Name</b></em>' from the '<em><b>Outgoing</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Transition} to retrieve, or <code>null</code>.
-	 * @return The first {@link org.eclipse.uml2.uml.Transition} with the specified '<em><b>Name</b></em>', or <code>null</code>.
-	 * @see #getOutgoings()
-	 * @generated
-	 */
-	Transition getOutgoing(String name);
+  /**
+   * Retrieves the first {@link org.eclipse.uml2.uml.Transition} with the specified '<em><b>Name</b></em>' from the '<em><b>Outgoing</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Transition} to retrieve, or <code>null</code>.
+   * @return The first {@link org.eclipse.uml2.uml.Transition} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+   * @see #getOutgoings()
+   * @generated
+   */
+  Transition getOutgoing(String name);
 
-	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.Transition} with the specified '<em><b>Name</b></em>' from the '<em><b>Outgoing</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Transition} to retrieve, or <code>null</code>.
-	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
-	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Transition} to retrieve, or <code>null</code>.
-	 * @return The first {@link org.eclipse.uml2.uml.Transition} with the specified '<em><b>Name</b></em>', or <code>null</code>.
-	 * @see #getOutgoings()
-	 * @generated
-	 */
-	Transition getOutgoing(String name, boolean ignoreCase, EClass eClass);
+  /**
+   * Retrieves the first {@link org.eclipse.uml2.uml.Transition} with the specified '<em><b>Name</b></em>' from the '<em><b>Outgoing</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Transition} to retrieve, or <code>null</code>.
+   * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+   * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Transition} to retrieve, or <code>null</code>.
+   * @return The first {@link org.eclipse.uml2.uml.Transition} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+   * @see #getOutgoings()
+   * @generated
+   */
+  Transition getOutgoing(String name, boolean ignoreCase, EClass eClass);
 
-	/**
-	 * Returns the value of the '<em><b>Incoming</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.uml.Transition}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Specifies the Transitions entering this Vertex.
-	 * <p>From package UML::StateMachines.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Incoming</em>' reference list.
-	 * @see org.eclipse.uml2.uml.UMLPackage#getVertex_Incoming()
-	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
-	 * @generated
-	 */
-	EList<Transition> getIncomings();
+  /**
+   * Returns the value of the '<em><b>Redefined Vertex</b></em>' reference.
+   * <p>
+   * This feature subsets the following features:
+   * </p>
+   * <ul>
+   *   <li>'{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinedElements() <em>Redefined Element</em>}'</li>
+   * </ul>
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The Vertex of which this Vertex is a redefinition.
+   * <p>From package UML::StateMachines.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Redefined Vertex</em>' reference.
+   * @see #setRedefinedVertex(Vertex)
+   * @see org.eclipse.uml2.uml.UMLPackage#getVertex_RedefinedVertex()
+   * @model ordered="false"
+   *        annotation="subsets"
+   * @generated
+   */
+  Vertex getRedefinedVertex();
 
-	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.Transition} with the specified '<em><b>Name</b></em>' from the '<em><b>Incoming</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Transition} to retrieve, or <code>null</code>.
-	 * @return The first {@link org.eclipse.uml2.uml.Transition} with the specified '<em><b>Name</b></em>', or <code>null</code>.
-	 * @see #getIncomings()
-	 * @generated
-	 */
-	Transition getIncoming(String name);
+  /**
+   * Sets the value of the '{@link org.eclipse.uml2.uml.Vertex#getRedefinedVertex <em>Redefined Vertex</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Redefined Vertex</em>' reference.
+   * @see #getRedefinedVertex()
+   * @generated
+   */
+  void setRedefinedVertex(Vertex value);
 
-	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.Transition} with the specified '<em><b>Name</b></em>' from the '<em><b>Incoming</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Transition} to retrieve, or <code>null</code>.
-	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
-	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Transition} to retrieve, or <code>null</code>.
-	 * @return The first {@link org.eclipse.uml2.uml.Transition} with the specified '<em><b>Name</b></em>', or <code>null</code>.
-	 * @see #getIncomings()
-	 * @generated
-	 */
-	Transition getIncoming(String name, boolean ignoreCase, EClass eClass);
+  /**
+   * Returns the value of the '<em><b>Incoming</b></em>' reference list.
+   * The list contents are of type {@link org.eclipse.uml2.uml.Transition}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Specifies the Transitions entering this Vertex.
+   * <p>From package UML::StateMachines.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Incoming</em>' reference list.
+   * @see org.eclipse.uml2.uml.UMLPackage#getVertex_Incoming()
+   * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+   * @generated
+   */
+  EList<Transition> getIncomings();
 
-	/**
-	 * Returns the value of the '<em><b>Container</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Region#getSubvertices <em>Subvertex</em>}'.
-	 * <p>
-	 * This feature subsets the following features:
-	 * </p>
-	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
-	 * </ul>
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The Region that contains this Vertex.
-	 * <p>From package UML::StateMachines.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Container</em>' container reference.
-	 * @see #setContainer(Region)
-	 * @see org.eclipse.uml2.uml.UMLPackage#getVertex_Container()
-	 * @see org.eclipse.uml2.uml.Region#getSubvertices
-	 * @model opposite="subvertex" transient="false" ordered="false"
-	 * @generated
-	 */
-	Region getContainer();
+  /**
+   * Retrieves the first {@link org.eclipse.uml2.uml.Transition} with the specified '<em><b>Name</b></em>' from the '<em><b>Incoming</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Transition} to retrieve, or <code>null</code>.
+   * @return The first {@link org.eclipse.uml2.uml.Transition} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+   * @see #getIncomings()
+   * @generated
+   */
+  Transition getIncoming(String name);
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.Vertex#getContainer <em>Container</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Container</em>' container reference.
-	 * @see #getContainer()
-	 * @generated
-	 */
-	void setContainer(Region value);
+  /**
+   * Retrieves the first {@link org.eclipse.uml2.uml.Transition} with the specified '<em><b>Name</b></em>' from the '<em><b>Incoming</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Transition} to retrieve, or <code>null</code>.
+   * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+   * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Transition} to retrieve, or <code>null</code>.
+   * @return The first {@link org.eclipse.uml2.uml.Transition} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+   * @see #getIncomings()
+   * @generated
+   */
+  Transition getIncoming(String name, boolean ignoreCase, EClass eClass);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The operation containingStateMachine() returns the StateMachine in which this Vertex is defined.
-	 * result = (if container <> null
-	 * then
-	 * -- the container is a region
-	 *    container.containingStateMachine()
-	 * else 
-	 *    if (self.oclIsKindOf(Pseudostate)) and ((self.oclAsType(Pseudostate).kind = PseudostateKind::entryPoint) or (self.oclAsType(Pseudostate).kind = PseudostateKind::exitPoint)) then
-	 *       self.oclAsType(Pseudostate).stateMachine
-	 *    else 
-	 *       if (self.oclIsKindOf(ConnectionPointReference)) then
-	 *           self.oclAsType(ConnectionPointReference).state.containingStateMachine() -- no other valid cases possible
-	 *       else 
-	 *           null
-	 *       endif
-	 *    endif
-	 * endif
-	 * )
-	 * <p>From package UML::StateMachines.</p>
-	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false"
-	 * @generated
-	 */
-	StateMachine containingStateMachine();
+  /**
+   * Returns the value of the '<em><b>Container</b></em>' container reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Region#getSubvertices <em>Subvertex</em>}'.
+   * <p>
+   * This feature subsets the following features:
+   * </p>
+   * <ul>
+   *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
+   * </ul>
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The Region that contains this Vertex.
+   * <p>From package UML::StateMachines.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Container</em>' container reference.
+   * @see #setContainer(Region)
+   * @see org.eclipse.uml2.uml.UMLPackage#getVertex_Container()
+   * @see org.eclipse.uml2.uml.Region#getSubvertices
+   * @model opposite="subvertex" transient="false" ordered="false"
+   *        annotation="subsets"
+   * @generated
+   */
+  Region getContainer();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * This utility operation returns true if the Vertex is contained in the State s (input argument).
-	 * result = (if not s.isComposite() or container->isEmpty() then
-	 * 	false
-	 * else
-	 * 	if container.state = s then 
-	 * 		true
-	 * 	else
-	 * 		container.state.isContainedInState(s)
-	 * 	endif
-	 * endif)
-	 * <p>From package UML::StateMachines.</p>
-	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" sRequired="true" sOrdered="false"
-	 * @generated
-	 */
-	boolean isContainedInState(State s);
+  /**
+   * Sets the value of the '{@link org.eclipse.uml2.uml.Vertex#getContainer <em>Container</em>}' container reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Container</em>' container reference.
+   * @see #getContainer()
+   * @generated
+   */
+  void setContainer(Region value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * This utility query returns true if the Vertex is contained in the Region r (input argument).
-	 * result = (if (container = r) then
-	 * 	true
-	 * else
-	 * 	if (r.state->isEmpty()) then
-	 * 		false
-	 * 	else
-	 * 		container.state.isContainedInRegion(r)
-	 * 	endif
-	 * endif)
-	 * <p>From package UML::StateMachines.</p>
-	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" rRequired="true" rOrdered="false"
-	 * @generated
-	 */
-	boolean isContainedInRegion(Region r);
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The operation containingStateMachine() returns the StateMachine in which this Vertex is defined.
+   * result = (if container <> null
+   * then
+   * -- the container is a region
+   *    container.containingStateMachine()
+   * else 
+   *    if (self.oclIsKindOf(Pseudostate)) and ((self.oclAsType(Pseudostate).kind = PseudostateKind::entryPoint) or (self.oclAsType(Pseudostate).kind = PseudostateKind::exitPoint)) then
+   *       self.oclAsType(Pseudostate).stateMachine
+   *    else 
+   *       if (self.oclIsKindOf(ConnectionPointReference)) then
+   *           self.oclAsType(ConnectionPointReference).state.containingStateMachine() -- no other valid cases possible
+   *       else 
+   *           null
+   *       endif
+   *    endif
+   * endif
+   * )
+   * <p>From package UML::StateMachines.</p>
+   * <!-- end-model-doc -->
+   * @model required="true" ordered="false"
+   * @generated
+   */
+  StateMachine containingStateMachine();
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * This utility operation returns true if the Vertex is contained in the State s (input argument).
+   * result = (if not s.isComposite() or container->isEmpty() then
+   * 	false
+   * else
+   * 	if container.state = s then 
+   * 		true
+   * 	else
+   * 		container.state.isContainedInState(s)
+   * 	endif
+   * endif)
+   * <p>From package UML::StateMachines.</p>
+   * <!-- end-model-doc -->
+   * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" sRequired="true" sOrdered="false"
+   * @generated
+   */
+  boolean isContainedInState(State s);
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * This utility query returns true if the Vertex is contained in the Region r (input argument).
+   * result = (if (container = r) then
+   * 	true
+   * else
+   * 	if (r.state->isEmpty()) then
+   * 		false
+   * 	else
+   * 		container.state.isContainedInRegion(r)
+   * 	endif
+   * endif)
+   * <p>From package UML::StateMachines.</p>
+   * <!-- end-model-doc -->
+   * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" rRequired="true" rOrdered="false"
+   * @generated
+   */
+  boolean isContainedInRegion(Region r);
 
 } // Vertex

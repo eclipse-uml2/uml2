@@ -32,32 +32,30 @@ import org.eclipse.uml2.uml.Port;
  *
  * @generated
  */
-public class EncapsulatedClassifierOperations
-		extends StructuredClassifierOperations {
+public class EncapsulatedClassifierOperations extends StructuredClassifierOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EncapsulatedClassifierOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected EncapsulatedClassifierOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Derivation for EncapsulatedClassifier::/ownedPort : Port
-	 * result = (ownedAttribute->select(oclIsKindOf(Port))->collect(oclAsType(Port))->asOrderedSet())
-	 * @param encapsulatedClassifier The receiving '<em><b>Encapsulated Classifier</b></em>' model object.
-	 * <p>From package UML::StructuredClassifiers.</p>
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static EList<Port> getOwnedPorts(
-			EncapsulatedClassifier encapsulatedClassifier) {
-		return encapsulatedClassifier.getOwnedPorts();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Derivation for EncapsulatedClassifier::/ownedPort : Port
+   * result = (ownedAttribute->select(oclIsKindOf(Port))->collect(oclAsType(Port))->asOrderedSet())
+   * @param encapsulatedClassifier The receiving '<em><b>Encapsulated Classifier</b></em>' model object.
+   * <p>From package UML::StructuredClassifiers.</p>
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static EList<Port> getOwnedPorts(EncapsulatedClassifier encapsulatedClassifier) {
+    return encapsulatedClassifier.getOwnedPorts();
+  }
 
 } // EncapsulatedClassifierOperations

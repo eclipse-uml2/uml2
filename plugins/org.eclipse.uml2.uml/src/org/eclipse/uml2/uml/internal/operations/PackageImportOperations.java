@@ -39,54 +39,50 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated
  */
-public class PackageImportOperations
-		extends ElementOperations {
+public class PackageImportOperations extends ElementOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected PackageImportOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected PackageImportOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The visibility of a PackageImport is either public or private.
-	 * visibility = VisibilityKind::public or visibility = VisibilityKind::private
-	 * @param packageImport The receiving '<em><b>Package Import</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean validatePublicOrPrivate(PackageImport packageImport,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		boolean result = true;
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The visibility of a PackageImport is either public or private.
+   * visibility = VisibilityKind::public or visibility = VisibilityKind::private
+   * @param packageImport The receiving '<em><b>Package Import</b></em>' model object.
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean validatePublicOrPrivate(PackageImport packageImport, DiagnosticChain diagnostics,
+      Map<Object, Object> context) {
+    boolean result = true;
 
-		VisibilityKind visibility = packageImport.getVisibility();
+    VisibilityKind visibility = packageImport.getVisibility();
 
-		if (visibility != VisibilityKind.PUBLIC_LITERAL
-			&& visibility != VisibilityKind.PRIVATE_LITERAL) {
+    if (visibility != VisibilityKind.PUBLIC_LITERAL && visibility != VisibilityKind.PRIVATE_LITERAL) {
 
-			result = false;
+      result = false;
 
-			if (diagnostics != null) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
-					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.PACKAGE_IMPORT__PUBLIC_OR_PRIVATE,
-					UMLPlugin.INSTANCE.getString(
-						"_UI_PackageImport_PublicOrPrivate_diagnostic", //$NON-NLS-1$
-						getMessageSubstitutions(context, packageImport)),
-					new Object[]{packageImport}));
+      if (diagnostics != null) {
+        diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING, UMLValidator.DIAGNOSTIC_SOURCE,
+            UMLValidator.PACKAGE_IMPORT__PUBLIC_OR_PRIVATE,
+            UMLPlugin.INSTANCE.getString("_UI_PackageImport_PublicOrPrivate_diagnostic", //$NON-NLS-1$
+                getMessageSubstitutions(context, packageImport)),
+            new Object[] { packageImport }));
 
-			}
-		}
+      }
+    }
 
-		return result;
-	}
+    return result;
+  }
 
 } // PackageImportOperations

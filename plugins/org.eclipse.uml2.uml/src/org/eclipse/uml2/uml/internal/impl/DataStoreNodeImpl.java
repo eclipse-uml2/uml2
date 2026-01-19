@@ -25,27 +25,25 @@ import org.eclipse.uml2.uml.UMLPackage;
  *
  * @generated
  */
-public class DataStoreNodeImpl
-		extends CentralBufferNodeImpl
-		implements DataStoreNode {
+public class DataStoreNodeImpl extends CentralBufferNodeImpl implements DataStoreNode {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected DataStoreNodeImpl() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected DataStoreNodeImpl() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return UMLPackage.Literals.DATA_STORE_NODE;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass() {
+    return UMLPackage.Literals.DATA_STORE_NODE;
+  }
 
 } //DataStoreNodeImpl

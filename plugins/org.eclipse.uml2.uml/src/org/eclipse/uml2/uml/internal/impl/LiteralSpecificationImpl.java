@@ -25,27 +25,25 @@ import org.eclipse.uml2.uml.UMLPackage;
  *
  * @generated
  */
-public abstract class LiteralSpecificationImpl
-		extends ValueSpecificationImpl
-		implements LiteralSpecification {
+public abstract class LiteralSpecificationImpl extends ValueSpecificationImpl implements LiteralSpecification {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected LiteralSpecificationImpl() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected LiteralSpecificationImpl() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return UMLPackage.Literals.LITERAL_SPECIFICATION;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass() {
+    return UMLPackage.Literals.LITERAL_SPECIFICATION;
+  }
 
 } //LiteralSpecificationImpl

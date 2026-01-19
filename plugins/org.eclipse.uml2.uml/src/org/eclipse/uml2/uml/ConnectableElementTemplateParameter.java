@@ -26,12 +26,11 @@ package org.eclipse.uml2.uml;
  *
  *
  * @see org.eclipse.uml2.uml.UMLPackage#getConnectableElementTemplateParameter()
- * @model
+ * @model annotation="duplicates"
  * @generated
  */
-public interface ConnectableElementTemplateParameter
-		extends TemplateParameter {
+public interface ConnectableElementTemplateParameter extends TemplateParameter {
 
-	// no methods
+  // no methods
 
 } // ConnectableElementTemplateParameter

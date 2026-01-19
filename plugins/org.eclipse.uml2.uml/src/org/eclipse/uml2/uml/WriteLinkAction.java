@@ -33,27 +33,25 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * @model abstract="true"
  * @generated
  */
-public interface WriteLinkAction
-		extends LinkAction {
+public interface WriteLinkAction extends LinkAction {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The visibility of at least one end must allow access from the context Classifier of the WriteLinkAction.
-	 * endData.end->exists(end |
-	 *   end.type=_'context' or
-	 *   end.visibility=VisibilityKind::public or 
-	 *   end.visibility=VisibilityKind::protected and
-	 *   endData.end->exists(other | 
-	 *     other<>end and _'context'.conformsTo(other.type.oclAsType(Classifier))))
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateAllowAccess(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The visibility of at least one end must allow access from the context Classifier of the WriteLinkAction.
+   * endData.end->exists(end |
+   *   end.type=_'context' or
+   *   end.visibility=VisibilityKind::public or 
+   *   end.visibility=VisibilityKind::protected and
+   *   endData.end->exists(other | 
+   *     other<>end and _'context'.conformsTo(other.type.oclAsType(Classifier))))
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @model
+   * @generated
+   */
+  boolean validateAllowAccess(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // WriteLinkAction

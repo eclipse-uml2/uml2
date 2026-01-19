@@ -42,117 +42,106 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated
  */
-public class FunctionBehaviorOperations
-		extends BehaviorOperations {
+public class FunctionBehaviorOperations extends BehaviorOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected FunctionBehaviorOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected FunctionBehaviorOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A FunctionBehavior has at least one output Parameter.
-	 * self.ownedParameter->
-	 *   select(p | p.direction = ParameterDirectionKind::out or p.direction= ParameterDirectionKind::inout or p.direction= ParameterDirectionKind::return)->size() >= 1
-	 * @param functionBehavior The receiving '<em><b>Function Behavior</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateOneOutputParameter(
-			FunctionBehavior functionBehavior, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
-					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.FUNCTION_BEHAVIOR__ONE_OUTPUT_PARAMETER,
-					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
-						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
-						new Object[]{"validateOneOutputParameter", //$NON-NLS-1$
-							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(functionBehavior, context)}), new Object[]{functionBehavior}));
-			}
-			return false;
-		}
-		return true;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * A FunctionBehavior has at least one output Parameter.
+   * self.ownedParameter->
+   *   select(p | p.direction = ParameterDirectionKind::out or p.direction= ParameterDirectionKind::inout or p.direction= ParameterDirectionKind::return)->size() >= 1
+   * @param functionBehavior The receiving '<em><b>Function Behavior</b></em>' model object.
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @generated
+   */
+  public static boolean validateOneOutputParameter(FunctionBehavior functionBehavior, DiagnosticChain diagnostics,
+      Map<Object, Object> context) {
+    // TODO: implement this method
+    // -> specify the condition that violates the invariant
+    // -> verify the details of the diagnostic, including severity and message
+    // Ensure that you remove @generated or mark it @generated NOT
+    if (false) {
+      if (diagnostics != null) {
+        diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR, UMLValidator.DIAGNOSTIC_SOURCE,
+            UMLValidator.FUNCTION_BEHAVIOR__ONE_OUTPUT_PARAMETER,
+            org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString("_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+                new Object[] { "validateOneOutputParameter", //$NON-NLS-1$
+                    org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(functionBehavior, context) }), new Object[] { functionBehavior }));
+      }
+      return false;
+    }
+    return true;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The types of the ownedParameters are all DataTypes, which may not nest anything but other DataTypes.
-	 * ownedParameter->forAll(p | p.type <> null and
-	 *   p.type.oclIsTypeOf(DataType) and hasAllDataTypeAttributes(p.type.oclAsType(DataType)))
-	 * @param functionBehavior The receiving '<em><b>Function Behavior</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateTypesOfParameters(
-			FunctionBehavior functionBehavior, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
-					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.FUNCTION_BEHAVIOR__TYPES_OF_PARAMETERS,
-					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
-						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
-						new Object[]{"validateTypesOfParameters", //$NON-NLS-1$
-							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(functionBehavior, context)}), new Object[]{functionBehavior}));
-			}
-			return false;
-		}
-		return true;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The types of the ownedParameters are all DataTypes, which may not nest anything but other DataTypes.
+   * ownedParameter->forAll(p | p.type <> null and
+   *   p.type.oclIsTypeOf(DataType) and hasAllDataTypeAttributes(p.type.oclAsType(DataType)))
+   * @param functionBehavior The receiving '<em><b>Function Behavior</b></em>' model object.
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @generated
+   */
+  public static boolean validateTypesOfParameters(FunctionBehavior functionBehavior, DiagnosticChain diagnostics,
+      Map<Object, Object> context) {
+    // TODO: implement this method
+    // -> specify the condition that violates the invariant
+    // -> verify the details of the diagnostic, including severity and message
+    // Ensure that you remove @generated or mark it @generated NOT
+    if (false) {
+      if (diagnostics != null) {
+        diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR, UMLValidator.DIAGNOSTIC_SOURCE,
+            UMLValidator.FUNCTION_BEHAVIOR__TYPES_OF_PARAMETERS,
+            org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString("_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+                new Object[] { "validateTypesOfParameters", //$NON-NLS-1$
+                    org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(functionBehavior, context) }), new Object[] { functionBehavior }));
+      }
+      return false;
+    }
+    return true;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The hasAllDataTypeAttributes query tests whether the types of the attributes of the given DataType are all DataTypes, and similarly for all those DataTypes.
-	 * result = (d.ownedAttribute->forAll(a |
-	 *     a.type.oclIsKindOf(DataType) and
-	 *       hasAllDataTypeAttributes(a.type.oclAsType(DataType))))
-	 * <p>From package UML::CommonBehavior.</p>
-	 * @param functionBehavior The receiving '<em><b>Function Behavior</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean hasAllDataTypeAttributes(
-			FunctionBehavior functionBehavior, DataType d) {
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The hasAllDataTypeAttributes query tests whether the types of the attributes of the given DataType are all DataTypes, and similarly for all those DataTypes.
+   * result = (d.ownedAttribute->forAll(a |
+   *     a.type.oclIsKindOf(DataType) and
+   *       hasAllDataTypeAttributes(a.type.oclAsType(DataType))))
+   * <p>From package UML::CommonBehavior.</p>
+   * @param functionBehavior The receiving '<em><b>Function Behavior</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean hasAllDataTypeAttributes(FunctionBehavior functionBehavior, DataType d) {
 
-		for (Property ownedAttribute : d.getOwnedAttributes()) {
-			Type type = ownedAttribute.getType();
+    for (Property ownedAttribute : d.getOwnedAttributes()) {
+      Type type = ownedAttribute.getType();
 
-			if (!(type instanceof DataType && hasAllDataTypeAttributes(
-				functionBehavior, (DataType) type))) {
+      if (!(type instanceof DataType && hasAllDataTypeAttributes(functionBehavior, (DataType) type))) {
 
-				return false;
-			}
-		}
+        return false;
+      }
+    }
 
-		return true;
-	}
+    return true;
+  }
 
 } // FunctionBehaviorOperations

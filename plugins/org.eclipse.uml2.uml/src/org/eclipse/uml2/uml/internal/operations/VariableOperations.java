@@ -31,37 +31,34 @@ import org.eclipse.uml2.uml.Variable;
  *
  * @generated
  */
-public class VariableOperations
-		extends ConnectableElementOperations {
+public class VariableOperations extends ConnectableElementOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected VariableOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected VariableOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A Variable is accessible by Actions within its scope (the Activity or StructuredActivityNode that owns it).
-	 * result = (if scope<>null then scope.allOwnedNodes()->includes(a)
-	 * else a.containingActivity()=activityScope
-	 * endif)
-	 * <p>From package UML::Activities.</p>
-	 * @param variable The receiving '<em><b>Variable</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean isAccessibleBy(Variable variable, Action a) {
-		StructuredActivityNode scope = variable.getScope();
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * A Variable is accessible by Actions within its scope (the Activity or StructuredActivityNode that owns it).
+   * result = (if scope<>null then scope.allOwnedNodes()->includes(a)
+   * else a.containingActivity()=activityScope
+   * endif)
+   * <p>From package UML::Activities.</p>
+   * @param variable The receiving '<em><b>Variable</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean isAccessibleBy(Variable variable, Action a) {
+    StructuredActivityNode scope = variable.getScope();
 
-		return scope != null
-			? scope.allOwnedNodes().contains(a)
-			: a.containingActivity() == variable.getActivityScope();
-	}
+    return scope != null ? scope.allOwnedNodes().contains(a) : a.containingActivity() == variable.getActivityScope();
+  }
 
 } // VariableOperations

@@ -42,149 +42,149 @@ import org.eclipse.emf.ecore.EClass;
  * @model
  * @generated
  */
-public interface Deployment
-		extends Dependency {
+public interface Deployment extends Dependency {
 
-	/**
-	 * Returns the value of the '<em><b>Deployed Artifact</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.uml.DeployedArtifact}.
-	 * <p>
-	 * This feature subsets the following features:
-	 * </p>
-	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Dependency#getSuppliers() <em>Supplier</em>}'</li>
-	 * </ul>
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The Artifacts that are deployed onto a Node. This association specializes the supplier association.
-	 * <p>From package UML::Deployments.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Deployed Artifact</em>' reference list.
-	 * @see org.eclipse.uml2.uml.UMLPackage#getDeployment_DeployedArtifact()
-	 * @model ordered="false"
-	 * @generated
-	 */
-	EList<DeployedArtifact> getDeployedArtifacts();
+  /**
+   * Returns the value of the '<em><b>Deployed Artifact</b></em>' reference list.
+   * The list contents are of type {@link org.eclipse.uml2.uml.DeployedArtifact}.
+   * <p>
+   * This feature subsets the following features:
+   * </p>
+   * <ul>
+   *   <li>'{@link org.eclipse.uml2.uml.Dependency#getSuppliers() <em>Supplier</em>}'</li>
+   * </ul>
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The Artifacts that are deployed onto a Node. This association specializes the supplier association.
+   * <p>From package UML::Deployments.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Deployed Artifact</em>' reference list.
+   * @see org.eclipse.uml2.uml.UMLPackage#getDeployment_DeployedArtifact()
+   * @model ordered="false"
+   *        annotation="subsets"
+   * @generated
+   */
+  EList<DeployedArtifact> getDeployedArtifacts();
 
-	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.DeployedArtifact} with the specified '<em><b>Name</b></em>' from the '<em><b>Deployed Artifact</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.DeployedArtifact} to retrieve, or <code>null</code>.
-	 * @return The first {@link org.eclipse.uml2.uml.DeployedArtifact} with the specified '<em><b>Name</b></em>', or <code>null</code>.
-	 * @see #getDeployedArtifacts()
-	 * @generated
-	 */
-	DeployedArtifact getDeployedArtifact(String name);
+  /**
+   * Retrieves the first {@link org.eclipse.uml2.uml.DeployedArtifact} with the specified '<em><b>Name</b></em>' from the '<em><b>Deployed Artifact</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.DeployedArtifact} to retrieve, or <code>null</code>.
+   * @return The first {@link org.eclipse.uml2.uml.DeployedArtifact} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+   * @see #getDeployedArtifacts()
+   * @generated
+   */
+  DeployedArtifact getDeployedArtifact(String name);
 
-	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.DeployedArtifact} with the specified '<em><b>Name</b></em>' from the '<em><b>Deployed Artifact</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.DeployedArtifact} to retrieve, or <code>null</code>.
-	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
-	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.DeployedArtifact} to retrieve, or <code>null</code>.
-	 * @return The first {@link org.eclipse.uml2.uml.DeployedArtifact} with the specified '<em><b>Name</b></em>', or <code>null</code>.
-	 * @see #getDeployedArtifacts()
-	 * @generated
-	 */
-	DeployedArtifact getDeployedArtifact(String name, boolean ignoreCase,
-			EClass eClass);
+  /**
+   * Retrieves the first {@link org.eclipse.uml2.uml.DeployedArtifact} with the specified '<em><b>Name</b></em>' from the '<em><b>Deployed Artifact</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.DeployedArtifact} to retrieve, or <code>null</code>.
+   * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+   * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.DeployedArtifact} to retrieve, or <code>null</code>.
+   * @return The first {@link org.eclipse.uml2.uml.DeployedArtifact} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+   * @see #getDeployedArtifacts()
+   * @generated
+   */
+  DeployedArtifact getDeployedArtifact(String name, boolean ignoreCase, EClass eClass);
 
-	/**
-	 * Returns the value of the '<em><b>Configuration</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.uml.DeploymentSpecification}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.DeploymentSpecification#getDeployment <em>Deployment</em>}'.
-	 * <p>
-	 * This feature subsets the following features:
-	 * </p>
-	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
-	 * </ul>
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The specification of properties that parameterize the deployment and execution of one or more Artifacts.
-	 * <p>From package UML::Deployments.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Configuration</em>' containment reference list.
-	 * @see org.eclipse.uml2.uml.UMLPackage#getDeployment_Configuration()
-	 * @see org.eclipse.uml2.uml.DeploymentSpecification#getDeployment
-	 * @model opposite="deployment" containment="true" resolveProxies="true" ordered="false"
-	 * @generated
-	 */
-	EList<DeploymentSpecification> getConfigurations();
+  /**
+   * Returns the value of the '<em><b>Configuration</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.uml2.uml.DeploymentSpecification}.
+   * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.DeploymentSpecification#getDeployment <em>Deployment</em>}'.
+   * <p>
+   * This feature subsets the following features:
+   * </p>
+   * <ul>
+   *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+   * </ul>
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The specification of properties that parameterize the deployment and execution of one or more Artifacts.
+   * <p>From package UML::Deployments.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Configuration</em>' containment reference list.
+   * @see org.eclipse.uml2.uml.UMLPackage#getDeployment_Configuration()
+   * @see org.eclipse.uml2.uml.DeploymentSpecification#getDeployment
+   * @model opposite="deployment" containment="true" resolveProxies="true" ordered="false"
+   *        annotation="subsets"
+   * @generated
+   */
+  EList<DeploymentSpecification> getConfigurations();
 
-	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.DeploymentSpecification}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Configuration</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.DeploymentSpecification}, or <code>null</code>.
-	 * @return The new {@link org.eclipse.uml2.uml.DeploymentSpecification}.
-	 * @see #getConfigurations()
-	 * @generated
-	 */
-	DeploymentSpecification createConfiguration(String name);
+  /**
+   * Creates a new {@link org.eclipse.uml2.uml.DeploymentSpecification}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Configuration</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.DeploymentSpecification}, or <code>null</code>.
+   * @return The new {@link org.eclipse.uml2.uml.DeploymentSpecification}.
+   * @see #getConfigurations()
+   * @generated
+   */
+  DeploymentSpecification createConfiguration(String name);
 
-	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.DeploymentSpecification} with the specified '<em><b>Name</b></em>' from the '<em><b>Configuration</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.DeploymentSpecification} to retrieve, or <code>null</code>.
-	 * @return The first {@link org.eclipse.uml2.uml.DeploymentSpecification} with the specified '<em><b>Name</b></em>', or <code>null</code>.
-	 * @see #getConfigurations()
-	 * @generated
-	 */
-	DeploymentSpecification getConfiguration(String name);
+  /**
+   * Retrieves the first {@link org.eclipse.uml2.uml.DeploymentSpecification} with the specified '<em><b>Name</b></em>' from the '<em><b>Configuration</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.DeploymentSpecification} to retrieve, or <code>null</code>.
+   * @return The first {@link org.eclipse.uml2.uml.DeploymentSpecification} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+   * @see #getConfigurations()
+   * @generated
+   */
+  DeploymentSpecification getConfiguration(String name);
 
-	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.DeploymentSpecification} with the specified '<em><b>Name</b></em>' from the '<em><b>Configuration</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.DeploymentSpecification} to retrieve, or <code>null</code>.
-	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
-	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.DeploymentSpecification} on demand if not found.
-	 * @return The first {@link org.eclipse.uml2.uml.DeploymentSpecification} with the specified '<em><b>Name</b></em>', or <code>null</code>.
-	 * @see #getConfigurations()
-	 * @generated
-	 */
-	DeploymentSpecification getConfiguration(String name, boolean ignoreCase,
-			boolean createOnDemand);
+  /**
+   * Retrieves the first {@link org.eclipse.uml2.uml.DeploymentSpecification} with the specified '<em><b>Name</b></em>' from the '<em><b>Configuration</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.DeploymentSpecification} to retrieve, or <code>null</code>.
+   * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+   * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.DeploymentSpecification} on demand if not found.
+   * @return The first {@link org.eclipse.uml2.uml.DeploymentSpecification} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+   * @see #getConfigurations()
+   * @generated
+   */
+  DeploymentSpecification getConfiguration(String name, boolean ignoreCase, boolean createOnDemand);
 
-	/**
-	 * Returns the value of the '<em><b>Location</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.DeploymentTarget#getDeployments <em>Deployment</em>}'.
-	 * <p>
-	 * This feature subsets the following features:
-	 * </p>
-	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Dependency#getClients() <em>Client</em>}'</li>
-	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}'</li>
-	 * </ul>
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The DeployedTarget which is the target of a Deployment.
-	 * <p>From package UML::Deployments.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Location</em>' container reference.
-	 * @see #setLocation(DeploymentTarget)
-	 * @see org.eclipse.uml2.uml.UMLPackage#getDeployment_Location()
-	 * @see org.eclipse.uml2.uml.DeploymentTarget#getDeployments
-	 * @model opposite="deployment" required="true" transient="false" ordered="false"
-	 * @generated
-	 */
-	DeploymentTarget getLocation();
+  /**
+   * Returns the value of the '<em><b>Location</b></em>' container reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.DeploymentTarget#getDeployments <em>Deployment</em>}'.
+   * <p>
+   * This feature subsets the following features:
+   * </p>
+   * <ul>
+   *   <li>'{@link org.eclipse.uml2.uml.Dependency#getClients() <em>Client</em>}'</li>
+   *   <li>'{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}'</li>
+   * </ul>
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The DeployedTarget which is the target of a Deployment.
+   * <p>From package UML::Deployments.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Location</em>' container reference.
+   * @see #setLocation(DeploymentTarget)
+   * @see org.eclipse.uml2.uml.UMLPackage#getDeployment_Location()
+   * @see org.eclipse.uml2.uml.DeploymentTarget#getDeployments
+   * @model opposite="deployment" required="true" transient="false" ordered="false"
+   *        annotation="subsets"
+   * @generated
+   */
+  DeploymentTarget getLocation();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.Deployment#getLocation <em>Location</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Location</em>' container reference.
-	 * @see #getLocation()
-	 * @generated
-	 */
-	void setLocation(DeploymentTarget value);
+  /**
+   * Sets the value of the '{@link org.eclipse.uml2.uml.Deployment#getLocation <em>Location</em>}' container reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Location</em>' container reference.
+   * @see #getLocation()
+   * @generated
+   */
+  void setLocation(DeploymentTarget value);
 
 } // Deployment

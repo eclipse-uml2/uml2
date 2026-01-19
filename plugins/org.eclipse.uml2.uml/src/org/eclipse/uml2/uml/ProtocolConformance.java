@@ -36,74 +36,75 @@ package org.eclipse.uml2.uml;
  * @model
  * @generated
  */
-public interface ProtocolConformance
-		extends DirectedRelationship {
+public interface ProtocolConformance extends DirectedRelationship {
 
-	/**
-	 * Returns the value of the '<em><b>General Machine</b></em>' reference.
-	 * <p>
-	 * This feature subsets the following features:
-	 * </p>
-	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.DirectedRelationship#getTargets() <em>Target</em>}'</li>
-	 * </ul>
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Specifies the ProtocolStateMachine to which the specific ProtocolStateMachine conforms.
-	 * <p>From package UML::StateMachines.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>General Machine</em>' reference.
-	 * @see #setGeneralMachine(ProtocolStateMachine)
-	 * @see org.eclipse.uml2.uml.UMLPackage#getProtocolConformance_GeneralMachine()
-	 * @model required="true" ordered="false"
-	 * @generated
-	 */
-	ProtocolStateMachine getGeneralMachine();
+  /**
+   * Returns the value of the '<em><b>General Machine</b></em>' reference.
+   * <p>
+   * This feature subsets the following features:
+   * </p>
+   * <ul>
+   *   <li>'{@link org.eclipse.uml2.uml.DirectedRelationship#getTargets() <em>Target</em>}'</li>
+   * </ul>
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Specifies the ProtocolStateMachine to which the specific ProtocolStateMachine conforms.
+   * <p>From package UML::StateMachines.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>General Machine</em>' reference.
+   * @see #setGeneralMachine(ProtocolStateMachine)
+   * @see org.eclipse.uml2.uml.UMLPackage#getProtocolConformance_GeneralMachine()
+   * @model required="true" ordered="false"
+   *        annotation="subsets"
+   * @generated
+   */
+  ProtocolStateMachine getGeneralMachine();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.ProtocolConformance#getGeneralMachine <em>General Machine</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>General Machine</em>' reference.
-	 * @see #getGeneralMachine()
-	 * @generated
-	 */
-	void setGeneralMachine(ProtocolStateMachine value);
+  /**
+   * Sets the value of the '{@link org.eclipse.uml2.uml.ProtocolConformance#getGeneralMachine <em>General Machine</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>General Machine</em>' reference.
+   * @see #getGeneralMachine()
+   * @generated
+   */
+  void setGeneralMachine(ProtocolStateMachine value);
 
-	/**
-	 * Returns the value of the '<em><b>Specific Machine</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ProtocolStateMachine#getConformances <em>Conformance</em>}'.
-	 * <p>
-	 * This feature subsets the following features:
-	 * </p>
-	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.DirectedRelationship#getSources() <em>Source</em>}'</li>
-	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}'</li>
-	 * </ul>
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Specifies the ProtocolStateMachine which conforms to the general ProtocolStateMachine.
-	 * <p>From package UML::StateMachines.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Specific Machine</em>' container reference.
-	 * @see #setSpecificMachine(ProtocolStateMachine)
-	 * @see org.eclipse.uml2.uml.UMLPackage#getProtocolConformance_SpecificMachine()
-	 * @see org.eclipse.uml2.uml.ProtocolStateMachine#getConformances
-	 * @model opposite="conformance" required="true" transient="false" ordered="false"
-	 * @generated
-	 */
-	ProtocolStateMachine getSpecificMachine();
+  /**
+   * Returns the value of the '<em><b>Specific Machine</b></em>' container reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ProtocolStateMachine#getConformances <em>Conformance</em>}'.
+   * <p>
+   * This feature subsets the following features:
+   * </p>
+   * <ul>
+   *   <li>'{@link org.eclipse.uml2.uml.DirectedRelationship#getSources() <em>Source</em>}'</li>
+   *   <li>'{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}'</li>
+   * </ul>
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Specifies the ProtocolStateMachine which conforms to the general ProtocolStateMachine.
+   * <p>From package UML::StateMachines.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Specific Machine</em>' container reference.
+   * @see #setSpecificMachine(ProtocolStateMachine)
+   * @see org.eclipse.uml2.uml.UMLPackage#getProtocolConformance_SpecificMachine()
+   * @see org.eclipse.uml2.uml.ProtocolStateMachine#getConformances
+   * @model opposite="conformance" required="true" transient="false" ordered="false"
+   *        annotation="subsets"
+   * @generated
+   */
+  ProtocolStateMachine getSpecificMachine();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.ProtocolConformance#getSpecificMachine <em>Specific Machine</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Specific Machine</em>' container reference.
-	 * @see #getSpecificMachine()
-	 * @generated
-	 */
-	void setSpecificMachine(ProtocolStateMachine value);
+  /**
+   * Sets the value of the '{@link org.eclipse.uml2.uml.ProtocolConformance#getSpecificMachine <em>Specific Machine</em>}' container reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Specific Machine</em>' container reference.
+   * @see #getSpecificMachine()
+   * @generated
+   */
+  void setSpecificMachine(ProtocolStateMachine value);
 
 } // ProtocolConformance

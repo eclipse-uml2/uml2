@@ -29,9 +29,8 @@ package org.eclipse.uml2.uml;
  * @model abstract="true"
  * @generated
  */
-public interface Observation
-		extends PackageableElement {
+public interface Observation extends PackageableElement {
 
-	// no methods
+  // no methods
 
 } // Observation

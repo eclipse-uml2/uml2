@@ -37,53 +37,47 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated
  */
-public class InterruptibleActivityRegionOperations
-		extends ActivityGroupOperations {
+public class InterruptibleActivityRegionOperations extends ActivityGroupOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected InterruptibleActivityRegionOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected InterruptibleActivityRegionOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The interruptingEdges of an InterruptibleActivityRegion must have their source in the region and their target outside the region, but within the same Activity containing the region.
-	 * interruptingEdge->forAll(edge | 
-	 *   node->includes(edge.source) and node->excludes(edge.target) and edge.target.containingActivity() = inActivity)
-	 * @param interruptibleActivityRegion The receiving '<em><b>Interruptible Activity Region</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateInterruptingEdges(
-			InterruptibleActivityRegion interruptibleActivityRegion,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
-					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGES,
-					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
-						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
-						new Object[]{"validateInterruptingEdges", //$NON-NLS-1$
-							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(interruptibleActivityRegion,
-									context)}), new Object[]{interruptibleActivityRegion}));
-			}
-			return false;
-		}
-		return true;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The interruptingEdges of an InterruptibleActivityRegion must have their source in the region and their target outside the region, but within the same Activity containing the region.
+   * interruptingEdge->forAll(edge | 
+   *   node->includes(edge.source) and node->excludes(edge.target) and edge.target.containingActivity() = inActivity)
+   * @param interruptibleActivityRegion The receiving '<em><b>Interruptible Activity Region</b></em>' model object.
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @generated
+   */
+  public static boolean validateInterruptingEdges(InterruptibleActivityRegion interruptibleActivityRegion,
+      DiagnosticChain diagnostics, Map<Object, Object> context) {
+    // TODO: implement this method
+    // -> specify the condition that violates the invariant
+    // -> verify the details of the diagnostic, including severity and message
+    // Ensure that you remove @generated or mark it @generated NOT
+    if (false) {
+      if (diagnostics != null) {
+        diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR, UMLValidator.DIAGNOSTIC_SOURCE,
+            UMLValidator.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGES,
+            org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString("_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+                new Object[] { "validateInterruptingEdges", //$NON-NLS-1$
+                    org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(interruptibleActivityRegion, context) }), new Object[] { interruptibleActivityRegion }));
+      }
+      return false;
+    }
+    return true;
+  }
 
 } // InterruptibleActivityRegionOperations

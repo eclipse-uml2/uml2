@@ -46,204 +46,193 @@ import org.eclipse.uml2.uml.UMLPackage;
  *
  * @generated
  */
-public class MessageEndOperations
-		extends NamedElementOperations {
+public class MessageEndOperations extends NamedElementOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected MessageEndOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected MessageEndOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * This query returns a set including the MessageEnd (if exists) at the opposite end of the Message for this MessageEnd.
-	 * result = (message->asSet().messageEnd->asSet()->excluding(self))
-	 * message->notEmpty()
-	 * <p>From package UML::Interactions.</p>
-	 * @param messageEnd The receiving '<em><b>Message End</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static EList<MessageEnd> oppositeEnd(MessageEnd messageEnd) {
-		EList<MessageEnd> oppositeEnd = new UniqueEList.FastCompare<MessageEnd>();
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * This query returns a set including the MessageEnd (if exists) at the opposite end of the Message for this MessageEnd.
+   * result = (message->asSet().messageEnd->asSet()->excluding(self))
+   * message->notEmpty()
+   * <p>From package UML::Interactions.</p>
+   * @param messageEnd The receiving '<em><b>Message End</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static EList<MessageEnd> oppositeEnd(MessageEnd messageEnd) {
+    EList<MessageEnd> oppositeEnd = new UniqueEList.FastCompare<MessageEnd>();
 
-		Message message = messageEnd.getMessage();
+    Message message = messageEnd.getMessage();
 
-		if (message != null) {
+    if (message != null) {
 
-			for (EStructuralFeature.Setting nonNavigableInverseReference : getNonNavigableInverseReferences(
-				message)) {
+      for (EStructuralFeature.Setting nonNavigableInverseReference : getNonNavigableInverseReferences(message)) {
 
-				if (nonNavigableInverseReference
-					.getEStructuralFeature() == UMLPackage.Literals.MESSAGE_END__MESSAGE) {
-					MessageEnd eObject = (MessageEnd) nonNavigableInverseReference
-						.getEObject();
+        if (nonNavigableInverseReference.getEStructuralFeature() == UMLPackage.Literals.MESSAGE_END__MESSAGE) {
+          MessageEnd eObject = (MessageEnd) nonNavigableInverseReference.getEObject();
 
-					if (eObject != messageEnd) {
-						oppositeEnd.add(eObject);
-					}
-				}
-			}
-		}
+          if (eObject != messageEnd) {
+            oppositeEnd.add(eObject);
+          }
+        }
+      }
+    }
 
-		return ECollections.unmodifiableEList(oppositeEnd);
-	}
+    return ECollections.unmodifiableEList(oppositeEnd);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * This query returns value true if this MessageEnd is a sendEvent.
-	 * message->notEmpty()
-	 * result = (message.sendEvent->asSet()->includes(self))
-	 * <p>From package UML::Interactions.</p>
-	 * @param messageEnd The receiving '<em><b>Message End</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean isSend(MessageEnd messageEnd) {
-		Message message = messageEnd.getMessage();
-		return message != null && message.getSendEvent() == messageEnd;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * This query returns value true if this MessageEnd is a sendEvent.
+   * message->notEmpty()
+   * result = (message.sendEvent->asSet()->includes(self))
+   * <p>From package UML::Interactions.</p>
+   * @param messageEnd The receiving '<em><b>Message End</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean isSend(MessageEnd messageEnd) {
+    Message message = messageEnd.getMessage();
+    return message != null && message.getSendEvent() == messageEnd;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * This query returns value true if this MessageEnd is a receiveEvent.
-	 * message->notEmpty()
-	 * result = (message.receiveEvent->asSet()->includes(self))
-	 * <p>From package UML::Interactions.</p>
-	 * @param messageEnd The receiving '<em><b>Message End</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean isReceive(MessageEnd messageEnd) {
-		Message message = messageEnd.getMessage();
-		return message != null && message.getReceiveEvent() == messageEnd;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * This query returns value true if this MessageEnd is a receiveEvent.
+   * message->notEmpty()
+   * result = (message.receiveEvent->asSet()->includes(self))
+   * <p>From package UML::Interactions.</p>
+   * @param messageEnd The receiving '<em><b>Message End</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean isReceive(MessageEnd messageEnd) {
+    Message message = messageEnd.getMessage();
+    return message != null && message.getReceiveEvent() == messageEnd;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * This query returns a set including the enclosing InteractionFragment this MessageEnd is enclosed within.
-	 * result = (if self->select(oclIsKindOf(Gate))->notEmpty() 
-	 * then -- it is a Gate
-	 * let endGate : Gate = 
-	 *   self->select(oclIsKindOf(Gate)).oclAsType(Gate)->asOrderedSet()->first()
-	 *   in
-	 *   if endGate.isOutsideCF() 
-	 *   then endGate.combinedFragment.enclosingInteraction.oclAsType(InteractionFragment)->asSet()->
-	 *      union(endGate.combinedFragment.enclosingOperand.oclAsType(InteractionFragment)->asSet())
-	 *   else if endGate.isInsideCF() 
-	 *     then endGate.combinedFragment.oclAsType(InteractionFragment)->asSet()
-	 *     else if endGate.isFormal() 
-	 *       then endGate.interaction.oclAsType(InteractionFragment)->asSet()
-	 *       else if endGate.isActual() 
-	 *         then endGate.interactionUse.enclosingInteraction.oclAsType(InteractionFragment)->asSet()->
-	 *      union(endGate.interactionUse.enclosingOperand.oclAsType(InteractionFragment)->asSet())
-	 *         else null
-	 *         endif
-	 *       endif
-	 *     endif
-	 *   endif
-	 * else -- it is a MessageOccurrenceSpecification
-	 * let endMOS : MessageOccurrenceSpecification  = 
-	 *   self->select(oclIsKindOf(MessageOccurrenceSpecification)).oclAsType(MessageOccurrenceSpecification)->asOrderedSet()->first() 
-	 *   in
-	 *   if endMOS.enclosingInteraction->notEmpty() 
-	 *   then endMOS.enclosingInteraction.oclAsType(InteractionFragment)->asSet()
-	 *   else endMOS.enclosingOperand.oclAsType(InteractionFragment)->asSet()
-	 *   endif
-	 * endif)
-	 * <p>From package UML::Interactions.</p>
-	 * @param messageEnd The receiving '<em><b>Message End</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static EList<InteractionFragment> enclosingFragment(
-			MessageEnd messageEnd) {
-		EList<InteractionFragment> enclosingFragment = new UniqueEList.FastCompare<InteractionFragment>();
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * This query returns a set including the enclosing InteractionFragment this MessageEnd is enclosed within.
+   * result = (if self->select(oclIsKindOf(Gate))->notEmpty() 
+   * then -- it is a Gate
+   * let endGate : Gate = 
+   *   self->select(oclIsKindOf(Gate)).oclAsType(Gate)->asOrderedSet()->first()
+   *   in
+   *   if endGate.isOutsideCF() 
+   *   then endGate.combinedFragment.enclosingInteraction.oclAsType(InteractionFragment)->asSet()->
+   *      union(endGate.combinedFragment.enclosingOperand.oclAsType(InteractionFragment)->asSet())
+   *   else if endGate.isInsideCF() 
+   *     then endGate.combinedFragment.oclAsType(InteractionFragment)->asSet()
+   *     else if endGate.isFormal() 
+   *       then endGate.interaction.oclAsType(InteractionFragment)->asSet()
+   *       else if endGate.isActual() 
+   *         then endGate.interactionUse.enclosingInteraction.oclAsType(InteractionFragment)->asSet()->
+   *      union(endGate.interactionUse.enclosingOperand.oclAsType(InteractionFragment)->asSet())
+   *         else null
+   *         endif
+   *       endif
+   *     endif
+   *   endif
+   * else -- it is a MessageOccurrenceSpecification
+   * let endMOS : MessageOccurrenceSpecification  = 
+   *   self->select(oclIsKindOf(MessageOccurrenceSpecification)).oclAsType(MessageOccurrenceSpecification)->asOrderedSet()->first() 
+   *   in
+   *   if endMOS.enclosingInteraction->notEmpty() 
+   *   then endMOS.enclosingInteraction.oclAsType(InteractionFragment)->asSet()
+   *   else endMOS.enclosingOperand.oclAsType(InteractionFragment)->asSet()
+   *   endif
+   * endif)
+   * <p>From package UML::Interactions.</p>
+   * @param messageEnd The receiving '<em><b>Message End</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static EList<InteractionFragment> enclosingFragment(MessageEnd messageEnd) {
+    EList<InteractionFragment> enclosingFragment = new UniqueEList.FastCompare<InteractionFragment>();
 
-		if (messageEnd instanceof Gate) {
-			Gate endGate = (Gate) messageEnd;
-			EObject eContainer = endGate.eContainer();
+    if (messageEnd instanceof Gate) {
+      Gate endGate = (Gate) messageEnd;
+      EObject eContainer = endGate.eContainer();
 
-			if (endGate.isOutsideCF()) {
+      if (endGate.isOutsideCF()) {
 
-				if (eContainer instanceof CombinedFragment) {
-					CombinedFragment combinedFragment = (CombinedFragment) eContainer;
+        if (eContainer instanceof CombinedFragment) {
+          CombinedFragment combinedFragment = (CombinedFragment) eContainer;
 
-					InteractionFragment enclosingInteraction = combinedFragment
-						.getEnclosingInteraction();
+          InteractionFragment enclosingInteraction = combinedFragment.getEnclosingInteraction();
 
-					if (enclosingInteraction != null) {
-						enclosingFragment.add(enclosingInteraction);
-					}
+          if (enclosingInteraction != null) {
+            enclosingFragment.add(enclosingInteraction);
+          }
 
-					InteractionFragment enclosingOperand = combinedFragment
-						.getEnclosingOperand();
+          InteractionFragment enclosingOperand = combinedFragment.getEnclosingOperand();
 
-					if (enclosingOperand != null) {
-						enclosingFragment.add(enclosingOperand);
-					}
-				}
-			} else if (endGate.isInsideCF()) {
+          if (enclosingOperand != null) {
+            enclosingFragment.add(enclosingOperand);
+          }
+        }
+      } else if (endGate.isInsideCF()) {
 
-				if (eContainer instanceof CombinedFragment) {
-					enclosingFragment.add((CombinedFragment) eContainer);
-				}
-			} else if (endGate.isFormal()) {
+        if (eContainer instanceof CombinedFragment) {
+          enclosingFragment.add((CombinedFragment) eContainer);
+        }
+      } else if (endGate.isFormal()) {
 
-				if (eContainer instanceof Interaction) {
-					enclosingFragment.add((Interaction) eContainer);
-				}
-			} else if (endGate.isActual()) {
+        if (eContainer instanceof Interaction) {
+          enclosingFragment.add((Interaction) eContainer);
+        }
+      } else if (endGate.isActual()) {
 
-				if (eContainer instanceof InteractionUse) {
-					InteractionUse interactionUse = (InteractionUse) eContainer;
+        if (eContainer instanceof InteractionUse) {
+          InteractionUse interactionUse = (InteractionUse) eContainer;
 
-					InteractionFragment enclosingInteraction = interactionUse
-						.getEnclosingInteraction();
+          InteractionFragment enclosingInteraction = interactionUse.getEnclosingInteraction();
 
-					if (enclosingInteraction != null) {
-						enclosingFragment.add(enclosingInteraction);
-					}
+          if (enclosingInteraction != null) {
+            enclosingFragment.add(enclosingInteraction);
+          }
 
-					InteractionFragment enclosingOperand = interactionUse
-						.getEnclosingOperand();
+          InteractionFragment enclosingOperand = interactionUse.getEnclosingOperand();
 
-					if (enclosingOperand != null) {
-						enclosingFragment.add(enclosingOperand);
-					}
-				}
-			}
-		} else if (messageEnd instanceof MessageOccurrenceSpecification) {
-			MessageOccurrenceSpecification endMOS = (MessageOccurrenceSpecification) messageEnd;
+          if (enclosingOperand != null) {
+            enclosingFragment.add(enclosingOperand);
+          }
+        }
+      }
+    } else if (messageEnd instanceof MessageOccurrenceSpecification) {
+      MessageOccurrenceSpecification endMOS = (MessageOccurrenceSpecification) messageEnd;
 
-			InteractionFragment enclosingInteraction = endMOS
-				.getEnclosingInteraction();
+      InteractionFragment enclosingInteraction = endMOS.getEnclosingInteraction();
 
-			if (enclosingInteraction != null) {
-				enclosingFragment.add(enclosingInteraction);
-			} else {
-				InteractionFragment enclosingOperand = endMOS
-					.getEnclosingOperand();
+      if (enclosingInteraction != null) {
+        enclosingFragment.add(enclosingInteraction);
+      } else {
+        InteractionFragment enclosingOperand = endMOS.getEnclosingOperand();
 
-				if (enclosingOperand != null) {
-					enclosingFragment.add(enclosingOperand);
-				}
-			}
-		}
+        if (enclosingOperand != null) {
+          enclosingFragment.add(enclosingOperand);
+        }
+      }
+    }
 
-		return ECollections.unmodifiableEList(enclosingFragment);
-	}
+    return ECollections.unmodifiableEList(enclosingFragment);
+  }
 
 } // MessageEndOperations

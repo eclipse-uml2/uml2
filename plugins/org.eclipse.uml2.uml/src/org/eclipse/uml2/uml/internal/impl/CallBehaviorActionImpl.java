@@ -67,672 +67,617 @@ import org.eclipse.uml2.uml.internal.operations.CallBehaviorActionOperations;
  *
  * @generated
  */
-public class CallBehaviorActionImpl
-		extends CallActionImpl
-		implements CallBehaviorAction {
+public class CallBehaviorActionImpl extends CallActionImpl implements CallBehaviorAction {
 
-	/**
-	 * The cached value of the '{@link #getBehavior() <em>Behavior</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getBehavior()
-	 * @generated
-	 * @ordered
-	 */
-	protected Behavior behavior;
+  /**
+   * The cached value of the '{@link #getBehavior() <em>Behavior</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getBehavior()
+   * @generated
+   * @ordered
+   */
+  protected Behavior behavior;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected CallBehaviorActionImpl() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected CallBehaviorActionImpl() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return UMLPackage.Literals.CALL_BEHAVIOR_ACTION;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass() {
+    return UMLPackage.Literals.CALL_BEHAVIOR_ACTION;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Behavior getBehavior() {
-		if (behavior != null && behavior.eIsProxy()) {
-			InternalEObject oldBehavior = (InternalEObject) behavior;
-			behavior = (Behavior) eResolveProxy(oldBehavior);
-			if (behavior != oldBehavior) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						UMLPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR, oldBehavior,
-						behavior));
-			}
-		}
-		return behavior;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Behavior getBehavior() {
+    if (behavior != null && behavior.eIsProxy()) {
+      InternalEObject oldBehavior = (InternalEObject) behavior;
+      behavior = (Behavior) eResolveProxy(oldBehavior);
+      if (behavior != oldBehavior) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, UMLPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR,
+              oldBehavior, behavior));
+      }
+    }
+    return behavior;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Behavior basicGetBehavior() {
-		return behavior;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Behavior basicGetBehavior() {
+    return behavior;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setBehavior(Behavior newBehavior) {
-		Behavior oldBehavior = behavior;
-		behavior = newBehavior;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR, oldBehavior,
-				behavior));
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setBehavior(Behavior newBehavior) {
+    Behavior oldBehavior = behavior;
+    behavior = newBehavior;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, UMLPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR, oldBehavior,
+          behavior));
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateNoOnport(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return CallBehaviorActionOperations.validateNoOnport(this, diagnostics,
-			context);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public boolean validateNoOnport(DiagnosticChain diagnostics, Map<Object, Object> context) {
+    return CallBehaviorActionOperations.validateNoOnport(this, diagnostics, context);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<Parameter> outputParameters() {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			@SuppressWarnings("unchecked")
-			EList<Parameter> result = (EList<Parameter>) cache.get(this,
-				UMLPackage.Literals.CALL_ACTION___OUTPUT_PARAMETERS);
-			if (result == null) {
-				cache.put(this,
-					UMLPackage.Literals.CALL_ACTION___OUTPUT_PARAMETERS,
-					result = CallBehaviorActionOperations
-						.outputParameters(this));
-			}
-			return result;
-		}
-		return CallBehaviorActionOperations.outputParameters(this);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<Parameter> outputParameters() {
+    CacheAdapter cache = getCacheAdapter();
+    if (cache != null) {
+      @SuppressWarnings("unchecked")
+      EList<Parameter> result = (EList<Parameter>) cache.get(this, UMLPackage.Literals.CALL_ACTION___OUTPUT_PARAMETERS);
+      if (result == null) {
+        cache.put(this, UMLPackage.Literals.CALL_ACTION___OUTPUT_PARAMETERS,
+            result = CallBehaviorActionOperations.outputParameters(this));
+      }
+      return result;
+    }
+    return CallBehaviorActionOperations.outputParameters(this);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<Parameter> inputParameters() {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			@SuppressWarnings("unchecked")
-			EList<Parameter> result = (EList<Parameter>) cache.get(this,
-				UMLPackage.Literals.CALL_ACTION___INPUT_PARAMETERS);
-			if (result == null) {
-				cache.put(this,
-					UMLPackage.Literals.CALL_ACTION___INPUT_PARAMETERS,
-					result = CallBehaviorActionOperations
-						.inputParameters(this));
-			}
-			return result;
-		}
-		return CallBehaviorActionOperations.inputParameters(this);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<Parameter> inputParameters() {
+    CacheAdapter cache = getCacheAdapter();
+    if (cache != null) {
+      @SuppressWarnings("unchecked")
+      EList<Parameter> result = (EList<Parameter>) cache.get(this, UMLPackage.Literals.CALL_ACTION___INPUT_PARAMETERS);
+      if (result == null) {
+        cache.put(this, UMLPackage.Literals.CALL_ACTION___INPUT_PARAMETERS,
+            result = CallBehaviorActionOperations.inputParameters(this));
+      }
+      return result;
+    }
+    return CallBehaviorActionOperations.inputParameters(this);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case UMLPackage.CALL_BEHAVIOR_ACTION__EANNOTATIONS :
-				return getEAnnotations();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__OWNED_ELEMENT :
-				return getOwnedElements();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__CLIENT_DEPENDENCY :
-				return getClientDependencies();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__NAME :
-				return getName();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__NAME_EXPRESSION :
-				if (resolve)
-					return getNameExpression();
-				return basicGetNameExpression();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__QUALIFIED_NAME :
-				return getQualifiedName();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__IS_LEAF :
-				return isLeaf();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__REDEFINED_ELEMENT :
-				return getRedefinedElements();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__REDEFINITION_CONTEXT :
-				return getRedefinitionContexts();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__ACTIVITY :
-				if (resolve)
-					return getActivity();
-				return basicGetActivity();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__IN_GROUP :
-				return getInGroups();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__IN_INTERRUPTIBLE_REGION :
-				return getInInterruptibleRegions();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__IN_STRUCTURED_NODE :
-				if (resolve)
-					return getInStructuredNode();
-				return basicGetInStructuredNode();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__INCOMING :
-				return getIncomings();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__OUTGOING :
-				return getOutgoings();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__REDEFINED_NODE :
-				return getRedefinedNodes();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__IN_PARTITION :
-				return getInPartitions();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__HANDLER :
-				return getHandlers();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__CONTEXT :
-				if (resolve)
-					return getContext();
-				return basicGetContext();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__INPUT :
-				return getInputs();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__IS_LOCALLY_REENTRANT :
-				return isLocallyReentrant();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__LOCAL_POSTCONDITION :
-				return getLocalPostconditions();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__LOCAL_PRECONDITION :
-				return getLocalPreconditions();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__OUTPUT :
-				return getOutputs();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__ARGUMENT :
-				return getArguments();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__ON_PORT :
-				if (resolve)
-					return getOnPort();
-				return basicGetOnPort();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__IS_SYNCHRONOUS :
-				return isSynchronous();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__RESULT :
-				return getResults();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR :
-				if (resolve)
-					return getBehavior();
-				return basicGetBehavior();
-		}
-		return eDynamicGet(featureID, resolve, coreType);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    switch (featureID) {
+    case UMLPackage.CALL_BEHAVIOR_ACTION__EANNOTATIONS:
+      return getEAnnotations();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__OWNED_COMMENT:
+      return getOwnedComments();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__OWNED_ELEMENT:
+      return getOwnedElements();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__OWNER:
+      if (resolve)
+        return getOwner();
+      return basicGetOwner();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__CLIENT_DEPENDENCY:
+      return getClientDependencies();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__NAME:
+      return getName();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__NAME_EXPRESSION:
+      if (resolve)
+        return getNameExpression();
+      return basicGetNameExpression();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__NAMESPACE:
+      if (resolve)
+        return getNamespace();
+      return basicGetNamespace();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__QUALIFIED_NAME:
+      return getQualifiedName();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__VISIBILITY:
+      return getVisibility();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__IS_LEAF:
+      return isLeaf();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__REDEFINED_ELEMENT:
+      return getRedefinedElements();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__REDEFINITION_CONTEXT:
+      return getRedefinitionContexts();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__ACTIVITY:
+      if (resolve)
+        return getActivity();
+      return basicGetActivity();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__IN_GROUP:
+      return getInGroups();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__IN_INTERRUPTIBLE_REGION:
+      return getInInterruptibleRegions();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__IN_STRUCTURED_NODE:
+      if (resolve)
+        return getInStructuredNode();
+      return basicGetInStructuredNode();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__INCOMING:
+      return getIncomings();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__OUTGOING:
+      return getOutgoings();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__REDEFINED_NODE:
+      return getRedefinedNodes();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__IN_PARTITION:
+      return getInPartitions();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__HANDLER:
+      return getHandlers();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__CONTEXT:
+      if (resolve)
+        return getContext();
+      return basicGetContext();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__INPUT:
+      return getInputs();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__IS_LOCALLY_REENTRANT:
+      return isLocallyReentrant();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__LOCAL_POSTCONDITION:
+      return getLocalPostconditions();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__LOCAL_PRECONDITION:
+      return getLocalPreconditions();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__OUTPUT:
+      return getOutputs();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__ARGUMENT:
+      return getArguments();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__ON_PORT:
+      if (resolve)
+        return getOnPort();
+      return basicGetOnPort();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__IS_SYNCHRONOUS:
+      return isSynchronous();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__RESULT:
+      return getResults();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR:
+      if (resolve)
+        return getBehavior();
+      return basicGetBehavior();
+    }
+    return eDynamicGet(featureID, resolve, coreType);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case UMLPackage.CALL_BEHAVIOR_ACTION__EANNOTATIONS :
-				getEAnnotations().clear();
-				getEAnnotations()
-					.addAll((Collection<? extends EAnnotation>) newValue);
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__OWNED_COMMENT :
-				getOwnedComments().clear();
-				getOwnedComments()
-					.addAll((Collection<? extends Comment>) newValue);
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__NAME_EXPRESSION :
-				setNameExpression((StringExpression) newValue);
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__IS_LEAF :
-				setIsLeaf((Boolean) newValue);
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__ACTIVITY :
-				setActivity((Activity) newValue);
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__IN_INTERRUPTIBLE_REGION :
-				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions().addAll(
-					(Collection<? extends InterruptibleActivityRegion>) newValue);
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__IN_STRUCTURED_NODE :
-				setInStructuredNode((StructuredActivityNode) newValue);
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__INCOMING :
-				getIncomings().clear();
-				getIncomings()
-					.addAll((Collection<? extends ActivityEdge>) newValue);
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__OUTGOING :
-				getOutgoings().clear();
-				getOutgoings()
-					.addAll((Collection<? extends ActivityEdge>) newValue);
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__REDEFINED_NODE :
-				getRedefinedNodes().clear();
-				getRedefinedNodes()
-					.addAll((Collection<? extends ActivityNode>) newValue);
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions()
-					.addAll((Collection<? extends ActivityPartition>) newValue);
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__HANDLER :
-				getHandlers().clear();
-				getHandlers()
-					.addAll((Collection<? extends ExceptionHandler>) newValue);
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__IS_LOCALLY_REENTRANT :
-				setIsLocallyReentrant((Boolean) newValue);
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__LOCAL_POSTCONDITION :
-				getLocalPostconditions().clear();
-				getLocalPostconditions()
-					.addAll((Collection<? extends Constraint>) newValue);
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__LOCAL_PRECONDITION :
-				getLocalPreconditions().clear();
-				getLocalPreconditions()
-					.addAll((Collection<? extends Constraint>) newValue);
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__ARGUMENT :
-				getArguments().clear();
-				getArguments()
-					.addAll((Collection<? extends InputPin>) newValue);
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__ON_PORT :
-				setOnPort((Port) newValue);
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__IS_SYNCHRONOUS :
-				setIsSynchronous((Boolean) newValue);
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__RESULT :
-				getResults().clear();
-				getResults().addAll((Collection<? extends OutputPin>) newValue);
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR :
-				setBehavior((Behavior) newValue);
-				return;
-		}
-		eDynamicSet(featureID, newValue);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @SuppressWarnings("unchecked")
+  @Override
+  public void eSet(int featureID, Object newValue) {
+    switch (featureID) {
+    case UMLPackage.CALL_BEHAVIOR_ACTION__EANNOTATIONS:
+      getEAnnotations().clear();
+      getEAnnotations().addAll((Collection<? extends EAnnotation>) newValue);
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__OWNED_COMMENT:
+      getOwnedComments().clear();
+      getOwnedComments().addAll((Collection<? extends Comment>) newValue);
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__NAME:
+      setName((String) newValue);
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__NAME_EXPRESSION:
+      setNameExpression((StringExpression) newValue);
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__VISIBILITY:
+      setVisibility((VisibilityKind) newValue);
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__IS_LEAF:
+      setIsLeaf((Boolean) newValue);
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__ACTIVITY:
+      setActivity((Activity) newValue);
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__IN_INTERRUPTIBLE_REGION:
+      getInInterruptibleRegions().clear();
+      getInInterruptibleRegions().addAll((Collection<? extends InterruptibleActivityRegion>) newValue);
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__IN_STRUCTURED_NODE:
+      setInStructuredNode((StructuredActivityNode) newValue);
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__INCOMING:
+      getIncomings().clear();
+      getIncomings().addAll((Collection<? extends ActivityEdge>) newValue);
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__OUTGOING:
+      getOutgoings().clear();
+      getOutgoings().addAll((Collection<? extends ActivityEdge>) newValue);
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__REDEFINED_NODE:
+      getRedefinedNodes().clear();
+      getRedefinedNodes().addAll((Collection<? extends ActivityNode>) newValue);
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__IN_PARTITION:
+      getInPartitions().clear();
+      getInPartitions().addAll((Collection<? extends ActivityPartition>) newValue);
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__HANDLER:
+      getHandlers().clear();
+      getHandlers().addAll((Collection<? extends ExceptionHandler>) newValue);
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__IS_LOCALLY_REENTRANT:
+      setIsLocallyReentrant((Boolean) newValue);
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__LOCAL_POSTCONDITION:
+      getLocalPostconditions().clear();
+      getLocalPostconditions().addAll((Collection<? extends Constraint>) newValue);
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__LOCAL_PRECONDITION:
+      getLocalPreconditions().clear();
+      getLocalPreconditions().addAll((Collection<? extends Constraint>) newValue);
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__ARGUMENT:
+      getArguments().clear();
+      getArguments().addAll((Collection<? extends InputPin>) newValue);
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__ON_PORT:
+      setOnPort((Port) newValue);
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__IS_SYNCHRONOUS:
+      setIsSynchronous((Boolean) newValue);
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__RESULT:
+      getResults().clear();
+      getResults().addAll((Collection<? extends OutputPin>) newValue);
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR:
+      setBehavior((Behavior) newValue);
+      return;
+    }
+    eDynamicSet(featureID, newValue);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void eUnset(int featureID) {
-		switch (featureID) {
-			case UMLPackage.CALL_BEHAVIOR_ACTION__EANNOTATIONS :
-				getEAnnotations().clear();
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__OWNED_COMMENT :
-				getOwnedComments().clear();
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__NAME :
-				unsetName();
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__NAME_EXPRESSION :
-				setNameExpression((StringExpression) null);
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__VISIBILITY :
-				unsetVisibility();
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__IS_LEAF :
-				setIsLeaf(IS_LEAF_EDEFAULT);
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__ACTIVITY :
-				setActivity((Activity) null);
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__IN_INTERRUPTIBLE_REGION :
-				getInInterruptibleRegions().clear();
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__IN_STRUCTURED_NODE :
-				setInStructuredNode((StructuredActivityNode) null);
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__INCOMING :
-				getIncomings().clear();
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__OUTGOING :
-				getOutgoings().clear();
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__REDEFINED_NODE :
-				getRedefinedNodes().clear();
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__IN_PARTITION :
-				getInPartitions().clear();
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__HANDLER :
-				getHandlers().clear();
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__IS_LOCALLY_REENTRANT :
-				setIsLocallyReentrant(IS_LOCALLY_REENTRANT_EDEFAULT);
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__LOCAL_POSTCONDITION :
-				getLocalPostconditions().clear();
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__LOCAL_PRECONDITION :
-				getLocalPreconditions().clear();
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__ARGUMENT :
-				getArguments().clear();
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__ON_PORT :
-				setOnPort((Port) null);
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__IS_SYNCHRONOUS :
-				setIsSynchronous(IS_SYNCHRONOUS_EDEFAULT);
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__RESULT :
-				getResults().clear();
-				return;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR :
-				setBehavior((Behavior) null);
-				return;
-		}
-		eDynamicUnset(featureID);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID) {
+    switch (featureID) {
+    case UMLPackage.CALL_BEHAVIOR_ACTION__EANNOTATIONS:
+      getEAnnotations().clear();
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__OWNED_COMMENT:
+      getOwnedComments().clear();
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__NAME:
+      unsetName();
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__NAME_EXPRESSION:
+      setNameExpression((StringExpression) null);
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__VISIBILITY:
+      unsetVisibility();
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__IS_LEAF:
+      setIsLeaf(IS_LEAF_EDEFAULT);
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__ACTIVITY:
+      setActivity((Activity) null);
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__IN_INTERRUPTIBLE_REGION:
+      getInInterruptibleRegions().clear();
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__IN_STRUCTURED_NODE:
+      setInStructuredNode((StructuredActivityNode) null);
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__INCOMING:
+      getIncomings().clear();
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__OUTGOING:
+      getOutgoings().clear();
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__REDEFINED_NODE:
+      getRedefinedNodes().clear();
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__IN_PARTITION:
+      getInPartitions().clear();
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__HANDLER:
+      getHandlers().clear();
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__IS_LOCALLY_REENTRANT:
+      setIsLocallyReentrant(IS_LOCALLY_REENTRANT_EDEFAULT);
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__LOCAL_POSTCONDITION:
+      getLocalPostconditions().clear();
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__LOCAL_PRECONDITION:
+      getLocalPreconditions().clear();
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__ARGUMENT:
+      getArguments().clear();
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__ON_PORT:
+      setOnPort((Port) null);
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__IS_SYNCHRONOUS:
+      setIsSynchronous(IS_SYNCHRONOUS_EDEFAULT);
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__RESULT:
+      getResults().clear();
+      return;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR:
+      setBehavior((Behavior) null);
+      return;
+    }
+    eDynamicUnset(featureID);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case UMLPackage.CALL_BEHAVIOR_ACTION__EANNOTATIONS :
-				return eAnnotations != null && !eAnnotations.isEmpty();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__OWNED_ELEMENT :
-				return isSetOwnedElements();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__OWNER :
-				return isSetOwner();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__CLIENT_DEPENDENCY :
-				return !getClientDependencies().isEmpty();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__NAME :
-				return isSetName();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__NAME_EXPRESSION :
-				return nameExpression != null;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__QUALIFIED_NAME :
-				return QUALIFIED_NAME_EDEFAULT == null
-					? getQualifiedName() != null
-					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.CALL_BEHAVIOR_ACTION__VISIBILITY :
-				return isSetVisibility();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__IS_LEAF :
-				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__REDEFINED_ELEMENT :
-				return isSetRedefinedElements();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__REDEFINITION_CONTEXT :
-				return isSetRedefinitionContexts();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__ACTIVITY :
-				return basicGetActivity() != null;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__IN_GROUP :
-				return isSetInGroups();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__IN_INTERRUPTIBLE_REGION :
-				return inInterruptibleRegions != null
-					&& !inInterruptibleRegions.isEmpty();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__IN_STRUCTURED_NODE :
-				return basicGetInStructuredNode() != null;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__INCOMING :
-				return incomings != null && !incomings.isEmpty();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__OUTGOING :
-				return outgoings != null && !outgoings.isEmpty();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__REDEFINED_NODE :
-				return redefinedNodes != null && !redefinedNodes.isEmpty();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__IN_PARTITION :
-				return inPartitions != null && !inPartitions.isEmpty();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__HANDLER :
-				return handlers != null && !handlers.isEmpty();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__CONTEXT :
-				return basicGetContext() != null;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__INPUT :
-				return isSetInputs();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__IS_LOCALLY_REENTRANT :
-				return ((eFlags
-					& IS_LOCALLY_REENTRANT_EFLAG) != 0) != IS_LOCALLY_REENTRANT_EDEFAULT;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__LOCAL_POSTCONDITION :
-				return localPostconditions != null
-					&& !localPostconditions.isEmpty();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__LOCAL_PRECONDITION :
-				return localPreconditions != null
-					&& !localPreconditions.isEmpty();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__OUTPUT :
-				return isSetOutputs();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__ARGUMENT :
-				return arguments != null && !arguments.isEmpty();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__ON_PORT :
-				return onPort != null;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__IS_SYNCHRONOUS :
-				return ((eFlags
-					& IS_SYNCHRONOUS_EFLAG) != 0) != IS_SYNCHRONOUS_EDEFAULT;
-			case UMLPackage.CALL_BEHAVIOR_ACTION__RESULT :
-				return results != null && !results.isEmpty();
-			case UMLPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR :
-				return behavior != null;
-		}
-		return eDynamicIsSet(featureID);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID) {
+    switch (featureID) {
+    case UMLPackage.CALL_BEHAVIOR_ACTION__EANNOTATIONS:
+      return eAnnotations != null && !eAnnotations.isEmpty();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__OWNED_COMMENT:
+      return ownedComments != null && !ownedComments.isEmpty();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__OWNED_ELEMENT:
+      return isSetOwnedElements();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__OWNER:
+      return isSetOwner();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__CLIENT_DEPENDENCY:
+      return !getClientDependencies().isEmpty();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__NAME:
+      return isSetName();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__NAME_EXPRESSION:
+      return nameExpression != null;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__NAMESPACE:
+      return isSetNamespace();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__QUALIFIED_NAME:
+      return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null
+          : !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
+    case UMLPackage.CALL_BEHAVIOR_ACTION__VISIBILITY:
+      return isSetVisibility();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__IS_LEAF:
+      return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__REDEFINED_ELEMENT:
+      return isSetRedefinedElements();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__REDEFINITION_CONTEXT:
+      return isSetRedefinitionContexts();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__ACTIVITY:
+      return basicGetActivity() != null;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__IN_GROUP:
+      return isSetInGroups();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__IN_INTERRUPTIBLE_REGION:
+      return inInterruptibleRegions != null && !inInterruptibleRegions.isEmpty();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__IN_STRUCTURED_NODE:
+      return basicGetInStructuredNode() != null;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__INCOMING:
+      return incomings != null && !incomings.isEmpty();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__OUTGOING:
+      return outgoings != null && !outgoings.isEmpty();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__REDEFINED_NODE:
+      return redefinedNodes != null && !redefinedNodes.isEmpty();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__IN_PARTITION:
+      return inPartitions != null && !inPartitions.isEmpty();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__HANDLER:
+      return handlers != null && !handlers.isEmpty();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__CONTEXT:
+      return basicGetContext() != null;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__INPUT:
+      return isSetInputs();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__IS_LOCALLY_REENTRANT:
+      return ((eFlags & IS_LOCALLY_REENTRANT_EFLAG) != 0) != IS_LOCALLY_REENTRANT_EDEFAULT;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__LOCAL_POSTCONDITION:
+      return localPostconditions != null && !localPostconditions.isEmpty();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__LOCAL_PRECONDITION:
+      return localPreconditions != null && !localPreconditions.isEmpty();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__OUTPUT:
+      return isSetOutputs();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__ARGUMENT:
+      return arguments != null && !arguments.isEmpty();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__ON_PORT:
+      return onPort != null;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__IS_SYNCHRONOUS:
+      return ((eFlags & IS_SYNCHRONOUS_EFLAG) != 0) != IS_SYNCHRONOUS_EDEFAULT;
+    case UMLPackage.CALL_BEHAVIOR_ACTION__RESULT:
+      return results != null && !results.isEmpty();
+    case UMLPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR:
+      return behavior != null;
+    }
+    return eDynamicIsSet(featureID);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	@SuppressWarnings("unchecked")
-	public Object eInvoke(int operationID, EList<?> arguments)
-			throws InvocationTargetException {
-		switch (operationID) {
-			case UMLPackage.CALL_BEHAVIOR_ACTION___GET_EANNOTATION__STRING :
-				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
-				return validateHasOwner((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___DESTROY :
-				destroy();
-				return null;
-			case UMLPackage.CALL_BEHAVIOR_ACTION___GET_KEYWORDS :
-				return getKeywords();
-			case UMLPackage.CALL_BEHAVIOR_ACTION___GET_APPLICABLE_STEREOTYPE__STRING :
-				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
-			case UMLPackage.CALL_BEHAVIOR_ACTION___GET_APPLIED_STEREOTYPE__STRING :
-				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
-			case UMLPackage.CALL_BEHAVIOR_ACTION___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
-				return getAppliedSubstereotype((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___GET_MODEL :
-				return getModel();
-			case UMLPackage.CALL_BEHAVIOR_ACTION___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.CALL_BEHAVIOR_ACTION___GET_RELATIONSHIPS :
-				return getRelationships();
-			case UMLPackage.CALL_BEHAVIOR_ACTION___GET_RELATIONSHIPS__ECLASS :
-				return getRelationships((EClass) arguments.get(0));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.CALL_BEHAVIOR_ACTION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
-				return getSourceDirectedRelationships();
-			case UMLPackage.CALL_BEHAVIOR_ACTION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getSourceDirectedRelationships(
-					(EClass) arguments.get(0));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.CALL_BEHAVIOR_ACTION___GET_TARGET_DIRECTED_RELATIONSHIPS :
-				return getTargetDirectedRelationships();
-			case UMLPackage.CALL_BEHAVIOR_ACTION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
-				return getTargetDirectedRelationships(
-					(EClass) arguments.get(0));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.CALL_BEHAVIOR_ACTION___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___ALL_OWNED_ELEMENTS :
-				return allOwnedElements();
-			case UMLPackage.CALL_BEHAVIOR_ACTION___MUST_BE_OWNED :
-				return mustBeOwned();
-			case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___CREATE_DEPENDENCY__NAMEDELEMENT :
-				return createDependency((NamedElement) arguments.get(0));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___CREATE_USAGE__NAMEDELEMENT :
-				return createUsage((NamedElement) arguments.get(0));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___GET_LABEL :
-				return getLabel();
-			case UMLPackage.CALL_BEHAVIOR_ACTION___GET_LABEL__BOOLEAN :
-				return getLabel((Boolean) arguments.get(0));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___GET_NAMESPACE :
-				return getNamespace();
-			case UMLPackage.CALL_BEHAVIOR_ACTION___ALL_NAMESPACES :
-				return allNamespaces();
-			case UMLPackage.CALL_BEHAVIOR_ACTION___ALL_OWNING_PACKAGES :
-				return allOwningPackages();
-			case UMLPackage.CALL_BEHAVIOR_ACTION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
-				return isDistinguishableFrom((NamedElement) arguments.get(0),
-					(Namespace) arguments.get(1));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___GET_QUALIFIED_NAME :
-				return getQualifiedName();
-			case UMLPackage.CALL_BEHAVIOR_ACTION___SEPARATOR :
-				return separator();
-			case UMLPackage.CALL_BEHAVIOR_ACTION___GET_CLIENT_DEPENDENCIES :
-				return getClientDependencies();
-			case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
-				return validateRedefinitionConsistent(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_NON_LEAF_REDEFINITION__DIAGNOSTICCHAIN_MAP :
-				return validateNonLeafRedefinition(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
-				return validateRedefinitionContextValid(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
-				return isConsistentWith((RedefinableElement) arguments.get(0));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
-				return isRedefinitionContextValid(
-					(RedefinableElement) arguments.get(0));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___CONTAINING_ACTIVITY :
-				return containingActivity();
-			case UMLPackage.CALL_BEHAVIOR_ACTION___GET_CONTEXT :
-				return getContext();
-			case UMLPackage.CALL_BEHAVIOR_ACTION___ALL_ACTIONS :
-				return allActions();
-			case UMLPackage.CALL_BEHAVIOR_ACTION___ALL_OWNED_NODES :
-				return allOwnedNodes();
-			case UMLPackage.CALL_BEHAVIOR_ACTION___CONTAINING_BEHAVIOR :
-				return containingBehavior();
-			case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_ARGUMENT_PINS__DIAGNOSTICCHAIN_MAP :
-				return validateArgumentPins((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_RESULT_PINS__DIAGNOSTICCHAIN_MAP :
-				return validateResultPins((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_SYNCHRONOUS_CALL__DIAGNOSTICCHAIN_MAP :
-				return validateSynchronousCall(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CALL_BEHAVIOR_ACTION___INPUT_PARAMETERS :
-				return inputParameters();
-			case UMLPackage.CALL_BEHAVIOR_ACTION___OUTPUT_PARAMETERS :
-				return outputParameters();
-			case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_NO_ONPORT__DIAGNOSTICCHAIN_MAP :
-				return validateNoOnport((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-		}
-		return eDynamicInvoke(operationID, arguments);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  @SuppressWarnings("unchecked")
+  public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+    switch (operationID) {
+    case UMLPackage.CALL_BEHAVIOR_ACTION___GET_EANNOTATION__STRING:
+      return getEAnnotation((String) arguments.get(0));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP:
+      return validateHasOwner((DiagnosticChain) arguments.get(0), (Map<Object, Object>) arguments.get(1));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP:
+      return validateNotOwnSelf((DiagnosticChain) arguments.get(0), (Map<Object, Object>) arguments.get(1));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___ADD_KEYWORD__STRING:
+      return addKeyword((String) arguments.get(0));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___APPLY_STEREOTYPE__STEREOTYPE:
+      return applyStereotype((Stereotype) arguments.get(0));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___CREATE_EANNOTATION__STRING:
+      return createEAnnotation((String) arguments.get(0));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___DESTROY:
+      destroy();
+      return null;
+    case UMLPackage.CALL_BEHAVIOR_ACTION___GET_KEYWORDS:
+      return getKeywords();
+    case UMLPackage.CALL_BEHAVIOR_ACTION___GET_APPLICABLE_STEREOTYPE__STRING:
+      return getApplicableStereotype((String) arguments.get(0));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___GET_APPLICABLE_STEREOTYPES:
+      return getApplicableStereotypes();
+    case UMLPackage.CALL_BEHAVIOR_ACTION___GET_APPLIED_STEREOTYPE__STRING:
+      return getAppliedStereotype((String) arguments.get(0));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___GET_APPLIED_STEREOTYPES:
+      return getAppliedStereotypes();
+    case UMLPackage.CALL_BEHAVIOR_ACTION___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING:
+      return getAppliedSubstereotype((Stereotype) arguments.get(0), (String) arguments.get(1));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE:
+      return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___GET_MODEL:
+      return getModel();
+    case UMLPackage.CALL_BEHAVIOR_ACTION___GET_NEAREST_PACKAGE:
+      return getNearestPackage();
+    case UMLPackage.CALL_BEHAVIOR_ACTION___GET_RELATIONSHIPS:
+      return getRelationships();
+    case UMLPackage.CALL_BEHAVIOR_ACTION___GET_RELATIONSHIPS__ECLASS:
+      return getRelationships((EClass) arguments.get(0));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___GET_REQUIRED_STEREOTYPE__STRING:
+      return getRequiredStereotype((String) arguments.get(0));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___GET_REQUIRED_STEREOTYPES:
+      return getRequiredStereotypes();
+    case UMLPackage.CALL_BEHAVIOR_ACTION___GET_SOURCE_DIRECTED_RELATIONSHIPS:
+      return getSourceDirectedRelationships();
+    case UMLPackage.CALL_BEHAVIOR_ACTION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS:
+      return getSourceDirectedRelationships((EClass) arguments.get(0));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___GET_STEREOTYPE_APPLICATION__STEREOTYPE:
+      return getStereotypeApplication((Stereotype) arguments.get(0));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___GET_STEREOTYPE_APPLICATIONS:
+      return getStereotypeApplications();
+    case UMLPackage.CALL_BEHAVIOR_ACTION___GET_TARGET_DIRECTED_RELATIONSHIPS:
+      return getTargetDirectedRelationships();
+    case UMLPackage.CALL_BEHAVIOR_ACTION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS:
+      return getTargetDirectedRelationships((EClass) arguments.get(0));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___GET_VALUE__STEREOTYPE_STRING:
+      return getValue((Stereotype) arguments.get(0), (String) arguments.get(1));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___HAS_KEYWORD__STRING:
+      return hasKeyword((String) arguments.get(0));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___HAS_VALUE__STEREOTYPE_STRING:
+      return hasValue((Stereotype) arguments.get(0), (String) arguments.get(1));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___IS_STEREOTYPE_APPLICABLE__STEREOTYPE:
+      return isStereotypeApplicable((Stereotype) arguments.get(0));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___IS_STEREOTYPE_APPLIED__STEREOTYPE:
+      return isStereotypeApplied((Stereotype) arguments.get(0));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___IS_STEREOTYPE_REQUIRED__STEREOTYPE:
+      return isStereotypeRequired((Stereotype) arguments.get(0));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___REMOVE_KEYWORD__STRING:
+      return removeKeyword((String) arguments.get(0));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___SET_VALUE__STEREOTYPE_STRING_OBJECT:
+      setValue((Stereotype) arguments.get(0), (String) arguments.get(1), arguments.get(2));
+      return null;
+    case UMLPackage.CALL_BEHAVIOR_ACTION___UNAPPLY_STEREOTYPE__STEREOTYPE:
+      return unapplyStereotype((Stereotype) arguments.get(0));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___ALL_OWNED_ELEMENTS:
+      return allOwnedElements();
+    case UMLPackage.CALL_BEHAVIOR_ACTION___MUST_BE_OWNED:
+      return mustBeOwned();
+    case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP:
+      return validateVisibilityNeedsOwnership((DiagnosticChain) arguments.get(0),
+          (Map<Object, Object>) arguments.get(1));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP:
+      return validateHasQualifiedName((DiagnosticChain) arguments.get(0), (Map<Object, Object>) arguments.get(1));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP:
+      return validateHasNoQualifiedName((DiagnosticChain) arguments.get(0), (Map<Object, Object>) arguments.get(1));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___CREATE_DEPENDENCY__NAMEDELEMENT:
+      return createDependency((NamedElement) arguments.get(0));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___CREATE_USAGE__NAMEDELEMENT:
+      return createUsage((NamedElement) arguments.get(0));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___GET_LABEL:
+      return getLabel();
+    case UMLPackage.CALL_BEHAVIOR_ACTION___GET_LABEL__BOOLEAN:
+      return getLabel((Boolean) arguments.get(0));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___GET_NAMESPACE:
+      return getNamespace();
+    case UMLPackage.CALL_BEHAVIOR_ACTION___ALL_NAMESPACES:
+      return allNamespaces();
+    case UMLPackage.CALL_BEHAVIOR_ACTION___ALL_OWNING_PACKAGES:
+      return allOwningPackages();
+    case UMLPackage.CALL_BEHAVIOR_ACTION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE:
+      return isDistinguishableFrom((NamedElement) arguments.get(0), (Namespace) arguments.get(1));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___GET_QUALIFIED_NAME:
+      return getQualifiedName();
+    case UMLPackage.CALL_BEHAVIOR_ACTION___SEPARATOR:
+      return separator();
+    case UMLPackage.CALL_BEHAVIOR_ACTION___GET_CLIENT_DEPENDENCIES:
+      return getClientDependencies();
+    case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP:
+      return validateRedefinitionConsistent((DiagnosticChain) arguments.get(0), (Map<Object, Object>) arguments.get(1));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_NON_LEAF_REDEFINITION__DIAGNOSTICCHAIN_MAP:
+      return validateNonLeafRedefinition((DiagnosticChain) arguments.get(0), (Map<Object, Object>) arguments.get(1));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP:
+      return validateRedefinitionContextValid((DiagnosticChain) arguments.get(0),
+          (Map<Object, Object>) arguments.get(1));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___IS_CONSISTENT_WITH__REDEFINABLEELEMENT:
+      return isConsistentWith((RedefinableElement) arguments.get(0));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT:
+      return isRedefinitionContextValid((RedefinableElement) arguments.get(0));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___CONTAINING_ACTIVITY:
+      return containingActivity();
+    case UMLPackage.CALL_BEHAVIOR_ACTION___GET_CONTEXT:
+      return getContext();
+    case UMLPackage.CALL_BEHAVIOR_ACTION___ALL_ACTIONS:
+      return allActions();
+    case UMLPackage.CALL_BEHAVIOR_ACTION___ALL_OWNED_NODES:
+      return allOwnedNodes();
+    case UMLPackage.CALL_BEHAVIOR_ACTION___CONTAINING_BEHAVIOR:
+      return containingBehavior();
+    case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_ARGUMENT_PINS__DIAGNOSTICCHAIN_MAP:
+      return validateArgumentPins((DiagnosticChain) arguments.get(0), (Map<Object, Object>) arguments.get(1));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_RESULT_PINS__DIAGNOSTICCHAIN_MAP:
+      return validateResultPins((DiagnosticChain) arguments.get(0), (Map<Object, Object>) arguments.get(1));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_SYNCHRONOUS_CALL__DIAGNOSTICCHAIN_MAP:
+      return validateSynchronousCall((DiagnosticChain) arguments.get(0), (Map<Object, Object>) arguments.get(1));
+    case UMLPackage.CALL_BEHAVIOR_ACTION___INPUT_PARAMETERS:
+      return inputParameters();
+    case UMLPackage.CALL_BEHAVIOR_ACTION___OUTPUT_PARAMETERS:
+      return outputParameters();
+    case UMLPackage.CALL_BEHAVIOR_ACTION___VALIDATE_NO_ONPORT__DIAGNOSTICCHAIN_MAP:
+      return validateNoOnport((DiagnosticChain) arguments.get(0), (Map<Object, Object>) arguments.get(1));
+    }
+    return eDynamicInvoke(operationID, arguments);
+  }
 
 } //CallBehaviorActionImpl

@@ -40,108 +40,107 @@ import org.eclipse.emf.ecore.EClass;
  * @model abstract="true"
  * @generated
  */
-public interface InvocationAction
-		extends Action {
+public interface InvocationAction extends Action {
 
-	/**
-	 * Returns the value of the '<em><b>Argument</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.uml.InputPin}.
-	 * <p>
-	 * This feature subsets the following features:
-	 * </p>
-	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Action#getInputs() <em>Input</em>}'</li>
-	 * </ul>
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The InputPins that provide the argument values passed in the invocation request.
-	 * <p>From package UML::Actions.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Argument</em>' containment reference list.
-	 * @see org.eclipse.uml2.uml.UMLPackage#getInvocationAction_Argument()
-	 * @model containment="true" resolveProxies="true"
-	 * @generated
-	 */
-	EList<InputPin> getArguments();
+  /**
+   * Returns the value of the '<em><b>Argument</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.uml2.uml.InputPin}.
+   * <p>
+   * This feature subsets the following features:
+   * </p>
+   * <ul>
+   *   <li>'{@link org.eclipse.uml2.uml.Action#getInputs() <em>Input</em>}'</li>
+   * </ul>
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The InputPins that provide the argument values passed in the invocation request.
+   * <p>From package UML::Actions.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Argument</em>' containment reference list.
+   * @see org.eclipse.uml2.uml.UMLPackage#getInvocationAction_Argument()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="subsets"
+   * @generated
+   */
+  EList<InputPin> getArguments();
 
-	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.InputPin}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Argument</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.InputPin}, or <code>null</code>.
-	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.InputPin}, or <code>null</code>.
-	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.InputPin} to create.
-	 * @return The new {@link org.eclipse.uml2.uml.InputPin}.
-	 * @see #getArguments()
-	 * @generated
-	 */
-	InputPin createArgument(String name, Type type, EClass eClass);
+  /**
+   * Creates a new {@link org.eclipse.uml2.uml.InputPin}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Argument</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.InputPin}, or <code>null</code>.
+   * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.InputPin}, or <code>null</code>.
+   * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.InputPin} to create.
+   * @return The new {@link org.eclipse.uml2.uml.InputPin}.
+   * @see #getArguments()
+   * @generated
+   */
+  InputPin createArgument(String name, Type type, EClass eClass);
 
-	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.InputPin}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Argument</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.InputPin}, or <code>null</code>.
-	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.InputPin}, or <code>null</code>.
-	 * @return The new {@link org.eclipse.uml2.uml.InputPin}.
-	 * @see #getArguments()
-	 * @generated
-	 */
-	InputPin createArgument(String name, Type type);
+  /**
+   * Creates a new {@link org.eclipse.uml2.uml.InputPin}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Argument</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.InputPin}, or <code>null</code>.
+   * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.InputPin}, or <code>null</code>.
+   * @return The new {@link org.eclipse.uml2.uml.InputPin}.
+   * @see #getArguments()
+   * @generated
+   */
+  InputPin createArgument(String name, Type type);
 
-	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.InputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Argument</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.InputPin} to retrieve, or <code>null</code>.
-	 * @param type The '<em><b>Type</b></em>' of the {@link org.eclipse.uml2.uml.InputPin} to retrieve, or <code>null</code>.
-	 * @return The first {@link org.eclipse.uml2.uml.InputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
-	 * @see #getArguments()
-	 * @generated
-	 */
-	InputPin getArgument(String name, Type type);
+  /**
+   * Retrieves the first {@link org.eclipse.uml2.uml.InputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Argument</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.InputPin} to retrieve, or <code>null</code>.
+   * @param type The '<em><b>Type</b></em>' of the {@link org.eclipse.uml2.uml.InputPin} to retrieve, or <code>null</code>.
+   * @return The first {@link org.eclipse.uml2.uml.InputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
+   * @see #getArguments()
+   * @generated
+   */
+  InputPin getArgument(String name, Type type);
 
-	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.InputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Argument</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.InputPin} to retrieve, or <code>null</code>.
-	 * @param type The '<em><b>Type</b></em>' of the {@link org.eclipse.uml2.uml.InputPin} to retrieve, or <code>null</code>.
-	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
-	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.InputPin} to retrieve, or <code>null</code>.
-	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.InputPin} on demand if not found.
-	 * @return The first {@link org.eclipse.uml2.uml.InputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
-	 * @see #getArguments()
-	 * @generated
-	 */
-	InputPin getArgument(String name, Type type, boolean ignoreCase,
-			EClass eClass, boolean createOnDemand);
+  /**
+   * Retrieves the first {@link org.eclipse.uml2.uml.InputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Argument</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.InputPin} to retrieve, or <code>null</code>.
+   * @param type The '<em><b>Type</b></em>' of the {@link org.eclipse.uml2.uml.InputPin} to retrieve, or <code>null</code>.
+   * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+   * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.InputPin} to retrieve, or <code>null</code>.
+   * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.InputPin} on demand if not found.
+   * @return The first {@link org.eclipse.uml2.uml.InputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
+   * @see #getArguments()
+   * @generated
+   */
+  InputPin getArgument(String name, Type type, boolean ignoreCase, EClass eClass, boolean createOnDemand);
 
-	/**
-	 * Returns the value of the '<em><b>On Port</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * For CallOperationActions, SendSignalActions, and SendObjectActions, an optional Port of the target object through which the invocation request is sent.
-	 * <p>From package UML::Actions.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>On Port</em>' reference.
-	 * @see #setOnPort(Port)
-	 * @see org.eclipse.uml2.uml.UMLPackage#getInvocationAction_OnPort()
-	 * @model ordered="false"
-	 * @generated
-	 */
-	Port getOnPort();
+  /**
+   * Returns the value of the '<em><b>On Port</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * For CallOperationActions, SendSignalActions, and SendObjectActions, an optional Port of the target object through which the invocation request is sent.
+   * <p>From package UML::Actions.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>On Port</em>' reference.
+   * @see #setOnPort(Port)
+   * @see org.eclipse.uml2.uml.UMLPackage#getInvocationAction_OnPort()
+   * @model ordered="false"
+   * @generated
+   */
+  Port getOnPort();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.InvocationAction#getOnPort <em>On Port</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>On Port</em>' reference.
-	 * @see #getOnPort()
-	 * @generated
-	 */
-	void setOnPort(Port value);
+  /**
+   * Sets the value of the '{@link org.eclipse.uml2.uml.InvocationAction#getOnPort <em>On Port</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>On Port</em>' reference.
+   * @see #getOnPort()
+   * @generated
+   */
+  void setOnPort(Port value);
 
 } // InvocationAction

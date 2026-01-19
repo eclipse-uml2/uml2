@@ -50,271 +50,255 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated
  */
-public class OpaqueExpressionOperations
-		extends ValueSpecificationOperations {
+public class OpaqueExpressionOperations extends ValueSpecificationOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected OpaqueExpressionOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected OpaqueExpressionOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * If the language attribute is not empty, then the size of the body and language arrays must be the same.
-	 * language->notEmpty() implies (_'body'->size() = language->size())
-	 * @param opaqueExpression The receiving '<em><b>Opaque Expression</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateLanguageBodySize(
-			OpaqueExpression opaqueExpression, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
-					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.OPAQUE_EXPRESSION__LANGUAGE_BODY_SIZE,
-					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
-						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
-						new Object[]{"validateLanguageBodySize", //$NON-NLS-1$
-							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(opaqueExpression, context)}), new Object[]{opaqueExpression}));
-			}
-			return false;
-		}
-		return true;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * If the language attribute is not empty, then the size of the body and language arrays must be the same.
+   * language->notEmpty() implies (_'body'->size() = language->size())
+   * @param opaqueExpression The receiving '<em><b>Opaque Expression</b></em>' model object.
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @generated
+   */
+  public static boolean validateLanguageBodySize(OpaqueExpression opaqueExpression, DiagnosticChain diagnostics,
+      Map<Object, Object> context) {
+    // TODO: implement this method
+    // -> specify the condition that violates the invariant
+    // -> verify the details of the diagnostic, including severity and message
+    // Ensure that you remove @generated or mark it @generated NOT
+    if (false) {
+      if (diagnostics != null) {
+        diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR, UMLValidator.DIAGNOSTIC_SOURCE,
+            UMLValidator.OPAQUE_EXPRESSION__LANGUAGE_BODY_SIZE,
+            org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString("_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+                new Object[] { "validateLanguageBodySize", //$NON-NLS-1$
+                    org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(opaqueExpression, context) }), new Object[] { opaqueExpression }));
+      }
+      return false;
+    }
+    return true;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The behavior may only have return result parameters.
-	 * behavior <> null implies behavior.ownedParameter->select(direction<>ParameterDirectionKind::return)->isEmpty()
-	 * @param opaqueExpression The receiving '<em><b>Opaque Expression</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateOnlyReturnResultParameters(
-			OpaqueExpression opaqueExpression, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
-					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.OPAQUE_EXPRESSION__ONLY_RETURN_RESULT_PARAMETERS,
-					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
-						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
-						new Object[]{"validateOnlyReturnResultParameters", //$NON-NLS-1$
-							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(opaqueExpression, context)}), new Object[]{opaqueExpression}));
-			}
-			return false;
-		}
-		return true;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The behavior may only have return result parameters.
+   * behavior <> null implies behavior.ownedParameter->select(direction<>ParameterDirectionKind::return)->isEmpty()
+   * @param opaqueExpression The receiving '<em><b>Opaque Expression</b></em>' model object.
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @generated
+   */
+  public static boolean validateOnlyReturnResultParameters(OpaqueExpression opaqueExpression,
+      DiagnosticChain diagnostics, Map<Object, Object> context) {
+    // TODO: implement this method
+    // -> specify the condition that violates the invariant
+    // -> verify the details of the diagnostic, including severity and message
+    // Ensure that you remove @generated or mark it @generated NOT
+    if (false) {
+      if (diagnostics != null) {
+        diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR, UMLValidator.DIAGNOSTIC_SOURCE,
+            UMLValidator.OPAQUE_EXPRESSION__ONLY_RETURN_RESULT_PARAMETERS,
+            org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString("_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+                new Object[] { "validateOnlyReturnResultParameters", //$NON-NLS-1$
+                    org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(opaqueExpression, context) }), new Object[] { opaqueExpression }));
+      }
+      return false;
+    }
+    return true;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The behavior must have exactly one return result parameter.
-	 * behavior <> null implies
-	 *    behavior.ownedParameter->select(direction=ParameterDirectionKind::return)->size() = 1
-	 * @param opaqueExpression The receiving '<em><b>Opaque Expression</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateOneReturnResultParameter(
-			OpaqueExpression opaqueExpression, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
-					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.OPAQUE_EXPRESSION__ONE_RETURN_RESULT_PARAMETER,
-					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
-						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
-						new Object[]{"validateOneReturnResultParameter", //$NON-NLS-1$
-							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(opaqueExpression, context)}), new Object[]{opaqueExpression}));
-			}
-			return false;
-		}
-		return true;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The behavior must have exactly one return result parameter.
+   * behavior <> null implies
+   *    behavior.ownedParameter->select(direction=ParameterDirectionKind::return)->size() = 1
+   * @param opaqueExpression The receiving '<em><b>Opaque Expression</b></em>' model object.
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @generated
+   */
+  public static boolean validateOneReturnResultParameter(OpaqueExpression opaqueExpression, DiagnosticChain diagnostics,
+      Map<Object, Object> context) {
+    // TODO: implement this method
+    // -> specify the condition that violates the invariant
+    // -> verify the details of the diagnostic, including severity and message
+    // Ensure that you remove @generated or mark it @generated NOT
+    if (false) {
+      if (diagnostics != null) {
+        diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR, UMLValidator.DIAGNOSTIC_SOURCE,
+            UMLValidator.OPAQUE_EXPRESSION__ONE_RETURN_RESULT_PARAMETER,
+            org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString("_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+                new Object[] { "validateOneReturnResultParameter", //$NON-NLS-1$
+                    org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(opaqueExpression, context) }), new Object[] { opaqueExpression }));
+      }
+      return false;
+    }
+    return true;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query value() gives an integer value for an expression intended to produce one.
-	 * self.isIntegral()
-	 * result = (0)
-	 * <p>From package UML::Values.</p>
-	 * @param opaqueExpression The receiving '<em><b>Opaque Expression</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static int value(OpaqueExpression opaqueExpression) {
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The query value() gives an integer value for an expression intended to produce one.
+   * self.isIntegral()
+   * result = (0)
+   * <p>From package UML::Values.</p>
+   * @param opaqueExpression The receiving '<em><b>Opaque Expression</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static int value(OpaqueExpression opaqueExpression) {
 
-		for (String body : opaqueExpression.getBodies()) {
+    for (String body : opaqueExpression.getBodies()) {
 
-			try {
-				return Integer.parseInt(body);
-			} catch (NumberFormatException nfe) {
-				// ignore
-			}
-		}
+      try {
+        return Integer.parseInt(body);
+      } catch (NumberFormatException nfe) {
+        // ignore
+      }
+    }
 
-		throw new UnsupportedOperationException();
-	}
+    throw new UnsupportedOperationException();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query isIntegral() tells whether an expression is intended to produce an Integer.
-	 * result = (false)
-	 * <p>From package UML::Values.</p>
-	 * @param opaqueExpression The receiving '<em><b>Opaque Expression</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean isIntegral(OpaqueExpression opaqueExpression) {
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The query isIntegral() tells whether an expression is intended to produce an Integer.
+   * result = (false)
+   * <p>From package UML::Values.</p>
+   * @param opaqueExpression The receiving '<em><b>Opaque Expression</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean isIntegral(OpaqueExpression opaqueExpression) {
 
-		for (String body : opaqueExpression.getBodies()) {
+    for (String body : opaqueExpression.getBodies()) {
 
-			try {
-				Integer.parseInt(body);
-				return true;
-			} catch (NumberFormatException nfe) {
-				// ignore
-			}
-		}
+      try {
+        Integer.parseInt(body);
+        return true;
+      } catch (NumberFormatException nfe) {
+        // ignore
+      }
+    }
 
-		return false;
-	}
+    return false;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query isPositive() tells whether an integer expression has a positive value.
-	 * result = (false)
-	 * self.isIntegral()
-	 * <p>From package UML::Values.</p>
-	 * @param opaqueExpression The receiving '<em><b>Opaque Expression</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean isPositive(OpaqueExpression opaqueExpression) {
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The query isPositive() tells whether an integer expression has a positive value.
+   * result = (false)
+   * self.isIntegral()
+   * <p>From package UML::Values.</p>
+   * @param opaqueExpression The receiving '<em><b>Opaque Expression</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean isPositive(OpaqueExpression opaqueExpression) {
 
-		for (String body : opaqueExpression.getBodies()) {
+    for (String body : opaqueExpression.getBodies()) {
 
-			try {
-				return Integer.parseInt(body) > 0;
-			} catch (NumberFormatException nfe) {
-				// ignore
-			}
-		}
+      try {
+        return Integer.parseInt(body) > 0;
+      } catch (NumberFormatException nfe) {
+        // ignore
+      }
+    }
 
-		throw new UnsupportedOperationException();
-	}
+    throw new UnsupportedOperationException();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query isNonNegative() tells whether an integer expression has a non-negative value.
-	 * self.isIntegral()
-	 * result = (false)
-	 * <p>From package UML::Values.</p>
-	 * @param opaqueExpression The receiving '<em><b>Opaque Expression</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean isNonNegative(OpaqueExpression opaqueExpression) {
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The query isNonNegative() tells whether an integer expression has a non-negative value.
+   * self.isIntegral()
+   * result = (false)
+   * <p>From package UML::Values.</p>
+   * @param opaqueExpression The receiving '<em><b>Opaque Expression</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean isNonNegative(OpaqueExpression opaqueExpression) {
 
-		for (String body : opaqueExpression.getBodies()) {
+    for (String body : opaqueExpression.getBodies()) {
 
-			try {
-				return Integer.parseInt(body) >= 0;
-			} catch (NumberFormatException nfe) {
-				// ignore
-			}
-		}
+      try {
+        return Integer.parseInt(body) >= 0;
+      } catch (NumberFormatException nfe) {
+        // ignore
+      }
+    }
 
-		throw new UnsupportedOperationException();
-	}
+    throw new UnsupportedOperationException();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Derivation for OpaqueExpression::/result
-	 * result = (if behavior = null then
-	 *     null
-	 * else
-	 *     behavior.ownedParameter->first()
-	 * endif)
-	 * <p>From package UML::Values.</p>
-	 * @param opaqueExpression The receiving '<em><b>Opaque Expression</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static Parameter getResult(OpaqueExpression opaqueExpression) {
-		Behavior behavior = opaqueExpression.getBehavior();
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Derivation for OpaqueExpression::/result
+   * result = (if behavior = null then
+   *     null
+   * else
+   *     behavior.ownedParameter->first()
+   * endif)
+   * <p>From package UML::Values.</p>
+   * @param opaqueExpression The receiving '<em><b>Opaque Expression</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static Parameter getResult(OpaqueExpression opaqueExpression) {
+    Behavior behavior = opaqueExpression.getBehavior();
 
-		if (behavior != null) {
+    if (behavior != null) {
 
-			for (Parameter ownedParameter : behavior.getOwnedParameters()) {
+      for (Parameter ownedParameter : behavior.getOwnedParameters()) {
 
-				if (ownedParameter
-					.getDirection() == ParameterDirectionKind.RETURN_LITERAL) {
-					return ownedParameter;
-				}
-			}
-		}
+        if (ownedParameter.getDirection() == ParameterDirectionKind.RETURN_LITERAL) {
+          return ownedParameter;
+        }
+      }
+    }
 
-		return null;
-	}
+    return null;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static String stringValue(OpaqueExpression opaqueExpression) {
-		EList<String> bodies = opaqueExpression.getBodies();
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated NOT
+   */
+  public static String stringValue(OpaqueExpression opaqueExpression) {
+    EList<String> bodies = opaqueExpression.getBodies();
 
-		return bodies.size() > 0
-			? bodies.get(0)
-			: ValueSpecificationOperations.stringValue(opaqueExpression);
-	}
+    return bodies.size() > 0 ? bodies.get(0) : ValueSpecificationOperations.stringValue(opaqueExpression);
+  }
 
 } // OpaqueExpressionOperations

@@ -29,9 +29,8 @@ package org.eclipse.uml2.uml;
  * @model
  * @generated
  */
-public interface ClearVariableAction
-		extends VariableAction {
+public interface ClearVariableAction extends VariableAction {
 
-	// no methods
+  // no methods
 
 } // ClearVariableAction

@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.util.DelegatingEcoreEList;
 import org.eclipse.uml2.uml.ConnectionPointReference;
 import org.eclipse.uml2.uml.Pseudostate;
 import org.eclipse.uml2.uml.PseudostateKind;
+import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.StateMachine;
@@ -39,6 +40,7 @@ import org.eclipse.uml2.uml.Vertex;
  * The following operations are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.Vertex#isConsistentWith(org.eclipse.uml2.uml.RedefinableElement) <em>Is Consistent With</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Vertex#containingStateMachine() <em>Containing State Machine</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Vertex#getIncomings() <em>Get Incomings</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Vertex#getOutgoings() <em>Get Outgoings</em>}</li>
@@ -48,337 +50,337 @@ import org.eclipse.uml2.uml.Vertex;
  *
  * @generated
  */
-public class VertexOperations
-		extends NamedElementOperations {
+public class VertexOperations extends NamedElementOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected VertexOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected VertexOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The operation containingStateMachine() returns the StateMachine in which this Vertex is defined.
-	 * result = (if container <> null
-	 * then
-	 * -- the container is a region
-	 *    container.containingStateMachine()
-	 * else 
-	 *    if (self.oclIsKindOf(Pseudostate)) and ((self.oclAsType(Pseudostate).kind = PseudostateKind::entryPoint) or (self.oclAsType(Pseudostate).kind = PseudostateKind::exitPoint)) then
-	 *       self.oclAsType(Pseudostate).stateMachine
-	 *    else 
-	 *       if (self.oclIsKindOf(ConnectionPointReference)) then
-	 *           self.oclAsType(ConnectionPointReference).state.containingStateMachine() -- no other valid cases possible
-	 *       else 
-	 *           null
-	 *       endif
-	 *    endif
-	 * endif
-	 * )
-	 * <p>From package UML::StateMachines.</p>
-	 * @param vertex The receiving '<em><b>Vertex</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static StateMachine containingStateMachine(Vertex vertex) {
-		Region container = vertex.getContainer();
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The query isConsistentWith() specifies that a redefining Vertex is consistent with a redefined Vertex.
+   * redefiningElement.isRedefinitionContextValid(self)
+   * result = (true)
+   * <p>From package UML::StateMachines.</p>
+   * @param vertex The receiving '<em><b>Vertex</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated
+   */
+  public static boolean isConsistentWith(Vertex vertex, RedefinableElement redefiningElement) {
+    // TODO: implement this method
+    // Ensure that you remove @generated or mark it @generated NOT
+    throw new UnsupportedOperationException();
+  }
 
-		if (container != null) {
-			return container.containingStateMachine();
-		} else if (vertex instanceof Pseudostate) {
-			Pseudostate pseudostate = (Pseudostate) vertex;
-			PseudostateKind kind = pseudostate.getKind();
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The operation containingStateMachine() returns the StateMachine in which this Vertex is defined.
+   * result = (if container <> null
+   * then
+   * -- the container is a region
+   *    container.containingStateMachine()
+   * else 
+   *    if (self.oclIsKindOf(Pseudostate)) and ((self.oclAsType(Pseudostate).kind = PseudostateKind::entryPoint) or (self.oclAsType(Pseudostate).kind = PseudostateKind::exitPoint)) then
+   *       self.oclAsType(Pseudostate).stateMachine
+   *    else 
+   *       if (self.oclIsKindOf(ConnectionPointReference)) then
+   *           self.oclAsType(ConnectionPointReference).state.containingStateMachine() -- no other valid cases possible
+   *       else 
+   *           null
+   *       endif
+   *    endif
+   * endif
+   * )
+   * <p>From package UML::StateMachines.</p>
+   * @param vertex The receiving '<em><b>Vertex</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static StateMachine containingStateMachine(Vertex vertex) {
+    Region container = vertex.getContainer();
 
-			if (kind == PseudostateKind.ENTRY_POINT_LITERAL
-				|| kind == PseudostateKind.EXIT_POINT_LITERAL) {
+    if (container != null) {
+      return container.containingStateMachine();
+    } else if (vertex instanceof Pseudostate) {
+      Pseudostate pseudostate = (Pseudostate) vertex;
+      PseudostateKind kind = pseudostate.getKind();
 
-				return pseudostate.getStateMachine();
-			}
-		} else if (vertex instanceof ConnectionPointReference) {
-			State state = ((ConnectionPointReference) vertex).getState();
+      if (kind == PseudostateKind.ENTRY_POINT_LITERAL || kind == PseudostateKind.EXIT_POINT_LITERAL) {
 
-			if (state != null) {
-				return state.containingStateMachine();
-			}
-		}
+        return pseudostate.getStateMachine();
+      }
+    } else if (vertex instanceof ConnectionPointReference) {
+      State state = ((ConnectionPointReference) vertex).getState();
 
-		return null;
-	}
+      if (state != null) {
+        return state.containingStateMachine();
+      }
+    }
 
-	protected static class IncomingEList
-			extends DelegatingEcoreEList<Transition> {
+    return null;
+  }
 
-		private static final long serialVersionUID = 1L;
+  protected static class IncomingEList extends DelegatingEcoreEList<Transition> {
 
-		protected final EStructuralFeature eStructuralFeature;
+    private static final long serialVersionUID = 1L;
 
-		protected final EList<Transition> delegateList;
+    protected final EStructuralFeature eStructuralFeature;
 
-		protected IncomingEList(InternalEObject owner,
-				EStructuralFeature eStructuralFeature,
-				EList<Transition> delegateList) {
-			super(owner);
+    protected final EList<Transition> delegateList;
 
-			this.eStructuralFeature = eStructuralFeature;
-			this.delegateList = delegateList;
-		}
+    protected IncomingEList(InternalEObject owner, EStructuralFeature eStructuralFeature,
+        EList<Transition> delegateList) {
+      super(owner);
 
-		@Override
-		public EStructuralFeature getEStructuralFeature() {
-			return eStructuralFeature;
-		}
+      this.eStructuralFeature = eStructuralFeature;
+      this.delegateList = delegateList;
+    }
 
-		@Override
-		public int getFeatureID() {
-			return owner.eDerivedStructuralFeatureID(
-				eStructuralFeature.getFeatureID(), Vertex.class);
-		}
+    @Override
+    public EStructuralFeature getEStructuralFeature() {
+      return eStructuralFeature;
+    }
 
-		@Override
-		protected List<Transition> delegateList() {
-			return delegateList;
-		}
+    @Override
+    public int getFeatureID() {
+      return owner.eDerivedStructuralFeatureID(eStructuralFeature.getFeatureID(), Vertex.class);
+    }
 
-		@Override
-		protected void delegateAdd(int index, Transition transition) {
-			int delegateIndex = delegateList.indexOf(transition);
+    @Override
+    protected List<Transition> delegateList() {
+      return delegateList;
+    }
 
-			if (delegateIndex != -1) {
+    @Override
+    protected void delegateAdd(int index, Transition transition) {
+      int delegateIndex = delegateList.indexOf(transition);
 
-				if (index != delegateIndex) {
-					delegateList.move(index, transition);
-				}
-			} else if (index < delegateList.size()) {
-				delegateList.add(index, transition);
-			} else {
-				delegateList.add(transition);
-			}
-		}
+      if (delegateIndex != -1) {
 
-		@Override
-		protected void didAdd(int index, Transition newTransition) {
-			super.didAdd(index, newTransition);
+        if (index != delegateIndex) {
+          delegateList.move(index, transition);
+        }
+      } else if (index < delegateList.size()) {
+        delegateList.add(index, transition);
+      } else {
+        delegateList.add(transition);
+      }
+    }
 
-			newTransition.setTarget((Vertex) owner);
-		}
+    @Override
+    protected void didAdd(int index, Transition newTransition) {
+      super.didAdd(index, newTransition);
 
-		@Override
-		protected void didRemove(int index, Transition oldTransition) {
-			super.didRemove(index, oldTransition);
+      newTransition.setTarget((Vertex) owner);
+    }
 
-			oldTransition.setTarget(null);
-		}
+    @Override
+    protected void didRemove(int index, Transition oldTransition) {
+      super.didRemove(index, oldTransition);
 
-		@Override
-		protected void didSet(int index, Transition newTransition,
-				Transition oldTransition) {
-			super.didSet(index, newTransition, oldTransition);
+      oldTransition.setTarget(null);
+    }
 
-			newTransition.setTarget((Vertex) owner);
-			oldTransition.setTarget(null);
-		}
+    @Override
+    protected void didSet(int index, Transition newTransition, Transition oldTransition) {
+      super.didSet(index, newTransition, oldTransition);
 
-	}
+      newTransition.setTarget((Vertex) owner);
+      oldTransition.setTarget(null);
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Derivation for Vertex::/incoming.
-	 * result = (Transition.allInstances()->select(target=self))
-	 * <p>From package UML::StateMachines.</p>
-	 * @param vertex The receiving '<em><b>Vertex</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static EList<Transition> getIncomings(Vertex vertex) {
-		EList<Transition> incomings = new UniqueEList.FastCompare<Transition>();
+  }
 
-		for (EStructuralFeature.Setting setting : getNonNavigableInverseReferences(
-			vertex)) {
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Derivation for Vertex::/incoming.
+   * result = (Transition.allInstances()->select(target=self))
+   * <p>From package UML::StateMachines.</p>
+   * @param vertex The receiving '<em><b>Vertex</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static EList<Transition> getIncomings(Vertex vertex) {
+    EList<Transition> incomings = new UniqueEList.FastCompare<Transition>();
 
-			if (setting
-				.getEStructuralFeature() == UMLPackage.Literals.TRANSITION__TARGET) {
-				incomings.add((Transition) setting.getEObject());
-			}
-		}
+    for (EStructuralFeature.Setting setting : getNonNavigableInverseReferences(vertex)) {
 
-		return new IncomingEList((InternalEObject) vertex,
-			UMLPackage.Literals.VERTEX__INCOMING, incomings);
-	}
+      if (setting.getEStructuralFeature() == UMLPackage.Literals.TRANSITION__TARGET) {
+        incomings.add((Transition) setting.getEObject());
+      }
+    }
 
-	protected static class OutgoingEList
-			extends DelegatingEcoreEList<Transition> {
+    return new IncomingEList((InternalEObject) vertex, UMLPackage.Literals.VERTEX__INCOMING, incomings);
+  }
 
-		private static final long serialVersionUID = 1L;
+  protected static class OutgoingEList extends DelegatingEcoreEList<Transition> {
 
-		protected final EStructuralFeature eStructuralFeature;
+    private static final long serialVersionUID = 1L;
 
-		protected final EList<Transition> delegateList;
+    protected final EStructuralFeature eStructuralFeature;
 
-		protected OutgoingEList(InternalEObject owner,
-				EStructuralFeature eStructuralFeature,
-				EList<Transition> delegateList) {
-			super(owner);
+    protected final EList<Transition> delegateList;
 
-			this.eStructuralFeature = eStructuralFeature;
-			this.delegateList = delegateList;
-		}
+    protected OutgoingEList(InternalEObject owner, EStructuralFeature eStructuralFeature,
+        EList<Transition> delegateList) {
+      super(owner);
 
-		@Override
-		public EStructuralFeature getEStructuralFeature() {
-			return eStructuralFeature;
-		}
+      this.eStructuralFeature = eStructuralFeature;
+      this.delegateList = delegateList;
+    }
 
-		@Override
-		public int getFeatureID() {
-			return owner.eDerivedStructuralFeatureID(
-				eStructuralFeature.getFeatureID(), Vertex.class);
-		}
+    @Override
+    public EStructuralFeature getEStructuralFeature() {
+      return eStructuralFeature;
+    }
 
-		@Override
-		protected List<Transition> delegateList() {
-			return delegateList;
-		}
+    @Override
+    public int getFeatureID() {
+      return owner.eDerivedStructuralFeatureID(eStructuralFeature.getFeatureID(), Vertex.class);
+    }
 
-		@Override
-		protected void delegateAdd(int index, Transition transition) {
-			int delegateIndex = delegateList.indexOf(transition);
+    @Override
+    protected List<Transition> delegateList() {
+      return delegateList;
+    }
 
-			if (delegateIndex != -1) {
+    @Override
+    protected void delegateAdd(int index, Transition transition) {
+      int delegateIndex = delegateList.indexOf(transition);
 
-				if (index != delegateIndex) {
-					delegateList.move(index, transition);
-				}
-			} else if (index < delegateList.size()) {
-				delegateList.add(index, transition);
-			} else {
-				delegateList.add(transition);
-			}
-		}
+      if (delegateIndex != -1) {
 
-		@Override
-		protected void didAdd(int index, Transition newTransition) {
-			super.didAdd(index, newTransition);
+        if (index != delegateIndex) {
+          delegateList.move(index, transition);
+        }
+      } else if (index < delegateList.size()) {
+        delegateList.add(index, transition);
+      } else {
+        delegateList.add(transition);
+      }
+    }
 
-			newTransition.setSource((Vertex) owner);
-		}
+    @Override
+    protected void didAdd(int index, Transition newTransition) {
+      super.didAdd(index, newTransition);
 
-		@Override
-		protected void didRemove(int index, Transition oldTransition) {
-			super.didRemove(index, oldTransition);
+      newTransition.setSource((Vertex) owner);
+    }
 
-			oldTransition.setSource(null);
-		}
+    @Override
+    protected void didRemove(int index, Transition oldTransition) {
+      super.didRemove(index, oldTransition);
 
-		@Override
-		protected void didSet(int index, Transition newTransition,
-				Transition oldTransition) {
-			super.didSet(index, newTransition, oldTransition);
+      oldTransition.setSource(null);
+    }
 
-			newTransition.setSource((Vertex) owner);
-			oldTransition.setSource(null);
-		}
+    @Override
+    protected void didSet(int index, Transition newTransition, Transition oldTransition) {
+      super.didSet(index, newTransition, oldTransition);
 
-	}
+      newTransition.setSource((Vertex) owner);
+      oldTransition.setSource(null);
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Derivation for Vertex::/outgoing
-	 * result = (Transition.allInstances()->select(source=self))
-	 * <p>From package UML::StateMachines.</p>
-	 * @param vertex The receiving '<em><b>Vertex</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static EList<Transition> getOutgoings(Vertex vertex) {
-		EList<Transition> outgoings = new UniqueEList.FastCompare<Transition>();
+  }
 
-		for (EStructuralFeature.Setting setting : getNonNavigableInverseReferences(
-			vertex)) {
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Derivation for Vertex::/outgoing
+   * result = (Transition.allInstances()->select(source=self))
+   * <p>From package UML::StateMachines.</p>
+   * @param vertex The receiving '<em><b>Vertex</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static EList<Transition> getOutgoings(Vertex vertex) {
+    EList<Transition> outgoings = new UniqueEList.FastCompare<Transition>();
 
-			if (setting
-				.getEStructuralFeature() == UMLPackage.Literals.TRANSITION__SOURCE) {
-				outgoings.add((Transition) setting.getEObject());
-			}
-		}
+    for (EStructuralFeature.Setting setting : getNonNavigableInverseReferences(vertex)) {
 
-		return new OutgoingEList((InternalEObject) vertex,
-			UMLPackage.Literals.VERTEX__OUTGOING, outgoings);
-	}
+      if (setting.getEStructuralFeature() == UMLPackage.Literals.TRANSITION__SOURCE) {
+        outgoings.add((Transition) setting.getEObject());
+      }
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * This utility operation returns true if the Vertex is contained in the State s (input argument).
-	 * result = (if not s.isComposite() or container->isEmpty() then
-	 * 	false
-	 * else
-	 * 	if container.state = s then 
-	 * 		true
-	 * 	else
-	 * 		container.state.isContainedInState(s)
-	 * 	endif
-	 * endif)
-	 * <p>From package UML::StateMachines.</p>
-	 * @param vertex The receiving '<em><b>Vertex</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean isContainedInState(Vertex vertex, State s) {
-		Region container = vertex.getContainer();
+    return new OutgoingEList((InternalEObject) vertex, UMLPackage.Literals.VERTEX__OUTGOING, outgoings);
+  }
 
-		if (!s.isComposite() || container == null) {
-			return false;
-		} else {
-			State containerState = container.getState();
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * This utility operation returns true if the Vertex is contained in the State s (input argument).
+   * result = (if not s.isComposite() or container->isEmpty() then
+   * 	false
+   * else
+   * 	if container.state = s then 
+   * 		true
+   * 	else
+   * 		container.state.isContainedInState(s)
+   * 	endif
+   * endif)
+   * <p>From package UML::StateMachines.</p>
+   * @param vertex The receiving '<em><b>Vertex</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean isContainedInState(Vertex vertex, State s) {
+    Region container = vertex.getContainer();
 
-			return containerState == s || (containerState != null
-				&& containerState.isContainedInState(s));
-		}
-	}
+    if (!s.isComposite() || container == null) {
+      return false;
+    } else {
+      State containerState = container.getState();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * This utility query returns true if the Vertex is contained in the Region r (input argument).
-	 * result = (if (container = r) then
-	 * 	true
-	 * else
-	 * 	if (r.state->isEmpty()) then
-	 * 		false
-	 * 	else
-	 * 		container.state.isContainedInRegion(r)
-	 * 	endif
-	 * endif)
-	 * <p>From package UML::StateMachines.</p>
-	 * @param vertex The receiving '<em><b>Vertex</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean isContainedInRegion(Vertex vertex, Region r) {
-		Region container = vertex.getContainer();
+      return containerState == s || (containerState != null && containerState.isContainedInState(s));
+    }
+  }
 
-		if (container == r) {
-			return true;
-		} else if (r.getState() == null) {
-			return false;
-		} else {
-			State containerState = container.getState();
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * This utility query returns true if the Vertex is contained in the Region r (input argument).
+   * result = (if (container = r) then
+   * 	true
+   * else
+   * 	if (r.state->isEmpty()) then
+   * 		false
+   * 	else
+   * 		container.state.isContainedInRegion(r)
+   * 	endif
+   * endif)
+   * <p>From package UML::StateMachines.</p>
+   * @param vertex The receiving '<em><b>Vertex</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean isContainedInRegion(Vertex vertex, Region r) {
+    Region container = vertex.getContainer();
 
-			return containerState != null
-				&& containerState.isContainedInRegion(r);
-		}
-	}
+    if (container == r) {
+      return true;
+    } else if (r.getState() == null) {
+      return false;
+    } else {
+      State containerState = container.getState();
+
+      return containerState != null && containerState.isContainedInRegion(r);
+    }
+  }
 
 } // VertexOperations

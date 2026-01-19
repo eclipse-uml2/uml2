@@ -25,27 +25,25 @@ import org.eclipse.uml2.uml.UMLPackage;
  *
  * @generated
  */
-public class FlowFinalNodeImpl
-		extends FinalNodeImpl
-		implements FlowFinalNode {
+public class FlowFinalNodeImpl extends FinalNodeImpl implements FlowFinalNode {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected FlowFinalNodeImpl() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected FlowFinalNodeImpl() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return UMLPackage.Literals.FLOW_FINAL_NODE;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass() {
+    return UMLPackage.Literals.FLOW_FINAL_NODE;
+  }
 
 } //FlowFinalNodeImpl

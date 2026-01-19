@@ -26,12 +26,11 @@ package org.eclipse.uml2.uml;
  *
  *
  * @see org.eclipse.uml2.uml.UMLPackage#getTimeInterval()
- * @model
+ * @model annotation="duplicates"
  * @generated
  */
-public interface TimeInterval
-		extends Interval {
+public interface TimeInterval extends Interval {
 
-	// no methods
+  // no methods
 
 } // TimeInterval

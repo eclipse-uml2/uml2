@@ -33,38 +33,35 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * @model
  * @generated
  */
-public interface MergeNode
-		extends ControlNode {
+public interface MergeNode extends ControlNode {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A MergeNode has one outgoing ActivityEdge.
-	 * outgoing->size()=1
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateOneOutgoingEdge(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * A MergeNode has one outgoing ActivityEdge.
+   * outgoing->size()=1
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @model
+   * @generated
+   */
+  boolean validateOneOutgoingEdge(DiagnosticChain diagnostics, Map<Object, Object> context);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The ActivityEdges incoming to and outgoing from a MergeNode must be either all ObjectFlows or all ControlFlows.
-	 * let allEdges : Set(ActivityEdge) = incoming->union(outgoing) in
-	 * allEdges->forAll(oclIsKindOf(ControlFlow)) or allEdges->forAll(oclIsKindOf(ObjectFlow))
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateEdges(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The ActivityEdges incoming to and outgoing from a MergeNode must be either all ObjectFlows or all ControlFlows.
+   * let allEdges : Set(ActivityEdge) = incoming->union(outgoing) in
+   * allEdges->forAll(oclIsKindOf(ControlFlow)) or allEdges->forAll(oclIsKindOf(ObjectFlow))
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @model
+   * @generated
+   */
+  boolean validateEdges(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // MergeNode

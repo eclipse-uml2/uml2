@@ -31,40 +31,37 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  *
  *
  * @see org.eclipse.uml2.uml.UMLPackage#getExtensionEnd()
- * @model
+ * @model annotation="duplicates"
  * @generated
  */
-public interface ExtensionEnd
-		extends Property {
+public interface ExtensionEnd extends Property {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The multiplicity of ExtensionEnd is 0..1 or 1.
-	 * (lowerBound() = 0 or lowerBound() = 1) and upperBound() = 1
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateMultiplicity(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The multiplicity of ExtensionEnd is 0..1 or 1.
+   * (lowerBound() = 0 or lowerBound() = 1) and upperBound() = 1
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @model
+   * @generated
+   */
+  boolean validateMultiplicity(DiagnosticChain diagnostics, Map<Object, Object> context);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The aggregation of an ExtensionEnd is composite.
-	 * self.aggregation = AggregationKind::composite
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateAggregation(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The aggregation of an ExtensionEnd is composite.
+   * self.aggregation = AggregationKind::composite
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @model
+   * @generated
+   */
+  boolean validateAggregation(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // ExtensionEnd

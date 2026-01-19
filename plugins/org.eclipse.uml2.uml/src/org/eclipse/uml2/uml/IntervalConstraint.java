@@ -26,12 +26,11 @@ package org.eclipse.uml2.uml;
  *
  *
  * @see org.eclipse.uml2.uml.UMLPackage#getIntervalConstraint()
- * @model
+ * @model annotation="duplicates"
  * @generated
  */
-public interface IntervalConstraint
-		extends Constraint {
+public interface IntervalConstraint extends Constraint {
 
-	// no methods
+  // no methods
 
 } // IntervalConstraint

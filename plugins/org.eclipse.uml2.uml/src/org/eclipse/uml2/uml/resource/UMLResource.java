@@ -105,9 +105,6 @@ public interface UMLResource
 
 	String UML_5_0_0_CONTENT_TYPE_IDENTIFIER = "org.eclipse.uml2.uml_5_0_0"; //$NON-NLS-1$
 
-	/**
-	 * @since 5.1
-	 */
 	String UML_5_1_0_CONTENT_TYPE_IDENTIFIER = "org.eclipse.uml2.uml_5_1_0"; //$NON-NLS-1$
 
 	String UML_CONTENT_TYPE_IDENTIFIER = UML_5_0_0_CONTENT_TYPE_IDENTIFIER;

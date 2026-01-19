@@ -1803,6 +1803,8 @@
           createChild="false" ecoreFeature="ecore:EReference UML.ecore#//Vertex/outgoing">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Vertex/redefinedVertex"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Vertex/containingStateMachine"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Vertex/getIncomings"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Vertex/getOutgoings"/>

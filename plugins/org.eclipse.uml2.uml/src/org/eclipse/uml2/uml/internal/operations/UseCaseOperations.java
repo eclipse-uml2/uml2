@@ -47,206 +47,193 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated
  */
-public class UseCaseOperations
-		extends BehavioredClassifierOperations {
+public class UseCaseOperations extends BehavioredClassifierOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected UseCaseOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected UseCaseOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A UseCase must have a name.
-	 * name -> notEmpty ()
-	 * @param useCase The receiving '<em><b>Use Case</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean validateMustHaveName(UseCase useCase,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * A UseCase must have a name.
+   * name -> notEmpty ()
+   * @param useCase The receiving '<em><b>Use Case</b></em>' model object.
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean validateMustHaveName(UseCase useCase, DiagnosticChain diagnostics,
+      Map<Object, Object> context) {
 
-		if (isEmpty(useCase.getName())) {
+    if (isEmpty(useCase.getName())) {
 
-			if (diagnostics != null) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
-					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.USE_CASE__MUST_HAVE_NAME,
-					UMLPlugin.INSTANCE.getString(
-						"_UI_UseCase_MustHaveName_diagnostic", //$NON-NLS-1$
-						getMessageSubstitutions(context, useCase)),
-					new Object[]{useCase}));
-			}
+      if (diagnostics != null) {
+        diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING, UMLValidator.DIAGNOSTIC_SOURCE,
+            UMLValidator.USE_CASE__MUST_HAVE_NAME, UMLPlugin.INSTANCE.getString("_UI_UseCase_MustHaveName_diagnostic", //$NON-NLS-1$
+                getMessageSubstitutions(context, useCase)),
+            new Object[] { useCase }));
+      }
 
-			return false;
-		}
+      return false;
+    }
 
-		return true;
-	}
+    return true;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * UseCases can only be involved in binary Associations.
-	 * Association.allInstances()->forAll(a | a.memberEnd.type->includes(self) implies a.memberEnd->size() = 2)
-	 * @param useCase The receiving '<em><b>Use Case</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean validateBinaryAssociations(UseCase useCase,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * UseCases can only be involved in binary Associations.
+   * Association.allInstances()->forAll(a | a.memberEnd.type->includes(self) implies a.memberEnd->size() = 2)
+   * @param useCase The receiving '<em><b>Use Case</b></em>' model object.
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean validateBinaryAssociations(UseCase useCase, DiagnosticChain diagnostics,
+      Map<Object, Object> context) {
 
-		for (Association association : useCase.getAssociations()) {
+    for (Association association : useCase.getAssociations()) {
 
-			if (!association.isBinary()) {
+      if (!association.isBinary()) {
 
-				if (diagnostics != null) {
-					diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.USE_CASE__BINARY_ASSOCIATIONS,
-						UMLPlugin.INSTANCE.getString(
-							"_UI_UseCase_BinaryAssociations_diagnostic", //$NON-NLS-1$
-							getMessageSubstitutions(context, useCase)),
-						new Object[]{useCase}));
-				}
+        if (diagnostics != null) {
+          diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING, UMLValidator.DIAGNOSTIC_SOURCE,
+              UMLValidator.USE_CASE__BINARY_ASSOCIATIONS,
+              UMLPlugin.INSTANCE.getString("_UI_UseCase_BinaryAssociations_diagnostic", //$NON-NLS-1$
+                  getMessageSubstitutions(context, useCase)),
+              new Object[] { useCase }));
+        }
 
-				return false;
-			}
-		}
+        return false;
+      }
+    }
 
-		return true;
-	}
+    return true;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * UseCases cannot have Associations to UseCases specifying the same subject.
-	 * Association.allInstances()->forAll(a | a.memberEnd.type->includes(self) implies 
-	 *    (
-	 *    let usecases: Set(UseCase) = a.memberEnd.type->select(oclIsKindOf(UseCase))->collect(oclAsType(UseCase))->asSet() in
-	 *    usecases->size() > 1 implies usecases->collect(subject)->size() > 1
-	 *    )
-	 * )
-	 * @param useCase The receiving '<em><b>Use Case</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean validateNoAssociationToUseCase(UseCase useCase,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * UseCases cannot have Associations to UseCases specifying the same subject.
+   * Association.allInstances()->forAll(a | a.memberEnd.type->includes(self) implies 
+   *    (
+   *    let usecases: Set(UseCase) = a.memberEnd.type->select(oclIsKindOf(UseCase))->collect(oclAsType(UseCase))->asSet() in
+   *    usecases->size() > 1 implies usecases->collect(subject)->size() > 1
+   *    )
+   * )
+   * @param useCase The receiving '<em><b>Use Case</b></em>' model object.
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean validateNoAssociationToUseCase(UseCase useCase, DiagnosticChain diagnostics,
+      Map<Object, Object> context) {
 
-		for (Association association : useCase.getAssociations()) {
-			EList<Type> endTypes = association.getEndTypes();
+    for (Association association : useCase.getAssociations()) {
+      EList<Type> endTypes = association.getEndTypes();
 
-			if (endTypes.size() == 2) {
-				Type end1 = endTypes.get(0);
-				Type end2 = endTypes.get(1);
+      if (endTypes.size() == 2) {
+        Type end1 = endTypes.get(0);
+        Type end2 = endTypes.get(1);
 
-				if (end1 instanceof UseCase && end2 instanceof UseCase) {
-					UseCase useCase1 = (UseCase) end1;
-					UseCase useCase2 = (UseCase) end2;
+        if (end1 instanceof UseCase && end2 instanceof UseCase) {
+          UseCase useCase1 = (UseCase) end1;
+          UseCase useCase2 = (UseCase) end2;
 
-					EList<Classifier> subjects = new UniqueEList.FastCompare<Classifier>(
-						useCase1.getSubjects());
-					subjects.retainAll(useCase2.getSubjects());
+          EList<Classifier> subjects = new UniqueEList.FastCompare<Classifier>(useCase1.getSubjects());
+          subjects.retainAll(useCase2.getSubjects());
 
-					if (!subjects.isEmpty()) {
+          if (!subjects.isEmpty()) {
 
-						if (diagnostics != null) {
-							diagnostics.add(new BasicDiagnostic(
-								Diagnostic.WARNING,
-								UMLValidator.DIAGNOSTIC_SOURCE,
-								UMLValidator.USE_CASE__NO_ASSOCIATION_TO_USE_CASE,
-								UMLPlugin.INSTANCE.getString(
-									"_UI_UseCase_NoAssociationToUseCase_diagnostic", //$NON-NLS-1$
-									getMessageSubstitutions(context, useCase1,
-										useCase2)),
-								new Object[]{useCase1, useCase2}));
-						}
+            if (diagnostics != null) {
+              diagnostics
+                  .add(
+                      new BasicDiagnostic(Diagnostic.WARNING, UMLValidator.DIAGNOSTIC_SOURCE,
+                          UMLValidator.USE_CASE__NO_ASSOCIATION_TO_USE_CASE,
+                          UMLPlugin.INSTANCE.getString("_UI_UseCase_NoAssociationToUseCase_diagnostic", //$NON-NLS-1$
+                              getMessageSubstitutions(context, useCase1, useCase2)),
+                          new Object[] { useCase1, useCase2 }));
+            }
 
-						return false;
-					}
-				}
-			}
-		}
+            return false;
+          }
+        }
+      }
+    }
 
-		return true;
-	}
+    return true;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A UseCase cannot include UseCases that directly or indirectly include it.
-	 * not allIncludedUseCases()->includes(self)
-	 * @param useCase The receiving '<em><b>Use Case</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean validateCannotIncludeSelf(UseCase useCase,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * A UseCase cannot include UseCases that directly or indirectly include it.
+   * not allIncludedUseCases()->includes(self)
+   * @param useCase The receiving '<em><b>Use Case</b></em>' model object.
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean validateCannotIncludeSelf(UseCase useCase, DiagnosticChain diagnostics,
+      Map<Object, Object> context) {
 
-		if (useCase.allIncludedUseCases().contains(useCase)) {
+    if (useCase.allIncludedUseCases().contains(useCase)) {
 
-			if (diagnostics != null) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
-					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.USE_CASE__CANNOT_INCLUDE_SELF,
-					UMLPlugin.INSTANCE.getString(
-						"_UI_UseCase_CannotIncludeSelf_diagnostic", //$NON-NLS-1$
-						getMessageSubstitutions(context, useCase)),
-					new Object[]{useCase}));
-			}
+      if (diagnostics != null) {
+        diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING, UMLValidator.DIAGNOSTIC_SOURCE,
+            UMLValidator.USE_CASE__CANNOT_INCLUDE_SELF,
+            UMLPlugin.INSTANCE.getString("_UI_UseCase_CannotIncludeSelf_diagnostic", //$NON-NLS-1$
+                getMessageSubstitutions(context, useCase)),
+            new Object[] { useCase }));
+      }
 
-			return false;
-		}
+      return false;
+    }
 
-		return true;
-	}
+    return true;
+  }
 
-	protected static EList<UseCase> allIncludedUseCases(UseCase useCase,
-			EList<UseCase> allIncludedUseCases) {
+  protected static EList<UseCase> allIncludedUseCases(UseCase useCase, EList<UseCase> allIncludedUseCases) {
 
-		for (Include include : useCase.getIncludes()) {
-			UseCase addition = include.getAddition();
+    for (Include include : useCase.getIncludes()) {
+      UseCase addition = include.getAddition();
 
-			if (addition != null && allIncludedUseCases.add(addition)) {
-				allIncludedUseCases(addition, allIncludedUseCases);
-			}
-		}
+      if (addition != null && allIncludedUseCases.add(addition)) {
+        allIncludedUseCases(addition, allIncludedUseCases);
+      }
+    }
 
-		return allIncludedUseCases;
-	}
+    return allIncludedUseCases;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query allIncludedUseCases() returns the transitive closure of all UseCases (directly or indirectly) included by this UseCase.
-	 * result = (self.include.addition->union(self.include.addition->collect(uc | uc.allIncludedUseCases()))->asSet())
-	 * <p>From package UML::UseCases.</p>
-	 * @param useCase The receiving '<em><b>Use Case</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static EList<UseCase> allIncludedUseCases(UseCase useCase) {
-		return ECollections.unmodifiableEList(allIncludedUseCases(useCase,
-			new UniqueEList.FastCompare<UseCase>()));
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The query allIncludedUseCases() returns the transitive closure of all UseCases (directly or indirectly) included by this UseCase.
+   * result = (self.include.addition->union(self.include.addition->collect(uc | uc.allIncludedUseCases()))->asSet())
+   * <p>From package UML::UseCases.</p>
+   * @param useCase The receiving '<em><b>Use Case</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static EList<UseCase> allIncludedUseCases(UseCase useCase) {
+    return ECollections.unmodifiableEList(allIncludedUseCases(useCase, new UniqueEList.FastCompare<UseCase>()));
+  }
 
 } // UseCaseOperations

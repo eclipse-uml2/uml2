@@ -29,9 +29,8 @@ package org.eclipse.uml2.uml;
  * @model abstract="true"
  * @generated
  */
-public interface LiteralSpecification
-		extends ValueSpecification {
+public interface LiteralSpecification extends ValueSpecification {
 
-	// no methods
+  // no methods
 
 } // LiteralSpecification

@@ -29,9 +29,8 @@ package org.eclipse.uml2.uml;
  * @model abstract="true"
  * @generated
  */
-public interface ControlNode
-		extends ActivityNode {
+public interface ControlNode extends ActivityNode {
 
-	// no methods
+  // no methods
 
 } // ControlNode

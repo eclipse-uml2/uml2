@@ -26,114 +26,104 @@ import org.eclipse.uml2.uml.UMLPackage;
 /**
  * A static utility class that provides operations related to '<em><b>Connectable Element</b></em>' model objects.
  */
-public class ConnectableElementOperations
-		extends NamedElementOperations {
+public class ConnectableElementOperations extends NamedElementOperations {
 
-	protected ConnectableElementOperations() {
-		super();
-	}
+  protected ConnectableElementOperations() {
+    super();
+  }
 
-	protected static class EndEList
-			extends DelegatingEcoreEList<ConnectorEnd> {
+  protected static class EndEList extends DelegatingEcoreEList<ConnectorEnd> {
 
-		private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-		protected final EStructuralFeature eStructuralFeature;
+    protected final EStructuralFeature eStructuralFeature;
 
-		protected final EList<ConnectorEnd> delegateList;
+    protected final EList<ConnectorEnd> delegateList;
 
-		protected EndEList(InternalEObject owner,
-				EStructuralFeature eStructuralFeature,
-				EList<ConnectorEnd> delegateList) {
-			super(owner);
+    protected EndEList(InternalEObject owner, EStructuralFeature eStructuralFeature, EList<ConnectorEnd> delegateList) {
+      super(owner);
 
-			this.eStructuralFeature = eStructuralFeature;
-			this.delegateList = delegateList;
-		}
+      this.eStructuralFeature = eStructuralFeature;
+      this.delegateList = delegateList;
+    }
 
-		@Override
-		public EStructuralFeature getEStructuralFeature() {
-			return eStructuralFeature;
-		}
+    @Override
+    public EStructuralFeature getEStructuralFeature() {
+      return eStructuralFeature;
+    }
 
-		@Override
-		public int getFeatureID() {
-			return owner.eDerivedStructuralFeatureID(
-				eStructuralFeature.getFeatureID(), ConnectableElement.class);
-		}
+    @Override
+    public int getFeatureID() {
+      return owner.eDerivedStructuralFeatureID(eStructuralFeature.getFeatureID(), ConnectableElement.class);
+    }
 
-		@Override
-		protected List<ConnectorEnd> delegateList() {
-			return delegateList;
-		}
+    @Override
+    protected List<ConnectorEnd> delegateList() {
+      return delegateList;
+    }
 
-		@Override
-		protected void delegateAdd(int index, ConnectorEnd connectorEnd) {
-			int delegateIndex = delegateList.indexOf(connectorEnd);
+    @Override
+    protected void delegateAdd(int index, ConnectorEnd connectorEnd) {
+      int delegateIndex = delegateList.indexOf(connectorEnd);
 
-			if (delegateIndex != -1) {
+      if (delegateIndex != -1) {
 
-				if (index != delegateIndex) {
-					delegateList.move(index, connectorEnd);
-				}
-			} else if (index < delegateList.size()) {
-				delegateList.add(index, connectorEnd);
-			} else {
-				delegateList.add(connectorEnd);
-			}
-		}
+        if (index != delegateIndex) {
+          delegateList.move(index, connectorEnd);
+        }
+      } else if (index < delegateList.size()) {
+        delegateList.add(index, connectorEnd);
+      } else {
+        delegateList.add(connectorEnd);
+      }
+    }
 
-		@Override
-		protected void didAdd(int index, ConnectorEnd newConnectorEnd) {
-			super.didAdd(index, newConnectorEnd);
+    @Override
+    protected void didAdd(int index, ConnectorEnd newConnectorEnd) {
+      super.didAdd(index, newConnectorEnd);
 
-			newConnectorEnd.setRole((ConnectableElement) owner);
-		}
+      newConnectorEnd.setRole((ConnectableElement) owner);
+    }
 
-		@Override
-		protected void didRemove(int index, ConnectorEnd oldConnectorEnd) {
-			super.didRemove(index, oldConnectorEnd);
+    @Override
+    protected void didRemove(int index, ConnectorEnd oldConnectorEnd) {
+      super.didRemove(index, oldConnectorEnd);
 
-			oldConnectorEnd.setRole(null);
-		}
+      oldConnectorEnd.setRole(null);
+    }
 
-		@Override
-		protected void didSet(int index, ConnectorEnd newConnectorEnd,
-				ConnectorEnd oldConnectorEnd) {
-			super.didSet(index, newConnectorEnd, oldConnectorEnd);
+    @Override
+    protected void didSet(int index, ConnectorEnd newConnectorEnd, ConnectorEnd oldConnectorEnd) {
+      super.didSet(index, newConnectorEnd, oldConnectorEnd);
 
-			newConnectorEnd.setRole((ConnectableElement) owner);
-			oldConnectorEnd.setRole(null);
-		}
+      newConnectorEnd.setRole((ConnectableElement) owner);
+      oldConnectorEnd.setRole(null);
+    }
 
-	}
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Derivation for ConnectableElement::/end : ConnectorEnd
-	 * result = ConnectorEnd.allInstances()->select(e | e.role=self)
-	 * <p>From package UML::StructuredClassifiers.</p>
-	 * @param connectableElement The receiving '<em><b>Connectable Element</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static EList<ConnectorEnd> getEnds(
-			ConnectableElement connectableElement) {
-		EList<ConnectorEnd> ends = new UniqueEList.FastCompare<ConnectorEnd>();
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Derivation for ConnectableElement::/end : ConnectorEnd
+   * result = ConnectorEnd.allInstances()->select(e | e.role=self)
+   * <p>From package UML::StructuredClassifiers.</p>
+   * @param connectableElement The receiving '<em><b>Connectable Element</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static EList<ConnectorEnd> getEnds(ConnectableElement connectableElement) {
+    EList<ConnectorEnd> ends = new UniqueEList.FastCompare<ConnectorEnd>();
 
-		for (EStructuralFeature.Setting setting : getNonNavigableInverseReferences(
-			connectableElement)) {
+    for (EStructuralFeature.Setting setting : getNonNavigableInverseReferences(connectableElement)) {
 
-			if (setting
-				.getEStructuralFeature() == UMLPackage.Literals.CONNECTOR_END__ROLE) {
-				ends.add((ConnectorEnd) setting.getEObject());
-			}
-		}
+      if (setting.getEStructuralFeature() == UMLPackage.Literals.CONNECTOR_END__ROLE) {
+        ends.add((ConnectorEnd) setting.getEObject());
+      }
+    }
 
-		return new EndEList((InternalEObject) connectableElement,
-			UMLPackage.Literals.CONNECTABLE_ELEMENT__END, ends);
-	}
+    return new EndEList((InternalEObject) connectableElement, UMLPackage.Literals.CONNECTABLE_ELEMENT__END, ends);
+  }
 
 } // ConnectableElementOperations

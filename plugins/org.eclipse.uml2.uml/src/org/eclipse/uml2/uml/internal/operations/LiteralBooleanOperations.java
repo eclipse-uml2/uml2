@@ -31,55 +31,54 @@ import org.eclipse.uml2.uml.LiteralBoolean;
  *
  * @generated
  */
-public class LiteralBooleanOperations
-		extends ValueSpecificationOperations {
+public class LiteralBooleanOperations extends ValueSpecificationOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected LiteralBooleanOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected LiteralBooleanOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query isComputable() is redefined to be true.
-	 * result = (true)
-	 * <p>From package UML::Values.</p>
-	 * @param literalBoolean The receiving '<em><b>Literal Boolean</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean isComputable(LiteralBoolean literalBoolean) {
-		return true;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The query isComputable() is redefined to be true.
+   * result = (true)
+   * <p>From package UML::Values.</p>
+   * @param literalBoolean The receiving '<em><b>Literal Boolean</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean isComputable(LiteralBoolean literalBoolean) {
+    return true;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query booleanValue() gives the value.
-	 * result = (value)
-	 * <p>From package UML::Values.</p>
-	 * @param literalBoolean The receiving '<em><b>Literal Boolean</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean booleanValue(LiteralBoolean literalBoolean) {
-		return literalBoolean.isValue();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The query booleanValue() gives the value.
+   * result = (value)
+   * <p>From package UML::Values.</p>
+   * @param literalBoolean The receiving '<em><b>Literal Boolean</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean booleanValue(LiteralBoolean literalBoolean) {
+    return literalBoolean.isValue();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static String stringValue(LiteralBoolean literalBoolean) {
-		return String.valueOf(literalBoolean.booleanValue());
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated NOT
+   */
+  public static String stringValue(LiteralBoolean literalBoolean) {
+    return String.valueOf(literalBoolean.booleanValue());
+  }
 
 } // LiteralBooleanOperations

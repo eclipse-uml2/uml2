@@ -31,35 +31,32 @@ import org.eclipse.uml2.uml.Type;
  *
  * @generated
  */
-public class SignalOperations
-		extends ClassifierOperations {
+public class SignalOperations extends ClassifierOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SignalOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected SignalOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Creates a property with the specified name, type, lower bound, and upper bound as an owned attribute of this signal.
-	 * @param signal The receiving '<em><b>Signal</b></em>' model object.
-	 * @param name The name for the new attribute, or null.
-	 * @param type The type for the new attribute, or null.
-	 * @param lower The lower bound for the new attribute.
-	 * @param upper The upper bound for the new attribute.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static Property createOwnedAttribute(Signal signal, String name,
-			Type type, int lower, int upper) {
-		return TypeOperations.createOwnedAttribute(signal, name, type, lower,
-			upper);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Creates a property with the specified name, type, lower bound, and upper bound as an owned attribute of this signal.
+   * @param signal The receiving '<em><b>Signal</b></em>' model object.
+   * @param name The name for the new attribute, or null.
+   * @param type The type for the new attribute, or null.
+   * @param lower The lower bound for the new attribute.
+   * @param upper The upper bound for the new attribute.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static Property createOwnedAttribute(Signal signal, String name, Type type, int lower, int upper) {
+    return TypeOperations.createOwnedAttribute(signal, name, type, lower, upper);
+  }
 
 } // SignalOperations

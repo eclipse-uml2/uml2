@@ -30,46 +30,45 @@ import org.eclipse.uml2.uml.LiteralNull;
  *
  * @generated
  */
-public class LiteralNullOperations
-		extends ValueSpecificationOperations {
+public class LiteralNullOperations extends ValueSpecificationOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected LiteralNullOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected LiteralNullOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query isComputable() is redefined to be true.
-	 * result = (true)
-	 * <p>From package UML::Values.</p>
-	 * @param literalNull The receiving '<em><b>Literal Null</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean isComputable(LiteralNull literalNull) {
-		return true;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The query isComputable() is redefined to be true.
+   * result = (true)
+   * <p>From package UML::Values.</p>
+   * @param literalNull The receiving '<em><b>Literal Null</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean isComputable(LiteralNull literalNull) {
+    return true;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query isNull() returns true.
-	 * result = (true)
-	 * <p>From package UML::Values.</p>
-	 * @param literalNull The receiving '<em><b>Literal Null</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean isNull(LiteralNull literalNull) {
-		return true;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The query isNull() returns true.
+   * result = (true)
+   * <p>From package UML::Values.</p>
+   * @param literalNull The receiving '<em><b>Literal Null</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean isNull(LiteralNull literalNull) {
+    return true;
+  }
 
 } // LiteralNullOperations
