@@ -18,7 +18,7 @@
     <repository location="http://download.eclipse.org/cbi/updates/license"/>
   </location>
   <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-    <repository location="https://download.eclipse.org/tools/orbit/downloads/latest-R"/>
+    <repository location="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/release/latest"/>
   </location>
 </locations>
 </target>
