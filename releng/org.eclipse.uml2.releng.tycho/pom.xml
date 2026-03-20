@@ -43,7 +43,7 @@
     <resource-encoding>UTF-8</resource-encoding>
     <os-jvm-flags/>
 
-    <tycho.scmUrl>scm:git:https://git.eclipse.org/c/uml2/org.eclipse.uml2.git</tycho.scmUrl>
+    <tycho.scmUrl>scm:git:https://github.com/eclipse-uml2/uml2.git</tycho.scmUrl>
 
     <jarsigner-version>1.3.2</jarsigner-version>
 

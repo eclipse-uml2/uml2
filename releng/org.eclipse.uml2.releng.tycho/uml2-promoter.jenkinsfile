@@ -73,12 +73,8 @@ pipeline {
 					env.BUILD_COMMIT = params.BUILD_COMMIT
 					env.BUILD_TIMESTAMP = params.BUILD_TIMESTAMP
 					env.BUILD_URL = params.BUILD_URL
-					def description = """
-BUILD_TYPE=${env.BUILD_TYPE}
-BUILD_URL=${env.BUILD_URL}
-""".trim()
-					echo description
-					currentBuild.description = description.replace("\n", "<br/>")
+					echo "${env.BUILD_TYPE}"
+					currentBuild.description = "${env.BUILD_TYPE}"
 				}
 			}
 		}
@@ -86,7 +82,7 @@ BUILD_URL=${env.BUILD_URL}
 		stage('Build') {
 			steps {
 				sshagent(['projects-storage.eclipse.org-bot-ssh']) {
-					sh '''
+					sh """
 						mvn	\
 							-f releng/org.eclipse.uml2.releng.tycho/pomPromoter.xml \
 							--no-transfer-progress \
@@ -100,7 +96,7 @@ BUILD_URL=${env.BUILD_URL}
 							--show-version \
 							clean \
 							verify
-						'''
+						"""
 				}
 			}
 		}

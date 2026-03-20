@@ -2,6 +2,11 @@ pipeline {
 	agent {
 		label 'ubuntu-latest'
 	}
+	
+	triggers {
+		cron('H 1 * * 0')
+		pollSCM('H */6 * * 1-6')
+	}
 
 	options {
 		buildDiscarder(logRotator(numToKeepStr: '5'))
@@ -39,11 +44,8 @@ Replay a Stable / Milestone uml2-promoter build to promote a Release.
 			steps {
 				script {
 					env.BUILD_TYPE = params.BUILD_TYPE
-					def description = """
-BUILD_TYPE=${env.BUILD_TYPE}
-""".trim()
-					echo description
-					currentBuild.description = description.replace("\n", "<br/>")
+					echo "${params.BUILD_TYPE}"
+					currentBuild.description = "${params.BUILD_TYPE}"
 				}
 			}
 		}
@@ -70,7 +72,8 @@ BUILD_TYPE=${env.BUILD_TYPE}
 							-Psign
 						'''
 				}
-				archiveArtifacts artifacts: 'releng/org.eclipse.uml2.build-feature/target/repository/**/*'
+				archiveArtifacts allowEmptyArchive: true, artifacts: 'tests/*/target/surefire-reports/**/TEST-*.xml'
+				archiveArtifacts allowEmptyArchive: true, artifacts: 'releng/org.eclipse.uml2.build-feature/target/**/repository/**/*'
 			}
 		}
 		//
