@@ -66,6 +66,7 @@ Replay a Stable / Milestone uml2-promoter build to promote a Release.
 							--no-transfer-progress \
 							-DBUILD_TYPE=${BUILD_TYPE} \
 							--show-version \
+							-Dorg.eclipse.equinox.p2.transport.ecf.retry=100 \
 							clean \
 							${targetPhase} \
 							-P${BUILD_TYPE} \

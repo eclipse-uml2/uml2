@@ -64,6 +64,7 @@ BUILD_TYPE=${env.BUILD_TYPE}
 							--no-transfer-progress \
 							-DBUILD_TYPE=${BUILD_TYPE} \
 							--show-version \
+							-Dorg.eclipse.equinox.p2.transport.ecf.retry=100 \
 							clean \
 							verify \
 							-P${BUILD_TYPE} \
