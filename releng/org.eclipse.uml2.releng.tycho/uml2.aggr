@@ -5,7 +5,6 @@
       <repositories location="${p2.uml2}">
         <bundles name="org.eclipse.uml2"/>
         <bundles name="org.eclipse.uml2.ant"/>
-        <bundles name="org.eclipse.uml2.capabilities"/>
         <bundles name="org.eclipse.uml2.codegen.ecore"/>
         <bundles name="org.eclipse.uml2.codegen.ecore.ui"/>
         <bundles name="org.eclipse.uml2.common"/>
