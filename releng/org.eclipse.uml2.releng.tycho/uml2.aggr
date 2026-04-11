@@ -15,7 +15,6 @@
         <bundles name="org.eclipse.uml2.examples.uml.ui"/>
         <bundles name="org.eclipse.uml2.sdk"/>
         <bundles name="org.eclipse.uml2.types"/>
-        <bundles name="org.eclipse.uml2.ecore.change"/>
         <bundles name="org.eclipse.uml2.uml"/>
         <bundles name="org.eclipse.uml2.uml.ecore.exporter"/>
         <bundles name="org.eclipse.uml2.uml.ecore.importer"/>

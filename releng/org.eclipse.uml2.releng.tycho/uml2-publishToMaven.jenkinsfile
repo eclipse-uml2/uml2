@@ -222,9 +222,9 @@ PROMOTE=${params.PROMOTE}
 				coordinates*.txt, artifacts*.txt'
 		}
 		unsuccessful {
-			emailext subject: "Publication of Maven artifacts failed",
+			emailext subject: "[UML2 CI] Publication of Maven artifacts failed",
 				body: "Please go to ${BUILD_URL}console and check the build failure.", mimeType: 'text/plain',
-				to: 'ed.merks@gmail.com', from:'genie.releng@eclipse.org'
+				to: 'ed@willink.me.uk', from:'genie.releng@eclipse.org'
 		}
 	}
 }
