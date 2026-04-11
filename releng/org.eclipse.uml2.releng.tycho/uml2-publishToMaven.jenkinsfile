@@ -216,6 +216,7 @@ PROMOTE=${params.PROMOTE}
 	post {
 		always {
 			archiveArtifacts allowEmptyArchive: true, artifacts: '\
+				**/*, \
 				repo/**, \
 				repo-deployment/**, \
 				**/log, \
