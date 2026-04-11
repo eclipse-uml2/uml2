@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aggregator:Aggregation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:aggregator="http://www.eclipse.org/cbi/p2repo/2011/aggregator/1.1.0" label="UML2 Repository Aggregation" buildRoot="../repository" packedStrategy="SKIP" type="R" mavenResult="true" versionFormat="MavenRelease" includeSources="true" excludeFeatures="true" includedIUPattern="org.eclipse.uml2.*" validateNexusPublishingRequirements="true">
+  <validationSets label="Main">
+    <contributions label="UML2 ${version.uml2}">
+      <repositories location="${p2.uml2}">
+        <bundles name="org.eclipse.uml2"/>
+        <bundles name="org.eclipse.uml2.ant"/>
+        <bundles name="org.eclipse.uml2.capabilities"/>
+        <bundles name="org.eclipse.uml2.codegen.ecore"/>
+        <bundles name="org.eclipse.uml2.codegen.ecore.ui"/>
+        <bundles name="org.eclipse.uml2.common"/>
+        <bundles name="org.eclipse.uml2.common.edit"/>
+        <bundles name="org.eclipse.uml2.doc"/>
+        <bundles name="org.eclipse.uml2.examples"/>
+        <bundles name="org.eclipse.uml2.examples.uml.ui"/>
+        <bundles name="org.eclipse.uml2.sdk"/>
+        <bundles name="org.eclipse.uml2.types"/>
+        <bundles name="org.eclipse.uml2.ecore.change"/>
+        <bundles name="org.eclipse.uml2.uml"/>
+        <bundles name="org.eclipse.uml2.uml.ecore.exporter"/>
+        <bundles name="org.eclipse.uml2.uml.ecore.importer"/>
+        <bundles name="org.eclipse.uml2.uml.edit"/>
+        <bundles name="org.eclipse.uml2.uml.editor"/>
+        <bundles name="org.eclipse.uml2.uml.profile.standard"/>
+        <bundles name="org.eclipse.uml2.uml.resources"/>
+        <bundles name="org.eclipse.uml2.uml.validation"/>
+      </repositories>
+      <mavenMappings namePattern="org\.eclipse\.emf.*" groupId="\$maven-groupId\$" artifactId="\$maven-artifactId\$" snapshot="true"/>
+      <mavenMappings namePattern="org\.eclipse\.(core\.resources|text).*" groupId="\$maven-groupId\$" artifactId="\$maven-artifactId\$"/>
+      <mavenMappings namePattern="org.apache.ant" groupId="org.apache.ant" artifactId="ant"/>
+      <mavenMappings namePattern="org.eclipse.ant.core" groupId="org.eclipse.platform" artifactId="org.eclipse.ant.core"/>
+      <mavenMappings namePattern="org.eclipse.debug.(.*)" groupId="org.eclipse.platform" artifactId="org.eclipse.debug.$1"/>
+      <mavenMappings namePattern="org.eclipse.core.(.*)" groupId="org.eclipse.platform" artifactId="org.eclipse.core.$1"/>
+      <mavenMappings namePattern="org.antlr.runtime" groupId="org.antlr" artifactId="antlr-runtime" versionPattern="3.2" versionTemplate=".*"/>
+      <mavenMappings namePattern="org.objectweb.asm" groupId="org.ow2.asm" artifactId="asm"/>
+      <mavenMappings namePattern=".*" groupId="\$maven-groupId\$" artifactId="\$maven-artifactId\$" versionPattern=".*" versionTemplate="\$maven-version\$"/>
+      <mavenDependencyMapping namespacePattern="osgi\.bundle|org\.eclipse\.equinox\.p2\.iu" namePattern="org\.eclipse\.(emf\.(ant|codegen|common|databinding|ecore|edit|gwt|mapping)|xsd).*" groupId="*" artifactId="*" versionRangePattern=".*" versionRangeTemplate="major.minor.micro-qualifier"/>
+      <mavenDependencyMapping namespacePattern="java\.package" namePattern="org.osgi.framework" groupId="!" artifactId="!" versionRangePattern=".*"/>
+      <mavenDependencyMapping namespacePattern="java\.package" namePattern=".*" groupId="*" artifactId="*" versionRangePattern=".*" versionRangeTemplate="major.minor.micro-qualifier"/>
+    </contributions>
+    <validationRepositories location="https://download.eclipse.org/releases/2025-06"/>
+  </validationSets>
+  <configurations architecture="x86_64"/>
+  <configurations operatingSystem="linux" windowSystem="gtk" architecture="x86_64"/>
+  <configurations operatingSystem="linux" windowSystem="gtk" architecture="aarch64"/>
+  <configurations operatingSystem="macosx" windowSystem="cocoa" architecture="x86_64"/>
+  <configurations operatingSystem="macosx" windowSystem="cocoa" architecture="aarch64"/>
+</aggregator:Aggregation>
