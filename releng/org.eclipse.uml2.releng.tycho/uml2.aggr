@@ -3,12 +3,12 @@
   <validationSets label="Main">
     <contributions label="UML2 ${version.uml2}">
       <repositories location="${p2.uml2}">
-        <bundles name="org.eclipse.uml2"/>
+        <!--bundles name="org.eclipse.uml2"/>
         <bundles name="org.eclipse.uml2.ant"/>
         <bundles name="org.eclipse.uml2.codegen.ecore"/>
-        <bundles name="org.eclipse.uml2.codegen.ecore.ui"/>
+        <bundles name="org.eclipse.uml2.codegen.ecore.ui"/-->
         <bundles name="org.eclipse.uml2.common"/>
-        <bundles name="org.eclipse.uml2.common.edit"/>
+        <!--bundles name="org.eclipse.uml2.common.edit"/>
         <bundles name="org.eclipse.uml2.doc"/>
         <bundles name="org.eclipse.uml2.examples"/>
         <bundles name="org.eclipse.uml2.examples.uml.ui"/>
@@ -21,9 +21,10 @@
         <bundles name="org.eclipse.uml2.uml.editor"/>
         <bundles name="org.eclipse.uml2.uml.profile.standard"/>
         <bundles name="org.eclipse.uml2.uml.resources"/>
-        <bundles name="org.eclipse.uml2.uml.validation"/>
+        <bundles name="org.eclipse.uml2.uml.validation"/-->
       </repositories>
-      <mavenMappings namePattern="org\.eclipse\.emf.*" groupId="\$maven-groupId\$" artifactId="\$maven-artifactId\$" snapshot="true"/>
+      <mavenMappings namePattern="org\.eclipse\.uml2.*" groupId="\$maven-groupId\$" artifactId="\$maven-artifactId\$" snapshot="true"/>
+      <mavenMappings namePattern="org\.eclipse\.emf.*" groupId="\$maven-groupId\$" artifactId="\$maven-artifactId\$"/>
       <mavenMappings namePattern="org\.eclipse\.(core\.resources|text).*" groupId="\$maven-groupId\$" artifactId="\$maven-artifactId\$"/>
       <mavenMappings namePattern="org.apache.ant" groupId="org.apache.ant" artifactId="ant"/>
       <mavenMappings namePattern="org.eclipse.ant.core" groupId="org.eclipse.platform" artifactId="org.eclipse.ant.core"/>
