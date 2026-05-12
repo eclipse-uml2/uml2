@@ -26,12 +26,6 @@ pipeline {
 <li> reload - to reload the parameter definitions from GIT and bypass promoting
 </ul>'''
 		)
-
-		string(
-			name: 'BUILD_PROMOTE',
-			defaultValue: 'https://ci.eclipse.org/uml2/job/uml2-master/lastSuccessfulBuild/artifact/releng/org.eclipse.uml2.build-feature/target/repository',
-			description: 'The repo to promote for the new build.'
-		)
  
 		string(
 			name: 'BUILD_ROOT',
@@ -61,6 +55,18 @@ pipeline {
 			defaultValue: 'https://ci.eclipse.org/uml2/job/uml2-master/lastSuccessfulBuild/',
 			description: 'URL of the source build job.'
 		)
+
+		string(
+			name: 'BUILD_NUMBER',
+			defaultValue: 'lastSuccessfulBuild',
+			description: 'Sequence number of the source build job.'
+		)
+
+		string(
+			name: 'JOB_NAME',
+			defaultValue: 'uml2-master',
+			description: 'Name of the source build job.'
+		)
 	}
 
 	stages {
@@ -68,18 +74,34 @@ pipeline {
 			steps {
 				script {
 					env.BUILD_TYPE = params.BUILD_TYPE
-					env.BUILD_PROMOTE = params.BUILD_PROMOTE
+					env.BUILD_NUMBER = params.BUILD_NUMBER
 					env.BUILD_ROOT = params.BUILD_ROOT
 					env.BUILD_REMOTE = params.BUILD_REMOTE
 					env.BUILD_COMMIT = params.BUILD_COMMIT
 					env.BUILD_TIMESTAMP = params.BUILD_TIMESTAMP
 					env.BUILD_URL = params.BUILD_URL
+					env.JOB_NAME = params.JOB_NAME
 					echo "${env.BUILD_TYPE}"
 					currentBuild.description = "${env.BUILD_TYPE}"
 				}
 			}
 		}
 
+		//
+		//	Fetch the build to promote
+		//
+		stage('Copy Artifacts') {
+			when {
+				expression { return params.BUILD_TYPE != 'reload' && currentBuild.getPreviousBuild() != null }
+			}
+			steps {
+				copyArtifacts(projectName: '${JOB_NAME}',
+					selector: specific("${BUILD_NUMBER}"),
+					target: '.',
+					filter: 'p2repo.zip')
+				sh 'unzip -ou p2repo.zip -d repository'
+			}
+		}
 		stage('Build') {
 			when {
 				expression { return params.BUILD_TYPE != 'reload' && currentBuild.getPreviousBuild() != null }
@@ -91,7 +113,7 @@ pipeline {
 							-f releng/org.eclipse.uml2.releng.tycho/pomPromoter.xml \
 							--no-transfer-progress \
 							"-DBUILD_COMMIT=${BUILD_COMMIT}" \
-							-DBUILD_PROMOTE=${BUILD_PROMOTE} \
+							-DBUILD_PROMOTE=../../repository \
 							"-DBUILD_REMOTE=${BUILD_REMOTE}" \
 							-DBUILD_ROOT=${BUILD_ROOT} \
 							"-DBUILD_TIMESTAMP=${BUILD_TIMESTAMP}" \
