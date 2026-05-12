@@ -73,9 +73,31 @@ BUILD_TYPE=${env.BUILD_TYPE}
 							verify \
 							-P${BUILD_TYPE} \
 							-Psign
+						cd releng/org.eclipse.uml2.build-feature/target/repository
+						zip -r ../../../../p2repo.zip .
 						'''
 				}
 				archiveArtifacts artifacts: 'releng/org.eclipse.uml2.build-feature/target/repository/**/*'
+				archiveArtifacts allowEmptyArchive: true, artifacts: 'p2repo.zip'
+			}
+		}
+		stage('Publish') {
+			when {
+				expression { return params.BUILD_TYPE != 'reload' && currentBuild.getPreviousBuild() != null }
+			}
+			steps {
+				sshagent(['projects-storage.eclipse.org-bot-ssh']) {
+					sh '''
+						set -e
+						set -x
+						LOGIN="genie.uml2@projects-storage.eclipse.org"
+						BUILDS="/home/data/httpd/download.eclipse.org/modeling/mdt/uml2/builds"
+						ssh $LOGIN "cd $BUILDS; rm -rf archive/uml2-branch/next; mkdir -p archive/uml2-branch/next"
+						scp -r p2repo.zip $LOGIN:$BUILDS/archive/uml2-branch/next/
+						ssh $LOGIN "cd $BUILDS/archive/uml2-branch/next; unzip -ou p2repo.zip -d ."
+						ssh $LOGIN "cd $BUILDS/archive/uml2-branch; mv latest prev; mv next latest; rm -rf prev latest/p2repo.zip"
+					'''
+				}
 			}
 		}
 	}
