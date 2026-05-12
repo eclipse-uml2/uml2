@@ -21,12 +21,13 @@ pipeline {
 	parameters {
 		choice(
 			name: 'BUILD_TYPE',
-			choices: ['nightly', 'milestone'],
+			choices: ['nightly', 'milestone', 'reload'],
 			description: '''
 <ul>
 <li> N - Nightly build
 <li> S - Stable / Milestone build
-</ul>				'''
+<li> reload - to reload the parameter definitions from GIT and bypass building
+</ul>'''
 		)
 		
 		string(
@@ -56,6 +57,9 @@ BUILD_TYPE=${env.BUILD_TYPE}
 		//	Do the regular project build and test.
 		//
 		stage('Build') {
+			when {
+				expression { return params.BUILD_TYPE != 'reload' && currentBuild.getPreviousBuild() != null }
+			}
 			steps {
 				wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
 					sh '''
@@ -79,23 +83,23 @@ BUILD_TYPE=${env.BUILD_TYPE}
 	post {
 		failure {
 			mail to: 'ed@willink.me.uk', subject: "[UML2 CI] Build Failure ${currentBuild.fullDisplayName}", mimeType: 'text/plain',
-body: "Project: ${env.JOB_NAME} \n\
-Build Number: ${env.BUILD_NUMBER} \n\
-Build URL: <${env.BUILD_URL}> \n\
+body: "Project: ${env.JOB_NAME}\n\
+Build Number: ${env.BUILD_NUMBER}\n\
+Build URL: <${env.BUILD_URL}>\n\
 Console: <${env.BUILD_URL}console>"
 			archiveArtifacts allowEmptyArchive: true, artifacts: '**'
 		}
 
 		fixed {
 			mail to: 'ed@willink.me.uk', subject: "[UML2 CI] Back to normal ${currentBuild.fullDisplayName}", mimeType: 'text/plain',
-body: "Project: ${env.JOB_NAME} \n\
-Build Number: ${env.BUILD_NUMBER} \n\
-Build URL: <${env.BUILD_URL}> \n\
+body: "Project: ${env.JOB_NAME}\n\
+Build Number: ${env.BUILD_NUMBER}\n\
+Build URL: <${env.BUILD_URL}>\n\
 Console: <${env.BUILD_URL}console>"
 		}
 
 		always {
-			junit '**/target/surefire-reports/TEST-*.xml'
+			junit allowEmptyResults: params.BUILD_TYPE == 'reload' || currentBuild.getPreviousBuild() == null, testResults: 'tests/*/target/**/surefire-reports/**/TEST-*.xml'
 		}
 
 //		cleanup {

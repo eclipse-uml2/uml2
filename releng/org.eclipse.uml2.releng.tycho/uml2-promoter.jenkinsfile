@@ -17,13 +17,14 @@ pipeline {
 	parameters {
 		choice(
 			name: 'BUILD_TYPE',
-			choices: ['nightly', 'milestone', 'release'],
+			choices: ['nightly', 'milestone', 'release', 'reload'],
 			description: '''
 <ul>
 <li> N - Nightly build
 <li> S - Stable / Milestone build
 <li> R - Release build
-</ul>				'''
+<li> reload - to reload the parameter definitions from GIT and bypass promoting
+</ul>'''
 		)
 
 		string(
@@ -80,6 +81,9 @@ pipeline {
 		}
 
 		stage('Build') {
+			when {
+				expression { return params.BUILD_TYPE != 'reload' && currentBuild.getPreviousBuild() != null }
+			}
 			steps {
 				sshagent(['projects-storage.eclipse.org-bot-ssh']) {
 					sh """
@@ -105,18 +109,18 @@ pipeline {
 	post {
 		failure {
 			mail to: 'ed@willink.me.uk', subject: "[UML2 CI] Build Failure ${currentBuild.fullDisplayName}", mimeType: 'text/plain',
-body: "Project: ${env.JOB_NAME} \n\
-Build Number: ${env.BUILD_NUMBER} \n\
-Build URL: <${env.BUILD_URL}> \n\
+body: "Project: ${env.JOB_NAME}\n\
+Build Number: ${env.BUILD_NUMBER}\n\
+Build URL: <${env.BUILD_URL}>\n\
 Console: <${env.BUILD_URL}console>"
 			archiveArtifacts allowEmptyArchive: true, artifacts: '**'
 		}
 
 		fixed {
 			mail to: 'ed@willink.me.uk', subject: "[UML2 CI] Back to normal ${currentBuild.fullDisplayName}", mimeType: 'text/plain',
-body: "Project: ${env.JOB_NAME} \n\
-Build Number: ${env.BUILD_NUMBER} \n\
-Build URL: <${env.BUILD_URL}> \n\
+body: "Project: ${env.JOB_NAME}\n\
+Build Number: ${env.BUILD_NUMBER}\n\
+Build URL: <${env.BUILD_URL}>\n\
 Console: <${env.BUILD_URL}console>"
 		}
 
