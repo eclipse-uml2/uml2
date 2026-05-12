@@ -91,7 +91,7 @@ BUILD_TYPE=${env.BUILD_TYPE}
 						set -e
 						set -x
 						LOGIN="genie.uml2@projects-storage.eclipse.org"
-						BUILDS="/home/data/httpd/download.eclipse.org/modeling/mdt/uml2/builds"
+						BUILDS="/home/data/httpd/download.eclipse.org/modeling/mdt/uml2/builds/archive"
 						ssh $LOGIN "cd $BUILDS; rm -rf uml2-branch/next; mkdir -p uml2-branch/next"
 						scp -r p2repo.zip $LOGIN:$BUILDS/uml2-branch/next/
 						ssh $LOGIN "cd $BUILDS/uml2-branch/next; unzip -ou p2repo.zip -d ."
