@@ -104,7 +104,7 @@ Replay a Stable / Milestone uml2-promoter build to promote a Release.
 						string(name: 'JOB_NAME', value: env.JOB_NAME)
 					]
 					echo job_params.toString()
-					build job: "uml2-promoter", parameters: job_params
+					build job: "uml2-promoter", parameters: job_params, wait: false, propagate: false
 				}
 			}
 		}

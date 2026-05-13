@@ -73,16 +73,16 @@ pipeline {
 		stage('Display Parameters') {
 			steps {
 				script {
-					env.BUILD_TYPE = params.BUILD_TYPE
-					env.BUILD_NUMBER = params.BUILD_NUMBER
-					env.BUILD_ROOT = params.BUILD_ROOT
-					env.BUILD_REMOTE = params.BUILD_REMOTE
-					env.BUILD_COMMIT = params.BUILD_COMMIT
-					env.BUILD_TIMESTAMP = params.BUILD_TIMESTAMP
-					env.BUILD_URL = params.BUILD_URL
-					env.JOB_NAME = params.JOB_NAME
-					echo "${env.BUILD_TYPE}"
-					currentBuild.description = "${env.BUILD_TYPE}"
+//					env.BUILD_TYPE = params.BUILD_TYPE
+//					env.BUILD_NUMBER = params.BUILD_NUMBER
+//					env.BUILD_ROOT = params.BUILD_ROOT
+//					env.BUILD_REMOTE = params.BUILD_REMOTE
+//					env.BUILD_COMMIT = params.BUILD_COMMIT
+//					env.BUILD_TIMESTAMP = params.BUILD_TIMESTAMP
+//					env.BUILD_URL = params.BUILD_URL
+//					env.JOB_NAME = params.JOB_NAME
+					echo "${params.BUILD_TYPE}"
+					currentBuild.description = "${params.BUILD_TYPE}"
 				}
 			}
 		}
@@ -95,8 +95,8 @@ pipeline {
 				expression { return params.BUILD_TYPE != 'reload' && currentBuild.getPreviousBuild() != null }
 			}
 			steps {
-				copyArtifacts(projectName: '${JOB_NAME}',
-					selector: specific("${BUILD_NUMBER}"),
+				copyArtifacts(projectName: '${params.JOB_NAME}',
+					selector: specific("${params.BUILD_NUMBER}"),
 					target: '.',
 					filter: 'p2repo.zip')
 				sh 'unzip -ou p2repo.zip -d repository'
@@ -112,13 +112,13 @@ pipeline {
 						mvn	\
 							-f releng/org.eclipse.uml2.releng.tycho/pomPromoter.xml \
 							--no-transfer-progress \
-							"-DBUILD_COMMIT=${BUILD_COMMIT}" \
+							"-DBUILD_COMMIT=${params.BUILD_COMMIT}" \
 							-DBUILD_PROMOTE=../../repository \
-							"-DBUILD_REMOTE=${BUILD_REMOTE}" \
-							-DBUILD_ROOT=${BUILD_ROOT} \
-							"-DBUILD_TIMESTAMP=${BUILD_TIMESTAMP}" \
-							-DBUILD_TYPE=${BUILD_TYPE} \
-							-DBUILD_URL=${BUILD_URL} \
+							"-DBUILD_REMOTE=${params.BUILD_REMOTE}" \
+							-DBUILD_ROOT=${params.BUILD_ROOT} \
+							"-DBUILD_TIMESTAMP=${params.BUILD_TIMESTAMP}" \
+							-DBUILD_TYPE=${params.BUILD_TYPE} \
+							-DBUILD_URL=${params.BUILD_URL} \
 							--show-version \
 							clean \
 							verify
@@ -131,19 +131,19 @@ pipeline {
 	post {
 		failure {
 			mail to: 'ed@willink.me.uk', subject: "[UML2 CI] Build Failure ${currentBuild.fullDisplayName}", mimeType: 'text/plain',
-body: "Project: ${env.JOB_NAME}\n\
-Build Number: ${env.BUILD_NUMBER}\n\
-Build URL: <${env.BUILD_URL}>\n\
-Console: <${env.BUILD_URL}console>"
+body: "Project: ${JOB_NAME}\n\
+Build Number: ${params.BUILD_NUMBER}\n\
+Build URL: <${params.BUILD_URL}>\n\
+Console: <${BUILD_URL}console>"
 			archiveArtifacts allowEmptyArchive: true, artifacts: '**'
 		}
 
 		fixed {
 			mail to: 'ed@willink.me.uk', subject: "[UML2 CI] Back to normal ${currentBuild.fullDisplayName}", mimeType: 'text/plain',
-body: "Project: ${env.JOB_NAME}\n\
-Build Number: ${env.BUILD_NUMBER}\n\
-Build URL: <${env.BUILD_URL}>\n\
-Console: <${env.BUILD_URL}console>"
+body: "Project: ${JOB_NAME}\n\
+Build Number: ${params.BUILD_NUMBER}\n\
+Build URL: <${params.BUILD_URL}>\n\
+Console: <${BUILD_URL}console>"
 		}
 
 //		cleanup {
