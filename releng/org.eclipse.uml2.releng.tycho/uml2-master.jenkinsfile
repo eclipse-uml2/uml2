@@ -94,14 +94,14 @@ Replay a Stable / Milestone uml2-promoter build to promote a Release.
 			steps {
 				script {
 					def List job_params = [
-						string(name: 'BUILD_COMMIT', value: '-commit https://github.com/eclipse-uml2/uml2/commit/' + env.GIT_COMMIT),
-						string(name: 'BUILD_NUMBER', value: env.BUILD_NUMBER),
-						string(name: 'BUILD_REMOTE', value: '-remote genie.uml2@projects-storage.eclipse.org:/home/data/httpd/download.eclipse.org/modeling/mdt/uml2'),
-						string(name: 'BUILD_ROOT', value: '/home/jenkins/agent/workspace/justj-promoter/justj-sync'),
-						string(name: 'BUILD_TIMESTAMP', value: '-timestamp ' + env.BUILD_TIMESTAMP),
-						string(name: 'BUILD_TYPE', value: env.BUILD_TYPE),
-						string(name: 'BUILD_URL', value: env.BUILD_URL),
-						string(name: 'JOB_NAME', value: env.JOB_NAME)
+						string(name: '_BUILD_COMMIT', value: '-commit https://github.com/eclipse-uml2/uml2/commit/' + env.GIT_COMMIT),
+						string(name: '_BUILD_NUMBER', value: env.BUILD_NUMBER),
+						string(name: '_BUILD_REMOTE', value: '-remote genie.uml2@projects-storage.eclipse.org:/home/data/httpd/download.eclipse.org/modeling/mdt/uml2'),
+						string(name: '_BUILD_ROOT', value: '/home/jenkins/agent/workspace/justj-promoter/justj-sync'),
+						string(name: '_BUILD_TIMESTAMP', value: '-timestamp ' + env.BUILD_TIMESTAMP),
+						string(name: '_BUILD_TYPE', value: env.BUILD_TYPE),
+						string(name: '_BUILD_URL', value: env.BUILD_URL),
+						string(name: '_JOB_NAME', value: env.JOB_NAME)
 					]
 					echo job_params.toString()
 					build job: "uml2-promoter", parameters: job_params, wait: false, propagate: false

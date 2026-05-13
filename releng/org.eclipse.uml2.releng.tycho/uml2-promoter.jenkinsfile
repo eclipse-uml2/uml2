@@ -16,7 +16,7 @@ pipeline {
 	
 	parameters {
 		choice(
-			name: 'BUILD_TYPE',
+			name: '_BUILD_TYPE',
 			choices: ['nightly', 'milestone', 'release', 'reload'],
 			description: '''
 <ul>
@@ -28,42 +28,42 @@ pipeline {
 		)
  
 		string(
-			name: 'BUILD_ROOT',
+			name: '_BUILD_ROOT',
 			defaultValue: '${project.build.directory}/justj-sync',
 			description: 'Root of intermediate site.'
 		)
 
 		string(
-			name: 'BUILD_REMOTE',
+			name: '_BUILD_REMOTE',
 			defaultValue: '-remote genie.uml2@projects-storage.eclipse.org:/home/data/httpd/download.eclipse.org/modeling/mdt/uml2',
 			description: 'JustJ command line token to specify the root of the published builds.'
 		)
 
 		string(
-			name: 'BUILD_COMMIT',
+			name: '_BUILD_COMMIT',
 			defaultValue: '-commit https://github.com/eclipse-uml2/uml2/commit/${env.GIT_COMMIT}',
 			description: 'JustJ command line token to specify the GIT commit of the published build.'
 		)
 
 		string(
-			name: 'BUILD_TIMESTAMP',
+			name: '_BUILD_TIMESTAMP',
 			description: 'The timestamp / version qualifier of the new build. Leave blank for now.'
 		)
 
 		string(
-			name: 'BUILD_URL',
+			name: '_BUILD_URL',
 			defaultValue: 'https://ci.eclipse.org/uml2/job/uml2-master/lastSuccessfulBuild/',
 			description: 'URL of the source build job.'
 		)
 
 		string(
-			name: 'BUILD_NUMBER',
+			name: '_BUILD_NUMBER',
 			defaultValue: 'lastSuccessfulBuild',
 			description: 'Sequence number of the source build job.'
 		)
 
 		string(
-			name: 'JOB_NAME',
+			name: '_JOB_NAME',
 			defaultValue: 'uml2-master',
 			description: 'Name of the source build job.'
 		)
@@ -73,16 +73,8 @@ pipeline {
 		stage('Display Parameters') {
 			steps {
 				script {
-//					env.BUILD_TYPE = params.BUILD_TYPE
-//					env.BUILD_NUMBER = params.BUILD_NUMBER
-//					env.BUILD_ROOT = params.BUILD_ROOT
-//					env.BUILD_REMOTE = params.BUILD_REMOTE
-//					env.BUILD_COMMIT = params.BUILD_COMMIT
-//					env.BUILD_TIMESTAMP = params.BUILD_TIMESTAMP
-//					env.BUILD_URL = params.BUILD_URL
-//					env.JOB_NAME = params.JOB_NAME
-					echo "${params.BUILD_TYPE}"
-					currentBuild.description = "${params.BUILD_TYPE}"
+					echo "${params._BUILD_TYPE}"
+					currentBuild.description = "${params._BUILD_TYPE}"
 				}
 			}
 		}
@@ -92,19 +84,23 @@ pipeline {
 		//
 		stage('Copy Artifacts') {
 			when {
-				expression { return params.BUILD_TYPE != 'reload' && currentBuild.getPreviousBuild() != null }
+				expression { return params._BUILD_TYPE != 'reload' && currentBuild.getPreviousBuild() != null }
 			}
 			steps {
-				copyArtifacts(projectName: '${params.JOB_NAME}',
-					selector: specific("${params.BUILD_NUMBER}"),
+				copyArtifacts(projectName: "${params._JOB_NAME}",
+					selector: specific("${params._BUILD_NUMBER}"),
 					target: '.',
 					filter: 'p2repo.zip')
 				sh 'unzip -ou p2repo.zip -d repository'
 			}
 		}
-		stage('Build') {
+		
+		//
+		//	Publish the build using JustJ
+		//
+		stage('Publish') {
 			when {
-				expression { return params.BUILD_TYPE != 'reload' && currentBuild.getPreviousBuild() != null }
+				expression { return params._BUILD_TYPE != 'reload' && currentBuild.getPreviousBuild() != null }
 			}
 			steps {
 				sshagent(['projects-storage.eclipse.org-bot-ssh']) {
@@ -112,13 +108,13 @@ pipeline {
 						mvn	\
 							-f releng/org.eclipse.uml2.releng.tycho/pomPromoter.xml \
 							--no-transfer-progress \
-							"-DBUILD_COMMIT=${params.BUILD_COMMIT}" \
+							"-DBUILD_COMMIT=${params._BUILD_COMMIT}" \
 							-DBUILD_PROMOTE=../../repository \
-							"-DBUILD_REMOTE=${params.BUILD_REMOTE}" \
-							-DBUILD_ROOT=${params.BUILD_ROOT} \
-							"-DBUILD_TIMESTAMP=${params.BUILD_TIMESTAMP}" \
-							-DBUILD_TYPE=${params.BUILD_TYPE} \
-							-DBUILD_URL=${params.BUILD_URL} \
+							"-DBUILD_REMOTE=${params._BUILD_REMOTE}" \
+							-DBUILD_ROOT=${params._BUILD_ROOT} \
+							"-DBUILD_TIMESTAMP=${params._BUILD_TIMESTAMP}" \
+							-DBUILD_TYPE=${params._BUILD_TYPE} \
+							-DBUILD_URL=${params._BUILD_URL} \
 							--show-version \
 							clean \
 							verify
@@ -130,24 +126,14 @@ pipeline {
 
 	post {
 		failure {
-			mail to: 'ed@willink.me.uk', subject: "[UML2 CI] Build Failure ${currentBuild.fullDisplayName}", mimeType: 'text/plain',
-body: "Project: ${JOB_NAME}\n\
-Build Number: ${params.BUILD_NUMBER}\n\
-Build URL: <${params.BUILD_URL}>\n\
-Console: <${BUILD_URL}console>"
+			mail to: 'ed@willink.me.uk', subject: "[UML2 CI] Build Failure ${currentBuild.fullDisplayName}",
+				mimeType: 'text/plain', body: "<${BUILD_URL}console>"
 			archiveArtifacts allowEmptyArchive: true, artifacts: '**'
 		}
 
 		fixed {
-			mail to: 'ed@willink.me.uk', subject: "[UML2 CI] Back to normal ${currentBuild.fullDisplayName}", mimeType: 'text/plain',
-body: "Project: ${JOB_NAME}\n\
-Build Number: ${params.BUILD_NUMBER}\n\
-Build URL: <${params.BUILD_URL}>\n\
-Console: <${BUILD_URL}console>"
+			mail to: 'ed@willink.me.uk', subject: "[UML2 CI] Back to normal ${currentBuild.fullDisplayName}",
+				mimeType: 'text/plain', body: "<${BUILD_URL}console>"
 		}
-
-//		cleanup {
-//			deleteDir()
-//		}
 	}
 }
