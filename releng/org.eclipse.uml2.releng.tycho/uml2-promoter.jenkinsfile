@@ -7,6 +7,7 @@ pipeline {
 		buildDiscarder(logRotator(numToKeepStr: '5'))
 		disableConcurrentBuilds()
 		skipDefaultCheckout false
+		quietPeriod(300)						// 120 is not long enough to allow Jenkins to update upstream build reliably
 	}
 
 	tools {
