@@ -7,7 +7,6 @@ pipeline {
 		buildDiscarder(logRotator(numToKeepStr: '5'))
 		disableConcurrentBuilds()
 		skipDefaultCheckout false
-		quietPeriod(300)						// 120 is not long enough to allow Jenkins to update upstream build reliably
 	}
 
 	tools {
@@ -88,11 +87,21 @@ pipeline {
 				expression { return params._BUILD_TYPE != 'reload' && currentBuild.getPreviousBuild() != null }
 			}
 			steps {
-				copyArtifacts(projectName: "${params._JOB_NAME}",
-					selector: specific("${params._BUILD_NUMBER}"),
-					target: '.',
-					filter: 'p2repo.zip')
-				sh 'unzip -ou p2repo.zip -d repository'
+				script {
+					for (delay in [ 1, 15, 30, 60, 120, 240, 480, 960, 1920 ]) {	
+						if (!fileExists('p2repo.zip')) {
+							sleep(time: delay)
+							copyArtifacts(projectName: "${params._JOB_NAME}",
+								selector: specific("${params._BUILD_NUMBER}"),
+								target: '.',
+								filter: 'p2repo.zip',
+								optional: true)
+						}
+					}
+					if (fileExists('p2repo.zip')) {
+						sh 'unzip -ou p2repo.zip -d repository'
+					}
+				}
 			}
 		}
 		
@@ -101,7 +110,7 @@ pipeline {
 		//
 		stage('Publish') {
 			when {
-				expression { return params._BUILD_TYPE != 'reload' && currentBuild.getPreviousBuild() != null }
+				expression { return params._BUILD_TYPE != 'reload' && currentBuild.getPreviousBuild() != null && fileExists('p2repo.zip') }
 			}
 			steps {
 				sshagent(['projects-storage.eclipse.org-bot-ssh']) {
