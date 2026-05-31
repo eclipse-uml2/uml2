@@ -9,6 +9,7 @@ pipeline {
 	}
 
 	options {
+		copyArtifactPermission('uml2-promoter');
 		buildDiscarder(logRotator(numToKeepStr: '5'))
 		disableConcurrentBuilds()
 		skipDefaultCheckout false
