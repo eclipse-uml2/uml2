@@ -33,24 +33,22 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * @model
  * @generated
  */
-public interface DestructionOccurrenceSpecification
-		extends MessageOccurrenceSpecification {
+public interface DestructionOccurrenceSpecification extends MessageOccurrenceSpecification {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * No other OccurrenceSpecifications on a given Lifeline in an InteractionOperand may appear below a DestructionOccurrenceSpecification.
-	 * let o : InteractionOperand = enclosingOperand in o->notEmpty() and 
-	 * let peerEvents : OrderedSet(OccurrenceSpecification) = covered.events->select(enclosingOperand = o)
-	 * in peerEvents->last() = self
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateNoOccurrenceSpecificationsBelow(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * No other OccurrenceSpecifications on a given Lifeline in an InteractionOperand may appear below a DestructionOccurrenceSpecification.
+   * let o : InteractionOperand = enclosingOperand in o->notEmpty() and 
+   * let peerEvents : OrderedSet(OccurrenceSpecification) = covered.events->select(enclosingOperand = o)
+   * in peerEvents->last() = self
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @model
+   * @generated
+   */
+  boolean validateNoOccurrenceSpecificationsBelow(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // DestructionOccurrenceSpecification

@@ -43,118 +43,108 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated
  */
-public class AcceptCallActionOperations
-		extends AcceptEventActionOperations {
+public class AcceptCallActionOperations extends AcceptEventActionOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AcceptCallActionOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected AcceptCallActionOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The number of result OutputPins must be the same as the number of input (in and inout) ownedParameters of the Operation specified by the trigger Event. The type, ordering and multiplicity of each result OutputPin must be consistent with the corresponding input Parameter.
-	 * let parameter: OrderedSet(Parameter) = trigger.event->asSequence()->first().oclAsType(CallEvent).operation.inputParameters() in
-	 * result->size() = parameter->size() and
-	 * Sequence{1..result->size()}->forAll(i | 
-	 * 	parameter->at(i).type.conformsTo(result->at(i).type) and 
-	 * 	parameter->at(i).isOrdered = result->at(i).isOrdered and
-	 * 	parameter->at(i).compatibleWith(result->at(i)))
-	 * @param acceptCallAction The receiving '<em><b>Accept Call Action</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateResultPins(AcceptCallAction acceptCallAction,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
-					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.ACCEPT_CALL_ACTION__RESULT_PINS,
-					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
-						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
-						new Object[]{"validateResultPins", //$NON-NLS-1$
-							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(acceptCallAction, context)}), new Object[]{acceptCallAction}));
-			}
-			return false;
-		}
-		return true;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The number of result OutputPins must be the same as the number of input (in and inout) ownedParameters of the Operation specified by the trigger Event. The type, ordering and multiplicity of each result OutputPin must be consistent with the corresponding input Parameter.
+   * let parameter: OrderedSet(Parameter) = trigger.event->asSequence()->first().oclAsType(CallEvent).operation.inputParameters() in
+   * result->size() = parameter->size() and
+   * Sequence{1..result->size()}->forAll(i | 
+   * 	parameter->at(i).type.conformsTo(result->at(i).type) and 
+   * 	parameter->at(i).isOrdered = result->at(i).isOrdered and
+   * 	parameter->at(i).compatibleWith(result->at(i)))
+   * @param acceptCallAction The receiving '<em><b>Accept Call Action</b></em>' model object.
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @generated
+   */
+  public static boolean validateResultPins(AcceptCallAction acceptCallAction, DiagnosticChain diagnostics,
+      Map<Object, Object> context) {
+    // TODO: implement this method
+    // -> specify the condition that violates the invariant
+    // -> verify the details of the diagnostic, including severity and message
+    // Ensure that you remove @generated or mark it @generated NOT
+    if (false) {
+      if (diagnostics != null) {
+        diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR, UMLValidator.DIAGNOSTIC_SOURCE,
+            UMLValidator.ACCEPT_CALL_ACTION__RESULT_PINS,
+            org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString("_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+                new Object[] { "validateResultPins", //$NON-NLS-1$
+                    org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(acceptCallAction, context) }), new Object[] { acceptCallAction }));
+      }
+      return false;
+    }
+    return true;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The action must have exactly one trigger, which must be for a CallEvent.
-	 * trigger->size()=1 and
-	 * trigger->asSequence()->first().event.oclIsKindOf(CallEvent)
-	 * @param acceptCallAction The receiving '<em><b>Accept Call Action</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean validateTriggerCallEvent(
-			AcceptCallAction acceptCallAction, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		EList<Trigger> triggers = acceptCallAction.getTriggers();
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The action must have exactly one trigger, which must be for a CallEvent.
+   * trigger->size()=1 and
+   * trigger->asSequence()->first().event.oclIsKindOf(CallEvent)
+   * @param acceptCallAction The receiving '<em><b>Accept Call Action</b></em>' model object.
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean validateTriggerCallEvent(AcceptCallAction acceptCallAction, DiagnosticChain diagnostics,
+      Map<Object, Object> context) {
+    EList<Trigger> triggers = acceptCallAction.getTriggers();
 
-		boolean result = triggers.size() == 1
-			&& triggers.get(0).getEvent() instanceof CallEvent;
+    boolean result = triggers.size() == 1 && triggers.get(0).getEvent() instanceof CallEvent;
 
-		if (!result && diagnostics != null) {
-			diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
-				UMLValidator.DIAGNOSTIC_SOURCE,
-				UMLValidator.ACCEPT_CALL_ACTION__TRIGGER_CALL_EVENT,
-				UMLPlugin.INSTANCE.getString(
-					"_UI_AcceptCallAction_TriggerCallEvent_diagnostic", //$NON-NLS-1$
-					getMessageSubstitutions(context, acceptCallAction)),
-				new Object[]{acceptCallAction}));
-		}
+    if (!result && diagnostics != null) {
+      diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING, UMLValidator.DIAGNOSTIC_SOURCE,
+          UMLValidator.ACCEPT_CALL_ACTION__TRIGGER_CALL_EVENT,
+          UMLPlugin.INSTANCE.getString("_UI_AcceptCallAction_TriggerCallEvent_diagnostic", //$NON-NLS-1$
+              getMessageSubstitutions(context, acceptCallAction)),
+          new Object[] { acceptCallAction }));
+    }
 
-		return result;
-	}
+    return result;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * isUnmrashall must be true for an AcceptCallAction.
-	 * isUnmarshall = true
-	 * @param acceptCallAction The receiving '<em><b>Accept Call Action</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean validateUnmarshall(AcceptCallAction acceptCallAction,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		boolean result = acceptCallAction.isUnmarshall();
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * isUnmrashall must be true for an AcceptCallAction.
+   * isUnmarshall = true
+   * @param acceptCallAction The receiving '<em><b>Accept Call Action</b></em>' model object.
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean validateUnmarshall(AcceptCallAction acceptCallAction, DiagnosticChain diagnostics,
+      Map<Object, Object> context) {
+    boolean result = acceptCallAction.isUnmarshall();
 
-		if (!result && diagnostics != null) {
-			diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
-				UMLValidator.DIAGNOSTIC_SOURCE,
-				UMLValidator.ACCEPT_CALL_ACTION__UNMARSHALL,
-				UMLPlugin.INSTANCE.getString(
-					"_UI_AcceptCallAction_Unmarshall_diagnostic", //$NON-NLS-1$
-					getMessageSubstitutions(context, acceptCallAction)),
-				new Object[]{acceptCallAction}));
-		}
+    if (!result && diagnostics != null) {
+      diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING, UMLValidator.DIAGNOSTIC_SOURCE,
+          UMLValidator.ACCEPT_CALL_ACTION__UNMARSHALL,
+          UMLPlugin.INSTANCE.getString("_UI_AcceptCallAction_Unmarshall_diagnostic", //$NON-NLS-1$
+              getMessageSubstitutions(context, acceptCallAction)),
+          new Object[] { acceptCallAction }));
+    }
 
-		return result;
-	}
+    return result;
+  }
 
 } // AcceptCallActionOperations

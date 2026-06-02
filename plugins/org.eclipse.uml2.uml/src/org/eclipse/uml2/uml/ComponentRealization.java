@@ -39,89 +39,89 @@ import org.eclipse.emf.ecore.EClass;
  * @model
  * @generated
  */
-public interface ComponentRealization
-		extends Realization {
+public interface ComponentRealization extends Realization {
 
-	/**
-	 * Returns the value of the '<em><b>Abstraction</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Component#getRealizations <em>Realization</em>}'.
-	 * <p>
-	 * This feature subsets the following features:
-	 * </p>
-	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Dependency#getSuppliers() <em>Supplier</em>}'</li>
-	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}'</li>
-	 * </ul>
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The Component that owns this ComponentRealization and which is implemented by its realizing Classifiers.
-	 * <p>From package UML::StructuredClassifiers.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Abstraction</em>' container reference.
-	 * @see #setAbstraction(Component)
-	 * @see org.eclipse.uml2.uml.UMLPackage#getComponentRealization_Abstraction()
-	 * @see org.eclipse.uml2.uml.Component#getRealizations
-	 * @model opposite="realization" transient="false" ordered="false"
-	 * @generated
-	 */
-	Component getAbstraction();
+  /**
+   * Returns the value of the '<em><b>Abstraction</b></em>' container reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Component#getRealizations <em>Realization</em>}'.
+   * <p>
+   * This feature subsets the following features:
+   * </p>
+   * <ul>
+   *   <li>'{@link org.eclipse.uml2.uml.Dependency#getSuppliers() <em>Supplier</em>}'</li>
+   *   <li>'{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}'</li>
+   * </ul>
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The Component that owns this ComponentRealization and which is implemented by its realizing Classifiers.
+   * <p>From package UML::StructuredClassifiers.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Abstraction</em>' container reference.
+   * @see #setAbstraction(Component)
+   * @see org.eclipse.uml2.uml.UMLPackage#getComponentRealization_Abstraction()
+   * @see org.eclipse.uml2.uml.Component#getRealizations
+   * @model opposite="realization" transient="false" ordered="false"
+   *        annotation="subsets"
+   * @generated
+   */
+  Component getAbstraction();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.ComponentRealization#getAbstraction <em>Abstraction</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Abstraction</em>' container reference.
-	 * @see #getAbstraction()
-	 * @generated
-	 */
-	void setAbstraction(Component value);
+  /**
+   * Sets the value of the '{@link org.eclipse.uml2.uml.ComponentRealization#getAbstraction <em>Abstraction</em>}' container reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Abstraction</em>' container reference.
+   * @see #getAbstraction()
+   * @generated
+   */
+  void setAbstraction(Component value);
 
-	/**
-	 * Returns the value of the '<em><b>Realizing Classifier</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.uml.Classifier}.
-	 * <p>
-	 * This feature subsets the following features:
-	 * </p>
-	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Dependency#getClients() <em>Client</em>}'</li>
-	 * </ul>
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The Classifiers that are involved in the implementation of the Component that owns this Realization.
-	 * <p>From package UML::StructuredClassifiers.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Realizing Classifier</em>' reference list.
-	 * @see org.eclipse.uml2.uml.UMLPackage#getComponentRealization_RealizingClassifier()
-	 * @model required="true" ordered="false"
-	 * @generated
-	 */
-	EList<Classifier> getRealizingClassifiers();
+  /**
+   * Returns the value of the '<em><b>Realizing Classifier</b></em>' reference list.
+   * The list contents are of type {@link org.eclipse.uml2.uml.Classifier}.
+   * <p>
+   * This feature subsets the following features:
+   * </p>
+   * <ul>
+   *   <li>'{@link org.eclipse.uml2.uml.Dependency#getClients() <em>Client</em>}'</li>
+   * </ul>
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The Classifiers that are involved in the implementation of the Component that owns this Realization.
+   * <p>From package UML::StructuredClassifiers.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Realizing Classifier</em>' reference list.
+   * @see org.eclipse.uml2.uml.UMLPackage#getComponentRealization_RealizingClassifier()
+   * @model required="true" ordered="false"
+   *        annotation="subsets"
+   * @generated
+   */
+  EList<Classifier> getRealizingClassifiers();
 
-	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Realizing Classifier</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Classifier} to retrieve, or <code>null</code>.
-	 * @return The first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
-	 * @see #getRealizingClassifiers()
-	 * @generated
-	 */
-	Classifier getRealizingClassifier(String name);
+  /**
+   * Retrieves the first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Realizing Classifier</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Classifier} to retrieve, or <code>null</code>.
+   * @return The first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+   * @see #getRealizingClassifiers()
+   * @generated
+   */
+  Classifier getRealizingClassifier(String name);
 
-	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Realizing Classifier</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Classifier} to retrieve, or <code>null</code>.
-	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
-	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Classifier} to retrieve, or <code>null</code>.
-	 * @return The first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
-	 * @see #getRealizingClassifiers()
-	 * @generated
-	 */
-	Classifier getRealizingClassifier(String name, boolean ignoreCase,
-			EClass eClass);
+  /**
+   * Retrieves the first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Realizing Classifier</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Classifier} to retrieve, or <code>null</code>.
+   * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+   * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Classifier} to retrieve, or <code>null</code>.
+   * @return The first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+   * @see #getRealizingClassifiers()
+   * @generated
+   */
+  Classifier getRealizingClassifier(String name, boolean ignoreCase, EClass eClass);
 
 } // ComponentRealization

@@ -31,55 +31,54 @@ import org.eclipse.uml2.uml.LiteralReal;
  *
  * @generated
  */
-public class LiteralRealOperations
-		extends ValueSpecificationOperations {
+public class LiteralRealOperations extends ValueSpecificationOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected LiteralRealOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected LiteralRealOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static String stringValue(LiteralReal literalReal) {
-		return String.valueOf(literalReal.getValue());
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated NOT
+   */
+  public static String stringValue(LiteralReal literalReal) {
+    return String.valueOf(literalReal.getValue());
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query isComputable() is redefined to be true.
-	 * result = (true)
-	 * <p>From package UML::Values.</p>
-	 * @param literalReal The receiving '<em><b>Literal Real</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean isComputable(LiteralReal literalReal) {
-		return true;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The query isComputable() is redefined to be true.
+   * result = (true)
+   * <p>From package UML::Values.</p>
+   * @param literalReal The receiving '<em><b>Literal Real</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean isComputable(LiteralReal literalReal) {
+    return true;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query realValue() gives the value.
-	 * result = (value)
-	 * <p>From package UML::Values.</p>
-	 * @param literalReal The receiving '<em><b>Literal Real</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static double realValue(LiteralReal literalReal) {
-		return literalReal.getValue();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The query realValue() gives the value.
+   * result = (value)
+   * <p>From package UML::Values.</p>
+   * @param literalReal The receiving '<em><b>Literal Real</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static double realValue(LiteralReal literalReal) {
+    return literalReal.getValue();
+  }
 
 } // LiteralRealOperations

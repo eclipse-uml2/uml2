@@ -38,53 +38,48 @@ import org.eclipse.uml2.uml.UMLPackage;
  *
  * @generated
  */
-public class EnumerationLiteralOperations
-		extends InstanceSpecificationOperations {
+public class EnumerationLiteralOperations extends InstanceSpecificationOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EnumerationLiteralOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected EnumerationLiteralOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static EList<Classifier> getClassifiers(
-			EnumerationLiteral enumerationLiteral) {
-		EList<Classifier> classifiers = new UniqueEList.FastCompare<Classifier>();
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated NOT
+   */
+  public static EList<Classifier> getClassifiers(EnumerationLiteral enumerationLiteral) {
+    EList<Classifier> classifiers = new UniqueEList.FastCompare<Classifier>();
 
-		Classifier classifier = enumerationLiteral.getClassifier();
+    Classifier classifier = enumerationLiteral.getClassifier();
 
-		if (classifier != null) {
-			classifiers.add(classifier);
-		}
+    if (classifier != null) {
+      classifiers.add(classifier);
+    }
 
-		return new UnionEObjectEList<Classifier>(
-			(InternalEObject) enumerationLiteral,
-			UMLPackage.Literals.INSTANCE_SPECIFICATION__CLASSIFIER,
-			classifiers.size(), classifiers.toArray());
-	}
+    return new UnionEObjectEList<Classifier>((InternalEObject) enumerationLiteral,
+        UMLPackage.Literals.INSTANCE_SPECIFICATION__CLASSIFIER, classifiers.size(), classifiers.toArray());
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Derivation of Enumeration::/classifier
-	 * result = (enumeration)
-	 * <p>From package UML::SimpleClassifiers.</p>
-	 * @param enumerationLiteral The receiving '<em><b>Enumeration Literal</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static Enumeration getClassifier(
-			EnumerationLiteral enumerationLiteral) {
-		return enumerationLiteral.getEnumeration();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Derivation of Enumeration::/classifier
+   * result = (enumeration)
+   * <p>From package UML::SimpleClassifiers.</p>
+   * @param enumerationLiteral The receiving '<em><b>Enumeration Literal</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static Enumeration getClassifier(EnumerationLiteral enumerationLiteral) {
+    return enumerationLiteral.getEnumeration();
+  }
 
 } // EnumerationLiteralOperations

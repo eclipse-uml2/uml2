@@ -37,53 +37,52 @@ import org.eclipse.emf.ecore.EClass;
  * @model
  * @generated
  */
-public interface ChangeEvent
-		extends Event {
+public interface ChangeEvent extends Event {
 
-	/**
-	 * Returns the value of the '<em><b>Change Expression</b></em>' containment reference.
-	 * <p>
-	 * This feature subsets the following features:
-	 * </p>
-	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
-	 * </ul>
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A Boolean-valued ValueSpecification that will result in a ChangeEvent whenever its value changes from false to true.
-	 * <p>From package UML::CommonBehavior.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Change Expression</em>' containment reference.
-	 * @see #setChangeExpression(ValueSpecification)
-	 * @see org.eclipse.uml2.uml.UMLPackage#getChangeEvent_ChangeExpression()
-	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
-	 * @generated
-	 */
-	ValueSpecification getChangeExpression();
+  /**
+   * Returns the value of the '<em><b>Change Expression</b></em>' containment reference.
+   * <p>
+   * This feature subsets the following features:
+   * </p>
+   * <ul>
+   *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+   * </ul>
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * A Boolean-valued ValueSpecification that will result in a ChangeEvent whenever its value changes from false to true.
+   * <p>From package UML::CommonBehavior.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Change Expression</em>' containment reference.
+   * @see #setChangeExpression(ValueSpecification)
+   * @see org.eclipse.uml2.uml.UMLPackage#getChangeEvent_ChangeExpression()
+   * @model containment="true" resolveProxies="true" required="true" ordered="false"
+   *        annotation="subsets"
+   * @generated
+   */
+  ValueSpecification getChangeExpression();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.ChangeEvent#getChangeExpression <em>Change Expression</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Change Expression</em>' containment reference.
-	 * @see #getChangeExpression()
-	 * @generated
-	 */
-	void setChangeExpression(ValueSpecification value);
+  /**
+   * Sets the value of the '{@link org.eclipse.uml2.uml.ChangeEvent#getChangeExpression <em>Change Expression</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Change Expression</em>' containment reference.
+   * @see #getChangeExpression()
+   * @generated
+   */
+  void setChangeExpression(ValueSpecification value);
 
-	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.ValueSpecification}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and sets the '<em><b>Change Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.ValueSpecification}, or <code>null</code>.
-	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.ValueSpecification}, or <code>null</code>.
-	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ValueSpecification} to create.
-	 * @return The new {@link org.eclipse.uml2.uml.ValueSpecification}.
-	 * @see #getChangeExpression()
-	 * @generated
-	 */
-	ValueSpecification createChangeExpression(String name, Type type,
-			EClass eClass);
+  /**
+   * Creates a new {@link org.eclipse.uml2.uml.ValueSpecification}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and sets the '<em><b>Change Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.ValueSpecification}, or <code>null</code>.
+   * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.ValueSpecification}, or <code>null</code>.
+   * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ValueSpecification} to create.
+   * @return The new {@link org.eclipse.uml2.uml.ValueSpecification}.
+   * @see #getChangeExpression()
+   * @generated
+   */
+  ValueSpecification createChangeExpression(String name, Type type, EClass eClass);
 
 } // ChangeEvent

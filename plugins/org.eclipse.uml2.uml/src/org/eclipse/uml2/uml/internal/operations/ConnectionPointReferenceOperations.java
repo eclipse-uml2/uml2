@@ -38,88 +38,77 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated
  */
-public class ConnectionPointReferenceOperations
-		extends VertexOperations {
+public class ConnectionPointReferenceOperations extends VertexOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ConnectionPointReferenceOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected ConnectionPointReferenceOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The entry Pseudostates must be Pseudostates with kind entryPoint.
-	 * entry->forAll(kind = PseudostateKind::entryPoint)
-	 * @param connectionPointReference The receiving '<em><b>Connection Point Reference</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateEntryPseudostates(
-			ConnectionPointReference connectionPointReference,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
-					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.CONNECTION_POINT_REFERENCE__ENTRY_PSEUDOSTATES,
-					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
-						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
-						new Object[]{"validateEntryPseudostates", //$NON-NLS-1$
-							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(connectionPointReference,
-									context)}), new Object[]{connectionPointReference}));
-			}
-			return false;
-		}
-		return true;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The entry Pseudostates must be Pseudostates with kind entryPoint.
+   * entry->forAll(kind = PseudostateKind::entryPoint)
+   * @param connectionPointReference The receiving '<em><b>Connection Point Reference</b></em>' model object.
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @generated
+   */
+  public static boolean validateEntryPseudostates(ConnectionPointReference connectionPointReference,
+      DiagnosticChain diagnostics, Map<Object, Object> context) {
+    // TODO: implement this method
+    // -> specify the condition that violates the invariant
+    // -> verify the details of the diagnostic, including severity and message
+    // Ensure that you remove @generated or mark it @generated NOT
+    if (false) {
+      if (diagnostics != null) {
+        diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR, UMLValidator.DIAGNOSTIC_SOURCE,
+            UMLValidator.CONNECTION_POINT_REFERENCE__ENTRY_PSEUDOSTATES,
+            org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString("_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+                new Object[] { "validateEntryPseudostates", //$NON-NLS-1$
+                    org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(connectionPointReference, context) }), new Object[] { connectionPointReference }));
+      }
+      return false;
+    }
+    return true;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The exit Pseudostates must be Pseudostates with kind exitPoint.
-	 * exit->forAll(kind = PseudostateKind::exitPoint)
-	 * @param connectionPointReference The receiving '<em><b>Connection Point Reference</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateExitPseudostates(
-			ConnectionPointReference connectionPointReference,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
-					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.CONNECTION_POINT_REFERENCE__EXIT_PSEUDOSTATES,
-					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
-						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
-						new Object[]{"validateExitPseudostates", //$NON-NLS-1$
-							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(connectionPointReference,
-									context)}), new Object[]{connectionPointReference}));
-			}
-			return false;
-		}
-		return true;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The exit Pseudostates must be Pseudostates with kind exitPoint.
+   * exit->forAll(kind = PseudostateKind::exitPoint)
+   * @param connectionPointReference The receiving '<em><b>Connection Point Reference</b></em>' model object.
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @generated
+   */
+  public static boolean validateExitPseudostates(ConnectionPointReference connectionPointReference,
+      DiagnosticChain diagnostics, Map<Object, Object> context) {
+    // TODO: implement this method
+    // -> specify the condition that violates the invariant
+    // -> verify the details of the diagnostic, including severity and message
+    // Ensure that you remove @generated or mark it @generated NOT
+    if (false) {
+      if (diagnostics != null) {
+        diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR, UMLValidator.DIAGNOSTIC_SOURCE,
+            UMLValidator.CONNECTION_POINT_REFERENCE__EXIT_PSEUDOSTATES,
+            org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString("_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+                new Object[] { "validateExitPseudostates", //$NON-NLS-1$
+                    org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(connectionPointReference, context) }), new Object[] { connectionPointReference }));
+      }
+      return false;
+    }
+    return true;
+  }
 
 } // ConnectionPointReferenceOperations

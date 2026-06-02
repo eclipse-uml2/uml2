@@ -39,56 +39,55 @@ import org.eclipse.emf.ecore.EClass;
  * @model
  * @generated
  */
-public interface Collaboration
-		extends StructuredClassifier, BehavioredClassifier {
+public interface Collaboration extends StructuredClassifier, BehavioredClassifier {
 
-	/**
-	 * Returns the value of the '<em><b>Collaboration Role</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.uml.ConnectableElement}.
-	 * <p>
-	 * This feature subsets the following features:
-	 * </p>
-	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.StructuredClassifier#getRoles() <em>Role</em>}'</li>
-	 * </ul>
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Represents the participants in the Collaboration.
-	 * <p>From package UML::StructuredClassifiers.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Collaboration Role</em>' reference list.
-	 * @see org.eclipse.uml2.uml.UMLPackage#getCollaboration_CollaborationRole()
-	 * @model ordered="false"
-	 * @generated
-	 */
-	EList<ConnectableElement> getCollaborationRoles();
+  /**
+   * Returns the value of the '<em><b>Collaboration Role</b></em>' reference list.
+   * The list contents are of type {@link org.eclipse.uml2.uml.ConnectableElement}.
+   * <p>
+   * This feature subsets the following features:
+   * </p>
+   * <ul>
+   *   <li>'{@link org.eclipse.uml2.uml.StructuredClassifier#getRoles() <em>Role</em>}'</li>
+   * </ul>
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Represents the participants in the Collaboration.
+   * <p>From package UML::StructuredClassifiers.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Collaboration Role</em>' reference list.
+   * @see org.eclipse.uml2.uml.UMLPackage#getCollaboration_CollaborationRole()
+   * @model ordered="false"
+   *        annotation="subsets"
+   * @generated
+   */
+  EList<ConnectableElement> getCollaborationRoles();
 
-	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.ConnectableElement} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Collaboration Role</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ConnectableElement} to retrieve, or <code>null</code>.
-	 * @param type The '<em><b>Type</b></em>' of the {@link org.eclipse.uml2.uml.ConnectableElement} to retrieve, or <code>null</code>.
-	 * @return The first {@link org.eclipse.uml2.uml.ConnectableElement} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
-	 * @see #getCollaborationRoles()
-	 * @generated
-	 */
-	ConnectableElement getCollaborationRole(String name, Type type);
+  /**
+   * Retrieves the first {@link org.eclipse.uml2.uml.ConnectableElement} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Collaboration Role</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ConnectableElement} to retrieve, or <code>null</code>.
+   * @param type The '<em><b>Type</b></em>' of the {@link org.eclipse.uml2.uml.ConnectableElement} to retrieve, or <code>null</code>.
+   * @return The first {@link org.eclipse.uml2.uml.ConnectableElement} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
+   * @see #getCollaborationRoles()
+   * @generated
+   */
+  ConnectableElement getCollaborationRole(String name, Type type);
 
-	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.ConnectableElement} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Collaboration Role</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ConnectableElement} to retrieve, or <code>null</code>.
-	 * @param type The '<em><b>Type</b></em>' of the {@link org.eclipse.uml2.uml.ConnectableElement} to retrieve, or <code>null</code>.
-	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
-	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ConnectableElement} to retrieve, or <code>null</code>.
-	 * @return The first {@link org.eclipse.uml2.uml.ConnectableElement} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
-	 * @see #getCollaborationRoles()
-	 * @generated
-	 */
-	ConnectableElement getCollaborationRole(String name, Type type,
-			boolean ignoreCase, EClass eClass);
+  /**
+   * Retrieves the first {@link org.eclipse.uml2.uml.ConnectableElement} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Collaboration Role</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ConnectableElement} to retrieve, or <code>null</code>.
+   * @param type The '<em><b>Type</b></em>' of the {@link org.eclipse.uml2.uml.ConnectableElement} to retrieve, or <code>null</code>.
+   * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+   * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ConnectableElement} to retrieve, or <code>null</code>.
+   * @return The first {@link org.eclipse.uml2.uml.ConnectableElement} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
+   * @see #getCollaborationRoles()
+   * @generated
+   */
+  ConnectableElement getCollaborationRole(String name, Type type, boolean ignoreCase, EClass eClass);
 
 } // Collaboration

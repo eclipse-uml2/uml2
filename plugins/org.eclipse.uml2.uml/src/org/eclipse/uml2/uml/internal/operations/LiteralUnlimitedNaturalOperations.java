@@ -31,61 +31,56 @@ import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
  *
  * @generated
  */
-public class LiteralUnlimitedNaturalOperations
-		extends ValueSpecificationOperations {
+public class LiteralUnlimitedNaturalOperations extends ValueSpecificationOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected LiteralUnlimitedNaturalOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected LiteralUnlimitedNaturalOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query isComputable() is redefined to be true.
-	 * result = (true)
-	 * <p>From package UML::Values.</p>
-	 * @param literalUnlimitedNatural The receiving '<em><b>Literal Unlimited Natural</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean isComputable(
-			LiteralUnlimitedNatural literalUnlimitedNatural) {
-		return true;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The query isComputable() is redefined to be true.
+   * result = (true)
+   * <p>From package UML::Values.</p>
+   * @param literalUnlimitedNatural The receiving '<em><b>Literal Unlimited Natural</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean isComputable(LiteralUnlimitedNatural literalUnlimitedNatural) {
+    return true;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query unlimitedValue() gives the value.
-	 * result = (value)
-	 * <p>From package UML::Values.</p>
-	 * @param literalUnlimitedNatural The receiving '<em><b>Literal Unlimited Natural</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static int unlimitedValue(
-			LiteralUnlimitedNatural literalUnlimitedNatural) {
-		return literalUnlimitedNatural.getValue();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The query unlimitedValue() gives the value.
+   * result = (value)
+   * <p>From package UML::Values.</p>
+   * @param literalUnlimitedNatural The receiving '<em><b>Literal Unlimited Natural</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static int unlimitedValue(LiteralUnlimitedNatural literalUnlimitedNatural) {
+    return literalUnlimitedNatural.getValue();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static String stringValue(
-			LiteralUnlimitedNatural literalUnlimitedNatural) {
-		int value = literalUnlimitedNatural.getValue();
-		return value == LiteralUnlimitedNatural.UNLIMITED
-			? "*" //$NON-NLS-1$
-			: String.valueOf(literalUnlimitedNatural.getValue());
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated NOT
+   */
+  public static String stringValue(LiteralUnlimitedNatural literalUnlimitedNatural) {
+    int value = literalUnlimitedNatural.getValue();
+    return value == LiteralUnlimitedNatural.UNLIMITED ? "*" //$NON-NLS-1$
+        : String.valueOf(literalUnlimitedNatural.getValue());
+  }
 
 } // LiteralUnlimitedNaturalOperations

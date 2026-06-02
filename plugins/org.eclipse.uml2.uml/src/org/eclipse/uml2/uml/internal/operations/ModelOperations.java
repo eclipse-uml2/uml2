@@ -30,30 +30,29 @@ import org.eclipse.uml2.uml.NamedElement;
  *
  * @generated
  */
-public class ModelOperations
-		extends PackageOperations {
+public class ModelOperations extends PackageOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ModelOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected ModelOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Determines whether this model is a metamodel.
-	 * @param model The receiving '<em><b>Model</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean isMetamodel(Model model) {
-		return model.getAppliedStereotype("StandardProfile" //$NON-NLS-1$
-			+ NamedElement.SEPARATOR + "Metamodel") != null; //$NON-NLS-1$
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Determines whether this model is a metamodel.
+   * @param model The receiving '<em><b>Model</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean isMetamodel(Model model) {
+    return model.getAppliedStereotype("StandardProfile" //$NON-NLS-1$
+        + NamedElement.SEPARATOR + "Metamodel") != null; //$NON-NLS-1$
+  }
 
 } // ModelOperations

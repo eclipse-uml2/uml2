@@ -29,9 +29,8 @@ package org.eclipse.uml2.uml;
  * @model abstract="true"
  * @generated
  */
-public interface Event
-		extends PackageableElement {
+public interface Event extends PackageableElement {
 
-	// no methods
+  // no methods
 
 } // Event

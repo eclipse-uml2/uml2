@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, 2018 CEA, Obeo, and others.
+ * Copyright (c) 2012, 2025 CEA, Obeo, Data In Motion, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
  *   Mikael Barbero (Obeo) - 414572
  *   Christian W. Damus (CEA) - 414572, 401682
  *   Kenn Hussey - 526217, 539580, 535301
+ *   Data In Motion - UML 2.5.1 support
  */
 package org.eclipse.uml2.uml.resources.util;
 
@@ -37,6 +38,7 @@ import org.eclipse.uml2.uml.resource.UML212UMLResource;
 import org.eclipse.uml2.uml.resource.UML22UMLResource;
 import org.eclipse.uml2.uml.resource.UML302UMLResource;
 import org.eclipse.uml2.uml.resource.UML402UMLResource;
+import org.eclipse.uml2.uml.resource.UML510UMLResource;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.eclipse.uml2.uml.resource.XMI2UMLResource;
 import org.eclipse.uml2.uml.resources.ResourcesPlugin;
@@ -84,6 +86,12 @@ public class UMLResourcesUtil
 		new String[]{UMLResource.FILE_EXTENSION},
 		RootXMLContentHandlerImpl.XMI_KIND, UMLPackage.eNS_URI, null);
 
+	private static final ContentHandler UML2_5_1_0_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
+		UML510UMLResource.UML_5_1_0_CONTENT_TYPE_IDENTIFIER,
+		new String[]{UMLResource.FILE_EXTENSION},
+		RootXMLContentHandlerImpl.XMI_KIND,
+		UML510UMLResource.UML_METAMODEL_NS_URI, null);
+
 	private static final ContentHandler OMG_2_1_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
 		XMI2UMLResource.UML_2_1_CONTENT_TYPE_IDENTIFIER,
 		new String[]{XMI2UMLResource.FILE_EXTENSION},
@@ -119,6 +127,12 @@ public class UMLResourcesUtil
 		new String[]{XMI2UMLResource.FILE_EXTENSION},
 		RootXMLContentHandlerImpl.XMI_KIND,
 		XMI2UMLResource.UML_METAMODEL_2_5_NS_URI, null);
+
+	private static final ContentHandler OMG_2_5_1_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
+		XMI2UMLResource.UML_2_5_1_CONTENT_TYPE_IDENTIFIER,
+		new String[]{XMI2UMLResource.FILE_EXTENSION},
+		RootXMLContentHandlerImpl.XMI_KIND,
+		XMI2UMLResource.UML_METAMODEL_2_5_1_NS_URI, null);
 
 	private static final ContentHandler CMOF_2_0_CONTENT_HANDLER = new RootXMLContentHandlerImpl(
 		CMOF2UMLResource.CMOF_2_0_CONTENT_TYPE_IDENTIFIER, new String[]{
@@ -252,6 +266,9 @@ public class UMLResourcesUtil
 		packageRegistry.put(UML402UMLResource.UML_METAMODEL_NS_URI,
 			UMLPackage.eINSTANCE);
 
+		packageRegistry.put(UML510UMLResource.UML_METAMODEL_NS_URI,
+			UMLPackage.eINSTANCE);
+
 		packageRegistry.put(UMLPackage.eNS_URI, UMLPackage.eINSTANCE);
 
 		packageRegistry.put(UML212UMLResource.STANDARD_PROFILE_NS_URI,
@@ -326,6 +343,10 @@ public class UMLResourcesUtil
 				contentHandlers = new ArrayList<ContentHandler>());
 		}
 
+		if (!contentHandlers.contains(UML2_5_1_0_CONTENT_HANDLER)) {
+			contentHandlers.add(UML2_5_1_0_CONTENT_HANDLER);
+		}
+
 		if (!contentHandlers.contains(UML2_5_0_0_CONTENT_HANDLER)) {
 			contentHandlers.add(UML2_5_0_0_CONTENT_HANDLER);
 		}
@@ -348,6 +369,10 @@ public class UMLResourcesUtil
 
 		if (!contentHandlers.contains(UML2_1_0_0_CONTENT_HANDLER)) {
 			contentHandlers.add(UML2_1_0_0_CONTENT_HANDLER);
+		}
+
+		if (!contentHandlers.contains(OMG_2_5_1_CONTENT_HANDLER)) {
+			contentHandlers.add(OMG_2_5_1_CONTENT_HANDLER);
 		}
 
 		if (!contentHandlers.contains(OMG_2_5_CONTENT_HANDLER)) {

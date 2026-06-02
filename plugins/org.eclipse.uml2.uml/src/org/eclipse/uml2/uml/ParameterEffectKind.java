@@ -33,261 +33,259 @@ import org.eclipse.emf.common.util.Enumerator;
  * @model
  * @generated
  */
-public enum ParameterEffectKind
-		implements Enumerator {
-	/**
-	 * The '<em><b>Create</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Indicates that the behavior creates values.
-	 * <!-- end-model-doc -->
-	 * @see #CREATE
-	 * @generated
-	 * @ordered
-	 */
-	CREATE_LITERAL(0, "create", "create"), //$NON-NLS-1$ //$NON-NLS-2$
+public enum ParameterEffectKind implements Enumerator {
+  /**
+   * The '<em><b>Create</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Indicates that the behavior creates values.
+   * <!-- end-model-doc -->
+   * @see #CREATE
+   * @generated
+   * @ordered
+   */
+  CREATE_LITERAL(0, "create", "create"), //$NON-NLS-1$ //$NON-NLS-2$
 
-	/**
-	 * The '<em><b>Read</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Indicates objects that are values of the parameter have values of their properties, or links in which they participate, or their classifiers retrieved during executions of the behavior.
-	 * <!-- end-model-doc -->
-	 * @see #READ
-	 * @generated
-	 * @ordered
-	 */
-	READ_LITERAL(1, "read", "read"), //$NON-NLS-1$ //$NON-NLS-2$
+  /**
+   * The '<em><b>Read</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Indicates objects that are values of the parameter have values of their properties, or links in which they participate, or their classifiers retrieved during executions of the behavior.
+   * <!-- end-model-doc -->
+   * @see #READ
+   * @generated
+   * @ordered
+   */
+  READ_LITERAL(1, "read", "read"), //$NON-NLS-1$ //$NON-NLS-2$
 
-	/**
-	 * The '<em><b>Update</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Indicates objects that are values of the parameter have values of their properties, or links in which they participate, or their classification changed during executions of the behavior.
-	 * <!-- end-model-doc -->
-	 * @see #UPDATE
-	 * @generated
-	 * @ordered
-	 */
-	UPDATE_LITERAL(2, "update", "update"), //$NON-NLS-1$ //$NON-NLS-2$
+  /**
+   * The '<em><b>Update</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Indicates objects that are values of the parameter have values of their properties, or links in which they participate, or their classification changed during executions of the behavior.
+   * <!-- end-model-doc -->
+   * @see #UPDATE
+   * @generated
+   * @ordered
+   */
+  UPDATE_LITERAL(2, "update", "update"), //$NON-NLS-1$ //$NON-NLS-2$
 
-	/**
-	 * The '<em><b>Delete</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Indicates objects that are values of the parameter do not exist after executions of the behavior are finished.
-	 * <!-- end-model-doc -->
-	 * @see #DELETE
-	 * @generated
-	 * @ordered
-	 */
-	DELETE_LITERAL(3, "delete", "delete"); //$NON-NLS-1$ //$NON-NLS-2$
+  /**
+   * The '<em><b>Delete</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Indicates objects that are values of the parameter do not exist after executions of the behavior are finished.
+   * <!-- end-model-doc -->
+   * @see #DELETE
+   * @generated
+   * @ordered
+   */
+  DELETE_LITERAL(3, "delete", "delete"); //$NON-NLS-1$ //$NON-NLS-2$
 
-	/**
-	 * The '<em><b>Create</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Indicates that the behavior creates values.
-	 * <!-- end-model-doc -->
-	 * @see #CREATE_LITERAL
-	 * @model name="create"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int CREATE = 0;
+  /**
+   * The '<em><b>Create</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Indicates that the behavior creates values.
+   * <!-- end-model-doc -->
+   * @see #CREATE_LITERAL
+   * @model name="create"
+   * @generated
+   * @ordered
+   */
+  public static final int CREATE = 0;
 
-	/**
-	 * The '<em><b>Read</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Indicates objects that are values of the parameter have values of their properties, or links in which they participate, or their classifiers retrieved during executions of the behavior.
-	 * <!-- end-model-doc -->
-	 * @see #READ_LITERAL
-	 * @model name="read"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int READ = 1;
+  /**
+   * The '<em><b>Read</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Indicates objects that are values of the parameter have values of their properties, or links in which they participate, or their classifiers retrieved during executions of the behavior.
+   * <!-- end-model-doc -->
+   * @see #READ_LITERAL
+   * @model name="read"
+   * @generated
+   * @ordered
+   */
+  public static final int READ = 1;
 
-	/**
-	 * The '<em><b>Update</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Indicates objects that are values of the parameter have values of their properties, or links in which they participate, or their classification changed during executions of the behavior.
-	 * <!-- end-model-doc -->
-	 * @see #UPDATE_LITERAL
-	 * @model name="update"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int UPDATE = 2;
+  /**
+   * The '<em><b>Update</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Indicates objects that are values of the parameter have values of their properties, or links in which they participate, or their classification changed during executions of the behavior.
+   * <!-- end-model-doc -->
+   * @see #UPDATE_LITERAL
+   * @model name="update"
+   * @generated
+   * @ordered
+   */
+  public static final int UPDATE = 2;
 
-	/**
-	 * The '<em><b>Delete</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Indicates objects that are values of the parameter do not exist after executions of the behavior are finished.
-	 * <!-- end-model-doc -->
-	 * @see #DELETE_LITERAL
-	 * @model name="delete"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int DELETE = 3;
+  /**
+   * The '<em><b>Delete</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Indicates objects that are values of the parameter do not exist after executions of the behavior are finished.
+   * <!-- end-model-doc -->
+   * @see #DELETE_LITERAL
+   * @model name="delete"
+   * @generated
+   * @ordered
+   */
+  public static final int DELETE = 3;
 
-	/**
-	 * An array of all the '<em><b>Parameter Effect Kind</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private static final ParameterEffectKind[] VALUES_ARRAY = new ParameterEffectKind[]{
-		CREATE_LITERAL, READ_LITERAL, UPDATE_LITERAL, DELETE_LITERAL,};
+  /**
+   * An array of all the '<em><b>Parameter Effect Kind</b></em>' enumerators.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private static final ParameterEffectKind[] VALUES_ARRAY = new ParameterEffectKind[] { CREATE_LITERAL, READ_LITERAL,
+      UPDATE_LITERAL, DELETE_LITERAL, };
 
-	/**
-	 * A public read-only list of all the '<em><b>Parameter Effect Kind</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final List<ParameterEffectKind> VALUES = Collections
-		.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+  /**
+   * A public read-only list of all the '<em><b>Parameter Effect Kind</b></em>' enumerators.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public static final List<ParameterEffectKind> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
-	/**
-	 * Returns the '<em><b>Parameter Effect Kind</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param literal the literal.
-	 * @return the matching enumerator or <code>null</code>.
-	 * @generated
-	 */
-	public static ParameterEffectKind get(String literal) {
-		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			ParameterEffectKind result = VALUES_ARRAY[i];
-			if (result.toString().equals(literal)) {
-				return result;
-			}
-		}
-		return null;
-	}
+  /**
+   * Returns the '<em><b>Parameter Effect Kind</b></em>' literal with the specified literal value.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param literal the literal.
+   * @return the matching enumerator or <code>null</code>.
+   * @generated
+   */
+  public static ParameterEffectKind get(String literal) {
+    for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+      ParameterEffectKind result = VALUES_ARRAY[i];
+      if (result.toString().equals(literal)) {
+        return result;
+      }
+    }
+    return null;
+  }
 
-	/**
-	 * Returns the '<em><b>Parameter Effect Kind</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name the name.
-	 * @return the matching enumerator or <code>null</code>.
-	 * @generated
-	 */
-	public static ParameterEffectKind getByName(String name) {
-		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			ParameterEffectKind result = VALUES_ARRAY[i];
-			if (result.getName().equals(name)) {
-				return result;
-			}
-		}
-		return null;
-	}
+  /**
+   * Returns the '<em><b>Parameter Effect Kind</b></em>' literal with the specified name.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param name the name.
+   * @return the matching enumerator or <code>null</code>.
+   * @generated
+   */
+  public static ParameterEffectKind getByName(String name) {
+    for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+      ParameterEffectKind result = VALUES_ARRAY[i];
+      if (result.getName().equals(name)) {
+        return result;
+      }
+    }
+    return null;
+  }
 
-	/**
-	 * Returns the '<em><b>Parameter Effect Kind</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the integer value.
-	 * @return the matching enumerator or <code>null</code>.
-	 * @generated
-	 */
-	public static ParameterEffectKind get(int value) {
-		switch (value) {
-			case CREATE :
-				return CREATE_LITERAL;
-			case READ :
-				return READ_LITERAL;
-			case UPDATE :
-				return UPDATE_LITERAL;
-			case DELETE :
-				return DELETE_LITERAL;
-		}
-		return null;
-	}
+  /**
+   * Returns the '<em><b>Parameter Effect Kind</b></em>' literal with the specified integer value.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the integer value.
+   * @return the matching enumerator or <code>null</code>.
+   * @generated
+   */
+  public static ParameterEffectKind get(int value) {
+    switch (value) {
+    case CREATE:
+      return CREATE_LITERAL;
+    case READ:
+      return READ_LITERAL;
+    case UPDATE:
+      return UPDATE_LITERAL;
+    case DELETE:
+      return DELETE_LITERAL;
+    }
+    return null;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private final int value;
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private final int value;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private final String name;
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private final String name;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private final String literal;
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private final String literal;
 
-	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private ParameterEffectKind(int value, String name, String literal) {
-		this.value = value;
-		this.name = name;
-		this.literal = literal;
-	}
+  /**
+   * Only this class can construct instances.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private ParameterEffectKind(int value, String name, String literal) {
+    this.value = value;
+    this.name = name;
+    this.literal = literal;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public int getValue() {
-		return value;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public int getValue() {
+    return value;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getName() {
-		return name;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getName() {
+    return name;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getLiteral() {
-		return literal;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getLiteral() {
+    return literal;
+  }
 
-	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		return literal;
-	}
+  /**
+   * Returns the literal value of the enumerator, which is its string representation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString() {
+    return literal;
+  }
 
 } //ParameterEffectKind

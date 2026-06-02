@@ -35,55 +35,50 @@ import org.eclipse.uml2.uml.Type;
  *
  * @generated
  */
-public class ArtifactOperations
-		extends ClassifierOperations {
+public class ArtifactOperations extends ClassifierOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ArtifactOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected ArtifactOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Creates an operation with the specified name, parameter names, parameter types, and return type (or null) as an owned operation of this artifact.
-	 * @param artifact The receiving '<em><b>Artifact</b></em>' model object.
-	 * @param name The name for the new operation, or null.
-	 * @param parameterNames The parameter names for  the new operation, or null.
-	 * @param parameterTypes The parameter types for the new operation, or null.
-	 * @param returnType The return type for the new operation, or null.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static Operation createOwnedOperation(Artifact artifact, String name,
-			EList<String> parameterNames, EList<Type> parameterTypes,
-			Type returnType) {
-		return TypeOperations.createOwnedOperation(artifact, name,
-			parameterNames, parameterTypes, returnType);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Creates an operation with the specified name, parameter names, parameter types, and return type (or null) as an owned operation of this artifact.
+   * @param artifact The receiving '<em><b>Artifact</b></em>' model object.
+   * @param name The name for the new operation, or null.
+   * @param parameterNames The parameter names for  the new operation, or null.
+   * @param parameterTypes The parameter types for the new operation, or null.
+   * @param returnType The return type for the new operation, or null.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static Operation createOwnedOperation(Artifact artifact, String name, EList<String> parameterNames,
+      EList<Type> parameterTypes, Type returnType) {
+    return TypeOperations.createOwnedOperation(artifact, name, parameterNames, parameterTypes, returnType);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Creates a property with the specified name, type, lower bound, and upper bound as an owned attribute of this artifact.
-	 * @param artifact The receiving '<em><b>Artifact</b></em>' model object.
-	 * @param name The name for the new attribute, or null.
-	 * @param type The type for the new attribute, or null.
-	 * @param lower The lower bound for the new attribute.
-	 * @param upper The upper bound for the new attribute.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static Property createOwnedAttribute(Artifact artifact, String name,
-			Type type, int lower, int upper) {
-		return TypeOperations.createOwnedAttribute(artifact, name, type, lower,
-			upper);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Creates a property with the specified name, type, lower bound, and upper bound as an owned attribute of this artifact.
+   * @param artifact The receiving '<em><b>Artifact</b></em>' model object.
+   * @param name The name for the new attribute, or null.
+   * @param type The type for the new attribute, or null.
+   * @param lower The lower bound for the new attribute.
+   * @param upper The upper bound for the new attribute.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static Property createOwnedAttribute(Artifact artifact, String name, Type type, int lower, int upper) {
+    return TypeOperations.createOwnedAttribute(artifact, name, type, lower, upper);
+  }
 
 } // ArtifactOperations

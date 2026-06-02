@@ -32,37 +32,36 @@ import org.eclipse.uml2.uml.ValueSpecification;
  *
  * @generated
  */
-public class InstanceValueOperations
-		extends ValueSpecificationOperations {
+public class InstanceValueOperations extends ValueSpecificationOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected InstanceValueOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected InstanceValueOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static String stringValue(InstanceValue instanceValue) {
-		InstanceSpecification instance = instanceValue.getInstance();
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated NOT
+   */
+  public static String stringValue(InstanceValue instanceValue) {
+    InstanceSpecification instance = instanceValue.getInstance();
 
-		if (instance instanceof EnumerationLiteral) {
-			return ((EnumerationLiteral) instance).getName();
-		} else if (instance != null) {
-			ValueSpecification specification = instance.getSpecification();
+    if (instance instanceof EnumerationLiteral) {
+      return ((EnumerationLiteral) instance).getName();
+    } else if (instance != null) {
+      ValueSpecification specification = instance.getSpecification();
 
-			if (specification != null) {
-				return specification.stringValue();
-			}
-		}
+      if (specification != null) {
+        return specification.stringValue();
+      }
+    }
 
-		return ValueSpecificationOperations.stringValue(instanceValue);
-	}
+    return ValueSpecificationOperations.stringValue(instanceValue);
+  }
 
 } // InstanceValueOperations

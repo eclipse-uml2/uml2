@@ -35,33 +35,32 @@ package org.eclipse.uml2.uml;
  * @model
  * @generated
  */
-public interface BehaviorExecutionSpecification
-		extends ExecutionSpecification {
+public interface BehaviorExecutionSpecification extends ExecutionSpecification {
 
-	/**
-	 * Returns the value of the '<em><b>Behavior</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Behavior whose execution is occurring.
-	 * <p>From package UML::Interactions.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Behavior</em>' reference.
-	 * @see #setBehavior(Behavior)
-	 * @see org.eclipse.uml2.uml.UMLPackage#getBehaviorExecutionSpecification_Behavior()
-	 * @model ordered="false"
-	 * @generated
-	 */
-	Behavior getBehavior();
+  /**
+   * Returns the value of the '<em><b>Behavior</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Behavior whose execution is occurring.
+   * <p>From package UML::Interactions.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Behavior</em>' reference.
+   * @see #setBehavior(Behavior)
+   * @see org.eclipse.uml2.uml.UMLPackage#getBehaviorExecutionSpecification_Behavior()
+   * @model ordered="false"
+   * @generated
+   */
+  Behavior getBehavior();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.BehaviorExecutionSpecification#getBehavior <em>Behavior</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Behavior</em>' reference.
-	 * @see #getBehavior()
-	 * @generated
-	 */
-	void setBehavior(Behavior value);
+  /**
+   * Sets the value of the '{@link org.eclipse.uml2.uml.BehaviorExecutionSpecification#getBehavior <em>Behavior</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Behavior</em>' reference.
+   * @see #getBehavior()
+   * @generated
+   */
+  void setBehavior(Behavior value);
 
 } // BehaviorExecutionSpecification

@@ -29,9 +29,8 @@ package org.eclipse.uml2.uml;
  * @model
  * @generated
  */
-public interface FlowFinalNode
-		extends FinalNode {
+public interface FlowFinalNode extends FinalNode {
 
-	// no methods
+  // no methods
 
 } // FlowFinalNode

@@ -48,192 +48,177 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated
  */
-public class ConnectorEndOperations
-		extends MultiplicityElementOperations {
+public class ConnectorEndOperations extends MultiplicityElementOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ConnectorEndOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected ConnectorEndOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The multiplicity of the ConnectorEnd may not be more general than the multiplicity of the corresponding end of the Association typing the owning Connector, if any.
-	 * self.compatibleWith(definingEnd)
-	 * @param connectorEnd The receiving '<em><b>Connector End</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateMultiplicity(ConnectorEnd connectorEnd,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
-					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.CONNECTOR_END__MULTIPLICITY,
-					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
-						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
-						new Object[]{"validateMultiplicity", //$NON-NLS-1$
-							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(connectorEnd, context)}), new Object[]{connectorEnd}));
-			}
-			return false;
-		}
-		return true;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The multiplicity of the ConnectorEnd may not be more general than the multiplicity of the corresponding end of the Association typing the owning Connector, if any.
+   * self.compatibleWith(definingEnd)
+   * @param connectorEnd The receiving '<em><b>Connector End</b></em>' model object.
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @generated
+   */
+  public static boolean validateMultiplicity(ConnectorEnd connectorEnd, DiagnosticChain diagnostics,
+      Map<Object, Object> context) {
+    // TODO: implement this method
+    // -> specify the condition that violates the invariant
+    // -> verify the details of the diagnostic, including severity and message
+    // Ensure that you remove @generated or mark it @generated NOT
+    if (false) {
+      if (diagnostics != null) {
+        diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR, UMLValidator.DIAGNOSTIC_SOURCE,
+            UMLValidator.CONNECTOR_END__MULTIPLICITY,
+            org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString("_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+                new Object[] { "validateMultiplicity", //$NON-NLS-1$
+                    org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(connectorEnd, context) }), new Object[] { connectorEnd }));
+      }
+      return false;
+    }
+    return true;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * If a ConnectorEnd is attached to a Port of the containing Classifier, partWithPort will be empty.
-	 * (role.oclIsKindOf(Port) and role.owner = connector.owner) implies partWithPort->isEmpty()
-	 * @param connectorEnd The receiving '<em><b>Connector End</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validatePartWithPortEmpty(ConnectorEnd connectorEnd,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
-					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.CONNECTOR_END__PART_WITH_PORT_EMPTY,
-					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
-						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
-						new Object[]{"validatePartWithPortEmpty", //$NON-NLS-1$
-							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(connectorEnd, context)}), new Object[]{connectorEnd}));
-			}
-			return false;
-		}
-		return true;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * If a ConnectorEnd is attached to a Port of the containing Classifier, partWithPort will be empty.
+   * (role.oclIsKindOf(Port) and role.owner = connector.owner) implies partWithPort->isEmpty()
+   * @param connectorEnd The receiving '<em><b>Connector End</b></em>' model object.
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @generated
+   */
+  public static boolean validatePartWithPortEmpty(ConnectorEnd connectorEnd, DiagnosticChain diagnostics,
+      Map<Object, Object> context) {
+    // TODO: implement this method
+    // -> specify the condition that violates the invariant
+    // -> verify the details of the diagnostic, including severity and message
+    // Ensure that you remove @generated or mark it @generated NOT
+    if (false) {
+      if (diagnostics != null) {
+        diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR, UMLValidator.DIAGNOSTIC_SOURCE,
+            UMLValidator.CONNECTOR_END__PART_WITH_PORT_EMPTY,
+            org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString("_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+                new Object[] { "validatePartWithPortEmpty", //$NON-NLS-1$
+                    org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(connectorEnd, context) }), new Object[] { connectorEnd }));
+      }
+      return false;
+    }
+    return true;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * If a ConnectorEnd references a partWithPort, then the role must be a Port that is defined or inherited by the type of the partWithPort.
-	 * partWithPort->notEmpty() implies 
-	 *   (role.oclIsKindOf(Port) and partWithPort.type.oclAsType(Namespace).member->includes(role))
-	 * @param connectorEnd The receiving '<em><b>Connector End</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateRoleAndPartWithPort(ConnectorEnd connectorEnd,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
-					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.CONNECTOR_END__ROLE_AND_PART_WITH_PORT,
-					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
-						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
-						new Object[]{"validateRoleAndPartWithPort", //$NON-NLS-1$
-							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(connectorEnd, context)}), new Object[]{connectorEnd}));
-			}
-			return false;
-		}
-		return true;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * If a ConnectorEnd references a partWithPort, then the role must be a Port that is defined or inherited by the type of the partWithPort.
+   * partWithPort->notEmpty() implies 
+   *   (role.oclIsKindOf(Port) and partWithPort.type.oclAsType(Namespace).member->includes(role))
+   * @param connectorEnd The receiving '<em><b>Connector End</b></em>' model object.
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @generated
+   */
+  public static boolean validateRoleAndPartWithPort(ConnectorEnd connectorEnd, DiagnosticChain diagnostics,
+      Map<Object, Object> context) {
+    // TODO: implement this method
+    // -> specify the condition that violates the invariant
+    // -> verify the details of the diagnostic, including severity and message
+    // Ensure that you remove @generated or mark it @generated NOT
+    if (false) {
+      if (diagnostics != null) {
+        diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR, UMLValidator.DIAGNOSTIC_SOURCE,
+            UMLValidator.CONNECTOR_END__ROLE_AND_PART_WITH_PORT,
+            org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString("_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+                new Object[] { "validateRoleAndPartWithPort", //$NON-NLS-1$
+                    org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(connectorEnd, context) }), new Object[] { connectorEnd }));
+      }
+      return false;
+    }
+    return true;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The Property held in self.partWithPort must not be a Port.
-	 * partWithPort->notEmpty() implies not partWithPort.oclIsKindOf(Port)
-	 * @param connectorEnd The receiving '<em><b>Connector End</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateSelfPartWithPort(ConnectorEnd connectorEnd,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
-					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.CONNECTOR_END__SELF_PART_WITH_PORT,
-					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
-						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
-						new Object[]{"validateSelfPartWithPort", //$NON-NLS-1$
-							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(connectorEnd, context)}), new Object[]{connectorEnd}));
-			}
-			return false;
-		}
-		return true;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The Property held in self.partWithPort must not be a Port.
+   * partWithPort->notEmpty() implies not partWithPort.oclIsKindOf(Port)
+   * @param connectorEnd The receiving '<em><b>Connector End</b></em>' model object.
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @generated
+   */
+  public static boolean validateSelfPartWithPort(ConnectorEnd connectorEnd, DiagnosticChain diagnostics,
+      Map<Object, Object> context) {
+    // TODO: implement this method
+    // -> specify the condition that violates the invariant
+    // -> verify the details of the diagnostic, including severity and message
+    // Ensure that you remove @generated or mark it @generated NOT
+    if (false) {
+      if (diagnostics != null) {
+        diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR, UMLValidator.DIAGNOSTIC_SOURCE,
+            UMLValidator.CONNECTOR_END__SELF_PART_WITH_PORT,
+            org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString("_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+                new Object[] { "validateSelfPartWithPort", //$NON-NLS-1$
+                    org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(connectorEnd, context) }), new Object[] { connectorEnd }));
+      }
+      return false;
+    }
+    return true;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Derivation for ConnectorEnd::/definingEnd : Property
-	 * result = (if connector.type = null 
-	 * then
-	 *   null 
-	 * else
-	 *   let index : Integer = connector.end->indexOf(self) in
-	 *     connector.type.memberEnd->at(index)
-	 * endif)
-	 * <p>From package UML::StructuredClassifiers.</p>
-	 * @param connectorEnd The receiving '<em><b>Connector End</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static Property getDefiningEnd(ConnectorEnd connectorEnd) {
-		Element owner = connectorEnd.getOwner();
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Derivation for ConnectorEnd::/definingEnd : Property
+   * result = (if connector.type = null 
+   * then
+   *   null 
+   * else
+   *   let index : Integer = connector.end->indexOf(self) in
+   *     connector.type.memberEnd->at(index)
+   * endif)
+   * <p>From package UML::StructuredClassifiers.</p>
+   * @param connectorEnd The receiving '<em><b>Connector End</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static Property getDefiningEnd(ConnectorEnd connectorEnd) {
+    Element owner = connectorEnd.getOwner();
 
-		if (owner instanceof Connector) {
-			Connector connector = (Connector) owner;
-			Association type = connector.getType();
+    if (owner instanceof Connector) {
+      Connector connector = (Connector) owner;
+      Association type = connector.getType();
 
-			if (type != null) {
-				List<ConnectorEnd> ends = ((InternalEList<ConnectorEnd>) connector
-					.getEnds()).basicList();
-				List<Property> memberEnds = ((InternalEList<Property>) type
-					.getMemberEnds()).basicList();
+      if (type != null) {
+        List<ConnectorEnd> ends = ((InternalEList<ConnectorEnd>) connector.getEnds()).basicList();
+        List<Property> memberEnds = ((InternalEList<Property>) type.getMemberEnds()).basicList();
 
-				if (ends.size() == memberEnds.size()) {
-					return memberEnds.get(ends.indexOf(connectorEnd));
-				}
-			}
-		}
+        if (ends.size() == memberEnds.size()) {
+          return memberEnds.get(ends.indexOf(connectorEnd));
+        }
+      }
+    }
 
-		return null;
-	}
+    return null;
+  }
 
 } // ConnectorEndOperations

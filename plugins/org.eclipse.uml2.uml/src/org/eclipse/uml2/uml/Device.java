@@ -29,9 +29,8 @@ package org.eclipse.uml2.uml;
  * @model
  * @generated
  */
-public interface Device
-		extends Node {
+public interface Device extends Node {
 
-	// no methods
+  // no methods
 
 } // Device

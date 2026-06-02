@@ -35,25 +35,25 @@ import org.eclipse.emf.common.util.EList;
  *
  * @see org.eclipse.uml2.uml.UMLPackage#getConnectableElement()
  * @model abstract="true"
+ *        annotation="duplicates"
  * @generated
  */
-public interface ConnectableElement
-		extends TypedElement, ParameterableElement {
+public interface ConnectableElement extends TypedElement, ParameterableElement {
 
-	/**
-	 * Returns the value of the '<em><b>End</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.uml.ConnectorEnd}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A set of ConnectorEnds that attach to this ConnectableElement.
-	 * <p>From package UML::StructuredClassifiers.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>End</em>' reference list.
-	 * @see org.eclipse.uml2.uml.UMLPackage#getConnectableElement_End()
-	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
-	 * @generated
-	 */
-	EList<ConnectorEnd> getEnds();
+  /**
+   * Returns the value of the '<em><b>End</b></em>' reference list.
+   * The list contents are of type {@link org.eclipse.uml2.uml.ConnectorEnd}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * A set of ConnectorEnds that attach to this ConnectableElement.
+   * <p>From package UML::StructuredClassifiers.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>End</em>' reference list.
+   * @see org.eclipse.uml2.uml.UMLPackage#getConnectableElement_End()
+   * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+   * @generated
+   */
+  EList<ConnectorEnd> getEnds();
 
 } // ConnectableElement

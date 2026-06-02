@@ -30,25 +30,23 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  *
  *
  * @see org.eclipse.uml2.uml.UMLPackage#getCreateLinkAction()
- * @model
+ * @model annotation="duplicates"
  * @generated
  */
-public interface CreateLinkAction
-		extends WriteLinkAction {
+public interface CreateLinkAction extends WriteLinkAction {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The Association cannot be an abstract Classifier.
-	 * not self.association().isAbstract
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateAssociationNotAbstract(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The Association cannot be an abstract Classifier.
+   * not self.association().isAbstract
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @model
+   * @generated
+   */
+  boolean validateAssociationNotAbstract(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // CreateLinkAction

@@ -29,9 +29,8 @@ package org.eclipse.uml2.uml;
  * @model
  * @generated
  */
-public interface ActivityFinalNode
-		extends FinalNode {
+public interface ActivityFinalNode extends FinalNode {
 
-	// no methods
+  // no methods
 
 } // ActivityFinalNode

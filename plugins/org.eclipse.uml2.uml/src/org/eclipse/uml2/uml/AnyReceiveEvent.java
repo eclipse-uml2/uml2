@@ -29,9 +29,8 @@ package org.eclipse.uml2.uml;
  * @model
  * @generated
  */
-public interface AnyReceiveEvent
-		extends MessageEvent {
+public interface AnyReceiveEvent extends MessageEvent {
 
-	// no methods
+  // no methods
 
 } // AnyReceiveEvent

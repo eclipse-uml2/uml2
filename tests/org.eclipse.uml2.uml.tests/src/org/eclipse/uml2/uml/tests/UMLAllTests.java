@@ -61,6 +61,7 @@ public class UMLAllTests
 		suite.addTest(UMLTests.suite());
 		suite.addTest(UMLValidationTests.suite());
 		suite.addTest(UMLBugTests.suite());
+		suite.addTest(UML251MigrationTest.suite());
 		return suite;
 	}
 

@@ -30,26 +30,25 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  *
  * @see org.eclipse.uml2.uml.UMLPackage#getPackageableElement()
  * @model abstract="true"
+ *        annotation="duplicates"
  * @generated
  */
-public interface PackageableElement
-		extends NamedElement, ParameterableElement {
+public interface PackageableElement extends NamedElement, ParameterableElement {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A PackageableElement owned by a Namespace must have a visibility.
-	 * visibility = null implies namespace = null
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateNamespaceNeedsVisibility(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * A PackageableElement owned by a Namespace must have a visibility.
+   * visibility = null implies namespace = null
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @model
+   * @generated
+   */
+  boolean validateNamespaceNeedsVisibility(DiagnosticChain diagnostics, Map<Object, Object> context);
 
-	// no methods
+  // no methods
 
 } // PackageableElement

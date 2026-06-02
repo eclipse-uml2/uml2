@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2018 IBM Corporation, Embarcadero Technologies, CEA, and others.
+ * Copyright (c) 2006, 2025 IBM Corporation, Embarcadero Technologies, CEA, Data In Motion, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,8 @@
  *   Kenn Hussey (Embarcadero Technologies) - 204202, 156879, 226397
  *   Kenn Hussey (CEA) - 327039, 351774, 418466, 457892
  *   Kenn Hussey - 535301
- * 
+ *   Data In Motion - UML 2.5.1 support
+ *
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -115,6 +116,36 @@ public interface XMI2UMLResource
 
 	String UML_PRIMITIVE_TYPES_LIBRARY_2_5_URI = "http://www.omg.org/spec/UML/20131001/PrimitiveTypes.xmi"; //$NON-NLS-1$
 
+	/**
+	 * @since 5.1
+	 */
+	String STANDARD_PROFILE_2_5_1_NS_URI = "http://www.omg.org/spec/UML/20161101/StandardProfile"; //$NON-NLS-1$
+
+	/**
+	 * @since 5.1
+	 */
+	String STANDARD_PROFILE_2_5_1_URI = "http://www.omg.org/spec/UML/20161101/StandardProfile.xmi"; //$NON-NLS-1$
+
+	/**
+	 * @since 5.1
+	 */
+	String UML_METAMODEL_2_5_1_NS_URI = "http://www.omg.org/spec/UML/20161101"; //$NON-NLS-1$
+
+	/**
+	 * @since 5.1
+	 */
+	String UML_METAMODEL_2_5_1_URI = "http://www.omg.org/spec/UML/20161101/UML.xmi"; //$NON-NLS-1$
+
+	/**
+	 * @since 5.1
+	 */
+	String UML_PRIMITIVE_TYPES_LIBRARY_2_5_1_NS_URI = "http://www.omg.org/spec/PrimitiveTypes/20161101"; //$NON-NLS-1$
+
+	/**
+	 * @since 5.1
+	 */
+	String UML_PRIMITIVE_TYPES_LIBRARY_2_5_1_URI = "http://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi"; //$NON-NLS-1$
+
 	String STANDARD_PROFILE_NS_URI = STANDARD_PROFILE_2_5_NS_URI;
 
 	String STANDARD_PROFILE_URI = STANDARD_PROFILE_2_5_URI;
@@ -139,6 +170,11 @@ public interface XMI2UMLResource
 
 	String UML_2_5_CONTENT_TYPE_IDENTIFIER = "org.omg.uml_2_5"; //$NON-NLS-1$
 
+	/**
+	 * @since 5.1
+	 */
+	String UML_2_5_1_CONTENT_TYPE_IDENTIFIER = "org.omg.uml_2_5_1"; //$NON-NLS-1$
+
 	String UML_CONTENT_TYPE_IDENTIFIER = UML_2_5_CONTENT_TYPE_IDENTIFIER; //$NON-NLS-1$
 
 	String XMI_2_1_NS_URI = XMI_2_1_URI; //$NON-NLS-1$
@@ -149,6 +185,11 @@ public interface XMI2UMLResource
 
 	String XMI_2_5_NS_URI = XMI_2_4_NAMESPACE_PREFIX + "20131001"; //$NON-NLS-1$
 
+	/**
+	 * @since 5.1
+	 */
+	String XMI_2_5_1_NS_URI = XMI_2_4_NAMESPACE_PREFIX + "20161101"; //$NON-NLS-1$
+
 	String XMI_NS_URI = XMI_2_5_NS_URI;
 
 	String MOF_2_0_NS_URI = "http://schema.omg.org/spec/MOF/2.0"; //$NON-NLS-1$
@@ -158,6 +199,11 @@ public interface XMI2UMLResource
 	String MOF_2_4_1_NS_URI = "http://www.omg.org/spec/MOF/20110701"; //$NON-NLS-1$
 
 	String MOF_2_5_NS_URI = "http://www.omg.org/spec/MOF/20131001"; //$NON-NLS-1$
+
+	/**
+	 * @since 5.1
+	 */
+	String MOF_2_5_1_NS_URI = "http://www.omg.org/spec/MOF/20161101"; //$NON-NLS-1$
 
 	String MOF_NS_URI = MOF_2_5_NS_URI;
 

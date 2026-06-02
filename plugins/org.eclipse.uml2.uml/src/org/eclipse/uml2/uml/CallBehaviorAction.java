@@ -36,51 +36,49 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * </ul>
  *
  * @see org.eclipse.uml2.uml.UMLPackage#getCallBehaviorAction()
- * @model
+ * @model annotation="duplicates"
  * @generated
  */
-public interface CallBehaviorAction
-		extends CallAction {
+public interface CallBehaviorAction extends CallAction {
 
-	/**
-	 * Returns the value of the '<em><b>Behavior</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The Behavior being invoked.
-	 * <p>From package UML::Actions.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Behavior</em>' reference.
-	 * @see #setBehavior(Behavior)
-	 * @see org.eclipse.uml2.uml.UMLPackage#getCallBehaviorAction_Behavior()
-	 * @model required="true" ordered="false"
-	 * @generated
-	 */
-	Behavior getBehavior();
+  /**
+   * Returns the value of the '<em><b>Behavior</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The Behavior being invoked.
+   * <p>From package UML::Actions.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Behavior</em>' reference.
+   * @see #setBehavior(Behavior)
+   * @see org.eclipse.uml2.uml.UMLPackage#getCallBehaviorAction_Behavior()
+   * @model required="true" ordered="false"
+   * @generated
+   */
+  Behavior getBehavior();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.CallBehaviorAction#getBehavior <em>Behavior</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Behavior</em>' reference.
-	 * @see #getBehavior()
-	 * @generated
-	 */
-	void setBehavior(Behavior value);
+  /**
+   * Sets the value of the '{@link org.eclipse.uml2.uml.CallBehaviorAction#getBehavior <em>Behavior</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Behavior</em>' reference.
+   * @see #getBehavior()
+   * @generated
+   */
+  void setBehavior(Behavior value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A CallBehaviorAction may not specify onPort.
-	 * onPort=null
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateNoOnport(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * A CallBehaviorAction may not specify onPort.
+   * onPort=null
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @model
+   * @generated
+   */
+  boolean validateNoOnport(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // CallBehaviorAction

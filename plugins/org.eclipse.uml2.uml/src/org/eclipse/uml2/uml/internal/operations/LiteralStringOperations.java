@@ -33,77 +33,76 @@ import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
  *
  * @generated
  */
-public class LiteralStringOperations
-		extends ValueSpecificationOperations {
+public class LiteralStringOperations extends ValueSpecificationOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected LiteralStringOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected LiteralStringOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static int integerValue(LiteralString literalString) {
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated NOT
+   */
+  public static int integerValue(LiteralString literalString) {
 
-		try {
-			return Integer.parseInt(literalString.getValue());
-		} catch (NumberFormatException nfe) {
-			throw new UnsupportedOperationException();
-		}
-	}
+    try {
+      return Integer.parseInt(literalString.getValue());
+    } catch (NumberFormatException nfe) {
+      throw new UnsupportedOperationException();
+    }
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static int unlimitedValue(LiteralString literalString) {
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated NOT
+   */
+  public static int unlimitedValue(LiteralString literalString) {
 
-		try {
-			String value = literalString.getValue();
-			return "*".equals(value) //$NON-NLS-1$
-				? LiteralUnlimitedNatural.UNLIMITED
-				: Integer.parseInt(value);
-		} catch (NumberFormatException nfe) {
-			throw new UnsupportedOperationException();
-		}
-	}
+    try {
+      String value = literalString.getValue();
+      return "*".equals(value) //$NON-NLS-1$
+          ? LiteralUnlimitedNatural.UNLIMITED
+          : Integer.parseInt(value);
+    } catch (NumberFormatException nfe) {
+      throw new UnsupportedOperationException();
+    }
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query isComputable() is redefined to be true.
-	 * result = (true)
-	 * <p>From package UML::Values.</p>
-	 * @param literalString The receiving '<em><b>Literal String</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean isComputable(LiteralString literalString) {
-		return true;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The query isComputable() is redefined to be true.
+   * result = (true)
+   * <p>From package UML::Values.</p>
+   * @param literalString The receiving '<em><b>Literal String</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean isComputable(LiteralString literalString) {
+    return true;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query stringValue() gives the value.
-	 * result = (value)
-	 * <p>From package UML::Values.</p>
-	 * @param literalString The receiving '<em><b>Literal String</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static String stringValue(LiteralString literalString) {
-		return literalString.getValue();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The query stringValue() gives the value.
+   * result = (value)
+   * <p>From package UML::Values.</p>
+   * @param literalString The receiving '<em><b>Literal String</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static String stringValue(LiteralString literalString) {
+    return literalString.getValue();
+  }
 
 } // LiteralStringOperations

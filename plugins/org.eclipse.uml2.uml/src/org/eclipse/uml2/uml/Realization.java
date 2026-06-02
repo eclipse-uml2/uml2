@@ -29,9 +29,8 @@ package org.eclipse.uml2.uml;
  * @model
  * @generated
  */
-public interface Realization
-		extends Abstraction {
+public interface Realization extends Abstraction {
 
-	// no methods
+  // no methods
 
 } // Realization

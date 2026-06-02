@@ -29,9 +29,8 @@ package org.eclipse.uml2.uml;
  * @model abstract="true"
  * @generated
  */
-public interface DeployedArtifact
-		extends NamedElement {
+public interface DeployedArtifact extends NamedElement {
 
-	// no methods
+  // no methods
 
 } // DeployedArtifact

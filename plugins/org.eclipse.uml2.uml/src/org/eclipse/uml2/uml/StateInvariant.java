@@ -34,65 +34,65 @@ import org.eclipse.emf.ecore.EClass;
  * </ul>
  *
  * @see org.eclipse.uml2.uml.UMLPackage#getStateInvariant()
- * @model
+ * @model annotation="duplicates"
  * @generated
  */
-public interface StateInvariant
-		extends InteractionFragment {
+public interface StateInvariant extends InteractionFragment {
 
-	/**
-	 * Returns the value of the '<em><b>Invariant</b></em>' containment reference.
-	 * <p>
-	 * This feature subsets the following features:
-	 * </p>
-	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
-	 * </ul>
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A Constraint that should hold at runtime for this StateInvariant.
-	 * <p>From package UML::Interactions.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Invariant</em>' containment reference.
-	 * @see #setInvariant(Constraint)
-	 * @see org.eclipse.uml2.uml.UMLPackage#getStateInvariant_Invariant()
-	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
-	 * @generated
-	 */
-	Constraint getInvariant();
+  /**
+   * Returns the value of the '<em><b>Invariant</b></em>' containment reference.
+   * <p>
+   * This feature subsets the following features:
+   * </p>
+   * <ul>
+   *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+   * </ul>
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * A Constraint that should hold at runtime for this StateInvariant.
+   * <p>From package UML::Interactions.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Invariant</em>' containment reference.
+   * @see #setInvariant(Constraint)
+   * @see org.eclipse.uml2.uml.UMLPackage#getStateInvariant_Invariant()
+   * @model containment="true" resolveProxies="true" required="true" ordered="false"
+   *        annotation="subsets"
+   * @generated
+   */
+  Constraint getInvariant();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.StateInvariant#getInvariant <em>Invariant</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Invariant</em>' containment reference.
-	 * @see #getInvariant()
-	 * @generated
-	 */
-	void setInvariant(Constraint value);
+  /**
+   * Sets the value of the '{@link org.eclipse.uml2.uml.StateInvariant#getInvariant <em>Invariant</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Invariant</em>' containment reference.
+   * @see #getInvariant()
+   * @generated
+   */
+  void setInvariant(Constraint value);
 
-	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and sets the '<em><b>Invariant</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.
-	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Constraint} to create.
-	 * @return The new {@link org.eclipse.uml2.uml.Constraint}.
-	 * @see #getInvariant()
-	 * @generated
-	 */
-	Constraint createInvariant(String name, EClass eClass);
+  /**
+   * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and sets the '<em><b>Invariant</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.
+   * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Constraint} to create.
+   * @return The new {@link org.eclipse.uml2.uml.Constraint}.
+   * @see #getInvariant()
+   * @generated
+   */
+  Constraint createInvariant(String name, EClass eClass);
 
-	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.Constraint},with the specified '<em><b>Name</b></em>', and sets the '<em><b>Invariant</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.
-	 * @return The new {@link org.eclipse.uml2.uml.Constraint}.
-	 * @see #getInvariant()
-	 * @generated
-	 */
-	Constraint createInvariant(String name);
+  /**
+   * Creates a new {@link org.eclipse.uml2.uml.Constraint},with the specified '<em><b>Name</b></em>', and sets the '<em><b>Invariant</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.
+   * @return The new {@link org.eclipse.uml2.uml.Constraint}.
+   * @see #getInvariant()
+   * @generated
+   */
+  Constraint createInvariant(String name);
 
 } // StateInvariant

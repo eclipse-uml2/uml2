@@ -29,9 +29,8 @@ package org.eclipse.uml2.uml;
  * @model
  * @generated
  */
-public interface ExecutionEnvironment
-		extends Node {
+public interface ExecutionEnvironment extends Node {
 
-	// no methods
+  // no methods
 
 } // ExecutionEnvironment

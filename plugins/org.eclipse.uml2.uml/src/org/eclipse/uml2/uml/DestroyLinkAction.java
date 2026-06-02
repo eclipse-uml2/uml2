@@ -26,12 +26,11 @@ package org.eclipse.uml2.uml;
  *
  *
  * @see org.eclipse.uml2.uml.UMLPackage#getDestroyLinkAction()
- * @model
+ * @model annotation="duplicates"
  * @generated
  */
-public interface DestroyLinkAction
-		extends WriteLinkAction {
+public interface DestroyLinkAction extends WriteLinkAction {
 
-	// no methods
+  // no methods
 
 } // DestroyLinkAction

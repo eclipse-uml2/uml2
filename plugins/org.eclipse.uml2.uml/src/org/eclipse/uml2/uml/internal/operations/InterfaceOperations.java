@@ -46,91 +46,83 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated
  */
-public class InterfaceOperations
-		extends ClassifierOperations {
+public class InterfaceOperations extends ClassifierOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected InterfaceOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected InterfaceOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The visibility of all Features owned by an Interface must be public.
-	 * feature->forAll(visibility = VisibilityKind::public)
-	 * @param interface_ The receiving '<em><b>Interface</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean validateVisibility(Interface interface_,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The visibility of all Features owned by an Interface must be public.
+   * feature->forAll(visibility = VisibilityKind::public)
+   * @param interface_ The receiving '<em><b>Interface</b></em>' model object.
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean validateVisibility(Interface interface_, DiagnosticChain diagnostics,
+      Map<Object, Object> context) {
 
-		for (Feature feature : interface_.getFeatures()) {
+    for (Feature feature : interface_.getFeatures()) {
 
-			if (feature.getVisibility() != VisibilityKind.PUBLIC_LITERAL) {
+      if (feature.getVisibility() != VisibilityKind.PUBLIC_LITERAL) {
 
-				if (diagnostics != null) {
-					diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.INTERFACE__VISIBILITY,
-						UMLPlugin.INSTANCE.getString(
-							"_UI_Interface_Visibility_diagnostic", //$NON-NLS-1$
-							getMessageSubstitutions(context, interface_)),
-						new Object[]{interface_}));
-				}
+        if (diagnostics != null) {
+          diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING, UMLValidator.DIAGNOSTIC_SOURCE,
+              UMLValidator.INTERFACE__VISIBILITY, UMLPlugin.INSTANCE.getString("_UI_Interface_Visibility_diagnostic", //$NON-NLS-1$
+                  getMessageSubstitutions(context, interface_)),
+              new Object[] { interface_ }));
+        }
 
-				return false;
-			}
-		}
+        return false;
+      }
+    }
 
-		return true;
-	}
+    return true;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Creates an operation with the specified name, parameter names, parameter types, and return type (or null) as an owned operation of this interface.
-	 * @param interface_ The receiving '<em><b>Interface</b></em>' model object.
-	 * @param name The name for the new operation, or null.
-	 * @param parameterNames The parameter names for the new operation, or null.
-	 * @param parameterTypes The parameter types for the new operation, or null.
-	 * @param returnType The return type for the new operation, or null.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static Operation createOwnedOperation(Interface interface_,
-			String name, EList<String> parameterNames,
-			EList<Type> parameterTypes, Type returnType) {
-		return TypeOperations.createOwnedOperation(interface_, name,
-			parameterNames, parameterTypes, returnType);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Creates an operation with the specified name, parameter names, parameter types, and return type (or null) as an owned operation of this interface.
+   * @param interface_ The receiving '<em><b>Interface</b></em>' model object.
+   * @param name The name for the new operation, or null.
+   * @param parameterNames The parameter names for the new operation, or null.
+   * @param parameterTypes The parameter types for the new operation, or null.
+   * @param returnType The return type for the new operation, or null.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static Operation createOwnedOperation(Interface interface_, String name, EList<String> parameterNames,
+      EList<Type> parameterTypes, Type returnType) {
+    return TypeOperations.createOwnedOperation(interface_, name, parameterNames, parameterTypes, returnType);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Creates a property with the specified name, type, lower bound, and upper bound as an owned attribute of this interface.
-	 * @param interface_ The receiving '<em><b>Interface</b></em>' model object.
-	 * @param name The name for the new attribute, or null.
-	 * @param type The type for the new attribute, or null.
-	 * @param lower The lower bound for the new attribute.
-	 * @param upper The upper bound for the new attribute.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static Property createOwnedAttribute(Interface interface_,
-			String name, Type type, int lower, int upper) {
-		return TypeOperations.createOwnedAttribute(interface_, name, type,
-			lower, upper);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Creates a property with the specified name, type, lower bound, and upper bound as an owned attribute of this interface.
+   * @param interface_ The receiving '<em><b>Interface</b></em>' model object.
+   * @param name The name for the new attribute, or null.
+   * @param type The type for the new attribute, or null.
+   * @param lower The lower bound for the new attribute.
+   * @param upper The upper bound for the new attribute.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static Property createOwnedAttribute(Interface interface_, String name, Type type, int lower, int upper) {
+    return TypeOperations.createOwnedAttribute(interface_, name, type, lower, upper);
+  }
 
 } // InterfaceOperations

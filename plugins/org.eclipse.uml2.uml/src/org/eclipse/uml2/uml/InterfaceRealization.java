@@ -36,74 +36,75 @@ package org.eclipse.uml2.uml;
  * @model
  * @generated
  */
-public interface InterfaceRealization
-		extends Realization {
+public interface InterfaceRealization extends Realization {
 
-	/**
-	 * Returns the value of the '<em><b>Contract</b></em>' reference.
-	 * <p>
-	 * This feature subsets the following features:
-	 * </p>
-	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Dependency#getSuppliers() <em>Supplier</em>}'</li>
-	 * </ul>
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * References the Interface specifying the conformance contract.
-	 * <p>From package UML::SimpleClassifiers.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Contract</em>' reference.
-	 * @see #setContract(Interface)
-	 * @see org.eclipse.uml2.uml.UMLPackage#getInterfaceRealization_Contract()
-	 * @model required="true" ordered="false"
-	 * @generated
-	 */
-	Interface getContract();
+  /**
+   * Returns the value of the '<em><b>Contract</b></em>' reference.
+   * <p>
+   * This feature subsets the following features:
+   * </p>
+   * <ul>
+   *   <li>'{@link org.eclipse.uml2.uml.Dependency#getSuppliers() <em>Supplier</em>}'</li>
+   * </ul>
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * References the Interface specifying the conformance contract.
+   * <p>From package UML::SimpleClassifiers.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Contract</em>' reference.
+   * @see #setContract(Interface)
+   * @see org.eclipse.uml2.uml.UMLPackage#getInterfaceRealization_Contract()
+   * @model required="true" ordered="false"
+   *        annotation="subsets"
+   * @generated
+   */
+  Interface getContract();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.InterfaceRealization#getContract <em>Contract</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Contract</em>' reference.
-	 * @see #getContract()
-	 * @generated
-	 */
-	void setContract(Interface value);
+  /**
+   * Sets the value of the '{@link org.eclipse.uml2.uml.InterfaceRealization#getContract <em>Contract</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Contract</em>' reference.
+   * @see #getContract()
+   * @generated
+   */
+  void setContract(Interface value);
 
-	/**
-	 * Returns the value of the '<em><b>Implementing Classifier</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.BehavioredClassifier#getInterfaceRealizations <em>Interface Realization</em>}'.
-	 * <p>
-	 * This feature subsets the following features:
-	 * </p>
-	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Dependency#getClients() <em>Client</em>}'</li>
-	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}'</li>
-	 * </ul>
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * References the BehavioredClassifier that owns this InterfaceRealization, i.e., the BehavioredClassifier that realizes the Interface to which it refers.
-	 * <p>From package UML::SimpleClassifiers.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Implementing Classifier</em>' container reference.
-	 * @see #setImplementingClassifier(BehavioredClassifier)
-	 * @see org.eclipse.uml2.uml.UMLPackage#getInterfaceRealization_ImplementingClassifier()
-	 * @see org.eclipse.uml2.uml.BehavioredClassifier#getInterfaceRealizations
-	 * @model opposite="interfaceRealization" required="true" transient="false" ordered="false"
-	 * @generated
-	 */
-	BehavioredClassifier getImplementingClassifier();
+  /**
+   * Returns the value of the '<em><b>Implementing Classifier</b></em>' container reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.BehavioredClassifier#getInterfaceRealizations <em>Interface Realization</em>}'.
+   * <p>
+   * This feature subsets the following features:
+   * </p>
+   * <ul>
+   *   <li>'{@link org.eclipse.uml2.uml.Dependency#getClients() <em>Client</em>}'</li>
+   *   <li>'{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}'</li>
+   * </ul>
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * References the BehavioredClassifier that owns this InterfaceRealization, i.e., the BehavioredClassifier that realizes the Interface to which it refers.
+   * <p>From package UML::SimpleClassifiers.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Implementing Classifier</em>' container reference.
+   * @see #setImplementingClassifier(BehavioredClassifier)
+   * @see org.eclipse.uml2.uml.UMLPackage#getInterfaceRealization_ImplementingClassifier()
+   * @see org.eclipse.uml2.uml.BehavioredClassifier#getInterfaceRealizations
+   * @model opposite="interfaceRealization" required="true" transient="false" ordered="false"
+   *        annotation="subsets"
+   * @generated
+   */
+  BehavioredClassifier getImplementingClassifier();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.InterfaceRealization#getImplementingClassifier <em>Implementing Classifier</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Implementing Classifier</em>' container reference.
-	 * @see #getImplementingClassifier()
-	 * @generated
-	 */
-	void setImplementingClassifier(BehavioredClassifier value);
+  /**
+   * Sets the value of the '{@link org.eclipse.uml2.uml.InterfaceRealization#getImplementingClassifier <em>Implementing Classifier</em>}' container reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Implementing Classifier</em>' container reference.
+   * @see #getImplementingClassifier()
+   * @generated
+   */
+  void setImplementingClassifier(BehavioredClassifier value);
 
 } // InterfaceRealization

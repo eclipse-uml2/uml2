@@ -36,62 +36,57 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated
  */
-public class DurationOperations
-		extends ValueSpecificationOperations {
+public class DurationOperations extends ValueSpecificationOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected DurationOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected DurationOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * If a Duration has no expr, then it must have a single observation that is a DurationObservation.
-	 * expr = null implies (observation->size() = 1 and observation->forAll(oclIsKindOf(DurationObservation)))
-	 * @param duration The receiving '<em><b>Duration</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateNoExprRequiresObservation(Duration duration,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
-					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.DURATION__NO_EXPR_REQUIRES_OBSERVATION,
-					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
-						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
-						new Object[]{"validateNoExprRequiresObservation", //$NON-NLS-1$
-							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(duration, context)}), new Object[]{duration}));
-			}
-			return false;
-		}
-		return true;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * If a Duration has no expr, then it must have a single observation that is a DurationObservation.
+   * expr = null implies (observation->size() = 1 and observation->forAll(oclIsKindOf(DurationObservation)))
+   * @param duration The receiving '<em><b>Duration</b></em>' model object.
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @generated
+   */
+  public static boolean validateNoExprRequiresObservation(Duration duration, DiagnosticChain diagnostics,
+      Map<Object, Object> context) {
+    // TODO: implement this method
+    // -> specify the condition that violates the invariant
+    // -> verify the details of the diagnostic, including severity and message
+    // Ensure that you remove @generated or mark it @generated NOT
+    if (false) {
+      if (diagnostics != null) {
+        diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR, UMLValidator.DIAGNOSTIC_SOURCE,
+            UMLValidator.DURATION__NO_EXPR_REQUIRES_OBSERVATION,
+            org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString("_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+                new Object[] { "validateNoExprRequiresObservation", //$NON-NLS-1$
+                    org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(duration, context) }), new Object[] { duration }));
+      }
+      return false;
+    }
+    return true;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static String stringValue(Duration duration) {
-		ValueSpecification expr = duration.getExpr();
-		return expr == null || expr instanceof Duration
-			? ValueSpecificationOperations.stringValue(duration)
-			: expr.stringValue();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated NOT
+   */
+  public static String stringValue(Duration duration) {
+    ValueSpecification expr = duration.getExpr();
+    return expr == null || expr instanceof Duration ? ValueSpecificationOperations.stringValue(duration)
+        : expr.stringValue();
+  }
 
 } // DurationOperations

@@ -26,12 +26,11 @@ package org.eclipse.uml2.uml;
  *
  *
  * @see org.eclipse.uml2.uml.UMLPackage#getCommunicationPath()
- * @model
+ * @model annotation="duplicates"
  * @generated
  */
-public interface CommunicationPath
-		extends Association {
+public interface CommunicationPath extends Association {
 
-	// no methods
+  // no methods
 
 } // CommunicationPath

@@ -39,76 +39,71 @@ import org.eclipse.uml2.uml.Type;
  *
  * @generated
  */
-public class StructuredClassifierOperations
-		extends ClassifierOperations {
+public class StructuredClassifierOperations extends ClassifierOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected StructuredClassifierOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected StructuredClassifierOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Creates a property with the specified name, type, lower bound, and upper bound as an owned attribute of this structured classifier.
-	 * @param structuredClassifier The receiving '<em><b>Structured Classifier</b></em>' model object.
-	 * @param name The name for the new attribute, or null.
-	 * @param type The type for the new attribute, or null.
-	 * @param lower The lower bound for the new attribute.
-	 * @param upper The upper bound for the new attribute.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static Property createOwnedAttribute(
-			StructuredClassifier structuredClassifier, String name, Type type,
-			int lower, int upper) {
-		return TypeOperations.createOwnedAttribute(structuredClassifier, name,
-			type, lower, upper);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Creates a property with the specified name, type, lower bound, and upper bound as an owned attribute of this structured classifier.
+   * @param structuredClassifier The receiving '<em><b>Structured Classifier</b></em>' model object.
+   * @param name The name for the new attribute, or null.
+   * @param type The type for the new attribute, or null.
+   * @param lower The lower bound for the new attribute.
+   * @param upper The upper bound for the new attribute.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static Property createOwnedAttribute(StructuredClassifier structuredClassifier, String name, Type type,
+      int lower, int upper) {
+    return TypeOperations.createOwnedAttribute(structuredClassifier, name, type, lower, upper);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Derivation for StructuredClassifier::/part
-	 * result = (ownedAttribute->select(isComposite)->asSet())
-	 * @param structuredClassifier The receiving '<em><b>Structured Classifier</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static EList<Property> getParts(
-			StructuredClassifier structuredClassifier) {
-		return structuredClassifier.getParts();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Derivation for StructuredClassifier::/part
+   * result = (ownedAttribute->select(isComposite)->asSet())
+   * @param structuredClassifier The receiving '<em><b>Structured Classifier</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static EList<Property> getParts(StructuredClassifier structuredClassifier) {
+    return structuredClassifier.getParts();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * All features of type ConnectableElement, equivalent to all direct and inherited roles.
-	 * result = (allFeatures()->select(oclIsKindOf(ConnectableElement))->collect(oclAsType(ConnectableElement))->asSet())
-	 * <p>From package UML::StructuredClassifiers.</p>
-	 * @param structuredClassifier The receiving '<em><b>Structured Classifier</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static EList<ConnectableElement> allRoles(
-			StructuredClassifier structuredClassifier) {
-		EList<ConnectableElement> allRoles = new UniqueEList.FastCompare<ConnectableElement>();
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * All features of type ConnectableElement, equivalent to all direct and inherited roles.
+   * result = (allFeatures()->select(oclIsKindOf(ConnectableElement))->collect(oclAsType(ConnectableElement))->asSet())
+   * <p>From package UML::StructuredClassifiers.</p>
+   * @param structuredClassifier The receiving '<em><b>Structured Classifier</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static EList<ConnectableElement> allRoles(StructuredClassifier structuredClassifier) {
+    EList<ConnectableElement> allRoles = new UniqueEList.FastCompare<ConnectableElement>();
 
-		for (Feature feature : structuredClassifier.allFeatures()) {
+    for (Feature feature : structuredClassifier.allFeatures()) {
 
-			if (feature instanceof ConnectableElement) {
-				allRoles.add((ConnectableElement) feature);
-			}
-		}
+      if (feature instanceof ConnectableElement) {
+        allRoles.add((ConnectableElement) feature);
+      }
+    }
 
-		return ECollections.unmodifiableEList(allRoles);
-	}
+    return ECollections.unmodifiableEList(allRoles);
+  }
 
 } // StructuredClassifierOperations

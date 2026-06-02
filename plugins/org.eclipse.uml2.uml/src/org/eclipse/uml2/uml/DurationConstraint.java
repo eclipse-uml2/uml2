@@ -37,58 +37,55 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.eclipse.uml2.uml.UMLPackage#getDurationConstraint()
- * @model
+ * @model annotation="duplicates"
  * @generated
  */
-public interface DurationConstraint
-		extends IntervalConstraint {
+public interface DurationConstraint extends IntervalConstraint {
 
-	/**
-	 * Returns the value of the '<em><b>First Event</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.Boolean}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The value of firstEvent[i] is related to constrainedElement[i] (where i is 1 or 2). If firstEvent[i] is true, then the corresponding observation event is the first time instant the execution enters constrainedElement[i]. If firstEvent[i] is false, then the corresponding observation event is the last time instant the execution is within constrainedElement[i].
-	 * <p>From package UML::Values.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>First Event</em>' attribute list.
-	 * @see org.eclipse.uml2.uml.UMLPackage#getDurationConstraint_FirstEvent()
-	 * @model dataType="org.eclipse.uml2.types.Boolean" upper="2" ordered="false"
-	 * @generated
-	 */
-	EList<Boolean> getFirstEvents();
+  /**
+   * Returns the value of the '<em><b>First Event</b></em>' attribute list.
+   * The list contents are of type {@link java.lang.Boolean}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The value of firstEvent[i] is related to constrainedElement[i] (where i is 1 or 2). If firstEvent[i] is true, then the corresponding observation event is the first time instant the execution enters constrainedElement[i]. If firstEvent[i] is false, then the corresponding observation event is the last time instant the execution is within constrainedElement[i].
+   * <p>From package UML::Values.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>First Event</em>' attribute list.
+   * @see org.eclipse.uml2.uml.UMLPackage#getDurationConstraint_FirstEvent()
+   * @model dataType="org.eclipse.uml2.types.Boolean" upper="2" ordered="false"
+   * @generated
+   */
+  EList<Boolean> getFirstEvents();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The multiplicity of firstEvent must be 2 if the multiplicity of constrainedElement is 2. Otherwise the multiplicity of firstEvent is 0.
-	 * if (constrainedElement->size() = 2)
-	 *   then (firstEvent->size() = 2) else (firstEvent->size() = 0) 
-	 * endif
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateFirstEventMultiplicity(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The multiplicity of firstEvent must be 2 if the multiplicity of constrainedElement is 2. Otherwise the multiplicity of firstEvent is 0.
+   * if (constrainedElement->size() = 2)
+   *   then (firstEvent->size() = 2) else (firstEvent->size() = 0) 
+   * endif
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @model
+   * @generated
+   */
+  boolean validateFirstEventMultiplicity(DiagnosticChain diagnostics, Map<Object, Object> context);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A DurationConstraint has either one or two constrainedElements.
-	 * constrainedElement->size() = 1 or constrainedElement->size()=2
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateHasOneOrTwoConstrainedElements(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * A DurationConstraint has either one or two constrainedElements.
+   * constrainedElement->size() = 1 or constrainedElement->size()=2
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @model
+   * @generated
+   */
+  boolean validateHasOneOrTwoConstrainedElements(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // DurationConstraint

@@ -31,55 +31,54 @@ import org.eclipse.uml2.uml.LiteralInteger;
  *
  * @generated
  */
-public class LiteralIntegerOperations
-		extends ValueSpecificationOperations {
+public class LiteralIntegerOperations extends ValueSpecificationOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected LiteralIntegerOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected LiteralIntegerOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query isComputable() is redefined to be true.
-	 * result = (true)
-	 * <p>From package UML::Values.</p>
-	 * @param literalInteger The receiving '<em><b>Literal Integer</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean isComputable(LiteralInteger literalInteger) {
-		return true;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The query isComputable() is redefined to be true.
+   * result = (true)
+   * <p>From package UML::Values.</p>
+   * @param literalInteger The receiving '<em><b>Literal Integer</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean isComputable(LiteralInteger literalInteger) {
+    return true;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query integerValue() gives the value.
-	 * result = (value)
-	 * <p>From package UML::Values.</p>
-	 * @param literalInteger The receiving '<em><b>Literal Integer</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static int integerValue(LiteralInteger literalInteger) {
-		return literalInteger.getValue();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The query integerValue() gives the value.
+   * result = (value)
+   * <p>From package UML::Values.</p>
+   * @param literalInteger The receiving '<em><b>Literal Integer</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static int integerValue(LiteralInteger literalInteger) {
+    return literalInteger.getValue();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static String stringValue(LiteralInteger literalInteger) {
-		return String.valueOf(literalInteger.getValue());
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated NOT
+   */
+  public static String stringValue(LiteralInteger literalInteger) {
+    return String.valueOf(literalInteger.getValue());
+  }
 
 } // LiteralIntegerOperations

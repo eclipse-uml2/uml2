@@ -29,6 +29,7 @@
     <module>org.eclipse.uml2.uml.editor</module>
     <module>org.eclipse.uml2.uml.profile.standard</module>
     <module>org.eclipse.uml2.uml.resources</module>
+    <module>org.eclipse.uml2.uml.resources.uml251</module>
     <module>org.eclipse.uml2.uml.validation</module>
   </modules>
 </project>

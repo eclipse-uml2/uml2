@@ -33,25 +33,23 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * @model
  * @generated
  */
-public interface InputPin
-		extends Pin {
+public interface InputPin extends Pin {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * An InputPin may have outgoing ActivityEdges only when it is owned by a StructuredActivityNode, and these edges must target a node contained (directly or indirectly) in the owning StructuredActivityNode.
-	 * outgoing->notEmpty() implies
-	 * 	action<>null and
-	 * 	action.oclIsKindOf(StructuredActivityNode) and
-	 * 	action.oclAsType(StructuredActivityNode).allOwnedNodes()->includesAll(outgoing.target)
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateOutgoingEdgesStructuredOnly(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * An InputPin may have outgoing ActivityEdges only when it is owned by a StructuredActivityNode, and these edges must target a node contained (directly or indirectly) in the owning StructuredActivityNode.
+   * outgoing->notEmpty() implies
+   * 	action<>null and
+   * 	action.oclIsKindOf(StructuredActivityNode) and
+   * 	action.oclAsType(StructuredActivityNode).allOwnedNodes()->includesAll(outgoing.target)
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @model
+   * @generated
+   */
+  boolean validateOutgoingEdgesStructuredOnly(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // InputPin

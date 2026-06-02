@@ -40,89 +40,87 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Trigger
-		extends NamedElement {
+public interface Trigger extends NamedElement {
 
-	/**
-	 * Returns the value of the '<em><b>Event</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The Event that detected by the Trigger.
-	 * <p>From package UML::CommonBehavior.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Event</em>' reference.
-	 * @see #setEvent(Event)
-	 * @see org.eclipse.uml2.uml.UMLPackage#getTrigger_Event()
-	 * @model required="true" ordered="false"
-	 * @generated
-	 */
-	Event getEvent();
+  /**
+   * Returns the value of the '<em><b>Event</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The Event that detected by the Trigger.
+   * <p>From package UML::CommonBehavior.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Event</em>' reference.
+   * @see #setEvent(Event)
+   * @see org.eclipse.uml2.uml.UMLPackage#getTrigger_Event()
+   * @model required="true" ordered="false"
+   * @generated
+   */
+  Event getEvent();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.Trigger#getEvent <em>Event</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Event</em>' reference.
-	 * @see #getEvent()
-	 * @generated
-	 */
-	void setEvent(Event value);
+  /**
+   * Sets the value of the '{@link org.eclipse.uml2.uml.Trigger#getEvent <em>Event</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Event</em>' reference.
+   * @see #getEvent()
+   * @generated
+   */
+  void setEvent(Event value);
 
-	/**
-	 * Returns the value of the '<em><b>Port</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.uml.Port}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A optional Port of through which the given effect is detected.
-	 * <p>From package UML::CommonBehavior.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Port</em>' reference list.
-	 * @see org.eclipse.uml2.uml.UMLPackage#getTrigger_Port()
-	 * @model ordered="false"
-	 * @generated
-	 */
-	EList<Port> getPorts();
+  /**
+   * Returns the value of the '<em><b>Port</b></em>' reference list.
+   * The list contents are of type {@link org.eclipse.uml2.uml.Port}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * A optional Port of through which the given effect is detected.
+   * <p>From package UML::CommonBehavior.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Port</em>' reference list.
+   * @see org.eclipse.uml2.uml.UMLPackage#getTrigger_Port()
+   * @model ordered="false"
+   * @generated
+   */
+  EList<Port> getPorts();
 
-	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.Port} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Port</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Port} to retrieve, or <code>null</code>.
-	 * @param type The '<em><b>Type</b></em>' of the {@link org.eclipse.uml2.uml.Port} to retrieve, or <code>null</code>.
-	 * @return The first {@link org.eclipse.uml2.uml.Port} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
-	 * @see #getPorts()
-	 * @generated
-	 */
-	Port getPort(String name, Type type);
+  /**
+   * Retrieves the first {@link org.eclipse.uml2.uml.Port} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Port</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Port} to retrieve, or <code>null</code>.
+   * @param type The '<em><b>Type</b></em>' of the {@link org.eclipse.uml2.uml.Port} to retrieve, or <code>null</code>.
+   * @return The first {@link org.eclipse.uml2.uml.Port} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
+   * @see #getPorts()
+   * @generated
+   */
+  Port getPort(String name, Type type);
 
-	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.Port} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Port</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Port} to retrieve, or <code>null</code>.
-	 * @param type The '<em><b>Type</b></em>' of the {@link org.eclipse.uml2.uml.Port} to retrieve, or <code>null</code>.
-	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
-	 * @return The first {@link org.eclipse.uml2.uml.Port} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
-	 * @see #getPorts()
-	 * @generated
-	 */
-	Port getPort(String name, Type type, boolean ignoreCase);
+  /**
+   * Retrieves the first {@link org.eclipse.uml2.uml.Port} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Port</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Port} to retrieve, or <code>null</code>.
+   * @param type The '<em><b>Type</b></em>' of the {@link org.eclipse.uml2.uml.Port} to retrieve, or <code>null</code>.
+   * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+   * @return The first {@link org.eclipse.uml2.uml.Port} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
+   * @see #getPorts()
+   * @generated
+   */
+  Port getPort(String name, Type type, boolean ignoreCase);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * If a Trigger specifies one or more ports, the event of the Trigger must be a MessageEvent.
-	 * port->notEmpty() implies event.oclIsKindOf(MessageEvent)
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateTriggerWithPorts(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * If a Trigger specifies one or more ports, the event of the Trigger must be a MessageEvent.
+   * port->notEmpty() implies event.oclIsKindOf(MessageEvent)
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @model
+   * @generated
+   */
+  boolean validateTriggerWithPorts(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // Trigger

@@ -36,56 +36,54 @@ import org.eclipse.uml2.uml.TemplateableElement;
  *
  * @generated
  */
-public class TemplateableElementOperations
-		extends ElementOperations {
+public class TemplateableElementOperations extends ElementOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TemplateableElementOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected TemplateableElementOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query parameterableElements() returns the set of ParameterableElements that may be used as the parameteredElements for a TemplateParameter of this TemplateableElement. By default, this set includes all the ownedElements. Subclasses may override this operation if they choose to restrict the set of ParameterableElements.
-	 * result = (self.allOwnedElements()->select(oclIsKindOf(ParameterableElement)).oclAsType(ParameterableElement)->asSet())
-	 * <p>From package UML::CommonStructure.</p>
-	 * @param templateableElement The receiving '<em><b>Templateable Element</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static EList<ParameterableElement> parameterableElements(
-			TemplateableElement templateableElement) {
-		EList<ParameterableElement> parameterableElements = new UniqueEList.FastCompare<ParameterableElement>();
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The query parameterableElements() returns the set of ParameterableElements that may be used as the parameteredElements for a TemplateParameter of this TemplateableElement. By default, this set includes all the ownedElements. Subclasses may override this operation if they choose to restrict the set of ParameterableElements.
+   * result = (self.allOwnedElements()->select(oclIsKindOf(ParameterableElement)).oclAsType(ParameterableElement)->asSet())
+   * <p>From package UML::CommonStructure.</p>
+   * @param templateableElement The receiving '<em><b>Templateable Element</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static EList<ParameterableElement> parameterableElements(TemplateableElement templateableElement) {
+    EList<ParameterableElement> parameterableElements = new UniqueEList.FastCompare<ParameterableElement>();
 
-		for (Element ownedElement : templateableElement.allOwnedElements()) {
+    for (Element ownedElement : templateableElement.allOwnedElements()) {
 
-			if (ownedElement instanceof ParameterableElement) {
-				parameterableElements.add((ParameterableElement) ownedElement);
-			}
-		}
+      if (ownedElement instanceof ParameterableElement) {
+        parameterableElements.add((ParameterableElement) ownedElement);
+      }
+    }
 
-		return ECollections.unmodifiableEList(parameterableElements);
-	}
+    return ECollections.unmodifiableEList(parameterableElements);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query isTemplate() returns whether this TemplateableElement is actually a template.
-	 * result = (ownedTemplateSignature <> null)
-	 * <p>From package UML::CommonStructure.</p>
-	 * @param templateableElement The receiving '<em><b>Templateable Element</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean isTemplate(TemplateableElement templateableElement) {
-		return templateableElement.getOwnedTemplateSignature() != null;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The query isTemplate() returns whether this TemplateableElement is actually a template.
+   * result = (ownedTemplateSignature <> null)
+   * <p>From package UML::CommonStructure.</p>
+   * @param templateableElement The receiving '<em><b>Templateable Element</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean isTemplate(TemplateableElement templateableElement) {
+    return templateableElement.getOwnedTemplateSignature() != null;
+  }
 
 } // TemplateableElementOperations

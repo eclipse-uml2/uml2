@@ -39,48 +39,46 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * @model abstract="true"
  * @generated
  */
-public interface VariableAction
-		extends Action {
+public interface VariableAction extends Action {
 
-	/**
-	 * Returns the value of the '<em><b>Variable</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The Variable to be read or written.
-	 * <p>From package UML::Actions.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Variable</em>' reference.
-	 * @see #setVariable(Variable)
-	 * @see org.eclipse.uml2.uml.UMLPackage#getVariableAction_Variable()
-	 * @model required="true" ordered="false"
-	 * @generated
-	 */
-	Variable getVariable();
+  /**
+   * Returns the value of the '<em><b>Variable</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The Variable to be read or written.
+   * <p>From package UML::Actions.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Variable</em>' reference.
+   * @see #setVariable(Variable)
+   * @see org.eclipse.uml2.uml.UMLPackage#getVariableAction_Variable()
+   * @model required="true" ordered="false"
+   * @generated
+   */
+  Variable getVariable();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.VariableAction#getVariable <em>Variable</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Variable</em>' reference.
-	 * @see #getVariable()
-	 * @generated
-	 */
-	void setVariable(Variable value);
+  /**
+   * Sets the value of the '{@link org.eclipse.uml2.uml.VariableAction#getVariable <em>Variable</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Variable</em>' reference.
+   * @see #getVariable()
+   * @generated
+   */
+  void setVariable(Variable value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The VariableAction must be in the scope of the variable.
-	 * variable.isAccessibleBy(self)
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateScopeOfVariable(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The VariableAction must be in the scope of the variable.
+   * variable.isAccessibleBy(self)
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @model
+   * @generated
+   */
+  boolean validateScopeOfVariable(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // VariableAction

@@ -31,50 +31,45 @@ import org.eclipse.uml2.uml.UMLPackage;
  *
  * @generated
  */
-public class ParameterableElementOperations
-		extends ElementOperations {
+public class ParameterableElementOperations extends ElementOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ParameterableElementOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected ParameterableElementOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query isCompatibleWith() determines if this ParameterableElement is compatible with the specified ParameterableElement. By default, this ParameterableElement is compatible with another ParameterableElement p if the kind of this ParameterableElement is the same as or a subtype of the kind of p. Subclasses of ParameterableElement should override this operation to specify different compatibility constraints.
-	 * result = (self.oclIsKindOf(p.oclType()))
-	 * <p>From package UML::CommonStructure.</p>
-	 * @param parameterableElement The receiving '<em><b>Parameterable Element</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean isCompatibleWith(
-			ParameterableElement parameterableElement, ParameterableElement p) {
-		return parameterableElement.eClass().isInstance(p);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The query isCompatibleWith() determines if this ParameterableElement is compatible with the specified ParameterableElement. By default, this ParameterableElement is compatible with another ParameterableElement p if the kind of this ParameterableElement is the same as or a subtype of the kind of p. Subclasses of ParameterableElement should override this operation to specify different compatibility constraints.
+   * result = (self.oclIsKindOf(p.oclType()))
+   * <p>From package UML::CommonStructure.</p>
+   * @param parameterableElement The receiving '<em><b>Parameterable Element</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean isCompatibleWith(ParameterableElement parameterableElement, ParameterableElement p) {
+    return parameterableElement.eClass().isInstance(p);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query isTemplateParameter() determines if this ParameterableElement is exposed as a formal TemplateParameter.
-	 * result = (templateParameter->notEmpty())
-	 * <p>From package UML::CommonStructure.</p>
-	 * @param parameterableElement The receiving '<em><b>Parameterable Element</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean isTemplateParameter(
-			ParameterableElement parameterableElement) {
-		return parameterableElement.eGet(
-			UMLPackage.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER,
-			false) != null;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The query isTemplateParameter() determines if this ParameterableElement is exposed as a formal TemplateParameter.
+   * result = (templateParameter->notEmpty())
+   * <p>From package UML::CommonStructure.</p>
+   * @param parameterableElement The receiving '<em><b>Parameterable Element</b></em>' model object.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean isTemplateParameter(ParameterableElement parameterableElement) {
+    return parameterableElement.eGet(UMLPackage.Literals.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER, false) != null;
+  }
 
 } // ParameterableElementOperations

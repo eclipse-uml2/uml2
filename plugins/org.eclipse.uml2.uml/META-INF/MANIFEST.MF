@@ -11,7 +11,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.eclipse.uml2.uml,
  org.eclipse.uml2.uml.internal.impl;x-internal:=true,
  org.eclipse.uml2.uml.internal.operations;x-internal:=true,
- org.eclipse.uml2.uml.internal.resource;x-internal:=true,
+ org.eclipse.uml2.uml.internal.resource,
  org.eclipse.uml2.uml.resource,
  org.eclipse.uml2.uml.util
 Import-Package: org.xml.sax,

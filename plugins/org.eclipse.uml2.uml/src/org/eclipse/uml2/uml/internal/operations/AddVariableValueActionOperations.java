@@ -39,87 +39,80 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *
  * @generated
  */
-public class AddVariableValueActionOperations
-		extends WriteVariableActionOperations {
+public class AddVariableValueActionOperations extends WriteVariableActionOperations {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AddVariableValueActionOperations() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected AddVariableValueActionOperations() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A value InputPin is required.
-	 * value <> null
-	 * @param addVariableValueAction The receiving '<em><b>Add Variable Value Action</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean validateRequiredValue(
-			AddVariableValueAction addVariableValueAction,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		boolean result = addVariableValueAction.getValue() != null;
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * A value InputPin is required.
+   * value <> null
+   * @param addVariableValueAction The receiving '<em><b>Add Variable Value Action</b></em>' model object.
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @generated NOT
+   */
+  public static boolean validateRequiredValue(AddVariableValueAction addVariableValueAction,
+      DiagnosticChain diagnostics, Map<Object, Object> context) {
+    boolean result = addVariableValueAction.getValue() != null;
 
-		if (!result && diagnostics != null) {
-			diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
-				UMLValidator.DIAGNOSTIC_SOURCE,
-				UMLValidator.ADD_VARIABLE_VALUE_ACTION__REQUIRED_VALUE,
-				UMLPlugin.INSTANCE.getString(
-					"_UI_AddVariableValueAction_RequiredValue_diagnostic", //$NON-NLS-1$
-					getMessageSubstitutions(context, addVariableValueAction)),
-				new Object[]{addVariableValueAction}));
-		}
+    if (!result && diagnostics != null) {
+      diagnostics
+          .add(
+              new BasicDiagnostic(Diagnostic.WARNING, UMLValidator.DIAGNOSTIC_SOURCE,
+                  UMLValidator.ADD_VARIABLE_VALUE_ACTION__REQUIRED_VALUE,
+                  UMLPlugin.INSTANCE.getString("_UI_AddVariableValueAction_RequiredValue_diagnostic", //$NON-NLS-1$
+                      getMessageSubstitutions(context, addVariableValueAction)),
+                  new Object[] { addVariableValueAction }));
+    }
 
-		return result;
-	}
+    return result;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * AddVariableValueActions for ordered Variables must have a single InputPin for the insertion point with type UnlimtedNatural and multiplicity of 1..1 if isReplaceAll=false, otherwise the Action has no InputPin for the insertion point.
-	 * if not variable.isOrdered then insertAt = null
-	 * else 
-	 *   not isReplaceAll implies
-	 *   	insertAt<>null and 
-	 *   	insertAt->forAll(type=UnlimitedNatural and is(1,1.oclAsType(UnlimitedNatural)))
-	 * endif
-	 * @param addVariableValueAction The receiving '<em><b>Add Variable Value Action</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateInsertAtPin(
-			AddVariableValueAction addVariableValueAction,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
-					UMLValidator.DIAGNOSTIC_SOURCE,
-					UMLValidator.ADD_VARIABLE_VALUE_ACTION__INSERT_AT_PIN,
-					org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(
-						"_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
-						new Object[]{"validateInsertAtPin", //$NON-NLS-1$
-							org.eclipse.emf.ecore.util.EObjectValidator
-								.getObjectLabel(addVariableValueAction,
-									context)}), new Object[]{addVariableValueAction}));
-			}
-			return false;
-		}
-		return true;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * AddVariableValueActions for ordered Variables must have a single InputPin for the insertion point with type UnlimtedNatural and multiplicity of 1..1 if isReplaceAll=false, otherwise the Action has no InputPin for the insertion point.
+   * if not variable.isOrdered then insertAt = null
+   * else 
+   *   not isReplaceAll implies
+   *   	insertAt<>null and 
+   *   	insertAt->forAll(type=UnlimitedNatural and is(1,1.oclAsType(UnlimitedNatural)))
+   * endif
+   * @param addVariableValueAction The receiving '<em><b>Add Variable Value Action</b></em>' model object.
+   * @param diagnostics The chain of diagnostics to which problems are to be appended.
+   * @param context The cache of context-specific information.
+   * <!-- end-model-doc -->
+   * @generated
+   */
+  public static boolean validateInsertAtPin(AddVariableValueAction addVariableValueAction, DiagnosticChain diagnostics,
+      Map<Object, Object> context) {
+    // TODO: implement this method
+    // -> specify the condition that violates the invariant
+    // -> verify the details of the diagnostic, including severity and message
+    // Ensure that you remove @generated or mark it @generated NOT
+    if (false) {
+      if (diagnostics != null) {
+        diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR, UMLValidator.DIAGNOSTIC_SOURCE,
+            UMLValidator.ADD_VARIABLE_VALUE_ACTION__INSERT_AT_PIN,
+            org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString("_UI_GenericInvariant_diagnostic", //$NON-NLS-1$
+                new Object[] { "validateInsertAtPin", //$NON-NLS-1$
+                    org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(addVariableValueAction, context) }), new Object[] { addVariableValueAction }));
+      }
+      return false;
+    }
+    return true;
+  }
 
 } // AddVariableValueActionOperations

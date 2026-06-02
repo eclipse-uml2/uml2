@@ -29,9 +29,8 @@ package org.eclipse.uml2.uml;
  * @model
  * @generated
  */
-public interface PrimitiveType
-		extends DataType {
+public interface PrimitiveType extends DataType {
 
-	// no methods
+  // no methods
 
 } // PrimitiveType

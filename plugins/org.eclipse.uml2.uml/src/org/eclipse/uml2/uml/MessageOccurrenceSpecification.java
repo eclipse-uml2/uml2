@@ -29,9 +29,8 @@ package org.eclipse.uml2.uml;
  * @model
  * @generated
  */
-public interface MessageOccurrenceSpecification
-		extends OccurrenceSpecification, MessageEnd {
+public interface MessageOccurrenceSpecification extends OccurrenceSpecification, MessageEnd {
 
-	// no methods
+  // no methods
 
 } // MessageOccurrenceSpecification

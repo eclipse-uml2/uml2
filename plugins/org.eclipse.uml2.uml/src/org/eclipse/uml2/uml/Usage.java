@@ -29,9 +29,8 @@ package org.eclipse.uml2.uml;
  * @model
  * @generated
  */
-public interface Usage
-		extends Dependency {
+public interface Usage extends Dependency {
 
-	// no methods
+  // no methods
 
 } // Usage

@@ -26,12 +26,11 @@ package org.eclipse.uml2.uml;
  *
  *
  * @see org.eclipse.uml2.uml.UMLPackage#getDurationInterval()
- * @model
+ * @model annotation="duplicates"
  * @generated
  */
-public interface DurationInterval
-		extends Interval {
+public interface DurationInterval extends Interval {
 
-	// no methods
+  // no methods
 
 } // DurationInterval

@@ -36,74 +36,75 @@ package org.eclipse.uml2.uml;
  * @model
  * @generated
  */
-public interface Include
-		extends NamedElement, DirectedRelationship {
+public interface Include extends NamedElement, DirectedRelationship {
 
-	/**
-	 * Returns the value of the '<em><b>Addition</b></em>' reference.
-	 * <p>
-	 * This feature subsets the following features:
-	 * </p>
-	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.DirectedRelationship#getTargets() <em>Target</em>}'</li>
-	 * </ul>
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The UseCase that is to be included.
-	 * <p>From package UML::UseCases.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Addition</em>' reference.
-	 * @see #setAddition(UseCase)
-	 * @see org.eclipse.uml2.uml.UMLPackage#getInclude_Addition()
-	 * @model required="true" ordered="false"
-	 * @generated
-	 */
-	UseCase getAddition();
+  /**
+   * Returns the value of the '<em><b>Addition</b></em>' reference.
+   * <p>
+   * This feature subsets the following features:
+   * </p>
+   * <ul>
+   *   <li>'{@link org.eclipse.uml2.uml.DirectedRelationship#getTargets() <em>Target</em>}'</li>
+   * </ul>
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The UseCase that is to be included.
+   * <p>From package UML::UseCases.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Addition</em>' reference.
+   * @see #setAddition(UseCase)
+   * @see org.eclipse.uml2.uml.UMLPackage#getInclude_Addition()
+   * @model required="true" ordered="false"
+   *        annotation="subsets"
+   * @generated
+   */
+  UseCase getAddition();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.Include#getAddition <em>Addition</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Addition</em>' reference.
-	 * @see #getAddition()
-	 * @generated
-	 */
-	void setAddition(UseCase value);
+  /**
+   * Sets the value of the '{@link org.eclipse.uml2.uml.Include#getAddition <em>Addition</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Addition</em>' reference.
+   * @see #getAddition()
+   * @generated
+   */
+  void setAddition(UseCase value);
 
-	/**
-	 * Returns the value of the '<em><b>Including Case</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.UseCase#getIncludes <em>Include</em>}'.
-	 * <p>
-	 * This feature subsets the following features:
-	 * </p>
-	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.DirectedRelationship#getSources() <em>Source</em>}'</li>
-	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
-	 * </ul>
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The UseCase which includes the addition and owns the Include relationship.
-	 * <p>From package UML::UseCases.</p>
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Including Case</em>' container reference.
-	 * @see #setIncludingCase(UseCase)
-	 * @see org.eclipse.uml2.uml.UMLPackage#getInclude_IncludingCase()
-	 * @see org.eclipse.uml2.uml.UseCase#getIncludes
-	 * @model opposite="include" required="true" transient="false" ordered="false"
-	 * @generated
-	 */
-	UseCase getIncludingCase();
+  /**
+   * Returns the value of the '<em><b>Including Case</b></em>' container reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.UseCase#getIncludes <em>Include</em>}'.
+   * <p>
+   * This feature subsets the following features:
+   * </p>
+   * <ul>
+   *   <li>'{@link org.eclipse.uml2.uml.DirectedRelationship#getSources() <em>Source</em>}'</li>
+   *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
+   * </ul>
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * The UseCase which includes the addition and owns the Include relationship.
+   * <p>From package UML::UseCases.</p>
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Including Case</em>' container reference.
+   * @see #setIncludingCase(UseCase)
+   * @see org.eclipse.uml2.uml.UMLPackage#getInclude_IncludingCase()
+   * @see org.eclipse.uml2.uml.UseCase#getIncludes
+   * @model opposite="include" required="true" transient="false" ordered="false"
+   *        annotation="subsets"
+   * @generated
+   */
+  UseCase getIncludingCase();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.Include#getIncludingCase <em>Including Case</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Including Case</em>' container reference.
-	 * @see #getIncludingCase()
-	 * @generated
-	 */
-	void setIncludingCase(UseCase value);
+  /**
+   * Sets the value of the '{@link org.eclipse.uml2.uml.Include#getIncludingCase <em>Including Case</em>}' container reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Including Case</em>' container reference.
+   * @see #getIncludingCase()
+   * @generated
+   */
+  void setIncludingCase(UseCase value);
 
 } // Include
