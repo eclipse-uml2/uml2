@@ -5,12 +5,12 @@
   <parent>
     <groupId>org.eclipse.uml2</groupId>
     <artifactId>org.eclipse.uml2.releng.tycho</artifactId>
-    <version>5.6.1-SNAPSHOT</version>
+    <version>5.6.2-SNAPSHOT</version>
     <relativePath>../releng/org.eclipse.uml2.releng.tycho</relativePath>
   </parent>
   <groupId>org.eclipse.uml2.features</groupId>
   <artifactId>features</artifactId>
-  <version>5.6.1-SNAPSHOT</version>
+  <version>5.6.2-SNAPSHOT</version>
   <packaging>pom</packaging>
   <modules>
     <module>org.eclipse.uml2-feature</module> 

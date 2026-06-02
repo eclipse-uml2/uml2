@@ -13,7 +13,7 @@
 
   <groupId>org.eclipse.uml2</groupId>
   <artifactId>org.eclipse.uml2.releng.tycho</artifactId>
-  <version>5.6.1-SNAPSHOT</version>
+  <version>5.6.2-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <licenses>
@@ -307,7 +307,7 @@
                 <artifact>
                   <groupId>org.eclipse.uml2</groupId>
                   <artifactId>org.eclipse.uml2.releng.tycho</artifactId>
-                  <version>5.6.1-SNAPSHOT</version>
+                  <version>5.6.2-SNAPSHOT</version>
                   <classifier>targetPlatforms/nightly</classifier>
                 </artifact>
               </target>
@@ -335,7 +335,7 @@
                 <artifact>
                   <groupId>org.eclipse.uml2</groupId>
                   <artifactId>org.eclipse.uml2.releng.tycho</artifactId>
-                  <version>5.6.1-SNAPSHOT</version>
+                  <version>5.6.2-SNAPSHOT</version>
                   <classifier>targetPlatforms/stable</classifier>
                 </artifact>
               </target>
@@ -362,7 +362,7 @@
                 <artifact>
                   <groupId>org.eclipse.uml2</groupId>
                   <artifactId>org.eclipse.uml2.releng.tycho</artifactId>
-                  <version>5.6.1-SNAPSHOT</version>
+                  <version>5.6.2-SNAPSHOT</version>
                   <classifier>targetPlatforms/stable</classifier>
                 </artifact>
               </target>

@@ -5,12 +5,12 @@
   <parent>
     <groupId>org.eclipse.uml2.releng</groupId>
     <artifactId>releng</artifactId>
-    <version>5.6.1-SNAPSHOT</version>
+    <version>5.6.2-SNAPSHOT</version>
     <relativePath>..</relativePath>
   </parent>
   <groupId>org.eclipse.uml2</groupId>
   <artifactId>org.eclipse.uml2.build</artifactId>
-  <version>5.6.1-SNAPSHOT</version>
+  <version>5.6.2-SNAPSHOT</version>
   <packaging>eclipse-repository</packaging>
   <properties>
     <maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
