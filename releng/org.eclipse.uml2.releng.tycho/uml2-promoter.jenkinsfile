@@ -118,9 +118,6 @@ pipeline {
 						mvn	\
 							-f releng/org.eclipse.uml2.releng.tycho/pomPromoter.xml \
 							--no-transfer-progress \
-							-Djdk.xml.maxGeneralEntitySizeLimit=0 \
-							-Djdk.xml.totalEntitySizeLimit=50000000 \
-							-Djdk.xml.entityExpansionLimit=64000 \
 							"-DBUILD_COMMIT=${params._BUILD_COMMIT}" \
 							-DBUILD_PROMOTE=../../repository \
 							"-DBUILD_REMOTE=${params._BUILD_REMOTE}" \
